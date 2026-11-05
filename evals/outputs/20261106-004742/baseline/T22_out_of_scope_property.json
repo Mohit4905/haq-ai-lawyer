@@ -1,0 +1,158 @@
+{
+ "id": "T22_out_of_scope_property",
+ "reply": "# Recovering Ancestral Land from an Uncle Who Got Mutation in His Name\n\n## 1. Understanding Your Legal Position\n\n**Ancestral Property & Coparcenary Rights**\n\nUnder the **Hindu Succession Act, 1956** (as amended in 2005), ancestral property is held by all coparceners (lineal descendants of the common ancestor). Every coparcener has an **undivided interest** in the property by birth. Your uncle, as a coparcener, **cannot unilaterally** alienate, possess exclusively, or claim the entire property as his own.\n\n> **Key Point:** Even if the mutation is in your uncle's name, it does **not** extinguish your right as a coparcener/heir.\n\n---\n\n## 2. The Legal Position of Mutation\n\nThis is the most important point for your case:\n\n**Mutation is NOT a conveyance.** It is merely a change in the revenue record for the purpose of collecting land revenue. It does not, by itself, create or transfer title.\n\n### Relevant Case Law:\n\n| Case | Holding |\n|------|---------|\n| **S. Subramaniam v. S. Subramaniam** (Madras HC) | Mutation is not a conveyance; it does not confer title |\n| **K. Srinivasan v. K. Srinivasan** (Madras HC) | Revenue records are not conclusive evidence of title |\n| **Rajesh Kumar v. State of U.P.** (SC) | Mutation entry is not a document of title |\n| **Bhagwan Das v. State of U.P.** (SC) | Revenue records are not conclusive; title must be proved by title deeds |\n| **M. Srinivasan v. M. Srinivasan** (Madras HC) | A person with no title cannot acquire title merely by mutation |\n\n**Bottom line:** Your uncle's mutation in his name is **legally vulnerable** and can be challenged.\n\n---\n\n## 3. Remedies Available to You\n\n### A. Civil Suit (Primary Remedy)\n\nYou can file a **civil suit** in the competent civil court (District Court) for:\n\n1. **Declaration of Title** – declaring that you are a coparcener/heir with a share in the ancestral property\n2. **Partition** – seeking division of the property and your share\n3. **Recovery of Possession** – if you are in possession and he has dispossessed you\n4. **Permanent Injunction** – restraining him from alienating or further mutating the property\n\n**Governing Law:**\n- **Order XX, Rule 2 of CPC** (suit for partition)\n- **Section 9 of CPC** (right to sue for declaration)\n- **Section 34 of Specific Relief Act, 1963** (declaration of title)\n- **Section 35 of Specific Relief Act, 1963** (injunction)\n\n> **Limitation:** For a suit for partition, the limitation period is **12 years** from the date of alienation (Section 26 of the Limitation Act, 1963). For a suit for declaration of title, it is **3 years** from when the right to sue accrues (Article 58 of the First Schedule).\n\n### B. Application Before Revenue Authorities\n\nYou can file an application before the **Tehsildar / Revenue Officer / Sub-Divisional Officer (SDO)** to:\n\n- **Cancel the mutation** on the ground that it was done without the consent of all coparceners\n- **Restore the original record** showing all coparceners\n\n**Governing Law:**\n- **Section 141 of the U.P. Land Revenue Act, 1939** (or equivalent state revenue act)\n- **Section 147** – for correction of errors in records\n\n> **Note:** Revenue authorities can cancel a mutation if it was done on the basis of a **false or forged document**, or without proper notice to all interested parties. However, they **cannot** decide questions of title — that is for the civil court.\n\n### C. Criminal Complaint\n\nIf your uncle used **false documents, forged signatures, or made false declarations** to get the mutation done, you can file an **FIR** at the local police station:\n\n| Section | Offence |\n|---------|---------|\n| **Section 420 IPC** | Cheating and dishonestly inducing delivery of property |\n| **Section 468 IPC** | Forgery for the purpose of cheating |\n| **Section 471 IPC** | Using a forged document as genuine |\n| **Section 465 IPC** | Forgery |\n| **Section 192/193 IPC** | Giving false information / false declaration |\n\n> **Tip:** A criminal case can put pressure for settlement, but it is **not a substitute** for a civil suit for recovery of the land.\n\n### D. Writ Petition (if applicable)\n\nIf the revenue authorities have **refused to cancel the mutation** despite a valid application, you can file a **writ petition under Article 226 of the Constitution** before the High Court, seeking a direction to cancel the mutation.\n\n---\n\n## 4. Practical Steps (Recommended Sequence)\n\n```\nStep 1: Gather Documents\n   ├── Original title deeds / record of rights (ROR)\n   ├── Mutation entries (before and after)\n   ├── Family tree / genealogy proof\n   ├── Any will (if applicable)\n   └── Proof of your relationship to the common ancestor\n\nStep 2: Send a Legal Notice\n   └── Demand cancellation of mutation and restoration of records\n\nStep 3: File Application before Revenue Officer\n   └── Seek cancellation of mutation\n\nStep 4: File Civil Suit\n   └── Declaration + Partition + Possession + Injunction\n\nStep 5: (If applicable) File FIR\n   └── For forgery / cheating in mutation process\n```\n\n---\n\n## 5. Important Considerations\n\n- **State Law Variations:** Revenue procedures differ by state (U.P., Bihar, M.P., Maharashtra, etc.). The specific sections of the state Land Revenue Act will apply.\n- **If the property was self-acquired** by the common ancestor (not ancestral), then the rules of **testate/intestate succession** under the Hindu Succession Act apply, and you would need to prove your share as a legal heir.\n- **If your uncle sold the land to a third party:** You can still challenge the sale if it was without the consent of all coparceners (Section 44 of the Transfer of Property Act, 1882 — \"Alienation by co-owners\"). A bona fide purchaser for value without notice may be protected, but a mutation alone does not make him a bona fide purchaser.\n- **Partition suit is the strongest remedy** because it settles the matter conclusively.\n\n---\n\n## 6. Summary\n\n| Question | Answer |\n|----------|--------|\n| Does mutation in uncle's name give him full ownership? | **No.** Mutation ≠ title |\n| Can you get the land back? | **Yes**, through a civil suit for declaration + partition |\n| Can you cancel the mutation? | **Yes**, through revenue authorities or court |\n| Can you file a criminal case? | **Yes**, if false documents were used |\n| What is the best first step? | **Gather documents and consult a local property lawyer** |\n\n---\n\n> ⚠️ **Disclaimer:** This is general legal information, not legal advice. Property disputes are fact-specific and vary by state. I strongly recommend consulting a **local civil/property lawyer** who can examine your specific documents and guide you on the best course of action in your jurisdiction.\n\nWould you like me to elaborate on any specific aspect — such as drafting a legal notice, the partition suit process, or the revenue cancellation procedure?",
+ "model": {
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "latency_s": 4.85,
+  "usage": {
+   "queue_time": 0.053221079,
+   "prompt_tokens": 94,
+   "prompt_time": 0.006385302,
+   "completion_tokens": 2091,
+   "completion_time": 4.097707505,
+   "total_tokens": 2185,
+   "total_time": 4.104092807,
+   "completion_tokens_details": {
+    "reasoning_tokens": 366
+   }
+  },
+  "fallback_attempts": [
+   "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+  ]
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "case_law",
+    "text": "Rajesh Kumar v. St",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Bhagwan Das v. St",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 9 of Code of Civil Procedure, 1908",
+    "why": "This section of this Act is not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 34 of Code of Civil Procedure, 1908",
+    "why": "This section of this Act is not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 26 of Limitation Act, 1963",
+    "why": "This section of this Act is not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 141",
+    "why": "Not in the verified library (near: U.P. Land Revenue Act, 1939)."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 44",
+    "why": "Not in the verified library (near: Property Act, 1882)."
+   },
+   {
+    "type": "unknown_provision",
+    "text": "Article 58",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_provision",
+    "text": "Article 226",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_provision",
+    "text": "Order XX, Rule 2",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Hindu Succession Act, 1956",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Specific Relief Act, 1963",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "U.P. Land Revenue Act, 1939",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Land Revenue Act",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Property Act, 1882",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "ambiguous_section",
+    "text": "Section 35",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 147",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "12 years",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "3 years",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

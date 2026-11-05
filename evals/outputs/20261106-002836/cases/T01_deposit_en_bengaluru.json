@@ -1,0 +1,427 @@
+{
+ "case": {
+  "id": "T01_deposit_en_bengaluru",
+  "group": "core",
+  "turns": [
+   "I moved out of my rented flat in Bengaluru on 31 August 2026 and handed over the keys the same day. I paid a deposit of Rs 60,000 by bank transfer, rent was 20,000. Landlord Mr. Ramesh Gowda says he'll cut 25,000 for painting and 'general damage' but hasn't shown any bills. It's been over 2 months. We had a registered rent agreement. What can I do?"
+  ],
+  "expect": {
+   "category": "tenancy",
+   "script": "Latin",
+   "facts": {
+    "deposit_amount": "60",
+    "monthly_rent": "20",
+    "possession_handed_over_date": "2026-08-31"
+   },
+   "must_mention_any": [
+    [
+     "notice",
+     "legal notice"
+    ],
+    [
+     "proof",
+     "bills",
+     "receipts",
+     "evidence"
+    ]
+   ],
+   "escalate_max": "recommended",
+   "draft": "deposit_demand_notice"
+  }
+ },
+ "results": [
+  {
+   "reply": "From what you’ve told me, you have a registered agreement, paid the ₹60,000 deposit by bank transfer and handed over the flat on 31‑Aug‑2026. Your landlord is keeping ₹25,000 without any bill or itemised list. \n\n**Where you stand**\n- The deposit amount is higher than the Model Tenancy Act cap (2 months’ rent) but that law only applies in a few states, not Karnataka, so the usual contract rules apply. \n- You can claim the full deposit back unless you can prove actual damage costing ₹25,000. \n\n**Options (cheapest first)**\n1. **Written demand** – send a WhatsApp/email asking for the ₹60,000 back, list the amount, your bank details and say you’ll take further steps if not paid in 15 days. Keep screenshots. \n2. **Legal notice** – if no reply, a formal notice (you can send yourself) demanding refund within 15 days. \n3. **Pre‑litigation Lok Adalat** – apply through the District Legal Services Authority for an amicable settlement (free). \n4. **Civil suit** – file a recovery suit (within 3 years). This needs a lawyer and court fees.\n\n**Next step**: Send a written demand now. I can draft a simple demand notice for you.\n\nWould you like me to draft that document?",
+   "citations": [
+    {
+     "id": "ICA1872-S73",
+     "act": "Indian Contract Act, 1872",
+     "section": "73",
+     "title": "Compensation for breach of contract",
+     "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+     "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "LIM1963-ART55",
+     "act": "Limitation Act, 1963",
+     "section": "Schedule, Article 55",
+     "title": "3 years to sue for compensation for breach of contract",
+     "plain": "A suit for compensation for breach of a contract (written or implied), where no other article covers it specifically, must be filed within 3 years. Time runs from the date of the breach. If there are repeated breaches, it runs from the breach you sue on; if the breach is continuing, from when it stops.",
+     "source_url": "https://www.thc.nic.in/Central%20Governmental%20Acts/Limitation%20Act,%202019.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Approximate last date to sue for the deposit (3 years)",
+      "date": "2029-08-31",
+      "days_left": 1029,
+      "status": "ok",
+      "basis": "LIM1963-ART55",
+      "note": "Limitation depends on the exact claim; confirm with legal aid before relying on it.",
+      "user_deadline": true
+     }
+    ],
+    "derived": [
+     {
+      "label": "Deposit size",
+      "value": "3.0 × monthly rent",
+      "basis": "MTA2021-S11",
+      "note": "The Model Tenancy Act caps residential deposits at 2 months' rent, but it applies only in states that have adopted it, and usually only to new agreements."
+     }
+    ]
+   },
+   "completeness": {
+    "pct": 78,
+    "missing": [
+     {
+      "key": "communications_so_far",
+      "question": "How have you asked for it so far (calls, WhatsApp, email)?"
+     },
+     {
+      "key": "proof_of_payment",
+      "question": "Do you have proof you paid the deposit (bank transfer, receipt)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "deposit_demand_notice"
+    }
+   ],
+   "next_step": "Send a written demand for full deposit refund",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "to send a proper legal notice if demand is ignored"
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "medium",
+   "unknowns": [
+    "Whether landlord has any documented proof of actual damage",
+    "What communications have already taken place"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "latency_s": 2.5,
+    "usage": {
+     "queue_time": 0.16030648,
+     "prompt_tokens": 2991,
+     "prompt_time": 0.1559262,
+     "completion_tokens": 733,
+     "completion_time": 1.5543440099999999,
+     "total_tokens": 3724,
+     "total_time": 1.71027021,
+     "completion_tokens_details": {
+      "reasoning_tokens": 105
+     }
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "tenancy",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "deposit_amount": 60000,
+        "monthly_rent": 20000,
+        "written_agreement": "registered",
+        "possession_handed_over_date": "2026-08-31",
+        "deductions_claimed": 25000,
+        "other_party_name": "Mr. Ramesh Gowda",
+        "city_state": "Bengaluru, India"
+       },
+       "approximate_dates": [],
+       "confidence": 0.95
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 1.67,
+       "usage": {
+        "queue_time": 0.366549604,
+        "prompt_tokens": 980,
+        "prompt_time": 0.063188586,
+        "completion_tokens": 209,
+        "completion_time": 0.23236465,
+        "total_tokens": 1189,
+        "total_time": 0.295553236,
+        "completion_tokens_details": {
+         "reasoning_tokens": 109
+        }
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-120b",
+       "latency_s": 2.5,
+       "usage": {
+        "queue_time": 0.16030648,
+        "prompt_tokens": 2991,
+        "prompt_time": 0.1559262,
+        "completion_tokens": 733,
+        "completion_time": 1.5543440099999999,
+        "total_tokens": 3724,
+        "total_time": 1.71027021,
+        "completion_tokens_details": {
+         "reasoning_tokens": 105
+        }
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 4.19
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "I moved out of my rented flat in Bengaluru on 31 August 2026 and handed over the keys the same day. I paid a deposit of Rs 60,000 by bank transfer, rent was 20,000. Landlord Mr. Ramesh Gowda says he'll cut 25,000 for painting and 'general damage' but hasn't shown any bills. It's been over 2 months. We had a registered rent agreement. What can I do?"
+   },
+   {
+    "role": "assistant",
+    "content": "From what you’ve told me, you have a registered agreement, paid the ₹60,000 deposit by bank transfer and handed over the flat on 31‑Aug‑2026. Your landlord is keeping ₹25,000 without any bill or itemised list. \n\n**Where you stand**\n- The deposit amount is higher than the Model Tenancy Act cap (2 months’ rent) but that law only applies in a few states, not Karnataka, so the usual contract rules apply. \n- You can claim the full deposit back unless you can prove actual damage costing ₹25,000. \n\n**Options (cheapest first)**\n1. **Written demand** – send a WhatsApp/email asking for the ₹60,000 back, list the amount, your bank details and say you’ll take further steps if not paid in 15 days. Keep screenshots. \n2. **Legal notice** – if no reply, a formal notice (you can send yourself) demanding refund within 15 days. \n3. **Pre‑litigation Lok Adalat** – apply through the District Legal Services Authority for an amicable settlement (free). \n4. **Civil suit** – file a recovery suit (within 3 years). This needs a lawyer and court fees.\n\n**Next step**: Send a written demand now. I can draft a simple demand notice for you.\n\nWould you like me to draft that document?"
+   }
+  ],
+  "case": {
+   "category": "tenancy",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "deposit_amount": 60000,
+    "monthly_rent": 20000,
+    "written_agreement": "registered",
+    "possession_handed_over_date": "2026-08-31",
+    "deductions_claimed": 25000,
+    "other_party_name": "Mr. Ramesh Gowda",
+    "city_state": "Bengaluru, India"
+   },
+   "timeline": [
+    {
+     "date": "2026-08-31",
+     "event": "Handed over keys and possession"
+    }
+   ],
+   "evidence_have": [],
+   "evidence_missing": [
+    "Bank transfer receipt of deposit",
+    "Any communication (WhatsApp, email, call log) with landlord about deductions",
+    "Itemised bill or estimate for painting/damage"
+   ],
+   "next_step": "Send a written demand for full deposit refund"
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "to send a proper legal notice if demand is ignored"
+   ]
+  },
+  "log": [
+   {
+    "t": 4.19,
+    "model": "openai/gpt-oss-120b",
+    "provider": "groq",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": {
+  "doc_type": "deposit_demand_notice",
+  "title": "Legal Notice for Refund of Security Deposit",
+  "body_markdown": "## LEGAL NOTICE (By Registered Post A.D.)\n**Date:** [[FILL: date]]\n\n**From:**\n[[FILL: Your Full Name]]\n[[FILL: Your Current Address]]\n\n**To:**\nMr. Ramesh Gowda\n[[FILL: Landlord's Full Address]]\n\n**Subject:** Demand for Refund of Security Deposit of Rs. 60,000\n\n1. I entered into a **registered rent agreement** with Mr. Ramesh Gowda for a residential flat in Bengaluru, India, at a monthly rent of Rs. 20,000.\n2. As per the agreement, I paid a security deposit of Rs. 60,000 by bank transfer on [[FILL: deposit payment date]].\n3. I vacated the premises and handed over the keys and possession on **31 August 2026**.\n4. The landlord has informed me that he will retain Rs. 25,000 for alleged painting and \"general damage\" but has not produced any itemised bill, estimate, or any communication evidencing such deductions.\n5. It has now been more than two months since I vacated the premises, and despite my verbal/ informal requests, the landlord has not refunded the balance of the deposit.\n\n**Legal Basis**\n- Under **Indian Contract Act, 1872 s.73** (citation: [ICA1872‑S73]), a party who breaches a contract is liable to compensate the loss caused, which includes the return of a security deposit when no valid deduction is proven.\n- Although the Model Tenancy Act, 2021 caps deposits and mandates refund on vacant possession (citation: [MTA2021‑S11]), its applicability depends on state adoption. Regardless, the principle that a landlord may retain a deposit only after showing actual, documented loss is well‑established under contract law.\n\n**Demand**\nI hereby demand the immediate refund of the **balance amount of Rs. 35,000** (Rs. 60,000 deposit – Rs. 25,000 alleged deduction) within **15 days** of receipt of this notice. The amount should be transferred to the following bank account:\n- Account Holder: [[FILL: Your Name]]\n- Bank Name: [[FILL: Bank Name]]\n- Account Number: [[FILL: Account Number]]\n- IFSC Code: [[FILL: IFSC]]\n\n**Consequences of Non‑Compliance**\nIf the demanded amount is not received within the stipulated period, I will be compelled to initiate lawful remedies, including filing a civil suit for recovery of the deposit with interest and costs, or approaching the appropriate Lok Adalat for pre‑litigation settlement, as provided under the Legal Services Authorities Act, 1987. All expenses incurred will be borne by you.\n\n**Copy retained for record.**\n\n---\n**Signature**\n[[FILL: Your Full Name]]\nPhone: [[FILL: Your Phone Number]]\nEmail: [[FILL: Your Email Address]]",
+  "placeholders": [
+   "[[FILL: date]]",
+   "[[FILL: Your Full Name]]",
+   "[[FILL: Your Current Address]]",
+   "[[FILL: Landlord's Full Address]]",
+   "[[FILL: deposit payment date]]",
+   "[[FILL: Your Name]]",
+   "[[FILL: Bank Name]]",
+   "[[FILL: Account Number]]",
+   "[[FILL: IFSC]]",
+   "[[FILL: Your Phone Number]]",
+   "[[FILL: Your Email Address]]"
+  ],
+  "citations": [
+   {
+    "id": "ICA1872-S73",
+    "act": "Indian Contract Act, 1872",
+    "section": "73",
+    "title": "Compensation for breach of contract",
+    "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+    "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+    "source_type": "primary"
+   },
+   {
+    "id": "MTA2021-S11",
+    "act": "Model Tenancy Act, 2021",
+    "section": "11",
+    "title": "Security deposit cap and refund (model law only)",
+    "plain": "Under the Model Tenancy Act, the security deposit is what the landlord and tenant agree. It may not exceed 2 months' rent for a home or 6 months' rent for non-residential premises, and it must be refunded when the landlord takes back vacant possession, after deducting anything the tenant owes. This is a model law: it applies only if your state has passed its own law adopting these rules.",
+    "source_url": "https://web.archive.org/web/2024id_/https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf",
+    "source_type": "primary"
+   }
+  ],
+  "send_instructions": [
+   "Print the notice on plain A4 paper and sign it.",
+   "Attach a self‑addressed, stamped envelope for the landlord's reply.",
+   "Send the notice by Registered Post (A.D.) to the landlord's address; retain the postal receipt as proof of dispatch.",
+   "Make a scanned copy of the signed notice and the postal receipt for your records.",
+   "If no response is received within 15 days, consult a lawyer or approach the District Legal Services Authority to initiate a Lok Adalat or file a civil suit."
+  ],
+  "guard": {
+   "initial": {
+    "verified": [
+     [
+      "s.73",
+      "Indian Contract Act, 1872"
+     ]
+    ],
+    "violations": [],
+    "warnings": [
+     {
+      "type": "unsupported_number",
+      "text": "15 days",
+      "why": "Time period not found in the verified library or calculations."
+     }
+    ],
+    "ok": true
+   },
+   "stripped": false
+  },
+  "model": {
+   "provider": "groq",
+   "model": "openai/gpt-oss-120b",
+   "latency_s": 3.77,
+   "usage": {
+    "queue_time": 0.687826823,
+    "prompt_tokens": 2070,
+    "prompt_time": 0.251306268,
+    "completion_tokens": 1023,
+    "completion_time": 2.1547254000000002,
+    "total_tokens": 3093,
+    "total_time": 2.406031668,
+    "completion_tokens_details": {
+     "reasoning_tokens": 63
+    }
+   },
+   "fallback_attempts": []
+  },
+  "disclaimer": "Draft prepared with AI from what you told Haq. Read every line, fill the [[FILL]] gaps, and remove anything untrue before sending. For large amounts or if the other side has a lawyer, get it checked by a lawyer (free legal aid: NALSA 15100)."
+ },
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got tenancy"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Latin, reply script Latin"
+  },
+  {
+   "check": "fact:deposit_amount",
+   "pass": true,
+   "detail": "expected ~60, got 60000"
+  },
+  {
+   "check": "fact:monthly_rent",
+   "pass": true,
+   "detail": "expected ~20, got 20000"
+  },
+  {
+   "check": "fact:possession_handed_over_date",
+   "pass": true,
+   "detail": "expected ~2026-08-31, got 2026-08-31"
+  },
+  {
+   "check": "mentions:notice|legal notice",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "mentions:proof|bills|receipts|evidence",
+   "pass": false,
+   "detail": ""
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "draft_no_unverified_law",
+   "pass": true,
+   "detail": "[]"
+  },
+  {
+   "check": "draft_has_no_invented_fill",
+   "pass": true,
+   "detail": "11 placeholders"
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 4,
+  "accurate_scope": 3,
+  "comment": "Clear and actionable advice, but incorrectly states the tenant can claim the full deposit back unless they prove actual damage (the burden of proof for deductions lies on the landlord).",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.5-flash",
+   "latency_s": 2.58,
+   "usage": {
+    "completion_tokens": 79,
+    "prompt_tokens": 621,
+    "total_tokens": 700
+   },
+   "fallback_attempts": []
+  }
+ }
+}

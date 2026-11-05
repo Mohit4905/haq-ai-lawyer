@@ -1,0 +1,300 @@
+{
+ "case": {
+  "id": "T05_consumer_defect_tamil",
+  "group": "language",
+  "turns": [
+   "நான் சென்னையில் ஜூலை 2026-ல் 32,000 ரூபாய்க்கு வாஷிங் மெஷின் வாங்கினேன். இரண்டு மாதத்தில் வேலை செய்யவில்லை. வாரண்டி இருந்தும் சர்வீஸ் சென்டர் சரிசெய்ய மறுக்கிறது. என்ன செய்வது?"
+  ],
+  "expect": {
+   "category": "consumer",
+   "script": "Tamil",
+   "facts": {
+    "amount_paid": "32"
+   },
+   "escalate_max": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "வணக்கம். உங்கள் வாஷிங் மெஷின் பழுதானது வருத்தமளிக்கிறது. வாரண்டி இருந்தும் சரிசெய்ய மறுப்பது 'சேவை குறைபாடு' (Deficiency of Service) ஆகும். நுகர்வோர் பாதுகாப்புச் சட்டத்தின் கீழ் உங்களுக்கு உரிமை உள்ளது.\n\nஅடுத்த கட்டத்திற்குச் செல்ல சில தகவல்கள் தேவை:\n1. நீங்கள் கம்பெனிக்கு மின்னஞ்சல் அல்லது கடிதம் மூலம் புகார் அளித்துள்ளீர்களா?\n2. உங்களிடம் பில் (Invoice), வாரண்டி கார்டு மற்றும் சர்வீஸ் சென்டர் கொடுத்த ரெஃபரன்ஸ் நம்பர் உள்ளதா?\n\nதீர்வுக்கான வழிகள்:\n1. கம்பெனியின் Grievance Officer-க்கு முறையான மின்னஞ்சல் அனுப்புங்கள் (இதுவே முதல் படி).\n2. தேசிய நுகர்வோர் உதவி மையம் (1915) மூலம் புகார் அளிக்கவும்.\n3. e-Jagriti போர்ட்டலில் நுகர்வோர் ஆணையத்தில் புகார் அளிக்கவும் (இது இலவசம்).\n\nஇப்போதைக்கு, கம்பெனிக்கு ஒரு முறையான மின்னஞ்சல் அனுப்புவதே சிறந்தது. அதைத் தயார் செய்ய நான் உதவவா?",
+   "citations": [
+    {
+     "id": "CPECOM2020-R4-5",
+     "act": "Consumer Protection (E-Commerce) Rules, 2020",
+     "section": "Rule 4(5)",
+     "title": "E-commerce grievance officer: acknowledge in 48 hours, resolve in one month",
+     "plain": "Every e-commerce platform must have a grievance officer. That officer must acknowledge your complaint within 48 hours and resolve it within one month of receiving it. Sellers on marketplaces must also appoint a grievance officer with the same timelines (rule 6(4)(b)).",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPA2019-S2-11",
+     "act": "Consumer Protection Act, 2019",
+     "section": "2(11)",
+     "title": "Meaning of 'deficiency' in service",
+     "plain": "A deficiency is any fault, shortcoming or inadequacy in the quality, nature or manner of a service that the law or a contract requires. It also covers negligence or acts or omissions that cause you loss, and deliberately withholding relevant information from you.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/CP%20Act%202019_1732700731.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-NCH-HELPLINE",
+     "act": "National Consumer Helpline",
+     "section": "",
+     "title": "National Consumer Helpline (NCH) contact details",
+     "plain": "Before going to a Consumer Commission, you can register a complaint free with the National Consumer Helpline. Call 1915 or 1800-11-4000 (toll-free), WhatsApp or SMS +91 8800001915, or file online at consumerhelpline.gov.in. NCH is a pre-litigation mediation channel, not a court, and cannot pass binding orders.",
+     "source_url": "https://consumerhelpline.gov.in/",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-EJAGRITI-PORTAL",
+     "act": "e-Jagriti consumer e-filing portal",
+     "section": "",
+     "title": "e-Jagriti: current portal for filing consumer complaints (replaced e-Daakhil)",
+     "plain": "Consumer complaints to the District, State and National Commissions are now filed online on e-Jagriti (https://e-jagriti.gov.in/). It launched on 1 January 2025 and merged the older e-Daakhil, OCMS, NCDRC CMS and CONFONET systems. You can file, pay fees, attend virtual hearings and track your case there.",
+     "source_url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/dec/doc20251223743001.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Last date to file a consumer complaint (2 years from when the problem arose)",
+      "date": "2028-09-01",
+      "days_left": 665,
+      "status": "ok",
+      "basis": "CPA2019-S69",
+      "note": "The commission can accept a late complaint only if you show sufficient cause for the delay.",
+      "user_deadline": true
+     }
+    ],
+    "derived": [
+     {
+      "label": "Where to file",
+      "value": "District Consumer Disputes Redressal Commission",
+      "basis": "CPJURIS2021-R3-5",
+      "note": "Based on the amount you paid (₹32,000), not the amount you claim."
+     },
+     {
+      "label": "Filing fee",
+      "value": "Nil",
+      "basis": "CPCDRC2020-R7",
+      "note": ""
+     }
+    ]
+   },
+   "completeness": {
+    "pct": 62,
+    "missing": [
+     {
+      "key": "other_party_name",
+      "question": "Which company / seller / platform?"
+     },
+     {
+      "key": "complained_to_company",
+      "question": "Have you complained to the company? When, and what did they say?"
+     },
+     {
+      "key": "proof",
+      "question": "What proof do you have (invoice, order ID, chats, emails, photos)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "company_complaint_email"
+    }
+   ],
+   "next_step": "Draft a formal complaint email to the company's grievance officer.",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Have they complained in writing yet?"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Tamil",
+     "got": "Tamil",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 6.51,
+    "usage": {
+     "completion_tokens": 623,
+     "prompt_tokens": 4077,
+     "total_tokens": 6017
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "consumer",
+       "language": "Tamil",
+       "script": "Tamil",
+       "facts": {
+        "product_or_service": "Washing machine",
+        "amount_paid": 32000,
+        "purchase_date": "2026-07-01",
+        "problem_date": "2026-09-01",
+        "city_state": "Chennai",
+        "summary": "Washing machine purchased in July 2026 stopped working after two months; service center refusing warranty repair."
+       },
+       "approximate_dates": [
+        "purchase_date",
+        "problem_date"
+       ],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.25,
+       "usage": {
+        "completion_tokens": 174,
+        "prompt_tokens": 954,
+        "total_tokens": 1251
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 6.51,
+       "usage": {
+        "completion_tokens": 623,
+        "prompt_tokens": 4077,
+        "total_tokens": 6017
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 8.76
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "நான் சென்னையில் ஜூலை 2026-ல் 32,000 ரூபாய்க்கு வாஷிங் மெஷின் வாங்கினேன். இரண்டு மாதத்தில் வேலை செய்யவில்லை. வாரண்டி இருந்தும் சர்வீஸ் சென்டர் சரிசெய்ய மறுக்கிறது. என்ன செய்வது?"
+   },
+   {
+    "role": "assistant",
+    "content": "வணக்கம். உங்கள் வாஷிங் மெஷின் பழுதானது வருத்தமளிக்கிறது. வாரண்டி இருந்தும் சரிசெய்ய மறுப்பது 'சேவை குறைபாடு' (Deficiency of Service) ஆகும். நுகர்வோர் பாதுகாப்புச் சட்டத்தின் கீழ் உங்களுக்கு உரிமை உள்ளது.\n\nஅடுத்த கட்டத்திற்குச் செல்ல சில தகவல்கள் தேவை:\n1. நீங்கள் கம்பெனிக்கு மின்னஞ்சல் அல்லது கடிதம் மூலம் புகார் அளித்துள்ளீர்களா?\n2. உங்களிடம் பில் (Invoice), வாரண்டி கார்டு மற்றும் சர்வீஸ் சென்டர் கொடுத்த ரெஃபரன்ஸ் நம்பர் உள்ளதா?\n\nதீர்வுக்கான வழிகள்:\n1. கம்பெனியின் Grievance Officer-க்கு முறையான மின்னஞ்சல் அனுப்புங்கள் (இதுவே முதல் படி).\n2. தேசிய நுகர்வோர் உதவி மையம் (1915) மூலம் புகார் அளிக்கவும்.\n3. e-Jagriti போர்ட்டலில் நுகர்வோர் ஆணையத்தில் புகார் அளிக்கவும் (இது இலவசம்).\n\nஇப்போதைக்கு, கம்பெனிக்கு ஒரு முறையான மின்னஞ்சல் அனுப்புவதே சிறந்தது. அதைத் தயார் செய்ய நான் உதவவா?"
+   }
+  ],
+  "case": {
+   "category": "consumer",
+   "language": "Tamil",
+   "script": "Tamil",
+   "facts": {
+    "product_or_service": "Washing machine",
+    "amount_paid": 32000,
+    "purchase_date": "2026-07-01",
+    "problem_date": "2026-09-01",
+    "city_state": "Chennai",
+    "summary": "Washing machine purchased in July 2026 stopped working after two months; service center refusing warranty repair."
+   },
+   "timeline": [
+    {
+     "date": "2026-07-01",
+     "event": "Purchase"
+    },
+    {
+     "date": "2026-09-01",
+     "event": "Problem started"
+    }
+   ],
+   "evidence_have": [],
+   "evidence_missing": [
+    "Invoice",
+    "Warranty card",
+    "Service request numbers/chats"
+   ],
+   "next_step": "Draft a formal complaint email to the company's grievance officer.",
+   "approximate": [
+    "problem_date",
+    "purchase_date"
+   ]
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 8.76,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got consumer"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Tamil, reply script Tamil"
+  },
+  {
+   "check": "fact:amount_paid",
+   "pass": true,
+   "detail": "expected ~32, got 32000"
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "error": "All providers failed: groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199325, Requested 1032. Please try again in 2m34.224s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_l"
+ }
+}

@@ -1,0 +1,468 @@
+{
+ "case": {
+  "id": "T04_consumer_refund_ecommerce",
+  "group": "core",
+  "turns": [
+   "I returned a phone I bought on an online shopping app for Rs 18,499. Pickup was done on 10 September 2026, order ID OD12345. They keep saying refund is 'under process'. I've raised 4 tickets, last one on 1 October 2026. Still nothing. I'm in Jaipur."
+  ],
+  "expect": {
+   "category": "consumer",
+   "script": "Latin",
+   "facts": {
+    "amount_paid": "18"
+   },
+   "must_mention_any": [
+    [
+     "1915",
+     "National Consumer Helpline"
+    ],
+    [
+     "District",
+     "Consumer Commission",
+     "consumer commission"
+    ]
+   ],
+   "escalate_max": "recommended",
+   "draft": "consumer_commission_complaint"
+  }
+ },
+ "results": [
+  {
+   "reply": "Hello! It is frustrating when a refund gets stuck like this. Since you have already raised 4 tickets and the company has not resolved it, you have a clear path forward. \n\nFrom what you have told me, the company is failing to meet its obligation to process your refund after a return, which is a deficiency in service. Since you have already tried the company's grievance process, here are your next options:\n\n1. **National Consumer Helpline (1915):** A free, quick way to escalate this. They act as a mediator.\n2. **e-Jagriti Portal:** You can file a formal complaint online. Since the amount is under ₹5 lakh, there is no filing fee.\n\n**Recommended Next Step:** I suggest you first call the National Consumer Helpline (1915) or file a complaint on their website. If that does not work within a few weeks, we can draft a formal complaint for the District Consumer Commission.\n\nDo you have the return pickup receipt or any email confirmation of the return?",
+   "citations": [
+    {
+     "id": "CPECOM2020-R4-5",
+     "act": "Consumer Protection (E-Commerce) Rules, 2020",
+     "section": "Rule 4(5)",
+     "title": "E-commerce grievance officer: acknowledge in 48 hours, resolve in one month",
+     "plain": "Every e-commerce platform must have a grievance officer. That officer must acknowledge your complaint within 48 hours and resolve it within one month of receiving it. Sellers on marketplaces must also appoint a grievance officer with the same timelines (rule 6(4)(b)).",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPECOM2020-R6-3",
+     "act": "Consumer Protection (E-Commerce) Rules, 2020",
+     "section": "Rule 6(3) and 7(4)",
+     "title": "Seller/platform cannot refuse return or refund for defective, deficient, spurious or late goods",
+     "plain": "A seller on a marketplace (rule 6(3)) and an inventory e-commerce entity (rule 7(4)) cannot refuse to take back goods or refuse a refund if the goods or services are defective, deficient or spurious, or not as advertised. The same applies if delivery was late, unless the delay was due to force majeure.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-NCH-HELPLINE",
+     "act": "National Consumer Helpline",
+     "section": "",
+     "title": "National Consumer Helpline (NCH) contact details",
+     "plain": "Before going to a Consumer Commission, you can register a complaint free with the National Consumer Helpline. Call 1915 or 1800-11-4000 (toll-free), WhatsApp or SMS +91 8800001915, or file online at consumerhelpline.gov.in. NCH is a pre-litigation mediation channel, not a court, and cannot pass binding orders.",
+     "source_url": "https://consumerhelpline.gov.in/",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-EJAGRITI-PORTAL",
+     "act": "e-Jagriti consumer e-filing portal",
+     "section": "",
+     "title": "e-Jagriti: current portal for filing consumer complaints (replaced e-Daakhil)",
+     "plain": "Consumer complaints to the District, State and National Commissions are now filed online on e-Jagriti (https://e-jagriti.gov.in/). It launched on 1 January 2025 and merged the older e-Daakhil, OCMS, NCDRC CMS and CONFONET systems. You can file, pay fees, attend virtual hearings and track your case there.",
+     "source_url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/dec/doc20251223743001.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPCDRC2020-R7",
+     "act": "Consumer Protection (Consumer Disputes Redressal Commissions) Rules, 2020",
+     "section": "Rule 7",
+     "title": "Complaint filing fee schedule (nil up to Rs 5 lakh)",
+     "plain": "There is no fee for a consumer complaint where the amount paid is up to Rs 5 lakh. The fee is Rs 200 for Rs 5-10 lakh, Rs 400 for Rs 10-20 lakh, Rs 1,000 for Rs 20-50 lakh, Rs 2,000 for Rs 50 lakh-1 crore and Rs 2,500 for Rs 1-2 crore. It rises to Rs 7,500 above Rs 10 crore.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/CDRC%20Amendment%20Rules%202023-1_1732707073.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "If your complaint reached the platform's grievance officer, they had to resolve it by",
+      "date": "2026-11-01",
+      "days_left": -5,
+      "status": "passed",
+      "basis": "CPECOM2020-R4-5",
+      "note": "Acknowledgement is due within 48 hours. This is the company's deadline, not yours.",
+      "user_deadline": false
+     }
+    ],
+    "derived": [
+     {
+      "label": "Where to file",
+      "value": "District Consumer Disputes Redressal Commission",
+      "basis": "CPJURIS2021-R3-5",
+      "note": "Based on the amount you paid (₹18,499), not the amount you claim."
+     },
+     {
+      "label": "Filing fee",
+      "value": "Nil",
+      "basis": "CPCDRC2020-R7",
+      "note": ""
+     }
+    ]
+   },
+   "completeness": {
+    "pct": 50,
+    "missing": [
+     {
+      "key": "other_party_name",
+      "question": "Which company / seller / platform?"
+     },
+     {
+      "key": "purchase_date",
+      "question": "When did you buy it?"
+     },
+     {
+      "key": "problem_date",
+      "question": "When did the problem start (or refund become due)?"
+     },
+     {
+      "key": "proof",
+      "question": "What proof do you have (invoice, order ID, chats, emails, photos)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "get_help",
+     "doc": "consumer_commission_complaint"
+    }
+   ],
+   "next_step": "File a complaint with the National Consumer Helpline (1915) or on consumerhelpline.gov.in.",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Do you have the return pickup receipt?"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Latin",
+     "got": "Latin",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 3.83,
+    "usage": {
+     "completion_tokens": 706,
+     "prompt_tokens": 4098,
+     "total_tokens": 4936
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "consumer",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "product_or_service": "Phone",
+        "amount_paid": 18499,
+        "complained_to_company": "Yes, 4 tickets raised",
+        "complained_to_company_date": "2026-10-01",
+        "city_state": "Jaipur",
+        "is_ecommerce": true,
+        "summary": "Refund pending for returned phone (Order OD12345) despite multiple complaints."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.83,
+       "usage": {
+        "completion_tokens": 164,
+        "prompt_tokens": 980,
+        "total_tokens": 1784
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 3.83,
+       "usage": {
+        "completion_tokens": 706,
+        "prompt_tokens": 4098,
+        "total_tokens": 4936
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 6.66
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "I returned a phone I bought on an online shopping app for Rs 18,499. Pickup was done on 10 September 2026, order ID OD12345. They keep saying refund is 'under process'. I've raised 4 tickets, last one on 1 October 2026. Still nothing. I'm in Jaipur."
+   },
+   {
+    "role": "assistant",
+    "content": "Hello! It is frustrating when a refund gets stuck like this. Since you have already raised 4 tickets and the company has not resolved it, you have a clear path forward. \n\nFrom what you have told me, the company is failing to meet its obligation to process your refund after a return, which is a deficiency in service. Since you have already tried the company's grievance process, here are your next options:\n\n1. **National Consumer Helpline (1915):** A free, quick way to escalate this. They act as a mediator.\n2. **e-Jagriti Portal:** You can file a formal complaint online. Since the amount is under ₹5 lakh, there is no filing fee.\n\n**Recommended Next Step:** I suggest you first call the National Consumer Helpline (1915) or file a complaint on their website. If that does not work within a few weeks, we can draft a formal complaint for the District Consumer Commission.\n\nDo you have the return pickup receipt or any email confirmation of the return?"
+   }
+  ],
+  "case": {
+   "category": "consumer",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "product_or_service": "Phone",
+    "amount_paid": 18499,
+    "complained_to_company": "Yes",
+    "complained_to_company_date": "2026-10-01",
+    "city_state": "Jaipur",
+    "is_ecommerce": true,
+    "summary": "Refund pending for returned phone (Order OD12345) despite multiple complaints."
+   },
+   "timeline": [
+    {
+     "date": "2026-09-10",
+     "event": "Phone pickup completed"
+    },
+    {
+     "date": "2026-10-01",
+     "event": "Last complaint ticket raised"
+    }
+   ],
+   "evidence_have": [
+    "Order ID OD12345"
+   ],
+   "evidence_missing": [
+    "Return pickup receipt",
+    "Email/chat confirmation of return",
+    "Copies of the 4 tickets raised"
+   ],
+   "next_step": "File a complaint with the National Consumer Helpline (1915) or on consumerhelpline.gov.in."
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 6.66,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": {
+  "doc_type": "consumer_commission_complaint",
+  "title": "Consumer Complaint for District Consumer Commission",
+  "body_markdown": "BEFORE THE DISTRICT CONSUMER DISPUTES REDRESSAL COMMISSION, [[FILL: District, e.g., Jaipur]]\n\nCOMPLAINANT:\n[[FILL: Your Full Name]]\n[[FILL: Your Full Address]]\n[[FILL: Your Phone Number]]\n[[FILL: Your Email Address]]\n\nVERSUS\n\nOPPOSITE PARTY:\n[[FILL: Name of E-commerce Company]]\n[[FILL: Registered Office Address of Company]]\n\nCOMPLAINT UNDER SECTION 35 OF THE CONSUMER PROTECTION ACT, 2019\n\nMOST RESPECTFULLY SHOWETH:\n\n1. I am a consumer as defined under Section 2(7) of the Consumer Protection Act, 2019, having purchased a phone from the Opposite Party for a total consideration of Rs 18,499 (Order ID: OD12345).\n\n2. The phone was returned to the Opposite Party, and the pickup was successfully completed on 10 September 2026.\n\n3. Despite the return of the product, the Opposite Party has failed to process the refund of Rs 18,499. I have contacted the Opposite Party multiple times regarding this delay.\n\n4. I have raised 4 separate complaint tickets with the Opposite Party, with the last ticket raised on 1 October 2026. The Opposite Party continues to state that the refund is 'under process' but has failed to credit the amount.\n\n5. The failure to refund the amount for a returned product constitutes a deficiency in service under Section 2(11) of the Consumer Protection Act, 2019, and an unfair trade practice under Section 2(47) of the Act.\n\n6. This Commission has the pecuniary jurisdiction to entertain this complaint as the value of the goods is Rs 18,499, which is within the limit of the District Commission. The cause of action arose in [[FILL: City, e.g., Jaipur]], where I reside and where the service was availed. The complaint is filed within the limitation period of two years as per Section 69 of the Consumer Protection Act, 2019.\n\nRELIEFS PRAYED:\nIn view of the facts mentioned above, I pray that this Hon'ble Commission may be pleased to direct the Opposite Party to:\n(a) Refund the amount of Rs 18,499 immediately;\n(b) Pay compensation for the mental agony and harassment caused by the deficiency in service;\n(c) Pay the costs of this litigation.\n\nLIST OF DOCUMENTS ANNEXED:\n1. Copy of Order ID OD12345 details.\n2. [[FILL: Any available proof of return pickup, if any]].\n3. [[FILL: Copies of the 4 tickets raised, if available]].\n\nVERIFICATION:\nI, [[FILL: Your Full Name]], do hereby verify that the contents of paragraphs 1 to 6 are true to my knowledge and belief. Verified at [[FILL: City]] on this [[FILL: Date]] day of [[FILL: Month]], 2026.\n\n____________________\n(Signature of Complainant)",
+  "placeholders": [
+   "[[FILL: District, e.g., Jaipur]]",
+   "[[FILL: Your Full Name]]",
+   "[[FILL: Your Full Address]]",
+   "[[FILL: Your Phone Number]]",
+   "[[FILL: Your Email Address]]",
+   "[[FILL: Name of E-commerce Company]]",
+   "[[FILL: Registered Office Address of Company]]",
+   "[[FILL: City, e.g., Jaipur]]",
+   "[[FILL: Any available proof of return pickup, if any]]",
+   "[[FILL: Copies of the 4 tickets raised, if available]]",
+   "[[FILL: City]]",
+   "[[FILL: Date]]",
+   "[[FILL: Month]]"
+  ],
+  "citations": [
+   {
+    "id": "CPA2019-S2-7",
+    "act": "Consumer Protection Act, 2019",
+    "section": "2(7)",
+    "title": "Who is a 'consumer'",
+    "plain": "You are a consumer if you buy goods or hire/avail a service for payment (paid, promised, or in instalments), including online, teleshopping, direct selling or multi-level marketing. People who use the goods or service with the buyer's approval are also covered. Buying for resale or a commercial purpose is excluded, but buying something to earn your own livelihood through self-employment is not treated as commercial.",
+    "source_url": "http://consumeraffairs.gov.in/public/upload/files/CP%20Act%202019_1732700731.pdf",
+    "source_type": "primary"
+   },
+   {
+    "id": "CPA2019-S2-11",
+    "act": "Consumer Protection Act, 2019",
+    "section": "2(11)",
+    "title": "Meaning of 'deficiency' in service",
+    "plain": "A deficiency is any fault, shortcoming or inadequacy in the quality, nature or manner of a service that the law or a contract requires. It also covers negligence or acts or omissions that cause you loss, and deliberately withholding relevant information from you.",
+    "source_url": "http://consumeraffairs.gov.in/public/upload/files/CP%20Act%202019_1732700731.pdf",
+    "source_type": "primary"
+   },
+   {
+    "id": "CPA2019-S2-47",
+    "act": "Consumer Protection Act, 2019",
+    "section": "2(47)",
+    "title": "Meaning of 'unfair trade practice'",
+    "plain": "An unfair trade practice is any unfair method or unfair or deceptive practice used to promote the sale, use or supply of goods or services. Examples listed in the Act include false claims about standard, quality, quantity or grade of goods (oral, written, visual or electronic).",
+    "source_url": "http://consumeraffairs.gov.in/public/upload/files/CP%20Act%202019_1732700731.pdf",
+    "source_type": "primary"
+   },
+   {
+    "id": "CPA2019-S35",
+    "act": "Consumer Protection Act, 2019",
+    "section": "35",
+    "title": "Who can file a complaint, and electronic filing",
+    "plain": "A complaint can be filed with the District Commission by the consumer, by a registered consumer association, by one or more consumers on behalf of many with the same interest (with the Commission's permission), or by the Central/State Government or the Central Authority. The Act allows complaints to be filed electronically, and the prescribed fee can be paid electronically.",
+    "source_url": "http://consumeraffairs.gov.in/public/upload/files/CP%20Act%202019_1732700731.pdf",
+    "source_type": "primary"
+   },
+   {
+    "id": "CPA2019-S69",
+    "act": "Consumer Protection Act, 2019",
+    "section": "69",
+    "title": "Limitation period for filing complaint",
+    "plain": "You must file a consumer complaint within two years from the date the problem (cause of action) arose. A later complaint can still be accepted if you show sufficient cause for the delay, but the Commission must record its reasons for condoning the delay.",
+    "source_url": "https://indiacode.gov.in/server/api/core/items/f2c38f98-2e6c-4d75-af6f-f35ecddefb25",
+    "source_type": "primary"
+   },
+   {
+    "id": "CPJURIS2021-R3-5",
+    "act": "Consumer Protection (Jurisdiction of the District Commission, the State Commission and the National Commission) Rules, 2021",
+    "section": "Rules 3-5",
+    "title": "Money limits of District, State and National Commissions",
+    "plain": "Where you file depends on how much you paid for the goods or service. Up to Rs 50 lakh: District Commission. Above Rs 50 lakh and up to Rs 2 crore: State Commission. Above Rs 2 crore: National Commission (NCDRC).",
+    "source_url": "http://consumeraffairs.gov.in/public/upload/files/232278_1732705029.pdf",
+    "source_type": "primary"
+   }
+  ],
+  "send_instructions": [
+   "1. Visit the e-Jagriti portal (https://e-jagriti.gov.in/) to register and file your complaint electronically.",
+   "2. Upload the drafted complaint along with any screenshots of your order, return status, and the ticket numbers you have.",
+   "3. Since the amount paid is below Rs 5 lakh, there is no court fee required for filing.",
+   "4. Keep a digital copy of the filed complaint and the acknowledgement receipt generated by the portal for your records.",
+   "5. If you need assistance with the filing process, you can contact the National Consumer Helpline at 1915 or visit your nearest Common Service Centre (CSC) for Tele-Law support."
+  ],
+  "guard": {
+   "initial": {
+    "verified": [
+     [
+      "SECTION 35",
+      "Consumer Protection Act, 2019"
+     ],
+     [
+      "Section 2(7)",
+      "Consumer Protection Act, 2019"
+     ],
+     [
+      "Section 2(11)",
+      "Consumer Protection Act, 2019"
+     ],
+     [
+      "Section 69",
+      "Consumer Protection Act, 2019"
+     ]
+    ],
+    "violations": [],
+    "warnings": [
+     {
+      "type": "ambiguous_section",
+      "text": "Section 2(47)",
+      "why": "Section mentioned without naming the Act."
+     }
+    ],
+    "ok": true
+   },
+   "stripped": false
+  },
+  "model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 4.85,
+   "usage": {
+    "completion_tokens": 1167,
+    "prompt_tokens": 3021,
+    "total_tokens": 4290
+   },
+   "fallback_attempts": []
+  },
+  "disclaimer": "Draft prepared with AI from what you told Haq. Read every line, fill the [[FILL]] gaps, and remove anything untrue before sending. For large amounts or if the other side has a lawyer, get it checked by a lawyer (free legal aid: NALSA 15100)."
+ },
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got consumer"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Latin, reply script Latin"
+  },
+  {
+   "check": "fact:amount_paid",
+   "pass": true,
+   "detail": "expected ~18, got 18499"
+  },
+  {
+   "check": "mentions:1915|National Consumer Helpline",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "mentions:District|Consumer Commission|consumer co",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "draft_no_unverified_law",
+   "pass": true,
+   "detail": "[]"
+  },
+  {
+   "check": "draft_has_no_invented_fill",
+   "pass": true,
+   "detail": "13 placeholders"
+  }
+ ],
+ "judge": {
+  "error": "All providers failed: groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199495, Requested 619. Please try again in 49.248s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limi | groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199378, Requested 1103. Please try again in 3m27.792s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_l"
+ }
+}

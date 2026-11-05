@@ -1,0 +1,498 @@
+{
+ "case": {
+  "id": "T03_deposit_hinglish_pg_vague_then_detail",
+  "group": "multi_turn",
+  "turns": [
+   "bhai mera paisa nahi de raha",
+   "PG wala hai pune me, 15000 deposit tha. 1 october ko chhoda. ab bolta hai notice period nahi diya isliye nahi dunga. koi agreement nahi tha bas whatsapp pe baat hui thi"
+  ],
+  "expect": {
+   "category": "tenancy",
+   "script": "Hinglish",
+   "first_turn_asks_question": true,
+   "facts": {
+    "deposit_amount": "15"
+   },
+   "must_mention_any": [
+    [
+     "whatsapp",
+     "WhatsApp",
+     "screenshot",
+     "chat"
+    ]
+   ],
+   "escalate_max": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "Bhai, thoda aur detail batao –\n- Kitna paisa tha?\n- Ye paisa kis cheez ke liye tha (rent, salary, loan, etc.)?\n- Paise dene wala kaun hai (employer, landlord, friend, shop, etc.)?\n- Kya aapke paas koi likhit proof (receipt, contract, chat, email) hai?\n\nAapke jawab ke hisaab se main aapko next step bataunga. (Options: likhit request, legal notice, Lok‑Adalat, consumer/ labour commission, etc.)",
+   "citations": [],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 0,
+    "missing": []
+   },
+   "actions": [],
+   "next_step": "Gather basic details (amount, payer, reason, proof) and share them here.",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Exact nature of the dispute",
+    "Any deadlines already passed"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "latency_s": 1.58,
+    "usage": {
+     "queue_time": 0.159333711,
+     "prompt_tokens": 1902,
+     "prompt_time": 0.108051822,
+     "completion_tokens": 314,
+     "completion_time": 0.662352499,
+     "total_tokens": 2216,
+     "total_time": 0.770404321,
+     "completion_tokens_details": {
+      "reasoning_tokens": 22
+     }
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "other",
+       "language": "Hinglish",
+       "script": "Latin",
+       "facts": {
+        "user_name": "bhai",
+        "summary": "User says someone is not giving them money"
+       },
+       "approximate_dates": [],
+       "confidence": 0.6
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 2.51,
+       "usage": {
+        "queue_time": 1.722898788,
+        "prompt_tokens": 894,
+        "prompt_time": 0.051983014,
+        "completion_tokens": 87,
+        "completion_time": 0.104593684,
+        "total_tokens": 981,
+        "total_time": 0.156576698,
+        "completion_tokens_details": {
+         "reasoning_tokens": 32
+        }
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-120b",
+       "latency_s": 1.58,
+       "usage": {
+        "queue_time": 0.159333711,
+        "prompt_tokens": 1902,
+        "prompt_time": 0.108051822,
+        "completion_tokens": 314,
+        "completion_time": 0.662352499,
+        "total_tokens": 2216,
+        "total_time": 0.770404321,
+        "completion_tokens_details": {
+         "reasoning_tokens": 22
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 19.61
+  },
+  {
+   "reply": "Bhai, aapka case tenancy deposit ka lagta hai. \n- Deposit: ₹15,000\n- Handed over possession: 2023-10-01\n- No written rent agreement, only WhatsApp chats\n- PG owner ab claim kar raha hai ki aapne notice period nahi diya, isliye deposit wapas nahi de raha.\n\n**Where you stand**\n- Model Tenancy Act (MTA) deposit cap & refund rule applies only in states that adopted it (AP, TN, UP, Assam). Maharashtra (Pune) has NOT adopted MTA, so regular rent‑control law applies. \n- Without a written agreement, you still have WhatsApp messages as evidence of the deposit and the terms. \n- The Limitation Act says a suit must be filed within 3 years of breach. The breach (owner refusing refund) happened after you vacated on 2023‑10‑01, so the 3‑year period ends on 2026‑10‑01 – **it has just passed (36 days ago)**. This means filing a regular civil suit is now risky; you should get a lawyer to check if any exception applies.\n\n**Options (cheapest/fastest first)**\n1. **Written demand** – send a clear WhatsApp/email asking for ₹15,000 back, mention you’ll approach legal help if not paid within 7 days. Keep screenshot.\n2. **Legal notice** (≈₹2‑3 k drafting fee) – you can send it yourself; it gives a formal 15‑day deadline.\n3. **Pre‑litigation Lok Adalat** – free, but usually needs both parties to agree; you can apply via District Legal Services Authority.\n4. **Civil suit** – now past limitation, so only a lawyer can assess if you can still file (e.g., if breach is considered later).\n\n**Recommended next step**: Send a written demand today (WhatsApp/email) asking for the deposit back within 7 days and attach the chat proof. I can help you draft that message.\n\n*Let me know if you want the draft.*\n\n⚠️ **Deadline check (calculated by Haq, not AI):** Approximate last date to sue for the deposit (3 years): **01 Oct 2026**, which has passed. Please speak to a lawyer or free legal aid (15100) soon to check what options remain.",
+   "citations": [
+    {
+     "id": "MTA2021-S11",
+     "act": "Model Tenancy Act, 2021",
+     "section": "11",
+     "title": "Security deposit cap and refund (model law only)",
+     "plain": "Under the Model Tenancy Act, the security deposit is what the landlord and tenant agree. It may not exceed 2 months' rent for a home or 6 months' rent for non-residential premises, and it must be refunded when the landlord takes back vacant possession, after deducting anything the tenant owes. This is a model law: it applies only if your state has passed its own law adopting these rules.",
+     "source_url": "https://web.archive.org/web/2024id_/https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-MTA-STATE-ADOPTION",
+     "act": "Model Tenancy Act, 2021",
+     "section": "",
+     "title": "States that revised tenancy laws on MTA lines (as of July 2022)",
+     "plain": "As of July 2022, the Housing Ministry reported that Andhra Pradesh, Tamil Nadu, Uttar Pradesh and Assam had revised their tenancy laws along the lines of the Model Tenancy Act. Other states continue under their own rent control laws, so the deposit cap and the rent authority procedure vary by state.",
+     "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1844644",
+     "source_type": "primary"
+    },
+    {
+     "id": "LIM1963-ART55",
+     "act": "Limitation Act, 1963",
+     "section": "Schedule, Article 55",
+     "title": "3 years to sue for compensation for breach of contract",
+     "plain": "A suit for compensation for breach of a contract (written or implied), where no other article covers it specifically, must be filed within 3 years. Time runs from the date of the breach. If there are repeated breaches, it runs from the breach you sue on; if the breach is continuing, from when it stops.",
+     "source_url": "https://www.thc.nic.in/Central%20Governmental%20Acts/Limitation%20Act,%202019.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "ICA1872-S73",
+     "act": "Indian Contract Act, 1872",
+     "section": "73",
+     "title": "Compensation for breach of contract",
+     "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+     "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-LOKADALAT-PRELITIGATION",
+     "act": "Legal Services Authorities Act, 1987",
+     "section": "",
+     "title": "Pre-litigation settlement through Lok Adalat",
+     "plain": "Even before filing a case, one party can apply to the District or State Legal Services Authority to have a civil dispute, or a compoundable criminal matter, referred to a Lok Adalat for amicable settlement. Non-compoundable offences are excluded. This is available now, unlike Mediation Act section 5.",
+     "source_url": "https://delhi.nalsa.gov.in/lok-adalat/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Approximate last date to sue for the deposit (3 years)",
+      "date": "2026-10-01",
+      "days_left": -36,
+      "status": "passed",
+      "basis": "LIM1963-ART55",
+      "note": "Limitation depends on the exact claim; confirm with legal aid before relying on it.",
+      "user_deadline": true
+     }
+    ],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 67,
+    "missing": [
+     {
+      "key": "monthly_rent",
+      "question": "What was the monthly rent (₹)?"
+     },
+     {
+      "key": "deductions_claimed",
+      "question": "Has the landlord claimed any deductions (painting, damage, dues)?"
+     },
+     {
+      "key": "proof_of_payment",
+      "question": "Do you have proof you paid the deposit (bank transfer, receipt)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "deposit_demand_notice"
+    }
+   ],
+   "next_step": "Send a written demand (WhatsApp/email) for the ₹15,000 deposit, give 7‑day deadline, keep screenshot.",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "Limitation period has passed; a lawyer can check if suit is still possible.",
+     "Deadline passed: Approximate last date to sue for the deposit (3 years) (2026-10-01)"
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "medium",
+   "unknowns": [
+    "Exact date when owner first refused refund, any partial deductions claimed"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "deadline_alerts_added": 1
+   },
+   "model": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "latency_s": 2.61,
+    "usage": {
+     "queue_time": 0.160444667,
+     "prompt_tokens": 3099,
+     "prompt_time": 0.163688276,
+     "completion_tokens": 789,
+     "completion_time": 1.643136537,
+     "total_tokens": 3888,
+     "total_time": 1.806824813,
+     "completion_tokens_details": {
+      "reasoning_tokens": 5
+     }
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "tenancy",
+       "language": "Hindi",
+       "script": "Devanagari",
+       "facts": {
+        "deposit_amount": 15000,
+        "possession_handed_over_date": "2023-10-01",
+        "written_agreement": "no",
+        "communications_so_far": "WhatsApp",
+        "city_state": "Pune",
+        "other_party_name": "PG owner"
+       },
+       "approximate_dates": [],
+       "confidence": 0.9
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 2.26,
+       "usage": {
+        "queue_time": 0.417401239,
+        "prompt_tokens": 1063,
+        "prompt_time": 0.318359888,
+        "completion_tokens": 222,
+        "completion_time": 0.902119721,
+        "total_tokens": 1285,
+        "total_time": 1.220479609,
+        "prompt_tokens_details": {
+         "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+         "reasoning_tokens": 136
+        }
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-120b",
+       "latency_s": 2.61,
+       "usage": {
+        "queue_time": 0.160444667,
+        "prompt_tokens": 3099,
+        "prompt_time": 0.163688276,
+        "completion_tokens": 789,
+        "completion_time": 1.643136537,
+        "total_tokens": 3888,
+        "total_time": 1.806824813,
+        "completion_tokens_details": {
+         "reasoning_tokens": 5
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 8.16
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "bhai mera paisa nahi de raha"
+   },
+   {
+    "role": "assistant",
+    "content": "Bhai, thoda aur detail batao –\n- Kitna paisa tha?\n- Ye paisa kis cheez ke liye tha (rent, salary, loan, etc.)?\n- Paise dene wala kaun hai (employer, landlord, friend, shop, etc.)?\n- Kya aapke paas koi likhit proof (receipt, contract, chat, email) hai?\n\nAapke jawab ke hisaab se main aapko next step bataunga. (Options: likhit request, legal notice, Lok‑Adalat, consumer/ labour commission, etc.)"
+   },
+   {
+    "role": "user",
+    "content": "PG wala hai pune me, 15000 deposit tha. 1 october ko chhoda. ab bolta hai notice period nahi diya isliye nahi dunga. koi agreement nahi tha bas whatsapp pe baat hui thi"
+   },
+   {
+    "role": "assistant",
+    "content": "Bhai, aapka case tenancy deposit ka lagta hai. \n- Deposit: ₹15,000\n- Handed over possession: 2023-10-01\n- No written rent agreement, only WhatsApp chats\n- PG owner ab claim kar raha hai ki aapne notice period nahi diya, isliye deposit wapas nahi de raha.\n\n**Where you stand**\n- Model Tenancy Act (MTA) deposit cap & refund rule applies only in states that adopted it (AP, TN, UP, Assam). Maharashtra (Pune) has NOT adopted MTA, so regular rent‑control law applies. \n- Without a written agreement, you still have WhatsApp messages as evidence of the deposit and the terms. \n- The Limitation Act says a suit must be filed within 3 years of breach. The breach (owner refusing refund) happened after you vacated on 2023‑10‑01, so the 3‑year period ends on 2026‑10‑01 – **it has just passed (36 days ago)**. This means filing a regular civil suit is now risky; you should get a lawyer to check if any exception applies.\n\n**Options (cheapest/fastest first)**\n1. **Written demand** – send a clear WhatsApp/email asking for ₹15,000 back, mention you’ll approach legal help if not paid within 7 days. Keep screenshot.\n2. **Legal notice** (≈₹2‑3 k drafting fee) – you can send it yourself; it gives a formal 15‑day deadline.\n3. **Pre‑litigation Lok Adalat** – free, but usually needs both parties to agree; you can apply via District Legal Services Authority.\n4. **Civil suit** – now past limitation, so only a lawyer can assess if you can still file (e.g., if breach is considered later).\n\n**Recommended next step**: Send a written demand today (WhatsApp/email) asking for the deposit back within 7 days and attach the chat proof. I can help you draft that message.\n\n*Let me know if you want the draft.*\n\n⚠️ **Deadline check (calculated by Haq, not AI):** Approximate last date to sue for the deposit (3 years): **01 Oct 2026**, which has passed. Please speak to a lawyer or free legal aid (15100) soon to check what options remain."
+   }
+  ],
+  "case": {
+   "category": "tenancy",
+   "language": "Hinglish",
+   "script": "Latin",
+   "facts": {
+    "user_name": "bhai",
+    "summary": "User says someone is not giving them money",
+    "deposit_amount": 15000,
+    "possession_handed_over_date": "2023-10-01",
+    "written_agreement": "no",
+    "communications_so_far": "WhatsApp",
+    "city_state": "Pune",
+    "other_party_name": "PG owner"
+   },
+   "timeline": [
+    {
+     "date": "2023-10-01",
+     "event": "Possession handed over, deposit paid"
+    }
+   ],
+   "evidence_have": [
+    "WhatsApp chat screenshots showing deposit payment and terms"
+   ],
+   "evidence_missing": [
+    "Amount of money",
+    "Who owes you the money",
+    "Reason for the payment",
+    "Any written proof (receipt, contract, messages)",
+    "Bank transfer receipt or cash receipt, if any"
+   ],
+   "next_step": "Send a written demand (WhatsApp/email) for the ₹15,000 deposit, give 7‑day deadline, keep screenshot."
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "Limitation period has passed; a lawyer can check if suit is still possible.",
+    "Deadline passed: Approximate last date to sue for the deposit (3 years) (2026-10-01)"
+   ]
+  },
+  "log": [
+   {
+    "t": 19.61,
+    "model": "openai/gpt-oss-120b",
+    "provider": "groq",
+    "guard_ok": true,
+    "repaired": false
+   },
+   {
+    "t": 8.16,
+    "model": "openai/gpt-oss-120b",
+    "provider": "groq",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got tenancy"
+  },
+  {
+   "check": "reply_language",
+   "pass": false,
+   "detail": "expected Hinglish, reply script Latin"
+  },
+  {
+   "check": "fact:deposit_amount",
+   "pass": true,
+   "detail": "expected ~15, got 15000"
+  },
+  {
+   "check": "mentions:whatsapp|WhatsApp|screenshot|chat",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "asks_clarifying_question",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "Excellent response that correctly factors in the current date (2026-11-06), calculates limitation accurately, and gives practical, prioritized advice.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.5-flash",
+   "latency_s": 1.66,
+   "usage": {
+    "completion_tokens": 78,
+    "prompt_tokens": 779,
+    "total_tokens": 857
+   },
+   "fallback_attempts": []
+  }
+ }
+}

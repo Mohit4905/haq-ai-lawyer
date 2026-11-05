@@ -1,0 +1,384 @@
+{
+ "case": {
+  "id": "T05_consumer_defect_tamil",
+  "group": "language",
+  "turns": [
+   "நான் சென்னையில் ஜூலை 2026-ல் 32,000 ரூபாய்க்கு வாஷிங் மெஷின் வாங்கினேன். இரண்டு மாதத்தில் வேலை செய்யவில்லை. வாரண்டி இருந்தும் சர்வீஸ் சென்டர் சரிசெய்ய மறுக்கிறது. என்ன செய்வது?"
+  ],
+  "expect": {
+   "category": "consumer",
+   "script": "Tamil",
+   "facts": {
+    "amount_paid": "32"
+   },
+   "escalate_max": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "சரி, உங்கள் நிலை புரிகிறது. வாரண்டி இருக்கிறபோது சர்வீஸ் சென்டர் சரிசெய்ய மறுப்பது = சேவை குறைபாடு (deficiency). நீங்கள் சொன்ன விவரங்களின்படி, முக்கிய நிபந்தனைகள் பூர்த்தி ஆகி இருக்கலாம்.\n\n**முதலில் இரண்டு விஷயங்கள் தெரிஞ்சுக்கணும்:**\n\n1. நீங்கள் கம்பெனி/சர்வீஸ் சென்டருக்கு **எழுத்துப்பூர்வமாக** (email, WhatsApp, letter) புகார் கொடுத்தீர்களா? எப்போது? அவர்கள் என்ன சொன்னார்கள்?\n2. உங்களிடம் என்ன **தெளிவு** இருக்கு? (invoice, வாரண்டி கார்டு, order ID, chat screenshots, photos)\n\n**செய்யலாம் (குறைந்த செலவில் முதலில்):**\n\n- ✉️ கம்பெனிக்கு எழுத்துப்பூர்வ புகார் → 48 மணி நேரத்தில் பதில், 1 மாதத்தில் தீர்வு (e-commerce ஆனால்)\n- 📞 National Consumer Helpline **1915** அல்லது WhatsApp **8800001915** → இலவசம், முன்-நீதிமன்ற மediator\n- ⚖️ e-Jagriti-ல் (e-jagriti.gov.in) District Commission-ல் புகார் → **இலவசம்** (₹5 லட்சம் வரை), லாயர் தேவையில்லை\n\n**என் பரிந்துரை:** முதலில் எழுத்துப்பூர்வ புகார் அனுப்புங்கள். பதில் இல்லையென்றால் 1915-ல் புகார். இரண்டும் பயன்படவில்லை என்றால் e-Jagriti-ல் புகார்.\n\nஎழுத்துப்பூர்வ புகார் மாதிரி எழுத வேண்டுமா?",
+   "citations": [
+    {
+     "id": "CPA2019-S2-11",
+     "act": "Consumer Protection Act, 2019",
+     "section": "2(11)",
+     "title": "Meaning of 'deficiency' in service",
+     "plain": "A deficiency is any fault, shortcoming or inadequacy in the quality, nature or manner of a service that the law or a contract requires. It also covers negligence or acts or omissions that cause you loss, and deliberately withholding relevant information from you.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/CP%20Act%202019_1732700731.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPA2019-S35",
+     "act": "Consumer Protection Act, 2019",
+     "section": "35",
+     "title": "Who can file a complaint, and electronic filing",
+     "plain": "A complaint can be filed with the District Commission by the consumer, by a registered consumer association, by one or more consumers on behalf of many with the same interest (with the Commission's permission), or by the Central/State Government or the Central Authority. The Act allows complaints to be filed electronically, and the prescribed fee can be paid electronically.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/CP%20Act%202019_1732700731.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPA2019-S39",
+     "act": "Consumer Protection Act, 2019",
+     "section": "39",
+     "title": "Reliefs the District Commission can order",
+     "plain": "If your complaint is proved, the Commission can order the seller or service provider to remove defects, replace the goods, refund the price or charges with interest, pay compensation for loss or injury (including punitive damages), stop the unfair practice, withdraw hazardous goods, issue corrective advertisements, and pay your costs.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/CP%20Act%202019_1732700731.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPA2019-S69",
+     "act": "Consumer Protection Act, 2019",
+     "section": "69",
+     "title": "Limitation period for filing complaint",
+     "plain": "You must file a consumer complaint within two years from the date the problem (cause of action) arose. A later complaint can still be accepted if you show sufficient cause for the delay, but the Commission must record its reasons for condoning the delay.",
+     "source_url": "https://indiacode.gov.in/server/api/core/items/f2c38f98-2e6c-4d75-af6f-f35ecddefb25",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPJURIS2021-R3-5",
+     "act": "Consumer Protection (Jurisdiction of the District Commission, the State Commission and the National Commission) Rules, 2021",
+     "section": "Rules 3-5",
+     "title": "Money limits of District, State and National Commissions",
+     "plain": "Where you file depends on how much you paid for the goods or service. Up to Rs 50 lakh: District Commission. Above Rs 50 lakh and up to Rs 2 crore: State Commission. Above Rs 2 crore: National Commission (NCDRC).",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/232278_1732705029.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPCDRC2020-R7",
+     "act": "Consumer Protection (Consumer Disputes Redressal Commissions) Rules, 2020",
+     "section": "Rule 7",
+     "title": "Complaint filing fee schedule (nil up to Rs 5 lakh)",
+     "plain": "There is no fee for a consumer complaint where the amount paid is up to Rs 5 lakh. The fee is Rs 200 for Rs 5-10 lakh, Rs 400 for Rs 10-20 lakh, Rs 1,000 for Rs 20-50 lakh, Rs 2,000 for Rs 50 lakh-1 crore and Rs 2,500 for Rs 1-2 crore. It rises to Rs 7,500 above Rs 10 crore.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/CDRC%20Amendment%20Rules%202023-1_1732707073.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPECOM2020-R4-5",
+     "act": "Consumer Protection (E-Commerce) Rules, 2020",
+     "section": "Rule 4(5)",
+     "title": "E-commerce grievance officer: acknowledge in 48 hours, resolve in one month",
+     "plain": "Every e-commerce platform must have a grievance officer. That officer must acknowledge your complaint within 48 hours and resolve it within one month of receiving it. Sellers on marketplaces must also appoint a grievance officer with the same timelines (rule 6(4)(b)).",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-NCH-HELPLINE",
+     "act": "National Consumer Helpline",
+     "section": "",
+     "title": "National Consumer Helpline (NCH) contact details",
+     "plain": "Before going to a Consumer Commission, you can register a complaint free with the National Consumer Helpline. Call 1915 or 1800-11-4000 (toll-free), WhatsApp or SMS +91 8800001915, or file online at consumerhelpline.gov.in. NCH is a pre-litigation mediation channel, not a court, and cannot pass binding orders.",
+     "source_url": "https://consumerhelpline.gov.in/",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-EJAGRITI-PORTAL",
+     "act": "e-Jagriti consumer e-filing portal",
+     "section": "",
+     "title": "e-Jagriti: current portal for filing consumer complaints (replaced e-Daakhil)",
+     "plain": "Consumer complaints to the District, State and National Commissions are now filed online on e-Jagriti (https://e-jagriti.gov.in/). It launched on 1 January 2025 and merged the older e-Daakhil, OCMS, NCDRC CMS and CONFONET systems. You can file, pay fees, attend virtual hearings and track your case there.",
+     "source_url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/dec/doc20251223743001.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Last date to file a consumer complaint (2 years from when the problem arose)",
+      "date": "2028-09-01",
+      "days_left": 665,
+      "status": "ok",
+      "basis": "CPA2019-S69",
+      "note": "The commission can accept a late complaint only if you show sufficient cause for the delay.",
+      "user_deadline": true
+     }
+    ],
+    "derived": [
+     {
+      "label": "Where to file",
+      "value": "District Consumer Disputes Redressal Commission",
+      "basis": "CPJURIS2021-R3-5",
+      "note": "Based on the amount you paid (₹32,000), not the amount you claim."
+     },
+     {
+      "label": "Filing fee",
+      "value": "Nil",
+      "basis": "CPCDRC2020-R7",
+      "note": ""
+     }
+    ]
+   },
+   "completeness": {
+    "pct": 75,
+    "missing": [
+     {
+      "key": "complained_to_company",
+      "question": "Have you complained to the company? When, and what did they say?"
+     },
+     {
+      "key": "proof",
+      "question": "What proof do you have (invoice, order ID, chats, emails, photos)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "company_complaint_email"
+    }
+   ],
+   "next_step": "Send a written complaint (email or WhatsApp) to the service center/company grievance officer, stating the defect, warranty period, and demanding repair or refund within 7 days. Keep a copy.",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "medium",
+   "unknowns": [
+    "Whether the purchase was online (e-commerce) or offline (showroom) — affects grievance officer timeline",
+    "Whether user has already complained in writing and what the response was",
+    "Exact warranty period and terms",
+    "Whether the machine was bought from a brand's own store or a third-party seller"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "groq",
+    "model": "qwen/qwen3.8-27b",
+    "latency_s": 4.46,
+    "usage": {
+     "queue_time": 0.053081659,
+     "prompt_tokens": 4002,
+     "prompt_time": 0.435883162,
+     "completion_tokens": 1546,
+     "completion_time": 3.177314312,
+     "total_tokens": 5548,
+     "total_time": 3.613197474,
+     "completion_tokens_details": {
+      "reasoning_tokens": 441
+     }
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "consumer",
+       "language": "Tamil",
+       "script": "Tamil",
+       "facts": {
+        "product_or_service": "washing machine",
+        "other_party_name": "service center",
+        "amount_paid": 32000,
+        "purchase_date": "2026-07-01",
+        "problem_date": "2026-09-01",
+        "city_state": "Chennai, Tamil Nadu"
+       },
+       "approximate_dates": [
+        "purchase_date",
+        "problem_date"
+       ],
+       "confidence": 0.9
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 2.38,
+       "usage": {
+        "queue_time": 0.318344931,
+        "prompt_tokens": 949,
+        "prompt_time": 0.04854987,
+        "completion_tokens": 218,
+        "completion_time": 0.235281123,
+        "total_tokens": 1167,
+        "total_time": 0.283830993,
+        "completion_tokens_details": {
+         "reasoning_tokens": 127
+        }
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "qwen/qwen3.8-27b",
+       "latency_s": 4.46,
+       "usage": {
+        "queue_time": 0.053081659,
+        "prompt_tokens": 4002,
+        "prompt_time": 0.435883162,
+        "completion_tokens": 1546,
+        "completion_time": 3.177314312,
+        "total_tokens": 5548,
+        "total_time": 3.613197474,
+        "completion_tokens_details": {
+         "reasoning_tokens": 441
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 7.59
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "நான் சென்னையில் ஜூலை 2026-ல் 32,000 ரூபாய்க்கு வாஷிங் மெஷின் வாங்கினேன். இரண்டு மாதத்தில் வேலை செய்யவில்லை. வாரண்டி இருந்தும் சர்வீஸ் சென்டர் சரிசெய்ய மறுக்கிறது. என்ன செய்வது?"
+   },
+   {
+    "role": "assistant",
+    "content": "சரி, உங்கள் நிலை புரிகிறது. வாரண்டி இருக்கிறபோது சர்வீஸ் சென்டர் சரிசெய்ய மறுப்பது = சேவை குறைபாடு (deficiency). நீங்கள் சொன்ன விவரங்களின்படி, முக்கிய நிபந்தனைகள் பூர்த்தி ஆகி இருக்கலாம்.\n\n**முதலில் இரண்டு விஷயங்கள் தெரிஞ்சுக்கணும்:**\n\n1. நீங்கள் கம்பெனி/சர்வீஸ் சென்டருக்கு **எழுத்துப்பூர்வமாக** (email, WhatsApp, letter) புகார் கொடுத்தீர்களா? எப்போது? அவர்கள் என்ன சொன்னார்கள்?\n2. உங்களிடம் என்ன **தெளிவு** இருக்கு? (invoice, வாரண்டி கார்டு, order ID, chat screenshots, photos)\n\n**செய்யலாம் (குறைந்த செலவில் முதலில்):**\n\n- ✉️ கம்பெனிக்கு எழுத்துப்பூர்வ புகார் → 48 மணி நேரத்தில் பதில், 1 மாதத்தில் தீர்வு (e-commerce ஆனால்)\n- 📞 National Consumer Helpline **1915** அல்லது WhatsApp **8800001915** → இலவசம், முன்-நீதிமன்ற மediator\n- ⚖️ e-Jagriti-ல் (e-jagriti.gov.in) District Commission-ல் புகார் → **இலவசம்** (₹5 லட்சம் வரை), லாயர் தேவையில்லை\n\n**என் பரிந்துரை:** முதலில் எழுத்துப்பூர்வ புகார் அனுப்புங்கள். பதில் இல்லையென்றால் 1915-ல் புகார். இரண்டும் பயன்படவில்லை என்றால் e-Jagriti-ல் புகார்.\n\nஎழுத்துப்பூர்வ புகார் மாதிரி எழுத வேண்டுமா?"
+   }
+  ],
+  "case": {
+   "category": "consumer",
+   "language": "Tamil",
+   "script": "Tamil",
+   "facts": {
+    "product_or_service": "washing machine",
+    "other_party_name": "service center",
+    "amount_paid": 32000,
+    "purchase_date": "2026-07-01",
+    "problem_date": "2026-09-01",
+    "city_state": "Chennai, Tamil Nadu"
+   },
+   "timeline": [
+    {
+     "date": "2026-07-01",
+     "event": "Washing machine purchased for ₹32,000"
+    },
+    {
+     "date": "2026-09-01",
+     "event": "Machine stopped working; service center refused repair under warranty"
+    }
+   ],
+   "evidence_have": [],
+   "evidence_missing": [
+    "Invoice / bill of purchase",
+    "Warranty card or warranty terms",
+    "Order ID (if bought online)",
+    "Written complaint to service center (email/WhatsApp/letter)",
+    "Their reply or refusal (screenshot, email, call recording)",
+    "Photos/video of the defect"
+   ],
+   "next_step": "Send a written complaint (email or WhatsApp) to the service center/company grievance officer, stating the defect, warranty period, and demanding repair or refund within 7 days. Keep a copy.",
+   "approximate": [
+    "problem_date",
+    "purchase_date"
+   ]
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 7.59,
+    "model": "qwen/qwen3.8-27b",
+    "provider": "groq",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got consumer"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Tamil, reply script Tamil"
+  },
+  {
+   "check": "fact:amount_paid",
+   "pass": true,
+   "detail": "expected ~32, got 32000"
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "The response provides clear, accurate, and practical steps in conversational Tamil tailored to consumer protection rights in India.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.5-flash",
+   "latency_s": 2.44,
+   "usage": {
+    "completion_tokens": 55,
+    "prompt_tokens": 557,
+    "total_tokens": 612
+   },
+   "fallback_attempts": [
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 503: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usuall"
+   ]
+  }
+ }
+}

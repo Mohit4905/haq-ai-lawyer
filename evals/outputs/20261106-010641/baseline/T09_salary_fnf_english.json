@@ -1,0 +1,60 @@
+{
+ "id": "T09_salary_fnf_english",
+ "reply": "It is frustrating when an employer withholds your hard-earned money, especially after you have fulfilled your obligations. Since you are based in Mumbai, you have specific legal avenues available to you under Maharashtra state laws and general Indian labor laws.\n\nHere is a step-by-step guide on how to handle this situation.\n\n### 1. Send a Formal Legal Notice\nBefore jumping into litigation, you must create a \"paper trail.\" If you haven't already, send a formal **Legal Notice** through a lawyer.\n\n*   **Why:** This serves as a final warning. Many companies release payments immediately upon receiving a legal notice because they want to avoid the cost and hassle of a court case.\n*   **What it should contain:**\n    *   Your date of resignation and last working day (14 August 2026).\n    *   The specific amount due (Rs 1,35,000).\n    *   Reference to your employment contract and the company policy regarding F&F settlement timelines.\n    *   A clear deadline (usually 15 days) for them to clear the dues, failing which you will initiate legal proceedings.\n\n### 2. Relevant Laws and Grounds\nSince you are a Marketing Manager, your classification depends on your specific duties. However, in India, the recovery of wages is protected under:\n\n*   **The Payment of Wages Act, 1936:** This Act governs the timely payment of wages. While it primarily covers employees earning below a certain threshold, courts often interpret \"wages\" broadly.\n*   **The Maharashtra Shops and Establishments (Regulation of Employment and Conditions of Service) Act, 2017:** Since your office is in Mumbai, this Act applies. It mandates that an employer must pay the wages of an employee who has resigned within a specific timeframe (usually by the next pay cycle).\n*   **Breach of Contract:** Your appointment letter is a binding contract. Withholding F&F settlement is a clear breach of contract under the **Indian Contract Act, 1872**.\n\n### 3. Escalation Options (If the Legal Notice fails)\n\nIf the company ignores the legal notice, you have three primary paths:\n\n#### A. Labour Commissioner Office (The \"Conciliation\" Route)\nYou can file a complaint with the **Office of the Labour Commissioner** in Mumbai.\n*   **Process:** You submit a formal complaint regarding non-payment of wages. The Labour Commissioner will summon the company representative for a conciliation meeting.\n*   **Benefit:** This is a quasi-judicial process and is often effective in resolving wage disputes without the need for a full-blown civil trial.\n\n#### B. Civil Suit for Recovery\nYou can file a **Summary Suit** under Order 37 of the Code of Civil Procedure (CPC), 1908.\n*   **Why:** A Summary Suit is designed for the recovery of money based on a written contract (your appointment letter). It is faster than a regular civil suit because the defendant (the company) must seek the court's permission to defend the case, which is only granted if they have a substantial defense.\n\n#### C. Insolvency and Bankruptcy Code (IBC) - *Use with Caution*\nIf the company owes money to multiple employees or creditors and is in financial distress, you could technically file a petition under the IBC as an \"Operational Creditor.\" However, this is an extreme measure and is generally not recommended for a single individual's claim of Rs 1.35 Lakhs, as the legal costs and time involved are significant.\n\n### 4. Important Documentation to Gather\nBefore you proceed, ensure you have the following documents organized:\n1.  **Appointment Letter/Contract:** To prove the terms of employment.\n2.  **Resignation Acceptance:** The email or letter where the company accepted your resignation and confirmed your last working day.\n3.  **Handover/No Dues Certificate:** If you completed the handover process, keep proof of that (emails confirming handover completion).\n4.  **Communication Logs:** Save all emails where you requested the F&F settlement and the HR's subsequent silence.\n5.  **Bank Statements:** To show the last date of salary credit.\n\n### Recommended Next Steps\n1.  **Do not wait any longer.** Since HR stopped replying on October 1st, they are likely hoping you will give up.\n2.  **Consult a Lawyer:** Hire a local lawyer in Mumbai to draft and send a **Legal Notice**. This usually costs between Rs 2,000 to Rs 5,000 and is often enough to get the company to respond.\n3.  **Check your Employment Contract:** Look for an \"Arbitration Clause.\" If your contract has one, you may be required to go through arbitration rather than a civil court.\n\n***Disclaimer:** I am an AI, not a practicing advocate. This information is for educational purposes and does not constitute formal legal advice. Laws can be subject to interpretation based on the specific clauses in your employment contract. Please consult with a qualified lawyer in Mumbai to review your documents before taking legal action.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 4.65,
+  "usage": {
+   "completion_tokens": 1078,
+   "prompt_tokens": 92,
+   "total_tokens": 1319
+  },
+  "fallback_attempts": [
+   "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+   "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+   "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+   "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+  ]
+ },
+ "guard_audit": {
+  "verified": [
+   [
+    "Order 37",
+    "Code of Civil Procedure, 1908"
+   ]
+  ],
+  "violations": [
+   {
+    "type": "outdated_law",
+    "text": "Payment of Wages Act",
+    "why": "Payment of Wages Act, 1936 was repealed by the Code on Wages, 2019 (in force from 21 November 2025)",
+    "suggestion": "Code on Wages, 2019"
+   },
+   {
+    "type": "unknown_act",
+    "text": "Wages Act, 1936",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Service) Act, 2017",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Bankruptcy Code",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

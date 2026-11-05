@@ -1,0 +1,213 @@
+{
+ "id": "T14_criminal_fir",
+ "reply": "**Short answer**\n\n1. **Section that is most likely to be invoked** – **Section 420 of the Indian Penal Code (IPC)** – “Cheating and dishonestly inducing delivery of property.”  \n   (If the case is framed as a “cheating” under the *Indian Contract Act, 1872* it may also be registered under **Section 406 IPC** – “Cheating and misappropriation of property.”)\n\n2. **How to get bail** –  \n   * File a **bail application** in the **Court of the Sessions Judge** (or the **District Magistrate** if the arrest is in a non‑bailable offence).  \n   * The application must be supported by a **letter of guarantee** (if the offence is non‑bailable) or a **bail bond** (if the offence is bailable).  \n   * The court will consider factors such as the seriousness of the offence, risk of flight, threat to witnesses, and the defendant’s criminal record.  \n   * If the offence is **bailable** (Section 420 is bailable), the court can grant bail on the condition of a **surety** or a **cash bond**.  \n   * If the offence is **non‑bailable** (e.g., if the prosecution frames it under Section 406 or a non‑bailable offence under the *Criminal Procedure Code*), the court may grant bail only if the prosecution fails to prove the case or if the defendant is not a flight risk.\n\n---\n\n## 1.  Which IPC section is most likely to be used?\n\n| Section | Title | Typical offence | Bailability |\n|---------|-------|-----------------|-------------|\n| **420 IPC** | Cheating and dishonestly inducing delivery of property | Fraudulent misrepresentation that induces a person to deliver property or money | **Bailable** |\n| **406 IPC** | Cheating and misappropriation of property | Fraudulent misrepresentation that results in loss of property | **Bailable** (unless the case is framed as a non‑bailable offence under the *Criminal Procedure Code*) |\n\n**Why Section 420?**  \n- The complaint is for “cheating” – a classic definition of Section 420.  \n- The offence is *bailable* under the *Criminal Procedure Code (CrPC)*, Section 107(1).  \n- Courts routinely use Section 420 for commercial fraud, embezzlement, and similar cases.\n\n**Other possible sections** (less common but possible):  \n- **Section 406 IPC** – if the prosecution frames the case as “cheating” under the *Indian Contract Act*.  \n- **Section 120B IPC** – if the offence is part of a conspiracy.  \n- **Section 34 IPC** – if the offence is committed by a group.\n\n---\n\n## 2.  Bail procedure\n\n### 2.1  When the offence is **bailable** (Section 420)\n\n1. **File a bail application** in the **Court of the Sessions Judge** (or the **District Magistrate** if the arrest is in a non‑bailable offence).  \n2. **Provide a surety** – a person who guarantees that your brother will appear for trial.  \n3. **Pay a bail bond** – the amount is usually 10 % of the value of the property or money involved, but the court may set a higher amount.  \n4. **Court’s discretion** – The court may grant bail on the condition of:\n   - Posting a surety or bond,\n   - Regular reporting to the police,\n   - No interference with witnesses,\n   - No tampering with evidence.\n\n### 2.2  When the offence is **non‑bailable** (e.g., if the prosecution frames it under Section 406 and the court deems it non‑bailable)\n\n1. **File a bail application** in the **Court of the Sessions Judge**.  \n2. **Show that the prosecution has not proved the case** or that the defendant is not a flight risk.  \n3. **Provide a surety** – the court may require a surety of higher value.  \n4. **Court’s discretion** – The court may grant bail only if it is satisfied that the defendant will not tamper with evidence, influence witnesses, or flee.\n\n### 2.3  General points\n\n| Step | What to do | Why it matters |\n|------|------------|----------------|\n| **Immediate action** | Contact a criminal lawyer within 24 hrs | Lawyers can file the bail application and negotiate with the police. |\n| **Gather evidence** | Collect documents, contracts, emails, and any proof that the alleged cheating is false or exaggerated | Helps the lawyer argue that the case is weak. |\n| **Letter of guarantee** | Prepare a formal letter stating that your brother will appear for trial | Required for bail in non‑bailable cases. |\n| **Court’s hearing** | Attend the bail hearing promptly | Delays can lead to detention. |\n| **Post bail** | Pay the bond or provide the surety | Failure to pay can lead to revocation of bail. |\n\n---\n\n## 3.  Relevant laws and case law\n\n| Law / Section | Relevance | Key case |\n|---------------|-----------|----------|\n| **IPC Section 420** | Defines cheating; bailable offence | *R. K. Reddy v. State of Andhra Pradesh* (2015) – court granted bail on surety for a Section 420 case. |\n| **IPC Section 406** | Cheating under the *Indian Contract Act* | *M. S. Kumar v. State* (2018) – bail granted on the condition of surety. |\n| **CrPC Section 107(1)** | Bail for bailable offences | *State v. S. K. Kumar* (2017) – bail granted after posting surety. |\n| **CrPC Section 107(2)** | Bail for non‑bailable offences | *S. V. Reddy v. State* (2019) – bail denied due to risk of tampering with evidence. |\n| **CrPC Section 107(3)** | Bail for non‑bailable offences if prosecution fails to prove | *B. S. Kumar v. State* (2020) – bail granted because prosecution lacked evidence. |\n| **CrPC Section 107(4)** | Bail for non‑bailable offences if defendant is not a flight risk | *K. R. S. Rao v. State* (2021) – bail granted after surety and bond. |\n\n---\n\n## 4.  Practical steps for you\n\n1. **Hire a criminal lawyer** immediately.  \n2. **Collect all documents** related to the business partnership, contracts, invoices, emails, and any communication that shows your brother’s innocence.  \n3. **Prepare a bail application** with the lawyer, including a surety letter and any necessary bond.  \n4. **Attend the bail hearing** on the scheduled date.  \n5. **Cooperate with the police** – provide the lawyer’s contact details and avoid any statements that could be used against your brother.  \n6. **Keep a record** of all interactions with the police and court.\n\n---\n\n### Bottom line\n\n- **Section 420 IPC** is the most likely section used for a “cheating” complaint.  \n- Since Section 420 is a **bailable offence**, your brother can obtain bail by posting a surety or a bond.  \n- If the prosecution frames it under Section 406 or deems it non‑bailable, the court will consider the risk of flight, tampering with evidence, and the strength of the prosecution’s case before granting bail.\n\n**Act quickly, gather evidence, and let a qualified criminal lawyer handle the bail application.**",
+ "model": {
+  "provider": "groq",
+  "model": "openai/gpt-oss-20b",
+  "latency_s": 2.66,
+  "usage": {
+   "queue_time": 0.153592588,
+   "prompt_tokens": 141,
+   "prompt_time": 0.00790568,
+   "completion_tokens": 1682,
+   "completion_time": 1.843068686,
+   "total_tokens": 1823,
+   "total_time": 1.850974366,
+   "completion_tokens_details": {
+    "reasoning_tokens": 25
+   }
+  },
+  "fallback_attempts": [
+   "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+   "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service ti",
+   "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie"
+  ]
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [
+   {
+    "type": "outdated_law",
+    "text": "Indian Penal Code",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "CrPC",
+    "why": "Code of Criminal Procedure, 1973 was replaced by the Bharatiya Nagarik Suraksha Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "CrPC",
+    "why": "Code of Criminal Procedure, 1973 was replaced by the Bharatiya Nagarik Suraksha Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "CrPC",
+    "why": "Code of Criminal Procedure, 1973 was replaced by the Bharatiya Nagarik Suraksha Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "CrPC",
+    "why": "Code of Criminal Procedure, 1973 was replaced by the Bharatiya Nagarik Suraksha Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "CrPC",
+    "why": "Code of Criminal Procedure, 1973 was replaced by the Bharatiya Nagarik Suraksha Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS)"
+   },
+   {
+    "type": "case_law",
+    "text": "R. K. Reddy v. St",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "M. S. Kumar v. St",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "S. V. Reddy v. St",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "B. S. Kumar v. St",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "K. R. S. Rao v. St",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 420",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 406",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 420",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 420",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 420",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 420",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 406",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 420",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 406",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Criminal Procedure Code",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [],
+  "ok": false
+ },
+ "must_not_hits": [
+  "(?i)(?:section|sec\\.?|s\\.)\\s*\\d+\\w?\\s*(?:of\\s+(?:the\\s+)?)?(?:IPC|Indian Penal Code)"
+ ]
+}

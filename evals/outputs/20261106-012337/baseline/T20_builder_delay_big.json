@@ -1,0 +1,59 @@
+{
+ "id": "T20_builder_delay_big",
+ "reply": "Yes, you can absolutely file a consumer complaint yourself. You do not strictly need a lawyer to represent you in the Consumer Commission, although having one can be helpful for drafting and procedural nuances.\n\nHere is a breakdown of your legal position and the steps you should take.\n\n### 1. Your Legal Standing\nUnder the **Consumer Protection Act, 2019**, you are considered a \"Consumer\" because you have paid consideration (Rs 85 lakh) for a service (construction/possession of a flat) that has been delayed. The failure to deliver possession by the promised date constitutes \"Deficiency in Service\" and \"Unfair Trade Practice.\"\n\n### 2. Where to File (Jurisdiction)\nSince the property is in Gurugram, you have two primary avenues for legal recourse:\n\n*   **RERA (Real Estate Regulatory Authority) - Haryana:** This is often the most effective route for possession delays. RERA is specifically designed for real estate disputes. You can file a complaint under **Section 31 of the Real Estate (Regulation and Development) Act, 2016**.\n    *   *Advantage:* RERA is very strict about timelines and can order the builder to pay interest for every month of delay (under Section 18 of the RERA Act).\n*   **Consumer Commission:** You can file a complaint under the Consumer Protection Act, 2019.\n    *   *Pecuniary Jurisdiction:* Since your claim is Rs 85 lakh, your case falls under the **District Consumer Disputes Redressal Commission** (which handles claims up to Rs 50 lakh) or the **State Consumer Disputes Redressal Commission** (which handles claims between Rs 50 lakh and Rs 2 crore). Given your amount is Rs 85 lakh, you will likely file in the **State Commission** in Haryana.\n\n### 3. Can you file it yourself?\nYes, the Consumer Protection Act allows for \"party-in-person\" representation. You can draft the complaint, file it, and argue your case yourself.\n\n**If you choose to file yourself, keep these points in mind:**\n*   **Drafting:** Your complaint must clearly state the facts: date of booking, amount paid, the specific clause in the Builder-Buyer Agreement (BBA) regarding the possession date, and the fact that the deadline has passed.\n*   **Evidence:** Attach copies of the BBA, payment receipts, bank statements, and any emails or letters exchanged with the builder regarding the delay.\n*   **Relief Sought:** Clearly state what you want—e.g., possession with interest for the delay, or a full refund of the principal amount with interest (usually 12-18% per annum) and compensation for mental agony.\n\n### 4. Important Legal Precedents\nThe Supreme Court of India has consistently ruled in favor of homebuyers in such cases.\n*   **Pioneer Urban Land & Infrastructure Ltd. vs. Govindan Raghavan (2019):** The Supreme Court held that a builder cannot force a buyer to wait indefinitely for possession. If the builder fails to deliver, the buyer is entitled to a refund with interest.\n*   **Fortune Infrastructure vs. Trevor D'Lima (2018):** The Court reiterated that a person cannot be made to wait indefinitely for the possession of the flat.\n\n### Recommended Strategy\n1.  **Send a Legal Notice:** Before filing, have a lawyer draft and send a formal legal notice to the builder. This often pressures them to offer a settlement or provide a concrete timeline.\n2.  **Choose RERA first:** In my professional opinion, for real estate delays in Gurugram, **HRERA (Haryana RERA)** is often faster and more effective than the Consumer Commission. You can file a complaint online on the [HRERA Gurugram website](https://haryanarera.gov.in/).\n3.  **Consultation:** Even if you intend to file yourself, I strongly recommend paying a lawyer for a one-time consultation to review your Builder-Buyer Agreement. They can identify specific clauses that might be problematic or beneficial for your case.\n\n**Disclaimer:** *I am an AI, not your personal attorney. This information is for educational purposes and does not constitute formal legal advice. Laws and procedures can change, and specific clauses in your contract may alter your legal strategy. Please consult with a qualified advocate in Gurugram before taking final action.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 4.45,
+  "usage": {
+   "completion_tokens": 935,
+   "prompt_tokens": 75,
+   "total_tokens": 1142
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [
+   {
+    "type": "case_law",
+    "text": "Infrastructure Ltd. vs. Go",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Fortune Infrastructure vs. Tr",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Supreme Court held",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 31",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Development) Act, 2016",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "RERA Act",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "ambiguous_section",
+    "text": "Section 18",
+    "why": "Section mentioned without naming the Act."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

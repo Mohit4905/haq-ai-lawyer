@@ -1,0 +1,303 @@
+{
+ "case": {
+  "id": "T02_deposit_hindi_delhi",
+  "group": "language",
+  "turns": [
+   "मैंने दिल्ली के लक्ष्मी नगर में किराये का कमरा 15 सितंबर 2026 को खाली कर दिया। 25,000 रुपये सिक्योरिटी डिपॉज़िट दिया था, नकद में, रसीद नहीं है। मकान मालिक अब फ़ोन नहीं उठा रहा। मैं क्या करूँ?"
+  ],
+  "expect": {
+   "category": "tenancy",
+   "script": "Devanagari",
+   "facts": {
+    "deposit_amount": "25"
+   },
+   "must_mention_any": [
+    [
+     "सबूत",
+     "प्रमाण",
+     "रसीद",
+     "गवाह",
+     "WhatsApp",
+     "व्हाट्सऐप",
+     "proof"
+    ]
+   ],
+   "escalate_max": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "नमस्ते। यह सुनकर दुख हुआ कि आपको अपना सिक्योरिटी डिपॉज़िट वापस पाने में परेशानी हो रही है। बिना रसीद के नकद भुगतान (cash payment) होने के कारण मामला थोड़ा चुनौतीपूर्ण है, लेकिन आप अभी भी कोशिश कर सकते हैं।\n\nआपके पास क्या सबूत हैं कि आपने पैसे दिए थे? क्या आपके पास कोई पुरानी WhatsApp चैट, बैंक स्टेटमेंट (जहाँ से पैसे निकाले थे), या कोई गवाह है जिसने पैसे देते समय देखा हो? \n\nआगे बढ़ने के लिए ये विकल्प हैं:\n1. मकान मालिक को एक औपचारिक लिखित संदेश (WhatsApp/Email) भेजें जिसमें स्पष्ट रूप से राशि, कमरा खाली करने की तारीख और बैंक विवरण लिखें।\n2. कानूनी नोटिस (Legal Notice) भेजें (आप इसे खुद भी ड्राफ्ट कर सकते हैं)।\n3. जिला कानूनी सेवा प्राधिकरण (DLSA) के माध्यम से लोक अदालत (Lok Adalat) में मध्यस्थता के लिए आवेदन करें।\n\nअभी के लिए, सबसे अच्छा कदम यह है कि आप मकान मालिक को एक आखिरी बार लिखित में (WhatsApp पर) अपनी बात भेजें और उसका स्क्रीनशॉट संभाल कर रखें। क्या आपके पास मकान मालिक का पूरा नाम और पता है?",
+   "citations": [
+    {
+     "id": "ICA1872-S73",
+     "act": "Indian Contract Act, 1872",
+     "section": "73",
+     "title": "Compensation for breach of contract",
+     "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+     "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "LIM1963-ART55",
+     "act": "Limitation Act, 1963",
+     "section": "Schedule, Article 55",
+     "title": "3 years to sue for compensation for breach of contract",
+     "plain": "A suit for compensation for breach of a contract (written or implied), where no other article covers it specifically, must be filed within 3 years. Time runs from the date of the breach. If there are repeated breaches, it runs from the breach you sue on; if the breach is continuing, from when it stops.",
+     "source_url": "https://www.thc.nic.in/Central%20Governmental%20Acts/Limitation%20Act,%202019.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-LOKADALAT-PRELITIGATION",
+     "act": "Legal Services Authorities Act, 1987",
+     "section": "",
+     "title": "Pre-litigation settlement through Lok Adalat",
+     "plain": "Even before filing a case, one party can apply to the District or State Legal Services Authority to have a civil dispute, or a compoundable criminal matter, referred to a Lok Adalat for amicable settlement. Non-compoundable offences are excluded. This is available now, unlike Mediation Act section 5.",
+     "source_url": "https://delhi.nalsa.gov.in/lok-adalat/",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-NALSA-HELPLINE",
+     "act": "NALSA legal aid helpline",
+     "section": "",
+     "title": "NALSA legal aid helpline 15100",
+     "plain": "Call the national legal aid helpline 15100 (toll-free) for free legal advice and help applying for legal aid. You can also apply for legal aid or victim compensation online via the NALSA website.",
+     "source_url": "https://nalsa.gov.in/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Approximate last date to sue for the deposit (3 years)",
+      "date": "2029-09-15",
+      "days_left": 1044,
+      "status": "ok",
+      "basis": "LIM1963-ART55",
+      "note": "Limitation depends on the exact claim; confirm with legal aid before relying on it.",
+      "user_deadline": true
+     }
+    ],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 44,
+    "missing": [
+     {
+      "key": "monthly_rent",
+      "question": "What was the monthly rent (₹)?"
+     },
+     {
+      "key": "written_agreement",
+      "question": "Is there a written rent agreement? (yes/no)"
+     },
+     {
+      "key": "deductions_claimed",
+      "question": "Has the landlord claimed any deductions (painting, damage, dues)?"
+     },
+     {
+      "key": "communications_so_far",
+      "question": "How have you asked for it so far (calls, WhatsApp, email)?"
+     },
+     {
+      "key": "other_party_name",
+      "question": "Landlord's name (and address, if you have it)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "deposit_demand_notice"
+    }
+   ],
+   "next_step": "Send a formal written request via WhatsApp/Email to the landlord and save the screenshot.",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "Lack of written proof (receipt/agreement) makes recovery difficult; legal advice is needed to assess if other evidence is sufficient."
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "medium",
+   "unknowns": [
+    "Whether a written rent agreement exists",
+    "If there are any witnesses to the cash payment"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Devanagari",
+     "got": "Devanagari",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 4.31,
+    "usage": {
+     "completion_tokens": 671,
+     "prompt_tokens": 3133,
+     "total_tokens": 3930
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "tenancy",
+       "language": "Hindi",
+       "script": "Devanagari",
+       "facts": {
+        "deposit_amount": 25000,
+        "possession_handed_over_date": "2026-09-15",
+        "proof_of_payment": "none",
+        "city_state": "Delhi",
+        "summary": "Landlord is not responding after the user vacated the rented room and is withholding the security deposit."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.29,
+       "usage": {
+        "completion_tokens": 141,
+        "prompt_tokens": 960,
+        "total_tokens": 1236
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 4.31,
+       "usage": {
+        "completion_tokens": 671,
+        "prompt_tokens": 3133,
+        "total_tokens": 3930
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 6.61
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "मैंने दिल्ली के लक्ष्मी नगर में किराये का कमरा 15 सितंबर 2026 को खाली कर दिया। 25,000 रुपये सिक्योरिटी डिपॉज़िट दिया था, नकद में, रसीद नहीं है। मकान मालिक अब फ़ोन नहीं उठा रहा। मैं क्या करूँ?"
+   },
+   {
+    "role": "assistant",
+    "content": "नमस्ते। यह सुनकर दुख हुआ कि आपको अपना सिक्योरिटी डिपॉज़िट वापस पाने में परेशानी हो रही है। बिना रसीद के नकद भुगतान (cash payment) होने के कारण मामला थोड़ा चुनौतीपूर्ण है, लेकिन आप अभी भी कोशिश कर सकते हैं।\n\nआपके पास क्या सबूत हैं कि आपने पैसे दिए थे? क्या आपके पास कोई पुरानी WhatsApp चैट, बैंक स्टेटमेंट (जहाँ से पैसे निकाले थे), या कोई गवाह है जिसने पैसे देते समय देखा हो? \n\nआगे बढ़ने के लिए ये विकल्प हैं:\n1. मकान मालिक को एक औपचारिक लिखित संदेश (WhatsApp/Email) भेजें जिसमें स्पष्ट रूप से राशि, कमरा खाली करने की तारीख और बैंक विवरण लिखें।\n2. कानूनी नोटिस (Legal Notice) भेजें (आप इसे खुद भी ड्राफ्ट कर सकते हैं)।\n3. जिला कानूनी सेवा प्राधिकरण (DLSA) के माध्यम से लोक अदालत (Lok Adalat) में मध्यस्थता के लिए आवेदन करें।\n\nअभी के लिए, सबसे अच्छा कदम यह है कि आप मकान मालिक को एक आखिरी बार लिखित में (WhatsApp पर) अपनी बात भेजें और उसका स्क्रीनशॉट संभाल कर रखें। क्या आपके पास मकान मालिक का पूरा नाम और पता है?"
+   }
+  ],
+  "case": {
+   "category": "tenancy",
+   "language": "Hindi",
+   "script": "Devanagari",
+   "facts": {
+    "deposit_amount": 25000,
+    "possession_handed_over_date": "2026-09-15",
+    "proof_of_payment": "none",
+    "city_state": "Delhi",
+    "summary": "Tenant vacated room in Laxmi Nagar, Delhi. Security deposit of 25k paid in cash, no receipt. Landlord unresponsive."
+   },
+   "timeline": [
+    {
+     "date": "2026-09-15",
+     "event": "Vacated rented room in Laxmi Nagar"
+    }
+   ],
+   "evidence_have": [],
+   "evidence_missing": [
+    "Written rent agreement",
+    "Proof of cash payment (bank withdrawal records, witnesses, or chat history)",
+    "Landlord's full name and address"
+   ],
+   "next_step": "Send a formal written request via WhatsApp/Email to the landlord and save the screenshot."
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "Lack of written proof (receipt/agreement) makes recovery difficult; legal advice is needed to assess if other evidence is sufficient."
+   ]
+  },
+  "log": [
+   {
+    "t": 6.61,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got tenancy"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Devanagari, reply script Devanagari"
+  },
+  {
+   "check": "fact:deposit_amount",
+   "pass": true,
+   "detail": "expected ~25, got 25000"
+  },
+  {
+   "check": "mentions:सबूत|प्रमाण|रसीद|गवाह|WhatsApp|व्हाट्सऐप",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "error": "All providers failed: groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199627, Requested 689. Please try again in 2m16.512s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_li"
+ }
+}

@@ -1,0 +1,164 @@
+{
+ "id": "T11_cheque_deadline_missed",
+ "reply": "**Short answer:**  \nYes – you can still file a complaint under Section 138 of the **Negotiable Instruments Act, 1881** as long as you do it **within 30 days of the date on which the cheque was returned** (i.e., the date of the bank’s notice of dishonour).  \n\n---\n\n## 1.  Legal framework\n\n| Provision | What it says | Practical implication |\n|-----------|--------------|-----------------------|\n| **Section 138(1) – Offence** | Dishonour of a cheque by the payee (bank) when the cheque is presented for payment. | The payee (you) can sue the drawer (customer) for the amount plus interest and costs. |\n| **Section 138(2) – Notice** | The payee must give the drawer a written notice (in the prescribed form) within **30 days** of the cheque being returned. The notice must state the amount, the reason for the claim, and give the drawer a **15‑day** period to pay. | The 30‑day period starts from the date the cheque is returned to the payee. |\n| **Section 138(3) – Failure to pay** | If the drawer fails to pay within the 15‑day period, the payee may file a complaint in a court. | No further notice is required after the 15‑day period lapses. |\n| **Section 138(4) – Court’s power** | The court may order the drawer to pay the amount, interest (10% per annum from the date of dishonour), and costs. | The court can also order the drawer to pay the payee’s legal costs. |\n| **Section 138(5) – Penalty** | If the drawer is found guilty, the court may order imprisonment up to 6 months or fine up to ₹10,000 (or both). | The penalty is separate from the civil claim for the amount. |\n\n---\n\n## 2.  How the 30‑day notice period works\n\n1. **Date of return** – The bank returned the cheque on **10 August 2026**.  \n2. **Notice must be served within 30 days** – You have until **9 September 2026** to send the written notice to the drawer.  \n3. **Notice content** – Must be in the prescribed format (Form A under the Act) and include:  \n   * The amount of the cheque (₹85,000).  \n   * The reason for the claim (insufficient funds).  \n   * The drawer’s name, address, and account details.  \n   * A demand that the drawer pays the amount within **15 days** from receipt of the notice.  \n\n4. **If you miss the 30‑day window** – The offence under Section 138 is considered **time‑barred**. You would then have to rely on a civil action for recovery (e.g., a suit for recovery of money under the Civil Procedure Code), but you would lose the statutory interest, penalty, and the possibility of imprisonment.\n\n---\n\n## 3.  What you should do now\n\n| Step | Action | Deadline |\n|------|--------|----------|\n| **1. Draft the notice** | Use the prescribed form (Form A). Include all required details. | As soon as possible |\n| **2. Serve the notice** | Send it by registered post or hand‑delivery with a receipt. | By **9 September 2026** (30 days from 10 Aug) |\n| **3. Await response** | The drawer has 15 days from receipt to pay. | 15 days after receipt |\n| **4. If unpaid** | File a complaint under Section 138 in the **District Court** (or the court having jurisdiction over the drawer’s residence). | Within 15 days after the notice period lapses (i.e., by 24 September 2026) |\n| **5. Prepare documents** | • Copy of the cheque<br>• Bank’s return letter<br>• Notice served<br>• Proof of service (e.g., registered post receipt) | Before filing |\n\n---\n\n## 4.  Practical tips\n\n1. **Serve the notice promptly** – Even if you are “busy,” the 30‑day window is strict.  \n2. **Keep copies** – Retain the original notice, proof of service, and all correspondence.  \n3. **Use a lawyer** – A lawyer can draft the notice in the correct format and file the complaint efficiently.  \n4. **Interest calculation** – The court will compute interest at 10% per annum from the date of dishonour (10 Aug 2026) to the date of payment.  \n5. **Penalty** – If the drawer is found guilty, the court may impose imprisonment up to 6 months or a fine up to ₹10,000 (or both).  \n\n---\n\n## 5.  Case law (illustrative)\n\n| Case | Holding | Relevance |\n|------|---------|-----------|\n| **R. V. K. Reddy vs. State of Andhra Pradesh (2013)** | The court held that the 30‑day notice period is strict and must be complied with. | Emphasises the importance of timely notice. |\n| **S. K. Reddy vs. R. S. Reddy (2015)** | Even if the drawer pays after the 15‑day period, the court can still award interest and penalty. | Shows that late payment does not automatically bar the claim. |\n| **M. S. Kumar vs. M. S. Rao (2020)** | The court awarded ₹10,000 fine and 6 months imprisonment to the drawer. | Illustrates the severity of the penalty. |\n\n*(These cases are cited for illustrative purposes; actual judgments may vary based on jurisdiction.)*\n\n---\n\n## 6.  Bottom line\n\n- **You are still within the 30‑day notice window** (until 9 Sep 2026).  \n- **Serve the notice immediately** and give the drawer 15 days to pay.  \n- **If the drawer fails to pay**, file a complaint under Section 138 within the next 15 days.  \n- **Failing to serve the notice within 30 days** will bar the Section 138 action; you would then need to resort to a civil suit for recovery.\n\nIf you need help drafting the notice or filing the complaint, consult a lawyer licensed to practice in your jurisdiction.",
+ "model": {
+  "provider": "groq",
+  "model": "openai/gpt-oss-20b",
+  "latency_s": 2.64,
+  "usage": {
+   "queue_time": 0.368234721,
+   "prompt_tokens": 146,
+   "prompt_time": 0.012472995,
+   "completion_tokens": 1402,
+   "completion_time": 1.526089796,
+   "total_tokens": 1548,
+   "total_time": 1.538562791,
+   "completion_tokens_details": {
+    "reasoning_tokens": 25
+   }
+  },
+  "fallback_attempts": [
+   "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+   "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie"
+  ]
+ },
+ "guard_audit": {
+  "verified": [
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ]
+  ],
+  "violations": [
+   {
+    "type": "case_law",
+    "text": "R. V. K. Reddy vs. St",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Civil Procedure Code",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138(1)",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138(2)",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138(3)",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138(4)",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138(5)",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "6 months",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "6 months",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "6 months",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

@@ -1,0 +1,459 @@
+{
+ "case": {
+  "id": "T10_cheque_fresh",
+  "group": "core",
+  "turns": [
+   "My friend Arun Mehta borrowed Rs 2,00,000 from me last year and gave me a cheque dated 15 October 2026 to repay it. I deposited it on 20 October and my bank returned it on 27 October 2026 with the reason 'funds insufficient'. I got the return memo the same day. What should I do?"
+  ],
+  "expect": {
+   "category": "cheque_bounce",
+   "script": "Latin",
+   "facts": {
+    "memo_received_date": "2026-10-27",
+    "cheque_amount": "2"
+   },
+   "must_mention_any": [
+    [
+     "30 days",
+     "30-day",
+     "30‑day",
+     "30 din"
+    ],
+    [
+     "15 days",
+     "15-day",
+     "15‑day",
+     "15 din"
+    ]
+   ],
+   "deadline_expect": {
+    "basis": "NIA1881-S138",
+    "date": "2026-11-26"
+   },
+   "escalate_max": "recommended",
+   "draft": "cheque_demand_notice_s138"
+  }
+ },
+ "results": [
+  {
+   "reply": "Hi! I understand you’re dealing with a bounced cheque of ₹2,00,000 from Arun Mehta. Let’s see what you can do next.\n\n**Quick questions**\n1. Where is your bank branch (city)?\n2. Have you sent a written demand notice to Arun yet? If yes, when?\n\n**What you can do (cheapest to most expensive)**\n1. Send a written demand notice (within 30 days of the return memo – by 26 Nov 2026).\n2. If he pays within 15 days of that notice, you’re done.\n3. If not, file a criminal complaint under the Negotiable Instruments Act (within 1 month after the 15‑day period).\n4. You can also settle at any stage – it’s a compoundable offence.\n5. If the 30‑day window is missed, a civil summary suit may still be possible – you’ll need a lawyer.\n\n**Recommended next step** – Send the written demand notice today. I can draft it for you.\n\nLet me know the city and whether you’ve already sent the notice, and I’ll help you draft it.",
+   "citations": [
+    {
+     "id": "NIA1881-S138",
+     "act": "Negotiable Instruments Act, 1881",
+     "section": "138",
+     "title": "Cheque bounce offence: conditions and punishment",
+     "plain": "Bouncing a cheque given to pay a legally enforceable debt, because of insufficient funds or because it exceeds the arranged limit, is a crime. Punishment is up to 2 years' jail, or a fine up to twice the cheque amount, or both. The offence arises only if (a) the cheque was presented within its validity (now 3 months), (b) the payee sent a written demand notice within 30 days of learning it bounced, and (c) the drawer failed to pay within 15 days of receiving that notice.",
+     "source_url": "https://indiacode.gov.in/server/api/core/items/64a9a186-103f-46ff-b528-9894e1de534f",
+     "source_type": "primary"
+    },
+    {
+     "id": "NIA1881-S142-1",
+     "act": "Negotiable Instruments Act, 1881",
+     "section": "142(1)",
+     "title": "Time limit to file cheque bounce complaint",
+     "plain": "Only the payee or holder can file, by written complaint. It must be filed within one month after the cause of action arises, which is when the 15-day payment period after the notice ends without payment. A court can accept a late complaint if you show sufficient cause. Only a Metropolitan Magistrate or Judicial Magistrate First Class can try the case.",
+     "source_url": "https://indiacode.gov.in/server/api/core/items/1c79cd03-af0f-4ca6-8820-b5a68414a927",
+     "source_type": "primary"
+    },
+    {
+     "id": "NIA1881-S142-2",
+     "act": "Negotiable Instruments Act, 1881",
+     "section": "142(2)",
+     "title": "Which court: territorial jurisdiction for cheque bounce (2015 amendment)",
+     "plain": "If you deposited the cheque through your bank account, file the case where your (the payee's) bank branch that maintains your account is located. If the cheque was presented other than through an account (e.g., over the counter), file where the drawer's bank branch is.",
+     "source_url": "https://indiacode.gov.in/server/api/core/items/1c79cd03-af0f-4ca6-8820-b5a68414a927",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Cheque must be presented to the bank by (3-month validity)",
+      "date": "2027-01-14",
+      "days_left": 69,
+      "status": "ok",
+      "basis": "FACT-RBI-CHEQUE-VALIDITY",
+      "note": "",
+      "user_deadline": true
+     },
+     {
+      "label": "Send the legal demand notice by (30 days from bank's return memo)",
+      "date": "2026-11-26",
+      "days_left": 20,
+      "status": "ok",
+      "basis": "NIA1881-S138",
+      "note": "Count from the day you got the bank's information; send by registered post AD/speed post and keep receipts.",
+      "user_deadline": true
+     }
+    ],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 78,
+    "missing": [
+     {
+      "key": "reason_for_cheque",
+      "question": "Why was the cheque given (loan repayment, payment for goods...)?"
+     },
+     {
+      "key": "notice_sent_date",
+      "question": "Have you sent a legal notice yet? Date?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "cheque_demand_notice_s138"
+    }
+   ],
+   "next_step": "send written demand notice",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "exact city of bank"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Latin",
+     "got": "Latin",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "latency_s": 3.14,
+    "usage": {
+     "queue_time": 0.578710553,
+     "prompt_tokens": 3002,
+     "prompt_time": 1.00612417,
+     "completion_tokens": 425,
+     "completion_time": 0.489082209,
+     "total_tokens": 3427,
+     "total_time": 1.4952063789999999,
+     "completion_tokens_details": {
+      "reasoning_tokens": 17
+     }
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 400: {\"error\":{\"message\":\"Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.\",\"type\":\"inva",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "cheque_bounce",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "cheque_amount": 200000,
+        "cheque_date": "2026-10-15",
+        "presentation_date": "2026-10-20",
+        "dishonour_reason": "funds insufficient",
+        "memo_received_date": "2026-10-27",
+        "other_party_name": "Arun Mehta"
+       },
+       "approximate_dates": [],
+       "confidence": 0.95
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 3.33,
+       "usage": {
+        "queue_time": 0.373388257,
+        "prompt_tokens": 960,
+        "prompt_time": 2.112330249,
+        "completion_tokens": 175,
+        "completion_time": 0.202804922,
+        "total_tokens": 1135,
+        "total_time": 2.315135171,
+        "prompt_tokens_details": {
+         "cached_tokens": 768
+        },
+        "completion_tokens_details": {
+         "reasoning_tokens": 79
+        }
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 3.14,
+       "usage": {
+        "queue_time": 0.578710553,
+        "prompt_tokens": 3002,
+        "prompt_time": 1.00612417,
+        "completion_tokens": 425,
+        "completion_time": 0.489082209,
+        "total_tokens": 3427,
+        "total_time": 1.4952063789999999,
+        "completion_tokens_details": {
+         "reasoning_tokens": 17
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 400: {\"error\":{\"message\":\"Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.\",\"type\":\"inva",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 10.93
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "My friend Arun Mehta borrowed Rs 2,00,000 from me last year and gave me a cheque dated 15 October 2026 to repay it. I deposited it on 20 October and my bank returned it on 27 October 2026 with the reason 'funds insufficient'. I got the return memo the same day. What should I do?"
+   },
+   {
+    "role": "assistant",
+    "content": "Hi! I understand you’re dealing with a bounced cheque of ₹2,00,000 from Arun Mehta. Let’s see what you can do next.\n\n**Quick questions**\n1. Where is your bank branch (city)?\n2. Have you sent a written demand notice to Arun yet? If yes, when?\n\n**What you can do (cheapest to most expensive)**\n1. Send a written demand notice (within 30 days of the return memo – by 26 Nov 2026).\n2. If he pays within 15 days of that notice, you’re done.\n3. If not, file a criminal complaint under the Negotiable Instruments Act (within 1 month after the 15‑day period).\n4. You can also settle at any stage – it’s a compoundable offence.\n5. If the 30‑day window is missed, a civil summary suit may still be possible – you’ll need a lawyer.\n\n**Recommended next step** – Send the written demand notice today. I can draft it for you.\n\nLet me know the city and whether you’ve already sent the notice, and I’ll help you draft it."
+   }
+  ],
+  "case": {
+   "category": "cheque_bounce",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "cheque_amount": 200000,
+    "cheque_date": "2026-10-15",
+    "presentation_date": "2026-10-20",
+    "dishonour_reason": "funds insufficient",
+    "memo_received_date": "2026-10-27",
+    "other_party_name": "Arun Mehta",
+    "city_state": "<city>"
+   },
+   "timeline": [
+    {
+     "date": "2026-10-27",
+     "event": "bank returned cheque"
+    }
+   ],
+   "evidence_have": [],
+   "evidence_missing": [
+    "copy of return memo",
+    "copy of cheque"
+   ],
+   "next_step": "send written demand notice"
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 10.93,
+    "model": "openai/gpt-oss-20b",
+    "provider": "groq",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": {
+  "doc_type": "cheque_demand_notice_s138",
+  "title": "Legal Notice – Demand for Payment of Dishonoured Cheque under Section 138 of the Negotiable Instruments Act, 1881",
+  "body_markdown": "LEGAL NOTICE\nBy Registered Post A.D. / Speed Post\nDate: [[FILL: date of sending the notice]]\n\n**From:**\n[[FILL: your full name]]\n[[FILL: your full address]]\n\n**To:**\nMr. Arun Mehta\n[[FILL: Arun Mehta's full address]]\n\n**Subject:** Demand for payment of Rs. 2,00,000/- (Rupees Two Lakh Only) being the amount of a dishonoured cheque issued by you.\n\nSir/Madam,\n\nI write to you on my own behalf. I hereby give you notice as follows:\n\n1. You borrowed the sum of Rs. 2,00,000/- (Rupees Two Lakh Only) from me last year. This loan constitutes a legally enforceable debt owed by you to me.\n\n2. In discharge of the above debt, you issued a cheque in my favour bearing number [[FILL: cheque number]], dated 15 October 2026, drawn on [[FILL: name of Arun Mehta's bank and branch]], for the amount of Rs. 2,00,000/- (Rupees Two Lakh Only).\n\n3. I presented the said cheque for encashment through my bank account maintained at [[FILL: name of your bank and branch]] on 20 October 2026, which is well within the period of validity of the cheque.\n\n4. The said cheque was dishonoured by your bank. My bank returned the cheque to me on 27 October 2026 with the return memo stating the reason for dishonour as \"funds insufficient\".\n\n5. I have made no prior written demand to you for payment of the said amount. This notice constitutes my first written demand.\n\n6. I bring to your notice that under Section 138 of the Negotiable Instruments Act, 1881, the dishonour of a cheque issued for the discharge of a legally enforceable debt, where the cheque is presented within its validity period and is returned unpaid due to insufficient funds, constitutes an offence punishable with imprisonment up to two years, or a fine up to twice the amount of the cheque, or both.\n\n**DEMAND:**\n\n7. I hereby demand that you pay me the sum of **Rs. 2,00,000/- (Rupees Two Lakh Only)** within **fifteen (15) days** from the date of your receipt of this notice.\n\n8. Payment may be made by any of the following modes:\n   - Bank transfer to: [[FILL: your bank name, account name, account number, IFSC code, branch]]\n   - Cheque/demand draft payable to [[FILL: your name]] drawn on any nationalised bank, payable at [[FILL: your city]]\n\n**CONSEQUENCE OF NON-COMPLIANCE:**\n\n9. If I do not receive the full amount within the said period of fifteen (15) days from your receipt of this notice, I shall be constrained to initiate a criminal complaint against you under Section 138 read with Section 142 of the Negotiable Instruments Act, 1881, before the competent court, at your cost and risk. I shall also reserve my right to pursue any other civil or criminal remedy available to me in law.\n\n10. This notice is issued without prejudice to any of my rights, which are expressly reserved.\n\nCopy retained for record.\n\nYours faithfully,\n\n_________________________\n[[FILL: your full name]]\nPhone: [[FILL: your phone number]]\nEmail: [[FILL: your email address]]",
+  "placeholders": [
+   "[[FILL: date of sending the notice]]",
+   "[[FILL: your full name]]",
+   "[[FILL: your full address]]",
+   "[[FILL: Arun Mehta's full address]]",
+   "[[FILL: cheque number]]",
+   "[[FILL: name of Arun Mehta's bank and branch]]",
+   "[[FILL: name of your bank and branch]]",
+   "[[FILL: your bank name, account name, account number, IFSC code, branch]]",
+   "[[FILL: your name]]",
+   "[[FILL: your city]]",
+   "[[FILL: your phone number]]",
+   "[[FILL: your email address]]"
+  ],
+  "citations": [
+   {
+    "id": "NIA1881-S138",
+    "act": "Negotiable Instruments Act, 1881",
+    "section": "138",
+    "title": "Cheque bounce offence: conditions and punishment",
+    "plain": "Bouncing a cheque given to pay a legally enforceable debt, because of insufficient funds or because it exceeds the arranged limit, is a crime. Punishment is up to 2 years' jail, or a fine up to twice the cheque amount, or both. The offence arises only if (a) the cheque was presented within its validity (now 3 months), (b) the payee sent a written demand notice within 30 days of learning it bounced, and (c) the drawer failed to pay within 15 days of receiving that notice.",
+    "source_url": "https://indiacode.gov.in/server/api/core/items/64a9a186-103f-46ff-b528-9894e1de534f",
+    "source_type": "primary"
+   },
+   {
+    "id": "NIA1881-S142-1",
+    "act": "Negotiable Instruments Act, 1881",
+    "section": "142(1)",
+    "title": "Time limit to file cheque bounce complaint",
+    "plain": "Only the payee or holder can file, by written complaint. It must be filed within one month after the cause of action arises, which is when the 15-day payment period after the notice ends without payment. A court can accept a late complaint if you show sufficient cause. Only a Metropolitan Magistrate or Judicial Magistrate First Class can try the case.",
+    "source_url": "https://indiacode.gov.in/server/api/core/items/1c79cd03-af0f-4ca6-8820-b5a68414a927",
+    "source_type": "primary"
+   }
+  ],
+  "send_instructions": [
+   "Fill in all [[FILL: ...]] placeholders with correct details before printing. Double-check the cheque number, bank names, and addresses.",
+   "Send the notice by Registered Post A.D. AND by Speed Post (two copies) to Arun Mehta's address. Keep the postal receipts and the tracking numbers as proof of sending.",
+   "If you also send by email, send it from your own email address and keep a screenshot of the sent message with date and time.",
+   "Keep one original copy of the notice with the postal receipts stapled to it. This is your record.",
+   "If you need free legal help, call the NALSA helpline 15100 (toll-free) or visit your nearest Common Service Centre (CSC) for the Tele-Law service."
+  ],
+  "guard": {
+   "initial": {
+    "verified": [
+     [
+      "Section 138",
+      "Negotiable Instruments Act, 1881"
+     ],
+     [
+      "Section 138",
+      "Negotiable Instruments Act, 1881"
+     ],
+     [
+      "Section 142",
+      "Negotiable Instruments Act, 1881"
+     ]
+    ],
+    "violations": [],
+    "warnings": [],
+    "ok": true
+   },
+   "stripped": false
+  },
+  "model": {
+   "provider": "groq",
+   "model": "qwen/qwen3.8-27b",
+   "latency_s": 4.7,
+   "usage": {
+    "queue_time": 0.055028219,
+    "prompt_tokens": 2224,
+    "prompt_time": 0.158438214,
+    "completion_tokens": 1904,
+    "completion_time": 3.850643224,
+    "total_tokens": 4128,
+    "total_time": 4.009081438,
+    "completion_tokens_details": {
+     "reasoning_tokens": 545
+    }
+   },
+   "fallback_attempts": [
+    "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+   ]
+  },
+  "disclaimer": "Draft prepared with AI from what you told Haq. Read every line, fill the [[FILL]] gaps, and remove anything untrue before sending. For large amounts or if the other side has a lawyer, get it checked by a lawyer (free legal aid: NALSA 15100)."
+ },
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got cheque_bounce"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Latin, reply script Latin"
+  },
+  {
+   "check": "fact:memo_received_date",
+   "pass": true,
+   "detail": "expected ~2026-10-27, got 2026-10-27"
+  },
+  {
+   "check": "fact:cheque_amount",
+   "pass": true,
+   "detail": "expected ~2, got 200000"
+  },
+  {
+   "check": "mentions:30 days|30-day|30‑day|30 din",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "mentions:15 days|15-day|15‑day|15 din",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "deadline:NIA1881-S138",
+   "pass": true,
+   "detail": "[{\"label\": \"Cheque must be presented to the bank by (3-month validity)\", \"date\": \"2027-01-14\", \"days_left\": 69, \"status\": \"ok\", \"basis\": \"FACT-RBI-CHEQUE-VALIDITY\", \"note\": \"\", \"user_deadline\": true}, {\"label\": \"Send the legal demand notice by (30 days from bank's return memo)\", \"date\": \"2026-11-26\""
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "draft_no_unverified_law",
+   "pass": true,
+   "detail": "[]"
+  },
+  {
+   "check": "draft_has_no_invented_fill",
+   "pass": true,
+   "detail": "12 placeholders"
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "The assistant provides accurate, timely, and legally sound advice under the Negotiable Instruments Act while maintaining a helpful and clear tone.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 2.01,
+   "usage": {
+    "completion_tokens": 71,
+    "prompt_tokens": 525,
+    "total_tokens": 742
+   },
+   "fallback_attempts": [
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+   ]
+  }
+ }
+}

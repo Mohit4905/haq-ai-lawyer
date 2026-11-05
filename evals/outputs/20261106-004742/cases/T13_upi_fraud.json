@@ -1,0 +1,293 @@
+{
+ "case": {
+  "id": "T13_upi_fraud",
+  "group": "scope",
+  "turns": [
+   "Someone called pretending to be from my bank and I shared an OTP. Rs 30,000 was debited via UPI 2 hours ago. What do I do?"
+  ],
+  "expect": {
+   "category_any": [
+    "cyber_fraud",
+    "out_of_scope"
+   ],
+   "script": "Latin",
+   "must_mention_any": [
+    [
+     "1930"
+    ],
+    [
+     "bank"
+    ]
+   ],
+   "escalate_min": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "Hi! I’m Haq. Let’s sort this out.\n\n1. When did the transfer happen? (date & time)\n2. Which bank did you share the OTP with?\n3. Do you have any screenshots or bank statements showing the debit?\n\nOnce I have those, I’ll give you the best next steps.\n\nIn the meantime:\n- Call your bank’s official helpline right away.\n- Report the fraud to the National Cyber Crime helpline 1930.\n- File a police complaint (Zero FIR) at any station.\n\nThese actions are free and can help freeze the money.\n\nI’ll help draft a complaint or practice a call if you need.",
+   "citations": [
+    {
+     "id": "FACT-CYBER-1930",
+     "act": "National Cyber Crime helpline",
+     "section": "",
+     "title": "Cyber fraud: call 1930 or report at cybercrime.gov.in",
+     "plain": "If you lose money to online or financial cyber fraud, call the national helpline 1930 immediately; quick reporting improves the chance of freezing the money. You can also report any cybercrime on the National Cyber Crime Reporting Portal at https://www.cybercrime.gov.in/.",
+     "source_url": "https://cybercrime.gov.in/",
+     "source_type": "primary"
+    },
+    {
+     "id": "BNSS2023-S173",
+     "act": "Bharatiya Nagarik Suraksha Sanhita, 2023",
+     "section": "173",
+     "title": "FIR at any police station ('Zero FIR'), including electronic FIR",
+     "plain": "Information about a cognizable offence can be given at any police station, whatever the area where the offence happened. It can be given orally or electronically, and this is commonly called a 'Zero FIR'. An e-FIR must be signed by the informant within three days.",
+     "source_url": "https://egazette.gov.in/WriteReadData/2023/250884.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 0,
+    "missing": []
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "bank_complaint_letter"
+    },
+    {
+     "type": "practice"
+    }
+   ],
+   "next_step": "Call your bank’s helpline immediately",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "Fraud is time-critical: report to 1930 and your bank immediately"
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "medium",
+   "unknowns": [
+    "exact bank name",
+    "date & time of transfer"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Latin",
+     "got": "Latin",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "latency_s": 1.35,
+    "usage": {
+     "queue_time": 0.1575182,
+     "prompt_tokens": 2604,
+     "prompt_time": 0.149851791,
+     "completion_tokens": 312,
+     "completion_time": 0.389747455,
+     "total_tokens": 2916,
+     "total_time": 0.539599246,
+     "completion_tokens_details": {
+      "reasoning_tokens": 19
+     }
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+     "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "cyber_fraud",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "amount_paid": 30000,
+        "problem_date": "2026-11-06"
+       },
+       "approximate_dates": [],
+       "confidence": 0.9
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 1.68,
+       "usage": {
+        "queue_time": 0.369139693,
+        "prompt_tokens": 921,
+        "prompt_time": 0.232248726,
+        "completion_tokens": 124,
+        "completion_time": 0.437896866,
+        "total_tokens": 1045,
+        "total_time": 0.670145592,
+        "prompt_tokens_details": {
+         "cached_tokens": 768
+        },
+        "completion_tokens_details": {
+         "reasoning_tokens": 69
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic"
+       ]
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 1.35,
+       "usage": {
+        "queue_time": 0.1575182,
+        "prompt_tokens": 2604,
+        "prompt_time": 0.149851791,
+        "completion_tokens": 312,
+        "completion_time": 0.389747455,
+        "total_tokens": 2916,
+        "total_time": 0.539599246,
+        "completion_tokens_details": {
+         "reasoning_tokens": 19
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 21.62
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "Someone called pretending to be from my bank and I shared an OTP. Rs 30,000 was debited via UPI 2 hours ago. What do I do?"
+   },
+   {
+    "role": "assistant",
+    "content": "Hi! I’m Haq. Let’s sort this out.\n\n1. When did the transfer happen? (date & time)\n2. Which bank did you share the OTP with?\n3. Do you have any screenshots or bank statements showing the debit?\n\nOnce I have those, I’ll give you the best next steps.\n\nIn the meantime:\n- Call your bank’s official helpline right away.\n- Report the fraud to the National Cyber Crime helpline 1930.\n- File a police complaint (Zero FIR) at any station.\n\nThese actions are free and can help freeze the money.\n\nI’ll help draft a complaint or practice a call if you need."
+   }
+  ],
+  "case": {
+   "category": "cyber_fraud",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "amount_paid": 30000,
+    "problem_date": "2026-11-06"
+   },
+   "timeline": [],
+   "evidence_have": [],
+   "evidence_missing": [
+    "bank statement screenshot",
+    "any communication with the caller"
+   ],
+   "next_step": "Call your bank’s helpline immediately"
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "Fraud is time-critical: report to 1930 and your bank immediately"
+   ]
+  },
+  "log": [
+   {
+    "t": 21.62,
+    "model": "openai/gpt-oss-20b",
+    "provider": "groq",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got cyber_fraud"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Latin, reply script Latin"
+  },
+  {
+   "check": "mentions:1930",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "mentions:bank",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation>=recommended",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "The assistant provides excellent, time-sensitive advice for a financial emergency while maintaining a clear and helpful tone.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 1.92,
+   "usage": {
+    "completion_tokens": 67,
+    "prompt_tokens": 368,
+    "total_tokens": 552
+   },
+   "fallback_attempts": [
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+   ]
+  }
+ }
+}

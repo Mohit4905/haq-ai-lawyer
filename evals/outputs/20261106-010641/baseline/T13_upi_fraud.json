@@ -1,0 +1,120 @@
+{
+ "id": "T13_upi_fraud",
+ "reply": "# UPI Fraud – Immediate Action Plan\n\nThis is a classic **OTP-based UPI fraud**. The 2-hour window is critical. Follow these steps **in this order, starting now**:\n\n---\n\n## 🚨 STEP 1: Call Your Bank's Fraud Helpline (Right Now)\n\n- Call your bank's **24x7 fraud helpline** (number on the back of your card or the bank's website).\n- Inform them the transaction was **fraudulent** and you shared an OTP under false pretences.\n- Ask them to **freeze the transaction** or initiate a **chargeback/reversal**.\n- **Do NOT** follow any further instructions from the fraudster.\n\n> **Why this matters:** Under RBI's UPI framework, if the bank is notified promptly, it can attempt to reverse the transaction through the NPCI (National Payments Corporation of India) before the funds are settled or moved further.\n\n---\n\n## 🚨 STEP 2: File a Complaint on the National Cyber Crime Portal\n\n- Go to: **https://cybercrime.gov.in**\n- Register and file a complaint under **\"UPI Fraud\"** or **\"Online Fraud\"**.\n- Upload screenshots of the transaction, call logs, and any SMS.\n- You will get a **complaint reference number** — save it.\n\n> This is the **primary channel** recommended by the Ministry of Home Affairs. Police stations are now mandated to forward cyber complaints to this portal.\n\n---\n\n## 🚨 STEP 3: File an FIR at the Local Police Station\n\n- Visit the **nearest police station** (or the cyber cell if available).\n- File a written complaint / FIR.\n- Carry:\n  - Transaction screenshot (with UPI reference number / VPA of the beneficiary)\n  - Call log showing the fraudster's number\n  - Any SMS or WhatsApp messages\n  - Your bank statement showing the debit\n- Ask for a **copy of the FIR** and the **FIR number**.\n\n> Even if the police say \"file online,\" insist on a physical FIR. You can also file at **e-filing portals** of your state police if available.\n\n---\n\n## 🚨 STEP 4: File a Complaint with Your Bank (Written)\n\n- Visit your **home branch** and file a written complaint.\n- Request a **written acknowledgement** with a reference number.\n- Ask for the **beneficiary's UPI ID / account details** (the bank is obligated to share this with law enforcement; they may share it with you as the complainant).\n\n---\n\n## 🚨 STEP 5: File a Complaint with NPCI (if bank doesn't act)\n\n- If the bank does not reverse the transaction within **7 working days**, you can escalate to **NPCI** via their grievance portal or email.\n- You can also file on the **RBI Ombudsman** portal (cms.rbi.org.in) if the bank fails to resolve within 30 days.\n\n---\n\n## ⚖️ Relevant Legal Provisions\n\n| Law | Section | Offence |\n|-----|---------|---------|\n| **IT Act, 2000** | **Section 66C** | Identity theft (penalty: up to 3 years / ₹5 lakh) |\n| **IT Act, 2000** | **Section 66D** | Cheating by personation (penalty: up to 3 years / ₹5 lakh) |\n| **BNS, 2023** | **Section 318** | Cheating (replaces IPC 420) – up to 3 years / fine |\n| **BNS, 2023** | **Section 319** | Cheating & dishonestly inducing delivery of property – up to 7 years |\n| **BNS, 2023** | **Section 341** | Forgery for purpose of cheating |\n| **BNS, 2023** | **Section 342** | Using as genuine a forged document |\n| **IPC (if FIR filed before 1 July 2024)** | Sections 420, 468, 471 | Cheating, forgery, using forged document |\n\n> **Note:** Since 1 July 2024, the **Bharatiya Nyaya Sanhita (BNS)** has replaced the IPC for new offences. Your FIR should cite BNS sections.\n\n---\n\n## 📌 Key Points to Remember\n\n1. **Do NOT share any further OTPs, PINs, or passwords** with anyone, including anyone claiming to be from your bank.\n2. **Banks never ask for OTPs.** This is the single most important rule.\n3. **Time is critical** – the faster you report, the higher the chance of recovery.\n4. **Keep all evidence** – call recordings (if any), SMS, transaction screenshots, UPI reference number.\n5. **Do NOT pay any \"recovery agent\"** who contacts you online promising to recover the money. These are **secondary frauds**.\n6. Under **RBI's UPI guidelines**, the bank and the payment system provider share liability. If the bank failed to implement adequate fraud detection, you have a claim against them.\n\n---\n\n## 📞 Useful Numbers\n\n| Service | Number |\n|---------|--------|\n| National Cyber Helpline | **1930** |\n| National Emergency | **112** |\n| Your bank's fraud helpline | (on card / website) |\n| NPCI Helpline | **1800-102-5025** |\n\n---\n\n## Realistic Expectation\n\n- **Recovery is possible but not guaranteed.** If the fraudster has already moved the money to multiple accounts (mule accounts), recovery becomes difficult.\n- However, if you act **within 2–6 hours**, there is a reasonable chance the bank/NPCI can freeze the transaction.\n- Even if money is not recovered, the FIR and cyber complaint create a **legal trail** that can be used for prosecution and may help in future recovery.\n\n---\n\n**Act now. Every minute counts.** Start with the bank helpline, then the cyber portal, then the police station.",
+ "model": {
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "latency_s": 4.52,
+  "usage": {
+   "queue_time": 0.048969075,
+   "prompt_tokens": 105,
+   "prompt_time": 0.007157515,
+   "completion_tokens": 1844,
+   "completion_time": 3.806935611,
+   "total_tokens": 1949,
+   "total_time": 3.814093126,
+   "completion_tokens_details": {
+    "reasoning_tokens": 483
+   }
+  },
+  "fallback_attempts": [
+   "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+  ]
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 66C",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 66D",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 319 of Bharatiya Nyaya Sanhita, 2023",
+    "why": "This section of this Act is not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 341 of Bharatiya Nyaya Sanhita, 2023",
+    "why": "This section of this Act is not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 342 of Bharatiya Nyaya Sanhita, 2023",
+    "why": "This section of this Act is not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Sections 420",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "IT Act, 2000",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "unsupported_number",
+    "text": "2-hour",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "7 working days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "3 years",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "3 years",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "3 years",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "7 years",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "6 hours",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

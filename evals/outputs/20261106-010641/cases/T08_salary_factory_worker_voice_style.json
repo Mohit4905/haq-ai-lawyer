@@ -1,0 +1,319 @@
+{
+ "case": {
+  "id": "T08_salary_factory_worker_voice_style",
+  "group": "core",
+  "turns": [
+   "sir main factory me helper hu ghaziabad me thekedar ke through kaam karta tha 14000 mahina milta tha do mahine se paisa nahi diya thekedar bhag gaya company bolti hai thekedar se lo ab kya karu ghar ka kiraya bhi nahi de pa raha"
+  ],
+  "expect": {
+   "category": "salary",
+   "script": "Hinglish",
+   "facts": {
+    "monthly_salary": "14"
+   },
+   "must_mention_any": [
+    [
+     "labour",
+     "Labour",
+     "श्रम",
+     "Inspector",
+     "inspector"
+    ]
+   ],
+   "escalate_max": "urgent"
+  }
+ },
+ "results": [
+  {
+   "reply": "Yeh sunkar bahut dukh hua ki aapko itni pareshani ho rahi hai. Ghaziabad mein factory helper ke taur par kaam karte hue agar thekedar bhag gaya hai, toh company apni zimmedari se nahi bach sakti. Code on Wages, 2019 ke tehat, agar contractor paise nahi deta, toh principal employer (factory) ki zimmedari hoti hai ki woh aapka vetan (salary) chukaye.\n\nSabse pehle, aapke paas kya saboot hain ki aap wahan kaam karte the? Jaise ki:\n1. Koi ID card ya Gate pass?\n2. Bank statement jisme salary aati thi?\n3. Koi attendance record ya message?\n\nYeh rahe aapke options:\n1. Company management ko likhit mein (email/letter) salary ki maang karein.\n2. Labour Office (Inspector-cum-Facilitator) mein shikayat darj karein.\n3. SAMADHAN portal par online claim file karein.\n\nMain aapko salah dunga ki pehle company ko ek formal letter dein jisme saaf likha ho ki aapka kitna paisa baaki hai. Kya aapke paas company ke HR ya manager ka koi contact hai?",
+   "citations": [
+    {
+     "id": "COW2019-S2K",
+     "act": "Code on Wages, 2019",
+     "section": "2(k)",
+     "title": "Who is an 'employee' (includes managerial and supervisory staff)",
+     "plain": "Under the Code on Wages, 'employee' covers anyone an establishment employs on wages for skilled, unskilled, manual, clerical, technical, supervisory, managerial or administrative work. Managers and senior staff therefore count as employees. Apprentices and members of the Armed Forces do not.",
+     "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-COW-NO-WAGE-CEILING",
+     "act": "Code on Wages, 2019",
+     "section": "",
+     "title": "No salary ceiling for the timely-payment and deduction rules",
+     "plain": "The old Payment of Wages Act protected only employees earning up to Rs 24,000 a month. Under the Code on Wages, the rules on paying wages on time and on permitted deductions apply to all employees, whatever their salary. The labour ministry has confirmed that this includes white-collar staff.",
+     "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "COW2019-S45",
+     "act": "Code on Wages, 2019",
+     "section": "45",
+     "title": "Filing a wage claim: who decides it and the 3-year limit",
+     "plain": "Wage claims under the Code are heard by an authority the Government appoints, who must be at least a Gazetted Officer. The claim can be filed by you, your registered trade union, or an Inspector-cum-Facilitator. File within 3 years of the date the claim arises; a later claim may still be accepted if you show sufficient cause. Besides the amount due, the authority can award compensation of up to ten times the claim, and it tries to decide within three months.",
+     "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "COW2019-S51",
+     "act": "Code on Wages, 2019",
+     "section": "51",
+     "title": "Inspector-cum-Facilitators",
+     "plain": "The Code replaces the old 'Inspector' with an 'Inspector-cum-Facilitator', appointed by the Government. This officer advises employers and workers on compliance, inspects establishments, and can file a wage claim on a worker's behalf under section 45.",
+     "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 56,
+    "missing": [
+     {
+      "key": "amount_due",
+      "question": "Total amount due (₹)?"
+     },
+     {
+      "key": "still_employed",
+      "question": "Are you still working there? If not, what was your last working day?"
+     },
+     {
+      "key": "employment_proof",
+      "question": "Proof of employment (offer letter, payslips, bank credits, ID card)?"
+     },
+     {
+      "key": "communications_so_far",
+      "question": "Have you asked HR/employer in writing?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "salary_demand_notice"
+    }
+   ],
+   "next_step": "Draft a written complaint to the company management.",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "Since the contractor has absconded and the company is denying liability, you may need help navigating the labour authority process."
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Do you have any proof of employment like an ID card or bank statement?"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Hinglish",
+     "got": "Hinglish",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 5.56,
+    "usage": {
+     "completion_tokens": 648,
+     "prompt_tokens": 3660,
+     "total_tokens": 4923
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+     "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+     "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "salary",
+       "language": "Hinglish",
+       "script": "Latin",
+       "facts": {
+        "role": "helper",
+        "monthly_salary": "14000",
+        "unpaid_period": "2 months",
+        "city_state": "Ghaziabad",
+        "other_party_name": "thekedar",
+        "summary": "User is a factory helper in Ghaziabad whose contractor has absconded without paying 2 months of salary."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.26,
+       "usage": {
+        "completion_tokens": 143,
+        "prompt_tokens": 963,
+        "total_tokens": 1216
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie"
+       ]
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 5.56,
+       "usage": {
+        "completion_tokens": 648,
+        "prompt_tokens": 3660,
+        "total_tokens": 4923
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+        "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 12.02
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "sir main factory me helper hu ghaziabad me thekedar ke through kaam karta tha 14000 mahina milta tha do mahine se paisa nahi diya thekedar bhag gaya company bolti hai thekedar se lo ab kya karu ghar ka kiraya bhi nahi de pa raha"
+   },
+   {
+    "role": "assistant",
+    "content": "Yeh sunkar bahut dukh hua ki aapko itni pareshani ho rahi hai. Ghaziabad mein factory helper ke taur par kaam karte hue agar thekedar bhag gaya hai, toh company apni zimmedari se nahi bach sakti. Code on Wages, 2019 ke tehat, agar contractor paise nahi deta, toh principal employer (factory) ki zimmedari hoti hai ki woh aapka vetan (salary) chukaye.\n\nSabse pehle, aapke paas kya saboot hain ki aap wahan kaam karte the? Jaise ki:\n1. Koi ID card ya Gate pass?\n2. Bank statement jisme salary aati thi?\n3. Koi attendance record ya message?\n\nYeh rahe aapke options:\n1. Company management ko likhit mein (email/letter) salary ki maang karein.\n2. Labour Office (Inspector-cum-Facilitator) mein shikayat darj karein.\n3. SAMADHAN portal par online claim file karein.\n\nMain aapko salah dunga ki pehle company ko ek formal letter dein jisme saaf likha ho ki aapka kitna paisa baaki hai. Kya aapke paas company ke HR ya manager ka koi contact hai?"
+   }
+  ],
+  "case": {
+   "category": "salary",
+   "language": "Hinglish",
+   "script": "Latin",
+   "facts": {
+    "role": "helper",
+    "monthly_salary": 14000,
+    "unpaid_period": "2 months",
+    "city_state": "Ghaziabad",
+    "other_party_name": "thekedar",
+    "summary": "User is a factory helper in Ghaziabad whose contractor has absconded without paying 2 months of salary."
+   },
+   "timeline": [
+    {
+     "date": "2025-01-01",
+     "event": "Contractor absconded, 2 months salary unpaid"
+    }
+   ],
+   "evidence_have": [],
+   "evidence_missing": [
+    "ID card",
+    "Gate pass",
+    "Bank statements showing salary credits",
+    "Any written communication with the company"
+   ],
+   "next_step": "Draft a written complaint to the company management."
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "Since the contractor has absconded and the company is denying liability, you may need help navigating the labour authority process."
+   ]
+  },
+  "log": [
+   {
+    "t": 12.02,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got salary"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Hinglish, reply script Hinglish"
+  },
+  {
+   "check": "fact:monthly_salary",
+   "pass": true,
+   "detail": "expected ~14, got 14000"
+  },
+  {
+   "check": "mentions:labour|Labour|श्रम|Inspector|inspector",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation<=urgent",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 4,
+  "accurate_scope": 4,
+  "comment": "The advice is practical and legally grounded, though it assumes the Code on Wages 2019 is fully enforced, which is a nuanced point in Indian labor law implementation.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 2.06,
+   "usage": {
+    "completion_tokens": 81,
+    "prompt_tokens": 515,
+    "total_tokens": 717
+   },
+   "fallback_attempts": [
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+   ]
+  }
+ }
+}

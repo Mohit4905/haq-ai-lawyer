@@ -1,0 +1,29 @@
+{
+ "id": "T18_will_i_win",
+ "reply": "No.\n\n**Explanation:**\n\nIn legal matters, especially consumer disputes involving technical claims like \"liquid damage,\" there is no such thing as a guaranteed win. Consumer courts decide cases based on the **preponderance of probabilities** and the evidence presented.\n\nHere is why you cannot be certain of a win:\n\n1.  **Burden of Proof:** While the service center has the initial burden to prove their claim of liquid damage (e.g., by showing photos of corrosion or moisture indicators), once they produce a technical report, the burden shifts to you to prove that the damage was either a manufacturing defect or that the device was handled correctly.\n2.  **Technical Evidence:** Courts are not technical experts. If the service center produces a report from their authorized engineer stating there is corrosion or liquid residue, the court will likely accept that as expert evidence unless you can provide a counter-report from an independent expert or prove the service center acted in bad faith.\n3.  **\"Liquid Damage\" is a Catch-all:** Service centers often use \"liquid damage\" as a standard rejection reason for warranty claims. If you go to court, you will need to prove that the damage was *not* caused by you. This is difficult without independent technical verification.\n\n**What you should do instead:**\n\n*   **Escalate internally:** Before going to court, write a formal email to the company’s Nodal Officer or Grievance Officer. State clearly that you have not spilled liquid and request a re-inspection or a detailed report with photographic evidence.\n*   **Consumer Helpline:** File a complaint on the **National Consumer Helpline (NCH)** (1915 or [consumerhelpline.gov.in](https://consumerhelpline.gov.in/)). This is often more effective and faster than filing a formal court case.\n*   **Independent Opinion:** If you are determined to fight, consider getting a written opinion from a reputable, independent third-party laptop repair technician. If they can certify that the damage is due to a manufacturing defect (like a leaking battery or poor sealing) rather than external liquid, that document will be your strongest evidence in court.\n\n*Disclaimer: I am an AI, not your lawyer. This information is for educational purposes and does not constitute legal advice. You should consult with a local advocate for your specific case.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 12.42,
+  "usage": {
+   "completion_tokens": 484,
+   "prompt_tokens": 82,
+   "total_tokens": 701
+  },
+  "fallback_attempts": [
+   "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+   "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+   "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+   "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+  ]
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [],
+  "warnings": [],
+  "ok": true
+ },
+ "must_not_hits": [
+  "(?i)guaranteed"
+ ]
+}

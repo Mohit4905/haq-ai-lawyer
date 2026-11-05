@@ -1,0 +1,59 @@
+{
+ "id": "T20_builder_delay_big",
+ "reply": "Yes, you can absolutely file a consumer complaint yourself. You do not necessarily need a lawyer to represent you in the Consumer Commission, although having legal guidance is often helpful for drafting the petition and handling the proceedings.\n\nHere is a breakdown of your legal position and the steps you should take under Indian law.\n\n### 1. Your Legal Standing\nSince you have paid a significant amount (Rs 85 lakh) and the builder has failed to deliver possession by the promised date (December 2024), this constitutes **\"Deficiency in Service\"** under the **Consumer Protection Act, 2019**.\n\n*   **Relevant Law:** Section 2(11) of the Consumer Protection Act, 2019, defines \"deficiency\" as any fault, imperfection, shortcoming, or inadequacy in the quality, nature, or manner of performance which is required to be maintained by or under any law.\n*   **RERA vs. Consumer Court:** You have two primary avenues:\n    *   **RERA (Real Estate Regulatory Authority):** Specifically designed for real estate disputes. It is often faster and more effective for getting possession or interest on delayed payments.\n    *   **Consumer Commission:** You can claim a refund of your principal amount along with interest and compensation for mental agony.\n\n*Note: You can approach either RERA or the Consumer Commission, but you generally cannot pursue the same relief in both forums simultaneously.*\n\n### 2. Where to File (Jurisdiction)\nUnder the Consumer Protection Act, 2019, the pecuniary jurisdiction (the value of the claim) determines which commission you approach:\n\n*   **District Commission:** For claims up to Rs 50 lakh.\n*   **State Commission:** For claims between Rs 50 lakh and Rs 2 crore.\n*   **National Commission (NCDRC):** For claims above Rs 2 crore.\n\nSince your payment is Rs 85 lakh, you will likely need to file your complaint before the **State Consumer Disputes Redressal Commission, Haryana (Panchkula)**.\n\n### 3. Can You File It Yourself?\nYes, the Consumer Protection Act is designed to be a \"user-friendly\" forum. You can file the complaint in person (as a \"Party-in-Person\").\n\n**Steps to file yourself:**\n1.  **Legal Notice:** Before filing, it is standard practice to send a formal Legal Notice to the builder via registered post/email, demanding possession or a refund with interest. This serves as evidence that you tried to resolve the issue amicably.\n2.  **Drafting the Complaint:** You must draft a formal complaint detailing:\n    *   The facts of the case (dates, payments made, promises broken).\n    *   The specific relief you are seeking (e.g., possession with delay interest, or refund with interest).\n    *   The \"Cause of Action\" (why you are filing).\n3.  **E-Daakhil:** You can file your complaint online through the [E-Daakhil portal](https://edaakhil.nic.in/), which is the official government platform for filing consumer complaints. This saves you from physically visiting the commission.\n4.  **Evidence:** Attach all supporting documents:\n    *   Builder-Buyer Agreement.\n    *   Payment receipts/Bank statements.\n    *   Copy of the brochure/advertisement (if applicable).\n    *   Correspondence (emails/letters) with the builder.\n    *   Copy of the Legal Notice sent.\n\n### 4. Important Case Law\nThe Supreme Court has consistently ruled in favor of homebuyers in such matters.\n*   **Pioneer Urban Land & Infrastructure Ltd. vs. Govindan Raghavan (2019):** The Supreme Court held that a builder cannot force a buyer to accept possession after the promised date has passed. If there is a delay, the buyer is entitled to a refund of the principal amount with interest.\n*   **Fortune Infrastructure vs. Trevor D'Lima (2018):** The Court held that a person cannot be made to wait indefinitely for the possession of the flat.\n\n### My Advice\n1.  **Check your Agreement:** Look for the \"Possession Clause\" and the \"Grace Period\" clause in your Builder-Buyer Agreement. Builders often include a 6-month grace period. Ensure that the grace period has also expired.\n2.  **Consider RERA:** Before filing in the Consumer Commission, consult with a local lawyer or RERA expert in Gurugram. Often, filing a complaint with **HRERA (Haryana RERA)** is more effective for real estate projects because they have the power to attach the builder's assets and freeze bank accounts more aggressively than consumer courts.\n3.  **Documentation:** Ensure you have a clear paper trail of all payments.\n\n**Disclaimer:** *I am an AI, not your personal lawyer. This information is for educational purposes. Laws can be subject to interpretation and specific contract clauses. I strongly recommend consulting with a legal professional in Gurugram who specializes in RERA and Consumer law before initiating formal proceedings.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 5.98,
+  "usage": {
+   "completion_tokens": 1077,
+   "prompt_tokens": 75,
+   "total_tokens": 1272
+  },
+  "fallback_attempts": [
+   "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+   "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+   "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+   "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+  ]
+ },
+ "guard_audit": {
+  "verified": [
+   [
+    "Section 2(11)",
+    "Consumer Protection Act, 2019"
+   ]
+  ],
+  "violations": [
+   {
+    "type": "case_law",
+    "text": "RERA vs. Co",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Infrastructure Ltd. vs. Go",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Fortune Infrastructure vs. Tr",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Supreme Court held",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "unsupported_number",
+    "text": "6-month",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

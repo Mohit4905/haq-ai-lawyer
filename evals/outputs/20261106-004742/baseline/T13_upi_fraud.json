@@ -1,0 +1,86 @@
+{
+ "id": "T13_upi_fraud",
+ "reply": "# UPI Fraud – Immediate Action Plan\n\nThis is a classic **OTP-based UPI fraud** (often called \"vishing\"). Time is critical. Follow these steps **in this order**:\n\n---\n\n## 1. IMMEDIATE (Next 30 Minutes)\n\n### A. Call Your Bank\n- Dial your bank's **fraud/helpline number** (on the back of your card or the bank's website — NOT the number the fraudster gave you).\n- Inform them:\n  - You were a victim of a social engineering call.\n  - You shared an OTP under false pretences.\n  - Rs 30,000 was debited via UPI.\n- **Request a fraud report / chargeback** to be raised with NPCI.\n- Ask for the **reference number** of the complaint.\n- If possible, **block the UPI ID** linked to the transaction.\n\n### B. Report on Cyber Crime Portal\n- Go to **https://cybercrime.gov.in** (or call **1930**).\n- File a complaint **within 24 hours** (ideally within 6 hours — the longer you wait, the harder it is to trace and freeze the money).\n- You will need:\n  - Transaction reference number (from your bank/UPI app)\n  - The phone number that called you\n  - Any UPI ID or VPA the money was sent to (your bank can provide this)\n  - Screenshots of the call log, SMS, etc.\n\n### C. File an FIR\n- Visit the **nearest police station** or file online via your state's e-FIR portal.\n- Mention:\n  - The call details (number, time, what was said)\n  - That you were induced to share an OTP\n  - The amount and transaction reference\n- The police are **obliged** to register an FIR under the relevant sections (see below).\n\n---\n\n## 2. LEGAL PROVISIONS (for your FIR / complaint)\n\n| Law | Section | Offence |\n|-----|---------|---------|\n| **BNS, 2023** | **318** | Cheating (formerly IPC 420) |\n| **BNS, 2023** | **340** | Forgery for cheating (formerly IPC 468) |\n| **BNS, 2023** | **342** | Using as genuine a document forged (formerly IPC 471) |\n| **IT Act, 2000** | **66C** | Identity theft / misuse of electronic signature |\n| **IT Act, 2000** | **66D** | Cheating by personation using computer resource |\n\n> **Note:** If the fraudster used a fake bank ID or impersonated your bank's official number, Section 66D IT Act is particularly relevant.\n\n---\n\n## 3. RECOVERY OF MONEY – What to Expect\n\n### Bank's Obligation (RBI Guidelines)\n- Under **RBI's UPI fraud guidelines (2022)** and the **NPCI dispute resolution process**, if you report within **24 hours** and can prove you were a victim of fraud (not voluntary transfer), the bank is expected to:\n  - Initiate a **chargeback** with NPCI.\n  - Investigate and **refund the amount** if the fraud is confirmed.\n- The bank **cannot** refuse on the ground that \"you shared the OTP\" if you can demonstrate you were deceived.\n\n### Practical Reality\n- If the money is still in the **beneficiary's account** (not yet withdrawn/transferred), the bank can **freeze** it.\n- If the money has been **layered** (moved through multiple accounts), recovery becomes harder but the FIR and cybercrime report help in tracing.\n- **Act fast** — the first 6–24 hours are the most critical window.\n\n---\n\n## 4. DOCUMENTS TO GATHER NOW\n\n- [ ] Call log / screenshot of the incoming call\n- [ ] Any SMS or WhatsApp messages from the fraudster\n- [ ] UPI transaction screenshot (with reference number)\n- [ ] Bank statement showing the debit\n- [ ] The fraudster's phone number\n- [ ] Any UPI ID / VPA the money went to (ask your bank)\n- [ ] Complaint reference number from cybercrime.gov.in\n- [ ] FIR copy\n\n---\n\n## 5. KEY TIPS\n\n- **Do NOT** call the fraudster back or try to \"negotiate.\"\n- **Do NOT** share any further OTPs, PINs, or passwords.\n- If your bank's app has a **\"Report Fraud\"** or **\"Dispute Transaction\"** button, use it immediately.\n- If the bank delays or refuses, you can:\n  - File a complaint with **RBI Ombudsman** (via cms.rbi.org.in) if the bank fails to resolve within 30 days.\n  - File a complaint with **NPCI** (npci.org.in) for UPI-specific disputes.\n  - Approach the **Consumer Forum** for deficiency in service.\n\n---\n\n## Summary of Timeline\n\n| Timeframe | Action |\n|-----------|--------|\n| **Now – 1 hour** | Call bank, report fraud, get reference no. |\n| **Within 6 hours** | File on cybercrime.gov.in / call 1930 |\n| **Within 24 hours** | File FIR at police station |\n| **Within 30 days** | If bank doesn't resolve → RBI Ombudsman |\n\n---\n\n**Bottom line:** The single most important thing is to **report to your bank and cybercrime.gov.in within the next few hours**. The faster you act, the higher the chance of freezing and recovering the Rs 30,000.\n\nWould you like help drafting the FIR complaint or the bank complaint letter?",
+ "model": {
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "latency_s": 4.41,
+  "usage": {
+   "queue_time": 0.051888967,
+   "prompt_tokens": 105,
+   "prompt_time": 0.008451044,
+   "completion_tokens": 1798,
+   "completion_time": 3.696899514,
+   "total_tokens": 1903,
+   "total_time": 3.705350558,
+   "completion_tokens_details": {
+    "reasoning_tokens": 502
+   }
+  },
+  "fallback_attempts": [
+   "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+  ]
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 66D",
+    "why": "Not in the verified library (near: IT Act)."
+   },
+   {
+    "type": "unknown_act",
+    "text": "IT Act, 2000",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "unsupported_number",
+    "text": "6 hours",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "1 hour",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "6 hours",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

@@ -1,0 +1,272 @@
+{
+ "case": {
+  "id": "T13_upi_fraud",
+  "group": "scope",
+  "turns": [
+   "Someone called pretending to be from my bank and I shared an OTP. Rs 30,000 was debited via UPI 2 hours ago. What do I do?"
+  ],
+  "expect": {
+   "category_any": [
+    "cyber_fraud",
+    "out_of_scope"
+   ],
+   "script": "Latin",
+   "must_mention_any": [
+    [
+     "1930"
+    ],
+    [
+     "bank"
+    ]
+   ],
+   "escalate_min": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "**Step 1 – Report right away**\n- Call the national cyber‑crime helpline **1930** and give them all details (caller name, phone number, OTP you shared, UPI transaction ID, amount Rs 30,000). Quick reporting helps freeze the money.\n- Also lodge a complaint on the portal https://www.cybercrime.gov.in/ (you’ll need the same details).\n\n**Step 2 – Inform your bank**\n- Write a short email/letter to your bank’s fraud desk (or use the in‑app “Report fraud” option). Mention the date, amount, UPI ID, and that you gave an OTP to a fraudster.\n- Ask them to block the transaction and start a reversal. Keep the acknowledgment.\n\n**Step 3 – Police FIR**\n- Go to the nearest police station (or file a Zero FIR online) and give them the FIR copy from the cyber‑crime portal. Bring your bank’s reply and any UPI screenshot.\n\n**What to keep**\n- Screenshots of the UPI transaction, chat/email with the fraud caller, bank’s acknowledgment.\n- Your ID proof for the FIR.\n\n**Next step**: Call **1930** now and simultaneously send a written complaint to your bank.\n\nI can help you draft the bank complaint or practice what to say on the phone – just let me know!",
+   "citations": [
+    {
+     "id": "FACT-CYBER-1930",
+     "act": "National Cyber Crime helpline",
+     "section": "",
+     "title": "Cyber fraud: call 1930 or report at cybercrime.gov.in",
+     "plain": "If you lose money to online or financial cyber fraud, call the national helpline 1930 immediately; quick reporting improves the chance of freezing the money. You can also report any cybercrime on the National Cyber Crime Reporting Portal at https://www.cybercrime.gov.in/.",
+     "source_url": "https://cybercrime.gov.in/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 0,
+    "missing": []
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "bank complaint"
+    }
+   ],
+   "next_step": "Call 1930 and send a written complaint to your bank",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Exact police station jurisdiction for filing the FIR"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "latency_s": 2.56,
+    "usage": {
+     "queue_time": 0.166657776,
+     "prompt_tokens": 2525,
+     "prompt_time": 0.194568855,
+     "completion_tokens": 622,
+     "completion_time": 1.301885677,
+     "total_tokens": 3147,
+     "total_time": 1.496454532,
+     "completion_tokens_details": {
+      "reasoning_tokens": 115
+     }
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "cyber_fraud",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "amount_paid": 30000,
+        "problem_date": "2026-11-06"
+       },
+       "approximate_dates": [],
+       "confidence": 0.9
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 1.26,
+       "usage": {
+        "queue_time": 0.286518657,
+        "prompt_tokens": 921,
+        "prompt_time": 0.024316173,
+        "completion_tokens": 124,
+        "completion_time": 0.16008124,
+        "total_tokens": 1045,
+        "total_time": 0.184397413,
+        "prompt_tokens_details": {
+         "cached_tokens": 768
+        },
+        "completion_tokens_details": {
+         "reasoning_tokens": 69
+        }
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-120b",
+       "latency_s": 2.56,
+       "usage": {
+        "queue_time": 0.166657776,
+        "prompt_tokens": 2525,
+        "prompt_time": 0.194568855,
+        "completion_tokens": 622,
+        "completion_time": 1.301885677,
+        "total_tokens": 3147,
+        "total_time": 1.496454532,
+        "completion_tokens_details": {
+         "reasoning_tokens": 115
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 22.37
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "Someone called pretending to be from my bank and I shared an OTP. Rs 30,000 was debited via UPI 2 hours ago. What do I do?"
+   },
+   {
+    "role": "assistant",
+    "content": "**Step 1 – Report right away**\n- Call the national cyber‑crime helpline **1930** and give them all details (caller name, phone number, OTP you shared, UPI transaction ID, amount Rs 30,000). Quick reporting helps freeze the money.\n- Also lodge a complaint on the portal https://www.cybercrime.gov.in/ (you’ll need the same details).\n\n**Step 2 – Inform your bank**\n- Write a short email/letter to your bank’s fraud desk (or use the in‑app “Report fraud” option). Mention the date, amount, UPI ID, and that you gave an OTP to a fraudster.\n- Ask them to block the transaction and start a reversal. Keep the acknowledgment.\n\n**Step 3 – Police FIR**\n- Go to the nearest police station (or file a Zero FIR online) and give them the FIR copy from the cyber‑crime portal. Bring your bank’s reply and any UPI screenshot.\n\n**What to keep**\n- Screenshots of the UPI transaction, chat/email with the fraud caller, bank’s acknowledgment.\n- Your ID proof for the FIR.\n\n**Next step**: Call **1930** now and simultaneously send a written complaint to your bank.\n\nI can help you draft the bank complaint or practice what to say on the phone – just let me know!"
+   }
+  ],
+  "case": {
+   "category": "cyber_fraud",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "amount_paid": 30000,
+    "problem_date": "2026-11-05"
+   },
+   "timeline": [
+    {
+     "date": "2026-11-05",
+     "event": "Fraudulent OTP shared, Rs 30,000 debited via UPI"
+    }
+   ],
+   "evidence_have": [
+    "UPI transaction screenshot",
+    "call log with fraudster (if any)"
+   ],
+   "evidence_missing": [
+    "bank’s written acknowledgment of your fraud complaint"
+   ],
+   "next_step": "Call 1930 and send a written complaint to your bank"
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 22.37,
+    "model": "openai/gpt-oss-120b",
+    "provider": "groq",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got cyber_fraud"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Latin, reply script Latin"
+  },
+  {
+   "check": "mentions:1930",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "mentions:bank",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation>=recommended",
+   "pass": false,
+   "detail": "got none"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "The response provides immediate, actionable, and accurate emergency instructions for a legal and financial fraud situation in India without making false guarantees.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.5-flash",
+   "latency_s": 3.43,
+   "usage": {
+    "completion_tokens": 59,
+    "prompt_tokens": 519,
+    "total_tokens": 578
+   },
+   "fallback_attempts": [
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 503: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usuall"
+   ]
+  }
+ }
+}

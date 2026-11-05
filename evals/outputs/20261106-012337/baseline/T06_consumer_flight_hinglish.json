@@ -1,0 +1,39 @@
+{
+ "id": "T06_consumer_flight_hinglish",
+ "reply": "नमस्ते। आपकी स्थिति काफी परेशान करने वाली है, लेकिन कानून आपके साथ है।\n\nभारतीय नागरिक उड्डयन महानिदेशालय (DGCA) के नियमों के अनुसार, यदि एयरलाइन आपकी फ्लाइट कैंसिल करती है, तो **आपको 'क्रेडिट शेल' (Credit Shell) लेने के लिए मजबूर नहीं किया जा सकता।** आपको पूरा पैसा वापस (Refund) पाने का पूरा अधिकार है।\n\nयहाँ आपके लिए कानूनी रास्ता और कदम दिए गए हैं:\n\n### 1. DGCA के नियम क्या कहते हैं?\nDGCA के 'Passenger Charter' और सुप्रीम कोर्ट के आदेशों के अनुसार, यदि एयरलाइन फ्लाइट कैंसिल करती है, तो उन्हें **7 कार्य दिवसों (7 working days)** के भीतर पूरा रिफंड वापस करना अनिवार्य है। एयरलाइन आपको वाउचर या क्रेडिट शेल लेने के लिए बाध्य नहीं कर सकती। यह पूरी तरह से आपकी मर्जी पर निर्भर है।\n\n### 2. आपको क्या कदम उठाने चाहिए?\n\n**स्टेप 1: अंतिम औपचारिक ईमेल (Final Notice Email)**\nएयरलाइन को एक कड़ा ईमेल लिखें। इसमें निम्नलिखित बातें शामिल करें:\n*   अपना PNR नंबर, टिकट नंबर और फ्लाइट की तारीख लिखें।\n*   स्पष्ट रूप से लिखें कि \"मैं क्रेडिट शेल नहीं चाहता/चाहती और मुझे अपने पैसे बैंक खाते में वापस चाहिए।\"\n*   DGCA के नियमों का हवाला दें।\n*   उन्हें 7 दिनों का समय दें और लिखें कि यदि रिफंड नहीं आया, तो आप **'Air Sewa'** पोर्टल और **'Consumer Forum'** में शिकायत दर्ज करेंगे।\n\n**स्टेप 2: Air Sewa पोर्टल पर शिकायत करें**\nयह नागरिक उड्डयन मंत्रालय का आधिकारिक पोर्टल है।\n*   वेबसाइट: [https://airsewa.gov.in/](https://airsewa.gov.in/) पर जाएं।\n*   अपनी शिकायत दर्ज करें। यहाँ की गई शिकायतें सीधे एयरलाइन के नोडल अधिकारियों तक पहुँचती हैं और अक्सर इसके बाद रिफंड जल्दी मिल जाता है।\n\n**स्टेप 3: उपभोक्ता फोरम (Consumer Forum) में शिकायत**\nयदि ऊपर दिए गए कदमों से भी काम नहीं बनता, तो आप **'E-Daakhil'** पोर्टल (https://edaakhil.nic.in/) के माध्यम से ऑनलाइन उपभोक्ता अदालत में शिकायत दर्ज कर सकते हैं।\n*   इसके लिए आपको वकील की जरूरत नहीं है, आप खुद भी यह कर सकते हैं।\n*   आप टिकट की कीमत के साथ-साथ मानसिक परेशानी और कानूनी नोटिस के खर्च के लिए भी हर्जाने (Compensation) की मांग कर सकते हैं।\n\n### 3. महत्वपूर्ण कानूनी संदर्भ (Case Law/Rules)\nआप अपनी शिकायत में **DGCA का 'Civil Aviation Requirement' (CAR) Section 3, Series M, Part IV** का उल्लेख कर सकते हैं। यह स्पष्ट करता है कि एयरलाइन को रिफंड देना ही होगा।\n\n**मेरी सलाह:**\nअभी तुरंत एयरलाइन को एक ईमेल भेजें और उसमें लिखें:\n*\"As per DGCA guidelines, I am entitled to a full refund to my original payment method. I do not accept the credit shell. If the refund is not processed within 7 days, I will be forced to escalate this matter to the Air Sewa portal and the Consumer Disputes Redressal Commission for deficiency of service.\"*\n\nज्यादातर मामलों में, जैसे ही आप 'Consumer Forum' या 'Air Sewa' का नाम लेते हैं, एयरलाइन रिफंड प्रोसेस कर देती है।\n\n**क्या आपके पास एयरलाइन के साथ हुई पिछली बातचीत का कोई ईमेल या चैट रिकॉर्ड है?** यदि है, तो उसे संभाल कर रखें, यह सबूत के तौर पर काम आएगा।\n\nआशा है कि यह जानकारी आपकी मदद करेगी। यदि आपको और सहायता चाहिए, तो बेझिझक पूछें।",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 4.02,
+  "usage": {
+   "completion_tokens": 780,
+   "prompt_tokens": 71,
+   "total_tokens": 972
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [
+   {
+    "type": "unknown_section",
+    "text": "Section 3",
+    "why": "Not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "unsupported_number",
+    "text": "7 working days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "7 दिन",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

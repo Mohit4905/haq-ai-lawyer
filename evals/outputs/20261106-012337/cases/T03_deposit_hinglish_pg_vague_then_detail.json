@@ -1,0 +1,403 @@
+{
+ "case": {
+  "id": "T03_deposit_hinglish_pg_vague_then_detail",
+  "group": "multi_turn",
+  "turns": [
+   "bhai mera paisa nahi de raha",
+   "PG wala hai pune me, 15000 deposit tha. 1 october ko chhoda. ab bolta hai notice period nahi diya isliye nahi dunga. koi agreement nahi tha bas whatsapp pe baat hui thi"
+  ],
+  "expect": {
+   "category": "tenancy",
+   "script": "Hinglish",
+   "first_turn_asks_question": true,
+   "facts": {
+    "deposit_amount": "15"
+   },
+   "must_mention_any": [
+    [
+     "whatsapp",
+     "WhatsApp",
+     "screenshot",
+     "chat"
+    ]
+   ],
+   "escalate_max": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "Namaste. Main aapki madad karne ki koshish karunga, par mujhe thoda aur batana hoga ki mamla kya hai. \n\nKya aap bata sakte hain ki ye paise kis baat ke hain? \n- Kya ye naukri ki salary (salary) hai?\n- Kya ye kisi saman ka refund (consumer refund) hai?\n- Kya ye ghar ka security deposit (rent deposit) hai?\n- Ya phir kisi ne cheque bounce kiya hai?\n\nYe bhi batayein ki kitne paise hain aur kab se nahi mil rahe hain? Isse main aapko sahi rasta dikha paunga.",
+   "citations": [],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 0,
+    "missing": []
+   },
+   "actions": [],
+   "next_step": "Clarify the nature of the debt to determine the correct legal path.",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "nature of debt",
+    "amount",
+    "timeline"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Hinglish",
+     "got": "Hinglish",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 3.08,
+    "usage": {
+     "completion_tokens": 321,
+     "prompt_tokens": 2014,
+     "total_tokens": 2444
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "other",
+       "language": "Hinglish",
+       "script": "Latin",
+       "facts": {
+        "summary": "User is reporting that someone is not paying them money, but the nature of the relationship or debt is unclear."
+       },
+       "approximate_dates": [],
+       "confidence": 0.9
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 1.9,
+       "usage": {
+        "completion_tokens": 84,
+        "prompt_tokens": 906,
+        "total_tokens": 1105
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 3.08,
+       "usage": {
+        "completion_tokens": 321,
+        "prompt_tokens": 2014,
+        "total_tokens": 2444
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 4.98
+  },
+  {
+   "reply": "Samajh gaya. Pune mein PG owner ka deposit na dena kaafi pareshan karne wala ho sakta hai. Bina written agreement ke thoda mushkil hota hai, par aapke WhatsApp messages hi aapka sabse bada saboot (evidence) hain. \n\nKanooni taur par, aap ye raste apna sakte hain:\n\n1. **Written Request:** Owner ko WhatsApp ya email par ek formal message bhejein. Usme saaf likhein ki aapne kab room chhoda, kitna deposit tha, aur aapka bank account details kya hai. Screenshot lekar rakhein.\n2. **Legal Notice:** Agar wo phir bhi na mane, toh aap khud ek 'Legal Notice' bhej sakte hain jisme 15 din ka time dein.\n3. **Legal Aid:** Agar baat nahi banti, toh aap Pune ke District Legal Services Authority (DLSA) se sampark kar sakte hain ya 15100 par call karke free salah le sakte hain.\n\nAgla kadam: Kya aapke paas wo WhatsApp chat hai jisme deposit aur room chhodne ki baat hui thi? Main aapko ek formal message ka draft bana kar de sakta hoon jo aap owner ko bhej sakein.",
+   "citations": [
+    {
+     "id": "ICA1872-S73",
+     "act": "Indian Contract Act, 1872",
+     "section": "73",
+     "title": "Compensation for breach of contract",
+     "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+     "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-NALSA-HELPLINE",
+     "act": "NALSA legal aid helpline",
+     "section": "",
+     "title": "NALSA legal aid helpline 15100",
+     "plain": "Call the national legal aid helpline 15100 (toll-free) for free legal advice and help applying for legal aid. You can also apply for legal aid or victim compensation online via the NALSA website.",
+     "source_url": "https://nalsa.gov.in/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Approximate last date to sue for the deposit (3 years)",
+      "date": "2029-10-01",
+      "days_left": 1060,
+      "status": "ok",
+      "basis": "LIM1963-ART55",
+      "note": "Limitation depends on the exact claim; confirm with legal aid before relying on it.",
+      "user_deadline": true
+     }
+    ],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 67,
+    "missing": [
+     {
+      "key": "monthly_rent",
+      "question": "What was the monthly rent (₹)?"
+     },
+     {
+      "key": "proof_of_payment",
+      "question": "Do you have proof you paid the deposit (bank transfer, receipt)?"
+     },
+     {
+      "key": "other_party_name",
+      "question": "Landlord's name (and address, if you have it)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "deposit_demand_notice"
+    }
+   ],
+   "next_step": "Draft a formal request message to the landlord.",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Did the user pay via bank transfer or cash?"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Hinglish",
+     "got": "Hinglish",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 3.91,
+    "usage": {
+     "completion_tokens": 619,
+     "prompt_tokens": 3288,
+     "total_tokens": 4031
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "tenancy",
+       "language": "Hinglish",
+       "script": "Latin",
+       "facts": {
+        "deposit_amount": 15000,
+        "written_agreement": false,
+        "possession_handed_over_date": "2026-10-01",
+        "communications_so_far": "WhatsApp",
+        "city_state": "Pune",
+        "summary": "PG owner refusing to return 15000 deposit claiming no notice period was given."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.04,
+       "usage": {
+        "completion_tokens": 149,
+        "prompt_tokens": 1059,
+        "total_tokens": 1316
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 3.91,
+       "usage": {
+        "completion_tokens": 619,
+        "prompt_tokens": 3288,
+        "total_tokens": 4031
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 5.95
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "bhai mera paisa nahi de raha"
+   },
+   {
+    "role": "assistant",
+    "content": "Namaste. Main aapki madad karne ki koshish karunga, par mujhe thoda aur batana hoga ki mamla kya hai. \n\nKya aap bata sakte hain ki ye paise kis baat ke hain? \n- Kya ye naukri ki salary (salary) hai?\n- Kya ye kisi saman ka refund (consumer refund) hai?\n- Kya ye ghar ka security deposit (rent deposit) hai?\n- Ya phir kisi ne cheque bounce kiya hai?\n\nYe bhi batayein ki kitne paise hain aur kab se nahi mil rahe hain? Isse main aapko sahi rasta dikha paunga."
+   },
+   {
+    "role": "user",
+    "content": "PG wala hai pune me, 15000 deposit tha. 1 october ko chhoda. ab bolta hai notice period nahi diya isliye nahi dunga. koi agreement nahi tha bas whatsapp pe baat hui thi"
+   },
+   {
+    "role": "assistant",
+    "content": "Samajh gaya. Pune mein PG owner ka deposit na dena kaafi pareshan karne wala ho sakta hai. Bina written agreement ke thoda mushkil hota hai, par aapke WhatsApp messages hi aapka sabse bada saboot (evidence) hain. \n\nKanooni taur par, aap ye raste apna sakte hain:\n\n1. **Written Request:** Owner ko WhatsApp ya email par ek formal message bhejein. Usme saaf likhein ki aapne kab room chhoda, kitna deposit tha, aur aapka bank account details kya hai. Screenshot lekar rakhein.\n2. **Legal Notice:** Agar wo phir bhi na mane, toh aap khud ek 'Legal Notice' bhej sakte hain jisme 15 din ka time dein.\n3. **Legal Aid:** Agar baat nahi banti, toh aap Pune ke District Legal Services Authority (DLSA) se sampark kar sakte hain ya 15100 par call karke free salah le sakte hain.\n\nAgla kadam: Kya aapke paas wo WhatsApp chat hai jisme deposit aur room chhodne ki baat hui thi? Main aapko ek formal message ka draft bana kar de sakta hoon jo aap owner ko bhej sakein."
+   }
+  ],
+  "case": {
+   "category": "tenancy",
+   "language": "Hinglish",
+   "script": "Latin",
+   "facts": {
+    "summary": "PG owner refusing to return 15000 deposit claiming no notice period was given.",
+    "deposit_amount": 15000,
+    "written_agreement": false,
+    "possession_handed_over_date": "2026-10-01",
+    "communications_so_far": "WhatsApp",
+    "city_state": "Pune",
+    "deductions_claimed": "notice period not given"
+   },
+   "timeline": [
+    {
+     "date": "2026-10-01",
+     "event": "Vacated PG"
+    }
+   ],
+   "evidence_have": [
+    "WhatsApp chat"
+   ],
+   "evidence_missing": [
+    "nature of the debt",
+    "amount",
+    "date when payment was due",
+    "Proof of payment (bank transfer receipt/screenshot)"
+   ],
+   "next_step": "Draft a formal request message to the landlord."
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 4.98,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   },
+   {
+    "t": 5.95,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got tenancy"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Hinglish, reply script Hinglish"
+  },
+  {
+   "check": "fact:deposit_amount",
+   "pass": true,
+   "detail": "expected ~15, got 15000"
+  },
+  {
+   "check": "mentions:whatsapp|WhatsApp|screenshot|chat",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "asks_clarifying_question",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "error": "All providers failed: groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199562, Requested 1052. Please try again in 4m25.248s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_l"
+ }
+}

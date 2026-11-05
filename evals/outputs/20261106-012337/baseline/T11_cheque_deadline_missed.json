@@ -1,0 +1,122 @@
+{
+ "id": "T11_cheque_deadline_missed",
+ "reply": "Yes, you can still file a case under Section 138 of the Negotiable Instruments Act, 1881, provided you act immediately.\n\nThe law provides a specific timeline for this process. Here is the breakdown of your situation and the steps you must take:\n\n### 1. The Statutory Timeline\nUnder Section 138 of the NI Act, the process is time-bound. You have missed the initial window, but you are not necessarily barred yet, depending on the current date.\n\n*   **The 30-Day Rule:** You are required to send a legal notice to the drawer of the cheque within **30 days** from the date of receiving the \"return memo\" (the intimation from the bank that the cheque has bounced).\n*   **The 15-Day Grace Period:** Once the drawer receives your legal notice, they have **15 days** to make the payment.\n*   **The Filing Window:** If they fail to pay within those 15 days, you have **30 days** to file a criminal complaint in the appropriate Magistrate’s Court.\n\n### 2. Can you still send the notice?\nIf today is **within 30 days of 10 August 2026**, you are still within the legal timeframe to send the notice.\n\n**However, if more than 30 days have passed since 10 August 2026:**\n*   Strictly speaking, the limitation period for sending the notice has expired.\n*   **The Proviso:** Section 142(1)(b) of the NI Act allows the Court to condone the delay if you can satisfy the Court that you had \"sufficient cause\" for not sending the notice within the prescribed time.\n*   **The Reality:** Courts are generally strict about timelines in Section 138 cases. While \"I was busy\" is rarely accepted as a valid legal excuse for condonation of delay, you should consult a local lawyer immediately to see if there are any other technical grounds (such as the date of *actual receipt* of the return memo, if it differed from the date on the memo) that can be used to save your case.\n\n### 3. Immediate Steps to Take\nIf you are still within the 30-day window (or even if you are slightly past it), do the following immediately:\n\n1.  **Consult a Lawyer:** Do not draft the notice yourself. A Section 138 notice must be legally precise. It must clearly state the amount, the cheque number, the bank, the reason for dishonour, and a clear demand for payment within 15 days.\n2.  **Send the Notice via Registered Post/Speed Post:** Ensure you keep the original postal receipts and the tracking report. This is crucial evidence.\n3.  **Check the Date of Receipt:** The 15-day period for the drawer to pay begins from the date they *receive* the notice, not the date you sent it.\n4.  **Do not delay further:** Every day you wait reduces your chances of the court accepting your case if you are already near the deadline.\n\n### Important Note on \"Sufficient Cause\"\nIf you are significantly past the 30-day deadline, the Supreme Court has held in various judgments (e.g., *Saketh India Ltd. vs. India Securities Ltd.*) that the limitation period is calculated strictly. If you have missed the deadline, your case may be dismissed on technical grounds.\n\n**Recommendation:** Contact a lawyer in your jurisdiction today. Provide them with the exact date you received the bank's return memo. They will be able to tell you if you are still within the limitation period or if there is a way to file an application for condonation of delay.\n\n***Disclaimer:** I am an AI, not a practicing advocate. This information is for educational purposes and does not constitute formal legal advice. Laws and court procedures can vary based on specific facts and local court rules. Please consult with a qualified lawyer in your area immediately.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 4.3,
+  "usage": {
+   "completion_tokens": 850,
+   "prompt_tokens": 88,
+   "total_tokens": 1096
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ],
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ],
+   [
+    "Section 142(1)(b)",
+    "Negotiable Instruments Act, 1881"
+   ]
+  ],
+  "violations": [
+   {
+    "type": "case_law",
+    "text": "Saketh India Ltd. vs. In",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Supreme Court has held",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "NI Act",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30-Day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15-Day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30-day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15-day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30-day",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

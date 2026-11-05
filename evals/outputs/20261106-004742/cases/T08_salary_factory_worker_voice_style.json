@@ -1,0 +1,327 @@
+{
+ "case": {
+  "id": "T08_salary_factory_worker_voice_style",
+  "group": "core",
+  "turns": [
+   "sir main factory me helper hu ghaziabad me thekedar ke through kaam karta tha 14000 mahina milta tha do mahine se paisa nahi diya thekedar bhag gaya company bolti hai thekedar se lo ab kya karu ghar ka kiraya bhi nahi de pa raha"
+  ],
+  "expect": {
+   "category": "salary",
+   "script": "Hinglish",
+   "facts": {
+    "monthly_salary": "14"
+   },
+   "must_mention_any": [
+    [
+     "labour",
+     "Labour",
+     "श्रम",
+     "Inspector",
+     "inspector"
+    ]
+   ],
+   "escalate_max": "urgent"
+  }
+ },
+ "results": [
+  {
+   "reply": "Hey! Chalo isko clear karte hain.\n1. Kya aap abhi bhi factory mein kaam kar rahe hain ya chhod diya? Agar chhod diya hai toh aapka last working day kab tha?\n2. Kya aapke paas employment ka koi proof hai – offer letter, payslips, salary credit dikhane wale bank statements, ya ID card?\n3. Kya aapne factory/HR ko unpaid wages ke baare mein likha ya bola hai? Haan toh unhone kya kaha?",
+   "citations": [
+    {
+     "id": "COW2019-S45",
+     "act": "Code on Wages, 2019",
+     "section": "45",
+     "title": "Filing a wage claim: who decides it and the 3-year limit",
+     "plain": "Wage claims under the Code are heard by an authority the Government appoints, who must be at least a Gazetted Officer. The claim can be filed by you, your registered trade union, or an Inspector-cum-Facilitator. File within 3 years of the date the claim arises; a later claim may still be accepted if you show sufficient cause. Besides the amount due, the authority can award compensation of up to ten times the claim, and it tries to decide within three months.",
+     "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "COW2019-S17",
+     "act": "Code on Wages, 2019",
+     "section": "17",
+     "title": "Deadline for paying wages, including after leaving the job",
+     "plain": "Wages are due by these deadlines: daily workers at the end of the shift; weekly workers on the last working day of the week; fortnightly workers before the end of the second day after the fortnight; monthly workers before the end of the 7th day of the next month. If you are removed, dismissed, retrenched or resign, or lose your job because the establishment closes, your wages must be paid within two working days.",
+     "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 67,
+    "missing": [
+     {
+      "key": "still_employed",
+      "question": "Are you still working there? If not, what was your last working day?"
+     },
+     {
+      "key": "employment_proof",
+      "question": "Proof of employment (offer letter, payslips, bank credits, ID card)?"
+     },
+     {
+      "key": "communications_so_far",
+      "question": "Have you asked HR/employer in writing?"
+     }
+    ]
+   },
+   "actions": [],
+   "next_step": "Ask for the missing facts",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "medium",
+   "unknowns": [
+    "employment status, proof, communication"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Hinglish",
+     "got": "Latin",
+     "rewritten": true,
+     "got_after": "Hinglish"
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "latency_s": 1.79,
+    "usage": {
+     "queue_time": 0.327917075,
+     "prompt_tokens": 3454,
+     "prompt_time": 0.259967286,
+     "completion_tokens": 218,
+     "completion_time": 0.296411745,
+     "total_tokens": 3672,
+     "total_time": 0.556379031,
+     "completion_tokens_details": {
+      "reasoning_tokens": 21
+     }
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+     "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "salary",
+       "language": "Hindi",
+       "script": "Devanagari",
+       "facts": {
+        "other_party_name": "thekedar",
+        "role": "helper",
+        "monthly_salary": 14000,
+        "unpaid_period": "2 months",
+        "amount_due": 28000,
+        "city_state": "Ghaziabad"
+       },
+       "approximate_dates": [],
+       "confidence": 0.9
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 2.55,
+       "usage": {
+        "queue_time": 1.5999222,
+        "prompt_tokens": 949,
+        "prompt_time": 0.121751895,
+        "completion_tokens": 189,
+        "completion_time": 0.207662697,
+        "total_tokens": 1138,
+        "total_time": 0.329414592,
+        "prompt_tokens_details": {
+         "cached_tokens": 768
+        },
+        "completion_tokens_details": {
+         "reasoning_tokens": 112
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic"
+       ]
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 1.79,
+       "usage": {
+        "queue_time": 0.327917075,
+        "prompt_tokens": 3454,
+        "prompt_time": 0.259967286,
+        "completion_tokens": 218,
+        "completion_time": 0.296411745,
+        "total_tokens": 3672,
+        "total_time": 0.556379031,
+        "completion_tokens_details": {
+         "reasoning_tokens": 21
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic"
+       ]
+      }
+     },
+     {
+      "step": "language_rewrite",
+      "llm": {
+       "provider": "groq",
+       "model": "qwen/qwen3.8-27b",
+       "latency_s": 1.65,
+       "usage": {
+        "queue_time": 0.579820326,
+        "prompt_tokens": 169,
+        "prompt_time": 0.014366828,
+        "completion_tokens": 188,
+        "completion_time": 0.443040233,
+        "total_tokens": 357,
+        "total_time": 0.457407061,
+        "completion_tokens_details": {
+         "reasoning_tokens": 58
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 40.71
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "sir main factory me helper hu ghaziabad me thekedar ke through kaam karta tha 14000 mahina milta tha do mahine se paisa nahi diya thekedar bhag gaya company bolti hai thekedar se lo ab kya karu ghar ka kiraya bhi nahi de pa raha"
+   },
+   {
+    "role": "assistant",
+    "content": "Hey! Chalo isko clear karte hain.\n1. Kya aap abhi bhi factory mein kaam kar rahe hain ya chhod diya? Agar chhod diya hai toh aapka last working day kab tha?\n2. Kya aapke paas employment ka koi proof hai – offer letter, payslips, salary credit dikhane wale bank statements, ya ID card?\n3. Kya aapne factory/HR ko unpaid wages ke baare mein likha ya bola hai? Haan toh unhone kya kaha?"
+   }
+  ],
+  "case": {
+   "category": "salary",
+   "language": "Hinglish",
+   "script": "Latin",
+   "facts": {
+    "other_party_name": "thekedar",
+    "role": "helper",
+    "monthly_salary": 14000,
+    "unpaid_period": "2 months",
+    "amount_due": 28000,
+    "city_state": "Ghaziabad"
+   },
+   "timeline": [],
+   "evidence_have": [],
+   "evidence_missing": [
+    "employment proof",
+    "communication with factory/HR"
+   ],
+   "next_step": "Ask for the missing facts"
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 40.71,
+    "model": "openai/gpt-oss-20b",
+    "provider": "groq",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got salary"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Hinglish, reply script Hinglish"
+  },
+  {
+   "check": "fact:monthly_salary",
+   "pass": true,
+   "detail": "expected ~14, got 14000"
+  },
+  {
+   "check": "mentions:labour|Labour|श्रम|Inspector|inspector",
+   "pass": false,
+   "detail": ""
+  },
+  {
+   "check": "escalation<=urgent",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 2,
+  "honest": 4,
+  "accurate_scope": 5,
+  "comment": "The assistant is polite and clear, but fails to provide immediate, actionable legal guidance for a desperate user who needs urgent help, prioritizing data collection over crisis support.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 1.89,
+   "usage": {
+    "completion_tokens": 78,
+    "prompt_tokens": 353,
+    "total_tokens": 555
+   },
+   "fallback_attempts": [
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+   ]
+  }
+ }
+}

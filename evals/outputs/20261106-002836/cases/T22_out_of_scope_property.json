@@ -1,0 +1,252 @@
+{
+ "case": {
+  "id": "T22_out_of_scope_property",
+  "group": "scope",
+  "turns": [
+   "My uncle has occupied our ancestral land in the village and got the mutation done in his name. How do I get the land back?"
+  ],
+  "expect": {
+   "category_any": [
+    "out_of_scope",
+    "other"
+   ],
+   "escalate_min": "urgent"
+  }
+ },
+ "results": [
+  {
+   "reply": "I’m sorry to hear about this. This is a property‑title issue, which is outside the scope of the categories I can help with directly. You’ll need to consult a lawyer or a local legal aid office to explore options like filing a suit for recovery of possession or a petition for cancellation of the mutation. In the meantime, gather any documents that prove your family’s ownership (old sale deed, tax receipts, family records, etc.) and note the date when your uncle got the mutation. I can help you draft a letter to a lawyer or guide you on what documents to collect. Let me know if you’d like that.\n\nIf you need free legal aid, call the national legal aid helpline 15100 or visit your nearest Legal Services Authority office.",
+   "citations": [
+    {
+     "id": "FACT-NALSA-HELPLINE",
+     "act": "NALSA legal aid helpline",
+     "section": "",
+     "title": "NALSA legal aid helpline 15100",
+     "plain": "Call the national legal aid helpline 15100 (toll-free) for free legal advice and help applying for legal aid. You can also apply for legal aid or victim compensation online via the NALSA website.",
+     "source_url": "https://nalsa.gov.in/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 0,
+    "missing": []
+   },
+   "actions": [
+    {
+     "type": "get_help"
+    }
+   ],
+   "next_step": "Consult a lawyer or local legal aid office",
+   "needs_lawyer": {
+    "level": "urgent",
+    "reasons": [
+     "Property title / possession: needs a lawyer",
+     "Property title dispute requires legal representation"
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "medium",
+   "unknowns": [
+    "Exact date of mutation",
+    "Any prior agreements or documents"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "latency_s": 1.77,
+    "usage": {
+     "queue_time": 0.41003067,
+     "prompt_tokens": 2141,
+     "prompt_time": 0.139937471,
+     "completion_tokens": 331,
+     "completion_time": 0.417642447,
+     "total_tokens": 2472,
+     "total_time": 0.557579918,
+     "completion_tokens_details": {
+      "reasoning_tokens": 14
+     }
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": [
+       {
+        "level": "urgent",
+        "reason": "Property title / possession: needs a lawyer"
+       }
+      ]
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "out_of_scope",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "other_party_name": "uncle",
+        "summary": "Uncle occupied ancestral land and got mutation in his name, wants to get land back."
+       },
+       "approximate_dates": [],
+       "confidence": 0.9
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 1.14,
+       "usage": {
+        "queue_time": 0.15730767,
+        "prompt_tokens": 913,
+        "prompt_time": 0.07401778,
+        "completion_tokens": 150,
+        "completion_time": 0.167179012,
+        "total_tokens": 1063,
+        "total_time": 0.241196792,
+        "completion_tokens_details": {
+         "reasoning_tokens": 85
+        }
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 1.77,
+       "usage": {
+        "queue_time": 0.41003067,
+        "prompt_tokens": 2141,
+        "prompt_time": 0.139937471,
+        "completion_tokens": 331,
+        "completion_time": 0.417642447,
+        "total_tokens": 2472,
+        "total_time": 0.557579918,
+        "completion_tokens_details": {
+         "reasoning_tokens": 14
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 4.47
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "My uncle has occupied our ancestral land in the village and got the mutation done in his name. How do I get the land back?"
+   },
+   {
+    "role": "assistant",
+    "content": "I’m sorry to hear about this. This is a property‑title issue, which is outside the scope of the categories I can help with directly. You’ll need to consult a lawyer or a local legal aid office to explore options like filing a suit for recovery of possession or a petition for cancellation of the mutation. In the meantime, gather any documents that prove your family’s ownership (old sale deed, tax receipts, family records, etc.) and note the date when your uncle got the mutation. I can help you draft a letter to a lawyer or guide you on what documents to collect. Let me know if you’d like that.\n\nIf you need free legal aid, call the national legal aid helpline 15100 or visit your nearest Legal Services Authority office."
+   }
+  ],
+  "case": {
+   "category": "out_of_scope",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "other_party_name": "uncle",
+    "summary": "Uncle occupied ancestral land and got mutation in his name",
+    "user_name": "[unknown]"
+   },
+   "timeline": [],
+   "evidence_have": [],
+   "evidence_missing": [
+    "Proof of original ownership (deed, tax receipts, family records)",
+    "Copy of mutation in uncle’s name"
+   ],
+   "next_step": "Consult a lawyer or local legal aid office"
+  },
+  "flags": {
+   "level": "urgent",
+   "reasons": [
+    "Property title / possession: needs a lawyer",
+    "Property title dispute requires legal representation"
+   ]
+  },
+  "log": [
+   {
+    "t": 4.47,
+    "model": "openai/gpt-oss-20b",
+    "provider": "groq",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got out_of_scope"
+  },
+  {
+   "check": "escalation>=urgent",
+   "pass": true,
+   "detail": "got urgent"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 4,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "The response is clear, honest about its limitations, and provides helpful, accurate guidance on immediate steps without overstepping into unauthorized legal advice.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 8.92,
+   "usage": {
+    "completion_tokens": 73,
+    "prompt_tokens": 372,
+    "total_tokens": 551
+   },
+   "fallback_attempts": [
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+   ]
+  }
+ }
+}

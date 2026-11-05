@@ -1,0 +1,368 @@
+{
+ "case": {
+  "id": "T20_builder_delay_big",
+  "group": "edge",
+  "turns": [
+   "I paid Rs 85 lakh to a builder in Gurugram for a flat in 2021, possession was promised by December 2024 and still nothing. Can I file a consumer complaint myself?"
+  ],
+  "expect": {
+   "category": "consumer",
+   "escalate_min": "recommended",
+   "derived_expect": {
+    "label": "Where to file",
+    "contains": "State"
+   }
+  }
+ },
+ "results": [
+  {
+   "reply": "Yes — you can file a consumer complaint yourself, no lawyer needed. You file directly on **e-Jagriti** (e-jagriti.gov.in).\n\n**⚠️ Deadline is close:** your last date to file is **1 December 2026** — about **25 days from now**. If you miss it, the Commission can still accept a late complaint only if you show a good reason for the delay. So don't sit on this.\n\n**Where & how much:**\n- Haryana **State** Consumer Commission (your payment is above ₹50 lakh)\n- Filing fee: **₹2,000**\n\n**Before you file, two quick questions:**\n1. Have you sent any written complaint or email to the builder about the delay? If yes, when, and what did they reply?\n2. What proof do you have — sale agreement, payment receipts, any letters or WhatsApp messages from the builder about the promised date?\n\n**Suggested order (cheapest first):**\n- Written complaint to builder → NCH 1915 (free) → e-Jagriti filing\n\nGiven the amount (₹85 lakh) and the tight deadline, I'd recommend at least a quick call to **NALSA 15100** (free) to confirm your strategy before filing. Want me to draft the written complaint to the builder, or the e-Jagriti complaint?",
+   "citations": [
+    {
+     "id": "CPA2019-S35",
+     "act": "Consumer Protection Act, 2019",
+     "section": "35",
+     "title": "Who can file a complaint, and electronic filing",
+     "plain": "A complaint can be filed with the District Commission by the consumer, by a registered consumer association, by one or more consumers on behalf of many with the same interest (with the Commission's permission), or by the Central/State Government or the Central Authority. The Act allows complaints to be filed electronically, and the prescribed fee can be paid electronically.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/CP%20Act%202019_1732700731.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPA2019-S69",
+     "act": "Consumer Protection Act, 2019",
+     "section": "69",
+     "title": "Limitation period for filing complaint",
+     "plain": "You must file a consumer complaint within two years from the date the problem (cause of action) arose. A later complaint can still be accepted if you show sufficient cause for the delay, but the Commission must record its reasons for condoning the delay.",
+     "source_url": "https://indiacode.gov.in/server/api/core/items/f2c38f98-2e6c-4d75-af6f-f35ecddefb25",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPJURIS2021-R3-5",
+     "act": "Consumer Protection (Jurisdiction of the District Commission, the State Commission and the National Commission) Rules, 2021",
+     "section": "Rules 3-5",
+     "title": "Money limits of District, State and National Commissions",
+     "plain": "Where you file depends on how much you paid for the goods or service. Up to Rs 50 lakh: District Commission. Above Rs 50 lakh and up to Rs 2 crore: State Commission. Above Rs 2 crore: National Commission (NCDRC).",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/232278_1732705029.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPCDRC2020-R7",
+     "act": "Consumer Protection (Consumer Disputes Redressal Commissions) Rules, 2020",
+     "section": "Rule 7",
+     "title": "Complaint filing fee schedule (nil up to Rs 5 lakh)",
+     "plain": "There is no fee for a consumer complaint where the amount paid is up to Rs 5 lakh. The fee is Rs 200 for Rs 5-10 lakh, Rs 400 for Rs 10-20 lakh, Rs 1,000 for Rs 20-50 lakh, Rs 2,000 for Rs 50 lakh-1 crore and Rs 2,500 for Rs 1-2 crore. It rises to Rs 7,500 above Rs 10 crore.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/CDRC%20Amendment%20Rules%202023-1_1732707073.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-EJAGRITI-PORTAL",
+     "act": "e-Jagriti consumer e-filing portal",
+     "section": "",
+     "title": "e-Jagriti: current portal for filing consumer complaints (replaced e-Daakhil)",
+     "plain": "Consumer complaints to the District, State and National Commissions are now filed online on e-Jagriti (https://e-jagriti.gov.in/). It launched on 1 January 2025 and merged the older e-Daakhil, OCMS, NCDRC CMS and CONFONET systems. You can file, pay fees, attend virtual hearings and track your case there.",
+     "source_url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/dec/doc20251223743001.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-NCH-HELPLINE",
+     "act": "National Consumer Helpline",
+     "section": "",
+     "title": "National Consumer Helpline (NCH) contact details",
+     "plain": "Before going to a Consumer Commission, you can register a complaint free with the National Consumer Helpline. Call 1915 or 1800-11-4000 (toll-free), WhatsApp or SMS +91 8800001915, or file online at consumerhelpline.gov.in. NCH is a pre-litigation mediation channel, not a court, and cannot pass binding orders.",
+     "source_url": "https://consumerhelpline.gov.in/",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-NALSA-HELPLINE",
+     "act": "NALSA legal aid helpline",
+     "section": "",
+     "title": "NALSA legal aid helpline 15100",
+     "plain": "Call the national legal aid helpline 15100 (toll-free) for free legal advice and help applying for legal aid. You can also apply for legal aid or victim compensation online via the NALSA website.",
+     "source_url": "https://nalsa.gov.in/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Last date to file a consumer complaint (2 years from when the problem arose)",
+      "date": "2026-12-01",
+      "days_left": 25,
+      "status": "ok",
+      "basis": "CPA2019-S69",
+      "note": "The commission can accept a late complaint only if you show sufficient cause for the delay.",
+      "user_deadline": true
+     }
+    ],
+    "derived": [
+     {
+      "label": "Where to file",
+      "value": "State Consumer Disputes Redressal Commission",
+      "basis": "CPJURIS2021-R3-5",
+      "note": "Based on the amount you paid (₹85,00,000), not the amount you claim."
+     },
+     {
+      "label": "Filing fee",
+      "value": "₹2,000",
+      "basis": "CPCDRC2020-R7",
+      "note": ""
+     }
+    ]
+   },
+   "completeness": {
+    "pct": 75,
+    "missing": [
+     {
+      "key": "complained_to_company",
+      "question": "Have you complained to the company? When, and what did they say?"
+     },
+     {
+      "key": "proof",
+      "question": "What proof do you have (invoice, order ID, chats, emails, photos)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "company_complaint_email"
+    },
+    {
+     "type": "get_help"
+    }
+   ],
+   "next_step": "Send a written complaint to the builder (email + registered post) demanding possession or refund, with a 15-day deadline; keep proof of sending.",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "Large amount (₹85 lakh), deadline within 25 days, and construction-delay cases can involve complex facts (RERA, specific performance vs refund). A quick free consult via NALSA 15100 is wise before filing."
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "medium",
+   "unknowns": [
+    "Whether the user has sent any prior written complaint to the builder",
+    "What specific proof (agreement, receipts, correspondence) the user holds",
+    "Whether the builder has a RERA registration (not in verified library, so not cited)",
+    "Exact purchase date and possession date are approximate"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "groq",
+    "model": "qwen/qwen3.8-27b",
+    "latency_s": 4.59,
+    "usage": {
+     "queue_time": 0.047921408,
+     "prompt_tokens": 4005,
+     "prompt_time": 0.279112982,
+     "completion_tokens": 1684,
+     "completion_time": 3.508509386,
+     "total_tokens": 5689,
+     "total_time": 3.787622368,
+     "completion_tokens_details": {
+      "reasoning_tokens": 721
+     }
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "consumer",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "product_or_service": "flat construction",
+        "other_party_name": "builder",
+        "amount_paid": 8500000,
+        "purchase_date": "2021-01-01",
+        "problem_date": "2024-12-01",
+        "city_state": "Gurugram, Haryana",
+        "summary": "Paid Rs 85 lakh to builder in 2021 for a flat, possession promised by Dec 2024 but not delivered."
+       },
+       "approximate_dates": [
+        "purchase_date",
+        "problem_date"
+       ],
+       "confidence": 0.9
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 2.22,
+       "usage": {
+        "queue_time": 1.003229171,
+        "prompt_tokens": 927,
+        "prompt_time": 0.103400391,
+        "completion_tokens": 293,
+        "completion_time": 0.350004581,
+        "total_tokens": 1220,
+        "total_time": 0.453404972,
+        "completion_tokens_details": {
+         "reasoning_tokens": 173
+        }
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "qwen/qwen3.8-27b",
+       "latency_s": 4.59,
+       "usage": {
+        "queue_time": 0.047921408,
+        "prompt_tokens": 4005,
+        "prompt_time": 0.279112982,
+        "completion_tokens": 1684,
+        "completion_time": 3.508509386,
+        "total_tokens": 5689,
+        "total_time": 3.787622368,
+        "completion_tokens_details": {
+         "reasoning_tokens": 721
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 7.53
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "I paid Rs 85 lakh to a builder in Gurugram for a flat in 2021, possession was promised by December 2024 and still nothing. Can I file a consumer complaint myself?"
+   },
+   {
+    "role": "assistant",
+    "content": "Yes — you can file a consumer complaint yourself, no lawyer needed. You file directly on **e-Jagriti** (e-jagriti.gov.in).\n\n**⚠️ Deadline is close:** your last date to file is **1 December 2026** — about **25 days from now**. If you miss it, the Commission can still accept a late complaint only if you show a good reason for the delay. So don't sit on this.\n\n**Where & how much:**\n- Haryana **State** Consumer Commission (your payment is above ₹50 lakh)\n- Filing fee: **₹2,000**\n\n**Before you file, two quick questions:**\n1. Have you sent any written complaint or email to the builder about the delay? If yes, when, and what did they reply?\n2. What proof do you have — sale agreement, payment receipts, any letters or WhatsApp messages from the builder about the promised date?\n\n**Suggested order (cheapest first):**\n- Written complaint to builder → NCH 1915 (free) → e-Jagriti filing\n\nGiven the amount (₹85 lakh) and the tight deadline, I'd recommend at least a quick call to **NALSA 15100** (free) to confirm your strategy before filing. Want me to draft the written complaint to the builder, or the e-Jagriti complaint?"
+   }
+  ],
+  "case": {
+   "category": "consumer",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "product_or_service": "flat construction",
+    "other_party_name": "builder",
+    "amount_paid": 8500000,
+    "purchase_date": "2021-01-01",
+    "problem_date": "2024-12-01",
+    "city_state": "Gurugram, Haryana",
+    "summary": "Paid Rs 85 lakh to builder in 2021 for a flat, possession promised by Dec 2024 but not delivered."
+   },
+   "timeline": [
+    {
+     "date": "2021-01-01",
+     "event": "Paid ₹85 lakh to builder for flat (approximate)"
+    },
+    {
+     "date": "2024-12-01",
+     "event": "Promised possession date passed without delivery (approximate)"
+    }
+   ],
+   "evidence_have": [],
+   "evidence_missing": [
+    "Sale/booking agreement with builder",
+    "Payment receipts or bank transfer records",
+    "Any written communication (letters, emails, WhatsApp) from builder about the promised date or delay",
+    "Any prior complaint sent to builder and their reply"
+   ],
+   "next_step": "Send a written complaint to the builder (email + registered post) demanding possession or refund, with a 15-day deadline; keep proof of sending.",
+   "approximate": [
+    "problem_date",
+    "purchase_date"
+   ]
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "Large amount (₹85 lakh), deadline within 25 days, and construction-delay cases can involve complex facts (RERA, specific performance vs refund). A quick free consult via NALSA 15100 is wise before filing."
+   ]
+  },
+  "log": [
+   {
+    "t": 7.53,
+    "model": "qwen/qwen3.8-27b",
+    "provider": "groq",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got consumer"
+  },
+  {
+   "check": "escalation>=recommended",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "derived:Where to file",
+   "pass": true,
+   "detail": "[{\"label\": \"Where to file\", \"value\": \"State Consumer Disputes Redressal Commission\", \"basis\": \"CPJURIS2021-R3-5\", \"note\": \"Based on the amount you paid (\\u20b985,00,000), not the amount you claim.\"}, {\"label\": \"Filing fee\", \"value\": \"\\u20b92,000\", \"basis\": \"CPCDRC2020-R7\", \"note\": \"\"}]"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 4,
+  "accurate_scope": 3,
+  "comment": "The assistant is highly actionable and clear, but it incorrectly assumes the limitation period is 2 years from the promised possession date rather than the date the cause of action arose, and it incorrectly directs the user to the State Commission without considering the current pecuniary jurisdiction rules.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 14.53,
+   "usage": {
+    "completion_tokens": 98,
+    "prompt_tokens": 529,
+    "total_tokens": 762
+   },
+   "fallback_attempts": [
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+   ]
+  }
+ }
+}

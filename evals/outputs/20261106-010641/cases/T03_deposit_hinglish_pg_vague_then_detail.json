@@ -1,0 +1,476 @@
+{
+ "case": {
+  "id": "T03_deposit_hinglish_pg_vague_then_detail",
+  "group": "multi_turn",
+  "turns": [
+   "bhai mera paisa nahi de raha",
+   "PG wala hai pune me, 15000 deposit tha. 1 october ko chhoda. ab bolta hai notice period nahi diya isliye nahi dunga. koi agreement nahi tha bas whatsapp pe baat hui thi"
+  ],
+  "expect": {
+   "category": "tenancy",
+   "script": "Hinglish",
+   "first_turn_asks_question": true,
+   "facts": {
+    "deposit_amount": "15"
+   },
+   "must_mention_any": [
+    [
+     "whatsapp",
+     "WhatsApp",
+     "screenshot",
+     "chat"
+    ]
+   ],
+   "escalate_max": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "Namaste. Main aapki madad karne ki koshish karunga, lekin mujhe thoda aur batana hoga taaki main sahi raasta dikha sakun. Yeh paisa kis cheez ka hai? \n\nKya yeh:\n1. Kisi company se refund chahiye?\n2. Naukri ki salary (salary) baaki hai?\n3. Ghar ka security deposit (security deposit) hai?\n4. Kisi ne cheque diya tha jo bounce ho gaya?\n5. Ya koi aur mamla hai?\n\nKitna paisa hai aur kab se nahi mil raha? Yeh bataiye, phir main aapko aage ke steps bata paunga.",
+   "citations": [],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 0,
+    "missing": []
+   },
+   "actions": [],
+   "next_step": "Clarify the nature of the debt to determine the correct legal path.",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "nature of the debt",
+    "amount",
+    "timeline"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Hinglish",
+     "got": "Hinglish",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 3.11,
+    "usage": {
+     "completion_tokens": 329,
+     "prompt_tokens": 2014,
+     "total_tokens": 2477
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 400: {\"error\":{\"message\":\"Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.\",\"type\":\"inva",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+     "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+     "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "other",
+       "language": "Hinglish",
+       "script": "Latin",
+       "facts": {
+        "summary": "User is reporting that someone is not paying them money, but the nature of the relationship or debt is unclear."
+       },
+       "approximate_dates": [],
+       "confidence": 0.9
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 1.62,
+       "usage": {
+        "completion_tokens": 84,
+        "prompt_tokens": 906,
+        "total_tokens": 1105
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie"
+       ]
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 3.11,
+       "usage": {
+        "completion_tokens": 329,
+        "prompt_tokens": 2014,
+        "total_tokens": 2477
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 400: {\"error\":{\"message\":\"Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.\",\"type\":\"inva",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+        "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 11.27
+  },
+  {
+   "reply": "Samajh gaya. Pune mein PG owner ka deposit (security deposit) ka mamla hai. Bina written agreement ke bhi, aapka claim valid ho sakta hai kyunki WhatsApp par hui baatcheet ek tarah ka saboot (evidence) hai.\n\n**Aapki sthiti (Your standing):**\n- Bina agreement ke, landlord ka 'notice period' ka claim prove karna mushkil hota hai, lekin aapka deposit wapas lena aapka haq hai.\n- Indian Contract Act, 1872 (Section 73) ke tehat, aap apna paisa claim kar sakte hain.\n\n**Options (Cheapest to formal):**\n1. **Written Request:** WhatsApp ya email par ek formal message bhejiye jisme saaf likha ho ki aapne kab room chhoda aur aapka bank account details kya hai. Screenshot sambhal kar rakhein.\n2. **Legal Notice:** Agar woh phir bhi na maane, toh aap khud ek legal notice bhej sakte hain (main isme madad kar sakta hoon).\n3. **Lok Adalat:** District Legal Services Authority (DLSA) ke zariye free mein settlement ki koshish kar sakte hain.\n\n**Agla kadam:**\nSabse pehle ek formal WhatsApp message bhejiye. Kya aap chahte hain ki main uske liye ek draft likh kar doon?",
+   "citations": [
+    {
+     "id": "ICA1872-S73",
+     "act": "Indian Contract Act, 1872",
+     "section": "73",
+     "title": "Compensation for breach of contract",
+     "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+     "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "LIM1963-ART55",
+     "act": "Limitation Act, 1963",
+     "section": "Schedule, Article 55",
+     "title": "3 years to sue for compensation for breach of contract",
+     "plain": "A suit for compensation for breach of a contract (written or implied), where no other article covers it specifically, must be filed within 3 years. Time runs from the date of the breach. If there are repeated breaches, it runs from the breach you sue on; if the breach is continuing, from when it stops.",
+     "source_url": "https://www.thc.nic.in/Central%20Governmental%20Acts/Limitation%20Act,%202019.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-LOKADALAT-PRELITIGATION",
+     "act": "Legal Services Authorities Act, 1987",
+     "section": "",
+     "title": "Pre-litigation settlement through Lok Adalat",
+     "plain": "Even before filing a case, one party can apply to the District or State Legal Services Authority to have a civil dispute, or a compoundable criminal matter, referred to a Lok Adalat for amicable settlement. Non-compoundable offences are excluded. This is available now, unlike Mediation Act section 5.",
+     "source_url": "https://delhi.nalsa.gov.in/lok-adalat/",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-NALSA-HELPLINE",
+     "act": "NALSA legal aid helpline",
+     "section": "",
+     "title": "NALSA legal aid helpline 15100",
+     "plain": "Call the national legal aid helpline 15100 (toll-free) for free legal advice and help applying for legal aid. You can also apply for legal aid or victim compensation online via the NALSA website.",
+     "source_url": "https://nalsa.gov.in/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Approximate last date to sue for the deposit (3 years)",
+      "date": "2029-10-01",
+      "days_left": 1060,
+      "status": "ok",
+      "basis": "LIM1963-ART55",
+      "note": "Limitation depends on the exact claim; confirm with legal aid before relying on it.",
+      "user_deadline": true
+     }
+    ],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 67,
+    "missing": [
+     {
+      "key": "monthly_rent",
+      "question": "What was the monthly rent (₹)?"
+     },
+     {
+      "key": "proof_of_payment",
+      "question": "Do you have proof you paid the deposit (bank transfer, receipt)?"
+     },
+     {
+      "key": "other_party_name",
+      "question": "Landlord's name (and address, if you have it)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "deposit_demand_notice"
+    }
+   ],
+   "next_step": "Draft a formal WhatsApp message demanding the refund.",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Whether the user has proof of the initial deposit payment (bank statement/receipt)"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [
+      [
+       "Section 73",
+       "Indian Contract Act, 1872"
+      ]
+     ],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [
+      [
+       "Section 73",
+       "Indian Contract Act, 1872"
+      ]
+     ],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Hinglish",
+     "got": "Hinglish",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 4.45,
+    "usage": {
+     "completion_tokens": 661,
+     "prompt_tokens": 3307,
+     "total_tokens": 4085
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+     "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+     "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "tenancy",
+       "language": "Hinglish",
+       "script": "Latin",
+       "facts": {
+        "deposit_amount": 15000,
+        "written_agreement": false,
+        "possession_handed_over_date": "2026-10-01",
+        "communications_so_far": "WhatsApp",
+        "city_state": "Pune",
+        "summary": "User is claiming a security deposit of 15000 from a PG owner in Pune who is refusing to pay due to lack of notice period."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 1.84,
+       "usage": {
+        "completion_tokens": 161,
+        "prompt_tokens": 1065,
+        "total_tokens": 1335
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie"
+       ]
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 4.45,
+       "usage": {
+        "completion_tokens": 661,
+        "prompt_tokens": 3307,
+        "total_tokens": 4085
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+        "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 11.11
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "bhai mera paisa nahi de raha"
+   },
+   {
+    "role": "assistant",
+    "content": "Namaste. Main aapki madad karne ki koshish karunga, lekin mujhe thoda aur batana hoga taaki main sahi raasta dikha sakun. Yeh paisa kis cheez ka hai? \n\nKya yeh:\n1. Kisi company se refund chahiye?\n2. Naukri ki salary (salary) baaki hai?\n3. Ghar ka security deposit (security deposit) hai?\n4. Kisi ne cheque diya tha jo bounce ho gaya?\n5. Ya koi aur mamla hai?\n\nKitna paisa hai aur kab se nahi mil raha? Yeh bataiye, phir main aapko aage ke steps bata paunga."
+   },
+   {
+    "role": "user",
+    "content": "PG wala hai pune me, 15000 deposit tha. 1 october ko chhoda. ab bolta hai notice period nahi diya isliye nahi dunga. koi agreement nahi tha bas whatsapp pe baat hui thi"
+   },
+   {
+    "role": "assistant",
+    "content": "Samajh gaya. Pune mein PG owner ka deposit (security deposit) ka mamla hai. Bina written agreement ke bhi, aapka claim valid ho sakta hai kyunki WhatsApp par hui baatcheet ek tarah ka saboot (evidence) hai.\n\n**Aapki sthiti (Your standing):**\n- Bina agreement ke, landlord ka 'notice period' ka claim prove karna mushkil hota hai, lekin aapka deposit wapas lena aapka haq hai.\n- Indian Contract Act, 1872 (Section 73) ke tehat, aap apna paisa claim kar sakte hain.\n\n**Options (Cheapest to formal):**\n1. **Written Request:** WhatsApp ya email par ek formal message bhejiye jisme saaf likha ho ki aapne kab room chhoda aur aapka bank account details kya hai. Screenshot sambhal kar rakhein.\n2. **Legal Notice:** Agar woh phir bhi na maane, toh aap khud ek legal notice bhej sakte hain (main isme madad kar sakta hoon).\n3. **Lok Adalat:** District Legal Services Authority (DLSA) ke zariye free mein settlement ki koshish kar sakte hain.\n\n**Agla kadam:**\nSabse pehle ek formal WhatsApp message bhejiye. Kya aap chahte hain ki main uske liye ek draft likh kar doon?"
+   }
+  ],
+  "case": {
+   "category": "tenancy",
+   "language": "Hinglish",
+   "script": "Latin",
+   "facts": {
+    "summary": "User is claiming a security deposit of 15000 from a PG owner in Pune who is refusing to pay due to lack of notice period.",
+    "deposit_amount": 15000,
+    "written_agreement": false,
+    "possession_handed_over_date": "2026-10-01",
+    "communications_so_far": "WhatsApp",
+    "city_state": "Pune",
+    "deductions_claimed": "notice period"
+   },
+   "timeline": [
+    {
+     "date": "2026-10-01",
+     "event": "Moved out of PG"
+    }
+   ],
+   "evidence_have": [
+    "WhatsApp chat history"
+   ],
+   "evidence_missing": [
+    "nature of the debt",
+    "amount",
+    "date when payment was due",
+    "Bank transfer proof of deposit payment"
+   ],
+   "next_step": "Draft a formal WhatsApp message demanding the refund."
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 11.27,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   },
+   {
+    "t": 11.11,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got tenancy"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Hinglish, reply script Hinglish"
+  },
+  {
+   "check": "fact:deposit_amount",
+   "pass": true,
+   "detail": "expected ~15, got 15000"
+  },
+  {
+   "check": "mentions:whatsapp|WhatsApp|screenshot|chat",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "asks_clarifying_question",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 4,
+  "accurate_scope": 3,
+  "comment": "The advice is practical and easy to understand, but citing Section 73 of the Indian Contract Act is legally over-reaching and irrelevant for a simple tenancy deposit dispute, which is better governed by local rent control or general civil recovery principles.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 2.47,
+   "usage": {
+    "completion_tokens": 94,
+    "prompt_tokens": 525,
+    "total_tokens": 743
+   },
+   "fallback_attempts": [
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+   ]
+  }
+ }
+}

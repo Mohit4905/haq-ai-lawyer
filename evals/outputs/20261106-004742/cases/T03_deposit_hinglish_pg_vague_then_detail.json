@@ -1,0 +1,503 @@
+{
+ "case": {
+  "id": "T03_deposit_hinglish_pg_vague_then_detail",
+  "group": "multi_turn",
+  "turns": [
+   "bhai mera paisa nahi de raha",
+   "PG wala hai pune me, 15000 deposit tha. 1 october ko chhoda. ab bolta hai notice period nahi diya isliye nahi dunga. koi agreement nahi tha bas whatsapp pe baat hui thi"
+  ],
+  "expect": {
+   "category": "tenancy",
+   "script": "Hinglish",
+   "first_turn_asks_question": true,
+   "facts": {
+    "deposit_amount": "15"
+   },
+   "must_mention_any": [
+    [
+     "whatsapp",
+     "WhatsApp",
+     "screenshot",
+     "chat"
+    ]
+   ],
+   "escalate_max": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "Kya hua? Kiska paisa hai, kitna, kab aur kis tarah ka proof hai?",
+   "citations": [
+    {
+     "id": "FACT-NALSA-HELPLINE",
+     "act": "NALSA legal aid helpline",
+     "section": "",
+     "title": "NALSA legal aid helpline 15100",
+     "plain": "Call the national legal aid helpline 15100 (toll-free) for free legal advice and help applying for legal aid. You can also apply for legal aid or victim compensation online via the NALSA website.",
+     "source_url": "https://nalsa.gov.in/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 0,
+    "missing": []
+   },
+   "actions": [
+    {
+     "type": "get_help"
+    }
+   ],
+   "next_step": "Ask for details",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "medium",
+   "unknowns": [
+    "exact situation"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Hinglish",
+     "got": "Hinglish",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "latency_s": 1.61,
+    "usage": {
+     "queue_time": 0.366493226,
+     "prompt_tokens": 1981,
+     "prompt_time": 0.116161104,
+     "completion_tokens": 131,
+     "completion_time": 0.157865593,
+     "total_tokens": 2112,
+     "total_time": 0.274026697,
+     "completion_tokens_details": {
+      "reasoning_tokens": 6
+     }
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "other",
+       "language": "Hinglish",
+       "script": "Latin",
+       "facts": {
+        "user_name": "bhai",
+        "summary": "User says someone is not giving them money"
+       },
+       "approximate_dates": [],
+       "confidence": 0.6
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 1.59,
+       "usage": {
+        "queue_time": 0.551958941,
+        "prompt_tokens": 894,
+        "prompt_time": 0.056679469,
+        "completion_tokens": 87,
+        "completion_time": 0.096733563,
+        "total_tokens": 981,
+        "total_time": 0.153413032,
+        "completion_tokens_details": {
+         "reasoning_tokens": 32
+        }
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 1.61,
+       "usage": {
+        "queue_time": 0.366493226,
+        "prompt_tokens": 1981,
+        "prompt_time": 0.116161104,
+        "completion_tokens": 131,
+        "completion_time": 0.157865593,
+        "total_tokens": 2112,
+        "total_time": 0.274026697,
+        "completion_tokens_details": {
+         "reasoning_tokens": 6
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 4.87
+  },
+  {
+   "reply": "Bhai, samajh gaye. Thoda aur detail chahiye:\n1. Kya aapke paas 15,000 ka receipt ya bank statement hai? \n2. PG owner ne koi deduction claim kiya? (painting, damage, dues?) \n3. WhatsApp conversation ka screenshot ya message log? \n4. Notice period ka kya agreement tha? (Kya 30 din ka notice diya tha?)\n\nInke bina exact steps batana mushkil hai. \n\nOptions (cheapest to expensive):\n1. Written request (WhatsApp/email) with amount, move‑out date, bank details – keep screenshots.\n2. Legal notice demanding refund within ~15 days (you can send it yourself).\n3. Free pre‑litigation Lok Adalat / DLSA helpline (15100).\n4. Civil suit for recovery (3‑year limit already passed – lawyer needed).\n\n**Recommended next step:** Draft a simple written request (WhatsApp/email) asking for the 15,000 refund, mention move‑out date and give bank details. Keep screenshots. \n\nI can help draft that message. Let me know if you want me to do it.\n\n⚠️ **Deadline check (calculated by Haq, not AI):** Approximate last date to sue for the deposit (3 years): **01 Oct 2026**, which has passed. Please speak to a lawyer or free legal aid (15100) soon to check what options remain.",
+   "citations": [
+    {
+     "id": "ICA1872-S73",
+     "act": "Indian Contract Act, 1872",
+     "section": "73",
+     "title": "Compensation for breach of contract",
+     "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+     "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-LOKADALAT-PRELITIGATION",
+     "act": "Legal Services Authorities Act, 1987",
+     "section": "",
+     "title": "Pre-litigation settlement through Lok Adalat",
+     "plain": "Even before filing a case, one party can apply to the District or State Legal Services Authority to have a civil dispute, or a compoundable criminal matter, referred to a Lok Adalat for amicable settlement. Non-compoundable offences are excluded. This is available now, unlike Mediation Act section 5.",
+     "source_url": "https://delhi.nalsa.gov.in/lok-adalat/",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-NALSA-HELPLINE",
+     "act": "NALSA legal aid helpline",
+     "section": "",
+     "title": "NALSA legal aid helpline 15100",
+     "plain": "Call the national legal aid helpline 15100 (toll-free) for free legal advice and help applying for legal aid. You can also apply for legal aid or victim compensation online via the NALSA website.",
+     "source_url": "https://nalsa.gov.in/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Approximate last date to sue for the deposit (3 years)",
+      "date": "2026-10-01",
+      "days_left": -36,
+      "status": "passed",
+      "basis": "LIM1963-ART55",
+      "note": "Limitation depends on the exact claim; confirm with legal aid before relying on it.",
+      "user_deadline": true
+     }
+    ],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 78,
+    "missing": [
+     {
+      "key": "monthly_rent",
+      "question": "What was the monthly rent (₹)?"
+     },
+     {
+      "key": "deductions_claimed",
+      "question": "Has the landlord claimed any deductions (painting, damage, dues)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "deposit_demand_notice"
+    }
+   ],
+   "next_step": "draft written request",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "Deadline passed: Approximate last date to sue for the deposit (3 years) (2026-10-01)"
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "medium",
+   "unknowns": [
+    "exact proof of payment",
+    "any deductions claimed"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Hinglish",
+     "got": "Latin",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 1
+   },
+   "model": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "latency_s": 2.33,
+    "usage": {
+     "queue_time": 0.527203128,
+     "prompt_tokens": 3053,
+     "prompt_time": 0.185605776,
+     "completion_tokens": 539,
+     "completion_time": 0.604525567,
+     "total_tokens": 3592,
+     "total_time": 0.790131343,
+     "completion_tokens_details": {
+      "reasoning_tokens": 20
+     }
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "tenancy",
+       "language": "Hinglish",
+       "script": "Latin",
+       "facts": {
+        "deposit_amount": 15000,
+        "possession_handed_over_date": "2023-10-01",
+        "written_agreement": "no",
+        "city_state": "Pune, Maharashtra",
+        "other_party_name": "PG owner",
+        "communications_so_far": "WhatsApp",
+        "proof_of_payment": "none"
+       },
+       "approximate_dates": [
+        "possession_handed_over_date"
+       ],
+       "confidence": 0.9
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 1.34,
+       "usage": {
+        "queue_time": 0.155470716,
+        "prompt_tokens": 986,
+        "prompt_time": 0.064568774,
+        "completion_tokens": 291,
+        "completion_time": 0.317089116,
+        "total_tokens": 1277,
+        "total_time": 0.38165789,
+        "completion_tokens_details": {
+         "reasoning_tokens": 191
+        }
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 2.33,
+       "usage": {
+        "queue_time": 0.527203128,
+        "prompt_tokens": 3053,
+        "prompt_time": 0.185605776,
+        "completion_tokens": 539,
+        "completion_time": 0.604525567,
+        "total_tokens": 3592,
+        "total_time": 0.790131343,
+        "completion_tokens_details": {
+         "reasoning_tokens": 20
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 5.4
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "bhai mera paisa nahi de raha"
+   },
+   {
+    "role": "assistant",
+    "content": "Kya hua? Kiska paisa hai, kitna, kab aur kis tarah ka proof hai?"
+   },
+   {
+    "role": "user",
+    "content": "PG wala hai pune me, 15000 deposit tha. 1 october ko chhoda. ab bolta hai notice period nahi diya isliye nahi dunga. koi agreement nahi tha bas whatsapp pe baat hui thi"
+   },
+   {
+    "role": "assistant",
+    "content": "Bhai, samajh gaye. Thoda aur detail chahiye:\n1. Kya aapke paas 15,000 ka receipt ya bank statement hai? \n2. PG owner ne koi deduction claim kiya? (painting, damage, dues?) \n3. WhatsApp conversation ka screenshot ya message log? \n4. Notice period ka kya agreement tha? (Kya 30 din ka notice diya tha?)\n\nInke bina exact steps batana mushkil hai. \n\nOptions (cheapest to expensive):\n1. Written request (WhatsApp/email) with amount, move‑out date, bank details – keep screenshots.\n2. Legal notice demanding refund within ~15 days (you can send it yourself).\n3. Free pre‑litigation Lok Adalat / DLSA helpline (15100).\n4. Civil suit for recovery (3‑year limit already passed – lawyer needed).\n\n**Recommended next step:** Draft a simple written request (WhatsApp/email) asking for the 15,000 refund, mention move‑out date and give bank details. Keep screenshots. \n\nI can help draft that message. Let me know if you want me to do it.\n\n⚠️ **Deadline check (calculated by Haq, not AI):** Approximate last date to sue for the deposit (3 years): **01 Oct 2026**, which has passed. Please speak to a lawyer or free legal aid (15100) soon to check what options remain."
+   }
+  ],
+  "case": {
+   "category": "tenancy",
+   "language": "Hinglish",
+   "script": "Latin",
+   "facts": {
+    "user_name": "bhai",
+    "summary": "User says someone is not giving them money",
+    "deposit_amount": "15000",
+    "possession_handed_over_date": "2023-10-01",
+    "written_agreement": "no",
+    "city_state": "Pune, Maharashtra",
+    "other_party_name": "PG owner",
+    "communications_so_far": "WhatsApp",
+    "proof_of_payment": "none"
+   },
+   "timeline": [
+    {
+     "date": "2023-10-01",
+     "event": "Left PG"
+    }
+   ],
+   "evidence_have": [],
+   "evidence_missing": [
+    "proof of amount, date, communication",
+    "proof of payment (bank statement/receipt)",
+    "WhatsApp screenshots",
+    "any deduction claim"
+   ],
+   "next_step": "draft written request",
+   "approximate": [
+    "possession_handed_over_date"
+   ]
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "Deadline passed: Approximate last date to sue for the deposit (3 years) (2026-10-01)"
+   ]
+  },
+  "log": [
+   {
+    "t": 4.87,
+    "model": "openai/gpt-oss-20b",
+    "provider": "groq",
+    "guard_ok": true,
+    "repaired": false
+   },
+   {
+    "t": 5.4,
+    "model": "openai/gpt-oss-20b",
+    "provider": "groq",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got tenancy"
+  },
+  {
+   "check": "reply_language",
+   "pass": false,
+   "detail": "expected Hinglish, reply script Latin"
+  },
+  {
+   "check": "fact:deposit_amount",
+   "pass": true,
+   "detail": "expected ~15, got 15000"
+  },
+  {
+   "check": "mentions:whatsapp|WhatsApp|screenshot|chat",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "asks_clarifying_question",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 4,
+  "honest": 5,
+  "accurate_scope": 2,
+  "comment": "The deadline calculation is factually incorrect; the user left on Oct 1, 2026, so the 3-year limitation period expires in 2029, not 2026.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 3.01,
+   "usage": {
+    "completion_tokens": 91,
+    "prompt_tokens": 555,
+    "total_tokens": 779
+   },
+   "fallback_attempts": [
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+   ]
+  }
+ }
+}

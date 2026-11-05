@@ -1,0 +1,341 @@
+{
+ "case": {
+  "id": "T19_deposit_bengali",
+  "group": "language",
+  "turns": [
+   "আমি কলকাতায় ভাড়া বাড়ি ছেড়েছি ১ অক্টোবর ২০২৬। ৩০,০০০ টাকা অগ্রিম দিয়েছিলাম। বাড়িওয়ালা টাকা ফেরত দিচ্ছে না। কী করব?"
+  ],
+  "expect": {
+   "category": "tenancy",
+   "script": "Bengali",
+   "escalate_max": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "আপনি কি জানেন:\n1️⃣ ভাড়ার মাসিক পরিমাণ কত ছিল?\n2️⃣ ভাড়ার চুক্তি লিখিত ছিল কি? (হ্যাঁ/না)\n3️⃣ বাড়িওয়ালা কি কোনো কাটতি (দাগ, মেরামত, বিল) দাবি করেছে?",
+   "citations": [
+    {
+     "id": "ICA1872-S73",
+     "act": "Indian Contract Act, 1872",
+     "section": "73",
+     "title": "Compensation for breach of contract",
+     "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+     "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "MTA2021-S11",
+     "act": "Model Tenancy Act, 2021",
+     "section": "11",
+     "title": "Security deposit cap and refund (model law only)",
+     "plain": "Under the Model Tenancy Act, the security deposit is what the landlord and tenant agree. It may not exceed 2 months' rent for a home or 6 months' rent for non-residential premises, and it must be refunded when the landlord takes back vacant possession, after deducting anything the tenant owes. This is a model law: it applies only if your state has passed its own law adopting these rules.",
+     "source_url": "https://web.archive.org/web/2024id_/https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-MTA-STATE-ADOPTION",
+     "act": "Model Tenancy Act, 2021",
+     "section": "",
+     "title": "States that revised tenancy laws on MTA lines (as of July 2022)",
+     "plain": "As of July 2022, the Housing Ministry reported that Andhra Pradesh, Tamil Nadu, Uttar Pradesh and Assam had revised their tenancy laws along the lines of the Model Tenancy Act. Other states continue under their own rent control laws, so the deposit cap and the rent authority procedure vary by state.",
+     "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1844644",
+     "source_type": "primary"
+    },
+    {
+     "id": "LIM1963-ART55",
+     "act": "Limitation Act, 1963",
+     "section": "Schedule, Article 55",
+     "title": "3 years to sue for compensation for breach of contract",
+     "plain": "A suit for compensation for breach of a contract (written or implied), where no other article covers it specifically, must be filed within 3 years. Time runs from the date of the breach. If there are repeated breaches, it runs from the breach you sue on; if the breach is continuing, from when it stops.",
+     "source_url": "https://www.thc.nic.in/Central%20Governmental%20Acts/Limitation%20Act,%202019.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPC1908-O37",
+     "act": "Code of Civil Procedure, 1908",
+     "section": "Order XXXVII",
+     "title": "Summary suits for fixed money claims",
+     "plain": "A summary suit is a faster procedure for clear money claims. It covers suits on cheques, bills of exchange, hundis and promissory notes, and suits to recover a fixed debt or 'liquidated' amount (with or without interest) arising from a written contract, a law that fixes the sum, or a guarantee. The defendant may defend only with the court's permission ('leave to defend'). It is available only in courts where the Order applies.",
+     "source_url": "https://cdnbbsr.s3waas.gov.in/s36a4cbdaedcbda0fa8ddc7ea32073c475/uploads/2025/02/20250210517413908.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-LOKADALAT-PRELITIGATION",
+     "act": "Legal Services Authorities Act, 1987",
+     "section": "",
+     "title": "Pre-litigation settlement through Lok Adalat",
+     "plain": "Even before filing a case, one party can apply to the District or State Legal Services Authority to have a civil dispute, or a compoundable criminal matter, referred to a Lok Adalat for amicable settlement. Non-compoundable offences are excluded. This is available now, unlike Mediation Act section 5.",
+     "source_url": "https://delhi.nalsa.gov.in/lok-adalat/",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-NALSA-HELPLINE",
+     "act": "NALSA legal aid helpline",
+     "section": "",
+     "title": "NALSA legal aid helpline 15100",
+     "plain": "Call the national legal aid helpline 15100 (toll-free) for free legal advice and help applying for legal aid. You can also apply for legal aid or victim compensation online via the NALSA website.",
+     "source_url": "https://nalsa.gov.in/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Approximate last date to sue for the deposit (3 years)",
+      "date": "2029-10-01",
+      "days_left": 1060,
+      "status": "ok",
+      "basis": "LIM1963-ART55",
+      "note": "Limitation depends on the exact claim; confirm with legal aid before relying on it.",
+      "user_deadline": true
+     }
+    ],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 44,
+    "missing": [
+     {
+      "key": "monthly_rent",
+      "question": "What was the monthly rent (₹)?"
+     },
+     {
+      "key": "written_agreement",
+      "question": "Is there a written rent agreement? (yes/no)"
+     },
+     {
+      "key": "deductions_claimed",
+      "question": "Has the landlord claimed any deductions (painting, damage, dues)?"
+     },
+     {
+      "key": "communications_so_far",
+      "question": "How have you asked for it so far (calls, WhatsApp, email)?"
+     },
+     {
+      "key": "proof_of_payment",
+      "question": "Do you have proof you paid the deposit (bank transfer, receipt)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "deposit_demand_notice"
+    }
+   ],
+   "next_step": "প্রথমে লিখিত অনুরোধ (WhatsApp/ইমেইল) পাঠিয়ে ১৫ দিনের মধ্যে ফেরত চেয়ে নিন",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "medium",
+   "unknowns": [
+    "মাসিক ভাড়া, চুক্তির অস্তিত্ব, কোনো কাটতির দাবি"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Bengali",
+     "got": "Bengali",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "latency_s": 2.85,
+    "usage": {
+     "queue_time": 1.560687884,
+     "prompt_tokens": 2972,
+     "prompt_time": 0.177454621,
+     "completion_tokens": 318,
+     "completion_time": 0.423548669,
+     "total_tokens": 3290,
+     "total_time": 0.60100329,
+     "completion_tokens_details": {
+      "reasoning_tokens": 22
+     }
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 400: {\"error\":{\"message\":\"Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.\",\"type\":\"inva",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "tenancy",
+       "language": "Bengali",
+       "script": "Bengali",
+       "facts": {
+        "deposit_amount": 30000,
+        "possession_handed_over_date": "2026-10-01",
+        "city_state": "Kolkata, West Bengal",
+        "other_party_name": "landlord"
+       },
+       "approximate_dates": [],
+       "confidence": 0.9
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 3.22,
+       "usage": {
+        "queue_time": 0.447450404,
+        "prompt_tokens": 934,
+        "prompt_time": 1.8672568200000002,
+        "completion_tokens": 153,
+        "completion_time": 0.167269856,
+        "total_tokens": 1087,
+        "total_time": 2.034526676,
+        "prompt_tokens_details": {
+         "cached_tokens": 768
+        },
+        "completion_tokens_details": {
+         "reasoning_tokens": 75
+        }
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 2.85,
+       "usage": {
+        "queue_time": 1.560687884,
+        "prompt_tokens": 2972,
+        "prompt_time": 0.177454621,
+        "completion_tokens": 318,
+        "completion_time": 0.423548669,
+        "total_tokens": 3290,
+        "total_time": 0.60100329,
+        "completion_tokens_details": {
+         "reasoning_tokens": 22
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 400: {\"error\":{\"message\":\"Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.\",\"type\":\"inva",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 9.44
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "আমি কলকাতায় ভাড়া বাড়ি ছেড়েছি ১ অক্টোবর ২০২৬। ৩০,০০০ টাকা অগ্রিম দিয়েছিলাম। বাড়িওয়ালা টাকা ফেরত দিচ্ছে না। কী করব?"
+   },
+   {
+    "role": "assistant",
+    "content": "আপনি কি জানেন:\n1️⃣ ভাড়ার মাসিক পরিমাণ কত ছিল?\n2️⃣ ভাড়ার চুক্তি লিখিত ছিল কি? (হ্যাঁ/না)\n3️⃣ বাড়িওয়ালা কি কোনো কাটতি (দাগ, মেরামত, বিল) দাবি করেছে?"
+   }
+  ],
+  "case": {
+   "category": "tenancy",
+   "language": "Bengali",
+   "script": "Bengali",
+   "facts": {
+    "deposit_amount": 30000,
+    "possession_handed_over_date": "2026-10-01",
+    "city_state": "Kolkata, West Bengal",
+    "other_party_name": "landlord"
+   },
+   "timeline": [],
+   "evidence_have": [],
+   "evidence_missing": [
+    "ভাড়ার চুক্তি (যদি থাকে), ব্যাংক রেকর্ড/রসিদ, বাড়িওয়ালার সাথে যোগাযোগের স্ক্রিনশট"
+   ],
+   "next_step": "প্রথমে লিখিত অনুরোধ (WhatsApp/ইমেইল) পাঠিয়ে ১৫ দিনের মধ্যে ফেরত চেয়ে নিন"
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 9.44,
+    "model": "openai/gpt-oss-20b",
+    "provider": "groq",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got tenancy"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Bengali, reply script Bengali"
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 2,
+  "honest": 4,
+  "accurate_scope": 5,
+  "comment": "While the questions are relevant, the assistant failed to provide any immediate guidance or next steps, leaving the user without any sense of how to proceed.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 3.57,
+   "usage": {
+    "completion_tokens": 75,
+    "prompt_tokens": 266,
+    "total_tokens": 468
+   },
+   "fallback_attempts": [
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+   ]
+  }
+ }
+}

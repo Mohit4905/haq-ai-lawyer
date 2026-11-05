@@ -1,0 +1,554 @@
+[
+ {
+  "id": "FACT-LABOUR-CODES-COMMENCEMENT",
+  "act": "Four Labour Codes (Code on Wages, 2019; Industrial Relations Code, 2020; Code on Social Security, 2020; Occupational Safety, Health and Working Conditions Code, 2020)",
+  "section": "",
+  "title": "The four Labour Codes are in force from 21 November 2025",
+  "plain": "Since 21 November 2025, India's four Labour Codes have been in force. Together they replace 29 older central labour laws. For unpaid salary, the main law is now the Code on Wages, 2019, and no longer the Payment of Wages Act, 1936.",
+  "quote": "the four Labour Codes - the Code on Wages, 2019, the Industrial Relations Code, 2020, the Code on Social Security, 2020 and the Occupational Safety, Health and Working Conditions Code, 2020 are being made effective from 21st November 2025 , rationalising 29 existing labour laws.",
+  "categories": [
+   "salary"
+  ],
+  "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2192463",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "PIB (Ministry of Labour & Employment) release dated 21 Nov 2025, 3:00 PM. For the Code on Wages, the gazette instrument is S.O. 5322(E) dated 21 Nov 2025 (see COW2019-S1). Commencement was by notification, and a few Code on Wages provisions were notified separately: parts of s.42 and clauses (s) and (t) of s.67(2) relating to the Central Advisory Board came in by S.O. 4604(E) on 18 Dec 2020. Labour ministry FAQs (16 Mar 2026) treat 21.11.2025 as the date the Codes were implemented. Do not cite the Payment of Wages Act, 1936 for wage periods that fall on or after 21 Nov 2025."
+ },
+ {
+  "id": "COW2019-S1",
+  "act": "Code on Wages, 2019",
+  "section": "1",
+  "title": "Commencement of the Code on Wages (notification S.O. 5322(E))",
+  "plain": "Almost all of the Code on Wages came into force on 21 November 2025 by a Government notification. That includes the chapters on wage payment, deductions and claims, and the repeal of the old wage laws.",
+  "quote": "21st day of November, 2025—Ss. 1 to 41, sub-sections (4) to (9) of section 42, ss. 43 to 66, ... section 68, section 69, ... vide notification no. S.O. 5322 (E), dated 21st November, 2025, see Gazette of India, Extraordinary, Part II, s. 3(ii).",
+  "categories": [
+   "salary"
+  ],
+  "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "The quote comes from the commencement footnote of the India Code consolidated text, 'As on the 21th November, 2025'. Section 1(3) lets different dates be appointed for different provisions. The Central Advisory Board parts of s.42 and s.67(2)(s),(t) were notified earlier by S.O. 4604(E) on 18 Dec 2020. Only the India Code consolidation was opened, not the eGazette copy of S.O. 5322(E)."
+ },
+ {
+  "id": "COW2019-S2K",
+  "act": "Code on Wages, 2019",
+  "section": "2(k)",
+  "title": "Who is an 'employee' (includes managerial and supervisory staff)",
+  "plain": "Under the Code on Wages, 'employee' covers anyone an establishment employs on wages for skilled, unskilled, manual, clerical, technical, supervisory, managerial or administrative work. Managers and senior staff therefore count as employees. Apprentices and members of the Armed Forces do not.",
+  "quote": "any person (other than an apprentice engaged under the Apprentices Act, 1961 (52 of 1961)), employed on wages by an establishment to do any skilled, semi-skilled or unskilled, manual, operational, supervisory, managerial, administrative, technical or clerical work for hire or reward, whether the terms of employment be express or implied",
+  "categories": [
+   "salary"
+  ],
+  "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "The definition also covers anyone the appropriate Government declares to be an employee, and leaves out members of the Armed Forces of the Union. Chapter III (payment of wages, ss.15-25) uses 'employee', not 'worker', so its timely-payment and deduction rules reach managerial staff too. Section 25 is an exception: Chapter III does not apply to Government establishments unless notified."
+ },
+ {
+  "id": "COW2019-S2Z",
+  "act": "Code on Wages, 2019",
+  "section": "2(z)",
+  "title": "Who is a 'worker' (narrower than 'employee')",
+  "plain": "'Worker' is a narrower category than 'employee'. It leaves out people employed mainly in managerial or administrative roles, and supervisors earning more than Rs 15,000 a month (or a higher figure the Centre notifies). The distinction matters for a few provisions, but the wage-payment rules use 'employee'.",
+  "quote": "but does not include any such person— ... (c) who is employed mainly in a managerial or administrative capacity; or (d) who is employed in a supervisory capacity drawing wage of exceeding fifteen thousand rupees per month or an amount as may be notified by the Central Government from time to time.",
+  "categories": [
+   "salary"
+  ],
+  "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "Also excluded: persons under the Air Force, Army or Navy Acts, and police and prison staff. Working journalists and sales promotion employees are included. A notification may have revised the Rs 15,000 supervisory threshold; no such notification was checked."
+ },
+ {
+  "id": "FACT-COW-NO-WAGE-CEILING",
+  "act": "Code on Wages, 2019",
+  "section": "",
+  "title": "No salary ceiling for the timely-payment and deduction rules",
+  "plain": "The old Payment of Wages Act protected only employees earning up to Rs 24,000 a month. Under the Code on Wages, the rules on paying wages on time and on permitted deductions apply to all employees, whatever their salary. The labour ministry has confirmed that this includes white-collar staff.",
+  "quote": "the provisions relating to timely payment of wages and authorised deductions from wages, which are presently applicable only in respect of employees drawing wages of twenty-four thousand rupees per month, shall be made applicable to all employees irrespective of wage ceiling.",
+  "categories": [
+   "salary"
+  ],
+  "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "The quote is from the Statement of Objects and Reasons, para 4(e), printed with the India Code text. Chapter III (ss.15-25) contains no wage ceiling. Corroboration: Ministry of Labour 'Additional FAQs on Labour Codes (As on 16.03.2026)', Q2 on wage protection for white-collar employees, answers: 'The Code on Wages, 2019 has provisions for timely payment of wages. These provisions are applicable to all employees.' (https://www.labour.gov.in/static/uploads/2026/03/a4ccf4c6d97c4f1f36a6d83f8c64213d.pdf). Exception: under s.25, Government establishments are outside Chapter III unless notified."
+ },
+ {
+  "id": "COW2019-S17",
+  "act": "Code on Wages, 2019",
+  "section": "17",
+  "title": "Deadline for paying wages, including after leaving the job",
+  "plain": "Wages are due by these deadlines: daily workers at the end of the shift; weekly workers on the last working day of the week; fortnightly workers before the end of the second day after the fortnight; monthly workers before the end of the 7th day of the next month. If you are removed, dismissed, retrenched or resign, or lose your job because the establishment closes, your wages must be paid within two working days.",
+  "quote": "(2) Where an employee has been— (i) removed or dismissed from service; or (ii) retrenched or has resigned from service, or became unemployed due to closure of the establishment, the wages payable to him shall be paid within two working days of his removal, dismissal, retrenchment or, as the case may be, his resignation.",
+  "categories": [
+   "salary"
+  ],
+  "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "In force from 21 Nov 2025. Section 17(3) lets the appropriate Government set a different time limit where reasonable. Section 17(4) keeps any time limit set by another law. The two-working-day rule covers 'wages' as defined in s.2(y). Final settlement items such as gratuity, which is excluded from 'wages', follow their own rules. Section 16 says no wage period may be longer than a month."
+ },
+ {
+  "id": "COW2019-S18",
+  "act": "Code on Wages, 2019",
+  "section": "18",
+  "title": "Only deductions allowed by the Code may be made from wages",
+  "plain": "An employer may cut your wages only for the purposes listed in the Code. These include fines, absence from duty, loss or damage caused by your proven neglect, housing or amenities provided, recovery of advances or loans, income tax, court orders, PF and other social security contributions, and trade union fees you authorised in writing. In any wage period, total deductions cannot exceed 50% of your wages.",
+  "quote": "(1) Notwithstanding anything contained in any other law for the time being in force, there shall be no deductions from the wages of the employee, except those as are authorised under this Code.",
+  "categories": [
+   "salary"
+  ],
+  "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "The full list is in s.18(2)(a)-(o). Section 18(3) caps total deductions at 'fifty per cent. of such wages'. Under s.18(5), the employee is not responsible if the employer deducts an amount but fails to deposit it. Related limits: fines are capped at 3% of wages for the wage period and cannot be recovered after 90 days (s.19); a deduction for damage or loss requires a prior chance to show cause (s.21); recovery of advances is regulated by s.23. Under the Explanation to s.18(1), any payment the employee makes to the employer counts as a deduction."
+ },
+ {
+  "id": "COW2019-S45",
+  "act": "Code on Wages, 2019",
+  "section": "45",
+  "title": "Filing a wage claim: who decides it and the 3-year limit",
+  "plain": "Wage claims under the Code are heard by an authority the Government appoints, who must be at least a Gazetted Officer. The claim can be filed by you, your registered trade union, or an Inspector-cum-Facilitator. File within 3 years of the date the claim arises; a later claim may still be accepted if you show sufficient cause. Besides the amount due, the authority can award compensation of up to ten times the claim, and it tries to decide within three months.",
+  "quote": "(6) The application under sub-section (4) may be filed within a period of three years from the date on which claims referred to in sub-section (1) arises: Provided that the authority referred to in sub-section (1) may, entertain the application after three years on sufficient cause being shown by the applicant for such delay.",
+  "categories": [
+   "salary"
+  ],
+  "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "Under s.45(3), if the employer does not pay, the authority sends a recovery certificate to the Collector, who recovers the amount as arrears of land revenue. Under s.45(5), one application can cover many employees of the same establishment. Section 49 provides an appeal. A PRS Legislative Research review of the Code on Wages (Central) Rules, 2026 (secondary) reports that the Rules bar an employer from appealing until it deposits the claim amount. Which officer is the s.45 authority depends on the appropriate Government's notification: the State for most private establishments, the Centre for central-sphere ones. The app should not name a specific officer without checking the state notification."
+ },
+ {
+  "id": "COW2019-S51",
+  "act": "Code on Wages, 2019",
+  "section": "51",
+  "title": "Inspector-cum-Facilitators",
+  "plain": "The Code replaces the old 'Inspector' with an 'Inspector-cum-Facilitator', appointed by the Government. This officer advises employers and workers on compliance, inspects establishments, and can file a wage claim on a worker's behalf under section 45.",
+  "quote": "(1) The appropriate Government may, by notification, appoint Inspector-cum-Facilitators for the purposes of this Code ... (5) The Inspector-cum-Facilitator may— (a) advice to employers and workers relating to compliance with the provisions of this Code",
+  "categories": [
+   "salary"
+  ],
+  "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "Section 51(2) provides for a web-based inspection scheme, and s.51(3) for randomised selection of inspections. The PIB release of 21 Nov 2025 describes the 'Inspector-cum-Facilitator system' as moving enforcement towards guidance, awareness and compliance support rather than punitive action. Under s.54(3), before prosecuting for offences under s.54(1)(c) or (2), the Inspector-cum-Facilitator must give the employer a written direction and a time period to comply. No such opportunity is given if a violation of the same nature is repeated within five years."
+ },
+ {
+  "id": "COW2019-S69",
+  "act": "Code on Wages, 2019",
+  "section": "69",
+  "title": "Payment of Wages Act and three other laws repealed; savings",
+  "plain": "The Code on Wages repealed the Payment of Wages Act 1936, the Minimum Wages Act 1948, the Payment of Bonus Act 1965 and the Equal Remuneration Act 1976. Notifications, appointments and orders made under those Acts carry on under the Code until they are replaced, to the extent they do not conflict with it.",
+  "quote": "(1) The Payment of Wages Act, 1936 (4 of 1936), the Minimum Wages Act, 1948 (11 of 1948), the Payment of Bonus Act, 1965 (21 of 1965) and the Equal Remuneration Act, 1976 (25 of 1976) are hereby repealed.",
+  "categories": [
+   "salary"
+  ],
+  "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "The repeal took effect on 21 Nov 2025 (S.O. 5322(E) brought s.69 into force). Section 69(3) applies s.6 of the General Clauses Act, 1897. As a general rule, that section preserves rights accrued and proceedings pending under a repealed law, so a claim already pending under the Payment of Wages Act should continue. That is legal reasoning, not an official transition order. No specific Ministry instruction on pending PW Act claims was found."
+ },
+ {
+  "id": "FACT-LABOUR-CODES-TRANSITION",
+  "act": "Four Labour Codes",
+  "section": "",
+  "title": "Old rules continue during the transition",
+  "plain": "While new rules under the Labour Codes were being made, the Government said the relevant parts of the old labour Acts' rules, notifications and schemes would stay in force. Which rules apply to a particular matter therefore depends on what the Centre or your state has notified since.",
+  "quote": "During transition, the relevant provisions of the existing labour Acts and their respective rules, regulations, notifications, standards, schemes, etc. will continue to remain in force.",
+  "categories": [
+   "salary"
+  ],
+  "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2192463",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "This is a press-release statement. It is not itself a statutory provision; the legal basis is s.69(2) of the Code on Wages. Central Rules under the Code on Wages were finalised later (see FACT-COW-CENTRAL-RULES-2026). The current status of each state's rules was not verified."
+ },
+ {
+  "id": "FACT-COW-CENTRAL-RULES-2026",
+  "act": "Code on Wages (Central) Rules, 2026",
+  "section": "",
+  "title": "Final Central Rules under the Code on Wages notified 8 May 2026",
+  "plain": "The Central Government notified final rules under the Code on Wages on 8 May 2026. They apply where the Centre is the 'appropriate Government', for example central PSUs, railways, banks, mines and major ports. For most private employers the State is the appropriate Government, so that state's rules apply.",
+  "quote": "The central government released draft Rules for public consultation on December 30, 2025. The final Rules were notified on May 8, 2026.",
+  "categories": [
+   "salary"
+  ],
+  "source_url": "https://prsindia.org/files/bills_acts/bills_parliament/2026/Wages_Rules_2026.pdf",
+  "source_type": "secondary",
+  "verified": true,
+  "notes": "Source is a PRS Legislative Research review dated 30 June 2026 (secondary). Several secondary sources cite the instrument as G.S.R. 343(E) of 8 May 2026, but the eGazette copy was not opened, so the G.S.R. number is unverified. One secondary source says a later notification of 15 Jul 2026 corrected the short title to 'Wages (Central) Rules, 2026'; this is also unverified. PRS says the Rules supersede the Payment of Wages (Procedure) Rules, 1973 and the Minimum Wages (Central) Rules, 1950."
+ },
+ {
+  "id": "FACT-COW-STATE-RULES",
+  "act": "Code on Wages, 2019",
+  "section": "2(d), 2(u), 67",
+  "title": "States make their own rules for most private employers",
+  "plain": "For establishments other than central ones (central government bodies, railways, mines, banks, insurance companies, central PSUs and the like), the State Government is the 'appropriate Government'. It appoints the claims authority and Inspector-cum-Facilitators and makes the procedural rules. Procedure and forms can therefore differ from state to state.",
+  "quote": "(ii) in relation to any other establishment, the State Government;",
+  "categories": [
+   "salary"
+  ],
+  "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "Section 2(u) defines 'prescribed' as prescribed by rules made by the appropriate Government. The labour ministry FAQ of 16.03.2026 (Q27) says Central rules apply where the Centre is the appropriate Government and State rules where the State is. State rules exist; for example, a Maharashtra Code on Wages Rules, 2025 file is on India Code, but its notification status was not checked. Which states have notified final rules was not verified."
+ },
+ {
+  "id": "COW2019-S57",
+  "act": "Code on Wages, 2019",
+  "section": "57",
+  "title": "Civil suits barred only for certain wage matters",
+  "plain": "A civil court will not hear a suit to recover minimum wages, illegal deductions, gender-based wage discrimination or bonus if the amount is or could have been claimed under the Code. Plain non-payment of agreed salary is not on that list, and some pay items (such as commission) are not 'wages' under the Code at all. For those, and for many senior or managerial employees with contractual dues, a civil suit for breach of contract may be the route.",
+  "quote": "No court shall entertain any suit for the recovery of minimum wages, any deduction from wages, discrimination in wages and payment of bonus, in so far as the sum so claimed— (a) forms the subject of claims under section 45; ... (d) could have been recovered under this Code.",
+  "categories": [
+   "salary"
+  ],
+  "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "The section text is verified. Whether a civil suit is the right remedy is legal reasoning, not an official statement. (1) Managerial staff ARE 'employees' under s.2(k), so unlike under the old Payment of Wages Act ceiling they can also use the s.45 claim route. (2) Section 57 does not expressly bar a suit for non-payment or delayed payment of agreed salary. (3) Section 2(y) excludes commission, gratuity, HRA, overtime and some other items from 'wages', and the labour ministry FAQ (16.03.2026, Q4) says annual performance incentives are not 'wages'; contractual dues like these would normally be pursued in a civil suit (Indian Contract Act s.73; Limitation Act Art. 7 or 55). (4) Under s.25, Government establishments are outside Chapter III unless notified. Refer senior or managerial cases to a lawyer to choose the forum."
+ },
+ {
+  "id": "COW2019-S25",
+  "act": "Code on Wages, 2019",
+  "section": "25",
+  "title": "Wage-payment chapter does not apply to Government establishments by default",
+  "plain": "The Code's rules on wage periods, payment deadlines and deductions (Chapter III) do not cover Government offices and departments or local authorities, unless the Government applies them by notification. Government employees usually have their own service rules and remedies.",
+  "quote": "The provisions of this Chapter shall not apply to the Government establishments unless the appropriate Government, by notification, applies such provisions to the Government establishments specified in the said notification.",
+  "categories": [
+   "salary"
+  ],
+  "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "Section 2(o) defines 'Government establishment' as any office or department of the Government or a local authority. No notification extending Chapter III to Government establishments was checked."
+ },
+ {
+  "id": "FACT-SAMADHAN-PORTAL",
+  "act": "Ministry of Labour & Employment (SAMADHAN portal)",
+  "section": "",
+  "title": "SAMADHAN: online portal for labour disputes and claims (central sphere)",
+  "plain": "SAMADHAN (https://samadhan.labour.gov.in) is the labour ministry's online portal for raising industrial disputes and, since its 2.0 upgrade, filing claims under the Labour Codes and tracking them. It is run by the Chief Labour Commissioner (Central) machinery, so it mainly serves establishments where the Central Government is the appropriate Government. For most private employers, the state labour department is the forum.",
+  "quote": "Software Application for Monitoring, Disposal and Handling of Industrial Disputes (SAMADHAN) is online portal for conciliation, arbitration and adjudication of Industrial Disputes between employers and employers, or between employers and workmen, or between workmen and workmen",
+  "categories": [
+   "salary"
+  ],
+  "source_url": "https://samadhan.labour.gov.in/faqs/",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "The quote is from the portal's own page description, which still refers to the Industrial Disputes Act, 1947. A PIB release of 17 Jul 2026 on 'SAMADHAN Portal 2.0' (https://www.pib.gov.in/PressReleasePage.aspx?PRID=2285769) describes 'online filing of Industrial Disputes, submission of various claims under the modern Labour Codes, and real-time status tracking'. The portal is a JavaScript app and its detailed FAQs could not be read. Whether state-sphere wage claims can be filed on it was NOT verified; say it is mainly for central-sphere matters and point the user to the state labour department otherwise."
+ },
+ {
+  "id": "ICA1872-S73",
+  "act": "Indian Contract Act, 1872",
+  "section": "73",
+  "title": "Compensation for breach of contract",
+  "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+  "quote": "When a contract has been broken, the party who suffers by such breach is entitled to receive ... compensation for any loss or damage caused to him thereby, which naturally arose in the usual course of things from such breach, or which the parties knew ... to be likely to result from the breach of it.",
+  "categories": [
+   "tenancy",
+   "salary",
+   "general"
+  ],
+  "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "The quote is about 60 words. Section 73 also says compensation is not given for remote and indirect loss. Its Explanation requires courts to take into account the means that existed to remedy the inconvenience (the duty to mitigate). Section 74 governs breaches where the contract names a sum or penalty."
+ },
+ {
+  "id": "MTA2021-S11",
+  "act": "Model Tenancy Act, 2021",
+  "section": "11",
+  "title": "Security deposit cap and refund (model law only)",
+  "plain": "Under the Model Tenancy Act, the security deposit is what the landlord and tenant agree. It may not exceed 2 months' rent for a home or 6 months' rent for non-residential premises, and it must be refunded when the landlord takes back vacant possession, after deducting anything the tenant owes. This is a model law: it applies only if your state has passed its own law adopting these rules.",
+  "quote": "(1) The security deposit ... shall (a) not exceed two months rent, in case of residential premises; and (b) not exceed six months rent, in case of non-residential premises. (2) The security deposit shall be refunded to the tenant on the date of taking over vacant possession of the premises ... after making due deduction of any liability",
+  "categories": [
+   "tenancy"
+  ],
+  "source_url": "https://web.archive.org/web/2024id_/https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "The source is the official MoHUA English text, opened through a Wayback Machine copy because the original mohua.gov.in URL (https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf) now returns 404. Omitted part of s.11(1): the deposit 'to be paid by the tenant in advance shall be such as may be agreed upon between the landlord and the tenant in the tenancy agreement'. The model law is NOT binding by itself (see FACT-MTA-STATUS). In a state without an MTA-based law there is no statutory deposit cap from this source, and refund disputes are contract claims (ICA s.73). State laws based on the MTA may use different numbers, so always check the state Act."
+ },
+ {
+  "id": "FACT-MTA-STATUS",
+  "act": "Model Tenancy Act, 2021",
+  "section": "1(3)",
+  "title": "The Model Tenancy Act is a template for states, not a law in force",
+  "plain": "The Union Cabinet approved the Model Tenancy Act on 2 June 2021 and sent it to the states and UTs to adopt, either through new laws or by amending their rent laws. It has no force in a state until that state enacts its own law and notifies it.",
+  "quote": "has approved the Model Tenancy Act for circulation to all States / Union Territories for adaptation by way of enacting fresh legislation or amending existing rental laws suitably.",
+  "categories": [
+   "tenancy"
+  ],
+  "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1723636",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "PIB Cabinet release of 2 Jun 2021. The model text's s.1(3) reads: 'It shall come into force on such date as the State Government/Union territory Administration may, by notification in the Official Gazette, appoint'. The short title is a placeholder, '(Name of State/Union territory) Tenancy Act'. PIB (25 Jul 2022) says MoHUA circulated the Act to States/UTs on 7 Jun 2021."
+ },
+ {
+  "id": "FACT-MTA-STATE-ADOPTION",
+  "act": "Model Tenancy Act, 2021",
+  "section": "",
+  "title": "States that revised tenancy laws on MTA lines (as of July 2022)",
+  "plain": "As of July 2022, the Housing Ministry reported that Andhra Pradesh, Tamil Nadu, Uttar Pradesh and Assam had revised their tenancy laws along the lines of the Model Tenancy Act. Other states continue under their own rent control laws, so the deposit cap and the rent authority procedure vary by state.",
+  "quote": "As per information available with MoHUA, the States of Andhra Pradesh, Tamil Nadu, Uttar Pradesh and Assam have revised Tenancy Acts on the lines of MTA.",
+  "categories": [
+   "tenancy"
+  ],
+  "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1844644",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "This is a PIB summary of a Rajya Sabha written reply dated 25 Jul 2022 and may be out of date. No later official list (2023-2026) was found. Secondary sources say Tamil Nadu (2017) and Andhra Pradesh enacted their laws BEFORE the final 2021 model, i.e. based on the earlier drafts, while Uttar Pradesh and Assam enacted theirs in 2021. Uttar Pradesh's law is reported as the UP Regulation of Urban Premises Tenancy Act, 2021 (Act 16 of 2021), but no primary text was opened (India Code was timing out). Unverified secondary claims that Karnataka amended its rent law on MTA lines in 2025-26 are deliberately NOT included. Do not quote a state's deposit cap without opening that state's Act."
+ },
+ {
+  "id": "LIM1963-ART55",
+  "act": "Limitation Act, 1963",
+  "section": "Schedule, Article 55",
+  "title": "3 years to sue for compensation for breach of contract",
+  "plain": "A suit for compensation for breach of a contract (written or implied), where no other article covers it specifically, must be filed within 3 years. Time runs from the date of the breach. If there are repeated breaches, it runs from the breach you sue on; if the breach is continuing, from when it stops.",
+  "quote": "55. For compensation for the breach of any contract, express or implied not herein specially provided for. Three years. When the contract is broken or (where there are successive breaches) when the breach in respect of which the suit is instituted occurs or (where the breach is continuing) when it ceases.",
+  "categories": [
+   "tenancy",
+   "general"
+  ],
+  "source_url": "https://www.thc.nic.in/Central%20Governmental%20Acts/Limitation%20Act,%202019.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "The source is a bare-act copy of the Limitation Act, 1963 hosted by the High Court of Tripura (thc.nic.in); India Code was timing out (504). Courts have sometimes applied other articles, for example Art. 113 (residuary) or money-recovery articles, depending on how the claim is framed, so the start date of the 3-year period can be contested in deposit-refund cases. Refer to a lawyer when a claim is near 3 years old."
+ },
+ {
+  "id": "LIM1963-ART113",
+  "act": "Limitation Act, 1963",
+  "section": "Schedule, Article 113",
+  "title": "Residuary article: 3 years from when the right to sue accrues",
+  "plain": "If no specific article of the Limitation Act fits a suit, the general (residuary) rule applies: file within 3 years of when the right to sue arose.",
+  "quote": "113. Any suit for which no period of limitation is provided elsewhere in this Schedule. Three years. When the right to sue accrues.",
+  "categories": [
+   "general",
+   "tenancy"
+  ],
+  "source_url": "https://www.thc.nic.in/Central%20Governmental%20Acts/Limitation%20Act,%202019.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "Source is the High Court of Tripura copy of the bare Act (India Code unavailable). Section 3 says a suit filed after the prescribed period must be dismissed, even if limitation is not raised as a defence; the s.3 text was not quoted here."
+ },
+ {
+  "id": "LIM1963-ART7",
+  "act": "Limitation Act, 1963",
+  "section": "Schedule, Article 7",
+  "title": "3 years for a civil suit for wages",
+  "plain": "A civil suit for unpaid wages (for anyone other than a seaman) must be filed within 3 years of when the wages became due. This is separate from the 3-year limit for a claim before the labour authority under section 45 of the Code on Wages.",
+  "quote": "7. For wages in the case of any other person. Three years. When the wages accrue due.",
+  "categories": [
+   "salary"
+  ],
+  "source_url": "https://www.thc.nic.in/Central%20Governmental%20Acts/Limitation%20Act,%202019.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "Article 6 covers seamen's wages. Source is the High Court of Tripura bare-act copy. Each month's unpaid salary generally accrues separately, so older months can become time-barred first; this is general reasoning, not checked against case law."
+ },
+ {
+  "id": "CPC1908-O37",
+  "act": "Code of Civil Procedure, 1908",
+  "section": "Order XXXVII",
+  "title": "Summary suits for fixed money claims",
+  "plain": "A summary suit is a faster procedure for clear money claims. It covers suits on cheques, bills of exchange, hundis and promissory notes, and suits to recover a fixed debt or 'liquidated' amount (with or without interest) arising from a written contract, a law that fixes the sum, or a guarantee. The defendant may defend only with the court's permission ('leave to defend'). It is available only in courts where the Order applies.",
+  "quote": "(i) on a written contract; or (ii) on an enactment, where the sum sought to be recovered is a fixed sum of money or in the nature of a debt other than a penalty; or (iii) on a guarantee, where the claim against the principal is in respect of a debt or liquidated demand only.",
+  "categories": [
+   "general",
+   "tenancy",
+   "salary"
+  ],
+  "source_url": "https://cdnbbsr.s3waas.gov.in/s36a4cbdaedcbda0fa8ddc7ea32073c475/uploads/2025/02/20250210517413908.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "CAVEAT: the only full text that could be opened is the Government of Maharashtra Law & Judiciary Department print of the CPC 'as modified upto the 23rd January 2015', which prints the central text alongside Bombay High Court amendments. The central India Code PDFs repeatedly returned 504. Order XXXVII r.1 applies it to High Courts, City Civil Courts, Courts of Small Causes and other courts the High Court notifies, so availability varies by place. Central amendments after 2015 (for example, any added class of suits) were NOT checked. A security deposit refund under a WRITTEN rent agreement may qualify as a debt on a written contract, but that is legal reasoning, not checked against case law."
+ },
+ {
+  "id": "CPC1908-S80",
+  "act": "Code of Civil Procedure, 1908",
+  "section": "80",
+  "title": "2 months' notice before suing the Government or a public officer",
+  "plain": "Before suing the Central or a State Government, or a public officer over an act done in official capacity, you must give written notice and wait 2 months. If you need urgent relief, the court can let you sue without notice, but it must hear the Government before granting any relief.",
+  "quote": "no suits shall be instituted against the Government ... or against a public officer in respect of any act purporting to be done by such officer in his official capacity, until the expiration of two months next after notice in writing has been delivered to, or left at the office of",
+  "categories": [
+   "general"
+  ],
+  "source_url": "https://www.highcourtchd.gov.in/hclscc/subpages/pdf_files/11.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "Source is a CPC copy hosted by the Punjab & Haryana High Court; it is an older consolidation that still refers to the State of Jammu & Kashmir, words omitted from the quote with '...'. Notice goes to: a Secretary to the Government (Central Government); the General Manager (railways); a Secretary to the Government or the Collector of the district (State Government); or the officer personally (public officer). Section 80(2) lets a suit for urgent or immediate relief be filed with the court's leave without notice. Section 80(3) says a suit is not dismissed merely for errors in the notice if it substantially complies. The current India Code text could not be opened (504 errors)."
+ },
+ {
+  "id": "FACT-BNS-BNSS-COMMENCEMENT",
+  "act": "Bharatiya Nyaya Sanhita, 2023 / Bharatiya Nagarik Suraksha Sanhita, 2023",
+  "section": "",
+  "title": "New criminal laws in force from 1 July 2024",
+  "plain": "Since 1 July 2024, the Bharatiya Nyaya Sanhita (BNS) has replaced the Indian Penal Code (IPC), and the Bharatiya Nagarik Suraksha Sanhita (BNSS) has replaced the Code of Criminal Procedure (CrPC). For offences committed on or after that date, cite BNS and BNSS section numbers, not IPC or CrPC ones.",
+  "quote": "The provisions of BNS, except the provision of sub-section (2) of section 106 and entry relating to section 106(2) of BNS in the first schedule of BNSS, and BSA have come into force from 1st of July, 2024.",
+  "categories": [
+   "criminal_pointer"
+  ],
+  "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2039055",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "The quoted PIB release (MHA, 30 Jul 2024) says all three Acts were notified in the Gazette on 25 Dec 2023. The MHA Year End Review 2024 (PIB, 30 Dec 2024, https://www.pib.gov.in/PressReleasePage.aspx?PRID=2088945) says BNS, BNSS and BSA 'came into force on July 1, 2024'. BNS s.106(2) (hit-and-run by rash driving) was held back; no later notification was checked. Offences committed before 1 Jul 2024 remain under the IPC (BNS s.358(2)), and investigations or trials pending before that date continue under the CrPC (BNSS s.531(2)(a)). The commencement S.O. numbers were not opened in eGazette."
+ },
+ {
+  "id": "BNS2023-S358",
+  "act": "Bharatiya Nyaya Sanhita, 2023",
+  "section": "358",
+  "title": "IPC repealed",
+  "plain": "The BNS repeals the Indian Penal Code. Offences committed before the repeal are still dealt with under the IPC.",
+  "quote": "358. (1) The Indian Penal Code is hereby repealed. (2) Notwithstanding the repeal of the Code referred to in sub-section (1), it shall not affect,— ... (c) any penalty, or punishment incurred in respect of any offences committed against the Code so repealed",
+  "categories": [
+   "criminal_pointer"
+  ],
+  "source_url": "https://egazette.gov.in/WriteReadData/2023/250883.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "Gazette of India Extraordinary No. 53, 25 Dec 2023 (Act 45 of 2023). The repeal operates from 1 Jul 2024."
+ },
+ {
+  "id": "BNS2023-S316",
+  "act": "Bharatiya Nyaya Sanhita, 2023",
+  "section": "316",
+  "title": "Criminal breach of trust (formerly IPC 405-409)",
+  "plain": "Criminal breach of trust is when someone trusted with your property or money dishonestly misuses or keeps it. The basic offence carries up to 5 years' imprisonment, a fine, or both. An employer who deducts an employee's PF or ESI contribution from wages and does not deposit it is treated as committing this offence. The app should refer such cases to a lawyer or the police.",
+  "quote": "316. (1) Whoever, being in any manner entrusted with property, or with any dominion over property, dishonestly misappropriates or converts to his own use that property, or dishonestly uses or disposes of that property in violation of any direction of law ... commits criminal breach of trust.",
+  "categories": [
+   "criminal_pointer",
+   "salary"
+  ],
+  "source_url": "https://egazette.gov.in/WriteReadData/2023/250883.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "Section 316(2) punishment: 'imprisonment of either description for a term which may extend to five years, or with fine, or with both'. Higher punishments apply to carriers and warehouse-keepers (s.316(3)) and to clerks or servants and others under later subsections, which were not reviewed in detail. Explanations 1 and 2 cover employers who deduct PF or ESI contributions and do not pay them in. A secondary source says s.316 consolidates IPC ss.405-409; that mapping was not checked against an official correspondence table. Mere non-payment of salary or non-refund of a deposit is ordinarily a civil dispute; the criminal angle needs dishonest intent, so refer to a lawyer."
+ },
+ {
+  "id": "BNS2023-S318",
+  "act": "Bharatiya Nyaya Sanhita, 2023",
+  "section": "318",
+  "title": "Cheating (formerly IPC 415-420)",
+  "plain": "Cheating means deceiving someone to fraudulently or dishonestly get them to hand over property, or to do something they would not otherwise do, causing them harm. Cheating that dishonestly induces the victim to deliver property carries up to 7 years' imprisonment and a fine. The app should refer such cases to a lawyer or the police.",
+  "quote": "318.(1) Whoever, by deceiving any person, fraudulently or dishonestly induces the person so deceived to deliver any property to any person, or to consent that any person shall retain any property, or intentionally induces the person so deceived to do or omit to do anything which he would not do or omit if he were not so deceived",
+  "categories": [
+   "criminal_pointer"
+  ],
+  "source_url": "https://egazette.gov.in/WriteReadData/2023/250883.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "Section 318(4) is the 'cheating and dishonestly inducing delivery of property' offence (the old IPC s.420 equivalent): 'imprisonment of either description for a term which may extend to seven years, and shall also be liable to fine'. Cheating by personation is s.319. The IPC 420 to BNS 318(4) mapping is from secondary sources plus a comparison of the text, not an official table. The definition needs deception from the start; a later failure to pay is usually civil."
+ },
+ {
+  "id": "BNSS2023-S531",
+  "act": "Bharatiya Nagarik Suraksha Sanhita, 2023",
+  "section": "531",
+  "title": "CrPC repealed; pending matters continue under old Code",
+  "plain": "The BNSS repeals the Code of Criminal Procedure, 1973. Cases, appeals and investigations already pending when the BNSS came into force continue under the old CrPC.",
+  "quote": "531. (1) The Code of Criminal Procedure, 1973 is hereby repealed. (2) ... (a) if, immediately before the date on which this Sanhita comes into force, there is any appeal, application, trial, inquiry or investigation pending, then, such ... investigation shall be disposed of, continued, held or made ... in accordance with the provisions of the Code of Criminal Procedure",
+  "categories": [
+   "criminal_pointer"
+  ],
+  "source_url": "https://egazette.gov.in/WriteReadData/2023/250884.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "Gazette of India Extraordinary No. 54, 25 Dec 2023 (Act 46 of 2023). In force from 1 Jul 2024."
+ },
+ {
+  "id": "BNSS2023-S173",
+  "act": "Bharatiya Nagarik Suraksha Sanhita, 2023",
+  "section": "173",
+  "title": "FIR at any police station ('Zero FIR'), including electronic FIR",
+  "plain": "Information about a cognizable offence can be given at any police station, whatever the area where the offence happened. It can be given orally or electronically, and this is commonly called a 'Zero FIR'. An e-FIR must be signed by the informant within three days.",
+  "quote": "173.(1) Every information relating to the commission of a cognizable offence, irrespective of the area where the offence is committed, may be given orally or by electronic communication to an officer in charge of a police station",
+  "categories": [
+   "criminal_pointer"
+  ],
+  "source_url": "https://egazette.gov.in/WriteReadData/2023/250884.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "The term 'Zero FIR' is not in the statute. The MHA (PIB, 30 Jul 2024, https://www.pib.gov.in/PressReleasePage.aspx?PRID=2039055) describes it this way: 'With the introduction of Zero FIR, a person can file a First Information Report (FIR) at any police station, regardless of jurisdiction.' The same release says victims get a free copy of the FIR. Section 173(1)(ii): information given electronically 'shall be taken on record by him on being signed within three days by the person giving it'. Other subsections (preliminary enquiry, remedy if police refuse) were not reviewed here."
+ },
+ {
+  "id": "MED2023-S1",
+  "act": "Mediation Act, 2023",
+  "section": "1(3)",
+  "title": "Only part of the Mediation Act is in force",
+  "plain": "Only some sections of the Mediation Act, 2023 have been brought into force, mainly definitions and the Mediation Council provisions. The provisions on the mediation process itself, including pre-litigation mediation under section 5, were not in force as of the latest official consolidated text checked (6 October 2025).",
+  "quote": "9th day of October, 2023, vide notification No. S.O. 4384(E), for Ss.1, 3, 26, Ss.31 to 38 (both inclusive), Ss. 45 to 47 (both inclusive), Ss. 50 to 54 (both inclusive), and Ss.56 to 57 (both inclusive)",
+  "categories": [
+   "general"
+  ],
+  "source_url": "https://web.archive.org/web/2025id_/https://www.indiacode.nic.in/bitstream/123456789/19637/1/aA2023-32.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "This is the India Code consolidated text '[As on the 6th October, 2025]', opened through a Wayback Machine copy because indiacode.nic.in was returning 504; the original URL is https://www.indiacode.nic.in/bitstream/123456789/19637/1/aA2023-32.pdf. Sections NOT in force on that date include ss.4-25 (mediation agreement, pre-litigation mediation, process), s.27-28 (enforcement of settlements), and ss.59-65 and the Schedules that amend other Acts (for example the Ninth Schedule amending Commercial Courts Act s.12A, and the Tenth Schedule amending the Consumer Protection Act). Some sections were amended by S.O. 4506(E) w.e.f. 13 Oct 2023. Status between Oct 2025 and Nov 2026 was NOT verified, and no later commencement notification was found in searches. Re-check eGazette before telling a user s.5 is unavailable."
+ },
+ {
+  "id": "MED2023-S5",
+  "act": "Mediation Act, 2023",
+  "section": "5",
+  "title": "Voluntary pre-litigation mediation (enacted, not yet in force as checked)",
+  "plain": "NOT YET IN FORCE: do not suggest it as an available option. Section 5 lets parties to a civil or commercial dispute voluntarily, and by mutual consent, try mediation before filing a case, even with no prior mediation agreement. Mediators can come from the Mediation Council, court mediation centres or Legal Services Authorities. As of the last official text checked (Oct 2025), this section had not been brought into force. Commercial disputes of Specified Value follow section 12A of the Commercial Courts Act instead.",
+  "quote": "(1) Subject to other provisions of this Act, whether any mediation agreement exists or not, the parties before filing any suit or proceedings of civil or commercial nature in any court, may voluntarily and with mutual consent take steps to settle the disputes by pre-litigation mediation in accordance with the provisions of this Act",
+  "categories": [
+   "general",
+   "tenancy",
+   "legal_aid"
+  ],
+  "source_url": "https://web.archive.org/web/2025id_/https://www.indiacode.nic.in/bitstream/123456789/19637/1/aA2023-32.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "The TEXT is verified. Its commencement status is verified only up to the India Code version 'as on 6 Oct 2025' (see MED2023-S1). The proviso says commercial disputes of Specified Value go through CCA s.12A. Under s.6 and the First Schedule, certain matters cannot be mediated, including disputes affecting third-party rights and tax matters. Practical alternative while s.5 is not in force: Lok Adalat pre-litigation settlement through the District or State Legal Services Authority (see FACT-LOKADALAT-PRELITIGATION). For consumer disputes, see CPA2019-S37 (mediation after a complaint is admitted)."
+ },
+ {
+  "id": "CCA2015-S12A",
+  "act": "Commercial Courts Act, 2015",
+  "section": "12A",
+  "title": "Mandatory pre-institution mediation for commercial disputes",
+  "plain": "Before filing a commercial suit, which here means a business dispute worth at least Rs 3 lakh (the 'Specified Value'), the plaintiff must first try mediation, unless the suit seeks urgent interim relief. The mediation, run by a Legal Services Authority, must finish within 3 months, extendable by 2 months with consent, and that time does not count towards limitation. This does NOT apply to ordinary tenancy or salary disputes that are not 'commercial disputes'.",
+  "quote": "12A. (1) A suit, which does not contemplate any urgent interim relief under this Act, shall not be instituted unless the plaintiff exhausts the remedy of pre-institution mediation in accordance with such manner and procedure as may be prescribed by rules made by the Central Government.",
+  "categories": [
+   "general"
+  ],
+  "source_url": "https://highcourtchd.gov.in/special_commercial_court/pdf_data/commercial%20amendement%20act%202018.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "Source is the Gazette-format text of the Commercial Courts ... (Amendment) Act, 2018 (No. 28 of 2018), hosted by the Punjab & Haryana High Court. It inserted s.12A, deemed in force from 3 May 2018, and cut the minimum Specified Value from one crore to 'not less than three lakh rupees'. The consolidated CCA could not be opened (India Code 504). 'Commercial dispute' is defined in CCA s.2(1)(c), not reviewed here; it can include disputes over immovable property used exclusively in trade or commerce, so a COMMERCIAL lease may fall within it. The Mediation Act, 2023 (Ninth Schedule, via s.64) would replace s.12A with a 120 + 60 day timeline, but that was not in force per the India Code text of 6 Oct 2025. Case law making s.12A mandatory (reported as Patil Automation v. Rakheja Engineers, 2022) was not opened."
+ },
+ {
+  "id": "CPA2019-S37",
+  "act": "Consumer Protection Act, 2019",
+  "section": "37",
+  "title": "Consumer mediation happens after the complaint is admitted",
+  "plain": "Under the Consumer Protection Act, mediation is not a pre-filing step. After a consumer complaint is admitted, the District Commission may ask both parties whether they consent to mediation, at the first hearing or later. If both consent in writing within five days, the case is sent to mediation.",
+  "quote": "37. (1) At the first hearing of the complaint after its admission, or at any later stage, if it appears to the District Commission that there exists elements of a settlement which may be acceptable to the parties ... it may direct the parties to give in writing, within five days, consent to have their dispute settled by mediation",
+  "categories": [
+   "general"
+  ],
+  "source_url": "https://egazette.gov.in/WriteReadData/2019/210422.pdf",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "This is the as-enacted Gazette text (Act 35 of 2019). The Mediation Act, 2023 (Tenth Schedule) would amend these consumer mediation provisions, but that part was not in force per the India Code text of 6 Oct 2025. A sibling KB file (research_consumer_cheque_aid.json) covers CPA s.74-81 (consumer mediation cells)."
+ },
+ {
+  "id": "FACT-LOKADALAT-PRELITIGATION",
+  "act": "Legal Services Authorities Act, 1987",
+  "section": "",
+  "title": "Pre-litigation settlement through Lok Adalat",
+  "plain": "Even before filing a case, one party can apply to the District or State Legal Services Authority to have a civil dispute, or a compoundable criminal matter, referred to a Lok Adalat for amicable settlement. Non-compoundable offences are excluded. This is available now, unlike Mediation Act section 5.",
+  "quote": "The State Legal Services Authority or District Legal Services Authority as the case may be on receipt of an application from any one of the parties to any pre-litigation stage matter refer such matter to the Lok Adalat for amicable settlement.",
+  "categories": [
+   "legal_aid",
+   "general",
+   "tenancy",
+   "salary"
+  ],
+  "source_url": "https://delhi.nalsa.gov.in/lok-adalat/",
+  "source_type": "primary",
+  "verified": true,
+  "notes": "Source is the Delhi State Legal Services Authority's official page. The statutory basis is LSA Act s.19(5)(ii) (matters not yet brought before a court) and s.20(2), under which the other party must be heard before referral (see LSA1987-S19 in research_consumer_cheque_aid.json; the s.20 text was not opened here). The page also notes that Permanent Lok Adalats (s.22-B) offer compulsory pre-litigation conciliation for public utility services. A Lok Adalat settles only if both sides agree; it cannot impose a decision except at a Permanent Lok Adalat."
+ }
+]

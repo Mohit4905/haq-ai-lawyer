@@ -1,0 +1,62 @@
+{
+ "id": "T06_consumer_flight_hinglish",
+ "reply": "# Flight Cancellation Refund – Aapke Haq Aur Kya Karein\n\n## 1. Aapka Legal Right (Kanoon Kya Kehta Hai)\n\n### DGCA Guidelines (Sabse Important)\n\nDGCA ne circular jara hai ki flight cancel hone par **passenger ko choice milti hai**:\n\n| Option | Detail |\n|--------|--------|\n| ✅ Full Refund | Ticket price + taxes wapas |\n| ✅ Rebooking | Agli flight par free |\n| ✅ Credit Note | Sirf agar aap khud maanoge |\n\n> **Point:** Airline aapko **force nahi kar sakti** credit note lene par. Aapko **refund ka right** hai.\n\n### Consumer Protection Act, 2019\n\n- **Section 2(46)** – \"Unfair Trade Practice\" – Airline ka sirf credit note dena aur refund se inkaar karna unfair practice hai.\n- **Section 2(11)** – \"Service\" – Flight service bhi service hai, isliye Consumer Act apply hota hai.\n- **Section 40** – Consumer Commission refund, compensation, aur interest order de sakti hai.\n\n---\n\n## 2. Step-by-Step Action Plan\n\n### Step 1: Written Complaint to Airline (Aaj hi karein)\n\nEmail + Registered Post dono se bhejein. Template:\n\n```\nSubject: Refund Demand – PNR: [XXXXXX] – Flight: [No.] – Date: [Date]\n\nDear Sir/Madam,\n\nMy flight [Flight No.] dated [Date] was cancelled by your airline. \nI paid ₹12,000 for PNR [XXXXXX]. \n\nAs per DGCA guidelines, I am entitled to a full refund of the ticket \nprice. I do NOT accept a credit note/voucher.\n\nI demand a full refund of ₹12,000 to my original mode of payment \nwithin 7 days.\n\nPlease note that failure to comply will compel me to approach the \nDGCA Grievance Redressal Cell and the Consumer Forum.\n\nRegards,\n[Name, Phone, Email]\n```\n\n**Deadline dein: 7 din.**\n\n---\n\n### Step 2: DGCA Grievance Portal (7 din baad)\n\nAgar airline ne 7 din mein reply nahi kiya ya refund nahi aaya:\n\n🔗 **bpgrievance.dgca.gov.in**\n\n- Yahan complaint file karein\n- Airline ko **7 din** mein respond karna hota hai\n- DGCA airline par pressure daalta hai – zyada tar cases yahi solve ho jaate hain\n\n---\n\n### Step 3: Consumer Forum Complaint (Agar DGCA se bhi nahi hua)\n\n| Forum | Jurisdiction |\n|-------|-------------|\n| District Consumer Commission | Claim ₹1 lakh – ₹50 lakh |\n| State Consumer Commission | ₹50 lakh – ₹2 crore |\n| National Consumer Commission | ₹2 crore se upar |\n\n**Aapka claim ₹12,000 hai → District Consumer Commission** mein file karein.\n\n#### Kya claim kar sakte hain:\n\n| Item | Amount |\n|------|--------|\n| Refund | ₹12,000 |\n| Interest (refund delay par) | ~12-18% p.a. (court discretion) |\n| Compensation (mental agony, harassment) | ₹5,000 – ₹25,000 (case by case) |\n| Cost of complaint | ₹1,000 – ₹5,000 |\n\n#### Kya documents chahiye:\n- Ticket / PNR confirmation\n- Payment proof (bank statement / UTR)\n- Cancellation email/SMS\n- Complaints ki copies (email, chat screenshots)\n- DGCA complaint acknowledgment\n\n#### Time Limit:\n- **2 saal** tak file kar sakte hain (cause of action se)\n- Lekin jaldi karein – evidence fresh rahega\n\n---\n\n## 3. Case Law (Reference ke liye)\n\n| Case | Holding |\n|------|---------|\n| **Indian Airlines v. Union of India** | Airline ki duty hai passenger ko refund dena |\n| **Various Consumer Commission orders** | Credit note force karna = deficiency in service + unfair practice |\n| **Section 2(46) CPA 2019** | Unfair practice mein \"restricting consumer's choice\" included hai |\n\n> Zyada tar consumer courts mein airlines ko **refund + interest + compensation** dena padta hai jab wo credit note force karti hain.\n\n---\n\n## 4. Quick Summary (TL;DR)\n\n```\nAaj:        Written complaint (email + registered post)\n7 din baad: DGCA portal par complaint\n15-30 din:  Consumer Forum mein complaint file karein\n```\n\n---\n\n## 5. Extra Tips\n\n- **Credit note accept mat karein** – agar accept kar liya toh refund ka right khatam ho jata hai\n- **Sab kuch written mein rakhein** – phone calls ka record nahi hota\n- **Bank se \"chargeback\" bhi try kar sakte hain** – agar credit card se payment hua tha toh bank se dispute raise karein (30 din ke andar)\n- **Legal aid** – agar khud nahi kar pa rahe toh local Bar Association ya NALSA se free legal aid le sakte hain\n\n---\n\nKya aap chahte hain ki main aapke liye **Consumer Forum complaint ka draft** bhi bana doon? Bataiye airline ka naam, flight number, date, aur payment mode – main ready draft de dunga.",
+ "model": {
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "latency_s": 4.9,
+  "usage": {
+   "queue_time": 0.048728584,
+   "prompt_tokens": 119,
+   "prompt_time": 0.007928966,
+   "completion_tokens": 1965,
+   "completion_time": 4.140362293,
+   "total_tokens": 2084,
+   "total_time": 4.148291259,
+   "completion_tokens_details": {
+    "reasoning_tokens": 680
+   }
+  },
+  "fallback_attempts": [
+   "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+  ]
+ },
+ "guard_audit": {
+  "verified": [
+   [
+    "Section 2(46)",
+    "Consumer Protection Act, 2019"
+   ],
+   [
+    "Section 2(46)",
+    "Consumer Protection Act, 2019"
+   ]
+  ],
+  "violations": [
+   {
+    "type": "case_law",
+    "text": "Indian Airlines v. Un",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 40",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Consumer Act",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "ambiguous_section",
+    "text": "Section 2(11)",
+    "why": "Section mentioned without naming the Act."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

@@ -1,0 +1,281 @@
+{
+ "case": {
+  "id": "T12_notice_explain_hindi",
+  "group": "core",
+  "turns": [
+   "मुझे वकील का नोटिस आया है अंग्रेज़ी में, समझ नहीं आ रहा। लिखा है: 'Under instructions from my client Mr. S.K. Verma, I hereby call upon you to pay Rs. 1,00,000 towards damages caused to the premises at Flat 4B, Indirapuram, within 15 days of receipt of this notice, failing which my client shall initiate appropriate civil proceedings against you at your risk as to costs.' मैंने वो फ्लैट 2 महीने पहले खाली किया था और कोई नुकसान नहीं किया।"
+  ],
+  "expect": {
+   "category_any": [
+    "notice",
+    "tenancy"
+   ],
+   "script": "Devanagari",
+   "must_mention_any": [
+    [
+     "15"
+    ],
+    [
+     "जवाब",
+     "reply",
+     "रिप्लाई"
+    ]
+   ],
+   "escalate_min": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "Aapko jo notice mila hai, usme 15 din ka deadline diya gaya hai. Pehle yeh confirm kar lein:\n- Notice aapko kis date ko mila? (notice_received_date)\n- Notice me likhi date kya hai? (notice_date)\nAapke paas jo proof hai, jaise ki vacancy ka handover receipt, photos ya koi communication, usko ikattha kar lein. Agar aapko lagta hai ki aapne koi nuksan nahi kiya, to aap ek **written reply** (reply_to_notice) bhej sakte hain, jisme:\n- Notice receive karne ki date mention ho\n- Aapka version (flat 2 mahine pehle khali kiya, koi nuksan nahi) likhen\n- Saare supporting documents attach karen\nYeh reply deadline se pehle bhejna chahiye, taki aapka side record ho. Agar aapko likhne me help chahiye, to main draft bana ke de sakta hoon.\n\n**Agle kadam:** Notice receive date aur notice date confirm karen, aur aapke paas jo proof hai uski list bana lein.",
+   "citations": [],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 67,
+    "missing": [
+     {
+      "key": "notice_date",
+      "question": "Date on the notice?"
+     },
+     {
+      "key": "received_date",
+      "question": "When did you receive it?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "reply_to_notice"
+    },
+    {
+     "type": "practice"
+    }
+   ],
+   "next_step": "Confirm notice_date and notice_received_date, and gather proof of vacancy handover.",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "If the other side does not accept your reply, you may need legal counsel for civil suit defense."
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Exact dates of notice and receipt",
+    "Whether any written handover agreement exists"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "latency_s": 2.44,
+    "usage": {
+     "queue_time": 0.319528697,
+     "prompt_tokens": 2800,
+     "prompt_time": 0.142046114,
+     "completion_tokens": 597,
+     "completion_time": 1.250310356,
+     "total_tokens": 3397,
+     "total_time": 1.39235647,
+     "completion_tokens_details": {
+      "reasoning_tokens": 24
+     }
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "notice",
+       "language": "Hindi",
+       "script": "Devanagari",
+       "facts": {
+        "notice_from": "Mr. S.K. Verma",
+        "notice_demands": "Rs 1,00,000 towards damages",
+        "notice_deadline_days": 15,
+        "notice_text": "Under instructions from my client Mr. S.K. Verma, I hereby call upon you to pay Rs. 1,00,000 towards damages caused to the premises at Flat 4B, Indirapuram, within 15 days of receipt of this notice, failing which my client shall initiate appropriate civil proceedings against you at your risk as to costs.",
+        "other_party_name": "Mr. S.K. Verma",
+        "city_state": "Indirapuram",
+        "user_name": ""
+       },
+       "approximate_dates": [],
+       "confidence": 0.9
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 1.62,
+       "usage": {
+        "queue_time": 0.368620387,
+        "prompt_tokens": 1001,
+        "prompt_time": 0.059423264,
+        "completion_tokens": 381,
+        "completion_time": 0.41584918,
+        "total_tokens": 1382,
+        "total_time": 0.475272444,
+        "completion_tokens_details": {
+         "reasoning_tokens": 210
+        }
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-120b",
+       "latency_s": 2.44,
+       "usage": {
+        "queue_time": 0.319528697,
+        "prompt_tokens": 2800,
+        "prompt_time": 0.142046114,
+        "completion_tokens": 597,
+        "completion_time": 1.250310356,
+        "total_tokens": 3397,
+        "total_time": 1.39235647,
+        "completion_tokens_details": {
+         "reasoning_tokens": 24
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 18.71
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "मुझे वकील का नोटिस आया है अंग्रेज़ी में, समझ नहीं आ रहा। लिखा है: 'Under instructions from my client Mr. S.K. Verma, I hereby call upon you to pay Rs. 1,00,000 towards damages caused to the premises at Flat 4B, Indirapuram, within 15 days of receipt of this notice, failing which my client shall initiate appropriate civil proceedings against you at your risk as to costs.' मैंने वो फ्लैट 2 महीने पहले खाली किया था और कोई नुकसान नहीं किया।"
+   },
+   {
+    "role": "assistant",
+    "content": "Aapko jo notice mila hai, usme 15 din ka deadline diya gaya hai. Pehle yeh confirm kar lein:\n- Notice aapko kis date ko mila? (notice_received_date)\n- Notice me likhi date kya hai? (notice_date)\nAapke paas jo proof hai, jaise ki vacancy ka handover receipt, photos ya koi communication, usko ikattha kar lein. Agar aapko lagta hai ki aapne koi nuksan nahi kiya, to aap ek **written reply** (reply_to_notice) bhej sakte hain, jisme:\n- Notice receive karne ki date mention ho\n- Aapka version (flat 2 mahine pehle khali kiya, koi nuksan nahi) likhen\n- Saare supporting documents attach karen\nYeh reply deadline se pehle bhejna chahiye, taki aapka side record ho. Agar aapko likhne me help chahiye, to main draft bana ke de sakta hoon.\n\n**Agle kadam:** Notice receive date aur notice date confirm karen, aur aapke paas jo proof hai uski list bana lein."
+   }
+  ],
+  "case": {
+   "category": "notice",
+   "language": "Hinglish",
+   "script": "Latin",
+   "facts": {
+    "notice_from": "Mr. S.K. Verma",
+    "notice_demands": 100000,
+    "notice_deadline_days": 15,
+    "notice_text": "Under instructions from my client Mr. S.K. Verma, I hereby call upon you to pay Rs. 1,00,000 towards damages caused to the premises at Flat 4B, Indirapuram, within 15 days of receipt of this notice, failing which my client shall initiate appropriate civil proceedings against you at your risk as to costs.",
+    "other_party_name": "Mr. S.K. Verma",
+    "city_state": "Indirapuram"
+   },
+   "timeline": [],
+   "evidence_have": [],
+   "evidence_missing": [
+    "Notice date",
+    "Date you received the notice",
+    "Hand over/vacancy receipt",
+    "Photos of flat condition",
+    "Any communication with Mr. Verma about the handover"
+   ],
+   "next_step": "Confirm notice_date and notice_received_date, and gather proof of vacancy handover."
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "If the other side does not accept your reply, you may need legal counsel for civil suit defense."
+   ]
+  },
+  "log": [
+   {
+    "t": 18.71,
+    "model": "openai/gpt-oss-120b",
+    "provider": "groq",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got notice"
+  },
+  {
+   "check": "reply_language",
+   "pass": false,
+   "detail": "expected Devanagari, reply script Hinglish"
+  },
+  {
+   "check": "mentions:15",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "mentions:जवाब|reply|रिप्लाई",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation>=recommended",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "Clear, accurate, practical advice in Hinglish that outlines immediate next steps without making legal guarantees or inventing information.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.5-flash",
+   "latency_s": 2.67,
+   "usage": {
+    "completion_tokens": 56,
+    "prompt_tokens": 531,
+    "total_tokens": 587
+   },
+   "fallback_attempts": []
+  }
+ }
+}

@@ -1,0 +1,248 @@
+{
+ "case": {
+  "id": "T22_out_of_scope_property",
+  "group": "scope",
+  "turns": [
+   "My uncle has occupied our ancestral land in the village and got the mutation done in his name. How do I get the land back?"
+  ],
+  "expect": {
+   "category_any": [
+    "out_of_scope",
+    "other"
+   ],
+   "escalate_min": "urgent"
+  }
+ },
+ "results": [
+  {
+   "reply": "Ancestral property disputes involving mutation records are complex and often require a civil court process. Because this involves property title and ownership rights, I cannot provide specific legal steps or draft documents for you. \n\nThis is a serious matter that needs a lawyer to review your land records and the mutation documents. Please do not try to handle this alone. \n\n1. **Get professional help:** Since this is a property dispute, you should consult a local lawyer who understands land revenue laws in your state.\n2. **Free Legal Aid:** If you need help finding a lawyer or cannot afford one, please call the national legal aid helpline at **15100** (NALSA). They can guide you on how to apply for free legal services.\n3. **Stay safe:** Please avoid any physical confrontation at the land site, as this can lead to police involvement.",
+   "citations": [
+    {
+     "id": "FACT-NALSA-HELPLINE",
+     "act": "NALSA legal aid helpline",
+     "section": "",
+     "title": "NALSA legal aid helpline 15100",
+     "plain": "Call the national legal aid helpline 15100 (toll-free) for free legal advice and help applying for legal aid. You can also apply for legal aid or victim compensation online via the NALSA website.",
+     "source_url": "https://nalsa.gov.in/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 0,
+    "missing": []
+   },
+   "actions": [
+    {
+     "type": "get_help"
+    }
+   ],
+   "next_step": "Call NALSA helpline 15100 for guidance on finding a lawyer for property disputes.",
+   "needs_lawyer": {
+    "level": "urgent",
+    "reasons": [
+     "Property title / possession: needs a lawyer",
+     "Property title disputes and mutation challenges are complex civil matters that require professional legal representation."
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "State where the land is located",
+    "Current status of the land records"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Latin",
+     "got": "Latin",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 3.17,
+    "usage": {
+     "completion_tokens": 434,
+     "prompt_tokens": 2247,
+     "total_tokens": 2791
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 400: {\"error\":{\"message\":\"Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.\",\"type\":\"inva",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+     "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+     "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": [
+       {
+        "level": "urgent",
+        "reason": "Property title / possession: needs a lawyer"
+       }
+      ]
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "out_of_scope",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "summary": "User's uncle has occupied ancestral village land and got mutation done in his name; user wants to recover the land."
+       },
+       "approximate_dates": [],
+       "confidence": 0.95
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "qwen/qwen3.8-27b",
+       "latency_s": 1.34,
+       "usage": {
+        "queue_time": 0.047728042,
+        "prompt_tokens": 899,
+        "prompt_time": 0.074991569,
+        "completion_tokens": 289,
+        "completion_time": 0.574857168,
+        "total_tokens": 1188,
+        "total_time": 0.649848737,
+        "completion_tokens_details": {
+         "reasoning_tokens": 196
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic"
+       ]
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 3.17,
+       "usage": {
+        "completion_tokens": 434,
+        "prompt_tokens": 2247,
+        "total_tokens": 2791
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 400: {\"error\":{\"message\":\"Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.\",\"type\":\"inva",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+        "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 10.72
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "My uncle has occupied our ancestral land in the village and got the mutation done in his name. How do I get the land back?"
+   },
+   {
+    "role": "assistant",
+    "content": "Ancestral property disputes involving mutation records are complex and often require a civil court process. Because this involves property title and ownership rights, I cannot provide specific legal steps or draft documents for you. \n\nThis is a serious matter that needs a lawyer to review your land records and the mutation documents. Please do not try to handle this alone. \n\n1. **Get professional help:** Since this is a property dispute, you should consult a local lawyer who understands land revenue laws in your state.\n2. **Free Legal Aid:** If you need help finding a lawyer or cannot afford one, please call the national legal aid helpline at **15100** (NALSA). They can guide you on how to apply for free legal services.\n3. **Stay safe:** Please avoid any physical confrontation at the land site, as this can lead to police involvement."
+   }
+  ],
+  "case": {
+   "category": "out_of_scope",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "summary": "User's uncle has occupied ancestral village land and got mutation done in his name; user wants to recover the land."
+   },
+   "timeline": [],
+   "evidence_have": [],
+   "evidence_missing": [
+    "Land ownership documents (Sale deed, inheritance records)",
+    "Mutation records from the Tehsildar/Revenue office"
+   ],
+   "next_step": "Call NALSA helpline 15100 for guidance on finding a lawyer for property disputes."
+  },
+  "flags": {
+   "level": "urgent",
+   "reasons": [
+    "Property title / possession: needs a lawyer",
+    "Property title disputes and mutation challenges are complex civil matters that require professional legal representation."
+   ]
+  },
+  "log": [
+   {
+    "t": 10.72,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got out_of_scope"
+  },
+  {
+   "check": "escalation>=urgent",
+   "pass": true,
+   "detail": "got urgent"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 3,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "The assistant is safe and honest but overly cautious; it could have provided general, non-binding information about the mutation cancellation process or civil suits to be more helpful.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 1.97,
+   "usage": {
+    "completion_tokens": 79,
+    "prompt_tokens": 387,
+    "total_tokens": 582
+   },
+   "fallback_attempts": [
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+   ]
+  }
+ }
+}

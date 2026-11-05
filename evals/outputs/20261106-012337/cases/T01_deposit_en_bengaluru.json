@@ -1,0 +1,407 @@
+{
+ "case": {
+  "id": "T01_deposit_en_bengaluru",
+  "group": "core",
+  "turns": [
+   "I moved out of my rented flat in Bengaluru on 31 August 2026 and handed over the keys the same day. I paid a deposit of Rs 60,000 by bank transfer, rent was 20,000. Landlord Mr. Ramesh Gowda says he'll cut 25,000 for painting and 'general damage' but hasn't shown any bills. It's been over 2 months. We had a registered rent agreement. What can I do?"
+  ],
+  "expect": {
+   "category": "tenancy",
+   "script": "Latin",
+   "facts": {
+    "deposit_amount": "60",
+    "monthly_rent": "20",
+    "possession_handed_over_date": "2026-08-31"
+   },
+   "must_mention_any": [
+    [
+     "notice",
+     "legal notice"
+    ],
+    [
+     "proof",
+     "bills",
+     "receipts",
+     "evidence"
+    ]
+   ],
+   "escalate_max": "recommended",
+   "draft": "deposit_demand_notice"
+  }
+ },
+ "results": [
+  {
+   "reply": "It is frustrating when a landlord holds back your deposit without proof of damages. Since you have a registered agreement, you are in a better position.\n\nHere is where you stand:\n- You have a strong basis to demand the return of the deposit under the Indian Contract Act, 1872, as the landlord must justify deductions with actual expenses.\n- Since you are in Bengaluru, Karnataka, note that the Model Tenancy Act does not apply here as the state has not adopted it. Your rights are governed by your agreement and general contract law.\n\n**Your Options:**\n1. **Written Request:** Send a formal email or WhatsApp message to Mr. Gowda demanding the itemized bills for the Rs 25,000 deduction within 7 days, or the full refund.\n2. **Legal Notice:** If he ignores you, send a formal legal notice demanding the refund within 15 days.\n3. **Legal Aid:** Contact the Karnataka State Legal Services Authority (KSLA) or call 15100 for free guidance.\n4. **Civil Suit:** You can file a recovery suit in a civil court, but this is a longer process.\n\n**Next Step:** Start by sending a formal written request asking for the bills. Would you like me to help you draft that message?",
+   "citations": [
+    {
+     "id": "ICA1872-S73",
+     "act": "Indian Contract Act, 1872",
+     "section": "73",
+     "title": "Compensation for breach of contract",
+     "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+     "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-NALSA-HELPLINE",
+     "act": "NALSA legal aid helpline",
+     "section": "",
+     "title": "NALSA legal aid helpline 15100",
+     "plain": "Call the national legal aid helpline 15100 (toll-free) for free legal advice and help applying for legal aid. You can also apply for legal aid or victim compensation online via the NALSA website.",
+     "source_url": "https://nalsa.gov.in/",
+     "source_type": "primary"
+    },
+    {
+     "id": "LIM1963-ART55",
+     "act": "Limitation Act, 1963",
+     "section": "Schedule, Article 55",
+     "title": "3 years to sue for compensation for breach of contract",
+     "plain": "A suit for compensation for breach of a contract (written or implied), where no other article covers it specifically, must be filed within 3 years. Time runs from the date of the breach. If there are repeated breaches, it runs from the breach you sue on; if the breach is continuing, from when it stops.",
+     "source_url": "https://www.thc.nic.in/Central%20Governmental%20Acts/Limitation%20Act,%202019.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Approximate last date to sue for the deposit (3 years)",
+      "date": "2029-08-31",
+      "days_left": 1029,
+      "status": "ok",
+      "basis": "LIM1963-ART55",
+      "note": "Limitation depends on the exact claim; confirm with legal aid before relying on it.",
+      "user_deadline": true
+     }
+    ],
+    "derived": [
+     {
+      "label": "Deposit size",
+      "value": "3.0 × monthly rent",
+      "basis": "MTA2021-S11",
+      "note": "The Model Tenancy Act caps residential deposits at 2 months' rent, but it applies only in states that have adopted it, and usually only to new agreements."
+     }
+    ]
+   },
+   "completeness": {
+    "pct": 100,
+    "missing": []
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "deposit_demand_notice"
+    }
+   ],
+   "next_step": "Draft a formal written request for the landlord",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Have you sent any written communication to the landlord yet?"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Latin",
+     "got": "Latin",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 3.6,
+    "usage": {
+     "completion_tokens": 594,
+     "prompt_tokens": 3260,
+     "total_tokens": 3971
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "tenancy",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "deposit_amount": 60000,
+        "monthly_rent": 20000,
+        "written_agreement": true,
+        "possession_handed_over_date": "2026-08-31",
+        "deductions_claimed": "25000 for painting and general damage",
+        "city_state": "Bengaluru",
+        "other_party_name": "Ramesh Gowda",
+        "summary": "Landlord is withholding 25,000 from 60,000 security deposit without providing bills for painting and damages."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.5,
+       "usage": {
+        "completion_tokens": 196,
+        "prompt_tokens": 1008,
+        "total_tokens": 1333
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 3.6,
+       "usage": {
+        "completion_tokens": 594,
+        "prompt_tokens": 3260,
+        "total_tokens": 3971
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 6.11
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "I moved out of my rented flat in Bengaluru on 31 August 2026 and handed over the keys the same day. I paid a deposit of Rs 60,000 by bank transfer, rent was 20,000. Landlord Mr. Ramesh Gowda says he'll cut 25,000 for painting and 'general damage' but hasn't shown any bills. It's been over 2 months. We had a registered rent agreement. What can I do?"
+   },
+   {
+    "role": "assistant",
+    "content": "It is frustrating when a landlord holds back your deposit without proof of damages. Since you have a registered agreement, you are in a better position.\n\nHere is where you stand:\n- You have a strong basis to demand the return of the deposit under the Indian Contract Act, 1872, as the landlord must justify deductions with actual expenses.\n- Since you are in Bengaluru, Karnataka, note that the Model Tenancy Act does not apply here as the state has not adopted it. Your rights are governed by your agreement and general contract law.\n\n**Your Options:**\n1. **Written Request:** Send a formal email or WhatsApp message to Mr. Gowda demanding the itemized bills for the Rs 25,000 deduction within 7 days, or the full refund.\n2. **Legal Notice:** If he ignores you, send a formal legal notice demanding the refund within 15 days.\n3. **Legal Aid:** Contact the Karnataka State Legal Services Authority (KSLA) or call 15100 for free guidance.\n4. **Civil Suit:** You can file a recovery suit in a civil court, but this is a longer process.\n\n**Next Step:** Start by sending a formal written request asking for the bills. Would you like me to help you draft that message?"
+   }
+  ],
+  "case": {
+   "category": "tenancy",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "deposit_amount": 60000,
+    "monthly_rent": 20000,
+    "written_agreement": true,
+    "possession_handed_over_date": "2026-08-31",
+    "deductions_claimed": "25000 for painting and general damage",
+    "city_state": "Bengaluru",
+    "other_party_name": "Ramesh Gowda",
+    "summary": "Landlord is withholding 25,000 from 60,000 security deposit without providing bills for painting and damages.",
+    "communications_so_far": "None mentioned",
+    "proof_of_payment": "Bank transfer"
+   },
+   "timeline": [
+    {
+     "date": "2026-08-31",
+     "event": "Moved out and handed over keys"
+    }
+   ],
+   "evidence_have": [
+    "Registered rent agreement",
+    "Bank transfer record of deposit"
+   ],
+   "evidence_missing": [
+    "Written communication with landlord regarding the deduction",
+    "Photos of the flat condition at move-out"
+   ],
+   "next_step": "Draft a formal written request for the landlord"
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 6.11,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": {
+  "doc_type": "deposit_demand_notice",
+  "title": "Legal Notice for Refund of Security Deposit",
+  "body_markdown": "LEGAL NOTICE\nBy Registered Post A.D.\nDate: [[FILL: date]]\n\nFrom:\n[[FILL: Your Full Name]]\n[[FILL: Your Current Address]]\n\nTo:\nMr. Ramesh Gowda\n[[FILL: Landlord's Full Address]]\n\nSubject: Demand for refund of security deposit regarding premises at [[FILL: Rented Property Address]].\n\nDear Mr. Ramesh Gowda,\n\n1. I am writing to you regarding the registered rent agreement dated [[FILL: Date of Rent Agreement]] for the premises located at [[FILL: Rented Property Address]].\n\n2. As per our agreement, I deposited a sum of Rs. 60,000/- as a security deposit, which was paid via bank transfer.\n\n3. I vacated the premises and handed over the keys to you on 31 August 2026.\n\n4. You have informed me of your intention to deduct Rs. 25,000/- from the security deposit for painting and general damages. However, you have failed to provide any bills, invoices, or evidence to justify these deductions.\n\n5. Under Section 73 of the Indian Contract Act, 1872, you are liable to compensate for the loss caused by the breach of contract, which includes the failure to refund the security deposit as agreed upon the termination of the tenancy.\n\n6. I hereby demand that you refund the balance of the security deposit, or provide valid, itemized bills for the claimed deductions, within 15 days of receiving this notice.\n\n7. Please remit the amount to the following bank account:\n   Account Name: [[FILL: Your Name]]\n   Bank Name: [[FILL: Your Bank Name]]\n   Account Number: [[FILL: Your Account Number]]\n   IFSC: [[FILL: Your IFSC Code]]\n\n8. If you fail to comply with this demand within the specified period, I shall be constrained to initiate appropriate legal proceedings for the recovery of the amount, including interest and legal costs, at your risk and expense.\n\nCopy retained for record.\n\nSincerely,\n\n[[FILL: Your Full Name]]\n[[FILL: Your Phone Number]]\n[[FILL: Your Email Address]]",
+  "placeholders": [
+   "[[FILL: date]]",
+   "[[FILL: Your Full Name]]",
+   "[[FILL: Your Current Address]]",
+   "[[FILL: Landlord's Full Address]]",
+   "[[FILL: Rented Property Address]]",
+   "[[FILL: Date of Rent Agreement]]",
+   "[[FILL: Your Name]]",
+   "[[FILL: Your Bank Name]]",
+   "[[FILL: Your Account Number]]",
+   "[[FILL: Your IFSC Code]]",
+   "[[FILL: Your Phone Number]]",
+   "[[FILL: Your Email Address]]"
+  ],
+  "citations": [
+   {
+    "id": "ICA1872-S73",
+    "act": "Indian Contract Act, 1872",
+    "section": "73",
+    "title": "Compensation for breach of contract",
+    "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+    "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+    "source_type": "primary"
+   }
+  ],
+  "send_instructions": [
+   "Print two copies of this notice. Sign both copies in blue or black ink.",
+   "Send one copy to the landlord via 'Registered Post A.D.' (Acknowledgement Due) from your nearest post office.",
+   "Keep the original postal receipt and the 'Acknowledgement Due' card (which will be returned to you by post once the landlord receives the letter) as proof of delivery.",
+   "Keep the second copy for your own records.",
+   "If the landlord does not respond or pay within 15 days of receiving the notice, you may consider filing a civil suit for recovery or approaching the local District Legal Services Authority for mediation/Lok Adalat."
+  ],
+  "guard": {
+   "initial": {
+    "verified": [
+     [
+      "Section 73",
+      "Indian Contract Act, 1872"
+     ]
+    ],
+    "violations": [],
+    "warnings": [
+     {
+      "type": "unsupported_number",
+      "text": "15 days",
+      "why": "Time period not found in the verified library or calculations."
+     }
+    ],
+    "ok": true
+   },
+   "stripped": false
+  },
+  "model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 7.22,
+   "usage": {
+    "completion_tokens": 836,
+    "prompt_tokens": 2199,
+    "total_tokens": 4359
+   },
+   "fallback_attempts": []
+  },
+  "disclaimer": "Draft prepared with AI from what you told Haq. Read every line, fill the [[FILL]] gaps, and remove anything untrue before sending. For large amounts or if the other side has a lawyer, get it checked by a lawyer (free legal aid: NALSA 15100)."
+ },
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got tenancy"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Latin, reply script Latin"
+  },
+  {
+   "check": "fact:deposit_amount",
+   "pass": true,
+   "detail": "expected ~60, got 60000"
+  },
+  {
+   "check": "fact:monthly_rent",
+   "pass": true,
+   "detail": "expected ~20, got 20000"
+  },
+  {
+   "check": "fact:possession_handed_over_date",
+   "pass": true,
+   "detail": "expected ~2026-08-31, got 2026-08-31"
+  },
+  {
+   "check": "mentions:notice|legal notice",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "mentions:proof|bills|receipts|evidence",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "draft_no_unverified_law",
+   "pass": true,
+   "detail": "[]"
+  },
+  {
+   "check": "draft_has_no_invented_fill",
+   "pass": true,
+   "detail": "12 placeholders"
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "The reply is clear, actionable, honest, and legally accurate.",
+  "judge_model": {
+   "provider": "groq",
+   "model": "openai/gpt-oss-120b",
+   "latency_s": 0.98,
+   "usage": {
+    "queue_time": 0.154153388,
+    "prompt_tokens": 612,
+    "prompt_time": 0.028497,
+    "completion_tokens": 84,
+    "completion_time": 0.175400875,
+    "total_tokens": 696,
+    "total_time": 0.203897875,
+    "completion_tokens_details": {
+     "reasoning_tokens": 37
+    }
+   },
+   "fallback_attempts": [
+    "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199101, Requested 1006. Please try again in 46.224s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_lim",
+    "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198991, Requested 1016. Please try again in 3.023999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rat"
+   ]
+  }
+ }
+}

@@ -1,0 +1,314 @@
+{
+ "case": {
+  "id": "T02_deposit_hindi_delhi",
+  "group": "language",
+  "turns": [
+   "मैंने दिल्ली के लक्ष्मी नगर में किराये का कमरा 15 सितंबर 2026 को खाली कर दिया। 25,000 रुपये सिक्योरिटी डिपॉज़िट दिया था, नकद में, रसीद नहीं है। मकान मालिक अब फ़ोन नहीं उठा रहा। मैं क्या करूँ?"
+  ],
+  "expect": {
+   "category": "tenancy",
+   "script": "Devanagari",
+   "facts": {
+    "deposit_amount": "25"
+   },
+   "must_mention_any": [
+    [
+     "सबूत",
+     "प्रमाण",
+     "रसीद",
+     "गवाह",
+     "WhatsApp",
+     "व्हाट्सऐप",
+     "proof"
+    ]
+   ],
+   "escalate_max": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "नमस्ते। यह सुनकर दुख हुआ कि आपको अपना सिक्योरिटी डिपॉज़िट वापस पाने में परेशानी हो रही है। बिना रसीद के नकद भुगतान (cash payment) होने के कारण मामला थोड़ा चुनौतीपूर्ण है, लेकिन आप अभी भी कुछ कदम उठा सकते हैं।\n\nआपके पास अभी ये विकल्प हैं:\n1. लिखित अनुरोध (WhatsApp/Email): मकान मालिक को एक आखिरी बार लिखित में संदेश भेजें।\n2. कानूनी नोटिस (Legal Notice): आप खुद या वकील के जरिए उन्हें नोटिस भेज सकते हैं।\n3. कानूनी सहायता (Legal Aid): दिल्ली राज्य कानूनी सेवा प्राधिकरण (DSLSA) से मुफ्त सलाह लें।\n\nआगे बढ़ने के लिए मुझे ये बताएं:\n- क्या आपके पास कोई रेंट एग्रीमेंट (Rent Agreement) है?\n- क्या आपके पास कोई सबूत है कि आपने उन्हें पैसे दिए थे? (जैसे कोई पुरानी चैट, बैंक स्टेटमेंट जिसमें पैसे निकालने का जिक्र हो, या कोई गवाह?)\n- क्या मकान मालिक ने कभी किसी कटौती (जैसे पेंटिंग या मरम्मत) के बारे में बात की थी?\n\nअभी के लिए, सबसे अच्छा कदम है कि आप उन्हें एक औपचारिक संदेश भेजें जिसमें स्पष्ट रूप से राशि, खाली करने की तारीख और बैंक विवरण हों। क्या आप चाहते हैं कि मैं इसका ड्राफ्ट तैयार करने में आपकी मदद करूँ?",
+   "citations": [
+    {
+     "id": "ICA1872-S73",
+     "act": "Indian Contract Act, 1872",
+     "section": "73",
+     "title": "Compensation for breach of contract",
+     "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+     "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-NALSA-HELPLINE",
+     "act": "NALSA legal aid helpline",
+     "section": "",
+     "title": "NALSA legal aid helpline 15100",
+     "plain": "Call the national legal aid helpline 15100 (toll-free) for free legal advice and help applying for legal aid. You can also apply for legal aid or victim compensation online via the NALSA website.",
+     "source_url": "https://nalsa.gov.in/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Approximate last date to sue for the deposit (3 years)",
+      "date": "2029-09-15",
+      "days_left": 1044,
+      "status": "ok",
+      "basis": "LIM1963-ART55",
+      "note": "Limitation depends on the exact claim; confirm with legal aid before relying on it.",
+      "user_deadline": true
+     }
+    ],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 44,
+    "missing": [
+     {
+      "key": "monthly_rent",
+      "question": "What was the monthly rent (₹)?"
+     },
+     {
+      "key": "written_agreement",
+      "question": "Is there a written rent agreement? (yes/no)"
+     },
+     {
+      "key": "deductions_claimed",
+      "question": "Has the landlord claimed any deductions (painting, damage, dues)?"
+     },
+     {
+      "key": "communications_so_far",
+      "question": "How have you asked for it so far (calls, WhatsApp, email)?"
+     },
+     {
+      "key": "other_party_name",
+      "question": "Landlord's name (and address, if you have it)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "deposit_demand_notice"
+    }
+   ],
+   "next_step": "Draft a formal request message to the landlord",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "Lack of written proof for cash payment makes recovery difficult; legal advice is needed to assess if other evidence is sufficient."
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Existence of rent agreement",
+    "Any other proof of payment"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Devanagari",
+     "got": "Devanagari",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 3.64,
+    "usage": {
+     "completion_tokens": 643,
+     "prompt_tokens": 3133,
+     "total_tokens": 3901
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+     "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+     "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "tenancy",
+       "language": "Hindi",
+       "script": "Devanagari",
+       "facts": {
+        "deposit_amount": 25000,
+        "possession_handed_over_date": "2026-09-15",
+        "proof_of_payment": "none",
+        "city_state": "Delhi",
+        "summary": "Landlord is not responding after the user vacated the rented room and is withholding the security deposit."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.48,
+       "usage": {
+        "completion_tokens": 141,
+        "prompt_tokens": 960,
+        "total_tokens": 1236
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie"
+       ]
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 3.64,
+       "usage": {
+        "completion_tokens": 643,
+        "prompt_tokens": 3133,
+        "total_tokens": 3901
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+        "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 10.36
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "मैंने दिल्ली के लक्ष्मी नगर में किराये का कमरा 15 सितंबर 2026 को खाली कर दिया। 25,000 रुपये सिक्योरिटी डिपॉज़िट दिया था, नकद में, रसीद नहीं है। मकान मालिक अब फ़ोन नहीं उठा रहा। मैं क्या करूँ?"
+   },
+   {
+    "role": "assistant",
+    "content": "नमस्ते। यह सुनकर दुख हुआ कि आपको अपना सिक्योरिटी डिपॉज़िट वापस पाने में परेशानी हो रही है। बिना रसीद के नकद भुगतान (cash payment) होने के कारण मामला थोड़ा चुनौतीपूर्ण है, लेकिन आप अभी भी कुछ कदम उठा सकते हैं।\n\nआपके पास अभी ये विकल्प हैं:\n1. लिखित अनुरोध (WhatsApp/Email): मकान मालिक को एक आखिरी बार लिखित में संदेश भेजें।\n2. कानूनी नोटिस (Legal Notice): आप खुद या वकील के जरिए उन्हें नोटिस भेज सकते हैं।\n3. कानूनी सहायता (Legal Aid): दिल्ली राज्य कानूनी सेवा प्राधिकरण (DSLSA) से मुफ्त सलाह लें।\n\nआगे बढ़ने के लिए मुझे ये बताएं:\n- क्या आपके पास कोई रेंट एग्रीमेंट (Rent Agreement) है?\n- क्या आपके पास कोई सबूत है कि आपने उन्हें पैसे दिए थे? (जैसे कोई पुरानी चैट, बैंक स्टेटमेंट जिसमें पैसे निकालने का जिक्र हो, या कोई गवाह?)\n- क्या मकान मालिक ने कभी किसी कटौती (जैसे पेंटिंग या मरम्मत) के बारे में बात की थी?\n\nअभी के लिए, सबसे अच्छा कदम है कि आप उन्हें एक औपचारिक संदेश भेजें जिसमें स्पष्ट रूप से राशि, खाली करने की तारीख और बैंक विवरण हों। क्या आप चाहते हैं कि मैं इसका ड्राफ्ट तैयार करने में आपकी मदद करूँ?"
+   }
+  ],
+  "case": {
+   "category": "tenancy",
+   "language": "Hindi",
+   "script": "Devanagari",
+   "facts": {
+    "deposit_amount": 25000,
+    "possession_handed_over_date": "2026-09-15",
+    "proof_of_payment": "none",
+    "city_state": "Delhi",
+    "summary": "Tenant vacated room in Laxmi Nagar, Delhi; landlord unresponsive regarding ₹25,000 cash deposit."
+   },
+   "timeline": [
+    {
+     "date": "2026-09-15",
+     "event": "Vacated rented room"
+    }
+   ],
+   "evidence_have": [],
+   "evidence_missing": [
+    "Rent agreement",
+    "Proof of cash payment (chats, bank withdrawals, witnesses)"
+   ],
+   "next_step": "Draft a formal request message to the landlord"
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "Lack of written proof for cash payment makes recovery difficult; legal advice is needed to assess if other evidence is sufficient."
+   ]
+  },
+  "log": [
+   {
+    "t": 10.36,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got tenancy"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Devanagari, reply script Devanagari"
+  },
+  {
+   "check": "fact:deposit_amount",
+   "pass": true,
+   "detail": "expected ~25, got 25000"
+  },
+  {
+   "check": "mentions:सबूत|प्रमाण|रसीद|गवाह|WhatsApp|व्हाट्सऐप",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "The assistant provides clear, practical, and realistic advice for a difficult situation involving cash payments without receipts, while correctly identifying the need for further evidence.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 3.27,
+   "usage": {
+    "completion_tokens": 75,
+    "prompt_tokens": 504,
+    "total_tokens": 694
+   },
+   "fallback_attempts": [
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+   ]
+  }
+ }
+}

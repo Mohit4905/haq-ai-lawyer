@@ -1,0 +1,452 @@
+{
+ "case": {
+  "id": "T11_cheque_deadline_missed",
+  "group": "edge",
+  "turns": [
+   "A customer's cheque of Rs 85,000 bounced. Bank returned it on 10 August 2026 (insufficient funds). I haven't sent any notice yet, I was busy. Can I still file a case under 138?"
+  ],
+  "expect": {
+   "category": "cheque_bounce",
+   "script": "Latin",
+   "facts": {
+    "memo_received_date": "2026-08-10"
+   },
+   "escalate_min": "recommended",
+   "deadline_expect": {
+    "basis": "NIA1881-S138",
+    "status": "passed"
+   }
+  }
+ },
+ "results": [
+  {
+   "reply": "The bank’s return memo was on 10 Aug 2026, so the 30‑day window to send a written demand notice (s.138) has already closed – it ended on 9 Sep 2026.\n\nWhat you can still do:\n1. **File a civil summary suit** (CPC 1908 Order 37) to recover the ₹85,000. This is the fastest civil remedy.\n2. **Try to settle** with the customer – a settlement is possible at any stage (s.147).\n3. **Ask for a Lok Adalat** or mediation before filing the suit – this can be cheaper and quicker.\n\n**Next step:** Draft a written demand notice (even though it’s late, it may help in the civil suit) and then file the summary suit.\n\nI can help you draft the demand notice and give you a quick checklist for the summary suit.\n\n_⚠️ I removed a legal reference I could not verify. Please confirm the exact law with a lawyer or free legal aid (NALSA helpline 15100)._\n\n⚠️ **Deadline check (calculated by Haq, not AI):** Send the legal demand notice by (30 days from bank's return memo): **09 Sep 2026**, which has passed. Please speak to a lawyer or free legal aid (15100) soon to check what options remain.",
+   "citations": [
+    {
+     "id": "NIA1881-S138",
+     "act": "Negotiable Instruments Act, 1881",
+     "section": "138",
+     "title": "Cheque bounce offence: conditions and punishment",
+     "plain": "Bouncing a cheque given to pay a legally enforceable debt, because of insufficient funds or because it exceeds the arranged limit, is a crime. Punishment is up to 2 years' jail, or a fine up to twice the cheque amount, or both. The offence arises only if (a) the cheque was presented within its validity (now 3 months), (b) the payee sent a written demand notice within 30 days of learning it bounced, and (c) the drawer failed to pay within 15 days of receiving that notice.",
+     "source_url": "https://indiacode.gov.in/server/api/core/items/64a9a186-103f-46ff-b528-9894e1de534f",
+     "source_type": "primary"
+    },
+    {
+     "id": "NIA1881-S142-1",
+     "act": "Negotiable Instruments Act, 1881",
+     "section": "142(1)",
+     "title": "Time limit to file cheque bounce complaint",
+     "plain": "Only the payee or holder can file, by written complaint. It must be filed within one month after the cause of action arises, which is when the 15-day payment period after the notice ends without payment. A court can accept a late complaint if you show sufficient cause. Only a Metropolitan Magistrate or Judicial Magistrate First Class can try the case.",
+     "source_url": "https://indiacode.gov.in/server/api/core/items/1c79cd03-af0f-4ca6-8820-b5a68414a927",
+     "source_type": "primary"
+    },
+    {
+     "id": "NIA1881-S142-2",
+     "act": "Negotiable Instruments Act, 1881",
+     "section": "142(2)",
+     "title": "Which court: territorial jurisdiction for cheque bounce (2015 amendment)",
+     "plain": "If you deposited the cheque through your bank account, file the case where your (the payee's) bank branch that maintains your account is located. If the cheque was presented other than through an account (e.g., over the counter), file where the drawer's bank branch is.",
+     "source_url": "https://indiacode.gov.in/server/api/core/items/1c79cd03-af0f-4ca6-8820-b5a68414a927",
+     "source_type": "primary"
+    },
+    {
+     "id": "NIA1881-S143A",
+     "act": "Negotiable Instruments Act, 1881",
+     "section": "143A",
+     "title": "Interim compensation in cheque bounce cases",
+     "plain": "During the trial the court may order the drawer to pay you interim compensation of up to 20% of the cheque amount. In a summary or summons trial this happens when the drawer pleads not guilty; otherwise it happens when the charge is framed. It must be paid within 60 days (extendable by 30 days). If the drawer is later acquitted, you must repay it with interest.",
+     "source_url": "https://indiacode.gov.in/server/api/core/items/84d25761-dc94-46f8-9329-dd4dc799ae10",
+     "source_type": "primary"
+    },
+    {
+     "id": "NIA1881-S147",
+     "act": "Negotiable Instruments Act, 1881",
+     "section": "147",
+     "title": "Cheque bounce offences are compoundable (can be settled)",
+     "plain": "Every offence under the NI Act, including cheque bounce, can be compounded, meaning the parties can settle and the case can be closed. This applies even though general criminal procedure law says otherwise.",
+     "source_url": "https://indiacode.gov.in/server/api/core/items/f0578b77-3009-430a-8497-5a21f46dd169",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPC1908-O37",
+     "act": "Code of Civil Procedure, 1908",
+     "section": "Order XXXVII",
+     "title": "Summary suits for fixed money claims",
+     "plain": "A summary suit is a faster procedure for clear money claims. It covers suits on cheques, bills of exchange, hundis and promissory notes, and suits to recover a fixed debt or 'liquidated' amount (with or without interest) arising from a written contract, a law that fixes the sum, or a guarantee. The defendant may defend only with the court's permission ('leave to defend'). It is available only in courts where the Order applies.",
+     "source_url": "https://cdnbbsr.s3waas.gov.in/s36a4cbdaedcbda0fa8ddc7ea32073c475/uploads/2025/02/20250210517413908.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Send the legal demand notice by (30 days from bank's return memo)",
+      "date": "2026-09-09",
+      "days_left": -58,
+      "status": "passed",
+      "basis": "NIA1881-S138",
+      "note": "Count from the day you got the bank's information; send by registered post AD/speed post and keep receipts.",
+      "user_deadline": true
+     }
+    ],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 44,
+    "missing": [
+     {
+      "key": "cheque_date",
+      "question": "Date written on the cheque?"
+     },
+     {
+      "key": "reason_for_cheque",
+      "question": "Why was the cheque given (loan repayment, payment for goods...)?"
+     },
+     {
+      "key": "presentation_date",
+      "question": "When did you deposit it?"
+     },
+     {
+      "key": "notice_sent_date",
+      "question": "Have you sent a legal notice yet? Date?"
+     },
+     {
+      "key": "city_state",
+      "question": "Where is your bank branch (city)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "cheque_demand_notice_s138"
+    }
+   ],
+   "next_step": "draft written demand notice",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "civil suit may need legal filing",
+     "Deadline passed: Send the legal demand notice by (30 days from bank's return memo) (2026-09-09)"
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "medium",
+   "unknowns": [
+    "Cheque date",
+    "Presentation date",
+    "Any prior communication with customer"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [
+      {
+       "type": "unknown_provision",
+       "text": "Order XXXVII",
+       "why": "Not in the verified library."
+      }
+     ],
+     "warnings": [
+      {
+       "type": "ambiguous_section",
+       "text": "s.138",
+       "why": "Section mentioned without naming the Act."
+      },
+      {
+       "type": "ambiguous_section",
+       "text": "s.142",
+       "why": "Section mentioned without naming the Act."
+      },
+      {
+       "type": "ambiguous_section",
+       "text": "s.147",
+       "why": "Section mentioned without naming the Act."
+      }
+     ],
+     "ok": false
+    },
+    "bad_ids": [],
+    "repaired": true,
+    "stripped": true,
+    "after_repair": {
+     "verified": [
+      [
+       "Order 37",
+       "Code of Civil Procedure, 1908"
+      ]
+     ],
+     "violations": [
+      {
+       "type": "unknown_section",
+       "text": "s.142 of Code of Civil Procedure, 1908",
+       "why": "This section of this Act is not in the verified library."
+      }
+     ],
+     "warnings": [
+      {
+       "type": "ambiguous_section",
+       "text": "s.138",
+       "why": "Section mentioned without naming the Act."
+      },
+      {
+       "type": "ambiguous_section",
+       "text": "s.147",
+       "why": "Section mentioned without naming the Act."
+      }
+     ],
+     "ok": false
+    },
+    "final": {
+     "verified": [
+      [
+       "Order 37",
+       "Code of Civil Procedure, 1908"
+      ]
+     ],
+     "violations": [
+      {
+       "type": "unknown_section",
+       "text": "s.138 of Code of Civil Procedure, 1908",
+       "why": "This section of this Act is not in the verified library."
+      }
+     ],
+     "warnings": [
+      {
+       "type": "ambiguous_section",
+       "text": "s.147",
+       "why": "Section mentioned without naming the Act."
+      }
+     ],
+     "ok": false
+    },
+    "language": {
+     "wanted": "Latin",
+     "got": "Latin",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 1
+   },
+   "model": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "latency_s": 1.7,
+    "usage": {
+     "queue_time": 0.345843456,
+     "prompt_tokens": 2928,
+     "prompt_time": 0.194872301,
+     "completion_tokens": 436,
+     "completion_time": 0.545436084,
+     "total_tokens": 3364,
+     "total_time": 0.740308385,
+     "completion_tokens_details": {
+      "reasoning_tokens": 24
+     }
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+     "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "cheque_bounce",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "cheque_amount": 85000,
+        "cheque_date": null,
+        "presentation_date": null,
+        "dishonour_reason": "insufficient funds",
+        "memo_received_date": "2026-08-10",
+        "notice_sent_date": null,
+        "other_party_name": "customer",
+        "city_state": null
+       },
+       "approximate_dates": [],
+       "confidence": 0.95
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 1.24,
+       "usage": {
+        "queue_time": 0.365423527,
+        "prompt_tokens": 933,
+        "prompt_time": 0.074618961,
+        "completion_tokens": 166,
+        "completion_time": 0.186267301,
+        "total_tokens": 1099,
+        "total_time": 0.260886262,
+        "completion_tokens_details": {
+         "reasoning_tokens": 73
+        }
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 1.7,
+       "usage": {
+        "queue_time": 0.345843456,
+        "prompt_tokens": 2928,
+        "prompt_time": 0.194872301,
+        "completion_tokens": 436,
+        "completion_time": 0.545436084,
+        "total_tokens": 3364,
+        "total_time": 0.740308385,
+        "completion_tokens_details": {
+         "reasoning_tokens": 24
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic"
+       ]
+      }
+     },
+     {
+      "step": "repair",
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 1.9,
+       "usage": {
+        "queue_time": 0.379422219,
+        "prompt_tokens": 3467,
+        "prompt_time": 0.270072174,
+        "completion_tokens": 523,
+        "completion_time": 0.592638082,
+        "total_tokens": 3990,
+        "total_time": 0.862710256,
+        "completion_tokens_details": {
+         "reasoning_tokens": 109
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 31.01
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "A customer's cheque of Rs 85,000 bounced. Bank returned it on 10 August 2026 (insufficient funds). I haven't sent any notice yet, I was busy. Can I still file a case under 138?"
+   },
+   {
+    "role": "assistant",
+    "content": "The bank’s return memo was on 10 Aug 2026, so the 30‑day window to send a written demand notice (s.138) has already closed – it ended on 9 Sep 2026.\n\nWhat you can still do:\n1. **File a civil summary suit** (CPC 1908 Order 37) to recover the ₹85,000. This is the fastest civil remedy.\n2. **Try to settle** with the customer – a settlement is possible at any stage (s.147).\n3. **Ask for a Lok Adalat** or mediation before filing the suit – this can be cheaper and quicker.\n\n**Next step:** Draft a written demand notice (even though it’s late, it may help in the civil suit) and then file the summary suit.\n\nI can help you draft the demand notice and give you a quick checklist for the summary suit.\n\n_⚠️ I removed a legal reference I could not verify. Please confirm the exact law with a lawyer or free legal aid (NALSA helpline 15100)._\n\n⚠️ **Deadline check (calculated by Haq, not AI):** Send the legal demand notice by (30 days from bank's return memo): **09 Sep 2026**, which has passed. Please speak to a lawyer or free legal aid (15100) soon to check what options remain."
+   }
+  ],
+  "case": {
+   "category": "cheque_bounce",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "cheque_amount": "85000",
+    "dishonour_reason": "insufficient funds",
+    "memo_received_date": "2026-08-10",
+    "other_party_name": "customer"
+   },
+   "timeline": [],
+   "evidence_have": [],
+   "evidence_missing": [
+    "Cheque copy with date",
+    "Bank return memo",
+    "Any communication with customer"
+   ],
+   "next_step": "draft written demand notice"
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "civil suit may need legal filing",
+    "Deadline passed: Send the legal demand notice by (30 days from bank's return memo) (2026-09-09)"
+   ]
+  },
+  "log": [
+   {
+    "t": 31.01,
+    "model": "openai/gpt-oss-20b",
+    "provider": "groq",
+    "guard_ok": false,
+    "repaired": true
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got cheque_bounce"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Latin, reply script Latin"
+  },
+  {
+   "check": "fact:memo_received_date",
+   "pass": true,
+   "detail": "expected ~2026-08-10, got 2026-08-10"
+  },
+  {
+   "check": "escalation>=recommended",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "deadline:NIA1881-S138",
+   "pass": true,
+   "detail": "[{\"label\": \"Send the legal demand notice by (30 days from bank's return memo)\", \"date\": \"2026-09-09\", \"days_left\": -58, \"status\": \"passed\", \"basis\": \"NIA1881-S138\", \"note\": \"Count from the day you got the bank's information; send by registered post AD/speed post and keep receipts.\", \"user_deadline\":"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": false,
+   "detail": "[[{\"type\": \"unknown_section\", \"text\": \"s.138 of Code of Civil Procedure, 1908\", \"why\": \"This section of this Act is not in the verified library.\"}]]"
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 4,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "The assistant correctly identified the missed deadline and provided relevant, accurate alternatives, though it could have explicitly clarified that the criminal remedy under Section 138 is now time-barred.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 1.68,
+   "usage": {
+    "completion_tokens": 82,
+    "prompt_tokens": 569,
+    "total_tokens": 797
+   },
+   "fallback_attempts": [
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+   ]
+  }
+ }
+}

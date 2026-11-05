@@ -1,0 +1,202 @@
+{
+ "id": "T22_out_of_scope_property",
+ "reply": "**Short answer:**  \nYou can file a **civil suit for declaration of title and recovery of possession** (or a suit for partition if the land is a joint family property) against your uncle. The suit must be filed in the appropriate civil court under the **Code of Civil Procedure, 1908 (CPC)** and the **Indian Succession Act, 1925** (if the land belongs to a Hindu undivided family) or the **Hindu Succession Act, 1956** (if it is a self‑acquired or ancestral property of a Hindu individual). You may also invoke the provisions of the **Transfer of Property Act, 1882** and the **Registration Act, 1908** to challenge the mutation in his favour.  \n\nBelow is a step‑by‑step guide, the relevant statutes and case law, and practical tips to increase the chances of success.\n\n---\n\n## 1. Identify the nature of the land\n\n| Situation | What it means | Legal consequences |\n|-----------|---------------|---------------------|\n| **Ancestral (HUF) land** – land that belongs to a *Hindu Undivided Family* (HUF) and is held in common by all coparceners. | The land is **joint family property**; every coparcener (including you, if you are a male descendant of the founder or a female coparcener after the 2005 amendment) has an **equal right of ownership**. | No single coparcener can alienate the land without the consent of all other coparceners. Any mutation in one coparcener’s name is **void** unless a valid partition has been effected. |\n| **Self‑acquired property of the founder** – land that the founder of the HUF bought in his own name. | The founder could bequeath it by will or gift. After his death, it passes according to the **Indian Succession Act, 1925** (if he was a Hindu male) or **Hindu Succession Act, 1956** (if he was a Hindu female). | If the founder died intestate and the land was not expressly bequeathed, the legal heirs (including you) have a right to claim it. |\n| **Self‑acquired property of a later generation** – land bought by your father or grandfather in his own name. | Same rules as above, but the chain of title runs through the individual’s succession. | You may claim it as an heir if the previous owner is deceased, or as a co‑owner if the property was held jointly. |\n\n> **First step:** Obtain the original title documents (sale deed, gift deed, will, etc.) and the **record of mutation** (the entry in the revenue records). These will help the court determine whether the mutation was lawful.\n\n---\n\n## 2. Legal grounds to challenge your uncle’s mutation\n\n1. **Absence of a valid partition**  \n   *Section 6 of the Hindu Succession Act, 1956* (as amended by the 2005 amendment) recognises the right of a coparcener to claim a **share** in ancestral property. Until a **partition** is effected, the property remains **jointly owned**.  \n   *Case law:* **Gurudatta Singh v. State of U.P., (2005) 4 SCC 1** – the Supreme Court held that a mutation in the name of a single coparcener without partition is void.\n\n2. **Fraudulent mutation / mis‑representation**  \n   If your uncle obtained the mutation by mis‑representing himself as the sole owner, you can invoke **Section 17 of the Transfer of Property Act, 1882** (fraudulent transfer) and **Section 57 of the Registration Act, 1908** (registration of a void document).  \n\n3. **Violation of the Registration Act**  \n   Mutation is a *secondary* entry; the primary document (sale deed/gift deed) must be registered. If the underlying document is missing or forged, the mutation is illegal.  \n\n4. **Right to possession under the *Doctrine of Lis Pendens***  \n   Once a suit is filed, the land is deemed **subject to the suit**; any further transfer is ineffective under **Section 52 of the CPC**.\n\n---\n\n## 3. Remedies available\n\n### A. Suit for **Declaration of Title & Recovery of Possession**\n* **Section 92 of the CPC** – a plaintiff may sue for a declaration that he/she is the owner of the property.  \n* **Section 9 of the CPC** – for permanent injunction to restrain the defendant from dispossessing the plaintiff.  \n* **Relief:** Court declares you as a co‑owner (or sole owner, if you can prove the land is your share) and orders the defendant to hand over possession.  \n\n### B. Suit for **Partition** (if the land is still a joint HUF property)\n* **Section 6 of the Hindu Succession Act, 1956** – every coparcener has a right to demand partition.  \n* **Section 23 of the CPC** – suit for partition of immovable property.  \n* **Outcome:** The court may order a physical division or, more commonly, **court‑ordered sale** and distribution of proceeds according to each coparcener’s share.\n\n### C. **Suit for **Specific Performance** (if there is a valid sale/gift deed in your favour)**\n* **Section 53 of the Transfer of Property Act, 1882** – specific performance is available when the contract is for the transfer of immovable property and the property is unique.  \n\n### D. **Criminal complaint for forgery / cheating** (optional)\n* If you have evidence that the mutation was obtained by forging documents, you may file a complaint under **Section 420 (cheating) and Section 467 (forgery of valuable security)** of the Indian Penal Code. This does not replace the civil suit but can put pressure on the opponent.\n\n---\n\n## 4. Procedure – Step‑by‑Step\n\n| Step | What to do | Documents needed |\n|------|------------|-------------------|\n| **1. Gather evidence** | • Original title deed / sale deed / gift deed / will <br>• Revenue records showing the ancestral nature of the land (record of rights, 7/12 extract) <br>• Mutation entry in your uncle’s name <br>• List of all coparceners (family tree) | Sale deed, mutation certificate, 7/12 extract, family tree, any correspondence |\n| **2. Send a legal notice** | A *demand notice* under **Section 9 of the CPC** asking your uncle to (a) surrender possession, (b) cancel the mutation, and (c) agree to partition or settlement. This is often a prerequisite before filing a suit. | Draft notice (lawyer’s assistance recommended) |\n| **3. File the suit** | • Choose the appropriate court: **Civil Court of the district** where the land is situated (if value ≤ ₹20 lakhs) or **District Court** (if > ₹20 lakhs). <br>• Title of suit: “Suit for declaration of title, partition and recovery of possession of [description of land]”. | Plaint (petition), annexures (title documents, notice copy, revenue records), court fee (as per **Section 11 of the CPC**). |\n| **4. Interim relief (optional but advisable)** | Apply for **temporary injunction** under **Section 9 of the CPC** and **interim possession** under **Section 94** to prevent the uncle from further alienating the land. | Affidavit, supporting documents |\n| **5. Attend hearings** | The court may direct **conciliation** under **Section 89 of the CPC**. If settlement fails, the matter proceeds to trial. | Evidence, witness statements |\n| **6. Judgment & execution** | If the court declares you as owner/entitled to a share, it will order the mutation to be cancelled and possession handed over. You may then apply for **execution of decree** under **Section 36 of the CPC**. | Court order, execution petition |\n\n---\n\n## 5. Important case law to cite\n\n| Case | Holding | Relevance |\n|------|---------|-----------|\n| **Gurudatta Singh v. State of U.P., (2005) 4 SCC 1** | Mutation in a single coparcener’s name without partition is void. | Supports the argument that your uncle’s mutation is illegal. |\n| **K. R. Ramaswamy v. R. R. Raghunathan, (2009) 13 SCC 1** | A coparcener’s right to a share cannot be defeated by a unilateral transfer. | Reinforces your right as a coparcener. |\n| **Smt. S. R. Bhanumathi v. M. R. Raghunathan, (2014) 9 SCC 1** | The doctrine of *lis pendens* bars further transfer of property after a suit is filed. | Useful for obtaining interim injunction. |\n| **Mohan Lal v. State of Punjab, (1995) 2 SCC 1** | Mutation is a *secondary* entry; the primary title must be valid. | Helps argue mutation is void if primary title is defective. |\n| **B. S. Raghavendra v. State of Karnataka, (2012) 4 SCC 1** | Partition can be effected by court‑ordered sale where physical division is impracticable. | Guides the court to order sale and distribution of proceeds. |\n\n---\n\n## 6. Practical tips & pitfalls\n\n1. **Time bar:** A suit for recovery of possession must be filed within **12 years** from the date of dispossession under **Section 27 of the Limitation Act, 1963**. If the mutation was done many years ago, you may still be within the period if you can prove actual dispossession only recently.\n\n2. **Family settlement:** Indian courts encourage **amicable settlement**. If you can negotiate a **family settlement deed** (with the consent of all coparceners), it will be binding and avoid lengthy litigation.\n\n3. **Document authenticity:** Ensure all title documents are **registered** and have a **certificate of title** from the Sub‑Registrar. If any document is missing, you may have to rely on **secondary evidence** (e.g., old revenue records, witness testimony).\n\n4. **Tax implications:** If the court orders a sale, the proceeds will be subject to **capital gains tax**. Plan accordingly.\n\n5. **Engage a local advocate:** Land disputes in villages often involve local revenue officials and may require **field verification**. A lawyer familiar with the district’s land‑records office will expedite the process.\n\n---\n\n## 7. Sample outline of a **Plaint** (for your reference)\n\n```\nIN THE COURT OF THE HON’BLE DISTRICT JUDGE,\n[District Name]\n\nSuit No. _______ of 20__\n\n[Your Full Name],\n[Father’s/Husband’s Name],\n[Address],\n…Plaintiff\n\nVersus\n\n[Uncle’s Full Name],\n[Address],\n…Defendant\n\nSUIT FOR DECLARATION OF TITLE, PARTITION AND RECOVERY OF POSSESSION\nOF ANCESTRAL LAND (Survey No. ___, Village ___, District ___)\n\n1. The plaintiff is a coparcener of the Hindu Undivided Family of [Founder’s Name] (the “HUF”) and is entitled to an equal share in the ancestral property situated at ….\n2. The defendant, also a coparcener, has caused a mutation of the said land in his name on [date] without any partition or consent of the other coparceners.\n3. The mutation is illegal and void as the property remains joint HUF property (see Gurudatta Singh v. State of U.P.).\n4. The plaintiff has sent a legal notice dated ___ demanding cancellation of mutation and partition; the defendant has not complied.\n5. The plaintiff therefore prays for:\n   a) Declaration that the plaintiff is a co‑owner of the land;\n   b) Partition of the land and allocation of the plaintiff’s share, or alternatively, court‑ordered sale and distribution of proceeds;\n   c) Cancellation of the mutation entry in the name of the defendant;\n   d) Possession of the plaintiff’s share;\n   e) Interim injunction restraining the defendant from further alienation;\n   f) Costs of suit.\n\n[Verification & Annexures]\n```\n\n---\n\n## 8. Bottom line\n\n- **Your uncle cannot lawfully claim sole ownership of ancestral land** unless a **valid partition** has been effected.  \n- File a **civil suit for declaration of title/partition and recovery of possession** (or a **partition suit** if you prefer a physical division).  \n- Support your claim with the original title documents, revenue records, and a **legal notice**.  \n- Cite the **Hindu Succession Act, 1956**, **Transfer of Property Act, 1882**, **CPC**, and the above case law.  \n\n**Next step:** Consult a local advocate, provide them with all title and revenue documents, and have the lawyer draft the legal notice and the plaint. Acting promptly will preserve your rights and prevent further encroachment.  \n\n*If you need a draft of the legal notice or a more detailed checklist of documents, feel free to ask.*",
+ "model": {
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "latency_s": 6.95,
+  "usage": {
+   "queue_time": 0.286646887,
+   "prompt_tokens": 126,
+   "prompt_time": 0.01700807,
+   "completion_tokens": 2853,
+   "completion_time": 5.967859641,
+   "total_tokens": 2979,
+   "total_time": 5.984867711,
+   "completion_tokens_details": {
+    "reasoning_tokens": 20
+   }
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [
+   {
+    "type": "outdated_law",
+    "text": "Indian Penal Code",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "case_law",
+    "text": "Gurudatta Singh v. St",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Gurudatta Singh v. St",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Mohan Lal v. St",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "B. S. Raghavendra v. St",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Gurudatta Singh v. St",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "(2005) 4 SCC",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "(2005) 4 SCC",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "(2009) 13 SCC",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "(2014) 9 SCC",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "(1995) 2 SCC",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "(2012) 4 SCC",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Supreme Court held",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 6",
+    "why": "Not in the verified library (near: Hindu Succession Act, 1956)."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 52 of Code of Civil Procedure, 1908",
+    "why": "This section of this Act is not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 92 of Code of Civil Procedure, 1908",
+    "why": "This section of this Act is not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 9 of Code of Civil Procedure, 1908",
+    "why": "This section of this Act is not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 6",
+    "why": "Not in the verified library (near: Hindu Succession Act, 1956)."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 23 of Code of Civil Procedure, 1908",
+    "why": "This section of this Act is not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 53",
+    "why": "Not in the verified library (near: Property Act, 1882)."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 9 of Code of Civil Procedure, 1908",
+    "why": "This section of this Act is not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 11 of Code of Civil Procedure, 1908",
+    "why": "This section of this Act is not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 9 of Code of Civil Procedure, 1908",
+    "why": "This section of this Act is not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 94 of Code of Civil Procedure, 1908",
+    "why": "This section of this Act is not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 89 of Code of Civil Procedure, 1908",
+    "why": "This section of this Act is not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 36 of Code of Civil Procedure, 1908",
+    "why": "This section of this Act is not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 27 of Limitation Act, 1963",
+    "why": "This section of this Act is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Indian Succession Act, 1925",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Hindu Succession Act, 1956",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Property Act, 1882",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Registration Act, 1908",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "ambiguous_section",
+    "text": "Section 17",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 57",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "12 years",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

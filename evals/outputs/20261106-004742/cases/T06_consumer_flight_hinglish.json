@@ -1,0 +1,357 @@
+{
+ "case": {
+  "id": "T06_consumer_flight_hinglish",
+  "group": "language",
+  "turns": [
+   "meri flight cancel ho gayi airline ne, 12000 ka ticket tha. 2 mahine ho gaye refund nahi aaya, customer care sirf credit shell de raha hai. mujhe paise wapas chahiye"
+  ],
+  "expect": {
+   "category": "consumer",
+   "script": "Hinglish",
+   "facts": {
+    "amount_paid": "12"
+   },
+   "escalate_max": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "Hey! Chalo facts ko thik se samajhte hain.  \n1. Flight ki tareekh (ya kab cancel hui?)  \n2. Kya aapke paas booking confirmation, e‑mail, ya airline ke saath koi chat logs hain?  \n3. Aap kaunse shehar/rajya mein rehte hain?",
+   "citations": [
+    {
+     "id": "CPA2019-S35",
+     "act": "Consumer Protection Act, 2019",
+     "section": "35",
+     "title": "Who can file a complaint, and electronic filing",
+     "plain": "A complaint can be filed with the District Commission by the consumer, by a registered consumer association, by one or more consumers on behalf of many with the same interest (with the Commission's permission), or by the Central/State Government or the Central Authority. The Act allows complaints to be filed electronically, and the prescribed fee can be paid electronically.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/CP%20Act%202019_1732700731.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPA2019-S39",
+     "act": "Consumer Protection Act, 2019",
+     "section": "39",
+     "title": "Reliefs the District Commission can order",
+     "plain": "If your complaint is proved, the Commission can order the seller or service provider to remove defects, replace the goods, refund the price or charges with interest, pay compensation for loss or injury (including punitive damages), stop the unfair practice, withdraw hazardous goods, issue corrective advertisements, and pay your costs.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/CP%20Act%202019_1732700731.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPECOM2020-R4-5",
+     "act": "Consumer Protection (E-Commerce) Rules, 2020",
+     "section": "Rule 4(5)",
+     "title": "E-commerce grievance officer: acknowledge in 48 hours, resolve in one month",
+     "plain": "Every e-commerce platform must have a grievance officer. That officer must acknowledge your complaint within 48 hours and resolve it within one month of receiving it. Sellers on marketplaces must also appoint a grievance officer with the same timelines (rule 6(4)(b)).",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPECOM2020-R6-3",
+     "act": "Consumer Protection (E-Commerce) Rules, 2020",
+     "section": "Rule 6(3) and 7(4)",
+     "title": "Seller/platform cannot refuse return or refund for defective, deficient, spurious or late goods",
+     "plain": "A seller on a marketplace (rule 6(3)) and an inventory e-commerce entity (rule 7(4)) cannot refuse to take back goods or refuse a refund if the goods or services are defective, deficient or spurious, or not as advertised. The same applies if delivery was late, unless the delay was due to force majeure.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Last date to file a consumer complaint (2 years from when the problem arose)",
+      "date": "2028-09-06",
+      "days_left": 670,
+      "status": "ok",
+      "basis": "CPA2019-S69",
+      "note": "The commission can accept a late complaint only if you show sufficient cause for the delay.",
+      "user_deadline": true
+     }
+    ],
+    "derived": [
+     {
+      "label": "Where to file",
+      "value": "District Consumer Disputes Redressal Commission",
+      "basis": "CPJURIS2021-R3-5",
+      "note": "Based on the amount you paid (₹12,000), not the amount you claim."
+     },
+     {
+      "label": "Filing fee",
+      "value": "Nil",
+      "basis": "CPCDRC2020-R7",
+      "note": ""
+     }
+    ]
+   },
+   "completeness": {
+    "pct": 62,
+    "missing": [
+     {
+      "key": "purchase_date",
+      "question": "When did you buy it?"
+     },
+     {
+      "key": "proof",
+      "question": "What proof do you have (invoice, order ID, chats, emails, photos)?"
+     },
+     {
+      "key": "city_state",
+      "question": "Which city and state do you live in?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "get_help"
+    }
+   ],
+   "next_step": "Ask for the flight date and gather booking proof",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "medium",
+   "unknowns": [
+    "exact flight date",
+    "proof of communication"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Hinglish",
+     "got": "Latin",
+     "rewritten": true,
+     "got_after": "Hinglish"
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "latency_s": 1.19,
+    "usage": {
+     "queue_time": 0.105183891,
+     "prompt_tokens": 3753,
+     "prompt_time": 0.226647078,
+     "completion_tokens": 209,
+     "completion_time": 0.237692039,
+     "total_tokens": 3962,
+     "total_time": 0.464339117,
+     "completion_tokens_details": {
+      "reasoning_tokens": 18
+     }
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+     "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "consumer",
+       "language": "Hindi",
+       "script": "Latin",
+       "facts": {
+        "product_or_service": "flight ticket",
+        "other_party_name": "airline",
+        "amount_paid": 12000,
+        "problem_date": "2026-09-06",
+        "complained_to_company": true
+       },
+       "approximate_dates": [
+        "problem_date"
+       ],
+       "confidence": 0.9
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 2.2,
+       "usage": {
+        "queue_time": 0.156888288,
+        "prompt_tokens": 933,
+        "prompt_time": 0.056746549,
+        "completion_tokens": 598,
+        "completion_time": 0.640305556,
+        "total_tokens": 1531,
+        "total_time": 0.697052105,
+        "completion_tokens_details": {
+         "reasoning_tokens": 523
+        }
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 1.19,
+       "usage": {
+        "queue_time": 0.105183891,
+        "prompt_tokens": 3753,
+        "prompt_time": 0.226647078,
+        "completion_tokens": 209,
+        "completion_time": 0.237692039,
+        "total_tokens": 3962,
+        "total_time": 0.464339117,
+        "completion_tokens_details": {
+         "reasoning_tokens": 18
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic"
+       ]
+      }
+     },
+     {
+      "step": "language_rewrite",
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 1.13,
+       "usage": {
+        "queue_time": 0.367997465,
+        "prompt_tokens": 162,
+        "prompt_time": 0.007844516,
+        "completion_tokens": 107,
+        "completion_time": 0.122894617,
+        "total_tokens": 269,
+        "total_time": 0.130739133,
+        "completion_tokens_details": {
+         "reasoning_tokens": 27
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 31.06
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "meri flight cancel ho gayi airline ne, 12000 ka ticket tha. 2 mahine ho gaye refund nahi aaya, customer care sirf credit shell de raha hai. mujhe paise wapas chahiye"
+   },
+   {
+    "role": "assistant",
+    "content": "Hey! Chalo facts ko thik se samajhte hain.  \n1. Flight ki tareekh (ya kab cancel hui?)  \n2. Kya aapke paas booking confirmation, e‑mail, ya airline ke saath koi chat logs hain?  \n3. Aap kaunse shehar/rajya mein rehte hain?"
+   }
+  ],
+  "case": {
+   "category": "consumer",
+   "language": "Hinglish",
+   "script": "Latin",
+   "facts": {
+    "product_or_service": "flight ticket",
+    "other_party_name": "airline",
+    "amount_paid": 12000,
+    "problem_date": "2026-09-06",
+    "complained_to_company": true
+   },
+   "timeline": [],
+   "evidence_have": [],
+   "evidence_missing": [
+    "booking confirmation / e‑mail / chat logs"
+   ],
+   "next_step": "Ask for the flight date and gather booking proof",
+   "approximate": [
+    "problem_date"
+   ]
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 31.06,
+    "model": "openai/gpt-oss-20b",
+    "provider": "groq",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got consumer"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Hinglish, reply script Hinglish"
+  },
+  {
+   "check": "fact:amount_paid",
+   "pass": true,
+   "detail": "expected ~12, got 12000"
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 2,
+  "honest": 4,
+  "accurate_scope": 5,
+  "comment": "The assistant is polite and clear but fails to provide any actual guidance or legal context, making it unhelpful for a user seeking a solution.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 1.7,
+   "usage": {
+    "completion_tokens": 74,
+    "prompt_tokens": 296,
+    "total_tokens": 507
+   },
+   "fallback_attempts": [
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+   ]
+  }
+ }
+}

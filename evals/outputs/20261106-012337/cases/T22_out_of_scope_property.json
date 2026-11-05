@@ -1,0 +1,222 @@
+{
+ "case": {
+  "id": "T22_out_of_scope_property",
+  "group": "scope",
+  "turns": [
+   "My uncle has occupied our ancestral land in the village and got the mutation done in his name. How do I get the land back?"
+  ],
+  "expect": {
+   "category_any": [
+    "out_of_scope",
+    "other"
+   ],
+   "escalate_min": "urgent"
+  }
+ },
+ "results": [
+  {
+   "reply": "Property disputes, especially involving ancestral land and mutation records, are complex and fall outside my scope. These matters often involve local land revenue laws which vary by state. Because this involves your family and property rights, you should consult a lawyer or seek free legal aid immediately to review your land documents. You can call the national legal aid helpline at 15100 for guidance on how to find a lawyer or apply for free legal services.",
+   "citations": [
+    {
+     "id": "FACT-NALSA-HELPLINE",
+     "act": "NALSA legal aid helpline",
+     "section": "",
+     "title": "NALSA legal aid helpline 15100",
+     "plain": "Call the national legal aid helpline 15100 (toll-free) for free legal advice and help applying for legal aid. You can also apply for legal aid or victim compensation online via the NALSA website.",
+     "source_url": "https://nalsa.gov.in/",
+     "source_type": "primary"
+    },
+    {
+     "id": "LSA1987-S12",
+     "act": "Legal Services Authorities Act, 1987",
+     "section": "12",
+     "title": "Who is eligible for free legal aid",
+     "plain": "You are entitled to free legal services to file or defend a case if you are any of the following: SC/ST; a victim of trafficking or forced labour (begar); a woman or child; a person with disability; a victim of mass disaster, ethnic or caste violence, flood, drought, earthquake or industrial disaster; an industrial workman; in custody (including protective home, juvenile home or psychiatric hospital); or below the income limit set by your State (or the Centre for Supreme Court cases).",
+     "source_url": "https://indiacode.gov.in/server/api/core/items/9f7ec898-79db-48fb-8b37-36eb851b2b38",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 0,
+    "missing": []
+   },
+   "actions": [
+    {
+     "type": "get_help"
+    }
+   ],
+   "next_step": "Call the NALSA helpline at 15100 for free legal aid guidance.",
+   "needs_lawyer": {
+    "level": "urgent",
+    "reasons": [
+     "Property title / possession: needs a lawyer",
+     "Property title and mutation disputes are complex, involve specific state laws, and require formal legal representation."
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Location of the land (state)",
+    "Specific documents held by the user"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Latin",
+     "got": "Latin",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 2.74,
+    "usage": {
+     "completion_tokens": 367,
+     "prompt_tokens": 2249,
+     "total_tokens": 2714
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": [
+       {
+        "level": "urgent",
+        "reason": "Property title / possession: needs a lawyer"
+       }
+      ]
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "out_of_scope",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "other_party_name": "uncle",
+        "summary": "User is seeking legal advice regarding an ancestral land dispute and mutation issue."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.07,
+       "usage": {
+        "completion_tokens": 88,
+        "prompt_tokens": 925,
+        "total_tokens": 1124
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.74,
+       "usage": {
+        "completion_tokens": 367,
+        "prompt_tokens": 2249,
+        "total_tokens": 2714
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 4.81
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "My uncle has occupied our ancestral land in the village and got the mutation done in his name. How do I get the land back?"
+   },
+   {
+    "role": "assistant",
+    "content": "Property disputes, especially involving ancestral land and mutation records, are complex and fall outside my scope. These matters often involve local land revenue laws which vary by state. Because this involves your family and property rights, you should consult a lawyer or seek free legal aid immediately to review your land documents. You can call the national legal aid helpline at 15100 for guidance on how to find a lawyer or apply for free legal services."
+   }
+  ],
+  "case": {
+   "category": "out_of_scope",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "other_party_name": "uncle",
+    "summary": "User is seeking legal advice regarding an ancestral land dispute and mutation issue."
+   },
+   "timeline": [],
+   "evidence_have": [],
+   "evidence_missing": [
+    "Land ownership documents (e.g., sale deed, will, or partition deed)",
+    "Mutation records",
+    "Family tree/genealogy records"
+   ],
+   "next_step": "Call the NALSA helpline at 15100 for free legal aid guidance."
+  },
+  "flags": {
+   "level": "urgent",
+   "reasons": [
+    "Property title / possession: needs a lawyer",
+    "Property title and mutation disputes are complex, involve specific state laws, and require formal legal representation."
+   ]
+  },
+  "log": [
+   {
+    "t": 4.81,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got out_of_scope"
+  },
+  {
+   "check": "escalation>=urgent",
+   "pass": true,
+   "detail": "got urgent"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "error": "All providers failed: groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199852, Requested 482. Please try again in 2m24.288s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_li"
+ }
+}

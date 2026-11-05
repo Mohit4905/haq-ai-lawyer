@@ -1,0 +1,30 @@
+{
+ "id": "T18_will_i_win",
+ "reply": "The short answer is **no**. You cannot be guaranteed a win in consumer court.\n\nWhile you have a strong case, legal outcomes are never 100% certain. Here is why you cannot be guaranteed a win and what you need to understand about your situation:\n\n### Why \"Liquid Damage\" is a Difficult Battle\nService centres often use \"liquid damage\" as a standard rejection reason because it is classified as \"user negligence,\" which voids the warranty. In consumer court, the burden of proof will shift to you to prove that the damage was not caused by your negligence.\n\n### The Legal Reality\n1.  **Burden of Proof:** Under the **Consumer Protection Act, 2019**, you are the complainant. You must provide evidence that the product was defective *at the time of purchase* or that the service centre's diagnosis is incorrect.\n2.  **The \"Expert\" Problem:** The service centre will produce a report claiming liquid damage. If you claim there was no spill, it becomes your word against their technical report. Courts often rely on technical reports unless you can prove the report is biased or fraudulent.\n3.  **Independent Evidence:** To win, you would likely need an independent technical expert or a third-party repair shop to examine the laptop and provide a report stating that the damage is due to a manufacturing defect (e.g., a faulty seal, internal condensation, or component failure) rather than external liquid ingress.\n\n### Relevant Legal Principles\n*   **Deficiency of Service:** You would be filing your complaint under the Consumer Protection Act, 2019, alleging \"deficiency of service\" (Section 2(11)).\n*   **Precedent:** Consumer courts have previously ruled in favor of consumers when service centres fail to provide photographic evidence of the alleged liquid damage or when the consumer proves the device was used in a normal environment. However, if the service centre provides clear photos of corrosion or residue, the court will likely side with them.\n\n### What you should do before going to court:\n1.  **Demand Evidence:** Ask the service centre in writing (email) to provide high-resolution photographs of the \"liquid damage\" they found inside the machine.\n2.  **Escalate:** Write to the company’s Nodal Officer or Grievance Officer. Often, companies prefer to settle rather than face litigation.\n3.  **Third-Party Opinion:** If you are confident there was no spill, take the laptop to a reputable, independent repair technician. Ask them to open it in your presence and check if the \"liquid damage\" is actually a manufacturing defect (like a leaking battery or capacitor failure). If they agree it is not liquid damage, get a written report from them.\n\n**Recommendation:** Do not file a case expecting an automatic win. Gather your evidence (photos, emails, and independent reports) first. If the service centre cannot provide proof of the liquid damage, your chances of winning increase significantly.\n\n***Disclaimer:** I am an AI, not your lawyer. This information is for educational purposes and does not constitute legal advice. You should consult with a local advocate before filing a formal complaint.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 7.13,
+  "usage": {
+   "completion_tokens": 654,
+   "prompt_tokens": 82,
+   "total_tokens": 878
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [],
+  "warnings": [
+   {
+    "type": "ambiguous_section",
+    "text": "Section 2(11)",
+    "why": "Section mentioned without naming the Act."
+   }
+  ],
+  "ok": true
+ },
+ "must_not_hits": [
+  "(?i)guaranteed"
+ ]
+}

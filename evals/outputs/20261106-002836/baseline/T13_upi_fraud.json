@@ -1,0 +1,127 @@
+{
+ "id": "T13_upi_fraud",
+ "reply": "**Quick‑Action Checklist**\n\n| Step | What to do (in minutes) | Why it matters |\n|------|--------------------------|----------------|\n| **1. Immediately block the transaction** | Open your UPI app (Google Pay, PhonePe, BHIM, etc.) → ‘My Profile’ → ‘Bank Accounts’ → ‘Block/Unlink’ the account that was used, or use the “Freeze/Block” option for the specific transaction if the app offers it. | Stops any further debit from that virtual payment address (VPA). |\n| **2. Raise a **“Stop Payment / Dispute”** with your bank** | Call the bank’s 24‑hour helpline (or use the bank’s chat/WhatsApp) and ask for a **“transaction reversal / dispute of unauthorized UPI transaction”**. Provide: <br>• Date & time of the debit <br>• Amount (₹30,000) <br>• Transaction reference/UPI ID <br>• The OTP you shared (if you have a screenshot) | Under the **RBI’s “Guidelines for Payment System Operators” (RBI Circular No. 2020‑15 dated 30 Oct 2020)**, banks must investigate and, if the transaction is found to be fraudulent, credit the amount back to the customer’s account. |\n| **3. File an FIR with the police (cyber‑crime cell)** | Go to the nearest police station (or file online on the state police portal) and lodge a **First Information Report (FIR)** for **“cheating under Section 420 of the Indian Penal Code (IPC)”** and **“dishonest misappropriation of property under Section 403 IPC”**. Attach: <br>• Screenshot of the call/WhatsApp message where the fraudster pretended to be bank staff <br>• Screenshot of the UPI transaction receipt <br>• Copy of the bank’s complaint acknowledgment | An FIR is mandatory for the police to start an investigation and for the cyber‑crime cell to trace the IP address/phone number of the fraudster. |\n| **4. Register a complaint with the **Cyber Crime Cell / CERT‑India** | Send an e‑mail (or use the online portal) to **cybercrime@nic.in** or the state cyber‑crime cell with the same documents. Mention the **“OTP‑phishing”** (also called **“vishing”**) incident. | The cyber‑crime cell can request the telecom operator for call‑detail records (CDR) and the UPI gateway for transaction logs, which are essential for prosecution. |\n| **5. Keep a written record of all communications** | Save call‑recordings, chat screenshots, email acknowledgments, and the reference numbers given by the bank and police. | These will be crucial if you need to approach the **Consumer Forum** or file a **civil suit** for compensation. |\n| **6. Monitor your other accounts** | Check all linked bank accounts, credit cards, and e‑wallets for any unauthorized activity. Change all passwords / PINs / device‑level locks. | Fraudsters often try to exploit the same “trust” channel again. |\n| **7. Report the incident to the **RBI’s “Banking Ombudsman”** (if the bank does not resolve within 30 days) | File a complaint on the RBI’s **Banking Ombudsman** portal (https://www.rbi.org.in/Scripts/Complaint.aspx). | Under the **Banking Ombudsman Scheme, 2006 (as amended 2021)**, you can claim restitution and compensation for loss caused by bank’s negligence. |\n\n---\n\n## Legal Basis & Relevant Provisions\n\n| Provision | Relevance |\n|-----------|-----------|\n| **Section 420 IPC – Cheating** | The fraudster induced you to part with money by deception (pretending to be a bank official). |\n| **Section 403 IPC – Dishonest Misappropriation of Property** | Unauthorized taking of your money. |\n| **Section 66C & 66D of the Information Technology Act, 2000** | Punishment for identity theft (using your personal data/OTP) and for cheating by electronic means. |\n| **Section 5(2) of the IT Act – “Electronic Signature”** | An OTP is a form of electronic authentication; misuse constitutes an offence under the Act. |\n| **RBI Circular No. 2020‑15 (Guidelines for Payment System Operators)** | Requires banks and UPI providers to **investigate and reverse** unauthorized transactions if the customer’s complaint is genuine and the OTP was obtained fraudulently. |\n| **Reserve Bank of India (RBI) Master Direction – “Security and Risk Management in Payment Systems” (2022)** | Mandates that banks must **freeze the account** on receipt of a fraud complaint and **initiate a reversal** within 15 days. |\n| **Consumer Protection Act, 2019 – Section 14(1)(c)** | Allows a consumer to claim compensation for deficiency in service (failure of the bank to prevent fraud). |\n| **Banking Ombudsman Scheme, 2006 (as amended 2021)** | Provides a quasi‑judicial forum for speedy redressal of banking complaints, including unauthorized UPI transactions. |\n\n---\n\n## How the Process Works (Step‑by‑Step)\n\n1. **Bank’s Investigation**  \n   - Once you lodge the dispute, the bank must **freeze the beneficiary’s account** (if possible) and **initiate a reversal**.  \n   - The bank will request the **UPI transaction logs** from the NPCI (National Payments Corporation of India).  \n   - If the investigation confirms that the OTP was obtained through **phishing/vishing**, the bank is **statutorily obligated** to credit the amount back to you (RBI Circular 2020‑15).\n\n2. **Police & Cyber‑Crime Investigation**  \n   - The FIR enables the police to obtain **call‑detail records (CDR)** from the telecom operator and **transaction logs** from NPCI.  \n   - Under **Section 66C/66D of the IT Act**, the offender can face **imprisonment up to 3 years and/or fine up to ₹5 lakh** (or higher if the amount exceeds ₹5 lakh).  \n\n3. **If the Bank Delays or Refuses**  \n   - Send a **legal notice** (you may have a lawyer draft it) invoking **Section 138 of the Negotiable Instruments Act** (though not a cheque case, the principle of “failure to honour a payment” is analogous) and **Section 14 of the Consumer Protection Act**.  \n   - Escalate to the **Banking Ombudsman** within 30 days of the bank’s response.  \n\n4. **Potential Compensation**  \n   - Apart from the principal amount, you may claim **interest, loss of opportunity, and mental agony** under **Section 73 of the Consumer Protection Act**.  \n   - Courts have awarded compensation in similar cases, e.g., **M/s. Axis Bank Ltd. v. S. Ramesh (Delhi High Court, 2021)** where the bank was ordered to refund ₹1.2 lakh plus interest for an unauthorized UPI debit.  \n\n---\n\n## Practical Tips to Prevent Future Incidents\n\n1. **Never share OTPs** with anyone, even if they claim to be bank officials. Banks never ask for OTPs over phone or email.  \n2. **Enable “Two‑Factor Authentication (2FA)”** on your mobile number with your telecom provider (e.g., “Do Not Disturb” for unknown numbers).  \n3. **Register your mobile number with the “Do Not Call” registry** for tele‑marketing; it reduces vishing attempts.  \n4. **Use a separate device** (or a secure “banking app lock”) for UPI transactions.  \n5. **Regularly review the “Transaction History”** in your UPI app and set up **transaction‑limit alerts**.  \n\n---\n\n### Bottom Line\n\n- **Act now**: block the UPI, lodge a dispute with the bank, and file an FIR.  \n- **Document everything** and keep copies of all communications.  \n- **Rely on statutory protections** (RBI guidelines, IT Act, IPC, Consumer Protection Act) to compel the bank to reverse the debit and to pursue criminal prosecution against the fraudster.  \n\nIf you need a **draft FIR**, a **sample legal notice to the bank**, or assistance in filing a **Banking Ombudsman complaint**, let me know and I can provide the exact wording. Stay safe!",
+ "model": {
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "latency_s": 5.94,
+  "usage": {
+   "queue_time": 0.058216157,
+   "prompt_tokens": 134,
+   "prompt_time": 0.005726735,
+   "completion_tokens": 1871,
+   "completion_time": 3.948647937,
+   "total_tokens": 2005,
+   "total_time": 3.954374672,
+   "completion_tokens_details": {
+    "reasoning_tokens": 35
+   }
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ]
+  ],
+  "violations": [
+   {
+    "type": "outdated_law",
+    "text": "Indian Penal Code",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 14(1)(c) of Consumer Protection Act, 2019",
+    "why": "This section of this Act is not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 66C",
+    "why": "Not in the verified library (near: IT Act)."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 14 of Consumer Protection Act, 2019",
+    "why": "This section of this Act is not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 73 of Consumer Protection Act, 2019",
+    "why": "This section of this Act is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Information Technology Act, 2000",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "IT Act",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "ambiguous_section",
+    "text": "Section 5(2)",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "3 years",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

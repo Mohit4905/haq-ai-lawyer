@@ -1,0 +1,98 @@
+{
+ "id": "T10_cheque_fresh",
+ "reply": "This is a classic case of **Cheque Bounce**, which is a criminal offence in India under **Section 138 of the Negotiable Instruments Act, 1881**.\n\nSince you have already received the return memo, you are within the legal timeline to initiate action. Here is the step-by-step legal procedure you must follow to recover your money.\n\n### 1. The Legal Notice (Crucial Step)\nBefore filing a criminal complaint, you **must** send a formal legal notice to Arun Mehta. This is a mandatory requirement under the law.\n\n*   **Timeline:** You must send this notice within **30 days** from the date you received the return memo (the intimation from your bank). Since you received the memo on 27 October 2026, you must ensure the notice is sent by **26 November 2026**.\n*   **Content:** The notice should clearly state:\n    *   The details of the loan/transaction.\n    *   The cheque number, date, and amount.\n    *   The fact that the cheque was dishonoured due to \"funds insufficient.\"\n    *   A demand for the payment of the cheque amount within **15 days** of the receipt of the notice.\n*   **Mode of Sending:** Send this via **Registered Post with Acknowledgment Due (RPAD)** or Speed Post. Keep the postal receipt and the tracking report safely.\n\n### 2. The 15-Day Waiting Period\nOnce Arun Mehta receives the notice, he has **15 days** to make the payment.\n*   If he pays the amount within these 15 days, the matter is resolved.\n*   If he fails to pay or ignores the notice, the offence under Section 138 is officially \"complete,\" and you gain the right to file a criminal complaint.\n\n### 3. Filing the Criminal Complaint\nIf the 15-day period expires and you have not received the money, you must file a criminal complaint in the Magistrate’s Court.\n\n*   **Jurisdiction:** You must file the complaint in the court that has jurisdiction over the area where your bank branch (where you deposited the cheque) is located.\n*   **Timeline:** You must file this complaint within **30 days** after the expiry of the 15-day notice period.\n*   **Documents Required:**\n    *   Original cheque.\n    *   Original return memo from the bank.\n    *   Copy of the legal notice sent.\n    *   Postal receipt and acknowledgment card (proof of delivery).\n    *   An affidavit supporting your complaint.\n\n### Important Legal Points to Remember:\n*   **Section 138 Penalties:** If convicted, the court can punish the drawer (Arun Mehta) with imprisonment for a term which may extend to **two years**, or with a fine which may extend to **twice the amount of the cheque**, or both.\n*   **Civil Remedy:** You can also file a civil suit for recovery of money under the Code of Civil Procedure (CPC) simultaneously, though most people prefer the criminal route under Section 138 because it is faster and puts significant pressure on the borrower to pay.\n*   **Limitation:** Do not delay. If you miss the 30-day window for the notice or the subsequent 30-day window for filing the complaint, your case may be dismissed on technical grounds.\n\n### Recommendation:\n1.  **Consult a Lawyer immediately:** Do not draft the legal notice yourself. A lawyer will ensure the notice is legally watertight, as any error in the notice can lead to the dismissal of your case later.\n2.  **Keep Records:** Maintain a file with the original cheque, the bank return memo, and all postal receipts. These are your primary pieces of evidence.\n\n***Disclaimer:** I am an AI, not a practicing lawyer. This information is for educational purposes and does not constitute formal legal advice. Laws can be subject to interpretation and specific factual nuances. Please consult with a qualified advocate in your jurisdiction to draft and file the necessary documents.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 3.95,
+  "usage": {
+   "completion_tokens": 865,
+   "prompt_tokens": 111,
+   "total_tokens": 1127
+  },
+  "fallback_attempts": [
+   "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+   "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+   "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+   "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+  ]
+ },
+ "guard_audit": {
+  "verified": [
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ]
+  ],
+  "violations": [],
+  "warnings": [
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15-Day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15-day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15-day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30-day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30-day",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": true
+ },
+ "must_not_hits": []
+}

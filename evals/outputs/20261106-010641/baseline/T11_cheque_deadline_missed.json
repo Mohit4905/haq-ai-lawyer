@@ -1,0 +1,107 @@
+{
+ "id": "T11_cheque_deadline_missed",
+ "reply": "Yes, you can still file a case under Section 138 of the Negotiable Instruments Act, 1881, provided you act immediately.\n\nHere is the legal breakdown of your situation and the steps you must take.\n\n### 1. The Limitation Period\nUnder the Negotiable Instruments Act, there is a strict timeline you must follow. The law requires you to send a legal notice within **30 days** from the date you receive the \"Return Memo\" (the intimation from the bank that the cheque has bounced).\n\n*   **Date of Return:** 10 August 2026.\n*   **Deadline to send notice:** You have until **9 September 2026** (assuming the return memo was dated 10 August).\n\n**Crucial Advice:** If you have not yet sent the notice, you must send it via Registered Post with Acknowledgment Due (RPAD) or Speed Post **immediately**. Do not wait until the last day.\n\n### 2. The Procedure\nTo successfully file a case under Section 138, you must follow these three steps strictly:\n\n1.  **The Legal Notice:** Send a formal legal notice to the drawer of the cheque within 30 days of receiving the return memo. This notice must demand the payment of the cheque amount (Rs 85,000) within **15 days** of the receipt of the notice.\n2.  **The Waiting Period:** You must wait for 15 days after the drawer receives the notice. If they do not pay the amount within these 15 days, the \"cause of action\" arises.\n3.  **Filing the Complaint:** Once the 15-day period expires without payment, you have **30 days** to file a criminal complaint in the court of the Magistrate having jurisdiction.\n\n### 3. What if you miss the 30-day notice window?\nIf you fail to send the legal notice within 30 days of the cheque return, you lose the right to file a case under Section 138 of the Negotiable Instruments Act.\n\n**However, all is not lost.** If you miss the deadline for the Section 138 case, you still have civil remedies available:\n*   **Summary Suit under Order 37 of the CPC:** You can file a summary suit for recovery of money based on the cheque. This is a civil proceeding, not criminal.\n*   **Civil Suit for Recovery:** You can file a regular civil suit for the recovery of the debt.\n\n### Important Recommendations:\n1.  **Check the Cheque Validity:** Ensure the cheque was presented within its validity period (usually 3 months from the date on the cheque).\n2.  **Drafting the Notice:** The legal notice is the foundation of your case. It must clearly state the facts, the amount, the date of the cheque, the date of return, and the demand for payment. It is highly advisable to have a lawyer draft this to avoid technical errors.\n3.  **Proof of Service:** Keep the postal receipts and the tracking report showing the notice was delivered. This is essential evidence for the court.\n\n**Action Plan for Today:**\nContact a lawyer immediately to draft and dispatch the legal notice. Since you are already near the end of the 30-day window (assuming today is close to or past early September 2026), **time is of the essence.**\n\n***Disclaimer:** I am an AI, not your personal lawyer. This information is for educational purposes and does not constitute formal legal advice. Laws and limitation periods are subject to strict interpretation by courts. Please consult with a practicing advocate in your jurisdiction immediately to protect your rights.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 4.03,
+  "usage": {
+   "completion_tokens": 781,
+   "prompt_tokens": 88,
+   "total_tokens": 1022
+  },
+  "fallback_attempts": [
+   "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+   "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+   "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+   "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+   "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+  ]
+ },
+ "guard_audit": {
+  "verified": [
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ],
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ],
+   [
+    "Order 37",
+    "Code of Civil Procedure, 1908"
+   ]
+  ],
+  "violations": [],
+  "warnings": [
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15-day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30-day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "3 months",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30-day",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": true
+ },
+ "must_not_hits": []
+}

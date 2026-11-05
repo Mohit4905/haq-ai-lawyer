@@ -1,0 +1,290 @@
+{
+ "case": {
+  "id": "T13_upi_fraud",
+  "group": "scope",
+  "turns": [
+   "Someone called pretending to be from my bank and I shared an OTP. Rs 30,000 was debited via UPI 2 hours ago. What do I do?"
+  ],
+  "expect": {
+   "category_any": [
+    "cyber_fraud",
+    "out_of_scope"
+   ],
+   "script": "Latin",
+   "must_mention_any": [
+    [
+     "1930"
+    ],
+    [
+     "bank"
+    ]
+   ],
+   "escalate_min": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "I am very sorry to hear this. Do not panic, but you must take immediate action because the fraud happened just 2 hours ago.\n\n1. **Call 1930:** This is the National Cyber Crime helpline. Call immediately and provide your transaction details. This increases the chances of freezing the money.\n2. **Inform the bank:** Call your bank's customer care immediately to block your card/UPI and file a written complaint.\n3. **Cyber Crime Portal:** Go to www.cybercrime.gov.in and register your complaint.\n\n**Next Step:** Have you called 1930 yet? If not, please do so immediately.",
+   "citations": [
+    {
+     "id": "FACT-CYBER-1930",
+     "act": "National Cyber Crime helpline",
+     "section": "",
+     "title": "Cyber fraud: call 1930 or report at cybercrime.gov.in",
+     "plain": "If you lose money to online or financial cyber fraud, call the national helpline 1930 immediately; quick reporting improves the chance of freezing the money. You can also report any cybercrime on the National Cyber Crime Reporting Portal at https://www.cybercrime.gov.in/.",
+     "source_url": "https://cybercrime.gov.in/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 0,
+    "missing": []
+   },
+   "actions": [
+    {
+     "type": "get_help"
+    }
+   ],
+   "next_step": "Call 1930 immediately to report the fraud.",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "Fraud is time-critical: report to 1930 and your bank immediately"
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Latin",
+     "got": "Hinglish",
+     "rewritten": true,
+     "got_after": "Latin"
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 7.5,
+    "usage": {
+     "completion_tokens": 472,
+     "prompt_tokens": 2755,
+     "total_tokens": 3339
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+     "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+     "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "cyber_fraud",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "amount_debited": "30000",
+        "incident_date": "2026-11-06",
+        "method": "UPI",
+        "cause": "OTP shared with someone pretending to be from bank",
+        "summary": "User lost 30000 via UPI after sharing OTP with a scammer posing as bank staff."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.22,
+       "usage": {
+        "completion_tokens": 140,
+        "prompt_tokens": 935,
+        "total_tokens": 1198
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie"
+       ]
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 7.5,
+       "usage": {
+        "completion_tokens": 472,
+        "prompt_tokens": 2755,
+        "total_tokens": 3339
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+        "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+       ]
+      }
+     },
+     {
+      "step": "language_rewrite",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.29,
+       "usage": {
+        "completion_tokens": 138,
+        "prompt_tokens": 201,
+        "total_tokens": 466
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+        "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 19.42
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "Someone called pretending to be from my bank and I shared an OTP. Rs 30,000 was debited via UPI 2 hours ago. What do I do?"
+   },
+   {
+    "role": "assistant",
+    "content": "I am very sorry to hear this. Do not panic, but you must take immediate action because the fraud happened just 2 hours ago.\n\n1. **Call 1930:** This is the National Cyber Crime helpline. Call immediately and provide your transaction details. This increases the chances of freezing the money.\n2. **Inform the bank:** Call your bank's customer care immediately to block your card/UPI and file a written complaint.\n3. **Cyber Crime Portal:** Go to www.cybercrime.gov.in and register your complaint.\n\n**Next Step:** Have you called 1930 yet? If not, please do so immediately."
+   }
+  ],
+  "case": {
+   "category": "cyber_fraud",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "amount_debited": "30000",
+    "incident_date": "2026-11-06",
+    "method": "UPI",
+    "cause": "OTP shared with someone pretending to be from bank",
+    "summary": "User lost 30000 via UPI after sharing OTP with a scammer posing as bank staff."
+   },
+   "timeline": [
+    {
+     "date": "2026-11-06",
+     "event": "Rs 30,000 debited via UPI after sharing OTP"
+    }
+   ],
+   "evidence_have": [
+    "Transaction ID",
+    "Bank account details"
+   ],
+   "evidence_missing": [
+    "Screenshot of transaction",
+    "Phone number of the scammer"
+   ],
+   "next_step": "Call 1930 immediately to report the fraud."
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "Fraud is time-critical: report to 1930 and your bank immediately"
+   ]
+  },
+  "log": [
+   {
+    "t": 19.42,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got cyber_fraud"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Latin, reply script Latin"
+  },
+  {
+   "check": "mentions:1930",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "mentions:bank",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation>=recommended",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "The advice is accurate, urgent, and follows the standard operating procedure for financial fraud in India.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 2.15,
+   "usage": {
+    "completion_tokens": 65,
+    "prompt_tokens": 359,
+    "total_tokens": 544
+   },
+   "fallback_attempts": [
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+   ]
+  }
+ }
+}

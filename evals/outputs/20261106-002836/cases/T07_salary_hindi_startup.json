@@ -1,0 +1,505 @@
+{
+ "case": {
+  "id": "T07_salary_hindi_startup",
+  "group": "core",
+  "turns": [
+   "मैं नोएडा की एक स्टार्टअप में सॉफ्टवेयर डेवलपर था, सैलरी 70,000 महीना। अगस्त और सितंबर 2026 की सैलरी नहीं मिली। मैंने 30 सितंबर 2026 को रिज़ाइन कर दिया था, आख़िरी दिन वही था। HR कहता है कंपनी घाटे में है, बाद में देंगे। ऑफ़र लेटर और पुरानी सैलरी स्लिप मेरे पास हैं।"
+  ],
+  "expect": {
+   "category": "salary",
+   "script": "Devanagari",
+   "facts": {
+    "monthly_salary": "70",
+    "last_working_day": "2026-09-30"
+   },
+   "escalate_max": "urgent",
+   "draft": "salary_demand_notice"
+  }
+ },
+ "results": [
+  {
+   "reply": "नमस्ते! आपके पास ऑफ़र लेटर और पुरानी सैलरी स्लिप है, जो बहुत मददगार हैं।\n\n**आपकी स्थिति**\n- अगस्त‑सितंबर 2026 की दो महीने की सैलरी (₹1,40,000) नहीं मिली।\n- आपने 30 सितंबर 2026 को इस्तीफ़ा दिया, वही आपका आख़िरी कार्यदिवस था।\n- HR ने कहा कि कंपनी घाटे में है, बाद में भुगतान करेगी।\n\n**मुख्य बिंदु**\n- कोड ऑन वेजेज 2019 के तहत सभी कर्मचारियों को समय पर वेतन मिलना अनिवार्य है (सभी वेतन पर कोई सीमा नहीं) [COW2019‑S2K][FACT‑COW‑NO‑WAGE‑CEILING]।\n- इस्तीफ़ा के बाद अंतिम वेतन 2 कार्य दिवसों के भीतर देना चाहिए [COW2019‑S17]।\n- आप 3 साल के भीतर लेबर अथॉरिटी में दावा दायर कर सकते हैं [COW2019‑S45]।\n\n**आपके विकल्प**\n1. **लिखित मांग (ई‑मेल/पत्र)** – HR को स्पष्ट राशि, अवधि और भुगतान की अंतिम तिथि (उदाहरण 15 अक्टूबर 2026) के साथ भेजें। लागत 0 ₹, समय 1‑2 दिन।\n2. **डिमांड नोटिस** – 15 दिन की नोटिस भेजें; अगर जवाब नहीं मिला तो आगे की कार्रवाई आसान होगी।\n3. **लेबर अथॉरिटी में दावा** – SAMADHAN पोर्टल या स्थानीय इंस्पेक्टर‑क्यूम‑फैसिलिटेटर को फ़ाइल करें। समय 2‑4 हफ़्ते, कोई फ़ीस नहीं (यदि आप मुफ्त कानूनी सहायता चाहते हैं तो NALSA 15100 पर कॉल कर सकते हैं)।\n4. **लोक अदालत / मध्यस्थता** – यदि दोनों पक्ष सहमत हों तो तेज़ समाधान।\n5. **सिविल मुकदमा** – बड़े या जटिल मामलों में वकील की जरूरत होगी।\n\n**सुझावित अगला कदम**: HR को डिमांड नोटिस भेजें (15 दिन की समय सीमा) – यह सबसे सस्ता और तेज़ तरीका है।\n\nमैं आपके लिए डिमांड नोटिस का ड्राफ्ट तैयार कर सकता हूँ या आप इसे खुद लिखने का अभ्यास कर सकते हैं।\n\n⚠️ **Deadline check (calculated by Haq, not AI):** Full & final wages were due by (2 working days after leaving): **02 Oct 2026**, which has passed. Please speak to a lawyer or free legal aid (15100) soon to check what options remain.",
+   "citations": [
+    {
+     "id": "COW2019-S2K",
+     "act": "Code on Wages, 2019",
+     "section": "2(k)",
+     "title": "Who is an 'employee' (includes managerial and supervisory staff)",
+     "plain": "Under the Code on Wages, 'employee' covers anyone an establishment employs on wages for skilled, unskilled, manual, clerical, technical, supervisory, managerial or administrative work. Managers and senior staff therefore count as employees. Apprentices and members of the Armed Forces do not.",
+     "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-COW-NO-WAGE-CEILING",
+     "act": "Code on Wages, 2019",
+     "section": "",
+     "title": "No salary ceiling for the timely-payment and deduction rules",
+     "plain": "The old Payment of Wages Act protected only employees earning up to Rs 24,000 a month. Under the Code on Wages, the rules on paying wages on time and on permitted deductions apply to all employees, whatever their salary. The labour ministry has confirmed that this includes white-collar staff.",
+     "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "COW2019-S17",
+     "act": "Code on Wages, 2019",
+     "section": "17",
+     "title": "Deadline for paying wages, including after leaving the job",
+     "plain": "Wages are due by these deadlines: daily workers at the end of the shift; weekly workers on the last working day of the week; fortnightly workers before the end of the second day after the fortnight; monthly workers before the end of the 7th day of the next month. If you are removed, dismissed, retrenched or resign, or lose your job because the establishment closes, your wages must be paid within two working days.",
+     "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "COW2019-S45",
+     "act": "Code on Wages, 2019",
+     "section": "45",
+     "title": "Filing a wage claim: who decides it and the 3-year limit",
+     "plain": "Wage claims under the Code are heard by an authority the Government appoints, who must be at least a Gazetted Officer. The claim can be filed by you, your registered trade union, or an Inspector-cum-Facilitator. File within 3 years of the date the claim arises; a later claim may still be accepted if you show sufficient cause. Besides the amount due, the authority can award compensation of up to ten times the claim, and it tries to decide within three months.",
+     "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Full & final wages were due by (2 working days after leaving)",
+      "date": "2026-10-02",
+      "days_left": -35,
+      "status": "passed",
+      "basis": "COW2019-S17",
+      "note": "Assumes a Mon–Sat working week.",
+      "user_deadline": true
+     },
+     {
+      "label": "Approximate last date to file a wage claim with the labour authority (3 years)",
+      "date": "2029-09-30",
+      "days_left": 1059,
+      "status": "ok",
+      "basis": "COW2019-S45",
+      "note": "",
+      "user_deadline": true
+     }
+    ],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 100,
+    "missing": []
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "salary_demand_notice"
+    }
+   ],
+   "next_step": "Send a 15‑day demand notice to HR",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "If no response to notice, filing a claim with labour authority may need guidance",
+     "Deadline passed: Full & final wages were due by (2 working days after leaving) (2026-10-02)"
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [
+      {
+       "type": "unsupported_number",
+       "text": "3 साल",
+       "why": "Time period not found in the verified library or calculations."
+      },
+      {
+       "type": "unsupported_number",
+       "text": "2 दिन",
+       "why": "Time period not found in the verified library or calculations."
+      },
+      {
+       "type": "unsupported_number",
+       "text": "15 दिन",
+       "why": "Time period not found in the verified library or calculations."
+      },
+      {
+       "type": "unsupported_number",
+       "text": "15 दिन",
+       "why": "Time period not found in the verified library or calculations."
+      }
+     ],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [
+      {
+       "type": "unsupported_number",
+       "text": "3 साल",
+       "why": "Time period not found in the verified library or calculations."
+      },
+      {
+       "type": "unsupported_number",
+       "text": "2 दिन",
+       "why": "Time period not found in the verified library or calculations."
+      },
+      {
+       "type": "unsupported_number",
+       "text": "15 दिन",
+       "why": "Time period not found in the verified library or calculations."
+      },
+      {
+       "type": "unsupported_number",
+       "text": "15 दिन",
+       "why": "Time period not found in the verified library or calculations."
+      }
+     ],
+     "ok": true
+    },
+    "deadline_alerts_added": 1
+   },
+   "model": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "latency_s": 3.33,
+    "usage": {
+     "queue_time": 0.319545682,
+     "prompt_tokens": 3462,
+     "prompt_time": 0.209836118,
+     "completion_tokens": 1006,
+     "completion_time": 2.113810306,
+     "total_tokens": 4468,
+     "total_time": 2.323646424,
+     "completion_tokens_details": {
+      "reasoning_tokens": 76
+     }
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "salary",
+       "language": "Hindi",
+       "script": "Devanagari",
+       "facts": {
+        "other_party_name": "Startup company in Noida",
+        "user_name": "Unknown",
+        "role": "Software Developer",
+        "monthly_salary": 70000,
+        "unpaid_period": "2026-08-01 to 2026-09-30",
+        "amount_due": 140000,
+        "still_employed": false,
+        "employment_proof": "Offer letter and old salary slips",
+        "communications_so_far": "HR said company is in loss and will pay later",
+        "city_state": "Noida, India",
+        "summary": "Software developer in Noida startup not paid August and September 2026 salaries after resignation on 30 Sep 2026."
+       },
+       "approximate_dates": [],
+       "confidence": 0.95
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 2.41,
+       "usage": {
+        "queue_time": 0.285844956,
+        "prompt_tokens": 981,
+        "prompt_time": 0.037542034,
+        "completion_tokens": 286,
+        "completion_time": 0.335741927,
+        "total_tokens": 1267,
+        "total_time": 0.373283961,
+        "prompt_tokens_details": {
+         "cached_tokens": 768
+        },
+        "completion_tokens_details": {
+         "reasoning_tokens": 129
+        }
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-120b",
+       "latency_s": 3.33,
+       "usage": {
+        "queue_time": 0.319545682,
+        "prompt_tokens": 3462,
+        "prompt_time": 0.209836118,
+        "completion_tokens": 1006,
+        "completion_time": 2.113810306,
+        "total_tokens": 4468,
+        "total_time": 2.323646424,
+        "completion_tokens_details": {
+         "reasoning_tokens": 76
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 29.28
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "मैं नोएडा की एक स्टार्टअप में सॉफ्टवेयर डेवलपर था, सैलरी 70,000 महीना। अगस्त और सितंबर 2026 की सैलरी नहीं मिली। मैंने 30 सितंबर 2026 को रिज़ाइन कर दिया था, आख़िरी दिन वही था। HR कहता है कंपनी घाटे में है, बाद में देंगे। ऑफ़र लेटर और पुरानी सैलरी स्लिप मेरे पास हैं।"
+   },
+   {
+    "role": "assistant",
+    "content": "नमस्ते! आपके पास ऑफ़र लेटर और पुरानी सैलरी स्लिप है, जो बहुत मददगार हैं।\n\n**आपकी स्थिति**\n- अगस्त‑सितंबर 2026 की दो महीने की सैलरी (₹1,40,000) नहीं मिली।\n- आपने 30 सितंबर 2026 को इस्तीफ़ा दिया, वही आपका आख़िरी कार्यदिवस था।\n- HR ने कहा कि कंपनी घाटे में है, बाद में भुगतान करेगी।\n\n**मुख्य बिंदु**\n- कोड ऑन वेजेज 2019 के तहत सभी कर्मचारियों को समय पर वेतन मिलना अनिवार्य है (सभी वेतन पर कोई सीमा नहीं) [COW2019‑S2K][FACT‑COW‑NO‑WAGE‑CEILING]।\n- इस्तीफ़ा के बाद अंतिम वेतन 2 कार्य दिवसों के भीतर देना चाहिए [COW2019‑S17]।\n- आप 3 साल के भीतर लेबर अथॉरिटी में दावा दायर कर सकते हैं [COW2019‑S45]।\n\n**आपके विकल्प**\n1. **लिखित मांग (ई‑मेल/पत्र)** – HR को स्पष्ट राशि, अवधि और भुगतान की अंतिम तिथि (उदाहरण 15 अक्टूबर 2026) के साथ भेजें। लागत 0 ₹, समय 1‑2 दिन।\n2. **डिमांड नोटिस** – 15 दिन की नोटिस भेजें; अगर जवाब नहीं मिला तो आगे की कार्रवाई आसान होगी।\n3. **लेबर अथॉरिटी में दावा** – SAMADHAN पोर्टल या स्थानीय इंस्पेक्टर‑क्यूम‑फैसिलिटेटर को फ़ाइल करें। समय 2‑4 हफ़्ते, कोई फ़ीस नहीं (यदि आप मुफ्त कानूनी सहायता चाहते हैं तो NALSA 15100 पर कॉल कर सकते हैं)।\n4. **लोक अदालत / मध्यस्थता** – यदि दोनों पक्ष सहमत हों तो तेज़ समाधान।\n5. **सिविल मुकदमा** – बड़े या जटिल मामलों में वकील की जरूरत होगी।\n\n**सुझावित अगला कदम**: HR को डिमांड नोटिस भेजें (15 दिन की समय सीमा) – यह सबसे सस्ता और तेज़ तरीका है।\n\nमैं आपके लिए डिमांड नोटिस का ड्राफ्ट तैयार कर सकता हूँ या आप इसे खुद लिखने का अभ्यास कर सकते हैं।\n\n⚠️ **Deadline check (calculated by Haq, not AI):** Full & final wages were due by (2 working days after leaving): **02 Oct 2026**, which has passed. Please speak to a lawyer or free legal aid (15100) soon to check what options remain."
+   }
+  ],
+  "case": {
+   "category": "salary",
+   "language": "Hindi",
+   "script": "Devanagari",
+   "facts": {
+    "other_party_name": "Startup company in Noida",
+    "user_name": "Unknown",
+    "role": "Software Developer",
+    "monthly_salary": 70000,
+    "unpaid_period": "2026-08-01 to 2026-09-30",
+    "amount_due": 140000,
+    "still_employed": false,
+    "employment_proof": "Offer letter and old salary slips",
+    "communications_so_far": "HR said company is in loss and will pay later",
+    "city_state": "Noida, India",
+    "summary": "Software developer in Noida startup not paid August and September 2026 salaries after resignation on 30 Sep 2026.",
+    "last_working_day": "2026-09-30"
+   },
+   "timeline": [
+    {
+     "date": "2026-09-30",
+     "event": "Resignation submitted, last working day"
+    }
+   ],
+   "evidence_have": [
+    "Offer letter",
+    "Previous salary slips",
+    "HR email/communication stating delay"
+   ],
+   "evidence_missing": [
+    "Resignation email or letter copy",
+    "Bank statements showing non‑receipt of salary"
+   ],
+   "next_step": "Send a 15‑day demand notice to HR"
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "If no response to notice, filing a claim with labour authority may need guidance",
+    "Deadline passed: Full & final wages were due by (2 working days after leaving) (2026-10-02)"
+   ]
+  },
+  "log": [
+   {
+    "t": 29.28,
+    "model": "openai/gpt-oss-120b",
+    "provider": "groq",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": {
+  "doc_type": "salary_demand_notice",
+  "title": "Legal Notice for Unpaid Salary",
+  "body_markdown": "**LEGAL NOTICE** (By Registered Post A.D.)\n\nDate: [[FILL: date]]\n\n**From:**\n[[FILL: Your Full Name]]\n[[FILL: Your Complete Residential Address]]\nPhone: [[FILL: Your Phone Number]]\nEmail: [[FILL: Your Email Address]]\n\n**To:**\n[[FILL: HR/Employer Name]]\nStartup Company in Noida\n[[FILL: Company Registered Address]]\nNoida, Uttar Pradesh, India\n\n**Subject:** Demand for payment of unpaid salary for August & September 2026 and full & final settlement.\n\n1. I was employed by the above‑named startup as a **Software Developer** on the terms stated in the offer letter dated [[FILL: offer letter date]].\n2. My agreed monthly salary was **₹70,000** per month, as reflected in the salary slips for the months prior to August 2026.\n3. I submitted my resignation on **30 September 2026**, which was also my last working day, as per the resignation submission record.\n4. The salary for the months of **August 2026** and **September 2026** (total **₹1,40,000**) has not been paid to date.\n5. I have repeatedly requested payment from the HR department. The HR representative replied that the company is currently incurring losses and the dues will be cleared later, but no concrete date or payment has been provided.\n6. I possess the following documentary evidence: the original offer letter, salary slips for the months prior to August 2026, and the email communication from HR indicating the delay.\n\n**Legal Basis**\nUnder the **Code on Wages, 2019**, an *employee* includes any person engaged on wages for skilled or unskilled work (s.2(k)). The Code applies to all employees irrespective of salary level (Fact‑COW‑NO‑WAGE‑CEILING). Section 17 of the Code mandates that monthly wages must be paid **before the end of the 7th day of the next month**. My salary for August and September 2026 became due on **7 October 2026** and **7 November 2026** respectively, both of which have long passed (COW2019‑S17).\n\n**Demand**\nI hereby demand payment of the full unpaid salary amounting to **₹1,40,000** within **15 days** from the receipt of this notice. Payment should be made by direct bank transfer to the following account:\n\nAccount Holder: [[FILL: Your Name]]\nAccount Number: [[FILL: Your Bank Account Number]]\nIFSC Code: [[FILL: Your Bank IFSC]]\nBank Name: [[FILL: Your Bank Name]]\n\n**Consequences of Non‑Compliance**\nIf the amount is not received within the stipulated period, I will be compelled to pursue all lawful remedies available to me, including:\n- Filing a wage claim before the appropriate labour authority under **Section 45** of the Code on Wages, 2019 (COW2019‑S45);\n- Initiating a civil suit for recovery of wages within the three‑year limitation period (Limitation Act 1963, Article 7);\n- Seeking recovery of costs and interest as permitted by law.\n\nAll expenses incurred in pursuing these remedies will be borne by the employer.\n\n**Copy retained for record.**\n\n______________________________\n[[FILL: Your Full Name]]\nPhone: [[FILL: Your Phone Number]]\nEmail: [[FILL: Your Email Address]]",
+  "placeholders": [
+   "[[FILL: date]]",
+   "[[FILL: Your Full Name]]",
+   "[[FILL: Your Complete Residential Address]]",
+   "[[FILL: Your Phone Number]]",
+   "[[FILL: Your Email Address]]",
+   "[[FILL: HR/Employer Name]]",
+   "[[FILL: Company Registered Address]]",
+   "[[FILL: offer letter date]]",
+   "[[FILL: Your Name]]",
+   "[[FILL: Your Bank Account Number]]",
+   "[[FILL: Your Bank IFSC]]",
+   "[[FILL: Your Bank Name]]"
+  ],
+  "citations": [
+   {
+    "id": "FACT-COW-NO-WAGE-CEILING",
+    "act": "Code on Wages, 2019",
+    "section": "",
+    "title": "No salary ceiling for the timely-payment and deduction rules",
+    "plain": "The old Payment of Wages Act protected only employees earning up to Rs 24,000 a month. Under the Code on Wages, the rules on paying wages on time and on permitted deductions apply to all employees, whatever their salary. The labour ministry has confirmed that this includes white-collar staff.",
+    "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+    "source_type": "primary"
+   },
+   {
+    "id": "COW2019-S17",
+    "act": "Code on Wages, 2019",
+    "section": "17",
+    "title": "Deadline for paying wages, including after leaving the job",
+    "plain": "Wages are due by these deadlines: daily workers at the end of the shift; weekly workers on the last working day of the week; fortnightly workers before the end of the second day after the fortnight; monthly workers before the end of the 7th day of the next month. If you are removed, dismissed, retrenched or resign, or lose your job because the establishment closes, your wages must be paid within two working days.",
+    "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+    "source_type": "primary"
+   },
+   {
+    "id": "COW2019-S45",
+    "act": "Code on Wages, 2019",
+    "section": "45",
+    "title": "Filing a wage claim: who decides it and the 3-year limit",
+    "plain": "Wage claims under the Code are heard by an authority the Government appoints, who must be at least a Gazetted Officer. The claim can be filed by you, your registered trade union, or an Inspector-cum-Facilitator. File within 3 years of the date the claim arises; a later claim may still be accepted if you show sufficient cause. Besides the amount due, the authority can award compensation of up to ten times the claim, and it tries to decide within three months.",
+    "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+    "source_type": "primary"
+   },
+   {
+    "id": "LIM1963-ART7",
+    "act": "Limitation Act, 1963",
+    "section": "Schedule, Article 7",
+    "title": "3 years for a civil suit for wages",
+    "plain": "A civil suit for unpaid wages (for anyone other than a seaman) must be filed within 3 years of when the wages became due. This is separate from the 3-year limit for a claim before the labour authority under section 45 of the Code on Wages.",
+    "source_url": "https://www.thc.nic.in/Central%20Governmental%20Acts/Limitation%20Act,%202019.pdf",
+    "source_type": "primary"
+   }
+  ],
+  "send_instructions": [
+   "1. इस नोटिस को रजिस्टर्ड पोस्ट (रिटर्न रिसीट के साथ) द्वारा कंपनी के पंजीकृत पते पर भेजें।",
+   "2. पोस्टिंग के बाद रिटर्न रिसीट की एक कॉपी सुरक्षित रखें; यह डिलीवरी प्रमाण के रूप में काम करेगी।",
+   "3. यदि 15 दिनों के भीतर कोई उत्तर नहीं मिलता, तो SAMADHAN पोर्टल (https://samadhan.labour.gov.in) पर wage claim दर्ज करें और रिटर्न रिसीट की स्कैन की हुई कॉपी अपलोड करें।",
+   "4. साथ ही, 3 साल की सीमित अवधि के भीतर सिविल suit दायर करने की तैयारी करें; आवश्यक दस्तावेज़ (ऑफ़र लेटर, सैलरी स्लिप, HR ई‑मेल) को क्रमबद्ध रखें।",
+   "5. यदि आर्थिक कठिनाई हो तो 15100 (NALSA) पर कॉल करके मुफ्त कानूनी सहायता या लोक अदालत (Lok Adalat) के माध्यम से निपटारा करने की जानकारी प्राप्त करें।"
+  ],
+  "guard": {
+   "initial": {
+    "verified": [
+     [
+      "Section 45",
+      "Code on Wages, 2019"
+     ],
+     [
+      "Article 7",
+      "Limitation Act, 1963"
+     ]
+    ],
+    "violations": [],
+    "warnings": [
+     {
+      "type": "ambiguous_section",
+      "text": "s.2(k)",
+      "why": "Section mentioned without naming the Act."
+     },
+     {
+      "type": "ambiguous_section",
+      "text": "Section 17",
+      "why": "Section mentioned without naming the Act."
+     },
+     {
+      "type": "unsupported_number",
+      "text": "15 days",
+      "why": "Time period not found in the verified library or calculations."
+     }
+    ],
+    "ok": true
+   },
+   "stripped": false
+  },
+  "model": {
+   "provider": "groq",
+   "model": "openai/gpt-oss-120b",
+   "latency_s": 4.03,
+   "usage": {
+    "queue_time": 0.330429116,
+    "prompt_tokens": 2674,
+    "prompt_time": 0.173916115,
+    "completion_tokens": 1254,
+    "completion_time": 2.622927943,
+    "total_tokens": 3928,
+    "total_time": 2.796844058,
+    "completion_tokens_details": {
+     "reasoning_tokens": 64
+    }
+   },
+   "fallback_attempts": [
+    "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+   ]
+  },
+  "disclaimer": "Draft prepared with AI from what you told Haq. Read every line, fill the [[FILL]] gaps, and remove anything untrue before sending. For large amounts or if the other side has a lawyer, get it checked by a lawyer (free legal aid: NALSA 15100)."
+ },
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got salary"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Devanagari, reply script Devanagari"
+  },
+  {
+   "check": "fact:monthly_salary",
+   "pass": true,
+   "detail": "expected ~70, got 70000"
+  },
+  {
+   "check": "fact:last_working_day",
+   "pass": true,
+   "detail": "expected ~2026-09-30, got 2026-09-30"
+  },
+  {
+   "check": "escalation<=urgent",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "draft_no_unverified_law",
+   "pass": true,
+   "detail": "[]"
+  },
+  {
+   "check": "draft_has_no_invented_fill",
+   "pass": true,
+   "detail": "12 placeholders"
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "The response is clear, highly actionable, accurately applies Indian labor norms, and properly alerts the user regarding passed deadlines.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.5-flash",
+   "latency_s": 2.96,
+   "usage": {
+    "completion_tokens": 57,
+    "prompt_tokens": 861,
+    "total_tokens": 918
+   },
+   "fallback_attempts": []
+  }
+ }
+}

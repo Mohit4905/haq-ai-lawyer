@@ -1,0 +1,102 @@
+{
+ "id": "T14_criminal_fir",
+ "reply": "*Disclaimer: I am an AI, not a practicing lawyer. The information provided below is for educational purposes and does not constitute formal legal advice. You must consult with a qualified criminal defense lawyer immediately to handle this situation.*\n\nIt is understandable that you are anxious. When a business dispute turns into a criminal complaint, it is a serious matter. Here is a breakdown of the legal framework and the steps you should take.\n\n### 1. Likely Sections of the IPC/BNS\nIn India, \"cheating\" is primarily governed by the Indian Penal Code (IPC), 1860. However, please note that the **Bharatiya Nyaya Sanhita (BNS), 2023**, has replaced the IPC as of July 1, 2024. Depending on when the incident occurred, the police will use either:\n\n*   **Under the IPC (Old Law):**\n    *   **Section 420:** Cheating and dishonestly inducing delivery of property. This is the most common section used in business disputes.\n    *   **Section 406:** Criminal breach of trust (often added if the partner alleges that money or property entrusted to your brother was misappropriated).\n    *   **Section 120B:** Criminal conspiracy (often added if there are multiple accused).\n\n*   **Under the BNS (New Law):**\n    *   **Section 318:** Cheating.\n    *   **Section 316:** Criminal breach of trust.\n\n**Important Note:** These offenses are generally **cognizable** (police can arrest without a warrant) and **non-bailable** (bail is not a matter of right at the police station; it must be granted by a court).\n\n### 2. Immediate Steps to Take\nDo not panic. Follow these steps immediately:\n\n**A. Obtain a Copy of the FIR**\nYou have a right to a copy of the FIR. You can check the website of your state police or visit the local police station. If they refuse to give it, your lawyer can file an application in court to get a certified copy. Knowing the exact contents of the FIR is crucial for your defense.\n\n**B. Do Not Evade the Police**\nIf the police are looking for your brother, hiding him can sometimes be interpreted as \"absconding,\" which makes it harder to get bail later. However, do not surrender him to the police without legal counsel present.\n\n**C. Consult a Criminal Defense Lawyer**\nYou need a lawyer who specializes in criminal law. They will assess whether the dispute is purely civil (a breach of contract) or criminal (fraud). Often, business partners use criminal law to pressure the other party into paying money. Courts are generally critical of this practice.\n\n### 3. How to Get Bail\nSince the offense is non-bailable, the police cannot grant bail at the station. You must approach the court.\n\n**1. Anticipatory Bail (Section 482 of the BNSS / Section 438 of the CrPC):**\n*   **What it is:** This is \"pre-arrest bail.\" If your brother fears arrest, your lawyer can file an application for Anticipatory Bail in the Sessions Court or the High Court.\n*   **The Process:** The court will hear the arguments. If the court is satisfied that the arrest is unnecessary or that the dispute is civil in nature, they may grant bail, meaning the police cannot arrest him.\n*   **Conditions:** The court may impose conditions, such as requiring him to join the investigation, surrender his passport, or provide a bond.\n\n**2. Regular Bail:**\n*   If your brother is already arrested, your lawyer must file a Regular Bail application under Section 483 of the BNSS (formerly Section 437/439 of the CrPC) before the Magistrate or Sessions Court.\n\n### 4. Key Legal Strategy: \"Civil vs. Criminal\"\nIn many business disputes, the Supreme Court of India has held that **a mere breach of contract does not constitute cheating.**\n\n*   **Case Law Reference:** In *State of Haryana vs. Bhajan Lal (1992)* and *Indian Oil Corpn. vs. NEPC India Ltd. (2006)*, the Supreme Court clarified that criminal proceedings should not be used as a tool to settle civil scores.\n*   **Your Defense:** Your lawyer will argue that the dispute is purely a commercial/civil matter and that the police complaint is an abuse of the process of law. If the court agrees, they may quash the FIR under Section 528 of the BNSS (formerly Section 482 of the CrPC).\n\n**Action Plan for Today:**\n1.  **Hire a lawyer immediately.** Do not wait for the police to return.\n2.  **Gather documents:** Collect all contracts, emails, WhatsApp chats, and bank statements related to the business partnership. These will prove that the transaction was a business deal and not a criminal fraud.\n3.  **File for Anticipatory Bail:** This should be your lawyer's top priority to protect your brother from immediate arrest.\n\n**Please act quickly and do not speak to the police or the complainant without your lawyer's guidance.**",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 4.76,
+  "usage": {
+   "completion_tokens": 1106,
+   "prompt_tokens": 71,
+   "total_tokens": 1296
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [
+   [
+    "Section 318",
+    "Bharatiya Nyaya Sanhita, 2023"
+   ]
+  ],
+  "violations": [
+   {
+    "type": "outdated_law",
+    "text": "Indian Penal Code",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "CrPC",
+    "why": "Code of Criminal Procedure, 1973 was replaced by the Bharatiya Nagarik Suraksha Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "CrPC",
+    "why": "Code of Criminal Procedure, 1973 was replaced by the Bharatiya Nagarik Suraksha Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "CrPC",
+    "why": "Code of Criminal Procedure, 1973 was replaced by the Bharatiya Nagarik Suraksha Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS)"
+   },
+   {
+    "type": "case_law",
+    "text": "Civil vs. Cr",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Haryana vs. Bh",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Indian Oil Corpn. vs. NE",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 406",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 120B",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 483 of Bharatiya Nagarik Suraksha Sanhita, 2023",
+    "why": "This section of this Act is not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "ambiguous_section",
+    "text": "Section 316",
+    "why": "Section mentioned without naming the Act."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": [
+  "(?i)(?:under|u/s)\\s+(?:the\\s+)?(?:IPC|Indian Penal Code)"
+ ]
+}

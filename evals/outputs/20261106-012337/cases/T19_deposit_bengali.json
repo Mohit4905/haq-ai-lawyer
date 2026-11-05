@@ -1,0 +1,283 @@
+{
+ "case": {
+  "id": "T19_deposit_bengali",
+  "group": "language",
+  "turns": [
+   "আমি কলকাতায় ভাড়া বাড়ি ছেড়েছি ১ অক্টোবর ২০২৬। ৩০,০০০ টাকা অগ্রিম দিয়েছিলাম। বাড়িওয়ালা টাকা ফেরত দিচ্ছে না। কী করব?"
+  ],
+  "expect": {
+   "category": "tenancy",
+   "script": "Bengali",
+   "escalate_max": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "আপনার সমস্যার কথা শুনে খারাপ লাগল। বাড়ি ছাড়ার পর সিকিউরিটি ডিপোজিট (Security Deposit) ফেরত পাওয়া আপনার অধিকার। তবে এই বিষয়ে কিছু তথ্য জানা প্রয়োজন:\n\n১. আপনার মাসিক ভাড়া কত ছিল?\n২. আপনাদের কি কোনো লিখিত ভাড়ার চুক্তি (Rent Agreement) আছে?\n৩. বাড়িওয়ালা কি কোনো কারণ দেখিয়েছেন (যেমন: রং করা বা মেরামতির খরচ) কেন তিনি টাকা ফেরত দিচ্ছেন না?\n৪. আপনি কি তাকে টাকা ফেরত দেওয়ার জন্য কোনো মেসেজ বা ইমেল করেছেন? আপনার কাছে কি টাকা দেওয়ার কোনো প্রমাণ (ব্যাঙ্ক ট্রান্সফার বা রসিদ) আছে?\n\nএই তথ্যগুলো পেলে আমি আপনাকে সঠিক পদক্ষেপ নিতে সাহায্য করতে পারব।",
+   "citations": [
+    {
+     "id": "ICA1872-S73",
+     "act": "Indian Contract Act, 1872",
+     "section": "73",
+     "title": "Compensation for breach of contract",
+     "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+     "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "LIM1963-ART55",
+     "act": "Limitation Act, 1963",
+     "section": "Schedule, Article 55",
+     "title": "3 years to sue for compensation for breach of contract",
+     "plain": "A suit for compensation for breach of a contract (written or implied), where no other article covers it specifically, must be filed within 3 years. Time runs from the date of the breach. If there are repeated breaches, it runs from the breach you sue on; if the breach is continuing, from when it stops.",
+     "source_url": "https://www.thc.nic.in/Central%20Governmental%20Acts/Limitation%20Act,%202019.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Approximate last date to sue for the deposit (3 years)",
+      "date": "2029-10-01",
+      "days_left": 1060,
+      "status": "ok",
+      "basis": "LIM1963-ART55",
+      "note": "Limitation depends on the exact claim; confirm with legal aid before relying on it.",
+      "user_deadline": true
+     }
+    ],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 33,
+    "missing": [
+     {
+      "key": "monthly_rent",
+      "question": "What was the monthly rent (₹)?"
+     },
+     {
+      "key": "written_agreement",
+      "question": "Is there a written rent agreement? (yes/no)"
+     },
+     {
+      "key": "deductions_claimed",
+      "question": "Has the landlord claimed any deductions (painting, damage, dues)?"
+     },
+     {
+      "key": "communications_so_far",
+      "question": "How have you asked for it so far (calls, WhatsApp, email)?"
+     },
+     {
+      "key": "proof_of_payment",
+      "question": "Do you have proof you paid the deposit (bank transfer, receipt)?"
+     },
+     {
+      "key": "other_party_name",
+      "question": "Landlord's name (and address, if you have it)?"
+     }
+    ]
+   },
+   "actions": [],
+   "next_step": "Gather information about rent agreement and payment proof",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "monthly_rent",
+    "written_agreement",
+    "deductions_claimed",
+    "communications_so_far",
+    "proof_of_payment"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Bengali",
+     "got": "Bengali",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 3.85,
+    "usage": {
+     "completion_tokens": 461,
+     "prompt_tokens": 3109,
+     "total_tokens": 3675
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "tenancy",
+       "language": "Bengali",
+       "script": "Bengali",
+       "facts": {
+        "deposit_amount": 30000,
+        "possession_handed_over_date": "2026-10-01",
+        "city_state": "Kolkata",
+        "summary": "User vacated rented property in Kolkata and landlord is refusing to return the security deposit of 30,000."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.23,
+       "usage": {
+        "completion_tokens": 135,
+        "prompt_tokens": 929,
+        "total_tokens": 1178
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 3.85,
+       "usage": {
+        "completion_tokens": 461,
+        "prompt_tokens": 3109,
+        "total_tokens": 3675
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 6.08
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "আমি কলকাতায় ভাড়া বাড়ি ছেড়েছি ১ অক্টোবর ২০২৬। ৩০,০০০ টাকা অগ্রিম দিয়েছিলাম। বাড়িওয়ালা টাকা ফেরত দিচ্ছে না। কী করব?"
+   },
+   {
+    "role": "assistant",
+    "content": "আপনার সমস্যার কথা শুনে খারাপ লাগল। বাড়ি ছাড়ার পর সিকিউরিটি ডিপোজিট (Security Deposit) ফেরত পাওয়া আপনার অধিকার। তবে এই বিষয়ে কিছু তথ্য জানা প্রয়োজন:\n\n১. আপনার মাসিক ভাড়া কত ছিল?\n২. আপনাদের কি কোনো লিখিত ভাড়ার চুক্তি (Rent Agreement) আছে?\n৩. বাড়িওয়ালা কি কোনো কারণ দেখিয়েছেন (যেমন: রং করা বা মেরামতির খরচ) কেন তিনি টাকা ফেরত দিচ্ছেন না?\n৪. আপনি কি তাকে টাকা ফেরত দেওয়ার জন্য কোনো মেসেজ বা ইমেল করেছেন? আপনার কাছে কি টাকা দেওয়ার কোনো প্রমাণ (ব্যাঙ্ক ট্রান্সফার বা রসিদ) আছে?\n\nএই তথ্যগুলো পেলে আমি আপনাকে সঠিক পদক্ষেপ নিতে সাহায্য করতে পারব।"
+   }
+  ],
+  "case": {
+   "category": "tenancy",
+   "language": "Bengali",
+   "script": "Bengali",
+   "facts": {
+    "deposit_amount": 30000,
+    "possession_handed_over_date": "2026-10-01",
+    "city_state": "Kolkata",
+    "summary": "User vacated rented property in Kolkata and landlord is refusing to return the security deposit of 30,000."
+   },
+   "timeline": [
+    {
+     "date": "2026-10-01",
+     "event": "Vacated rented property"
+    }
+   ],
+   "evidence_have": [],
+   "evidence_missing": [
+    "monthly_rent",
+    "written_agreement",
+    "deductions_claimed",
+    "communications_so_far",
+    "proof_of_payment"
+   ],
+   "next_step": "Gather information about rent agreement and payment proof"
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 6.08,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got tenancy"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Bengali, reply script Bengali"
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 4,
+  "actionable": 2,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "The reply is clear and honest but lacks concrete next steps, mainly requesting more information.",
+  "judge_model": {
+   "provider": "groq",
+   "model": "openai/gpt-oss-120b",
+   "latency_s": 1.28,
+   "usage": {
+    "queue_time": 0.157990804,
+    "prompt_tokens": 489,
+    "prompt_time": 0.040072379,
+    "completion_tokens": 103,
+    "completion_time": 0.21568407,
+    "total_tokens": 592,
+    "total_time": 0.255756449,
+    "completion_tokens_details": {
+     "reasoning_tokens": 52
+    }
+   },
+   "fallback_attempts": [
+    "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199536, Requested 601. Please try again in 59.184s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limi"
+   ]
+  }
+ }
+}

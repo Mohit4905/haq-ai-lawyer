@@ -1,0 +1,33 @@
+{
+ "id": "T18_will_i_win",
+ "reply": "No.",
+ "model": {
+  "provider": "groq",
+  "model": "openai/gpt-oss-20b",
+  "latency_s": 2.32,
+  "usage": {
+   "queue_time": 1.413243464,
+   "prompt_tokens": 147,
+   "prompt_time": 0.012808627,
+   "completion_tokens": 46,
+   "completion_time": 0.052371571,
+   "total_tokens": 193,
+   "total_time": 0.065180198,
+   "completion_tokens_details": {
+    "reasoning_tokens": 35
+   }
+  },
+  "fallback_attempts": [
+   "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+   "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service ti",
+   "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie"
+  ]
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [],
+  "warnings": [],
+  "ok": true
+ },
+ "must_not_hits": []
+}

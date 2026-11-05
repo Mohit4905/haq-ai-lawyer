@@ -1,0 +1,349 @@
+{
+ "case": {
+  "id": "T11_cheque_deadline_missed",
+  "group": "edge",
+  "turns": [
+   "A customer's cheque of Rs 85,000 bounced. Bank returned it on 10 August 2026 (insufficient funds). I haven't sent any notice yet, I was busy. Can I still file a case under 138?"
+  ],
+  "expect": {
+   "category": "cheque_bounce",
+   "script": "Latin",
+   "facts": {
+    "memo_received_date": "2026-08-10"
+   },
+   "escalate_min": "recommended",
+   "deadline_expect": {
+    "basis": "NIA1881-S138",
+    "status": "passed"
+   }
+  }
+ },
+ "results": [
+  {
+   "reply": "The 30‑day window to send a demand notice under s.138 has already passed (deadline was 9 Sept 2026). Because the notice period is missed, filing a criminal complaint under s.138 is now risky – courts may reject it as out of time. You could still try a civil summary suit to recover the ₹85,000, but you’ll need a lawyer to check if it’s viable.\n\n**What you can do next**\n- Gather all proof: the bounced‑cheque copy, bank’s return memo (dated 10 Aug 2026), any email/WhatsApp where the customer promised payment, and your bank statements showing the cheque was presented.\n- Talk to a lawyer (free legal aid via NALSA 15100 or Tele‑Law) to see if a civil suit or any other remedy is possible.\n- If you later manage to send a notice, it may help in settlement, but it won’t revive the criminal route.\n\nI can help draft a simple demand notice you can still send, or prepare a list of documents for a lawyer.\n\n⚠️ **Deadline check (calculated by Haq, not AI):** Send the legal demand notice by (30 days from bank's return memo): **09 Sep 2026**, which has passed. Please speak to a lawyer or free legal aid (15100) soon to check what options remain.",
+   "citations": [
+    {
+     "id": "NIA1881-S138",
+     "act": "Negotiable Instruments Act, 1881",
+     "section": "138",
+     "title": "Cheque bounce offence: conditions and punishment",
+     "plain": "Bouncing a cheque given to pay a legally enforceable debt, because of insufficient funds or because it exceeds the arranged limit, is a crime. Punishment is up to 2 years' jail, or a fine up to twice the cheque amount, or both. The offence arises only if (a) the cheque was presented within its validity (now 3 months), (b) the payee sent a written demand notice within 30 days of learning it bounced, and (c) the drawer failed to pay within 15 days of receiving that notice.",
+     "source_url": "https://indiacode.gov.in/server/api/core/items/64a9a186-103f-46ff-b528-9894e1de534f",
+     "source_type": "primary"
+    },
+    {
+     "id": "NIA1881-S142-1",
+     "act": "Negotiable Instruments Act, 1881",
+     "section": "142(1)",
+     "title": "Time limit to file cheque bounce complaint",
+     "plain": "Only the payee or holder can file, by written complaint. It must be filed within one month after the cause of action arises, which is when the 15-day payment period after the notice ends without payment. A court can accept a late complaint if you show sufficient cause. Only a Metropolitan Magistrate or Judicial Magistrate First Class can try the case.",
+     "source_url": "https://indiacode.gov.in/server/api/core/items/1c79cd03-af0f-4ca6-8820-b5a68414a927",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPC1908-O37",
+     "act": "Code of Civil Procedure, 1908",
+     "section": "Order XXXVII",
+     "title": "Summary suits for fixed money claims",
+     "plain": "A summary suit is a faster procedure for clear money claims. It covers suits on cheques, bills of exchange, hundis and promissory notes, and suits to recover a fixed debt or 'liquidated' amount (with or without interest) arising from a written contract, a law that fixes the sum, or a guarantee. The defendant may defend only with the court's permission ('leave to defend'). It is available only in courts where the Order applies.",
+     "source_url": "https://cdnbbsr.s3waas.gov.in/s36a4cbdaedcbda0fa8ddc7ea32073c475/uploads/2025/02/20250210517413908.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Send the legal demand notice by (30 days from bank's return memo)",
+      "date": "2026-09-09",
+      "days_left": -58,
+      "status": "passed",
+      "basis": "NIA1881-S138",
+      "note": "Count from the day you got the bank's information; send by registered post AD/speed post and keep receipts.",
+      "user_deadline": true
+     }
+    ],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 44,
+    "missing": [
+     {
+      "key": "cheque_date",
+      "question": "Date written on the cheque?"
+     },
+     {
+      "key": "reason_for_cheque",
+      "question": "Why was the cheque given (loan repayment, payment for goods...)?"
+     },
+     {
+      "key": "presentation_date",
+      "question": "When did you deposit it?"
+     },
+     {
+      "key": "notice_sent_date",
+      "question": "Have you sent a legal notice yet? Date?"
+     },
+     {
+      "key": "city_state",
+      "question": "Where is your bank branch (city)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "get_help"
+    }
+   ],
+   "next_step": "Consult a lawyer (free legal aid) to explore a civil summary suit and gather all documents",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "criminal route likely time‑barred; civil suit needs legal advice",
+     "Deadline passed: Send the legal demand notice by (30 days from bank's return memo) (2026-09-09)"
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "exact date written on the cheque and when it was presented"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [
+      {
+       "type": "ambiguous_section",
+       "text": "s.138",
+       "why": "Section mentioned without naming the Act."
+      },
+      {
+       "type": "ambiguous_section",
+       "text": "s.138",
+       "why": "Section mentioned without naming the Act."
+      }
+     ],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [
+      {
+       "type": "ambiguous_section",
+       "text": "s.138",
+       "why": "Section mentioned without naming the Act."
+      },
+      {
+       "type": "ambiguous_section",
+       "text": "s.138",
+       "why": "Section mentioned without naming the Act."
+      }
+     ],
+     "ok": true
+    },
+    "deadline_alerts_added": 1
+   },
+   "model": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "latency_s": 2.14,
+    "usage": {
+     "queue_time": 0.155860207,
+     "prompt_tokens": 2849,
+     "prompt_time": 0.134907483,
+     "completion_tokens": 459,
+     "completion_time": 0.960044698,
+     "total_tokens": 3308,
+     "total_time": 1.094952181,
+     "completion_tokens_details": {
+      "reasoning_tokens": 11
+     }
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "cheque_bounce",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "cheque_amount": 85000,
+        "cheque_date": null,
+        "presentation_date": null,
+        "dishonour_reason": "insufficient funds",
+        "memo_received_date": "2026-08-10",
+        "notice_sent_date": null,
+        "other_party_name": "customer",
+        "city_state": null
+       },
+       "approximate_dates": [],
+       "confidence": 0.95
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 3.23,
+       "usage": {
+        "queue_time": 1.661681768,
+        "prompt_tokens": 933,
+        "prompt_time": 0.05468339,
+        "completion_tokens": 166,
+        "completion_time": 0.214093279,
+        "total_tokens": 1099,
+        "total_time": 0.268776669,
+        "completion_tokens_details": {
+         "reasoning_tokens": 73
+        }
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-120b",
+       "latency_s": 2.14,
+       "usage": {
+        "queue_time": 0.155860207,
+        "prompt_tokens": 2849,
+        "prompt_time": 0.134907483,
+        "completion_tokens": 459,
+        "completion_time": 0.960044698,
+        "total_tokens": 3308,
+        "total_time": 1.094952181,
+        "completion_tokens_details": {
+         "reasoning_tokens": 11
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 25.78
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "A customer's cheque of Rs 85,000 bounced. Bank returned it on 10 August 2026 (insufficient funds). I haven't sent any notice yet, I was busy. Can I still file a case under 138?"
+   },
+   {
+    "role": "assistant",
+    "content": "The 30‑day window to send a demand notice under s.138 has already passed (deadline was 9 Sept 2026). Because the notice period is missed, filing a criminal complaint under s.138 is now risky – courts may reject it as out of time. You could still try a civil summary suit to recover the ₹85,000, but you’ll need a lawyer to check if it’s viable.\n\n**What you can do next**\n- Gather all proof: the bounced‑cheque copy, bank’s return memo (dated 10 Aug 2026), any email/WhatsApp where the customer promised payment, and your bank statements showing the cheque was presented.\n- Talk to a lawyer (free legal aid via NALSA 15100 or Tele‑Law) to see if a civil suit or any other remedy is possible.\n- If you later manage to send a notice, it may help in settlement, but it won’t revive the criminal route.\n\nI can help draft a simple demand notice you can still send, or prepare a list of documents for a lawyer.\n\n⚠️ **Deadline check (calculated by Haq, not AI):** Send the legal demand notice by (30 days from bank's return memo): **09 Sep 2026**, which has passed. Please speak to a lawyer or free legal aid (15100) soon to check what options remain."
+   }
+  ],
+  "case": {
+   "category": "cheque_bounce",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "cheque_amount": 85000,
+    "dishonour_reason": "insufficient funds",
+    "memo_received_date": "2026-08-10",
+    "other_party_name": "customer"
+   },
+   "timeline": [
+    {
+     "date": "2026-08-10",
+     "event": "Bank returned cheque (insufficient funds)"
+    }
+   ],
+   "evidence_have": [
+    "bounced cheque copy",
+    "bank return memo (10 Aug 2026)"
+   ],
+   "evidence_missing": [
+    "proof of cheque date, any communication promising payment, bank statement showing presentation"
+   ],
+   "next_step": "Consult a lawyer (free legal aid) to explore a civil summary suit and gather all documents"
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "criminal route likely time‑barred; civil suit needs legal advice",
+    "Deadline passed: Send the legal demand notice by (30 days from bank's return memo) (2026-09-09)"
+   ]
+  },
+  "log": [
+   {
+    "t": 25.78,
+    "model": "openai/gpt-oss-120b",
+    "provider": "groq",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got cheque_bounce"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Latin, reply script Latin"
+  },
+  {
+   "check": "fact:memo_received_date",
+   "pass": true,
+   "detail": "expected ~2026-08-10, got 2026-08-10"
+  },
+  {
+   "check": "escalation>=recommended",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "deadline:NIA1881-S138",
+   "pass": true,
+   "detail": "[{\"label\": \"Send the legal demand notice by (30 days from bank's return memo)\", \"date\": \"2026-09-09\", \"days_left\": -58, \"status\": \"passed\", \"basis\": \"NIA1881-S138\", \"note\": \"Count from the day you got the bank's information; send by registered post AD/speed post and keep receipts.\", \"user_deadline\":"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "Accurately identifies that the statutory 30-day notice window under Section 138 has passed while providing practical civil remedies.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.5-flash",
+   "latency_s": 2.35,
+   "usage": {
+    "completion_tokens": 62,
+    "prompt_tokens": 575,
+    "total_tokens": 637
+   },
+   "fallback_attempts": [
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 503: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usuall"
+   ]
+  }
+ }
+}

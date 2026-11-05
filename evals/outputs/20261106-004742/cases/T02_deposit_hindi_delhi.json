@@ -1,0 +1,379 @@
+{
+ "case": {
+  "id": "T02_deposit_hindi_delhi",
+  "group": "language",
+  "turns": [
+   "मैंने दिल्ली के लक्ष्मी नगर में किराये का कमरा 15 सितंबर 2026 को खाली कर दिया। 25,000 रुपये सिक्योरिटी डिपॉज़िट दिया था, नकद में, रसीद नहीं है। मकान मालिक अब फ़ोन नहीं उठा रहा। मैं क्या करूँ?"
+  ],
+  "expect": {
+   "category": "tenancy",
+   "script": "Devanagari",
+   "facts": {
+    "deposit_amount": "25"
+   },
+   "must_mention_any": [
+    [
+     "सबूत",
+     "प्रमाण",
+     "रसीद",
+     "गवाह",
+     "WhatsApp",
+     "व्हाट्सऐप",
+     "proof"
+    ]
+   ],
+   "escalate_max": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "समझता हूँ, डिपॉज़िट वापस न मिलना परेशान करता है।\n\n**आपकी स्थिति:**\n- अच्छी बात: आपने 15 सितंबर 2026 को खाली कर दिया, मकान मालिक फ़ोन नहीं उठा रहा — यानी आपने अपना काम कर दिया।\n- कमज़ोर बात: नकद में दिया, रसीद नहीं। अगर मकान मालिक कह दे कि \"कुछ नहीं लिया\", तो साबित करना मुश्किल होगा।\n\n**आपके पास ये रास्ते हैं (सस्ते से महँगे):**\n1. **WhatsApp/ईमेल पर लिखकर माँगें** — राशि, खाली करने की तारीख, बैंक विवरण दें; स्क्रीनशॉट रखें। (मुफ़्त, आज ही)\n2. **लीगल नोटिस** — 15 दिन में वापस करने की माँग; खुद भेज सकते हैं। (₹500–1500, 1–2 हफ़्ता)\n3. **लोक अदालत / मुफ़्त कानूनी सहायता** — जिला कानूनी सेवा प्राधिकरण (DLSA) से; NALSA हेल्पलाइन **15100** पर कॉल करें। (मुफ़्त, 2–4 हफ़्ता)\n4. **दरबार में रिक्वेस्ट (civil suit)** — 3 साल का समय है; अगर लिखित एग्रीमेंट है तो summary suit (तेज़) भी हो सकता है। (वकील चाहिए, 3–6 महीना+)\n\n**मेरी सलाह:** अभी WhatsApp पर एक साफ़-सुथरा संदेश भेजें। मैं लिखकर दे सकता हूँ।\n\n**3 सवाल:**\n1. लिखित किराया एग्रीमेंट है? (हाँ/नहीं)\n2. महीने का किराया कितना था?\n3. अब तक कैसे माँगा — फ़ोन, WhatsApp, या और कुछ?",
+   "citations": [
+    {
+     "id": "ICA1872-S73",
+     "act": "Indian Contract Act, 1872",
+     "section": "73",
+     "title": "Compensation for breach of contract",
+     "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+     "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "LIM1963-ART55",
+     "act": "Limitation Act, 1963",
+     "section": "Schedule, Article 55",
+     "title": "3 years to sue for compensation for breach of contract",
+     "plain": "A suit for compensation for breach of a contract (written or implied), where no other article covers it specifically, must be filed within 3 years. Time runs from the date of the breach. If there are repeated breaches, it runs from the breach you sue on; if the breach is continuing, from when it stops.",
+     "source_url": "https://www.thc.nic.in/Central%20Governmental%20Acts/Limitation%20Act,%202019.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPC1908-O37",
+     "act": "Code of Civil Procedure, 1908",
+     "section": "Order XXXVII",
+     "title": "Summary suits for fixed money claims",
+     "plain": "A summary suit is a faster procedure for clear money claims. It covers suits on cheques, bills of exchange, hundis and promissory notes, and suits to recover a fixed debt or 'liquidated' amount (with or without interest) arising from a written contract, a law that fixes the sum, or a guarantee. The defendant may defend only with the court's permission ('leave to defend'). It is available only in courts where the Order applies.",
+     "source_url": "https://cdnbbsr.s3waas.gov.in/s36a4cbdaedcbda0fa8ddc7ea32073c475/uploads/2025/02/20250210517413908.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-LOKADALAT-PRELITIGATION",
+     "act": "Legal Services Authorities Act, 1987",
+     "section": "",
+     "title": "Pre-litigation settlement through Lok Adalat",
+     "plain": "Even before filing a case, one party can apply to the District or State Legal Services Authority to have a civil dispute, or a compoundable criminal matter, referred to a Lok Adalat for amicable settlement. Non-compoundable offences are excluded. This is available now, unlike Mediation Act section 5.",
+     "source_url": "https://delhi.nalsa.gov.in/lok-adalat/",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-NALSA-HELPLINE",
+     "act": "NALSA legal aid helpline",
+     "section": "",
+     "title": "NALSA legal aid helpline 15100",
+     "plain": "Call the national legal aid helpline 15100 (toll-free) for free legal advice and help applying for legal aid. You can also apply for legal aid or victim compensation online via the NALSA website.",
+     "source_url": "https://nalsa.gov.in/",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-MTA-STATE-ADOPTION",
+     "act": "Model Tenancy Act, 2021",
+     "section": "",
+     "title": "States that revised tenancy laws on MTA lines (as of July 2022)",
+     "plain": "As of July 2022, the Housing Ministry reported that Andhra Pradesh, Tamil Nadu, Uttar Pradesh and Assam had revised their tenancy laws along the lines of the Model Tenancy Act. Other states continue under their own rent control laws, so the deposit cap and the rent authority procedure vary by state.",
+     "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1844644",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Approximate last date to sue for the deposit (3 years)",
+      "date": "2029-09-15",
+      "days_left": 1044,
+      "status": "ok",
+      "basis": "LIM1963-ART55",
+      "note": "Limitation depends on the exact claim; confirm with legal aid before relying on it.",
+      "user_deadline": true
+     }
+    ],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 56,
+    "missing": [
+     {
+      "key": "monthly_rent",
+      "question": "What was the monthly rent (₹)?"
+     },
+     {
+      "key": "written_agreement",
+      "question": "Is there a written rent agreement? (yes/no)"
+     },
+     {
+      "key": "deductions_claimed",
+      "question": "Has the landlord claimed any deductions (painting, damage, dues)?"
+     },
+     {
+      "key": "communications_so_far",
+      "question": "How have you asked for it so far (calls, WhatsApp, email)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "deposit_demand_notice"
+    }
+   ],
+   "next_step": "Send a clear WhatsApp message to landlord demanding ₹25,000 deposit refund with move-out date and bank details; save screenshot",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "medium",
+   "unknowns": [
+    "Whether a written rent agreement exists",
+    "Monthly rent amount",
+    "Whether landlord has made any deductions or claims",
+    "What communication has been attempted so far",
+    "Whether any witness or digital trace exists for the cash payment"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [
+      {
+       "type": "unsupported_number",
+       "text": "15 दिन",
+       "why": "Time period not found in the verified library or calculations."
+      },
+      {
+       "type": "unsupported_number",
+       "text": "3 साल",
+       "why": "Time period not found in the verified library or calculations."
+      }
+     ],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [
+      {
+       "type": "unsupported_number",
+       "text": "15 दिन",
+       "why": "Time period not found in the verified library or calculations."
+      },
+      {
+       "type": "unsupported_number",
+       "text": "3 साल",
+       "why": "Time period not found in the verified library or calculations."
+      }
+     ],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Devanagari",
+     "got": "Devanagari",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "groq",
+    "model": "qwen/qwen3.8-27b",
+    "latency_s": 4.66,
+    "usage": {
+     "queue_time": 0.064976588,
+     "prompt_tokens": 3155,
+     "prompt_time": 0.235720749,
+     "completion_tokens": 1799,
+     "completion_time": 3.5660027850000002,
+     "total_tokens": 4954,
+     "total_time": 3.8017235339999997,
+     "completion_tokens_details": {
+      "reasoning_tokens": 826
+     }
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "tenancy",
+       "language": "Hindi",
+       "script": "Devanagari",
+       "facts": {
+        "deposit_amount": 25000,
+        "possession_handed_over_date": "2026-09-15",
+        "city_state": "Delhi",
+        "other_party_name": "landlord"
+       },
+       "approximate_dates": [],
+       "confidence": 0.95
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 1.19,
+       "usage": {
+        "queue_time": 0.156817547,
+        "prompt_tokens": 952,
+        "prompt_time": 0.05977801,
+        "completion_tokens": 134,
+        "completion_time": 0.144119653,
+        "total_tokens": 1086,
+        "total_time": 0.203897663,
+        "completion_tokens_details": {
+         "reasoning_tokens": 62
+        }
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "qwen/qwen3.8-27b",
+       "latency_s": 4.66,
+       "usage": {
+        "queue_time": 0.064976588,
+        "prompt_tokens": 3155,
+        "prompt_time": 0.235720749,
+        "completion_tokens": 1799,
+        "completion_time": 3.5660027850000002,
+        "total_tokens": 4954,
+        "total_time": 3.8017235339999997,
+        "completion_tokens_details": {
+         "reasoning_tokens": 826
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 6.63
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "मैंने दिल्ली के लक्ष्मी नगर में किराये का कमरा 15 सितंबर 2026 को खाली कर दिया। 25,000 रुपये सिक्योरिटी डिपॉज़िट दिया था, नकद में, रसीद नहीं है। मकान मालिक अब फ़ोन नहीं उठा रहा। मैं क्या करूँ?"
+   },
+   {
+    "role": "assistant",
+    "content": "समझता हूँ, डिपॉज़िट वापस न मिलना परेशान करता है।\n\n**आपकी स्थिति:**\n- अच्छी बात: आपने 15 सितंबर 2026 को खाली कर दिया, मकान मालिक फ़ोन नहीं उठा रहा — यानी आपने अपना काम कर दिया।\n- कमज़ोर बात: नकद में दिया, रसीद नहीं। अगर मकान मालिक कह दे कि \"कुछ नहीं लिया\", तो साबित करना मुश्किल होगा।\n\n**आपके पास ये रास्ते हैं (सस्ते से महँगे):**\n1. **WhatsApp/ईमेल पर लिखकर माँगें** — राशि, खाली करने की तारीख, बैंक विवरण दें; स्क्रीनशॉट रखें। (मुफ़्त, आज ही)\n2. **लीगल नोटिस** — 15 दिन में वापस करने की माँग; खुद भेज सकते हैं। (₹500–1500, 1–2 हफ़्ता)\n3. **लोक अदालत / मुफ़्त कानूनी सहायता** — जिला कानूनी सेवा प्राधिकरण (DLSA) से; NALSA हेल्पलाइन **15100** पर कॉल करें। (मुफ़्त, 2–4 हफ़्ता)\n4. **दरबार में रिक्वेस्ट (civil suit)** — 3 साल का समय है; अगर लिखित एग्रीमेंट है तो summary suit (तेज़) भी हो सकता है। (वकील चाहिए, 3–6 महीना+)\n\n**मेरी सलाह:** अभी WhatsApp पर एक साफ़-सुथरा संदेश भेजें। मैं लिखकर दे सकता हूँ।\n\n**3 सवाल:**\n1. लिखित किराया एग्रीमेंट है? (हाँ/नहीं)\n2. महीने का किराया कितना था?\n3. अब तक कैसे माँगा — फ़ोन, WhatsApp, या और कुछ?"
+   }
+  ],
+  "case": {
+   "category": "tenancy",
+   "language": "Hindi",
+   "script": "Devanagari",
+   "facts": {
+    "deposit_amount": 25000,
+    "possession_handed_over_date": "2026-09-15",
+    "city_state": "Delhi",
+    "other_party_name": "landlord",
+    "proof_of_payment": "cash, no receipt"
+   },
+   "timeline": [
+    {
+     "date": "2026-09-15",
+     "event": "Possession handed over to landlord"
+    }
+   ],
+   "evidence_have": [],
+   "evidence_missing": [
+    "Proof of deposit payment (receipt, bank transfer, or WhatsApp message where landlord acknowledged)",
+    "Written rent agreement (if exists)",
+    "Any written communication (WhatsApp/email) where landlord acknowledged the deposit or the move-out"
+   ],
+   "next_step": "Send a clear WhatsApp message to landlord demanding ₹25,000 deposit refund with move-out date and bank details; save screenshot"
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 6.63,
+    "model": "qwen/qwen3.8-27b",
+    "provider": "groq",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got tenancy"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Devanagari, reply script Devanagari"
+  },
+  {
+   "check": "fact:deposit_amount",
+   "pass": true,
+   "detail": "expected ~25, got 25000"
+  },
+  {
+   "check": "mentions:सबूत|प्रमाण|रसीद|गवाह|WhatsApp|व्हाट्सऐप",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "The response is excellent, practical, and appropriately manages expectations regarding the lack of a receipt while providing clear, low-cost steps.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 1.66,
+   "usage": {
+    "completion_tokens": 72,
+    "prompt_tokens": 603,
+    "total_tokens": 782
+   },
+   "fallback_attempts": [
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+   ]
+  }
+ }
+}

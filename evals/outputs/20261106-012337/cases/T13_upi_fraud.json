@@ -1,0 +1,274 @@
+{
+ "case": {
+  "id": "T13_upi_fraud",
+  "group": "scope",
+  "turns": [
+   "Someone called pretending to be from my bank and I shared an OTP. Rs 30,000 was debited via UPI 2 hours ago. What do I do?"
+  ],
+  "expect": {
+   "category_any": [
+    "cyber_fraud",
+    "out_of_scope"
+   ],
+   "script": "Latin",
+   "must_mention_any": [
+    [
+     "1930"
+    ],
+    [
+     "bank"
+    ]
+   ],
+   "escalate_min": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "This is very urgent. Since the incident happened just 2 hours ago, you have a chance to recover your money if you take immediate action.\n\n1. **Call 1930:** Immediately call the National Cyber Crime helpline at 1930 and report it. Also, report it at https://www.cybercrime.gov.in. Reporting quickly increases the chances of the money being frozen.\n2. **Inform the bank:** Immediately inform your bank in writing (via email or app) that this transaction is fraudulent. If you do not get a resolution within 30 days, you can approach the RBI Ombudsman.\n3. **Police:** You can file a 'Zero FIR' at any nearest police station.\n\nHave you informed the bank yet? And do you have a screenshot or reference number of the transaction?",
+   "citations": [
+    {
+     "id": "FACT-CYBER-1930",
+     "act": "National Cyber Crime helpline",
+     "section": "",
+     "title": "Cyber fraud: call 1930 or report at cybercrime.gov.in",
+     "plain": "If you lose money to online or financial cyber fraud, call the national helpline 1930 immediately; quick reporting improves the chance of freezing the money. You can also report any cybercrime on the National Cyber Crime Reporting Portal at https://www.cybercrime.gov.in/.",
+     "source_url": "https://cybercrime.gov.in/",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-RBIOS2026-ELIGIBILITY",
+     "act": "Reserve Bank - Integrated Ombudsman Scheme, 2026",
+     "section": "",
+     "title": "When you can complain to the RBI Ombudsman (30-day wait, 90-day limit)",
+     "plain": "First complain to your bank, NBFC or payment company. If it doesn't reply within 30 days (or a longer time set by RBI/NPCI/card network rules), or you are unhappy with its reply, you can go to the RBI Ombudsman. You must do so within 90 days of that timeline ending or of the bank's last reply, whichever is later. The service is free and there is no cap on the amount in dispute.",
+     "source_url": "https://rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=3407",
+     "source_type": "primary"
+    },
+    {
+     "id": "BNSS2023-S173",
+     "act": "Bharatiya Nagarik Suraksha Sanhita, 2023",
+     "section": "173",
+     "title": "FIR at any police station ('Zero FIR'), including electronic FIR",
+     "plain": "Information about a cognizable offence can be given at any police station, whatever the area where the offence happened. It can be given orally or electronically, and this is commonly called a 'Zero FIR'. An e-FIR must be signed by the informant within three days.",
+     "source_url": "https://egazette.gov.in/WriteReadData/2023/250884.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 0,
+    "missing": []
+   },
+   "actions": [
+    {
+     "type": "get_help"
+    }
+   ],
+   "next_step": "Call 1930 immediately to report the fraud.",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "Cyber fraud cases can be complex; if the bank does not resolve it, you may need legal assistance to escalate."
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Whether the bank has been informed yet"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Latin",
+     "got": "Hinglish",
+     "rewritten": true,
+     "got_after": "Latin"
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 3.61,
+    "usage": {
+     "completion_tokens": 562,
+     "prompt_tokens": 2755,
+     "total_tokens": 3418
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "cyber_fraud",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "amount_debited": "30000",
+        "incident_date": "2026-11-06",
+        "method": "UPI",
+        "cause": "OTP shared with someone pretending to be from bank",
+        "summary": "User lost 30000 via UPI after sharing OTP with a scammer posing as bank staff."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 1.8,
+       "usage": {
+        "completion_tokens": 140,
+        "prompt_tokens": 935,
+        "total_tokens": 1198
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 3.61,
+       "usage": {
+        "completion_tokens": 562,
+        "prompt_tokens": 2755,
+        "total_tokens": 3418
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "language_rewrite",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.65,
+       "usage": {
+        "completion_tokens": 171,
+        "prompt_tokens": 247,
+        "total_tokens": 558
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 8.07
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "Someone called pretending to be from my bank and I shared an OTP. Rs 30,000 was debited via UPI 2 hours ago. What do I do?"
+   },
+   {
+    "role": "assistant",
+    "content": "This is very urgent. Since the incident happened just 2 hours ago, you have a chance to recover your money if you take immediate action.\n\n1. **Call 1930:** Immediately call the National Cyber Crime helpline at 1930 and report it. Also, report it at https://www.cybercrime.gov.in. Reporting quickly increases the chances of the money being frozen.\n2. **Inform the bank:** Immediately inform your bank in writing (via email or app) that this transaction is fraudulent. If you do not get a resolution within 30 days, you can approach the RBI Ombudsman.\n3. **Police:** You can file a 'Zero FIR' at any nearest police station.\n\nHave you informed the bank yet? And do you have a screenshot or reference number of the transaction?"
+   }
+  ],
+  "case": {
+   "category": "cyber_fraud",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "amount_debited": "30000",
+    "incident_date": "2026-11-06",
+    "method": "UPI",
+    "cause": "OTP shared with someone pretending to be from bank",
+    "summary": "User lost 30000 via UPI after sharing OTP with a scammer posing as bank staff."
+   },
+   "timeline": [
+    {
+     "date": "2026-11-06",
+     "event": "Rs 30,000 debited via UPI after sharing OTP"
+    }
+   ],
+   "evidence_have": [
+    "Transaction details"
+   ],
+   "evidence_missing": [
+    "Bank complaint acknowledgement",
+    "Cyber crime portal complaint reference"
+   ],
+   "next_step": "Call 1930 immediately to report the fraud."
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "Cyber fraud cases can be complex; if the bank does not resolve it, you may need legal assistance to escalate."
+   ]
+  },
+  "log": [
+   {
+    "t": 8.07,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got cyber_fraud"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Latin, reply script Latin"
+  },
+  {
+   "check": "mentions:1930",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "mentions:bank",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation>=recommended",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "error": "All providers failed: groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199536, Requested 568. Please try again in 44.928s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limi | groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199430, Requested 848. Please try again in 2m0.095999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"ra"
+ }
+}

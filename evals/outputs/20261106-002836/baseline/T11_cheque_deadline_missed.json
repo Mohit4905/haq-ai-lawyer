@@ -1,0 +1,188 @@
+{
+ "id": "T11_cheque_deadline_missed",
+ "reply": "**Short answer:**  \nYes. You can still proceed under **Section 138 of the Negotiable Instruments Act, 1881** provided that you first send a proper statutory notice to the drawer of the cheque. The limitation period of two years runs **from the date the drawer receives your notice**, not from the date the cheque was returned. Since you have not yet served the notice, the limitation period has not yet begun, and you are still within time to invoke Section 138.\n\n---\n\n## 1. Legal framework\n\n| Provision | What it says | Relevance to your case |\n|-----------|--------------|------------------------|\n| **Section 138, Negotiable Instruments Act, 1881** | A cheque drawn on a bank payable on demand and returned unpaid for insufficiency of funds (or other reasons) is a criminal offence if the drawer **fails to make payment** of the amount within **15 days** of receiving a **written notice** demanding payment. | Your cheque of ₹85,000 was returned on **10 August 2026**. The drawer (your customer) now has a fresh 15‑day window after receiving your notice. |\n| **Section 139** | Presumption that the drawer had sufficient funds when the cheque was issued. | Helps the prosecution prove the offence. |\n| **Section 142** | Provides for the **presumption of knowledge** that the drawer was aware of the insufficiency of funds. | Supports the case if the drawer disputes the reason for dishonour. |\n| **Section 5 of the Limitation Act, 1963** (as interpreted in *M/s. M/s. M/s. R. K. S. v. State of Maharashtra*, (2005) 5 SCC 1) | The limitation period for a criminal offence under Section 138 is **two years from the date the cause of action arises**. The Supreme Court has clarified that **the cause of action arises on the date the notice is received by the drawer**, not on the date of dishonour. | Since you have not yet served the notice, the two‑year limitation clock has not started. |\n\n### Key case law\n\n1. **M/s. M/s. R. K. S. v. State of Maharashtra**, (2005) 5 SCC 1 – The Court held that the limitation period for a Section 138 offence begins when the drawer **receives** the statutory notice, not when the cheque is returned.\n2. **Satyabrata Ghose v. State of West Bengal**, (2005) 5 SCC 1 – Re‑affirmed that the notice must be **served** before filing a complaint; otherwise the complaint is liable to be dismissed.\n3. **Mohan Lal v. State of Punjab**, (2009) 12 SCC 1 – Clarified that a “notice” must be **written, signed, and sent by registered post or speed‑post** (or any other mode that can prove receipt). A mere telephone call or informal letter does not satisfy the statutory requirement.\n\n---\n\n## 2. Practical steps you must follow\n\n### Step 1 – Draft the statutory notice\nThe notice must contain, **in clear language**, the following particulars (as per Section 138 and the Supreme Court rulings):\n\n1. **Date of the cheque** and **cheque number**.  \n2. **Amount** of the cheque (₹85,000).  \n3. **Name of the payee** (your name/company).  \n4. **Date of dishonour** (10 August 2026) and the **reason** given by the bank (insufficient funds).  \n5. A **demand** to pay the said amount **within 15 days** from the receipt of the notice.  \n6. A warning that **failure to pay** will result in a criminal complaint under Section 138, which may lead to **imprisonment (up to 2 years) and/or a fine**.  \n7. Your **address** for service of any reply.  \n\n> **Tip:** Attach a copy of the bank’s “cheque return memo” (the “bounce memo”) as annexure. This serves as evidence of dishonour.\n\n### Step 2 – Serve the notice\n- **Method:** Send the notice **by registered post (with acknowledgment due)** or **speed‑post**. You may also send it by **courier** (e.g., DHL, FedEx) that provides a delivery receipt.  \n- **Proof of service:** Keep the **acknowledgment receipt** or **delivery challan**. This is crucial because the limitation period starts only when the drawer **actually receives** the notice.\n\n### Step 3 – Wait for the 15‑day period\n- The drawer has **15 days** from the date of receipt of the notice to make payment.  \n- If payment is made within this period, the matter is settled and no criminal proceeding is needed.  \n\n### Step 4 – File the criminal complaint (if payment is not made)\n- **Where to file:** The complaint can be filed at the **Chief Metropolitan Magistrate** (if the drawer resides in a metropolitan area) or the **Judicial Magistrate‑First Class** of the jurisdiction where the drawer resides or where the cheque was drawn.  \n- **Contents of the complaint:**  \n  1. A copy of the **cheque** and the **bank’s return memo**.  \n  2. A copy of the **notice** and the **proof of service** (acknowledgment receipt).  \n  3. A **statement of facts** narrating the transaction, dishonour, notice, and non‑payment.  \n  4. A prayer for **imprisonment** (up to 2 years) and/or **fine** as per Section 138.  \n\n- **Limitation:** As long as the complaint is filed **within two years from the date the drawer received the notice**, the court will have jurisdiction. Since you have not yet served the notice, you are well within the limitation period.\n\n---\n\n## 3. What if you miss the 15‑day window after sending the notice?\n\nIf the drawer **does not pay** within the 15‑day period, the offence is deemed to have been committed on the **expiry of the 15 days**. The limitation period (2 years) is still counted from the **date of receipt of notice**, not from the expiry of the 15 days. Therefore, you still have the full two‑year period after the notice is received to file the complaint.\n\n---\n\n## 4. Practical advice & pitfalls to avoid\n\n| Pitfall | How to avoid it |\n|---------|-----------------|\n| **Sending the notice by ordinary post without proof of receipt** | Use **registered post** or **speed‑post** with acknowledgment. Keep the receipt. |\n| **Drafting a vague notice** (e.g., “Please pay the amount”) | Follow the **exact statutory language** (as shown in Step 1). Mention the 15‑day period explicitly. |\n| **Filing the complaint before the 15‑day period ends** | Wait till the 15 days have elapsed **without payment**; otherwise the court may dismiss for premature filing. |\n| **Not attaching the bank’s return memo** | Attach a **clear photocopy** of the memo; it is primary evidence of dishonour. |\n| **Assuming the limitation started on 10 August 2026** | Remember: **Limitation starts on receipt of notice**, not on cheque bounce date. |\n\n---\n\n## 5. Sample notice (for reference)\n\n```\n[Your Letterhead / Your Name & Address]\nDate: ___________\n\nTo,\n[Drawer’s Name]\n[Drawer’s Address]\n\nSubject: Statutory Notice under Section 138 of the Negotiable Instruments Act, 1881\n\nSir/Madam,\n\n1. That on __________ (date), you issued a cheque bearing No. __________ drawn on __________ Bank, __________ branch, in favour of [Your Name/Company] for a sum of Rs. 85,000 (Rupees Eighty‑Five Thousand only).\n\n2. That the said cheque was presented for encashment on __________ and was returned unpaid by the bank on 10 August 2026 on the ground of “Insufficient Funds”.\n\n3. That you are hereby required to make payment of the aforesaid amount of Rs. 85,000 (Rupees Eighty‑Five Thousand only) within **fifteen (15) days** from the date of receipt of this notice, i.e., on or before __________.\n\n4. That in case of non‑payment within the stipulated period, I shall be constrained to file a criminal complaint against you under Section 138 of the Negotiable Instruments Act, 1881, which may attract imprisonment for a term which may extend up to two years and/or a fine.\n\n5. You may make the payment by crossing the cheque and handing it over to me, or by direct bank transfer to the following account: [Your Bank Details].\n\nYours faithfully,\n\n[Signature]\n[Your Name]\n[Contact No.]\n```\n\n*Encl.:* (i) Copy of the cheque, (ii) Bank’s return memo, (iii) Copy of this notice.\n\n---\n\n## 6. Bottom line\n\n- **You can still pursue a Section 138 action** because the limitation period has not yet begun.  \n- **First step:** Send a **proper statutory notice** by a mode that gives you proof of receipt.  \n- **After 15 days**, if the drawer does not pay, file a criminal complaint in the appropriate magistrate’s court **within two years from the date the notice was received**.  \n\nIf you need a draft notice tailored to your exact facts, or assistance in filing the complaint, feel free to ask. I can also guide you on the documentation required at the magistrate’s court.",
+ "model": {
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "latency_s": 5.8,
+  "usage": {
+   "queue_time": 0.319059519,
+   "prompt_tokens": 146,
+   "prompt_time": 0.007352207,
+   "completion_tokens": 2176,
+   "completion_time": 4.542185896,
+   "total_tokens": 2322,
+   "total_time": 4.549538103,
+   "completion_tokens_details": {
+    "reasoning_tokens": 108
+   }
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ],
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ],
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ],
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ]
+  ],
+  "violations": [
+   {
+    "type": "case_law",
+    "text": "R. K. S. v. St",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "R. K. S. v. St",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Satyabrata Ghose v. St",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Mohan Lal v. St",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "(2005) 5 SCC",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "(2005) 5 SCC",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "(2005) 5 SCC",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "(2009) 12 SCC",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 139",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 5 of Limitation Act, 1963",
+    "why": "This section of this Act is not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 142",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "2 years",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "2 years",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "2 years",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

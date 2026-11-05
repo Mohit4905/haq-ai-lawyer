@@ -1,0 +1,328 @@
+{
+ "case": {
+  "id": "T12_notice_explain_hindi",
+  "group": "core",
+  "turns": [
+   "मुझे वकील का नोटिस आया है अंग्रेज़ी में, समझ नहीं आ रहा। लिखा है: 'Under instructions from my client Mr. S.K. Verma, I hereby call upon you to pay Rs. 1,00,000 towards damages caused to the premises at Flat 4B, Indirapuram, within 15 days of receipt of this notice, failing which my client shall initiate appropriate civil proceedings against you at your risk as to costs.' मैंने वो फ्लैट 2 महीने पहले खाली किया था और कोई नुकसान नहीं किया।"
+  ],
+  "expect": {
+   "category_any": [
+    "notice",
+    "tenancy"
+   ],
+   "script": "Devanagari",
+   "must_mention_any": [
+    [
+     "15"
+    ],
+    [
+     "जवाब",
+     "reply",
+     "रिप्लाई"
+    ]
+   ],
+   "escalate_min": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "घबराइए मत, यह एक कानूनी नोटिस है। इसका मतलब है कि मकान मालिक (Mr. S.K. Verma) आपसे 1 लाख रुपये का हर्जाना मांग रहे हैं। चूँकि आप कह रहे हैं कि आपने कोई नुकसान नहीं किया है, तो आपको इसका जवाब लिखित में देना चाहिए।\n\n**आपकी स्थिति:**\n- नोटिस का जवाब देना ज़रूरी है, वरना वे मान सकते हैं कि आप आरोप स्वीकार कर रहे हैं।\n- 15 दिन की समय सीमा (deadline) का ध्यान रखें।\n\n**क्या करें:**\n1. नोटिस मिलने की तारीख (received date) नोट करें।\n2. फ्लैट खाली करते समय की कोई फोटो, वीडियो या 'हैंडओवर रिपोर्ट' (जिसमें लिखा हो कि फ्लैट ठीक था) ढूँढें।\n3. वकील का जवाब तैयार करें जिसमें आप स्पष्ट लिखें कि कोई नुकसान नहीं हुआ है।\n\n**अगला कदम:**\nचूँकि मामला 1 लाख रुपये का है और कानूनी नोटिस है, मैं आपको सलाह दूँगा कि आप किसी वकील से इसे एक बार चेक करवा लें। आप 'Tele-Law' या NALSA (15100) की मदद ले सकते हैं। क्या आप चाहते हैं कि मैं आपके लिए एक ड्राफ्ट (reply to notice) तैयार करूँ जिसे आप वकील को दिखा सकें?",
+   "citations": [
+    {
+     "id": "FACT-NALSA-HELPLINE",
+     "act": "NALSA legal aid helpline",
+     "section": "",
+     "title": "NALSA legal aid helpline 15100",
+     "plain": "Call the national legal aid helpline 15100 (toll-free) for free legal advice and help applying for legal aid. You can also apply for legal aid or victim compensation online via the NALSA website.",
+     "source_url": "https://nalsa.gov.in/",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-TELE-LAW",
+     "act": "Tele-Law service",
+     "section": "",
+     "title": "Tele-Law: free legal advice via Common Service Centres and app",
+     "plain": "Tele-Law is a free government service that connects you with a panel lawyer for legal advice by video or phone. Visit your nearest Common Service Centre (CSC) at gram panchayat level, where the operator (VLE) books an appointment, or register yourself on the Tele-Law mobile app or tele-law.in.",
+     "source_url": "https://www.tele-law.in/faq",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 67,
+    "missing": [
+     {
+      "key": "notice_date",
+      "question": "Date on the notice?"
+     },
+     {
+      "key": "received_date",
+      "question": "When did you receive it?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "reply_to_notice"
+    },
+    {
+     "type": "get_help"
+    }
+   ],
+   "next_step": "Draft a formal reply to the notice denying the allegations.",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "The notice threatens legal proceedings: get it reviewed",
+     "The notice involves a significant financial claim (Rs. 1,00,000) and potential civil proceedings."
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Exact date the notice was received",
+    "Whether a move-out inspection was documented"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [
+      {
+       "type": "unsupported_number",
+       "text": "15 दिन",
+       "why": "Time period not found in the verified library or calculations."
+      }
+     ],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [
+      {
+       "type": "unsupported_number",
+       "text": "15 दिन",
+       "why": "Time period not found in the verified library or calculations."
+      }
+     ],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Devanagari",
+     "got": "Devanagari",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 10.78,
+    "usage": {
+     "completion_tokens": 660,
+     "prompt_tokens": 3062,
+     "total_tokens": 3853
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+     "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+     "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": [
+       {
+        "level": "recommended",
+        "reason": "The notice threatens legal proceedings: get it reviewed"
+       }
+      ]
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "notice",
+       "language": "Hindi",
+       "script": "Devanagari",
+       "facts": {
+        "notice_from": "Lawyer acting for Mr. S.K. Verma",
+        "notice_demands": "Rs. 1,00,000 towards damages caused to premises at Flat 4B, Indirapuram",
+        "notice_deadline_days": 15,
+        "notice_text": "Under instructions from my client Mr. S.K. Verma, I hereby call upon you to pay Rs. 1,00,000 towards damages caused to the premises at Flat 4B, Indirapuram, within 15 days of receipt of this notice, failing which my client shall initiate appropriate civil proceedings against you at your risk as to costs.",
+        "other_party_name": "S.K. Verma",
+        "city_state": "Ghaziabad, Uttar Pradesh",
+        "summary": "User received a legal notice demanding Rs. 1,00,000 for alleged property damage at Flat 4B, Indirapuram; user claims no damage was caused and vacated the flat approximately 2 months ago."
+       },
+       "approximate_dates": [],
+       "confidence": 0.95
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "qwen/qwen3.8-27b",
+       "latency_s": 2.79,
+       "usage": {
+        "queue_time": 0.048103254,
+        "prompt_tokens": 1005,
+        "prompt_time": 0.071512006,
+        "completion_tokens": 951,
+        "completion_time": 2.022437657,
+        "total_tokens": 1956,
+        "total_time": 2.093949663,
+        "completion_tokens_details": {
+         "reasoning_tokens": 652
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic"
+       ]
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 10.78,
+       "usage": {
+        "completion_tokens": 660,
+        "prompt_tokens": 3062,
+        "total_tokens": 3853
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+        "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 17.12
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "मुझे वकील का नोटिस आया है अंग्रेज़ी में, समझ नहीं आ रहा। लिखा है: 'Under instructions from my client Mr. S.K. Verma, I hereby call upon you to pay Rs. 1,00,000 towards damages caused to the premises at Flat 4B, Indirapuram, within 15 days of receipt of this notice, failing which my client shall initiate appropriate civil proceedings against you at your risk as to costs.' मैंने वो फ्लैट 2 महीने पहले खाली किया था और कोई नुकसान नहीं किया।"
+   },
+   {
+    "role": "assistant",
+    "content": "घबराइए मत, यह एक कानूनी नोटिस है। इसका मतलब है कि मकान मालिक (Mr. S.K. Verma) आपसे 1 लाख रुपये का हर्जाना मांग रहे हैं। चूँकि आप कह रहे हैं कि आपने कोई नुकसान नहीं किया है, तो आपको इसका जवाब लिखित में देना चाहिए।\n\n**आपकी स्थिति:**\n- नोटिस का जवाब देना ज़रूरी है, वरना वे मान सकते हैं कि आप आरोप स्वीकार कर रहे हैं।\n- 15 दिन की समय सीमा (deadline) का ध्यान रखें।\n\n**क्या करें:**\n1. नोटिस मिलने की तारीख (received date) नोट करें।\n2. फ्लैट खाली करते समय की कोई फोटो, वीडियो या 'हैंडओवर रिपोर्ट' (जिसमें लिखा हो कि फ्लैट ठीक था) ढूँढें।\n3. वकील का जवाब तैयार करें जिसमें आप स्पष्ट लिखें कि कोई नुकसान नहीं हुआ है।\n\n**अगला कदम:**\nचूँकि मामला 1 लाख रुपये का है और कानूनी नोटिस है, मैं आपको सलाह दूँगा कि आप किसी वकील से इसे एक बार चेक करवा लें। आप 'Tele-Law' या NALSA (15100) की मदद ले सकते हैं। क्या आप चाहते हैं कि मैं आपके लिए एक ड्राफ्ट (reply to notice) तैयार करूँ जिसे आप वकील को दिखा सकें?"
+   }
+  ],
+  "case": {
+   "category": "notice",
+   "language": "Hindi",
+   "script": "Devanagari",
+   "facts": {
+    "notice_from": "Lawyer for Mr. S.K. Verma",
+    "notice_demands": 100000,
+    "notice_deadline_days": 15,
+    "notice_text": "Under instructions from my client Mr. S.K. Verma, I hereby call upon you to pay Rs. 1,00,000 towards damages caused to the premises at Flat 4B, Indirapuram, within 15 days of receipt of this notice, failing which my client shall initiate appropriate civil proceedings against you at your risk as to costs.",
+    "other_party_name": "S.K. Verma",
+    "city_state": "Ghaziabad, Uttar Pradesh",
+    "summary": "User received a legal notice demanding Rs. 1,00,000 for alleged property damage at Flat 4B, Indirapuram; user claims no damage was caused and vacated the flat approximately 2 months ago."
+   },
+   "timeline": [
+    {
+     "date": "2 months ago",
+     "event": "Vacated the flat"
+    },
+    {
+     "date": "Recent",
+     "event": "Received legal notice"
+    }
+   ],
+   "evidence_have": [],
+   "evidence_missing": [
+    "Date of receipt of notice",
+    "Move-out inspection report or photos/videos of the flat when vacated",
+    "Copy of the original rent agreement"
+   ],
+   "next_step": "Draft a formal reply to the notice denying the allegations."
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "The notice threatens legal proceedings: get it reviewed",
+    "The notice involves a significant financial claim (Rs. 1,00,000) and potential civil proceedings."
+   ]
+  },
+  "log": [
+   {
+    "t": 17.12,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got notice"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Devanagari, reply script Devanagari"
+  },
+  {
+   "check": "mentions:15",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "mentions:जवाब|reply|रिप्लाई",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation>=recommended",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "The assistant provides clear, empathetic, and legally sound guidance without overstepping into unauthorized practice of law.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 2.07,
+   "usage": {
+    "completion_tokens": 66,
+    "prompt_tokens": 563,
+    "total_tokens": 753
+   },
+   "fallback_attempts": [
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+   ]
+  }
+ }
+}

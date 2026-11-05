@@ -1,0 +1,309 @@
+{
+ "case": {
+  "id": "T19_deposit_bengali",
+  "group": "language",
+  "turns": [
+   "আমি কলকাতায় ভাড়া বাড়ি ছেড়েছি ১ অক্টোবর ২০২৬। ৩০,০০০ টাকা অগ্রিম দিয়েছিলাম। বাড়িওয়ালা টাকা ফেরত দিচ্ছে না। কী করব?"
+  ],
+  "expect": {
+   "category": "tenancy",
+   "script": "Bengali",
+   "escalate_max": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "আপনার সমস্যার জন্য আমি দুঃখিত। বাড়িওয়ালা সিকিউরিটি ডিপোজিট (Security Deposit) ফেরত না দিলে আপনি নিচের পদক্ষেপগুলো নিতে পারেন।\n\nশুরু করার আগে আমার কিছু তথ্য জানা দরকার:\n১. আপনার কি বাড়িওয়ালার সাথে কোনো লিখিত ভাড়ার চুক্তি (Rent Agreement) আছে?\n২. বাড়িওয়ালা কি কোনো কারণ দেখিয়েছেন কেন টাকা ফেরত দিচ্ছেন না (যেমন: রং বা মেরামতির খরচ)?\n৩. আপনি কি এখন পর্যন্ত বাড়িওয়ালার সাথে কথা বলেছেন বা মেসেজ/ইমেইল করেছেন? আপনার কাছে কি টাকা জমা দেওয়ার কোনো প্রমাণ (ব্যাংক ট্রান্সফার বা রসিদ) আছে?\n\nআপনার কাছে এই তথ্যগুলো থাকলে আমাকে জানান। আপাতত আপনার জন্য করণীয়:\n১. লিখিত অনুরোধ (WhatsApp/Email): বাড়িওয়ালাকে একটি স্পষ্ট মেসেজ বা ইমেইল পাঠান যেখানে আপনার বাড়ি ছাড়ার তারিখ, জমার পরিমাণ এবং টাকা ফেরত পাওয়ার জন্য আপনার ব্যাংক ডিটেইলস উল্লেখ থাকবে। এর স্ক্রিনশট বা কপি রেখে দিন।\n২. আইনি নোটিশ (Legal Notice): যদি তারা সাড়া না দেয়, তবে আপনি নিজে একটি আইনি নোটিশ পাঠাতে পারেন।\n৩. আইনি সহায়তা (Legal Aid): আপনি জেলা আইনি পরিষেবা কর্তৃপক্ষের (DLSA) মাধ্যমে বিনামূল্যে পরামর্শ বা লোক আদালতের সাহায্য নিতে পারেন (হেল্পলাইন: ১৫১০০)।\n\nআপনার কাছে কি কোনো লিখিত চুক্তি আছে?",
+   "citations": [
+    {
+     "id": "ICA1872-S73",
+     "act": "Indian Contract Act, 1872",
+     "section": "73",
+     "title": "Compensation for breach of contract",
+     "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+     "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "LIM1963-ART55",
+     "act": "Limitation Act, 1963",
+     "section": "Schedule, Article 55",
+     "title": "3 years to sue for compensation for breach of contract",
+     "plain": "A suit for compensation for breach of a contract (written or implied), where no other article covers it specifically, must be filed within 3 years. Time runs from the date of the breach. If there are repeated breaches, it runs from the breach you sue on; if the breach is continuing, from when it stops.",
+     "source_url": "https://www.thc.nic.in/Central%20Governmental%20Acts/Limitation%20Act,%202019.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-NALSA-HELPLINE",
+     "act": "NALSA legal aid helpline",
+     "section": "",
+     "title": "NALSA legal aid helpline 15100",
+     "plain": "Call the national legal aid helpline 15100 (toll-free) for free legal advice and help applying for legal aid. You can also apply for legal aid or victim compensation online via the NALSA website.",
+     "source_url": "https://nalsa.gov.in/",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-LOKADALAT-PRELITIGATION",
+     "act": "Legal Services Authorities Act, 1987",
+     "section": "",
+     "title": "Pre-litigation settlement through Lok Adalat",
+     "plain": "Even before filing a case, one party can apply to the District or State Legal Services Authority to have a civil dispute, or a compoundable criminal matter, referred to a Lok Adalat for amicable settlement. Non-compoundable offences are excluded. This is available now, unlike Mediation Act section 5.",
+     "source_url": "https://delhi.nalsa.gov.in/lok-adalat/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Approximate last date to sue for the deposit (3 years)",
+      "date": "2029-10-01",
+      "days_left": 1060,
+      "status": "ok",
+      "basis": "LIM1963-ART55",
+      "note": "Limitation depends on the exact claim; confirm with legal aid before relying on it.",
+      "user_deadline": true
+     }
+    ],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 33,
+    "missing": [
+     {
+      "key": "monthly_rent",
+      "question": "What was the monthly rent (₹)?"
+     },
+     {
+      "key": "written_agreement",
+      "question": "Is there a written rent agreement? (yes/no)"
+     },
+     {
+      "key": "deductions_claimed",
+      "question": "Has the landlord claimed any deductions (painting, damage, dues)?"
+     },
+     {
+      "key": "communications_so_far",
+      "question": "How have you asked for it so far (calls, WhatsApp, email)?"
+     },
+     {
+      "key": "proof_of_payment",
+      "question": "Do you have proof you paid the deposit (bank transfer, receipt)?"
+     },
+     {
+      "key": "other_party_name",
+      "question": "Landlord's name (and address, if you have it)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "deposit_demand_notice"
+    }
+   ],
+   "next_step": "Send a formal written request via WhatsApp/Email to the landlord.",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Existence of written agreement",
+    "Landlord's reason for withholding",
+    "Proof of payment"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Bengali",
+     "got": "Bengali",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 3.49,
+    "usage": {
+     "completion_tokens": 654,
+     "prompt_tokens": 3109,
+     "total_tokens": 3881
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+     "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+     "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "tenancy",
+       "language": "Bengali",
+       "script": "Bengali",
+       "facts": {
+        "deposit_amount": 30000,
+        "possession_handed_over_date": "2026-10-01",
+        "city_state": "Kolkata",
+        "summary": "User vacated rented property in Kolkata and landlord is refusing to return the security deposit of 30,000."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 1.76,
+       "usage": {
+        "completion_tokens": 135,
+        "prompt_tokens": 929,
+        "total_tokens": 1178
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie"
+       ]
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 3.49,
+       "usage": {
+        "completion_tokens": 654,
+        "prompt_tokens": 3109,
+        "total_tokens": 3881
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+        "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+        "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 10.33
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "আমি কলকাতায় ভাড়া বাড়ি ছেড়েছি ১ অক্টোবর ২০২৬। ৩০,০০০ টাকা অগ্রিম দিয়েছিলাম। বাড়িওয়ালা টাকা ফেরত দিচ্ছে না। কী করব?"
+   },
+   {
+    "role": "assistant",
+    "content": "আপনার সমস্যার জন্য আমি দুঃখিত। বাড়িওয়ালা সিকিউরিটি ডিপোজিট (Security Deposit) ফেরত না দিলে আপনি নিচের পদক্ষেপগুলো নিতে পারেন।\n\nশুরু করার আগে আমার কিছু তথ্য জানা দরকার:\n১. আপনার কি বাড়িওয়ালার সাথে কোনো লিখিত ভাড়ার চুক্তি (Rent Agreement) আছে?\n২. বাড়িওয়ালা কি কোনো কারণ দেখিয়েছেন কেন টাকা ফেরত দিচ্ছেন না (যেমন: রং বা মেরামতির খরচ)?\n৩. আপনি কি এখন পর্যন্ত বাড়িওয়ালার সাথে কথা বলেছেন বা মেসেজ/ইমেইল করেছেন? আপনার কাছে কি টাকা জমা দেওয়ার কোনো প্রমাণ (ব্যাংক ট্রান্সফার বা রসিদ) আছে?\n\nআপনার কাছে এই তথ্যগুলো থাকলে আমাকে জানান। আপাতত আপনার জন্য করণীয়:\n১. লিখিত অনুরোধ (WhatsApp/Email): বাড়িওয়ালাকে একটি স্পষ্ট মেসেজ বা ইমেইল পাঠান যেখানে আপনার বাড়ি ছাড়ার তারিখ, জমার পরিমাণ এবং টাকা ফেরত পাওয়ার জন্য আপনার ব্যাংক ডিটেইলস উল্লেখ থাকবে। এর স্ক্রিনশট বা কপি রেখে দিন।\n২. আইনি নোটিশ (Legal Notice): যদি তারা সাড়া না দেয়, তবে আপনি নিজে একটি আইনি নোটিশ পাঠাতে পারেন।\n৩. আইনি সহায়তা (Legal Aid): আপনি জেলা আইনি পরিষেবা কর্তৃপক্ষের (DLSA) মাধ্যমে বিনামূল্যে পরামর্শ বা লোক আদালতের সাহায্য নিতে পারেন (হেল্পলাইন: ১৫১০০)।\n\nআপনার কাছে কি কোনো লিখিত চুক্তি আছে?"
+   }
+  ],
+  "case": {
+   "category": "tenancy",
+   "language": "Bengali",
+   "script": "Bengali",
+   "facts": {
+    "deposit_amount": 30000,
+    "possession_handed_over_date": "2026-10-01",
+    "city_state": "Kolkata",
+    "summary": "User vacated rented property in Kolkata and landlord is refusing to return the security deposit of 30,000."
+   },
+   "timeline": [
+    {
+     "date": "2026-10-01",
+     "event": "Vacated rented property"
+    }
+   ],
+   "evidence_have": [],
+   "evidence_missing": [
+    "Written rent agreement",
+    "Proof of deposit payment",
+    "Communication history with landlord",
+    "Details of any deductions claimed by landlord"
+   ],
+   "next_step": "Send a formal written request via WhatsApp/Email to the landlord."
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 10.33,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got tenancy"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Bengali, reply script Bengali"
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "The assistant provides clear, practical, and legally safe advice in the user's language without overstepping into definitive legal counsel.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 2.01,
+   "usage": {
+    "completion_tokens": 71,
+    "prompt_tokens": 494,
+    "total_tokens": 685
+   },
+   "fallback_attempts": [
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+   ]
+  }
+ }
+}

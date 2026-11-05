@@ -1,0 +1,317 @@
+{
+ "case": {
+  "id": "T08_salary_factory_worker_voice_style",
+  "group": "core",
+  "turns": [
+   "sir main factory me helper hu ghaziabad me thekedar ke through kaam karta tha 14000 mahina milta tha do mahine se paisa nahi diya thekedar bhag gaya company bolti hai thekedar se lo ab kya karu ghar ka kiraya bhi nahi de pa raha"
+  ],
+  "expect": {
+   "category": "salary",
+   "script": "Hinglish",
+   "facts": {
+    "monthly_salary": "14"
+   },
+   "must_mention_any": [
+    [
+     "labour",
+     "Labour",
+     "श्रम",
+     "Inspector",
+     "inspector"
+    ]
+   ],
+   "escalate_max": "urgent"
+  }
+ },
+ "results": [
+  {
+   "reply": "Bhai, tension mat lo — aapka case clear hai. Company bol rahi hai 'thekedar se lo', lekin law ke hisaab se **company (principal employer) hi aapki salary dene ke liye zimmedar hai**. Thekedar aapka agent hai, company uske through aapko employ kar rahi hai. Code on Wages, 2019 ke under aap 'employee' ho, chahe thekedar ke through hi kyun na kaam karo.\n\n**Abhi kya karein:**\n\n1. **Aaj hi company ko likh kar demand karo** — email ya WhatsApp pe, jo bhi ho. Likho: 'Main [naam], [date] se helper hu, 2 mahine ki salary Rs 28,000 due hai. Thekedar available nahi hai. Company principal employer hai, salary do.'\n2. Screenshot/photo save karo har message ka.\n3. Agar 7-10 din me nahi diya, to **labour office (Inspector-cum-Facilitator)** me complaint file karo — free hai, 3 saal ka time hai.\n\n**Mujhe batao:**\n- Koi ID card, attendance register, ya bank me salary aane ki entry hai?\n- Company ka naam kya hai aur aapne unhe likh kar kaha hai abhi tak?",
+   "citations": [
+    {
+     "id": "COW2019-S2K",
+     "act": "Code on Wages, 2019",
+     "section": "2(k)",
+     "title": "Who is an 'employee' (includes managerial and supervisory staff)",
+     "plain": "Under the Code on Wages, 'employee' covers anyone an establishment employs on wages for skilled, unskilled, manual, clerical, technical, supervisory, managerial or administrative work. Managers and senior staff therefore count as employees. Apprentices and members of the Armed Forces do not.",
+     "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-COW-NO-WAGE-CEILING",
+     "act": "Code on Wages, 2019",
+     "section": "",
+     "title": "No salary ceiling for the timely-payment and deduction rules",
+     "plain": "The old Payment of Wages Act protected only employees earning up to Rs 24,000 a month. Under the Code on Wages, the rules on paying wages on time and on permitted deductions apply to all employees, whatever their salary. The labour ministry has confirmed that this includes white-collar staff.",
+     "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "COW2019-S45",
+     "act": "Code on Wages, 2019",
+     "section": "45",
+     "title": "Filing a wage claim: who decides it and the 3-year limit",
+     "plain": "Wage claims under the Code are heard by an authority the Government appoints, who must be at least a Gazetted Officer. The claim can be filed by you, your registered trade union, or an Inspector-cum-Facilitator. File within 3 years of the date the claim arises; a later claim may still be accepted if you show sufficient cause. Besides the amount due, the authority can award compensation of up to ten times the claim, and it tries to decide within three months.",
+     "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "COW2019-S51",
+     "act": "Code on Wages, 2019",
+     "section": "51",
+     "title": "Inspector-cum-Facilitators",
+     "plain": "The Code replaces the old 'Inspector' with an 'Inspector-cum-Facilitator', appointed by the Government. This officer advises employers and workers on compliance, inspects establishments, and can file a wage claim on a worker's behalf under section 45.",
+     "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 78,
+    "missing": [
+     {
+      "key": "employment_proof",
+      "question": "Proof of employment (offer letter, payslips, bank credits, ID card)?"
+     },
+     {
+      "key": "communications_so_far",
+      "question": "Have you asked HR/employer in writing?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "salary_demand_notice"
+    }
+   ],
+   "next_step": "Write a demand message to the company (principal employer) today, stating 2 months unpaid salary of Rs 28,000, and save the screenshot",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Exact company name",
+    "Whether user has any written proof of employment",
+    "Exact dates when salary stopped",
+    "Whether the factory is a central or state establishment (affects which labour office to approach)"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "groq",
+    "model": "qwen/qwen3.8-27b",
+    "latency_s": 4.41,
+    "usage": {
+     "queue_time": 0.04975638,
+     "prompt_tokens": 3565,
+     "prompt_time": 0.254555048,
+     "completion_tokens": 1171,
+     "completion_time": 2.591335882,
+     "total_tokens": 4736,
+     "total_time": 2.84589093,
+     "completion_tokens_details": {
+      "reasoning_tokens": 379
+     }
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "salary",
+       "language": "Hindi",
+       "script": "Devanagari",
+       "facts": {
+        "other_party_name": "thekedar",
+        "role": "helper",
+        "monthly_salary": 14000,
+        "unpaid_period": "2 months",
+        "amount_due": 28000,
+        "still_employed": true,
+        "city_state": "Ghaziabad"
+       },
+       "approximate_dates": [],
+       "confidence": 0.9
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 2.19,
+       "usage": {
+        "queue_time": 0.285088637,
+        "prompt_tokens": 949,
+        "prompt_time": 0.549260563,
+        "completion_tokens": 220,
+        "completion_time": 0.515175148,
+        "total_tokens": 1169,
+        "total_time": 1.064435711,
+        "prompt_tokens_details": {
+         "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+         "reasoning_tokens": 137
+        }
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "qwen/qwen3.8-27b",
+       "latency_s": 4.41,
+       "usage": {
+        "queue_time": 0.04975638,
+        "prompt_tokens": 3565,
+        "prompt_time": 0.254555048,
+        "completion_tokens": 1171,
+        "completion_time": 2.591335882,
+        "total_tokens": 4736,
+        "total_time": 2.84589093,
+        "completion_tokens_details": {
+         "reasoning_tokens": 379
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 7.42
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "sir main factory me helper hu ghaziabad me thekedar ke through kaam karta tha 14000 mahina milta tha do mahine se paisa nahi diya thekedar bhag gaya company bolti hai thekedar se lo ab kya karu ghar ka kiraya bhi nahi de pa raha"
+   },
+   {
+    "role": "assistant",
+    "content": "Bhai, tension mat lo — aapka case clear hai. Company bol rahi hai 'thekedar se lo', lekin law ke hisaab se **company (principal employer) hi aapki salary dene ke liye zimmedar hai**. Thekedar aapka agent hai, company uske through aapko employ kar rahi hai. Code on Wages, 2019 ke under aap 'employee' ho, chahe thekedar ke through hi kyun na kaam karo.\n\n**Abhi kya karein:**\n\n1. **Aaj hi company ko likh kar demand karo** — email ya WhatsApp pe, jo bhi ho. Likho: 'Main [naam], [date] se helper hu, 2 mahine ki salary Rs 28,000 due hai. Thekedar available nahi hai. Company principal employer hai, salary do.'\n2. Screenshot/photo save karo har message ka.\n3. Agar 7-10 din me nahi diya, to **labour office (Inspector-cum-Facilitator)** me complaint file karo — free hai, 3 saal ka time hai.\n\n**Mujhe batao:**\n- Koi ID card, attendance register, ya bank me salary aane ki entry hai?\n- Company ka naam kya hai aur aapne unhe likh kar kaha hai abhi tak?"
+   }
+  ],
+  "case": {
+   "category": "salary",
+   "language": "Hinglish",
+   "script": "Latin",
+   "facts": {
+    "other_party_name": "thekedar (contractor) + company (principal employer)",
+    "role": "helper",
+    "monthly_salary": 14000,
+    "unpaid_period": "2 months",
+    "amount_due": 28000,
+    "still_employed": true,
+    "city_state": "Ghaziabad, Uttar Pradesh",
+    "summary": "Helper in factory via thekedar; thekedar ran away; company refuses to pay saying 'go to thekedar'; 2 months unpaid (Rs 28,000)"
+   },
+   "timeline": [],
+   "evidence_have": [],
+   "evidence_missing": [
+    "ID card / worker ID from company",
+    "Attendance register or biometric records",
+    "Bank statements showing earlier salary credits",
+    "Any written communication with company or thekedar",
+    "Name of the company / factory"
+   ],
+   "next_step": "Write a demand message to the company (principal employer) today, stating 2 months unpaid salary of Rs 28,000, and save the screenshot"
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 7.42,
+    "model": "qwen/qwen3.8-27b",
+    "provider": "groq",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got salary"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Hinglish, reply script Hinglish"
+  },
+  {
+   "check": "fact:monthly_salary",
+   "pass": true,
+   "detail": "expected ~14, got 14000"
+  },
+  {
+   "check": "mentions:labour|Labour|श्रम|Inspector|inspector",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation<=urgent",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 4,
+  "accurate_scope": 5,
+  "comment": "Excellent Hinglish response correctly explaining the principal employer's liability for contract labor under Indian law with clear, actionable steps.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.5-flash",
+   "latency_s": 2.27,
+   "usage": {
+    "completion_tokens": 58,
+    "prompt_tokens": 529,
+    "total_tokens": 587
+   },
+   "fallback_attempts": []
+  }
+ }
+}

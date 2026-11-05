@@ -1,0 +1,48 @@
+{
+ "id": "T01_deposit_en_bengaluru",
+ "reply": "This is a common issue faced by tenants in Bengaluru. Since you have a **registered rent agreement**, you are in a strong legal position.\n\nUnder Indian law, a security deposit is refundable, subject to deductions for *actual* damages beyond \"normal wear and tear.\" A landlord cannot arbitrarily deduct money without providing proof of expenses.\n\nHere is a step-by-step guide on how to handle this situation:\n\n### 1. Review Your Rent Agreement\nCheck the specific clause regarding the \"Security Deposit\" and \"Maintenance/Painting.\"\n*   **Normal Wear and Tear:** Most standard agreements state that the tenant is not liable for \"normal wear and tear\" (e.g., minor scuffs on walls, fading paint). Painting charges are often only applicable if the tenant has stayed for a short duration or if the walls are damaged beyond normal usage.\n*   **Proof of Damage:** Does the agreement require the landlord to provide bills or invoices for any deductions? Even if it doesn't explicitly say so, the law requires the landlord to justify the deduction.\n\n### 2. Send a Formal Legal Notice\nSince it has been over two months, you should escalate this from casual requests to a formal demand. You do not necessarily need a lawyer to draft this, but it carries more weight if it comes from one.\n\n**Your notice should include:**\n*   Reference to the registered rent agreement (mention the document number).\n*   The date of vacation (31 August) and the date of key handover.\n*   A clear statement that the property was handed over in good condition (normal wear and tear excepted).\n*   A demand for the refund of the balance amount (Rs 60,000 - legitimate deductions, if any).\n*   A deadline (usually 7–15 days) for the payment.\n*   A statement that failure to pay will result in legal action, including filing a complaint for recovery of money.\n\n**Send this via Registered Post with Acknowledgement Due (RPAD) or Speed Post.** This serves as evidence in court that you attempted to resolve the matter.\n\n### 3. Legal Recourse\nIf the landlord continues to ignore your request, you have the following options:\n\n*   **Consumer Forum:** Since you are a consumer of services (renting), you can approach the District Consumer Disputes Redressal Commission. This is often faster and less expensive than a civil suit. You can file a complaint for \"Deficiency of Service\" and \"Unfair Trade Practice.\"\n*   **Civil Suit for Recovery:** You can file a summary suit under **Order 37 of the Code of Civil Procedure (CPC)** for the recovery of money. This is a faster track for debt recovery.\n*   **Police Complaint (NCR):** If the landlord is completely unresponsive or threatening, you can file a Non-Cognizable Report (NCR) at the local police station. While the police cannot force a refund (it is a civil matter), the involvement of the police often pressures the landlord to settle.\n\n### Important Legal Principles to Cite\n*   **Section 73 of the Indian Contract Act:** This section deals with compensation for loss or damage caused by breach of contract. The landlord must prove the *actual* loss (i.e., show the bills for painting/repairs) to justify the deduction. They cannot simply deduct a lump sum based on an estimate.\n*   **The Karnataka Rent Control Act:** While this act primarily deals with eviction and rent fixation, the principles of contract law apply to the security deposit. The deposit is held in trust by the landlord and must be returned upon the termination of the tenancy.\n\n### Recommended Strategy\n1.  **Final Written Demand:** Send a WhatsApp message or email (if you haven't already) stating: *\"As per our agreement, I am entitled to the refund of my deposit. It has been two months. Please provide the invoices for the Rs 25,000 deduction immediately, or I will be forced to initiate legal proceedings for recovery.\"*\n2.  **Legal Notice:** If there is no response within 3 days of that message, have a lawyer draft and send a formal Legal Notice. This usually costs between Rs 1,500 and Rs 3,000 and is often enough to make the landlord pay.\n3.  **Small Claims/Consumer Court:** If the notice is ignored, file a complaint in the Consumer Forum. You do not strictly need a lawyer for this, though it helps.\n\n**Note:** Please ensure you have proof of the key handover (e.g., a message, email, or a signed document) and proof of the initial deposit payment (bank statement).\n\n***Disclaimer:** I am an AI, not a practicing advocate. This information is for educational purposes. Laws can be subject to interpretation, and I strongly recommend consulting with a local lawyer in Bengaluru to draft the legal notice, as they can tailor it to the specific clauses in your registered agreement.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 6.8,
+  "usage": {
+   "completion_tokens": 1036,
+   "prompt_tokens": 139,
+   "total_tokens": 1340
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [
+   [
+    "Section 73",
+    "Indian Contract Act, 1872"
+   ],
+   [
+    "Order 37",
+    "Code of Civil Procedure, 1908"
+   ]
+  ],
+  "violations": [
+   {
+    "type": "unknown_act",
+    "text": "The Karnataka Rent Control Act",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "3 days",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Haq · Legal help in your language</title>
+<meta name="description" content="Haq helps ordinary people in India understand and act on everyday legal problems: deposits, refunds, unpaid salary, bounced cheques, legal notices.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Sans+Tamil:wght@400;600&family=Noto+Sans+Bengali:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230f5b52'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='%23f7c873' font-family='serif'>ह</text></svg>">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="logo" aria-hidden="true">हक़</div>
+    <div>
+      <div class="name">Haq</div>
+      <div class="tag" data-i18n="tagline">Free help with everyday legal problems, in your language</div>
+    </div>
+  </div>
+  <div class="top-actions">
+    <label class="sel" title="Language">
+      <span aria-hidden="true">🌐</span>
+      <select id="lang">
+        <option value="auto">Auto</option>
+        <option value="en-IN">English</option>
+        <option value="hi-IN">हिन्दी</option>
+        <option value="hinglish">Hinglish</option>
+        <option value="bn-IN">বাংলা</option>
+        <option value="ta-IN">தமிழ்</option>
+        <option value="te-IN">తెలుగు</option>
+        <option value="mr-IN">मराठी</option>
+        <option value="gu-IN">ગુજરાતી</option>
+        <option value="kn-IN">ಕನ್ನಡ</option>
+        <option value="ml-IN">മലയാളം</option>
+        <option value="pa-IN">ਪੰਜਾਬੀ</option>
+      </select>
+    </label>
+    <label class="sel model" title="AI model (swappable)">
+      <span aria-hidden="true">⚙︎</span>
+      <select id="provider"></select>
+    </label>
+    <button class="ghost" id="newCase" data-i18n="new_case">New case</button>
+    <button class="ghost only-mobile" id="toggleCase">📁</button>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="chat-col">
+    <div id="banner" class="banner hidden"></div>
+    <div id="chat" class="chat" aria-live="polite">
+      <div id="welcome" class="welcome">
+        <h1 data-i18n="welcome_h">What's the problem? Tell me in your own words.</h1>
+        <p class="sub" data-i18n="welcome_p">Type or speak in any Indian language. I'll help you understand where you stand, what your options are, and prepare the letter or notice you need, for free.</p>
+        <div class="cards">
+          <button class="card" data-prompt="My landlord is not returning my security deposit.">
+            <span class="emoji">🏠</span><b data-i18n="c1">Deposit not returned</b><small data-i18n="c1s">Landlord / PG keeping your money</small></button>
+          <button class="card" data-prompt="I returned a product but the refund never came.">
+            <span class="emoji">📦</span><b data-i18n="c2">Refund / defective product</b><small data-i18n="c2s">Online orders, services, warranty</small></button>
+          <button class="card" data-prompt="My employer has not paid my salary.">
+            <span class="emoji">💼</span><b data-i18n="c3">Salary not paid</b><small data-i18n="c3s">Unpaid wages, final settlement</small></button>
+          <button class="card" data-prompt="A cheque someone gave me has bounced.">
+            <span class="emoji">🧾</span><b data-i18n="c4">Cheque bounced</b><small data-i18n="c4s">Strict deadlines: act fast</small></button>
+          <button class="card" id="noticeCard">
+            <span class="emoji">✉️</span><b data-i18n="c5">I got a legal notice</b><small data-i18n="c5s">Paste it or upload a photo</small></button>
+        </div>
+        <p class="trust">🛡️ <span data-i18n="trust">Every law Haq mentions is checked against a verified library before you see it. Haq is not a lawyer; it tells you when you need one.</span></p>
+      </div>
+    </div>
+
+    <form id="composer" class="composer" autocomplete="off">
+      <button type="button" class="icon" id="attach" title="Upload a notice (photo/PDF)">📎</button>
+      <textarea id="input" rows="1" placeholder="Type here… e.g. 'Mera landlord 40,000 deposit wapas nahi kar raha'" data-i18n-ph="ph"></textarea>
+      <button type="button" class="icon mic" id="mic" title="Speak">🎙️</button>
+      <button type="submit" class="send" id="send" title="Send">➤</button>
+      <input type="file" id="file" accept="image/*,application/pdf" hidden>
+    </form>
+    <div class="foot" data-i18n="foot">Haq gives legal information, not legal advice. Free legal aid: NALSA helpline 15100.</div>
+  </section>
+
+  <aside class="case-col" id="caseCol">
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="case" data-i18n="t_case">Case file</button>
+      <button class="tab" data-tab="deadlines" data-i18n="t_dead">Deadlines</button>
+      <button class="tab" data-tab="docs" data-i18n="t_docs">Documents</button>
+      <button class="tab" data-tab="practice" data-i18n="t_prac">Practice</button>
+      <button class="tab" data-tab="help" data-i18n="t_help">Get help</button>
+    </nav>
+
+    <div class="panel active" id="p-case">
+      <div class="empty" data-i18n="case_empty">Your case file builds itself as you talk: what happened, when, how much, and what proof you have.</div>
+      <div id="caseBody" class="hidden">
+        <div class="row between"><span class="pill" id="catPill">-</span><span class="muted small" id="langPill"></span></div>
+        <div class="meter"><div class="meter-fill" id="meter"></div></div>
+        <div class="muted small" id="meterLabel"></div>
+        <h3 data-i18n="h_facts">Key facts</h3>
+        <dl id="facts" class="facts"></dl>
+        <h3 data-i18n="h_timeline">Timeline</h3>
+        <ol id="timeline" class="timeline"></ol>
+        <h3 data-i18n="h_evidence">Proof</h3>
+        <ul id="evidence" class="evidence"></ul>
+        <div id="nextStep" class="next hidden"></div>
+        <button class="ghost small" id="exportCase">⬇ Export case summary</button>
+      </div>
+    </div>
+
+    <div class="panel" id="p-deadlines">
+      <p class="muted small" data-i18n="dead_note">Calculated by code (not AI) from your dates, with the law each comes from. Always double-check.</p>
+      <div id="deadlines"><div class="empty" data-i18n="dead_empty">Share dates (e.g. when you moved out, when the cheque bounced) and deadlines appear here.</div></div>
+      <div id="derived"></div>
+    </div>
+
+    <div class="panel" id="p-docs">
+      <p class="muted small" data-i18n="docs_note">Haq drafts documents from your case file. Missing details are marked [[FILL]], never invented.</p>
+      <div id="docButtons" class="doc-buttons"></div>
+      <div class="row"><label class="small">Document language
+        <select id="docLang"><option>English</option><option>Hindi</option></select></label></div>
+      <div id="docOut"></div>
+    </div>
+
+    <div class="panel" id="p-practice">
+      <p class="muted small" data-i18n="prac_note">Practise the conversation before you have it for real. Haq plays the other side; you get feedback at the end.</p>
+      <div id="practiceChat" class="practice-chat"></div>
+      <form id="practiceForm" class="practice-form">
+        <input id="practiceInput" placeholder="Say what you would say…" autocomplete="off">
+        <button class="send" type="submit">➤</button>
+      </form>
+      <div class="row">
+        <button class="primary small" id="practiceStart" data-i18n="prac_start">Start practice</button>
+        <button class="ghost small" id="practiceEnd" data-i18n="prac_end">End &amp; get feedback</button>
+      </div>
+      <div id="practiceFeedback"></div>
+    </div>
+
+    <div class="panel" id="p-help">
+      <div id="helpLevel"></div>
+      <h3>Free & official help</h3>
+      <ul class="help-list" id="helpList"></ul>
+      <h3>What Haq covers</h3>
+      <p class="small">In depth: security deposits, consumer refunds &amp; defects, unpaid salary, bounced cheques, understanding legal notices.<br>
+      Pointers only: online fraud. Not covered: criminal cases against you, family matters, property title, tax, immigration. Haq sends you to a real lawyer for these.</p>
+      <h3>Verified law library</h3>
+      <p class="small muted">Haq can only mention laws in this list. Each entry links to its official source.</p>
+      <div id="kbList" class="kb-list"></div>
+    </div>
+  </aside>
+</main>
+
+<dialog id="noticeDlg">
+  <form method="dialog" class="dlg">
+    <h2>Explain a notice</h2>
+    <p class="small muted">Paste the text of the notice, or upload a photo / PDF. Haq explains what it says, how serious it is, and what to do.</p>
+    <textarea id="noticeText" rows="8" placeholder="Paste the notice text here…"></textarea>
+    <div class="row"><input type="file" id="noticeFile" accept="image/*,application/pdf"></div>
+    <div class="row end">
+      <button value="cancel" class="ghost">Cancel</button>
+      <button id="noticeGo" value="default" class="primary">Explain</button>
+    </div>
+  </form>
+</dialog>
+
+<div id="cite-pop" class="cite-pop hidden" role="dialog"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

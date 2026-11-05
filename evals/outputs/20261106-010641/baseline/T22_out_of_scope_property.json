@@ -1,0 +1,75 @@
+{
+ "id": "T22_out_of_scope_property",
+ "reply": "This is a common and complex legal issue in India. Ancestral property rights are governed by the **Hindu Succession Act, 1956** (for Hindus, Sikhs, Jains, and Buddhists).\n\nWhen a family member unilaterally gets a mutation done in their name for ancestral property, it is often done by suppressing facts or misrepresenting the legal heir status.\n\nHere is a step-by-step legal roadmap to help you recover your share of the ancestral land.\n\n### 1. Understand the Legal Position\n*   **Ancestral Property:** Under the Hindu Succession Act, you acquire a right to ancestral property by birth. Your uncle cannot unilaterally claim ownership of the entire property.\n*   **Mutation is not Title:** It is a common misconception that mutation confers ownership. **Mutation is only for fiscal purposes** (to pay land revenue to the government). It does not create or extinguish title (ownership). The Supreme Court has clarified this in several judgments, including *Suraj Bhan vs. Financial Commissioner (2007)*, stating that mutation of property in revenue records does not create or extinguish title, nor does it have any presumptive value on title.\n\n### 2. Immediate Steps to Take\n\n#### Step A: Gather Documentation\nBefore taking legal action, you need to build your case:\n*   **Genealogy (Vanshavali):** Prepare a clear family tree showing your relationship to the original owner (the common ancestor).\n*   **Revenue Records:** Obtain the *Khatauni* or *Jamabandi* (Record of Rights) from the local Tehsildar or Patwari office to see exactly how the mutation was done (e.g., was it based on a fake Will, a family settlement, or inheritance?).\n*   **Proof of Ancestry:** Collect birth certificates, death certificates of the common ancestor, and any old land records that show the property as \"ancestral.\"\n\n#### Step B: Challenge the Mutation\nYou can challenge the mutation order before the Revenue Authorities:\n*   **Appeal:** File an appeal before the **Sub-Divisional Magistrate (SDM) or the Collector** (depending on your state’s Land Revenue Code) against the order of the Tehsildar who approved the mutation.\n*   **Grounds:** Argue that the mutation was done without notice to all legal heirs or based on fraudulent documents.\n\n#### Step C: File a Civil Suit (The Most Effective Remedy)\nSince revenue courts cannot decide on \"title\" (ownership), you must eventually approach a Civil Court.\n*   **Suit for Partition:** File a **Suit for Partition and Separate Possession** in the Civil Court having jurisdiction over the land.\n*   **Declaration:** You should also seek a \"Declaration of Title,\" asking the court to declare that the property is ancestral and that you have a specific share in it.\n*   **Permanent Injunction:** Seek an injunction to prevent your uncle from selling, transferring, or creating third-party rights on the property while the case is pending.\n\n### 3. Relevant Legal Principles\n*   **Section 6 of the Hindu Succession Act:** This section establishes that in a Joint Hindu Family, the property devolves by survivorship/succession upon the coparceners.\n*   **Limitation Act:** Be aware of the **Limitation Act, 1963**. While ancestral property claims have some flexibility, you should act as soon as you discover the fraud. Delay can make your case weaker.\n\n### 4. Important Considerations\n*   **Was there a Will?** If your uncle claims he has a Will from the common ancestor, you must challenge the validity of that Will in court.\n*   **Adverse Possession:** If your uncle has been in exclusive, hostile, and continuous possession for over 12 years (in some states, this period varies), he might try to claim \"Adverse Possession.\" However, the Supreme Court in *Ravinder Kaur Grewal vs. Manjit Kaur (2019)* clarified that a person cannot use adverse possession as a \"sword\" to claim ownership; it can only be used as a \"shield\" to defend possession.\n\n### Recommended Action Plan\n1.  **Consult a Local Lawyer:** Land laws are highly state-specific (e.g., UP Revenue Code, Punjab Land Revenue Act, etc.). You need a lawyer who specializes in local revenue laws.\n2.  **Send a Legal Notice:** Before filing a suit, have your lawyer send a formal legal notice to your uncle demanding your share. This serves as evidence that you have been actively pursuing your rights.\n3.  **File for Partition:** If the notice is ignored, proceed with the Civil Suit for Partition.\n\n***Disclaimer:** I am an AI, not a practicing lawyer in your specific jurisdiction. Land laws in India vary significantly from state to state. Please consult with a local advocate who can review your specific land records and advise you on the specific Revenue Code applicable to your state.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 4.45,
+  "usage": {
+   "completion_tokens": 1033,
+   "prompt_tokens": 56,
+   "total_tokens": 1212
+  },
+  "fallback_attempts": [
+   "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+   "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+   "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie",
+   "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` servic",
+   "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+  ]
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [
+   {
+    "type": "case_law",
+    "text": "Suraj Bhan vs. Fi",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Ravinder Kaur Grewal vs. Ma",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 6",
+    "why": "Not in the verified library (near: Hindu Succession Act)."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Hindu Succession Act, 1956",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Land Revenue Code",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "UP Revenue Code",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Punjab Land Revenue Act",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Revenue Code",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "unsupported_number",
+    "text": "12 years",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

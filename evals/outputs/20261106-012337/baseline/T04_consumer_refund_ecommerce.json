@@ -1,0 +1,38 @@
+{
+ "id": "T04_consumer_refund_ecommerce",
+ "reply": "It is frustrating when e-commerce platforms delay refunds, especially for high-value items like a phone. Since you have already exhausted the internal grievance redressal mechanism (the 4 tickets), it is time to escalate the matter legally.\n\nAs a consumer in India, you are protected by the **Consumer Protection Act, 2019**. Here is a step-by-step guide on how to proceed.\n\n### 1. Send a Formal Legal Notice\nBefore approaching the court, it is standard practice to send a formal Legal Notice to the company. This often prompts companies to resolve the issue quickly to avoid litigation.\n\n*   **What to include:** Mention the Order ID (OD12345), the date of purchase, the date of return pickup (10 Sept 2026), the amount (Rs 18,499), and the fact that you have raised 4 tickets without resolution.\n*   **The Demand:** Clearly state that you expect the refund within 7–15 days, failing which you will initiate legal proceedings for \"Deficiency of Service\" and \"Unfair Trade Practice.\"\n*   **How to send:** Send this via Registered Post AD (Acknowledgement Due) to the company’s registered office address (usually found in the 'Contact Us' or 'Terms of Service' section of their website/app). Keep a copy of the notice and the postal receipt.\n\n### 2. File a Complaint on the National Consumer Helpline (NCH)\nThis is the most effective and free method for resolving such disputes.\n\n*   **Portal:** Visit [consumerhelpline.gov.in](https://consumerhelpline.gov.in/) or call **1800-11-4000** or **1915**.\n*   **App:** You can also use the **\"NCH\" app** or the **\"UMANG\" app**.\n*   **Process:** Register your complaint, upload the screenshots of your tickets, the return pickup proof (the courier receipt or email confirmation), and the invoice.\n*   **Impact:** The government portal forwards your complaint to the company’s Nodal Officer. Companies are generally required to respond to these complaints within a specific timeframe to avoid penalties.\n\n### 3. File a Complaint with the E-Daakhil Portal\nIf the NCH complaint does not yield results, you can file a formal complaint with the **District Consumer Disputes Redressal Commission** in Jaipur.\n\n*   **Portal:** Use the [e-daakhil.nic.in](https://e-daakhil.nic.in/) portal.\n*   **Why:** This allows you to file a consumer complaint online without needing to physically visit the court.\n*   **Legal Basis:** Under the Consumer Protection Act, 2019, you can claim:\n    *   **Refund of the principal amount (Rs 18,499).**\n    *   **Interest:** You can demand interest (usually 9% to 12% per annum) on the amount from the date of the return pickup.\n    *   **Compensation:** You can claim compensation for \"mental agony and harassment\" caused by their deficiency in service.\n    *   **Litigation Costs:** You can ask the court to order the company to pay your legal expenses.\n\n### Relevant Legal Provisions\n*   **Section 2(11) of the Consumer Protection Act, 2019:** Defines \"Deficiency of Service,\" which covers any fault, imperfection, or inadequacy in the quality, nature, and manner of performance which is required to be maintained by or under any law.\n*   **Section 2(47):** Defines \"Unfair Trade Practice,\" which includes the failure to refund the price paid for goods that have been returned within the stipulated period.\n\n### Important Tips for You:\n1.  **Gather Evidence:** Ensure you have the following ready:\n    *   The original invoice.\n    *   The return pickup receipt/email confirmation (this is your strongest piece of evidence).\n    *   Screenshots of all 4 tickets raised.\n    *   Any email correspondence or chat transcripts with customer support.\n2.  **Don't wait too long:** While the limitation period for filing a consumer complaint is two years, do not delay. The longer you wait, the harder it becomes to track the internal logs of the company.\n3.  **Social Media:** Sometimes, tagging the company’s official handle on X (formerly Twitter) with your Order ID and the details of the delay can escalate the issue to their social media grievance team, which often has more authority than standard chat support.\n\n**Disclaimer:** *I am an AI, not your personal lawyer. This information is for educational purposes and does not constitute a formal attorney-client relationship. If the amount remains unpaid after sending a legal notice, I strongly recommend consulting a local advocate in Jaipur to draft and file a formal complaint before the District Consumer Commission.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 5.47,
+  "usage": {
+   "completion_tokens": 1049,
+   "prompt_tokens": 111,
+   "total_tokens": 1293
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [
+   [
+    "Section 2(11)",
+    "Consumer Protection Act, 2019"
+   ]
+  ],
+  "violations": [],
+  "warnings": [
+   {
+    "type": "ambiguous_section",
+    "text": "Section 2(47)",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": true
+ },
+ "must_not_hits": []
+}

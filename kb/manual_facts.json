@@ -1,0 +1,28 @@
+[
+  {
+    "id": "FACT-ERSS-112",
+    "act": "Emergency Response Support System (Ministry of Home Affairs)",
+    "section": "",
+    "title": "Single national emergency number 112",
+    "plain": "112 is India's single emergency number for police, fire, ambulance and women's helplines, run under the Ministry of Home Affairs' Emergency Response Support System (ERSS).",
+    "quote": "",
+    "categories": ["general", "criminal_pointer"],
+    "source_url": "https://www.mha.gov.in/en/commoncontent/emergency-response-support-system-erss",
+    "source_type": "primary",
+    "verified": true,
+    "notes": "Older numbers (100, 101, 108, 181) are being integrated into 112; integration varies by state."
+  },
+  {
+    "id": "FACT-TELEMANAS",
+    "act": "Tele-MANAS (Ministry of Health and Family Welfare)",
+    "section": "",
+    "title": "National Tele Mental Health helpline 14416",
+    "plain": "Tele-MANAS is a free, 24x7 government mental-health helpline. Call 14416 or 1-800-891-4416 to talk to a trained counsellor in your language.",
+    "quote": "",
+    "categories": ["general"],
+    "source_url": "https://pib.gov.in/PressReleasePage.aspx?PRID=1919200",
+    "source_type": "primary",
+    "verified": true,
+    "notes": "Launched 10 October 2022 under the National Tele Mental Health Programme."
+  }
+]

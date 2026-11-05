@@ -1,0 +1,281 @@
+{
+ "case": {
+  "id": "T19_deposit_bengali",
+  "group": "language",
+  "turns": [
+   "আমি কলকাতায় ভাড়া বাড়ি ছেড়েছি ১ অক্টোবর ২০২৬। ৩০,০০০ টাকা অগ্রিম দিয়েছিলাম। বাড়িওয়ালা টাকা ফেরত দিচ্ছে না। কী করব?"
+  ],
+  "expect": {
+   "category": "tenancy",
+   "script": "Bengali",
+   "escalate_max": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "আপনি ১ অক্টোবর ২০২৬-এ বাড়ি ছেড়েছেন এবং ৩০,০০০ টাকা অগ্রিম দিয়েছেন।\n\n১. **কী কী তথ্য দরকার?**\n- ভাড়ার চুক্তি কি লিখিত ছিল? (হ্যাঁ/না)\n- বাড়িওয়ালা কি কোনো কাটতি দাবি করেছে? (যেমন রং করা, ক্ষতি, বিল)\n- আপনি কি ইতিমধ্যে কোনো লিখিত অনুরোধ (WhatsApp/ইমেইল) পাঠিয়েছেন? কবে?\n- অগ্রিমের পেমেন্টের প্রমাণ আছে কি? (ব্যাংক ট্রান্সফার, রিসিপ্ট)\n\n২. **আপনার অবস্থান**\n- আপনার দেওয়া তথ্য থেকে দেখা যাচ্ছে যে, আপনি অগ্রিম দিয়েছেন এবং বাড়ি ছেড়েছেন। যদি কোনো লিখিত চুক্তি না থাকে বা বাড়িওয়ালা কোনো বৈধ কাটতি দাবি না করে, তাহলে আপনার দাবির শর্ত পূরণ হচ্ছে।\n\n৩. **বিকল্পগুলো (সস্তা ও দ্রুত থেকে শুরু করে)**\n- **লিখিত অনুরোধ**: WhatsApp/ইমেইলে ১৫ দিনের মধ্যে ফেরত চেয়ে লিখে দিন, রসিদ/স্ক্রিনশট সংরক্ষণ করুন।\n- **আইনি নোটিশ**: নিজে ১৫ দিনের মধ্যে নোটিশ পাঠিয়ে ফেরত দাবি করুন।\n- **লোক আদালত/ডিএলএসএ**: বিনামূল্যে মধ্যস্থতা বা লোক আদালতে আবেদন করতে পারেন।\n- **সিভিল মামলা**: ৩ বছরের সীমা (২০২৯‑১০‑০১ পর্যন্ত) মধ্যে মামলা দায়ের করতে পারেন।\n\n৪. **পরবর্তী পদক্ষেপ**\n- প্রথমে একটি লিখিত অনুরোধ পাঠিয়ে ১৫ দিনের মধ্যে ফেরত দাবি করুন।\n\n5. **সহায়তা**\n- আমি আপনাকে একটি \"deposit_demand_notice\" খসড়া করতে সাহায্য করতে পারি।\n\n**প্রশ্ন**\n- আপনার কি লিখিত ভাড়ার চুক্তি আছে?",
+   "citations": [
+    {
+     "id": "ICA1872-S73",
+     "act": "Indian Contract Act, 1872",
+     "section": "73",
+     "title": "Compensation for breach of contract",
+     "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+     "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Approximate last date to sue for the deposit (3 years)",
+      "date": "2029-10-01",
+      "days_left": 1060,
+      "status": "ok",
+      "basis": "LIM1963-ART55",
+      "note": "Limitation depends on the exact claim; confirm with legal aid before relying on it.",
+      "user_deadline": true
+     }
+    ],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 44,
+    "missing": [
+     {
+      "key": "monthly_rent",
+      "question": "What was the monthly rent (₹)?"
+     },
+     {
+      "key": "written_agreement",
+      "question": "Is there a written rent agreement? (yes/no)"
+     },
+     {
+      "key": "deductions_claimed",
+      "question": "Has the landlord claimed any deductions (painting, damage, dues)?"
+     },
+     {
+      "key": "communications_so_far",
+      "question": "How have you asked for it so far (calls, WhatsApp, email)?"
+     },
+     {
+      "key": "proof_of_payment",
+      "question": "Do you have proof you paid the deposit (bank transfer, receipt)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "deposit_demand_notice"
+    }
+   ],
+   "next_step": "Send a written request demanding refund within 15 days",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "medium",
+   "unknowns": [
+    "written_agreement",
+    "proof_of_payment",
+    "communications_so_far"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "latency_s": 1.97,
+    "usage": {
+     "queue_time": 0.288667801,
+     "prompt_tokens": 2893,
+     "prompt_time": 0.155516589,
+     "completion_tokens": 645,
+     "completion_time": 0.738033159,
+     "total_tokens": 3538,
+     "total_time": 0.893549748,
+     "completion_tokens_details": {
+      "reasoning_tokens": 20
+     }
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+     "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "tenancy",
+       "language": "Bengali",
+       "script": "Bengali",
+       "facts": {
+        "deposit_amount": 30000,
+        "possession_handed_over_date": "2026-10-01",
+        "city_state": "Kolkata, West Bengal",
+        "other_party_name": "landlord"
+       },
+       "approximate_dates": [],
+       "confidence": 0.95
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 1.32,
+       "usage": {
+        "queue_time": 0.369051396,
+        "prompt_tokens": 934,
+        "prompt_time": 0.055276125,
+        "completion_tokens": 131,
+        "completion_time": 0.168733633,
+        "total_tokens": 1065,
+        "total_time": 0.224009758,
+        "completion_tokens_details": {
+         "reasoning_tokens": 53
+        }
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 1.97,
+       "usage": {
+        "queue_time": 0.288667801,
+        "prompt_tokens": 2893,
+        "prompt_time": 0.155516589,
+        "completion_tokens": 645,
+        "completion_time": 0.738033159,
+        "total_tokens": 3538,
+        "total_time": 0.893549748,
+        "completion_tokens_details": {
+         "reasoning_tokens": 20
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tie"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 4.76
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "আমি কলকাতায় ভাড়া বাড়ি ছেড়েছি ১ অক্টোবর ২০২৬। ৩০,০০০ টাকা অগ্রিম দিয়েছিলাম। বাড়িওয়ালা টাকা ফেরত দিচ্ছে না। কী করব?"
+   },
+   {
+    "role": "assistant",
+    "content": "আপনি ১ অক্টোবর ২০২৬-এ বাড়ি ছেড়েছেন এবং ৩০,০০০ টাকা অগ্রিম দিয়েছেন।\n\n১. **কী কী তথ্য দরকার?**\n- ভাড়ার চুক্তি কি লিখিত ছিল? (হ্যাঁ/না)\n- বাড়িওয়ালা কি কোনো কাটতি দাবি করেছে? (যেমন রং করা, ক্ষতি, বিল)\n- আপনি কি ইতিমধ্যে কোনো লিখিত অনুরোধ (WhatsApp/ইমেইল) পাঠিয়েছেন? কবে?\n- অগ্রিমের পেমেন্টের প্রমাণ আছে কি? (ব্যাংক ট্রান্সফার, রিসিপ্ট)\n\n২. **আপনার অবস্থান**\n- আপনার দেওয়া তথ্য থেকে দেখা যাচ্ছে যে, আপনি অগ্রিম দিয়েছেন এবং বাড়ি ছেড়েছেন। যদি কোনো লিখিত চুক্তি না থাকে বা বাড়িওয়ালা কোনো বৈধ কাটতি দাবি না করে, তাহলে আপনার দাবির শর্ত পূরণ হচ্ছে।\n\n৩. **বিকল্পগুলো (সস্তা ও দ্রুত থেকে শুরু করে)**\n- **লিখিত অনুরোধ**: WhatsApp/ইমেইলে ১৫ দিনের মধ্যে ফেরত চেয়ে লিখে দিন, রসিদ/স্ক্রিনশট সংরক্ষণ করুন।\n- **আইনি নোটিশ**: নিজে ১৫ দিনের মধ্যে নোটিশ পাঠিয়ে ফেরত দাবি করুন।\n- **লোক আদালত/ডিএলএসএ**: বিনামূল্যে মধ্যস্থতা বা লোক আদালতে আবেদন করতে পারেন।\n- **সিভিল মামলা**: ৩ বছরের সীমা (২০২৯‑১০‑০১ পর্যন্ত) মধ্যে মামলা দায়ের করতে পারেন।\n\n৪. **পরবর্তী পদক্ষেপ**\n- প্রথমে একটি লিখিত অনুরোধ পাঠিয়ে ১৫ দিনের মধ্যে ফেরত দাবি করুন।\n\n5. **সহায়তা**\n- আমি আপনাকে একটি \"deposit_demand_notice\" খসড়া করতে সাহায্য করতে পারি।\n\n**প্রশ্ন**\n- আপনার কি লিখিত ভাড়ার চুক্তি আছে?"
+   }
+  ],
+  "case": {
+   "category": "tenancy",
+   "language": "Bengali",
+   "script": "Bengali",
+   "facts": {
+    "deposit_amount": "30000",
+    "possession_handed_over_date": "2026-10-01",
+    "city_state": "Kolkata, West Bengal",
+    "other_party_name": "landlord"
+   },
+   "timeline": [],
+   "evidence_have": [],
+   "evidence_missing": [
+    "written_agreement",
+    "proof_of_payment",
+    "communications_so_far"
+   ],
+   "next_step": "Send a written request demanding refund within 15 days"
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 4.76,
+    "model": "openai/gpt-oss-20b",
+    "provider": "groq",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got tenancy"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Bengali, reply script Bengali"
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "The response is clear, practical, legally cautious, and provides a logical progression of steps without overstepping into definitive legal advice.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 9.98,
+   "usage": {
+    "completion_tokens": 71,
+    "prompt_tokens": 552,
+    "total_tokens": 754
+   },
+   "fallback_attempts": [
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. "
+   ]
+  }
+ }
+}

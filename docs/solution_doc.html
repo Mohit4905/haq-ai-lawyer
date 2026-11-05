@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Haq: AI legal help (Kuku AI Generalist, Problem 2)</title>
+<style>
+@page { size: A4; margin: 11mm 12mm; }
+:root { --ink:#1b1f1d; --muted:#5d6762; --brand:#0f5b52; --line:#d9d4c7; --soft:#f4f1ea; }
+* { box-sizing: border-box; }
+body { font-family: "Segoe UI", Inter, Arial, sans-serif; color: var(--ink); font-size: 8.9pt; line-height: 1.36; margin: 0; }
+h1 { font-size: 15pt; margin: 0; color: var(--brand); }
+h2 { font-size: 10pt; margin: 7px 0 3px; color: var(--brand); border-bottom: 1px solid var(--line); padding-bottom: 1px; }
+p { margin: 2px 0 4px; }
+ul { margin: 2px 0 4px; padding-left: 14px; }
+li { margin: 1px 0; }
+.meta { color: var(--muted); font-size: 8.4pt; margin: 2px 0 6px; }
+.meta a { color: var(--brand); }
+.cols { column-count: 2; column-gap: 14px; }
+.box { background: var(--soft); border-radius: 5px; padding: 5px 7px; margin: 4px 0; break-inside: avoid; }
+table { border-collapse: collapse; width: 100%; font-size: 8.2pt; margin: 3px 0 5px; break-inside: avoid; }
+th, td { border: 1px solid var(--line); padding: 2px 4px; text-align: left; vertical-align: top; }
+th { background: var(--soft); }
+b.k { color: var(--brand); }
+.small { font-size: 7.9pt; color: var(--muted); }
+code { font-family: Consolas, monospace; font-size: 8pt; background: var(--soft); padding: 0 2px; border-radius: 2px; }
+.pb { break-before: page; }
+</style></head>
+<body>
+
+<h1>Haq (हक़): AI legal help for everyday problems in India</h1>
+<div class="meta"><b>Problem 2: Build an AI Lawyer</b> · [NAME] · [ROLL NO.] · [BRANCH] ·
+App: <a href="[APP_LINK]">[APP_LINK]</a> · Code + raw outputs: <a href="[REPO_LINK]">[REPO_LINK]</a> · Video: <a href="[VIDEO_LINK]">[VIDEO_LINK]</a></div>
+
+<div class="cols">
+
+<h2>1. Why this problem, and how I scoped it</h2>
+<p>An AI lawyer is where AI is <b>most useful</b>, because people give up on recoverable money for lack of help, and also <b>most dangerous</b>, because models confidently invent law. I treated the second point as the core design problem. When I gave a plain LLM my test questions, it produced <b>"landmark Supreme Court judgments" that a search can't find</b> ("M/s. R. K. M. Industries vs. M/s. R. K. M. Builders, (2005) 2 SCC 462"), cited the <b>IPC (replaced by the BNS on 1 July 2024)</b>, and told someone who had missed the 30-day cheque-notice window <b>"Yes, you can still file a case"</b>.</p>
+<p><b>Depth over breadth.</b> In depth: <b>security deposit, consumer refund/defect, unpaid salary, bounced cheque, understanding a legal notice</b>. These are common, usually winnable <i>without</i> a lawyer, have cheap forums (Consumer Commission fee is nil up to ₹5 lakh; labour wage claims; legal notice), and some have strict deadlines (cheque: 30 days), where a wrong answer causes real harm. Pointers only: online/UPI fraud. <b>Not covered</b> (sent to a lawyer / free legal aid): criminal cases against the user, family, property title, tax.</p>
+
+<div class="box"><b>Assumptions (where the brief was silent)</b>
+<ul>
+<li>User: an adult in India with a phone, possibly not comfortable in English, no lawyer. Haq gives <b>legal information, not advice</b>, and says when a lawyer is needed.</li>
+<li>Law as on Nov 2026, checked against official sources. Important recent changes: Labour Codes in force from 21 Nov 2025 (Payment of Wages Act repealed); e-Jagriti replaced e-Daakhil (Jan 2025); RBI Ombudsman Scheme 2026 (90-day window).</li>
+<li>State-specific rules (rent Acts, Shops &amp; Establishments, legal-aid income limits) are flagged, not modelled.</li>
+<li>The user's dates are correct; deadline maths is shown as an estimate with its source.</li>
+<li>The user sends documents themselves; every draft marks missing facts as <code>[[FILL]]</code>.</li>
+</ul></div>
+
+<h2>2. What it does</h2>
+<p>Chat by <b>text or voice</b> (Whisper; browser speech as fallback) in any Indian language, including Hinglish and Indian scripts, with read-aloud. As the user talks, Haq: <b>builds the case</b> (live case file: facts, timeline, proof held/missing, completeness meter); <b>explains where they stand</b> and a vetted options ladder, cheapest first; <b>shows deadlines computed by code</b> with the law each comes from; <b>drafts</b> the deposit/salary/cheque §138 notice, complaint email, Consumer Commission complaint, labour-office complaint or a reply to a notice (Word download, "how to send"); runs <b>practice mode</b> (AI plays the landlord/HR/company, then scores the user); <b>explains a notice</b> from pasted text, a photo or a PDF; and <b>escalates</b> to a lawyer, NALSA 15100, 112 or Tele-MANAS 14416.</p>
+
+<h2>3. How it works: what AI does vs code vs a human</h2>
+<table>
+<tr><th>Step (per message)</th><th>Who</th><th>Why</th></tr>
+<tr><td>Red flags: arrest, FIR, violence, self-harm, family, land (EN/HI/Hinglish regex)</td><td>Code</td><td>Safety must not depend on a model</td></tr>
+<tr><td>Intake: category, language, <b>facts as JSON</b></td><td>Fast LLM</td><td>Messy language in, structure out</td></tr>
+<tr><td>Deadlines, forum, fee, script/language choice</td><td>Code</td><td>One right answer → never generated</td></tr>
+<tr><td>Retrieve hand-picked verified law + vetted options for the category</td><td>Code</td><td>Predictable, auditable, small prompt</td></tr>
+<tr><td>Reply / draft / role-play in the user's language</td><td>Main LLM</td><td>Explaining, drafting, empathy</td></tr>
+<tr><td><b>Guard</b>: scan the reply → rewrite once → strip</td><td>Code</td><td>See §4</td></tr>
+<tr><td>Verify the law library; review every draft before sending</td><td>Human</td><td>Accountability stays with people</td></tr>
+</table>
+<p><b>Model is a config line.</b> Every provider uses the OpenAI-compatible API (Groq, Gemini, OpenRouter, OpenAI, Anthropic, Ollama, or <code>custom</code> for any endpoint you provide). It falls back across models and providers on rate limits, and can be switched live in the UI. Default: <code>gpt-oss-120b</code> (main) and <code>gpt-oss-20b</code> (intake) on Groq's free tier; Gemini as fallback and as the eval judge. The backend is <b>stateless</b> (the client sends the state), so the same <code>engine.turn()</code> serves the UI and the evals.</p>
+
+<h2>4. How it avoids inventing law</h2>
+<ul>
+<li><b>Verified library</b>: 74 entries (sections, rules, helplines, thresholds), each with an official URL (India Code, e-Gazette, ministries, RBI, NALSA). Only verified entries reach the model.</li>
+<li><b>Guard (code)</b> on every reply and draft: blocks sections, Articles, Orders and Acts not in the library (English and Hindi patterns), <b>any case law</b> (<i>X v. Y</i>, AIR/SCC, "the Supreme Court held"), and <b>repealed laws</b> (IPC, CrPC, CPA 1986, Payment of Wages Act…), with the replacement suggested. Unsupported time periods are warned on. Then one rewrite, then deletion, and the user is told.</li>
+<li><b>Code safety nets</b>: passed deadlines are always stated; leaked IDs and keys are stripped; emergency numbers are added by code.</li>
+<li>The UI shows "🛡️ 2 legal references verified" on each reply; click a law chip to see its official source.</li>
+</ul>
+
+<h2>5. How I know it's good: real runs</h2>
+<p><b>22 hand-written cases</b> (5 languages; deposit, consumer, salary, cheque and notice cases; safety, out-of-scope, prompt injection, "will I win?", "give me SC judgments") with automatic checks on category, reply language, extracted facts, must/must-not content, escalation, deadline maths, drafts, and <b>"no unverified law shown"</b>. Plus 25 offline unit tests and a library-integrity test. After every run I <b>read every failure by hand</b> and logged it as a bug, a test that was too strict, or model variance (<code>evals/CHANGELOG.md</code>).</p>
+<table>
+<tr><th>Run (models that actually answered)</th><th>Checks</th><th>Unverified law shown</th><th>Escalation</th></tr>
+<tr><td>v1: mostly gpt-oss-120b</td><td>125/135</td><td>0/22</td><td>18/19</td></tr>
+<tr><td>v2: mostly gpt-oss-20b (small model)</td><td>126/136</td><td>1/22*</td><td>18/19</td></tr>
+<tr><td>v3: mostly gemini-3.1-flash-lite</td><td>135/136</td><td>0/22</td><td>19/19</td></tr>
+<tr><td><b>v4 (final): pinned gemini-3.1-flash-lite, no fallback</b></td><td><b>134/136</b></td><td><b>0/22</b></td><td><b>19/19</b></td></tr>
+</table>
+<p class="small">*A guard false positive (it attributed "s.138" to the CPC), fixed in v3. <b>Lesson:</b> free-tier rate limits silently moved runs onto fallback models, so v1→v3 is not a clean before/after comparison. v4 pins one model. Both v4 failures are acceptable on reading (a correct date given instead of the words "30 days"; "No one can promise a 100% win" matched a regex). An LLM judge (gpt-oss-120b, a different family) is in the harness, but it completed only 6/22 before Groq's free daily cap ran out (avg 4.3–4.7/5). It's also unreliable on <i>recent</i> law: in v3 it marked correct Code on Wages answers as wrong. So I rely on reading every reply myself (<code>evals/MANUAL_REVIEW.md</code>).</p>
+<p><b>Same 22 questions to the same model with a plain "helpful Indian lawyer" prompt (v4):</b> 17/22 answers had a flagged legal reference; <b>7 cited case law</b>; <b>7 cited repealed laws</b> (IPC/CrPC, Payment of Wages Act). In all 4 runs, across 3 models, it told the T11 user "Yes, you can still file a case under Section 138" after the deadline had passed. Note: "flagged" includes real provisions that simply aren't in my library, so it is not a count of fabrications.</p>
+
+<div class="box"><b>Where it fails (honest list)</b>
+<ul>
+<li><b>The guard checks citations, not reasoning.</b> A wrong procedural claim slipped through: "bail is applied for in the court that issued the FIR" (police register FIRs). Fluent but wrong advice without any citation is the main residual risk.</li>
+<li>The guard is regex-based: oddly phrased references can slip past it, and real sections outside the library get blocked (over-strict by design).</li>
+<li>The model ignored a deadline the code had calculated ("you still have time"); fixed by extracting facts first and adding a code-written alert. Language drift (Hinglish ↔ English) is fixed by a code check plus a rewrite.</li>
+<li><b>Uncited generalisations and rules stretched beyond their scope</b> (manual review of v4): "the airline can't force a credit shell" and "the principal employer is liable if the contractor vanishes" are plausible but unverified; the e-commerce 48-hour rule was applied to a laptop that may have been bought offline. Fix: claim-level grounding (every legal sentence tagged to a library id, untagged ones flagged) and "applies when" conditions on library entries.</li>
+<li>Small library; no case law at all; RERA and state rules not modelled; free-tier rate limits push median latency to 7–16s (4s at best).</li>
+</ul></div>
+
+<h2>6. Scale and cost</h2>
+<p>Measured: ~4.2k input + ~0.9k output tokens and ~2 calls per turn. At the third-party-reported Groq price for gpt-oss-120b ($0.15/$0.60 per M tokens), that's <b>≈$0.0012 (≈₹0.10) per turn, ≈$6 per 1,000 five-turn conversations</b>. Model cost is negligible. The real costs are <b>legal review of the library</b> (a lawyer signs off each entry; re-verify quarterly; this run alone found 4 recent changes) and the <b>human escalation path</b>. Stateless API, so it scales horizontally. Next: WhatsApp channel, deadline reminders, a hand-off to NALSA/Tele-Law with the case file attached, state packs, and verified landmark judgments.</p>
+
+<h2>7. How I'd know it works with real users</h2>
+<p><b>North star: % of users who take the recommended action</b> (send the notice, file the complaint), plus a 30-day follow-up: "did you get your money back?". Guardrails: lawyer spot-checks of 5% of conversations and all drafts in the pilot (error rate per 100); guard intervention rate; escalations shown vs followed; drop-off per step; time to first draft. Pilot with one legal-aid clinic, where errors get caught by humans.</p>
+
+<h2>8. AI tools I used, and where they got it wrong</h2>
+<p><b>Claude Code</b> (pair-programming, research agents to read primary sources), <b>Groq gpt-oss-120b/20b + Whisper</b> and <b>Gemini 3.5 Flash</b> (in the product and as judge). Where they got it wrong: (1) the coding assistant's legal knowledge was out of date: it pointed users to e-Daakhil (replaced by e-Jagriti) and assumed the RBI Ombudsman's old one-year window (now 90 days). Primary-source checks caught both, which is why every library entry carries a URL. (2) Its default model names (<code>llama-3.3-70b</code>, <code>gemini-2.5-flash</code>) no longer exist on free tiers, so model names are now read from the API. (3) In-product: even with the calculated deadline in its prompt, the model told a user "you still have time" after the cheque window had closed. Fix: facts are extracted first, deadlines computed in code, and code appends the alert if the reply omits it. (4) Under a prompt injection it refused to help at all; it now declines only the injected part. (5) The LLM judge marked correct recent-law answers as wrong, so I don't trust a judge on fresh law. Full log: <code>docs/AI_ERRORS_LOG.md</code>.</p>
+
+</div>
+</body></html>

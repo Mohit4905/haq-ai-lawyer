@@ -1,0 +1,58 @@
+{
+ "id": "T09_salary_fnf_english",
+ "reply": "This is a frustrating situation, but it is a common issue in corporate employment. Since you are based in Mumbai, you have several legal avenues available to recover your dues.\n\nAs a Marketing Manager, you are considered an \"employee\" under the **Maharashtra Shops and Establishments (Regulation of Employment and Conditions of Service) Act, 2017**.\n\nHere is a step-by-step guide on how to handle this legally.\n\n### 1. Send a Formal Legal Notice\nBefore filing a formal complaint, you must establish a paper trail. If you haven't already, send a formal **Legal Notice** through a lawyer.\n\n*   **Why:** This serves as a final warning and is a mandatory prerequisite for most legal proceedings. It shows the company that you are serious and prepared to litigate.\n*   **What it should contain:**\n    *   Your date of resignation and last working day (14 August 2026).\n    *   The specific amount due (Rs 1,35,000).\n    *   Reference to your previous emails/communications where you requested the payment.\n    *   A deadline for payment (usually 15 days).\n    *   A statement that if they fail to pay, you will initiate legal proceedings (civil and criminal).\n\n### 2. File a Complaint with the Labour Commissioner\nSince you are in Mumbai, the **Maharashtra Shops and Establishments Act** applies to your employment.\n\n*   **The Process:** You can file a complaint with the **Office of the Labour Commissioner** in Mumbai.\n*   **The Law:** Under the Shops and Establishments Act, an employer is legally obligated to pay the wages/dues of an employee within a specified time after the termination of employment. Failure to do so is a violation of the Act.\n*   **Action:** The Labour Commissioner will issue a notice to your former employer, summoning them for a conciliation meeting. Often, companies pay up once they receive a notice from the Labour Department to avoid penalties.\n\n### 3. File a Civil Suit for Recovery\nIf the Labour Commissioner route does not yield results, you can file a **Summary Suit for Recovery of Money** under **Order 37 of the Code of Civil Procedure (CPC), 1908**.\n\n*   **Why Order 37:** This is a \"summary\" procedure, which is faster than a regular civil suit. It is designed for cases involving liquidated demands (where the amount is fixed and undisputed, like an F&F settlement).\n*   **Requirement:** You will need your appointment letter, resignation acceptance email, and any communication acknowledging the F&F amount of Rs 1,35,000.\n\n### 4. Criminal Complaint (Cheating/Criminal Breach of Trust)\nIf the company has explicitly acknowledged the amount in writing (e.g., an email stating \"Your F&F of Rs 1,35,000 is approved and will be processed\") but is intentionally withholding it, you may consider filing a complaint under **Section 406 (Criminal Breach of Trust)** or **Section 420 (Cheating)** of the **Indian Penal Code (IPC)** (now replaced by the **Bharatiya Nyaya Sanhita, 2023**).\n\n*   *Note:* Courts are generally reluctant to turn civil disputes into criminal ones, so this is usually a \"pressure tactic\" used only if the company is acting in bad faith. Consult a lawyer before taking this step.\n\n### Recommended Immediate Action Plan:\n\n1.  **Gather Evidence:** Save all emails, your appointment letter, your resignation letter, the acceptance of resignation, and any document where the Rs 1,35,000 figure is mentioned.\n2.  **Send a Legal Notice:** Do not skip this. A notice on a lawyer’s letterhead often triggers the HR department to release the payment immediately.\n3.  **Check your Employment Contract:** Review your contract for an \"Arbitration Clause.\" If one exists, you may be required to resolve the dispute through arbitration rather than a court. However, for small amounts like this, arbitration is often too expensive and time-consuming.\n\n**Important Case Law Reference:**\nWhile specific case law varies, courts in India have consistently held that the right to receive wages/dues is a fundamental right. In *Central Inland Water Transport Corporation Ltd. vs. Brojo Nath Ganguly*, the Supreme Court emphasized the protection of employees against unfair terms and the necessity of timely payment of dues.\n\n**Disclaimer:** *I am an AI, not a practicing advocate. This information is for educational purposes. Given the amount involved (Rs 1,35,000), I strongly recommend you consult with a local lawyer in Mumbai to draft and send a formal legal notice. The cost of a legal notice is minimal compared to the amount you are owed.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 71.48,
+  "usage": {
+   "completion_tokens": 1026,
+   "prompt_tokens": 92,
+   "total_tokens": 1256
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [
+   [
+    "Order 37",
+    "Code of Civil Procedure, 1908"
+   ],
+   [
+    "Order 37",
+    "Code of Civil Procedure, 1908"
+   ]
+  ],
+  "violations": [
+   {
+    "type": "case_law",
+    "text": "Central Inland Water Transport Corporation Ltd. vs. Br",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 406",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Service) Act, 2017",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Establishments Act",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

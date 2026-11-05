@@ -1,0 +1,364 @@
+{
+ "case": {
+  "id": "T02_deposit_hindi_delhi",
+  "group": "language",
+  "turns": [
+   "मैंने दिल्ली के लक्ष्मी नगर में किराये का कमरा 15 सितंबर 2026 को खाली कर दिया। 25,000 रुपये सिक्योरिटी डिपॉज़िट दिया था, नकद में, रसीद नहीं है। मकान मालिक अब फ़ोन नहीं उठा रहा। मैं क्या करूँ?"
+  ],
+  "expect": {
+   "category": "tenancy",
+   "script": "Devanagari",
+   "facts": {
+    "deposit_amount": "25"
+   },
+   "must_mention_any": [
+    [
+     "सबूत",
+     "प्रमाण",
+     "रसीद",
+     "गवाह",
+     "WhatsApp",
+     "व्हाट्सऐप",
+     "proof"
+    ]
+   ],
+   "escalate_max": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "आपने 15 सितंबर 2026 को कमरा खाली किया और 25,000 ₹ नकद में सिक्योरिटी डिपॉज़िट दिया, पर रसीद नहीं है।\n\n**अब तक की स्थिति**\n- डिपॉज़िट वापस नहीं मिला, मकान मालिक फ़ोन नहीं उठा रहा।\n- आपके पास डिपॉज़िट का कोई लिखित प्रमाण नहीं है (रसीद, बैंक ट्रांसफ़र)।\n\n**आपको अभी क्या करना चाहिए**\n1. **लिखित मांग पत्र (WhatsApp/ई‑मेल)** भेजें:\n   - डिपॉज़िट की राशि (₹25,000), खाली करने की तिथि (15‑09‑2026), और आपका बैंक खाता विवरण लिखें।\n   - “कृपया 15 दिन के भीतर राशि वापस करें, नहीं तो आगे की कार्रवाई करूँगा/करूँगी” लिखें।\n   - इस संदेश का स्क्रीनशॉट रखें।\n2. अगर 15 दिन में जवाब नहीं मिलता, तो **कानूनी नोटिस** (deposit_demand_notice) भेजें। आप स्वयं नोटिस तैयार कर सकते हैं; यह सिविल कोर्ट में आगे की कार्रवाई का आधार बनता है।\n3. यदि नोटिस के बाद भी कोई जवाब नहीं, तो **लोक अदालत (Lok Adalat) या डिस्ट्रीक्ट लीगल सर्विसेज अथॉरिटी (DLSA)** के माध्यम से निःशुल्क प्री‑लिटिगेशन समाधान के लिए आवेदन करें।\n4. अंतिम विकल्प: 3 साल (2029‑09‑15) के भीतर **सिविल suit** दायर करें। यह समय अभी बचा है, पर वकील की मदद लेनी पड़ेगी।\n\nक्या आप लिखित मांग पत्र का मसौदा चाहते हैं या नोटिस तैयार करने में मदद चाहिए?",
+   "citations": [
+    {
+     "id": "ICA1872-S73",
+     "act": "Indian Contract Act, 1872",
+     "section": "73",
+     "title": "Compensation for breach of contract",
+     "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+     "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "LIM1963-ART55",
+     "act": "Limitation Act, 1963",
+     "section": "Schedule, Article 55",
+     "title": "3 years to sue for compensation for breach of contract",
+     "plain": "A suit for compensation for breach of a contract (written or implied), where no other article covers it specifically, must be filed within 3 years. Time runs from the date of the breach. If there are repeated breaches, it runs from the breach you sue on; if the breach is continuing, from when it stops.",
+     "source_url": "https://www.thc.nic.in/Central%20Governmental%20Acts/Limitation%20Act,%202019.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-LOKADALAT-PRELITIGATION",
+     "act": "Legal Services Authorities Act, 1987",
+     "section": "",
+     "title": "Pre-litigation settlement through Lok Adalat",
+     "plain": "Even before filing a case, one party can apply to the District or State Legal Services Authority to have a civil dispute, or a compoundable criminal matter, referred to a Lok Adalat for amicable settlement. Non-compoundable offences are excluded. This is available now, unlike Mediation Act section 5.",
+     "source_url": "https://delhi.nalsa.gov.in/lok-adalat/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Approximate last date to sue for the deposit (3 years)",
+      "date": "2029-09-15",
+      "days_left": 1044,
+      "status": "ok",
+      "basis": "LIM1963-ART55",
+      "note": "Limitation depends on the exact claim; confirm with legal aid before relying on it.",
+      "user_deadline": true
+     }
+    ],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 44,
+    "missing": [
+     {
+      "key": "monthly_rent",
+      "question": "What was the monthly rent (₹)?"
+     },
+     {
+      "key": "written_agreement",
+      "question": "Is there a written rent agreement? (yes/no)"
+     },
+     {
+      "key": "deductions_claimed",
+      "question": "Has the landlord claimed any deductions (painting, damage, dues)?"
+     },
+     {
+      "key": "communications_so_far",
+      "question": "How have you asked for it so far (calls, WhatsApp, email)?"
+     },
+     {
+      "key": "proof_of_payment",
+      "question": "Do you have proof you paid the deposit (bank transfer, receipt)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "deposit_demand_notice"
+    },
+    {
+     "type": "practice"
+    }
+   ],
+   "next_step": "लिखित मांग पत्र (WhatsApp/ई‑मेल) भेजें और उसका स्क्रीनशॉट रखें",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "यदि नोटिस के बाद भी जवाब नहीं मिले तो सिविल suit या Lok Adalat में मदद के लिए वकील की जरूरत होगी"
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "क्या लिखित किरायेदारी समझौता है",
+    "क्या मकान मालिक ने कोई कटौती का दावा किया है"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [
+      {
+       "type": "unsupported_number",
+       "text": "15 दिन",
+       "why": "Time period not found in the verified library or calculations."
+      },
+      {
+       "type": "unsupported_number",
+       "text": "15 दिन",
+       "why": "Time period not found in the verified library or calculations."
+      },
+      {
+       "type": "unsupported_number",
+       "text": "3 साल",
+       "why": "Time period not found in the verified library or calculations."
+      }
+     ],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [
+      {
+       "type": "unsupported_number",
+       "text": "15 दिन",
+       "why": "Time period not found in the verified library or calculations."
+      },
+      {
+       "type": "unsupported_number",
+       "text": "15 दिन",
+       "why": "Time period not found in the verified library or calculations."
+      },
+      {
+       "type": "unsupported_number",
+       "text": "3 साल",
+       "why": "Time period not found in the verified library or calculations."
+      }
+     ],
+     "ok": true
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "latency_s": 3.2,
+    "usage": {
+     "queue_time": 0.3283505,
+     "prompt_tokens": 2907,
+     "prompt_time": 0.140695285,
+     "completion_tokens": 809,
+     "completion_time": 1.690217451,
+     "total_tokens": 3716,
+     "total_time": 1.8309127360000002,
+     "completion_tokens_details": {
+      "reasoning_tokens": 24
+     }
+    },
+    "fallback_attempts": [
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+     "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "tenancy",
+       "language": "Hindi",
+       "script": "Devanagari",
+       "facts": {
+        "deposit_amount": 25000,
+        "possession_handed_over_date": "2026-09-15",
+        "city_state": "Delhi",
+        "other_party_name": "landlord"
+       },
+       "approximate_dates": [],
+       "confidence": 0.95
+      },
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-20b",
+       "latency_s": 1.15,
+       "usage": {
+        "queue_time": 0.292193526,
+        "prompt_tokens": 952,
+        "prompt_time": 0.065352749,
+        "completion_tokens": 134,
+        "completion_time": 0.158435009,
+        "total_tokens": 1086,
+        "total_time": 0.223787758,
+        "completion_tokens_details": {
+         "reasoning_tokens": 62
+        }
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "groq",
+       "model": "openai/gpt-oss-120b",
+       "latency_s": 3.2,
+       "usage": {
+        "queue_time": 0.3283505,
+        "prompt_tokens": 2907,
+        "prompt_time": 0.140695285,
+        "completion_tokens": 809,
+        "completion_time": 1.690217451,
+        "total_tokens": 3716,
+        "total_time": 1.8309127360000002,
+        "completion_tokens_details": {
+         "reasoning_tokens": 24
+        }
+       },
+       "fallback_attempts": [
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv",
+        "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 31.15
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "मैंने दिल्ली के लक्ष्मी नगर में किराये का कमरा 15 सितंबर 2026 को खाली कर दिया। 25,000 रुपये सिक्योरिटी डिपॉज़िट दिया था, नकद में, रसीद नहीं है। मकान मालिक अब फ़ोन नहीं उठा रहा। मैं क्या करूँ?"
+   },
+   {
+    "role": "assistant",
+    "content": "आपने 15 सितंबर 2026 को कमरा खाली किया और 25,000 ₹ नकद में सिक्योरिटी डिपॉज़िट दिया, पर रसीद नहीं है।\n\n**अब तक की स्थिति**\n- डिपॉज़िट वापस नहीं मिला, मकान मालिक फ़ोन नहीं उठा रहा।\n- आपके पास डिपॉज़िट का कोई लिखित प्रमाण नहीं है (रसीद, बैंक ट्रांसफ़र)।\n\n**आपको अभी क्या करना चाहिए**\n1. **लिखित मांग पत्र (WhatsApp/ई‑मेल)** भेजें:\n   - डिपॉज़िट की राशि (₹25,000), खाली करने की तिथि (15‑09‑2026), और आपका बैंक खाता विवरण लिखें।\n   - “कृपया 15 दिन के भीतर राशि वापस करें, नहीं तो आगे की कार्रवाई करूँगा/करूँगी” लिखें।\n   - इस संदेश का स्क्रीनशॉट रखें।\n2. अगर 15 दिन में जवाब नहीं मिलता, तो **कानूनी नोटिस** (deposit_demand_notice) भेजें। आप स्वयं नोटिस तैयार कर सकते हैं; यह सिविल कोर्ट में आगे की कार्रवाई का आधार बनता है।\n3. यदि नोटिस के बाद भी कोई जवाब नहीं, तो **लोक अदालत (Lok Adalat) या डिस्ट्रीक्ट लीगल सर्विसेज अथॉरिटी (DLSA)** के माध्यम से निःशुल्क प्री‑लिटिगेशन समाधान के लिए आवेदन करें।\n4. अंतिम विकल्प: 3 साल (2029‑09‑15) के भीतर **सिविल suit** दायर करें। यह समय अभी बचा है, पर वकील की मदद लेनी पड़ेगी।\n\nक्या आप लिखित मांग पत्र का मसौदा चाहते हैं या नोटिस तैयार करने में मदद चाहिए?"
+   }
+  ],
+  "case": {
+   "category": "tenancy",
+   "language": "Hindi",
+   "script": "Devanagari",
+   "facts": {
+    "deposit_amount": 25000,
+    "possession_handed_over_date": "2026-09-15",
+    "city_state": "Delhi",
+    "other_party_name": "landlord"
+   },
+   "timeline": [
+    {
+     "date": "2026-09-15",
+     "event": "कमरा खाली किया, सिक्योरिटी डिपॉज़िट ₹25,000 नकद दिया"
+    }
+   ],
+   "evidence_have": [],
+   "evidence_missing": [
+    "रसीद या कोई लिखित भुगतान प्रमाण",
+    "किराए का मासिक किराया और लिखित किरायेदारी समझौता (यदि है)",
+    "मकान मालिक के साथ हुई कॉल/WhatsApp/ई‑मेल की स्क्रीनशॉट"
+   ],
+   "next_step": "लिखित मांग पत्र (WhatsApp/ई‑मेल) भेजें और उसका स्क्रीनशॉट रखें"
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "यदि नोटिस के बाद भी जवाब नहीं मिले तो सिविल suit या Lok Adalat में मदद के लिए वकील की जरूरत होगी"
+   ]
+  },
+  "log": [
+   {
+    "t": 31.15,
+    "model": "openai/gpt-oss-120b",
+    "provider": "groq",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got tenancy"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Devanagari, reply script Devanagari"
+  },
+  {
+   "check": "fact:deposit_amount",
+   "pass": true,
+   "detail": "expected ~25, got 25000"
+  },
+  {
+   "check": "mentions:सबूत|प्रमाण|रसीद|गवाह|WhatsApp|व्हाट्सऐप",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "Excellent, highly empathetic, clear, and realistic advice in Hindi tailored to the user's specific context.",
+  "judge_model": {
+   "provider": "gemini",
+   "model": "gemini-3.5-flash",
+   "latency_s": 3.69,
+   "usage": {
+    "completion_tokens": 55,
+    "prompt_tokens": 621,
+    "total_tokens": 676
+   },
+   "fallback_attempts": []
+  }
+ }
+}

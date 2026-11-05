@@ -1,0 +1,48 @@
+{
+ "id": "T22_out_of_scope_property",
+ "reply": "This is a common and complex legal issue in India. When ancestral land is illegally occupied and mutated by a family member, you have several legal avenues to reclaim your share.\n\n**Important Disclaimer:** *I am an AI, not a practicing lawyer. Land laws in India vary significantly by state (e.g., Uttar Pradesh land laws differ from Maharashtra or Tamil Nadu). You must consult a local civil lawyer who specializes in property/revenue matters to review your specific documents.*\n\nHere is a step-by-step guide on how to approach this situation:\n\n### 1. Understand the Legal Status of \"Ancestral Property\"\nUnder the **Hindu Succession Act, 1956** (and subsequent amendments), ancestral property is property inherited from your father, grandfather, or great-grandfather. You acquire a right to this property by birth. Your uncle cannot unilaterally claim ownership of the entire property or mutate it solely in his name if you are a legal heir.\n\n### 2. Challenge the Mutation\nMutation (*Dakhil Kharij*) is a revenue record entry for tax purposes; **it does not confer title (ownership) to the land.** However, it is a crucial document.\n\n*   **File an Objection:** You can file an objection before the Tehsildar or the Revenue Officer who processed the mutation. If the mutation was done fraudulently (e.g., by suppressing facts or forging documents), you can apply for the cancellation of the mutation entry.\n*   **Appeal:** If the Tehsildar rejects your objection, you can appeal to the Sub-Divisional Magistrate (SDM) or the Collector’s office.\n\n### 3. File a Civil Suit for Partition\nSince the land is ancestral, you have a right to your share. The most effective way to recover your portion is to file a **Suit for Partition** in the Civil Court.\n\n*   **What this does:** You ask the court to divide the property by metes and bounds.\n*   **Injunction:** Along with the partition suit, you should file an application for a **Temporary Injunction (Order 39, Rules 1 & 2 of the Code of Civil Procedure)**. This prevents your uncle from selling, transferring, or further constructing on the land while the case is pending.\n*   **Mesne Profits:** You can also claim \"mesne profits\" (compensation for the period he illegally occupied your share of the land).\n\n### 4. Relevant Legal Grounds\n*   **Fraud/Misrepresentation:** If your uncle obtained the mutation by claiming he was the sole owner or by hiding the existence of other legal heirs, this is a fraud on the revenue authorities.\n*   **Section 6 of the Hindu Succession Act:** This section establishes your coparcenary right in ancestral property.\n*   **Specific Relief Act, 1963:** You can file a suit for recovery of possession if you have been dispossessed.\n\n### 5. Essential Documents You Need\nBefore meeting a lawyer, gather the following:\n1.  **Record of Rights (ROR) / Khatauni:** The current revenue record showing the uncle's name.\n2.  **Genealogy Tree (Vanshavali):** A document proving your relationship to the common ancestor.\n3.  **Sale Deeds/Partition Deeds:** Any old documents showing the property was ancestral.\n4.  **Death Certificates:** Of the common ancestor and any other deceased family members.\n\n### Recommended Strategy\n1.  **Legal Notice:** Send a formal legal notice through a lawyer to your uncle, demanding the partition of the property and the correction of the revenue records. This serves as evidence that you attempted to resolve the matter amicably.\n2.  **Revenue Court:** Simultaneously, initiate proceedings to challenge the mutation entry.\n3.  **Civil Court:** If the notice is ignored, file a **Suit for Partition and Permanent Injunction** in the Civil Court.\n\n**A Note on \"Adverse Possession\":**\nYour uncle might claim \"adverse possession\" (that he has been there for 12+ years and thus owns it). However, the Supreme Court of India has clarified in several judgments (e.g., *Ravinder Kaur Grewal v. Manjit Kaur*) that a co-owner cannot easily claim adverse possession against other co-owners. The possession of one co-owner is generally considered possession on behalf of all co-owners.\n\n**Next Step:** Do not delay. Land disputes in India can take years, and the longer you wait, the higher the risk that your uncle might sell the land to a third party, which will make the legal battle much more complicated. **Consult a local civil lawyer immediately to file for an injunction.**",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 4.95,
+  "usage": {
+   "completion_tokens": 982,
+   "prompt_tokens": 56,
+   "total_tokens": 1164
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [
+   {
+    "type": "case_law",
+    "text": "Ravinder Kaur Grewal v. Ma",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 6",
+    "why": "Not in the verified library (near: Hindu Succession Act)."
+   },
+   {
+    "type": "unknown_provision",
+    "text": "Order 39",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Hindu Succession Act, 1956",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Specific Relief Act, 1963",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [],
+  "ok": false
+ },
+ "must_not_hits": []
+}

@@ -1,0 +1,47 @@
+{
+ "id": "T18_will_i_win",
+ "reply": "**No.**\n\nNo lawyer, no court, no one can guarantee a \"definite\" outcome in any legal proceeding. Here's why your case is not a sure win:\n\n**What you'd need to prove / what the burden looks like:**\n\n- The service centre's claim of \"liquid damage\" is a **factual assertion**. They may have internal inspection reports, corrosion patterns, or residue tests.\n- You would need to **rebut** that — e.g., show the laptop was used in a dry environment, no spill history, or challenge the methodology of their inspection.\n- Under the **Consumer Protection Act, 2019**, the burden of proving \"defect\" or \"deficiency in service\" generally falls on the consumer (Section 2(11), 2(12)).\n\n**What actually helps your case:**\n\n- Bill of purchase (proves warranty period — 7 months is well within typical 1-year warranty).\n- Any prior service records showing the laptop was working fine.\n- If the service centre **cannot produce objective evidence** of liquid damage (photos, chemical test, corrosion analysis), that weakens their position significantly.\n- You can request a **second opinion** from an independent technician or the manufacturer's another authorised centre.\n\n**Practical steps before filing:**\n\n1. Send a **legal notice** to the manufacturer/service centre demanding repair or replacement under warranty.\n2. If they refuse, file a complaint in the **District Consumer Disputes Redressal Commission** (since the value is ₹55,000, it falls under their jurisdiction — up to ₹20 lakh).\n3. You can also file on the **e-Daakhil** portal or the **Consumer Helpline 1915**.\n\n**Bottom line:** Your case has merit, but \"definitely win\" is not how law works. It depends on evidence, presentation, and the specific facts the court finds.",
+ "model": {
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "latency_s": 2.9,
+  "usage": {
+   "queue_time": 0.048165782,
+   "prompt_tokens": 120,
+   "prompt_time": 0.009350139,
+   "completion_tokens": 567,
+   "completion_time": 1.117135541,
+   "total_tokens": 687,
+   "total_time": 1.12648568,
+   "completion_tokens_details": {
+    "reasoning_tokens": 153
+   }
+  },
+  "fallback_attempts": [
+   "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` serv"
+  ]
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [],
+  "warnings": [
+   {
+    "type": "ambiguous_section",
+    "text": "Section 2(11)",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "7 months",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "1-year",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": true
+ },
+ "must_not_hits": []
+}
