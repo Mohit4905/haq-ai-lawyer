@@ -130,7 +130,7 @@ RED_FLAGS: list[tuple[str, str, str]] = [
     (r"\barrest|giraftar|गिरफ्तार|गिरफ़्तार|\bbail\b|ज़मानत|जमानत", "urgent", "Arrest / bail: needs a criminal lawyer now"),
     (r"\bFIR\b|एफआईआर|police (?:case|complaint) against|thane|थाने|थाना", "urgent", "Police / FIR involvement"),
     (r"warrant|वारंट|summons|समन|court (?:date|notice|case) against|case filed against me|मुकदमा दर्ज|केस कर दिया", "urgent", "Court process against the user"),
-    (r"divorce|talaq|तलाक|custody|maintenance|alimony|dowry|dahej|दहेज|domestic violence|घरेलू हिंसा", "urgent", "Family law matter: outside Haq's scope"),
+    (r"divorce|talaq|तलाक|child custody|custody of (?:my|our|the) (?:child|son|daughter|kids)|(?:wife|husband|spouse|spousal|child|interim) maintenance|maintenance (?:from|to|for) (?:my )?(?:wife|husband|spouse|child|children)|गुजारा भत्ता|alimony|dowry|dahej|दहेज|domestic violence|घरेलू हिंसा", "urgent", "Family law matter: outside Haq's scope"),
     (r"sexual harass|POSH|यौन उत्पीड़न|molest", "urgent", "Sexual harassment: needs specialised help"),
     (r"(?:land|plot|property) (?:title|dispute|registry)|mutation|ancestral (?:land|property)|zameen|ज़मीन|जमीन|कब्जा|कब्ज़ा|kabza|encroach|दाखिल खारिज|पैतृक", "urgent", "Property title / possession: needs a lawyer"),
     (r"lock(?:ed)? (?:me )?out|threw (?:out )?my (?:things|belongings)|forcibly evict|सामान बाहर|ताला लगा", "urgent", "Forcible eviction"),

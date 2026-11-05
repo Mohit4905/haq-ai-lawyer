@@ -189,6 +189,13 @@ def test_mixed_script_message():
     assert guard.detect_script(msg) == "Devanagari"
 
 
+def test_maintenance_not_family():
+    # society/building maintenance charges are not a family-law matter
+    assert not any("Family" in f["reason"] for f in rules.red_flags("pay Rs 50,000 towards unpaid maintenance charges of the society"))
+    assert any("Family" in f["reason"] for f in rules.red_flags("I want maintenance from my husband and custody of my child"))
+    assert any("Family" in f["reason"] for f in rules.red_flags("मुझे गुजारा भत्ता चाहिए"))
+
+
 def test_notice_threat_flag():
     assert any(f["level"] == "recommended" for f in rules.red_flags("failing which my client shall initiate appropriate civil proceedings against you at your risk as to costs"))
 

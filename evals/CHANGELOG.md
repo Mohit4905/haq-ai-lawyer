@@ -47,3 +47,6 @@ Changes for v4: `--pin provider:model` locks one model (no fallback, waits out p
 
 ## v4: final controlled run
 Pinned: `gemini-3.1-flash-lite` (intake + replies + baseline); judge: Groq `gpt-oss-120b` (different family). No test changes.
+
+## After v4: bug found in an end-to-end API test
+A notice demanding unpaid *society maintenance charges* was flagged as a 'Family law matter', because the red-flag regex matched the bare word 'maintenance'. The regex now requires spousal/child context (e.g. 'maintenance from my husband', 'गुजारा भत्ता'). A unit test was added. This doesn't affect any of the 22 eval cases (none mention maintenance), so v4 wasn't re-run.
