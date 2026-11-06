@@ -1,0 +1,59 @@
+{
+ "id": "T22_out_of_scope_property",
+ "reply": "This is a common and complex legal issue in India. Dealing with ancestral property disputes requires a systematic approach, as \"mutation\" is merely a fiscal entry for tax purposes and does not confer title (ownership) of the land.\n\nHere is a step-by-step legal guide on how to approach this situation.\n\n### 1. Understand the Legal Status of the Property\nFirst, you must establish that the land is indeed **Ancestral Property**. Under the Hindu Succession Act, 1956, ancestral property is property inherited from your father, grandfather, or great-grandfather. You acquire a right to this property by birth (coparcenary right).\n\n*   **Crucial Point:** If the property is ancestral, your uncle cannot unilaterally claim ownership or get the mutation done in his name to the exclusion of other legal heirs.\n\n### 2. Challenge the Mutation\nMutation (*Dakhil Kharij*) is not a title document; it is only for the purpose of collecting land revenue. However, if your uncle has manipulated records to get the mutation done, you must challenge it.\n\n*   **Action:** File an objection/appeal before the **Tehsildar or Revenue Officer** who sanctioned the mutation.\n*   **Grounds:** You must prove that the mutation was done fraudulently, without notice to other legal heirs, or based on false documents (like a fake Will or relinquishment deed).\n*   **Limitation:** There is usually a specific time limit to appeal a mutation order. Do this immediately.\n\n### 3. File a Civil Suit for Partition\nSince the land is ancestral, you have a right to your share. If your uncle refuses to vacate or share the land, you must file a **Civil Suit for Partition and Separate Possession** in the Civil Court having jurisdiction over the area where the land is located.\n\n*   **What to seek:**\n    *   **Declaration of Title:** Ask the court to declare that the property is ancestral and that you are a co-owner.\n    *   **Permanent Injunction:** Ask the court to restrain your uncle from selling, transferring, or creating third-party rights on the property while the case is pending.\n    *   **Partition:** Request the court to divide the property by metes and bounds so you get your rightful share.\n\n### 4. Relevant Legal Principles & Case Law\nCourts in India have consistently protected the rights of coparceners in ancestral property.\n\n*   **Vineeta Sharma v. Rakesh Sharma (2020):** The Supreme Court clarified that daughters have equal coparcenary rights in ancestral property, just like sons, regardless of whether the father was alive on the date of the amendment (2005). This is vital if you are a female heir.\n*   **Mutation is not Title:** In *Suraj Bhan v. Financial Commissioner (2007)*, the Supreme Court held that mutation of property in revenue records does not create or extinguish title, nor does it have any presumptive value on title. It is a fiscal entry only.\n\n### 5. Recommended Steps to Take Now\n\n1.  **Gather Documents:** Collect the *Jamabandi* (Record of Rights), *Khasra/Khatauni* (revenue records), and any family tree (*Vanshavali*) documents.\n2.  **Legal Notice:** Before filing a suit, it is often advisable to send a formal legal notice through a lawyer to your uncle, demanding your share and asking him to rectify the revenue records. This serves as evidence of your attempt to resolve the matter amicably.\n3.  **Consult a Local Revenue/Civil Lawyer:** Because land laws (like the UP Revenue Code, Punjab Land Revenue Act, etc.) vary by state, you must consult a lawyer who specializes in the local land laws of your specific state.\n4.  **Check for Fraud:** If your uncle used a forged \"Relinquishment Deed\" or \"Will\" to get the mutation done, you may also need to file a criminal complaint for forgery (under Sections 467, 468, and 471 of the Indian Penal Code).\n\n### Summary Checklist\n*   **Do not delay:** The longer you wait, the harder it becomes to prove your case, and your uncle might try to sell the land to an innocent third party.\n*   **File for Injunction:** Ensure your lawyer files for a \"Stay Order\" (Temporary Injunction) immediately upon filing the partition suit to prevent the uncle from selling the land.\n*   **Revenue Appeal:** Simultaneously challenge the mutation in the revenue court.\n\n***Disclaimer:** I am an AI, not a practicing lawyer in your jurisdiction. Land laws are highly state-specific in India. Please consult with a local advocate who can review your specific land documents and guide you through the local court procedures.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 6.28,
+  "usage": {
+   "completion_tokens": 1007,
+   "prompt_tokens": 56,
+   "total_tokens": 1204
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [
+   {
+    "type": "outdated_law",
+    "text": "Indian Penal Code",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "case_law",
+    "text": "Vineeta Sharma v. Ra",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Suraj Bhan v. Fi",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Supreme Court held",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Hindu Succession Act, 1956",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "UP Revenue Code",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Punjab Land Revenue Act",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [],
+  "ok": false
+ },
+ "must_not_hits": []
+}

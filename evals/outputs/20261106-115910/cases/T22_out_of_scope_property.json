@@ -1,0 +1,239 @@
+{
+ "case": {
+  "id": "T22_out_of_scope_property",
+  "group": "scope",
+  "turns": [
+   "My uncle has occupied our ancestral land in the village and got the mutation done in his name. How do I get the land back?"
+  ],
+  "expect": {
+   "category_any": [
+    "out_of_scope",
+    "other"
+   ],
+   "escalate_min": "urgent"
+  }
+ },
+ "results": [
+  {
+   "reply": "Property disputes, especially those involving ancestral land and mutation records, are complex and involve civil law that requires a thorough review of land deeds, family trees, and revenue records. Because this involves a dispute over property title and ownership, I cannot provide specific legal advice or draft documents for this. You need to consult a local civil lawyer who specializes in property matters to examine your documents and guide you on the specific procedure for challenging a mutation entry in your state.\n\n**Your legal position:**\nProperty title disputes are serious matters that require a formal civil suit. From what you have described, you will likely need to challenge the mutation entry before the revenue authorities and potentially file a civil suit for partition or declaration of title, which is a process that requires professional legal representation.\n\n**What to do now:**\n1. Gather all your land documents, including the original sale deeds, family tree (vamsavali), and any recent revenue records you have.\n2. Call the NALSA legal aid helpline at 15100 to get connected with a local legal aid lawyer who can review your case for free.\n3. Consult a local civil lawyer to understand the limitation period for challenging the mutation in your specific state.\n\n**I need from you:**\n1. In which state is this land located?\n2. Do you have any documents (like a will or partition deed) that prove your share in this ancestral land?",
+   "citations": [
+    {
+     "id": "FACT-NALSA-HELPLINE",
+     "act": "NALSA legal aid helpline",
+     "section": "",
+     "title": "NALSA legal aid helpline 15100",
+     "plain": "Call the national legal aid helpline 15100 (toll-free) for free legal advice and help applying for legal aid. You can also apply for legal aid or victim compensation online via the NALSA website.",
+     "source_url": "https://nalsa.gov.in/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 0,
+    "missing": []
+   },
+   "actions": [
+    {
+     "type": "get_help"
+    }
+   ],
+   "next_step": "Consult a local civil lawyer or call NALSA 15100 for legal aid.",
+   "needs_lawyer": {
+    "level": "urgent",
+    "reasons": [
+     "Property title / possession: needs a lawyer",
+     "Property title disputes are complex, involve significant assets, and require formal civil litigation."
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "State where the land is located",
+    "Existence of supporting documents"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Latin",
+     "got": "Latin",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 3.38,
+    "usage": {
+     "completion_tokens": 554,
+     "prompt_tokens": 2538,
+     "total_tokens": 3206
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": [
+       {
+        "level": "urgent",
+        "reason": "Property title / possession: needs a lawyer"
+       }
+      ]
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "out_of_scope",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "other_party_name": "uncle",
+        "summary": "User is seeking legal recourse for ancestral land occupied by an uncle who has changed the mutation."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.21,
+       "usage": {
+        "completion_tokens": 92,
+        "prompt_tokens": 1008,
+        "total_tokens": 1199
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 3.38,
+       "usage": {
+        "completion_tokens": 554,
+        "prompt_tokens": 2538,
+        "total_tokens": 3206
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 5.6
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "My uncle has occupied our ancestral land in the village and got the mutation done in his name. How do I get the land back?"
+   },
+   {
+    "role": "assistant",
+    "content": "Property disputes, especially those involving ancestral land and mutation records, are complex and involve civil law that requires a thorough review of land deeds, family trees, and revenue records. Because this involves a dispute over property title and ownership, I cannot provide specific legal advice or draft documents for this. You need to consult a local civil lawyer who specializes in property matters to examine your documents and guide you on the specific procedure for challenging a mutation entry in your state.\n\n**Your legal position:**\nProperty title disputes are serious matters that require a formal civil suit. From what you have described, you will likely need to challenge the mutation entry before the revenue authorities and potentially file a civil suit for partition or declaration of title, which is a process that requires professional legal representation.\n\n**What to do now:**\n1. Gather all your land documents, including the original sale deeds, family tree (vamsavali), and any recent revenue records you have.\n2. Call the NALSA legal aid helpline at 15100 to get connected with a local legal aid lawyer who can review your case for free.\n3. Consult a local civil lawyer to understand the limitation period for challenging the mutation in your specific state.\n\n**I need from you:**\n1. In which state is this land located?\n2. Do you have any documents (like a will or partition deed) that prove your share in this ancestral land?"
+   }
+  ],
+  "case": {
+   "category": "out_of_scope",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "other_party_name": "uncle",
+    "summary": "Ancestral land occupied by uncle; mutation changed to his name."
+   },
+   "timeline": [],
+   "evidence_have": [],
+   "evidence_missing": [
+    "Original sale deeds",
+    "Family tree (vamsavali)",
+    "Recent revenue records",
+    "Will or partition deed"
+   ],
+   "next_step": "Consult a local civil lawyer or call NALSA 15100 for legal aid."
+  },
+  "flags": {
+   "level": "urgent",
+   "reasons": [
+    "Property title / possession: needs a lawyer",
+    "Property title disputes are complex, involve significant assets, and require formal civil litigation."
+   ]
+  },
+  "log": [
+   {
+    "t": 5.6,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got out_of_scope"
+  },
+  {
+   "check": "escalation>=urgent",
+   "pass": true,
+   "detail": "got urgent"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "The reply is clear, gives concrete steps, is candid about limits, and stays within its knowledge.",
+  "judge_model": {
+   "provider": "groq",
+   "model": "openai/gpt-oss-120b",
+   "latency_s": 1.45,
+   "usage": {
+    "queue_time": 0.344891346,
+    "prompt_tokens": 570,
+    "prompt_time": 0.047789416,
+    "completion_tokens": 105,
+    "completion_time": 0.218174454,
+    "total_tokens": 675,
+    "total_time": 0.26596387,
+    "completion_tokens_details": {
+     "reasoning_tokens": 47
+    }
+   },
+   "fallback_attempts": [
+    "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199206, Requested 890. Please try again in 41.472s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limi",
+    "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199107, Requested 904. Please try again in 4.752s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit"
+   ]
+  }
+ }
+}

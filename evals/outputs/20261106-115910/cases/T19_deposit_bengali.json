@@ -1,0 +1,317 @@
+{
+ "case": {
+  "id": "T19_deposit_bengali",
+  "group": "language",
+  "turns": [
+   "আমি কলকাতায় ভাড়া বাড়ি ছেড়েছি ১ অক্টোবর ২০২৬। ৩০,০০০ টাকা অগ্রিম দিয়েছিলাম। বাড়িওয়ালা টাকা ফেরত দিচ্ছে না। কী করব?"
+  ],
+  "expect": {
+   "category": "tenancy",
+   "script": "Bengali",
+   "escalate_max": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "আমি দুঃখিত যদি আপনার মনে হয় কোনো ভুল তথ্য দেওয়া হয়েছে। আমি সেই তথ্যটিই ব্যবহার করছি।\n\n**আপনার আইনি অবস্থান:**\nআপনার জমার টাকা ফেরত পাওয়ার অধিকার আছে। বাড়ি ছাড়ার পর বাড়িওয়ালা যুক্তিসঙ্গত কারণ ছাড়া টাকা আটকে রাখতে পারেন না। ১ অক্টোবর ২০২৬-এ বাড়ি ছাড়ার পর থেকে আপনার কাছে আইন অনুযায়ী টাকা আদায়ের জন্য যথেষ্ট সময় আছে।\n\n**আইন যা আপনি উল্লেখ করতে পারেন:**\n* এটি আপনার টাকা ফেরতের দাবির মূল ভিত্তি।\n* **লিমিটেশন অ্যাক্ট, ১৯৬৩ (আর্টিকেল ৫৫):** বাড়ি ছাড়ার তারিখ থেকে ৩ বছরের মধ্যে আপনি টাকা ফেরতের জন্য মামলা করতে পারেন।\n\n**এখন যা করবেন:**\n1. বাড়িওয়ালাকে একটি লিখিত অনুরোধ (WhatsApp বা ইমেইল) পাঠান, যেখানে বাড়ি ছাড়ার তারিখ এবং আপনার ব্যাংক ডিটেইলস থাকবে। এর স্ক্রিনশট বা কপি রেখে দিন।\n2. যদি তাতে কাজ না হয়, তবে একটি আইনি নোটিশ (Legal Notice) পাঠান।\n3. কোনো সমাধান না হলে, ডিস্ট্রিক্ট লিগ্যাল সার্ভিসেস অথরিটি (DLSA)-এর সাথে যোগাযোগ করুন (হেল্পলাইন: ১৫১০০)।\n\n**আপনার কাছে আমার প্রশ্ন:**\n১. আপনার কি বাড়িওয়ালার সাথে কোনো লিখিত ভাড়ার চুক্তি (Rent Agreement) আছে?\n২. টাকা ফেরতের জন্য আপনি এখন পর্যন্ত কীভাবে যোগাযোগ করেছেন (ফোন বা মেসেজ)?\n\n_⚠️ I removed a legal reference I could not verify. Please confirm the exact law with a lawyer or free legal aid (NALSA helpline 15100)._\n\n**Law you can cite (checked against official sources):**\n- **Section 73, Indian Contract Act, 1872**: If someone breaks a contract with you, you can claim money for the loss it caused.\n- **Article 55, Limitation Act, 1963**: A suit for compensation for breach of a contract (written or implied), where no other article covers it specifically, must be filed within 3 years.",
+   "citations": [
+    {
+     "id": "ICA1872-S73",
+     "act": "Indian Contract Act, 1872",
+     "section": "73",
+     "title": "Compensation for breach of contract",
+     "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+     "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "LIM1963-ART55",
+     "act": "Limitation Act, 1963",
+     "section": "Schedule, Article 55",
+     "title": "3 years to sue for compensation for breach of contract",
+     "plain": "A suit for compensation for breach of a contract (written or implied), where no other article covers it specifically, must be filed within 3 years. Time runs from the date of the breach. If there are repeated breaches, it runs from the breach you sue on; if the breach is continuing, from when it stops.",
+     "source_url": "https://www.thc.nic.in/Central%20Governmental%20Acts/Limitation%20Act,%202019.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-NALSA-HELPLINE",
+     "act": "NALSA legal aid helpline",
+     "section": "",
+     "title": "NALSA legal aid helpline 15100",
+     "plain": "Call the national legal aid helpline 15100 (toll-free) for free legal advice and help applying for legal aid. You can also apply for legal aid or victim compensation online via the NALSA website.",
+     "source_url": "https://nalsa.gov.in/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Approximate last date to sue for the deposit (3 years)",
+      "date": "2029-10-01",
+      "days_left": 1060,
+      "status": "ok",
+      "basis": "LIM1963-ART55",
+      "note": "Limitation depends on the exact claim; confirm with legal aid before relying on it.",
+      "user_deadline": true
+     }
+    ],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 33,
+    "missing": [
+     {
+      "key": "monthly_rent",
+      "question": "What was the monthly rent (₹)?"
+     },
+     {
+      "key": "written_agreement",
+      "question": "Is there a written rent agreement? (yes/no)"
+     },
+     {
+      "key": "deductions_claimed",
+      "question": "Has the landlord claimed any deductions (painting, damage, dues)?"
+     },
+     {
+      "key": "communications_so_far",
+      "question": "How have you asked for it so far (calls, WhatsApp, email)?"
+     },
+     {
+      "key": "proof_of_payment",
+      "question": "Do you have proof you paid the deposit (bank transfer, receipt)?"
+     },
+     {
+      "key": "other_party_name",
+      "question": "Landlord's name (and address, if you have it)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "deposit_demand_notice"
+    },
+    {
+     "type": "get_help"
+    }
+   ],
+   "next_step": "Send a formal written request (WhatsApp/Email) demanding the deposit back.",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Whether a written agreement exists",
+    "If the landlord has claimed any deductions"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [
+      {
+       "type": "unknown_section",
+       "text": "ধারা ৭৩",
+       "why": "Not in the verified library."
+      }
+     ],
+     "warnings": [],
+     "ok": false
+    },
+    "bad_ids": [],
+    "repaired": true,
+    "stripped": true,
+    "after_repair": {
+     "verified": [
+      [
+       "Section 73",
+       "Indian Contract Act, 1872"
+      ]
+     ],
+     "violations": [
+      {
+       "type": "unknown_section",
+       "text": "ধারা ৭৩ of Indian Contract Act, 1872",
+       "why": "This section of this Act is not in the verified library."
+      },
+      {
+       "type": "unknown_section",
+       "text": "ধারা ৭৩",
+       "why": "Not in the verified library."
+      }
+     ],
+     "warnings": [],
+     "ok": false
+    },
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Bengali",
+     "got": "Bengali",
+     "rewritten": false
+    },
+    "core_citations_added": [
+     "ICA1872-S73",
+     "LIM1963-ART55"
+    ],
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 6.72,
+    "usage": {
+     "completion_tokens": 672,
+     "prompt_tokens": 3391,
+     "total_tokens": 5082
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "tenancy",
+       "language": "Bengali",
+       "script": "Bengali",
+       "facts": {
+        "deposit_amount": 30000,
+        "possession_handed_over_date": "2026-10-01",
+        "city_state": "Kolkata",
+        "summary": "Landlord refusing to return security deposit of 30,000 after vacating the property."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 1.95,
+       "usage": {
+        "completion_tokens": 132,
+        "prompt_tokens": 1012,
+        "total_tokens": 1255
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 6.72,
+       "usage": {
+        "completion_tokens": 672,
+        "prompt_tokens": 3391,
+        "total_tokens": 5082
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "repair",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 6.34,
+       "usage": {
+        "completion_tokens": 759,
+        "prompt_tokens": 4071,
+        "total_tokens": 5433
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 15.04
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "আমি কলকাতায় ভাড়া বাড়ি ছেড়েছি ১ অক্টোবর ২০২৬। ৩০,০০০ টাকা অগ্রিম দিয়েছিলাম। বাড়িওয়ালা টাকা ফেরত দিচ্ছে না। কী করব?"
+   },
+   {
+    "role": "assistant",
+    "content": "আমি দুঃখিত যদি আপনার মনে হয় কোনো ভুল তথ্য দেওয়া হয়েছে। আমি সেই তথ্যটিই ব্যবহার করছি।\n\n**আপনার আইনি অবস্থান:**\nআপনার জমার টাকা ফেরত পাওয়ার অধিকার আছে। বাড়ি ছাড়ার পর বাড়িওয়ালা যুক্তিসঙ্গত কারণ ছাড়া টাকা আটকে রাখতে পারেন না। ১ অক্টোবর ২০২৬-এ বাড়ি ছাড়ার পর থেকে আপনার কাছে আইন অনুযায়ী টাকা আদায়ের জন্য যথেষ্ট সময় আছে।\n\n**আইন যা আপনি উল্লেখ করতে পারেন:**\n* এটি আপনার টাকা ফেরতের দাবির মূল ভিত্তি।\n* **লিমিটেশন অ্যাক্ট, ১৯৬৩ (আর্টিকেল ৫৫):** বাড়ি ছাড়ার তারিখ থেকে ৩ বছরের মধ্যে আপনি টাকা ফেরতের জন্য মামলা করতে পারেন।\n\n**এখন যা করবেন:**\n1. বাড়িওয়ালাকে একটি লিখিত অনুরোধ (WhatsApp বা ইমেইল) পাঠান, যেখানে বাড়ি ছাড়ার তারিখ এবং আপনার ব্যাংক ডিটেইলস থাকবে। এর স্ক্রিনশট বা কপি রেখে দিন।\n2. যদি তাতে কাজ না হয়, তবে একটি আইনি নোটিশ (Legal Notice) পাঠান।\n3. কোনো সমাধান না হলে, ডিস্ট্রিক্ট লিগ্যাল সার্ভিসেস অথরিটি (DLSA)-এর সাথে যোগাযোগ করুন (হেল্পলাইন: ১৫১০০)।\n\n**আপনার কাছে আমার প্রশ্ন:**\n১. আপনার কি বাড়িওয়ালার সাথে কোনো লিখিত ভাড়ার চুক্তি (Rent Agreement) আছে?\n২. টাকা ফেরতের জন্য আপনি এখন পর্যন্ত কীভাবে যোগাযোগ করেছেন (ফোন বা মেসেজ)?\n\n_⚠️ I removed a legal reference I could not verify. Please confirm the exact law with a lawyer or free legal aid (NALSA helpline 15100)._\n\n**Law you can cite (checked against official sources):**\n- **Section 73, Indian Contract Act, 1872**: If someone breaks a contract with you, you can claim money for the loss it caused.\n- **Article 55, Limitation Act, 1963**: A suit for compensation for breach of a contract (written or implied), where no other article covers it specifically, must be filed within 3 years."
+   }
+  ],
+  "case": {
+   "category": "tenancy",
+   "language": "Bengali",
+   "script": "Bengali",
+   "facts": {
+    "deposit_amount": 30000,
+    "possession_handed_over_date": "2026-10-01",
+    "city_state": "Kolkata",
+    "summary": "Landlord refusing to return security deposit of 30,000 after vacating the property."
+   },
+   "timeline": [
+    {
+     "date": "2026-10-01",
+     "event": "Vacated the property"
+    }
+   ],
+   "evidence_have": [],
+   "evidence_missing": [
+    "Written rent agreement",
+    "Proof of deposit payment",
+    "Records of communication with landlord"
+   ],
+   "next_step": "Send a formal written request (WhatsApp/Email) demanding the deposit back."
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 15.04,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": true
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got tenancy"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Bengali, reply script Bengali"
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "error": "All providers failed: groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199361, Requested 1113. Please try again in 3m24.768s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_l"
+ }
+}

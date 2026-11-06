@@ -1,0 +1,22 @@
+{
+ "id": "T04_consumer_refund_ecommerce",
+ "reply": "This is a frustrating situation, but you have clear legal remedies under Indian consumer protection laws. Since the product has been picked up, the company is legally obligated to process your refund within a reasonable timeframe.\n\nHere is a step-by-step guide on how to handle this legally and effectively.\n\n### 1. The Legal Basis\nUnder the **Consumer Protection (E-Commerce) Rules, 2020**, e-commerce entities are required to:\n*   **Rule 5(3)(b):** Ensure that the refund process is transparent and that the refund is processed within a reasonable time.\n*   **Rule 5(3)(c):** Not refuse to take back goods or withdraw services or refuse to refund consideration if such goods or services are defective, deficient, or spurious.\n\nBy holding your money for over three weeks after pickup, the company is committing an **\"Unfair Trade Practice\"** and **\"Deficiency of Service\"** under the **Consumer Protection Act, 2019**.\n\n### 2. Immediate Action Plan (Before Legal Action)\n\n**Step A: Send a Formal Legal Notice (The \"Final Warning\")**\nDo not rely on customer support tickets anymore. They are often handled by automated systems. You need to send a formal **Legal Notice** via Registered Post or Speed Post to the company’s registered office (usually mentioned on their website or invoice).\n\n*   **What to include:**\n    *   Mention the Order ID (OD12345).\n    *   State the date of purchase, date of pickup (10 Sept), and the amount (Rs 18,499).\n    *   List the dates of the 4 tickets you raised.\n    *   State clearly: *\"This is a deficiency of service and an unfair trade practice. If the refund is not credited within 7 days of receipt of this notice, I will be forced to initiate legal proceedings against you in the Consumer Commission.\"*\n*   *Note:* You can draft this yourself or have a local lawyer in Jaipur draft it for a nominal fee. It carries significant weight.\n\n**Step B: File a Grievance with the NCH**\nIf the legal notice does not work, file a formal complaint with the **National Consumer Helpline (NCH)**.\n*   **How:** Call **1915** or visit [consumerhelpline.gov.in](https://consumerhelpline.gov.in/).\n*   You can also use the **\"NCH\" app** or send an SMS to 8800001915.\n*   This creates an official government record of your complaint, which companies take much more seriously than internal tickets.\n\n### 3. Escalation: The Consumer Commission\nIf the above steps fail, you can file a case in the **District Consumer Disputes Redressal Commission** in Jaipur.\n\n*   **Jurisdiction:** Since you are in Jaipur, you can file the case in the Jaipur District Commission.\n*   **E-Daakhil:** You do not necessarily need a lawyer for this. You can file the complaint online via the [e-daakhil.nic.in](https://e-daakhil.nic.in/) portal.\n*   **What you can claim:**\n    *   The principal amount (Rs 18,499).\n    *   Interest on the amount (usually 9-12% per annum from the date of pickup).\n    *   Compensation for mental agony and harassment.\n    *   Litigation costs.\n\n### Summary Checklist for You:\n1.  **Gather Evidence:** Keep screenshots of the pickup confirmation, the 4 ticket numbers, and any email correspondence.\n2.  **Send a Legal Notice:** This is the most effective \"next step\" to show you are serious.\n3.  **File on NCH:** Do this immediately if you haven't already.\n4.  **Social Media:** Sometimes, tagging the company on X (formerly Twitter) with your Order ID and the fact that you are initiating legal action can trigger a faster response from their \"escalation team.\"\n\n**Disclaimer:** *I am an AI, not your personal lawyer. This information is for educational purposes. If the company continues to ignore you, I strongly recommend consulting with a local advocate in Jaipur to draft a formal legal notice, as this often resolves the issue without needing to go to court.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 5.49,
+  "usage": {
+   "completion_tokens": 935,
+   "prompt_tokens": 111,
+   "total_tokens": 1189
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [],
+  "warnings": [],
+  "ok": true
+ },
+ "must_not_hits": []
+}

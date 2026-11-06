@@ -1,0 +1,54 @@
+{
+ "id": "T20_builder_delay_big",
+ "reply": "Yes, you can absolutely file a consumer complaint yourself. You do not strictly need a lawyer to represent you in a Consumer Commission, although having legal guidance is often helpful for drafting the petition and handling arguments.\n\nHere is a breakdown of your legal position and the steps you should take under Indian law.\n\n### 1. Legal Basis for Your Complaint\nYour case falls under the **Consumer Protection Act, 2019**. Since you paid for a service (construction) and the builder has failed to deliver possession by the promised date, this constitutes **\"Deficiency in Service\"** and **\"Unfair Trade Practice\"** under Section 2(11) and Section 2(47) of the Act.\n\n### 2. Where to File (Jurisdiction)\nUnder the Consumer Protection Act, 2019, the pecuniary jurisdiction (the monetary value of the claim) determines which forum you approach:\n\n*   **District Commission:** If the value of the goods/services paid as consideration is up to **Rs 50 Lakh**.\n*   **State Commission:** If the value of the goods/services paid as consideration is **above Rs 50 Lakh and up to Rs 2 Crore**.\n*   **National Commission (NCDRC):** If the value is **above Rs 2 Crore**.\n\n**In your case:** Since you paid **Rs 85 Lakh**, your complaint falls under the jurisdiction of the **State Consumer Disputes Redressal Commission, Haryana (Panchkula)**.\n\n### 3. Can you file it yourself?\nYes, the Consumer Protection Act is designed to be a \"quasi-judicial\" body that is accessible to the common person. You can appear as a \"Party-in-Person.\"\n\n**Steps to file yourself:**\n1.  **Drafting the Complaint:** You must draft a formal complaint detailing the facts (dates of payment, agreement terms, possession date, and the current status).\n2.  **Evidence:** Attach copies of the Builder-Buyer Agreement, payment receipts, bank statements, and any email/letter correspondence with the builder.\n3.  **e-Daakhil:** You can file your complaint online through the [e-Daakhil portal](https://www.edaakhil.nic.in/). This is the government-mandated portal for filing consumer complaints electronically.\n4.  **Court Fee:** You will need to pay a nominal court fee (via Demand Draft or online payment, depending on the state commission's rules).\n\n### 4. Important Legal Precedents (Case Law)\nThe Supreme Court of India has been very strict with builders regarding delays. You can cite these in your complaint:\n\n*   **Fortune Infrastructure vs. Trevor D'Lima (2018):** The Supreme Court held that a person cannot be made to wait indefinitely for the possession of a flat. If the builder fails to deliver within a reasonable time, the buyer is entitled to a refund with interest.\n*   **Kolkata West International City Pvt. Ltd. vs. Devasis Rudra (2019):** The Supreme Court ruled that even if the agreement allows for a grace period, the builder cannot delay possession for an unreasonable amount of time. The buyer is entitled to a refund of the principal amount along with interest.\n\n### 5. Alternative: RERA (Real Estate Regulatory Authority)\nWhile you asked about a consumer complaint, you should also consider filing a complaint with **HRERA (Haryana Real Estate Regulatory Authority), Gurugram**.\n\n*   **Why RERA?** RERA is specifically designed for real estate disputes. It is often faster and more effective at getting possession or refunds with interest than the Consumer Commission.\n*   **Can you do both?** Yes, you can approach both RERA and the Consumer Commission, but you cannot claim the same relief twice. Most lawyers recommend RERA for real estate matters due to its specialized nature.\n\n### My Recommendation\n1.  **Check your Agreement:** Look for the \"Possession Clause\" and the \"Grace Period\" clause. Ensure the date has truly passed.\n2.  **Send a Legal Notice:** Before filing, have a lawyer send a formal legal notice to the builder demanding possession or a refund with interest. This is a crucial piece of evidence that shows you tried to resolve the matter amicably.\n3.  **Choose your Forum:** If you want a refund with interest, RERA is often the most efficient route in Haryana. If you want to pursue the Consumer Commission, you can do so via the e-Daakhil portal.\n\n***Disclaimer:** I am an AI, not your personal attorney. This information is for educational purposes and does not constitute formal legal advice. Real estate laws are complex and subject to specific contract clauses. I strongly recommend consulting with a local advocate in Gurugram to review your specific Builder-Buyer Agreement before filing.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 5.61,
+  "usage": {
+   "completion_tokens": 1023,
+   "prompt_tokens": 75,
+   "total_tokens": 1232
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [
+   {
+    "type": "case_law",
+    "text": "Fortune Infrastructure vs. Tr",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Kolkata West International City Pvt. Ltd. vs. De",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Supreme Court held",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Supreme Court ruled",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "ambiguous_section",
+    "text": "Section 2(11)",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 2(47)",
+    "why": "Section mentioned without naming the Act."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

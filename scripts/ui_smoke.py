@@ -197,7 +197,7 @@ with sync_playwright() as p:
     step("My cases: new case + switch back", my_cases)
 
     def notice():
-        page.click("#newCase")
+        page.click("#newCase2")
         page.wait_for_selector("#welcome:not(.hidden)")
         page.click(".card[data-card=notice]")
         page.fill("#noticeText", "LEGAL NOTICE. Under instructions from my client Mr. S.K. Verma, I call upon you to pay Rs. 1,00,000 towards damages to Flat 4B within 15 days of receipt of this notice, failing which my client shall initiate civil proceedings against you at your risk as to costs.")
@@ -209,7 +209,7 @@ with sync_playwright() as p:
     step("explain a pasted notice", notice)
 
     def languages():
-        page.click("#newCase")
+        page.click("#newCase2")
         out = []
         for code, lo, hi in [("hi", "ऀ", "ॿ"), ("pa", "਀", "੿"), ("ta", "஀", "௿")]:
             page.select_option("#lang", code)

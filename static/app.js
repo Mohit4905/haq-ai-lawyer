@@ -443,7 +443,7 @@ function openTab(name) {
 }
 $$(".tab").forEach(t => t.onclick = () => openTab(t.dataset.tab));
 $("#toggleCase").onclick = () => $("#caseCol").classList.toggle("open");
-$("#newCase").onclick = () => Cases.create();
+$("#newCase") && ($("#newCase").onclick = () => Cases.create());
 $("#calAll").onclick = () => downloadIcs(userDeadlines());
 $("#lang").onchange = () => { store.set("haq_lang", $("#lang").value); applyI18n(); };
 $("#themeBtn").onclick = () => setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");

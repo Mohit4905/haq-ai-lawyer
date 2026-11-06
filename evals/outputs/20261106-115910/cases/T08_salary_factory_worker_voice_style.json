@@ -1,0 +1,318 @@
+{
+ "case": {
+  "id": "T08_salary_factory_worker_voice_style",
+  "group": "core",
+  "turns": [
+   "sir main factory me helper hu ghaziabad me thekedar ke through kaam karta tha 14000 mahina milta tha do mahine se paisa nahi diya thekedar bhag gaya company bolti hai thekedar se lo ab kya karu ghar ka kiraya bhi nahi de pa raha"
+  ],
+  "expect": {
+   "category": "salary",
+   "script": "Hinglish",
+   "facts": {
+    "monthly_salary": "14"
+   },
+   "must_mention_any": [
+    [
+     "labour",
+     "Labour",
+     "श्रम",
+     "Inspector",
+     "inspector"
+    ]
+   ],
+   "escalate_max": "urgent"
+  }
+ },
+ "results": [
+  {
+   "reply": "Namaste. Yeh sunkar bahut bura laga ki aapko aisi pareshani ho rahi hai. Dekhiye, kanoon ke hisaab se, factory management apni zimmedari se aise nahi bach sakti. Code on Wages, 2019 ke tehat, agar thekedar paisa nahi de raha, toh principal employer (factory) ki zimmedari banti hai ki woh aapka baki ka paisa dilwaye. Aapka case mazboot hai kyunki aapne wahan kaam kiya hai, bas aapke paas proof hona chahiye.\n\n**Your legal position:**\nFactory management ka yeh kehna ki 'thekedar se lo' kanooni roop se kamzor hai. Aap wahan kaam karte the, isliye factory management aapke salary ke liye jawabdeh (liable) hai. Aapko turant ek formal complaint file karni hogi.\n\n**Law you can cite:**\n* **Code on Wages, 2019 (Section 17):** Kehta hai ki salary time par milni chahiye; agar aapka contract khatam hua hai, toh salary turant milni chahiye.\n* **Code on Wages, 2019 (Section 45):** Aapko haq deta hai ki aap Labour Authority ke paas claim file karein agar salary nahi mili.\n* **Code on Wages, 2019 (Section 2(k)):** Yeh confirm karta hai ki aap jaise workers 'employee' ki category mein aate hain aur aapko poora protection milta hai.\n\n**What to do now:**\n1. Apne saare documents ikattha karein (ID card, gate pass, attendance record, bank statement jahan salary aati thi).\n2. Factory management ko ek written notice/email dein jismein saaf likha ho ki kitne mahine ki salary baki hai.\n3. Agar woh na manein, toh Ghaziabad ke Labour Office mein 'Inspector-cum-Facilitator' se milein. Aap 15100 (NALSA) par call karke free legal advice bhi le sakte hain.\n\n**I need from you:**\n1. Kya aapke paas koi aisa document hai (ID card, gate pass, ya payslip) jisse saabit ho sake ki aap us factory mein kaam karte the?\n2. Kya aapne factory management ko abhi tak koi written complaint di hai?",
+   "citations": [
+    {
+     "id": "COW2019-S17",
+     "act": "Code on Wages, 2019",
+     "section": "17",
+     "title": "Deadline for paying wages, including after leaving the job",
+     "plain": "Wages are due by these deadlines: daily workers at the end of the shift; weekly workers on the last working day of the week; fortnightly workers before the end of the second day after the fortnight; monthly workers before the end of the 7th day of the next month. If you are removed, dismissed, retrenched or resign, or lose your job because the establishment closes, your wages must be paid within two working days.",
+     "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "COW2019-S45",
+     "act": "Code on Wages, 2019",
+     "section": "45",
+     "title": "Filing a wage claim: who decides it and the 3-year limit",
+     "plain": "Wage claims under the Code are heard by an authority the Government appoints, who must be at least a Gazetted Officer. The claim can be filed by you, your registered trade union, or an Inspector-cum-Facilitator. File within 3 years of the date the claim arises; a later claim may still be accepted if you show sufficient cause. Besides the amount due, the authority can award compensation of up to ten times the claim, and it tries to decide within three months.",
+     "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "COW2019-S2K",
+     "act": "Code on Wages, 2019",
+     "section": "2(k)",
+     "title": "Who is an 'employee' (includes managerial and supervisory staff)",
+     "plain": "Under the Code on Wages, 'employee' covers anyone an establishment employs on wages for skilled, unskilled, manual, clerical, technical, supervisory, managerial or administrative work. Managers and senior staff therefore count as employees. Apprentices and members of the Armed Forces do not.",
+     "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-NALSA-HELPLINE",
+     "act": "NALSA legal aid helpline",
+     "section": "",
+     "title": "NALSA legal aid helpline 15100",
+     "plain": "Call the national legal aid helpline 15100 (toll-free) for free legal advice and help applying for legal aid. You can also apply for legal aid or victim compensation online via the NALSA website.",
+     "source_url": "https://nalsa.gov.in/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 67,
+    "missing": [
+     {
+      "key": "still_employed",
+      "question": "Are you still working there? If not, what was your last working day?"
+     },
+     {
+      "key": "employment_proof",
+      "question": "Proof of employment (offer letter, payslips, bank credits, ID card)?"
+     },
+     {
+      "key": "communications_so_far",
+      "question": "Have you asked HR/employer in writing?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "salary_demand_notice"
+    },
+    {
+     "type": "get_help"
+    }
+   ],
+   "next_step": "Draft a formal letter to the factory HR/Manager demanding your salary.",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "The contractor is missing and the company is denying liability; you need official help to hold the factory accountable."
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Do you have any written proof of employment?"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [
+      [
+       "Section 17",
+       "Code on Wages, 2019"
+      ],
+      [
+       "Section 45",
+       "Code on Wages, 2019"
+      ],
+      [
+       "Section 2(k)",
+       "Code on Wages, 2019"
+      ]
+     ],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [
+      [
+       "Section 17",
+       "Code on Wages, 2019"
+      ],
+      [
+       "Section 45",
+       "Code on Wages, 2019"
+      ],
+      [
+       "Section 2(k)",
+       "Code on Wages, 2019"
+      ]
+     ],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Hinglish",
+     "got": "Hinglish",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 9.29,
+    "usage": {
+     "completion_tokens": 929,
+     "prompt_tokens": 3958,
+     "total_tokens": 5877
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "salary",
+       "language": "Hinglish",
+       "script": "Latin",
+       "facts": {
+        "role": "helper",
+        "monthly_salary": 14000,
+        "unpaid_period": "2 months",
+        "amount_due": 28000,
+        "city_state": "Ghaziabad",
+        "other_party_name": "thekedar",
+        "summary": "User is a factory helper in Ghaziabad whose contractor (thekedar) has absconded without paying 2 months of salary."
+       },
+       "approximate_dates": [],
+       "confidence": 0.95
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 8.01,
+       "usage": {
+        "completion_tokens": 165,
+        "prompt_tokens": 1046,
+        "total_tokens": 1349
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 9.29,
+       "usage": {
+        "completion_tokens": 929,
+        "prompt_tokens": 3958,
+        "total_tokens": 5877
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 17.32
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "sir main factory me helper hu ghaziabad me thekedar ke through kaam karta tha 14000 mahina milta tha do mahine se paisa nahi diya thekedar bhag gaya company bolti hai thekedar se lo ab kya karu ghar ka kiraya bhi nahi de pa raha"
+   },
+   {
+    "role": "assistant",
+    "content": "Namaste. Yeh sunkar bahut bura laga ki aapko aisi pareshani ho rahi hai. Dekhiye, kanoon ke hisaab se, factory management apni zimmedari se aise nahi bach sakti. Code on Wages, 2019 ke tehat, agar thekedar paisa nahi de raha, toh principal employer (factory) ki zimmedari banti hai ki woh aapka baki ka paisa dilwaye. Aapka case mazboot hai kyunki aapne wahan kaam kiya hai, bas aapke paas proof hona chahiye.\n\n**Your legal position:**\nFactory management ka yeh kehna ki 'thekedar se lo' kanooni roop se kamzor hai. Aap wahan kaam karte the, isliye factory management aapke salary ke liye jawabdeh (liable) hai. Aapko turant ek formal complaint file karni hogi.\n\n**Law you can cite:**\n* **Code on Wages, 2019 (Section 17):** Kehta hai ki salary time par milni chahiye; agar aapka contract khatam hua hai, toh salary turant milni chahiye.\n* **Code on Wages, 2019 (Section 45):** Aapko haq deta hai ki aap Labour Authority ke paas claim file karein agar salary nahi mili.\n* **Code on Wages, 2019 (Section 2(k)):** Yeh confirm karta hai ki aap jaise workers 'employee' ki category mein aate hain aur aapko poora protection milta hai.\n\n**What to do now:**\n1. Apne saare documents ikattha karein (ID card, gate pass, attendance record, bank statement jahan salary aati thi).\n2. Factory management ko ek written notice/email dein jismein saaf likha ho ki kitne mahine ki salary baki hai.\n3. Agar woh na manein, toh Ghaziabad ke Labour Office mein 'Inspector-cum-Facilitator' se milein. Aap 15100 (NALSA) par call karke free legal advice bhi le sakte hain.\n\n**I need from you:**\n1. Kya aapke paas koi aisa document hai (ID card, gate pass, ya payslip) jisse saabit ho sake ki aap us factory mein kaam karte the?\n2. Kya aapne factory management ko abhi tak koi written complaint di hai?"
+   }
+  ],
+  "case": {
+   "category": "salary",
+   "language": "Hinglish",
+   "script": "Latin",
+   "facts": {
+    "role": "helper",
+    "monthly_salary": 14000,
+    "unpaid_period": "2 months",
+    "amount_due": 28000,
+    "city_state": "Ghaziabad",
+    "other_party_name": "thekedar",
+    "summary": "User is a factory helper in Ghaziabad whose contractor (thekedar) has absconded without paying 2 months of salary."
+   },
+   "timeline": [
+    {
+     "date": "2025-01-01",
+     "event": "Salary unpaid for 2 months"
+    }
+   ],
+   "evidence_have": [
+    "Bank statements (if salary was credited)"
+   ],
+   "evidence_missing": [
+    "ID card",
+    "Gate pass",
+    "Attendance records",
+    "Written proof of employment"
+   ],
+   "next_step": "Draft a formal letter to the factory HR/Manager demanding your salary."
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "The contractor is missing and the company is denying liability; you need official help to hold the factory accountable."
+   ]
+  },
+  "log": [
+   {
+    "t": 17.32,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got salary"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Hinglish, reply script Hinglish"
+  },
+  {
+   "check": "fact:monthly_salary",
+   "pass": true,
+   "detail": "expected ~14, got 14000"
+  },
+  {
+   "check": "mentions:labour|Labour|श्रम|Inspector|inspector",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation<=urgent",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "error": "All providers failed: groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199510, Requested 1202. Please try again in 5m7.584s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_li"
+ }
+}

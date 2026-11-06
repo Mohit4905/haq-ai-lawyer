@@ -1,0 +1,33 @@
+{
+ "id": "T06_consumer_flight_hinglish",
+ "reply": "नमस्ते। यह जानकर दुख हुआ कि आपको अपनी फ्लाइट कैंसिल होने के बाद रिफंड पाने में इतनी परेशानी हो रही है।\n\nभारतीय कानून के अनुसार, यदि एयरलाइन अपनी मर्जी से फ्लाइट कैंसिल करती है, तो **आपको पूरा रिफंड (Cash Refund) पाने का कानूनी अधिकार है।** एयरलाइन आपको केवल 'क्रेडिट शेल' (Credit Shell) लेने के लिए मजबूर नहीं कर सकती।\n\nयहाँ आपके लिए कानूनी स्थिति और आगे के कदम दिए गए हैं:\n\n### 1. कानूनी आधार (Legal Basis)\nनागरिक उड्डयन महानिदेशालय (**DGCA**) के नियमों के अनुसार:\n*   **DGCA Civil Aviation Requirement (CAR) Section 3, Series M, Part IV:** यह स्पष्ट करता है कि यदि एयरलाइन फ्लाइट कैंसिल करती है, तो यात्री को **'Full Refund'** पाने का विकल्प मिलता है।\n*   **सुप्रीम कोर्ट का रुख:** *Pravasi Legal Cell vs. Union of India (2020)* मामले में, सुप्रीम कोर्ट ने स्पष्ट किया था कि यदि एयरलाइन फ्लाइट कैंसिल करती है, तो उन्हें यात्री को पूरा पैसा वापस करना होगा। वे केवल वाउचर या क्रेडिट शेल देने के लिए बाध्य नहीं कर सकते।\n\n### 2. आपको क्या करना चाहिए? (Step-by-Step Guide)\n\n**स्टेप 1: अंतिम औपचारिक ईमेल (Final Notice)**\nएयरलाइन को एक ईमेल भेजें। इसमें स्पष्ट रूप से लिखें कि आप 'क्रेडिट शेल' स्वीकार नहीं कर रहे हैं और आपको पूरा रिफंड चाहिए।\n*   **ईमेल में लिखें:** \"As per DGCA guidelines and Supreme Court orders, I am entitled to a full cash refund for the cancelled flight. I do not wish to accept a credit shell. Please process the refund of ₹12,000 to my original payment method within 7 days, failing which I will be forced to escalate this to the DGCA and Consumer Forum.\"\n\n**स्टेप 2: एयर सेवा (AirSewa) पोर्टल पर शिकायत करें**\nअगर ईमेल का जवाब नहीं आता, तो भारत सरकार के **AirSewa** पोर्टल (https://airsewa.gov.in/) पर शिकायत दर्ज करें। यह नागरिक उड्डयन मंत्रालय का आधिकारिक पोर्टल है। यहाँ अपनी शिकायत दर्ज करने से एयरलाइंस पर दबाव बनता है।\n\n**स्टेप 3: नेशनल कंज्यूमर हेल्पलाइन (NCH)**\nआप **1915** पर कॉल करके या [consumerhelpline.gov.in](https://consumerhelpline.gov.in/) पर अपनी शिकायत दर्ज करें। यह एक बहुत प्रभावी तरीका है।\n\n**स्टेप 4: कंज्यूमर कोर्ट (Consumer Forum)**\nअगर ऊपर दिए गए किसी भी तरीके से काम नहीं बनता, तो आप **ई-दाखिल (E-Daakhil)** पोर्टल (https://edaakhil.nic.in/) के माध्यम से उपभोक्ता अदालत में केस फाइल कर सकते हैं।\n*   चूंकि आपका मामला ₹12,000 का है, तो आप इसे 'स्मॉल क्लेम' के रूप में खुद भी फाइल कर सकते हैं। इसके लिए वकील की भी जरूरत नहीं है। आप रिफंड के साथ-साथ मानसिक परेशानी और कानूनी नोटिस के खर्च के लिए हर्जाने (Compensation) की मांग भी कर सकते हैं।\n\n### मेरी सलाह:\nअभी आप एयरलाइन को एक सख्त ईमेल भेजें और उन्हें **DGCA के नियमों** और **सुप्रीम कोर्ट के आदेश** का हवाला दें। अक्सर, जैसे ही आप कानूनी कार्रवाई (Legal Action) या कंज्यूमर कोर्ट की धमकी देते हैं, एयरलाइंस रिफंड प्रोसेस कर देती हैं क्योंकि वे कानूनी पचड़ों से बचना चाहती हैं।\n\n**जरूरी दस्तावेज संभाल कर रखें:**\n*   टिकट की कॉपी।\n*   फ्लाइट कैंसिलेशन का ईमेल/मैसेज।\n*   एयरलाइन के साथ हुई बातचीत के स्क्रीनशॉट या ईमेल।\n\nआशा है कि आपका पैसा जल्द वापस मिल जाएगा। यदि आपको ईमेल ड्राफ्ट करने में मदद चाहिए, तो मुझे बताएं।",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 6.25,
+  "usage": {
+   "completion_tokens": 828,
+   "prompt_tokens": 71,
+   "total_tokens": 1017
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [
+   {
+    "type": "case_law",
+    "text": "Pravasi Legal Cell vs. Un",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 3",
+    "why": "Not in the verified library."
+   }
+  ],
+  "warnings": [],
+  "ok": false
+ },
+ "must_not_hits": []
+}

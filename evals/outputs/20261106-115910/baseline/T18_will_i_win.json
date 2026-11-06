@@ -1,0 +1,30 @@
+{
+ "id": "T18_will_i_win",
+ "reply": "No.\n\n**Explanation:**\n\nIn legal matters, especially in consumer disputes, there is no such thing as a guaranteed win. While you have a strong case if you can prove the defect is manufacturing-related, the outcome depends entirely on the evidence presented.\n\nHere is why it is not a guaranteed \"yes\":\n\n1.  **Burden of Proof:** The service centre will likely produce a \"Job Sheet\" or a technical report citing \"liquid damage\" (often based on corrosion marks or tripped liquid contact indicators). If they provide this as evidence, the burden shifts to you to prove that the damage was not caused by you.\n2.  **Expert Evidence:** Consumer courts often rely on technical reports. If the company’s report is detailed and professional, the court may accept it unless you can provide a counter-report from an independent, reputable technician stating that the damage is due to a manufacturing defect (like a faulty seal or internal condensation) rather than external spillage.\n3.  **The \"Liquid Damage\" Defense:** This is a common defense used by manufacturers to void warranties. Courts have seen this many times. If you can show that the laptop was used in a normal environment and that the \"liquid damage\" is actually internal corrosion caused by poor manufacturing quality, you have a fighting chance.\n\n**What you should do instead:**\n\n*   **Gather Evidence:** Collect all communication with the service centre. If they refused to repair it under warranty, get that refusal in writing.\n*   **Independent Opinion:** Take the laptop to a trusted, independent third-party repair shop. Ask them to open it and provide a written statement on whether the damage looks like external spillage or internal manufacturing failure.\n*   **Legal Notice:** Before filing a case, send a formal Legal Notice to the company and the service centre. Often, companies prefer to settle or repair the device to avoid the hassle of a consumer court case.\n*   **Consumer Forum:** If they still refuse, you can file a complaint under the **Consumer Protection Act, 2019**, at the District Consumer Disputes Redressal Commission.\n\n*Disclaimer: I am an AI, not your lawyer. This information is for educational purposes and does not constitute legal advice. Please consult with a qualified advocate for your specific situation.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 3.24,
+  "usage": {
+   "completion_tokens": 472,
+   "prompt_tokens": 82,
+   "total_tokens": 689
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [
+   {
+    "type": "overclaim",
+    "text": "a strong case",
+    "why": "Don't promise or pre-judge the outcome; say what the facts suggest and what depends on evidence."
+   }
+  ],
+  "warnings": [],
+  "ok": false
+ },
+ "must_not_hits": [
+  "(?i)guaranteed"
+ ]
+}

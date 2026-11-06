@@ -1,0 +1,333 @@
+{
+ "case": {
+  "id": "T06_consumer_flight_hinglish",
+  "group": "language",
+  "turns": [
+   "meri flight cancel ho gayi airline ne, 12000 ka ticket tha. 2 mahine ho gaye refund nahi aaya, customer care sirf credit shell de raha hai. mujhe paise wapas chahiye"
+  ],
+  "expect": {
+   "category": "consumer",
+   "script": "Hinglish",
+   "facts": {
+    "amount_paid": "12"
+   },
+   "escalate_max": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "**Your legal position:**\nAirline ka flight cancel karna aur sirf 'credit shell' offer karna, jabki aap refund chahte hain, ek 'deficiency in service' (sewa mein kami) maana ja sakta hai. Consumer Protection Act ke tahat, agar airline ne flight cancel ki hai, toh aap refund ke haqdaar hain; woh aapko zabardasti credit shell lene ke liye majboor nahi kar sakte.\n\n**Law you can cite:**\n* **Consumer Protection Act, 2019 (Section 2(11)):** Yeh kehta hai ki service mein koi bhi kami (deficiency) jisse aapko nuksan ho, woh consumer complaint ka aadhar hai.\n* **Consumer Protection (E-Commerce) Rules, 2020 (Rule 6(3)):** Yeh rules saaf kehte hain ki agar service mein kami hai, toh seller/provider refund dene se mana nahi kar sakta.\n\n**What to do now:**\n1. **National Consumer Helpline (1915):** Sabse pehle yahan complaint register karein, yeh free hai aur aksar airlines yahan se aayi shikayat par jaldi sunwai karti hain.\n2. **Formal Grievance Email:** Airline ke Nodal Officer ko ek email likhein jismein saaf likha ho ki aapko refund chahiye, credit shell nahi. Ismein apna PNR aur booking details zaroor dein.\n3. **e-Jagriti Portal:** Agar 15-20 din mein koi jawab na aaye, toh aap e-Jagriti portal par District Consumer Commission mein case file kar sakte hain. Ismein koi lawyer ki zaroorat nahi hai aur ₹5 lakh tak ke claim par koi fees nahi hai.\n\n**I need from you:**\n1. Kya aapke paas airline ka woh email ya chat ka screenshot hai jismein unhone refund dene se mana kiya hai?\n2. Aapka PNR number ya booking ID kya hai (sirf record ke liye)?",
+   "citations": [
+    {
+     "id": "CPA2019-S2-11",
+     "act": "Consumer Protection Act, 2019",
+     "section": "2(11)",
+     "title": "Meaning of 'deficiency' in service",
+     "plain": "A deficiency is any fault, shortcoming or inadequacy in the quality, nature or manner of a service that the law or a contract requires. It also covers negligence or acts or omissions that cause you loss, and deliberately withholding relevant information from you.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/CP%20Act%202019_1732700731.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPECOM2020-R6-3",
+     "act": "Consumer Protection (E-Commerce) Rules, 2020",
+     "section": "Rule 6(3) and 7(4)",
+     "title": "Seller/platform cannot refuse return or refund for defective, deficient, spurious or late goods",
+     "plain": "A seller on a marketplace (rule 6(3)) and an inventory e-commerce entity (rule 7(4)) cannot refuse to take back goods or refuse a refund if the goods or services are defective, deficient or spurious, or not as advertised. The same applies if delivery was late, unless the delay was due to force majeure.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-NCH-HELPLINE",
+     "act": "National Consumer Helpline",
+     "section": "",
+     "title": "National Consumer Helpline (NCH) contact details",
+     "plain": "Before going to a Consumer Commission, you can register a complaint free with the National Consumer Helpline. Call 1915 or 1800-11-4000 (toll-free), WhatsApp or SMS +91 8800001915, or file online at consumerhelpline.gov.in. NCH is a pre-litigation mediation channel, not a court, and cannot pass binding orders.",
+     "source_url": "https://consumerhelpline.gov.in/",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-EJAGRITI-PORTAL",
+     "act": "e-Jagriti consumer e-filing portal",
+     "section": "",
+     "title": "e-Jagriti: current portal for filing consumer complaints (replaced e-Daakhil)",
+     "plain": "Consumer complaints to the District, State and National Commissions are now filed online on e-Jagriti (https://e-jagriti.gov.in/). It launched on 1 January 2025 and merged the older e-Daakhil, OCMS, NCDRC CMS and CONFONET systems. You can file, pay fees, attend virtual hearings and track your case there.",
+     "source_url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/dec/doc20251223743001.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Last date to file a consumer complaint (2 years from when the problem arose)",
+      "date": "2028-09-06",
+      "days_left": 670,
+      "status": "ok",
+      "basis": "CPA2019-S69",
+      "note": "The commission can accept a late complaint only if you show sufficient cause for the delay.",
+      "user_deadline": true
+     }
+    ],
+    "derived": [
+     {
+      "label": "Where to file",
+      "value": "District Consumer Disputes Redressal Commission",
+      "basis": "CPJURIS2021-R3-5",
+      "note": "Based on the amount you paid (₹12,000), not the amount you claim."
+     },
+     {
+      "label": "Filing fee",
+      "value": "Nil",
+      "basis": "CPCDRC2020-R7",
+      "note": ""
+     }
+    ]
+   },
+   "completeness": {
+    "pct": 50,
+    "missing": [
+     {
+      "key": "other_party_name",
+      "question": "Which company / seller / platform?"
+     },
+     {
+      "key": "purchase_date",
+      "question": "When did you buy it?"
+     },
+     {
+      "key": "proof",
+      "question": "What proof do you have (invoice, order ID, chats, emails, photos)?"
+     },
+     {
+      "key": "city_state",
+      "question": "Which city and state do you live in?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "company_complaint_email"
+    }
+   ],
+   "next_step": "Call 1915 or file a complaint on the National Consumer Helpline website.",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Airline name"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [
+      [
+       "Section 2(11)",
+       "Consumer Protection Act, 2019"
+      ]
+     ],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [
+      [
+       "Section 2(11)",
+       "Consumer Protection Act, 2019"
+      ]
+     ],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Hinglish",
+     "got": "Hinglish",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 5.63,
+    "usage": {
+     "completion_tokens": 778,
+     "prompt_tokens": 4321,
+     "total_tokens": 5212
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "consumer",
+       "language": "Hinglish",
+       "script": "Latin",
+       "facts": {
+        "product_or_service": "Flight ticket",
+        "amount_paid": 12000,
+        "problem_date": "2026-09-06",
+        "complained_to_company": true,
+        "summary": "Airline cancelled flight and is offering credit shell instead of refund of 12000 rupees."
+       },
+       "approximate_dates": [
+        "problem_date"
+       ],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 9.56,
+       "usage": {
+        "completion_tokens": 148,
+        "prompt_tokens": 1023,
+        "total_tokens": 1277
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 5.63,
+       "usage": {
+        "completion_tokens": 778,
+        "prompt_tokens": 4321,
+        "total_tokens": 5212
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 15.2
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "meri flight cancel ho gayi airline ne, 12000 ka ticket tha. 2 mahine ho gaye refund nahi aaya, customer care sirf credit shell de raha hai. mujhe paise wapas chahiye"
+   },
+   {
+    "role": "assistant",
+    "content": "**Your legal position:**\nAirline ka flight cancel karna aur sirf 'credit shell' offer karna, jabki aap refund chahte hain, ek 'deficiency in service' (sewa mein kami) maana ja sakta hai. Consumer Protection Act ke tahat, agar airline ne flight cancel ki hai, toh aap refund ke haqdaar hain; woh aapko zabardasti credit shell lene ke liye majboor nahi kar sakte.\n\n**Law you can cite:**\n* **Consumer Protection Act, 2019 (Section 2(11)):** Yeh kehta hai ki service mein koi bhi kami (deficiency) jisse aapko nuksan ho, woh consumer complaint ka aadhar hai.\n* **Consumer Protection (E-Commerce) Rules, 2020 (Rule 6(3)):** Yeh rules saaf kehte hain ki agar service mein kami hai, toh seller/provider refund dene se mana nahi kar sakta.\n\n**What to do now:**\n1. **National Consumer Helpline (1915):** Sabse pehle yahan complaint register karein, yeh free hai aur aksar airlines yahan se aayi shikayat par jaldi sunwai karti hain.\n2. **Formal Grievance Email:** Airline ke Nodal Officer ko ek email likhein jismein saaf likha ho ki aapko refund chahiye, credit shell nahi. Ismein apna PNR aur booking details zaroor dein.\n3. **e-Jagriti Portal:** Agar 15-20 din mein koi jawab na aaye, toh aap e-Jagriti portal par District Consumer Commission mein case file kar sakte hain. Ismein koi lawyer ki zaroorat nahi hai aur ₹5 lakh tak ke claim par koi fees nahi hai.\n\n**I need from you:**\n1. Kya aapke paas airline ka woh email ya chat ka screenshot hai jismein unhone refund dene se mana kiya hai?\n2. Aapka PNR number ya booking ID kya hai (sirf record ke liye)?"
+   }
+  ],
+  "case": {
+   "category": "consumer",
+   "language": "Hinglish",
+   "script": "Latin",
+   "facts": {
+    "product_or_service": "Flight ticket",
+    "amount_paid": 12000,
+    "problem_date": "2026-09-06",
+    "complained_to_company": true,
+    "summary": "Airline cancelled flight and is offering credit shell instead of refund of 12000 rupees."
+   },
+   "timeline": [
+    {
+     "date": "2026-09-06",
+     "event": "Flight cancelled by airline"
+    }
+   ],
+   "evidence_have": [
+    "Booking details",
+    "Communication with customer care"
+   ],
+   "evidence_missing": [
+    "Screenshots of credit shell offer",
+    "Cancellation email from airline"
+   ],
+   "next_step": "Call 1915 or file a complaint on the National Consumer Helpline website.",
+   "approximate": [
+    "problem_date"
+   ]
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 15.2,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got consumer"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Hinglish, reply script Hinglish"
+  },
+  {
+   "check": "fact:amount_paid",
+   "pass": true,
+   "detail": "expected ~12, got 12000"
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 4,
+  "accurate_scope": 5,
+  "comment": "Clear, actionable advice but could stress lawyer referral more",
+  "judge_model": {
+   "provider": "groq",
+   "model": "openai/gpt-oss-120b",
+   "latency_s": 1.36,
+   "usage": {
+    "queue_time": 0.319390799,
+    "prompt_tokens": 744,
+    "prompt_time": 0.031353651,
+    "completion_tokens": 93,
+    "completion_time": 0.193044729,
+    "total_tokens": 837,
+    "total_time": 0.22439838,
+    "completion_tokens_details": {
+     "reasoning_tokens": 45
+    }
+   },
+   "fallback_attempts": [
+    "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199064, Requested 1101. Please try again in 1m11.28s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_li",
+    "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198896, Requested 1152. Please try again in 20.736s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_lim"
+   ]
+  }
+ }
+}

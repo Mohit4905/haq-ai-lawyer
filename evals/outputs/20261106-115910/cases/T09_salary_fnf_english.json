@@ -1,0 +1,329 @@
+{
+ "case": {
+  "id": "T09_salary_fnf_english",
+  "group": "core",
+  "turns": [
+   "My full and final settlement of Rs 1,35,000 hasn't been paid. I resigned and my last working day was 14 August 2026. I'm a marketing manager at a private company in Mumbai. HR stopped replying to emails after 1 October."
+  ],
+  "expect": {
+   "category": "salary",
+   "script": "Latin",
+   "facts": {
+    "last_working_day": "2026-08-14"
+   },
+   "escalate_min": "none",
+   "must_mention_any": [
+    [
+     "manager",
+     "managerial",
+     "civil",
+     "lawyer",
+     "depends"
+    ]
+   ]
+  }
+ },
+ "results": [
+  {
+   "reply": "Namaste. I understand how frustrating it is when your hard-earned money is stuck, especially after you have moved on from the company. Since your last working day was 14 August 2026, your full and final settlement was legally due by 17 August 2026. Because that date has passed, the company is currently in default.\n\n**Your legal position:**\nUnder the Code on Wages, 2019, you are considered an 'employee' regardless of your designation as a manager. The law is clear that final wages must be paid within two working days of your last day. Since HR has stopped responding, you have a solid basis to escalate this formally.\n\n**Law you can cite:**\n* **Section 17, Code on Wages, 2019:** Mandates that final wages must be paid within two working days of resignation or termination.\n* **Section 45, Code on Wages, 2019:** Allows you to file a wage claim with the government-appointed authority within 3 years to recover unpaid dues.\n\n**What to do now:**\n1. Send a formal 'Demand Notice' via email and registered post to the company's registered office, giving them 15 days to pay.\n2. If they still don't respond, file a claim through the SAMADHAN portal (samadhan.labour.gov.in).\n3. For free guidance, call the NALSA helpline at 15100.\n\nI recommend we start by drafting a formal demand notice to the company. Do you have your offer letter and resignation acceptance email handy? Also, what is the exact name of the company?",
+   "citations": [
+    {
+     "id": "COW2019-S17",
+     "act": "Code on Wages, 2019",
+     "section": "17",
+     "title": "Deadline for paying wages, including after leaving the job",
+     "plain": "Wages are due by these deadlines: daily workers at the end of the shift; weekly workers on the last working day of the week; fortnightly workers before the end of the second day after the fortnight; monthly workers before the end of the 7th day of the next month. If you are removed, dismissed, retrenched or resign, or lose your job because the establishment closes, your wages must be paid within two working days.",
+     "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "COW2019-S45",
+     "act": "Code on Wages, 2019",
+     "section": "45",
+     "title": "Filing a wage claim: who decides it and the 3-year limit",
+     "plain": "Wage claims under the Code are heard by an authority the Government appoints, who must be at least a Gazetted Officer. The claim can be filed by you, your registered trade union, or an Inspector-cum-Facilitator. File within 3 years of the date the claim arises; a later claim may still be accepted if you show sufficient cause. Besides the amount due, the authority can award compensation of up to ten times the claim, and it tries to decide within three months.",
+     "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-COW-NO-WAGE-CEILING",
+     "act": "Code on Wages, 2019",
+     "section": "",
+     "title": "No salary ceiling for the timely-payment and deduction rules",
+     "plain": "The old Payment of Wages Act protected only employees earning up to Rs 24,000 a month. Under the Code on Wages, the rules on paying wages on time and on permitted deductions apply to all employees, whatever their salary. The labour ministry has confirmed that this includes white-collar staff.",
+     "source_url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15793/1/aA2019-29.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Employer had to pay your full & final wages by (2 working days after you left)",
+      "date": "2026-08-17",
+      "days_left": -81,
+      "status": "passed",
+      "basis": "COW2019-S17",
+      "note": "This is the employer's legal deadline; if it has passed, the employer is in default. Assumes a Mon–Sat working week.",
+      "user_deadline": false
+     },
+     {
+      "label": "Approximate last date to file a wage claim with the labour authority (3 years)",
+      "date": "2029-08-14",
+      "days_left": 1012,
+      "status": "ok",
+      "basis": "COW2019-S45",
+      "note": "",
+      "user_deadline": true
+     }
+    ],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 44,
+    "missing": [
+     {
+      "key": "other_party_name",
+      "question": "Employer / company name?"
+     },
+     {
+      "key": "monthly_salary",
+      "question": "Monthly salary (₹)?"
+     },
+     {
+      "key": "unpaid_period",
+      "question": "Which months are unpaid?"
+     },
+     {
+      "key": "still_employed",
+      "question": "Are you still working there? If not, what was your last working day?"
+     },
+     {
+      "key": "employment_proof",
+      "question": "Proof of employment (offer letter, payslips, bank credits, ID card)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "salary_demand_notice"
+    }
+   ],
+   "next_step": "Draft a formal demand notice to the employer",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Company name",
+    "Whether you have the resignation acceptance letter"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [
+      [
+       "Section 17",
+       "Code on Wages, 2019"
+      ],
+      [
+       "Section 45",
+       "Code on Wages, 2019"
+      ]
+     ],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [
+      [
+       "Section 17",
+       "Code on Wages, 2019"
+      ],
+      [
+       "Section 45",
+       "Code on Wages, 2019"
+      ]
+     ],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Latin",
+     "got": "Latin",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 8.06,
+    "usage": {
+     "completion_tokens": 804,
+     "prompt_tokens": 4091,
+     "total_tokens": 5029
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "salary",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "amount_due": 135000,
+        "role": "marketing manager",
+        "city_state": "Mumbai",
+        "communications_so_far": "HR stopped replying to emails after 2026-10-01",
+        "last_working_day": "2026-08-14",
+        "summary": "User is seeking unpaid full and final settlement of Rs 1,35,000 after resigning from a marketing manager role in Mumbai."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 7.58,
+       "usage": {
+        "completion_tokens": 170,
+        "prompt_tokens": 1044,
+        "total_tokens": 1357
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 8.06,
+       "usage": {
+        "completion_tokens": 804,
+        "prompt_tokens": 4091,
+        "total_tokens": 5029
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 15.65
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "My full and final settlement of Rs 1,35,000 hasn't been paid. I resigned and my last working day was 14 August 2026. I'm a marketing manager at a private company in Mumbai. HR stopped replying to emails after 1 October."
+   },
+   {
+    "role": "assistant",
+    "content": "Namaste. I understand how frustrating it is when your hard-earned money is stuck, especially after you have moved on from the company. Since your last working day was 14 August 2026, your full and final settlement was legally due by 17 August 2026. Because that date has passed, the company is currently in default.\n\n**Your legal position:**\nUnder the Code on Wages, 2019, you are considered an 'employee' regardless of your designation as a manager. The law is clear that final wages must be paid within two working days of your last day. Since HR has stopped responding, you have a solid basis to escalate this formally.\n\n**Law you can cite:**\n* **Section 17, Code on Wages, 2019:** Mandates that final wages must be paid within two working days of resignation or termination.\n* **Section 45, Code on Wages, 2019:** Allows you to file a wage claim with the government-appointed authority within 3 years to recover unpaid dues.\n\n**What to do now:**\n1. Send a formal 'Demand Notice' via email and registered post to the company's registered office, giving them 15 days to pay.\n2. If they still don't respond, file a claim through the SAMADHAN portal (samadhan.labour.gov.in).\n3. For free guidance, call the NALSA helpline at 15100.\n\nI recommend we start by drafting a formal demand notice to the company. Do you have your offer letter and resignation acceptance email handy? Also, what is the exact name of the company?"
+   }
+  ],
+  "case": {
+   "category": "salary",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "amount_due": 135000,
+    "role": "marketing manager",
+    "city_state": "Mumbai",
+    "communications_so_far": "HR stopped replying to emails after 2026-10-01",
+    "last_working_day": "2026-08-14",
+    "summary": "User is seeking unpaid full and final settlement of Rs 1,35,000 after resigning from a marketing manager role in Mumbai."
+   },
+   "timeline": [
+    {
+     "date": "2026-08-14",
+     "event": "Last working day"
+    },
+    {
+     "date": "2026-08-17",
+     "event": "Legal deadline for full and final settlement"
+    },
+    {
+     "date": "2026-10-01",
+     "event": "HR stopped responding to emails"
+    }
+   ],
+   "evidence_have": [
+    "Resignation email",
+    "Emails to HR"
+   ],
+   "evidence_missing": [
+    "Offer letter",
+    "Resignation acceptance",
+    "Payslips",
+    "Company registered address"
+   ],
+   "next_step": "Draft a formal demand notice to the employer"
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 15.65,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got salary"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Latin, reply script Latin"
+  },
+  {
+   "check": "fact:last_working_day",
+   "pass": true,
+   "detail": "expected ~2026-08-14, got 2026-08-14"
+  },
+  {
+   "check": "mentions:manager|managerial|civil|lawyer|depends",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation>=none",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "error": "All providers failed: groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199439, Requested 734. Please try again in 1m14.736s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_li | groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199263, Requested 970. Please try again in 1m40.656s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_li"
+ }
+}

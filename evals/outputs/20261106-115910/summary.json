@@ -1,0 +1,43 @@
+{
+ "cases": 22,
+ "checks_passed": 134,
+ "checks_total": 136,
+ "by_check": {
+  "asks_clarifying_question": "1/1",
+  "category": "21/21",
+  "deadline": "2/2",
+  "derived": "1/1",
+  "draft_has_no_invented_fill": "4/4",
+  "draft_no_unverified_law": "4/4",
+  "escalation": "19/19",
+  "fact": "15/15",
+  "mentions": "17/18",
+  "must_not": "13/14",
+  "no_unverified_law_shown": "22/22",
+  "reply_language": "15/15"
+ },
+ "assistant_turns": 23,
+ "turns_where_guard_caught_something": 5,
+ "median_latency_s": 15.04,
+ "baseline_no_guardrails": {
+  "answers": 22,
+  "answers_with_any_flag": 19,
+  "answers_citing_case_law": 7,
+  "answers_citing_repealed_law": 12,
+  "answers_citing_provisions_not_in_library": 14,
+  "answers_violating_test_must_not": 4,
+  "raw_flags": 92
+ },
+ "judge_avg_1to5": {
+  "plain_language": 4.67,
+  "actionable": 5.0,
+  "honest": 4.33,
+  "accurate_scope": 4.33
+ },
+ "models_answering": {
+  "gemini/gemini-3.1-flash-lite": 23
+ },
+ "judge_models": {
+  "groq/openai/gpt-oss-120b": 3
+ }
+}

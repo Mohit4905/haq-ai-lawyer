@@ -1,0 +1,76 @@
+{
+ "id": "T09_salary_fnf_english",
+ "reply": "This is a frustrating situation, but it is unfortunately common. As a Marketing Manager in a private company in Mumbai, you have clear legal avenues to recover your dues. Since your last working day was August 14, 2026, and it is now well past the standard 30-45 day settlement period, you are within your rights to take formal action.\n\nHere is a step-by-step legal guide on how to handle this.\n\n### 1. Review Your Appointment Letter\nBefore taking legal action, check your employment contract/appointment letter.\n*   **Settlement Clause:** Look for the specific clause regarding \"Full and Final Settlement\" or \"Notice Period.\" It usually states that the company must settle dues within 30 to 45 days of the last working day.\n*   **Handover:** Ensure you have proof that you completed the handover process (e.g., \"No Dues Certificate\" or emails confirming handover completion). If you haven't completed the handover, the company might use that as a pretext to withhold payment.\n\n### 2. Send a Formal Legal Notice\nSince HR has stopped responding, emails are no longer effective. You must escalate this to a **Legal Notice**. This is a formal document sent through a lawyer (or by yourself, though a lawyer's letterhead carries more weight) demanding payment within a specific timeframe (usually 15 days).\n\n*   **Why this works:** It serves as a precursor to litigation. Most companies prefer to pay the dues rather than face a legal battle, which costs them more in legal fees and time.\n*   **What it should contain:**\n    *   Your date of resignation and last working day.\n    *   The total amount due (Rs 1,35,000).\n    *   Reference to your previous emails/follow-ups.\n    *   A clear deadline for payment.\n    *   A statement that failure to pay will result in legal proceedings (Civil and potentially Criminal).\n\n### 3. Legal Recourse in Mumbai\nIf the Legal Notice is ignored, you have the following options:\n\n**A. Filing a Summary Suit (Order 37 of CPC)**\nSince this is a \"liquidated demand\" (a specific, undisputed amount of money owed), you can file a **Summary Suit** under Order 37 of the Code of Civil Procedure (CPC) in the Mumbai City Civil Court or the Small Causes Court (depending on the pecuniary jurisdiction).\n*   *Advantage:* This is a faster process than a regular civil suit. The defendant (the company) cannot defend the suit without obtaining leave from the court, which is difficult if they have no valid reason for non-payment.\n\n**B. Labour Court / Industrial Tribunal**\n*   *Note:* As a \"Marketing Manager,\" you may be classified as being in a managerial/administrative capacity. Under the **Industrial Disputes Act, 1947**, \"workmen\" have easier access to Labour Courts. However, even if you are not classified as a \"workman,\" you can still approach the **Labour Commissioner** in Mumbai.\n*   You can file a complaint with the Office of the Labour Commissioner, Maharashtra. They often mediate disputes between employees and employers regarding unpaid wages.\n\n**C. Criminal Complaint (Section 406/420 of IPC)**\nIf the company has deducted Provident Fund (PF) or Professional Tax from your salary but not deposited it with the government, or if they are intentionally withholding your salary despite having the funds, you may consult a lawyer about filing a complaint for **Criminal Breach of Trust (Section 406 of the Indian Penal Code)** or **Cheating (Section 420 of the IPC)**. *Note: This is a severe step and should be discussed with your lawyer based on the specific evidence you have.*\n\n### 4. Immediate Action Plan\n1.  **Consolidate Evidence:** Save all emails, your appointment letter, your resignation acceptance letter, and any communication regarding the F&F amount.\n2.  **Send a \"Final Warning\" Email:** Send one last email to the HR Head and the Director/CEO (if you have their email). State: *\"Despite my resignation on [Date] and LWD on 14 August, my F&F of Rs 1,35,000 remains unpaid. I have received no response since 1 October. Please consider this my final request for payment within 7 days, failing which I will be forced to initiate legal proceedings, including a formal Legal Notice.\"*\n3.  **Consult a Lawyer:** If the 7 days pass without a response, hire a lawyer to draft and send a formal Legal Notice.\n\n**Important Tip:** Do not delay. In India, there are limitation periods for filing suits (usually 3 years for recovery of money), but the sooner you act, the more likely you are to get paid before the company potentially faces financial distress or shuts down.\n\n***Disclaimer:** I am an AI, not your personal attorney. This information is for educational purposes and does not constitute an attorney-client relationship. Please consult with a qualified advocate in Mumbai to review your specific contract and initiate legal action.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 15.75,
+  "usage": {
+   "completion_tokens": 1091,
+   "prompt_tokens": 92,
+   "total_tokens": 1320
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [
+   [
+    "Order 37",
+    "Code of Civil Procedure, 1908"
+   ],
+   [
+    "Order 37",
+    "Code of Civil Procedure, 1908"
+   ]
+  ],
+  "violations": [
+   {
+    "type": "outdated_law",
+    "text": "Indian Penal Code",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "unknown_act",
+    "text": "Industrial Disputes Act, 1947",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "unsupported_number",
+    "text": "45 day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "45 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "3 years",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

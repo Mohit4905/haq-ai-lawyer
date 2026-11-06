@@ -1,0 +1,33 @@
+{
+ "id": "T13_upi_fraud",
+ "reply": "This is a distressing situation, but **time is of the essence.** Because the transaction happened only two hours ago, you are within the \"Golden Hour\" window, which significantly increases your chances of blocking the transaction or recovering the funds.\n\nAs an Indian lawyer, I advise you to follow these steps immediately, in this specific order:\n\n### 1. Immediate Action: Report the Fraud (The \"Golden Hour\")\n*   **Call the National Cyber Crime Helpline:** Dial **1930** immediately. This is the government’s dedicated helpline for financial cyber fraud. Provide them with the transaction ID, the amount, and the time of the incident.\n*   **File an Online Complaint:** Go to the [National Cyber Crime Reporting Portal (cybercrime.gov.in)](https://www.cybercrime.gov.in/). Register a complaint under the \"Financial Fraud\" category.\n    *   *Why this matters:* When you report on 1930 or the portal, the system automatically alerts the nodal officers of the banks involved (both yours and the recipient's). This can freeze the money in the recipient's account before it is withdrawn.\n*   **Contact Your Bank:** Call your bank’s official customer care number (use the number from the back of your debit card or the official website, *not* a number from a Google search, as those are often fake).\n    *   Ask them to **block your account/card** to prevent further debits.\n    *   Ask them to initiate a **\"Chargeback\" or \"Dispute\"** for the unauthorized transaction. Provide them with the Cyber Crime complaint reference number.\n\n### 2. Secure Your Digital Footprint\n*   **Change Credentials:** Immediately change the passwords/PINs for your UPI apps (GPay, PhonePe, Paytm), net banking, and email accounts.\n*   **Check for Remote Access Apps:** If the fraudster asked you to download any app (like AnyDesk, TeamViewer, or ScreenShare), **uninstall it immediately** and factory reset your phone if possible. These apps allow them to see your screen and capture OTPs.\n\n### 3. Legal Recourse\nWhile the bank and the Cyber Cell handle the technical recovery, you should also take the following legal steps:\n\n*   **Visit the Local Police Station:** If the online portal process is slow, visit your nearest police station and file an **FIR (First Information Report)** or a written complaint. Obtain a stamped copy of the complaint (acknowledgment receipt).\n*   **RBI Guidelines (The \"Zero Liability\" Policy):** Under the Reserve Bank of India (RBI) circular *DBR.No.Leg.BC.78/09.07.005/2017-18*, you are entitled to \"Zero Liability\" if you report the unauthorized transaction to the bank **within 3 working days**.\n    *   Since you are reporting it within 2 hours, you are well within this window.\n    *   If the bank refuses to refund the amount, you can cite this circular and escalate the matter to the **Banking Ombudsman**.\n\n### 4. Important Legal Warnings\n*   **Do not engage with the fraudster:** Do not call them back or try to \"negotiate\" with them. They will likely try to scam you again by promising a refund if you pay a \"processing fee.\" This is a common secondary scam.\n*   **Document Everything:** Take screenshots of the transaction, the SMS/OTP received, and any call logs from the fraudster. Keep a record of the time you called the bank and the Cyber Cell.\n\n### Summary Checklist for Right Now:\n1.  **Call 1930.**\n2.  **Call your Bank** to freeze the account.\n3.  **File a complaint** on [cybercrime.gov.in](https://www.cybercrime.gov.in/).\n4.  **Visit your bank branch** tomorrow morning with the printed complaint copy to submit a formal written dispute.\n\n**Disclaimer:** *I am an AI, not your personal attorney. While this advice is based on standard Indian banking regulations and cybercrime procedures, please consult with a local advocate if the bank refuses to cooperate or if the amount is significant and requires formal legal notice.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 6.34,
+  "usage": {
+   "completion_tokens": 901,
+   "prompt_tokens": 66,
+   "total_tokens": 1101
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [],
+  "warnings": [
+   {
+    "type": "unsupported_number",
+    "text": "3 working days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "2 hours",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": true
+ },
+ "must_not_hits": []
+}

@@ -1,0 +1,445 @@
+{
+ "case": {
+  "id": "T03_deposit_hinglish_pg_vague_then_detail",
+  "group": "multi_turn",
+  "turns": [
+   "bhai mera paisa nahi de raha",
+   "PG wala hai pune me, 15000 deposit tha. 1 october ko chhoda. ab bolta hai notice period nahi diya isliye nahi dunga. koi agreement nahi tha bas whatsapp pe baat hui thi"
+  ],
+  "expect": {
+   "category": "tenancy",
+   "script": "Hinglish",
+   "first_turn_asks_question": true,
+   "facts": {
+    "deposit_amount": "15"
+   },
+   "must_mention_any": [
+    [
+     "whatsapp",
+     "WhatsApp",
+     "screenshot",
+     "chat"
+    ]
+   ],
+   "escalate_max": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "Bhai, main samajh sakta hoon ki paise phanse hone par kitni pareshani hoti hai. Aapki madad karne ke liye mujhe thoda aur janana hoga ki mamla kya hai. Kya ye paisa aapne kisi ko udhaar diya tha, kisi naukri ki salary baki hai, ya kisi dukandar/company ko refund ke liye diya tha? \n\nJab tak aap batayenge nahi, main sahi kanooni rasta nahi bata paunga. Aap bas ye bata dein:\n1. Paisa kis wajah se phansa hai (udhaar, salary, ya refund)?\n2. Kitna samay ho gaya hai aur kya aapke paas koi proof hai (jaise message, email, ya receipt)?",
+   "citations": [
+    {
+     "id": "FACT-NALSA-HELPLINE",
+     "act": "NALSA legal aid helpline",
+     "section": "",
+     "title": "NALSA legal aid helpline 15100",
+     "plain": "Call the national legal aid helpline 15100 (toll-free) for free legal advice and help applying for legal aid. You can also apply for legal aid or victim compensation online via the NALSA website.",
+     "source_url": "https://nalsa.gov.in/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 0,
+    "missing": []
+   },
+   "actions": [],
+   "next_step": "Clarify the nature of the transaction",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "nature of transaction",
+    "amount",
+    "proof"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Hinglish",
+     "got": "Hinglish",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 3.33,
+    "usage": {
+     "completion_tokens": 356,
+     "prompt_tokens": 2297,
+     "total_tokens": 2757
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "other",
+       "language": "Hinglish",
+       "script": "Latin",
+       "facts": {
+        "summary": "User is reporting that someone is not returning their money, but the nature of the transaction is unclear."
+       },
+       "approximate_dates": [],
+       "confidence": 0.5
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 1.98,
+       "usage": {
+        "completion_tokens": 82,
+        "prompt_tokens": 989,
+        "total_tokens": 1173
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 3.33,
+       "usage": {
+        "completion_tokens": 356,
+        "prompt_tokens": 2297,
+        "total_tokens": 2757
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 5.31
+  },
+  {
+   "reply": "**Your legal position:**\nBhai, bina written agreement ke bhi aapka case mazboot hai kyunki WhatsApp par hui baatcheet ek 'implied contract' (maana hua samjhauta) maani jaati hai. Landlord sirf apni marzi se deposit nahi rok sakta; agar unhone notice period ka claim kiya hai, toh unhe ye saabit karna hoga ki notice period kitna tha aur aapne wo nahi diya. WhatsApp par aapke paas jo bhi proof hai, wo court mein kaam aayega.\n\n**Law you can cite:**\n* **Section 73, Indian Contract Act, 1872:** Agar koi contract todta hai, toh aap nuksan ki bharpayi (deposit refund) maang sakte hain.\n* **Article 55, Limitation Act, 1963:** Aapke paas apna paisa recover karne ke liye 3 saal ka samay hota hai, isliye abhi kaafi waqt hai.\n\n**What to do now:**\n1. **Formal Demand:** WhatsApp par ek saaf message bhejiye jismein aapne kab room chhoda aur kitna paisa baki hai, uska zikr ho. Unhe 7 din ka time dein.\n2. **Legal Notice:** Agar wo nahi maante, toh ek formal legal notice bhejiye (main ismein aapki madad kar sakta hoon).\n3. **DLSA:** Agar phir bhi baat na bane, toh Pune ke District Legal Services Authority (DLSA) mein pre-litigation mediation ke liye apply karein (Helpline: 15100).\n\n**I need from you:**\n1. Kya aapke paas bank transfer ya UPI ka proof hai ki aapne 15,000 deposit diya tha?\n2. Kya aapne room chhodne se pehle unhe koi bhi message ya verbal notice diya tha?",
+   "citations": [
+    {
+     "id": "ICA1872-S73",
+     "act": "Indian Contract Act, 1872",
+     "section": "73",
+     "title": "Compensation for breach of contract",
+     "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+     "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "LIM1963-ART55",
+     "act": "Limitation Act, 1963",
+     "section": "Schedule, Article 55",
+     "title": "3 years to sue for compensation for breach of contract",
+     "plain": "A suit for compensation for breach of a contract (written or implied), where no other article covers it specifically, must be filed within 3 years. Time runs from the date of the breach. If there are repeated breaches, it runs from the breach you sue on; if the breach is continuing, from when it stops.",
+     "source_url": "https://www.thc.nic.in/Central%20Governmental%20Acts/Limitation%20Act,%202019.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-LOKADALAT-PRELITIGATION",
+     "act": "Legal Services Authorities Act, 1987",
+     "section": "",
+     "title": "Pre-litigation settlement through Lok Adalat",
+     "plain": "Even before filing a case, one party can apply to the District or State Legal Services Authority to have a civil dispute, or a compoundable criminal matter, referred to a Lok Adalat for amicable settlement. Non-compoundable offences are excluded. This is available now, unlike Mediation Act section 5.",
+     "source_url": "https://delhi.nalsa.gov.in/lok-adalat/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Approximate last date to sue for the deposit (3 years)",
+      "date": "2029-10-01",
+      "days_left": 1060,
+      "status": "ok",
+      "basis": "LIM1963-ART55",
+      "note": "Limitation depends on the exact claim; confirm with legal aid before relying on it.",
+      "user_deadline": true
+     }
+    ],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 56,
+    "missing": [
+     {
+      "key": "monthly_rent",
+      "question": "What was the monthly rent (₹)?"
+     },
+     {
+      "key": "deductions_claimed",
+      "question": "Has the landlord claimed any deductions (painting, damage, dues)?"
+     },
+     {
+      "key": "proof_of_payment",
+      "question": "Do you have proof you paid the deposit (bank transfer, receipt)?"
+     },
+     {
+      "key": "other_party_name",
+      "question": "Landlord's name (and address, if you have it)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "deposit_demand_notice"
+    }
+   ],
+   "next_step": "Send a formal demand message via WhatsApp",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Proof of payment",
+    "Any prior notice given"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [
+      [
+       "Section 73",
+       "Indian Contract Act, 1872"
+      ],
+      [
+       "Article 55",
+       "Limitation Act, 1963"
+      ]
+     ],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [
+      [
+       "Section 73",
+       "Indian Contract Act, 1872"
+      ],
+      [
+       "Article 55",
+       "Limitation Act, 1963"
+      ]
+     ],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Hinglish",
+     "got": "Hinglish",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 6.44,
+    "usage": {
+     "completion_tokens": 759,
+     "prompt_tokens": 3590,
+     "total_tokens": 5039
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "tenancy",
+       "language": "Hinglish",
+       "script": "Latin",
+       "facts": {
+        "deposit_amount": 15000,
+        "possession_handed_over_date": "2026-10-01",
+        "written_agreement": false,
+        "city_state": "Pune",
+        "communications_so_far": "WhatsApp",
+        "summary": "PG owner refusing to return 15000 deposit, claiming no notice period was given."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.5,
+       "usage": {
+        "completion_tokens": 150,
+        "prompt_tokens": 1146,
+        "total_tokens": 1417
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 6.44,
+       "usage": {
+        "completion_tokens": 759,
+        "prompt_tokens": 3590,
+        "total_tokens": 5039
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 8.95
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "bhai mera paisa nahi de raha"
+   },
+   {
+    "role": "assistant",
+    "content": "Bhai, main samajh sakta hoon ki paise phanse hone par kitni pareshani hoti hai. Aapki madad karne ke liye mujhe thoda aur janana hoga ki mamla kya hai. Kya ye paisa aapne kisi ko udhaar diya tha, kisi naukri ki salary baki hai, ya kisi dukandar/company ko refund ke liye diya tha? \n\nJab tak aap batayenge nahi, main sahi kanooni rasta nahi bata paunga. Aap bas ye bata dein:\n1. Paisa kis wajah se phansa hai (udhaar, salary, ya refund)?\n2. Kitna samay ho gaya hai aur kya aapke paas koi proof hai (jaise message, email, ya receipt)?"
+   },
+   {
+    "role": "user",
+    "content": "PG wala hai pune me, 15000 deposit tha. 1 october ko chhoda. ab bolta hai notice period nahi diya isliye nahi dunga. koi agreement nahi tha bas whatsapp pe baat hui thi"
+   },
+   {
+    "role": "assistant",
+    "content": "**Your legal position:**\nBhai, bina written agreement ke bhi aapka case mazboot hai kyunki WhatsApp par hui baatcheet ek 'implied contract' (maana hua samjhauta) maani jaati hai. Landlord sirf apni marzi se deposit nahi rok sakta; agar unhone notice period ka claim kiya hai, toh unhe ye saabit karna hoga ki notice period kitna tha aur aapne wo nahi diya. WhatsApp par aapke paas jo bhi proof hai, wo court mein kaam aayega.\n\n**Law you can cite:**\n* **Section 73, Indian Contract Act, 1872:** Agar koi contract todta hai, toh aap nuksan ki bharpayi (deposit refund) maang sakte hain.\n* **Article 55, Limitation Act, 1963:** Aapke paas apna paisa recover karne ke liye 3 saal ka samay hota hai, isliye abhi kaafi waqt hai.\n\n**What to do now:**\n1. **Formal Demand:** WhatsApp par ek saaf message bhejiye jismein aapne kab room chhoda aur kitna paisa baki hai, uska zikr ho. Unhe 7 din ka time dein.\n2. **Legal Notice:** Agar wo nahi maante, toh ek formal legal notice bhejiye (main ismein aapki madad kar sakta hoon).\n3. **DLSA:** Agar phir bhi baat na bane, toh Pune ke District Legal Services Authority (DLSA) mein pre-litigation mediation ke liye apply karein (Helpline: 15100).\n\n**I need from you:**\n1. Kya aapke paas bank transfer ya UPI ka proof hai ki aapne 15,000 deposit diya tha?\n2. Kya aapne room chhodne se pehle unhe koi bhi message ya verbal notice diya tha?"
+   }
+  ],
+  "case": {
+   "category": "tenancy",
+   "language": "Hinglish",
+   "script": "Latin",
+   "facts": {
+    "summary": "PG owner refusing to return 15000 deposit, claiming no notice period was given.",
+    "deposit_amount": 15000,
+    "possession_handed_over_date": "2026-10-01",
+    "written_agreement": false,
+    "city_state": "Pune",
+    "communications_so_far": "WhatsApp"
+   },
+   "timeline": [
+    {
+     "date": "2026-10-01",
+     "event": "Possession handed over"
+    }
+   ],
+   "evidence_have": [
+    "WhatsApp chat history"
+   ],
+   "evidence_missing": [
+    "nature of transaction",
+    "amount involved",
+    "proof of transaction",
+    "Proof of deposit payment (bank statement/UPI transaction)",
+    "Proof of notice given (if any)"
+   ],
+   "next_step": "Send a formal demand message via WhatsApp"
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 5.31,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   },
+   {
+    "t": 8.95,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got tenancy"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Hinglish, reply script Hinglish"
+  },
+  {
+   "check": "fact:deposit_amount",
+   "pass": true,
+   "detail": "expected ~15, got 15000"
+  },
+  {
+   "check": "mentions:whatsapp|WhatsApp|screenshot|chat",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "asks_clarifying_question",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "error": "All providers failed: groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199289, Requested 1046. Please try again in 2m24.72s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_li"
+ }
+}

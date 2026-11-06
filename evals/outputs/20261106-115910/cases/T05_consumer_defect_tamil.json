@@ -1,0 +1,336 @@
+{
+ "case": {
+  "id": "T05_consumer_defect_tamil",
+  "group": "language",
+  "turns": [
+   "நான் சென்னையில் ஜூலை 2026-ல் 32,000 ரூபாய்க்கு வாஷிங் மெஷின் வாங்கினேன். இரண்டு மாதத்தில் வேலை செய்யவில்லை. வாரண்டி இருந்தும் சர்வீஸ் சென்டர் சரிசெய்ய மறுக்கிறது. என்ன செய்வது?"
+  ],
+  "expect": {
+   "category": "consumer",
+   "script": "Tamil",
+   "facts": {
+    "amount_paid": "32"
+   },
+   "escalate_max": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "**உங்கள் சட்ட நிலை:**\nநீங்கள் வாங்கிய பொருள் இரண்டு மாதங்களிலேயே பழுதானது மற்றும் வாரண்டி இருந்தும் சரிசெய்ய மறுப்பது, நுகர்வோர் பாதுகாப்புச் சட்டத்தின் கீழ் 'சேவை குறைபாடு' (Deficiency in Service) ஆகும். உங்கள் வாதம் வலுவாக உள்ளது, ஏனெனில் வாரண்டி காலத்தில் பழுதுபார்ப்பது நிறுவனத்தின் கடமை.\n\n**நீங்கள் குறிப்பிடக்கூடிய சட்டங்கள்:**\n* **நுகர்வோர் பாதுகாப்புச் சட்டம், 2019, பிரிவு 2(11):** இது சேவையில் உள்ள குறைபாடுகளை வரையறுக்கிறது; பழுதான பொருளைச் சரிசெய்ய மறுப்பது இதில் அடங்கும்.\n* **நுகர்வோர் பாதுகாப்புச் சட்டம், 2019, பிரிவு 39:** பழுதான பொருளைச் சரிசெய்யவோ, மாற்றிக் கொடுக்கவோ அல்லது பணத்தைத் திரும்பப் பெறவோ நுகர்வோர் ஆணையம் உத்தரவிட முடியும்.\n* **நுகர்வோர் பாதுகாப்பு (மின்-வணிகம்) விதிகள், 2020, விதி 6(3):** பழுதான அல்லது தரமற்ற பொருளுக்குப் பொறுப்பேற்கவும், பணத்தைத் திரும்பப் பெறவும் நிறுவனம் மறுக்க முடியாது.\n\n**இப்போது என்ன செய்ய வேண்டும்:**\n1. நிறுவனத்தின் வாடிக்கையாளர் சேவைக்கு மின்னஞ்சல் அல்லது கடிதம் மூலம் முறையான புகார் அளிக்கவும் (48 மணிநேரத்தில் பதில் வர வேண்டும்).\n2. தேசிய நுகர்வோர் உதவி மையத்தை (National Consumer Helpline) 1915 என்ற எண்ணில் அழைத்து புகார் பதிவு செய்யவும்.\n3. தீர்வு கிடைக்கவில்லை என்றால், 'e-Jagriti' இணையதளத்தில் நுகர்வோர் ஆணையத்தில் புகார் அளிக்கவும் (இதற்கு கட்டணம் இல்லை).\n\n**என்னிடமிருந்து உங்களுக்குத் தேவை:**\n1. நீங்கள் நிறுவனத்திற்கு எழுத்துப்பூர்வமாக புகார் அளித்துள்ளீர்களா?\n2. உங்களிடம் வாங்கியதற்கான ரசீது (Invoice) மற்றும் வாரண்டி அட்டை உள்ளதா?\n\n**Law you can cite (checked against official sources):**\n- **Section 2(11), Consumer Protection Act, 2019**: A deficiency is any fault, shortcoming or inadequacy in the quality, nature or manner of a service that the law or a contract requires.\n- **Section 35, Consumer Protection Act, 2019**: A complaint can be filed with the District Commission by the consumer, by a registered consumer association, by one or more consumers on behalf of many with the same interest (with the Commission's permission), or by the Central/State Government or the Central Authority.\n- **Section 69, Consumer Protection Act, 2019**: You must file a consumer complaint within two years from the date the problem (cause of action) arose.",
+   "citations": [
+    {
+     "id": "CPA2019-S2-11",
+     "act": "Consumer Protection Act, 2019",
+     "section": "2(11)",
+     "title": "Meaning of 'deficiency' in service",
+     "plain": "A deficiency is any fault, shortcoming or inadequacy in the quality, nature or manner of a service that the law or a contract requires. It also covers negligence or acts or omissions that cause you loss, and deliberately withholding relevant information from you.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/CP%20Act%202019_1732700731.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPA2019-S39",
+     "act": "Consumer Protection Act, 2019",
+     "section": "39",
+     "title": "Reliefs the District Commission can order",
+     "plain": "If your complaint is proved, the Commission can order the seller or service provider to remove defects, replace the goods, refund the price or charges with interest, pay compensation for loss or injury (including punitive damages), stop the unfair practice, withdraw hazardous goods, issue corrective advertisements, and pay your costs.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/CP%20Act%202019_1732700731.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPECOM2020-R6-3",
+     "act": "Consumer Protection (E-Commerce) Rules, 2020",
+     "section": "Rule 6(3) and 7(4)",
+     "title": "Seller/platform cannot refuse return or refund for defective, deficient, spurious or late goods",
+     "plain": "A seller on a marketplace (rule 6(3)) and an inventory e-commerce entity (rule 7(4)) cannot refuse to take back goods or refuse a refund if the goods or services are defective, deficient or spurious, or not as advertised. The same applies if delivery was late, unless the delay was due to force majeure.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPA2019-S35",
+     "act": "Consumer Protection Act, 2019",
+     "section": "35",
+     "title": "Who can file a complaint, and electronic filing",
+     "plain": "A complaint can be filed with the District Commission by the consumer, by a registered consumer association, by one or more consumers on behalf of many with the same interest (with the Commission's permission), or by the Central/State Government or the Central Authority. The Act allows complaints to be filed electronically, and the prescribed fee can be paid electronically.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/CP%20Act%202019_1732700731.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPA2019-S69",
+     "act": "Consumer Protection Act, 2019",
+     "section": "69",
+     "title": "Limitation period for filing complaint",
+     "plain": "You must file a consumer complaint within two years from the date the problem (cause of action) arose. A later complaint can still be accepted if you show sufficient cause for the delay, but the Commission must record its reasons for condoning the delay.",
+     "source_url": "https://indiacode.gov.in/server/api/core/items/f2c38f98-2e6c-4d75-af6f-f35ecddefb25",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Last date to file a consumer complaint (2 years from when the problem arose)",
+      "date": "2028-07-01",
+      "days_left": 603,
+      "status": "ok",
+      "basis": "CPA2019-S69",
+      "note": "The commission can accept a late complaint only if you show sufficient cause for the delay.",
+      "user_deadline": true
+     }
+    ],
+    "derived": [
+     {
+      "label": "Where to file",
+      "value": "District Consumer Disputes Redressal Commission",
+      "basis": "CPJURIS2021-R3-5",
+      "note": "Based on the amount you paid (₹32,000), not the amount you claim."
+     },
+     {
+      "label": "Filing fee",
+      "value": "Nil",
+      "basis": "CPCDRC2020-R7",
+      "note": ""
+     }
+    ]
+   },
+   "completeness": {
+    "pct": 50,
+    "missing": [
+     {
+      "key": "other_party_name",
+      "question": "Which company / seller / platform?"
+     },
+     {
+      "key": "problem_date",
+      "question": "When did the problem start (or refund become due)?"
+     },
+     {
+      "key": "complained_to_company",
+      "question": "Have you complained to the company? When, and what did they say?"
+     },
+     {
+      "key": "proof",
+      "question": "What proof do you have (invoice, order ID, chats, emails, photos)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "company_complaint_email"
+    }
+   ],
+   "next_step": "Send a formal written complaint to the company grievance officer.",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Whether the user has already complained in writing"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [
+      {
+       "type": "ambiguous_section",
+       "text": "பிரிவு 2(11)",
+       "why": "Section mentioned without naming the Act."
+      },
+      {
+       "type": "ambiguous_section",
+       "text": "பிரிவு 39",
+       "why": "Section mentioned without naming the Act."
+      }
+     ],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [
+      {
+       "type": "ambiguous_section",
+       "text": "பிரிவு 2(11)",
+       "why": "Section mentioned without naming the Act."
+      },
+      {
+       "type": "ambiguous_section",
+       "text": "பிரிவு 39",
+       "why": "Section mentioned without naming the Act."
+      }
+     ],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Tamil",
+     "got": "Tamil",
+     "rewritten": false
+    },
+    "core_citations_added": [
+     "CPA2019-S2-11",
+     "CPA2019-S35",
+     "CPA2019-S69"
+    ],
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 8.25,
+    "usage": {
+     "completion_tokens": 742,
+     "prompt_tokens": 4366,
+     "total_tokens": 6454
+    },
+    "fallback_attempts": [
+     "gemini/gemini-3.1-flash-lite: gemini/gemini-3.1-flash-lite HTTP 503: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]"
+    ]
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "consumer",
+       "language": "Tamil",
+       "script": "Tamil",
+       "facts": {
+        "product_or_service": "Washing machine",
+        "amount_paid": "32000",
+        "purchase_date": "2026-07-01",
+        "city_state": "Chennai",
+        "summary": "User purchased a washing machine in July 2026 for 32,000 INR, which stopped working after two months, and the service center is refusing to repair it despite the warranty."
+       },
+       "approximate_dates": [
+        "purchase_date"
+       ],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 1.88,
+       "usage": {
+        "completion_tokens": 167,
+        "prompt_tokens": 1037,
+        "total_tokens": 1331
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 8.25,
+       "usage": {
+        "completion_tokens": 742,
+        "prompt_tokens": 4366,
+        "total_tokens": 6454
+       },
+       "fallback_attempts": [
+        "gemini/gemini-3.1-flash-lite: gemini/gemini-3.1-flash-lite HTTP 503: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]"
+       ]
+      }
+     }
+    ]
+   },
+   "latency_s": 14.82
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "நான் சென்னையில் ஜூலை 2026-ல் 32,000 ரூபாய்க்கு வாஷிங் மெஷின் வாங்கினேன். இரண்டு மாதத்தில் வேலை செய்யவில்லை. வாரண்டி இருந்தும் சர்வீஸ் சென்டர் சரிசெய்ய மறுக்கிறது. என்ன செய்வது?"
+   },
+   {
+    "role": "assistant",
+    "content": "**உங்கள் சட்ட நிலை:**\nநீங்கள் வாங்கிய பொருள் இரண்டு மாதங்களிலேயே பழுதானது மற்றும் வாரண்டி இருந்தும் சரிசெய்ய மறுப்பது, நுகர்வோர் பாதுகாப்புச் சட்டத்தின் கீழ் 'சேவை குறைபாடு' (Deficiency in Service) ஆகும். உங்கள் வாதம் வலுவாக உள்ளது, ஏனெனில் வாரண்டி காலத்தில் பழுதுபார்ப்பது நிறுவனத்தின் கடமை.\n\n**நீங்கள் குறிப்பிடக்கூடிய சட்டங்கள்:**\n* **நுகர்வோர் பாதுகாப்புச் சட்டம், 2019, பிரிவு 2(11):** இது சேவையில் உள்ள குறைபாடுகளை வரையறுக்கிறது; பழுதான பொருளைச் சரிசெய்ய மறுப்பது இதில் அடங்கும்.\n* **நுகர்வோர் பாதுகாப்புச் சட்டம், 2019, பிரிவு 39:** பழுதான பொருளைச் சரிசெய்யவோ, மாற்றிக் கொடுக்கவோ அல்லது பணத்தைத் திரும்பப் பெறவோ நுகர்வோர் ஆணையம் உத்தரவிட முடியும்.\n* **நுகர்வோர் பாதுகாப்பு (மின்-வணிகம்) விதிகள், 2020, விதி 6(3):** பழுதான அல்லது தரமற்ற பொருளுக்குப் பொறுப்பேற்கவும், பணத்தைத் திரும்பப் பெறவும் நிறுவனம் மறுக்க முடியாது.\n\n**இப்போது என்ன செய்ய வேண்டும்:**\n1. நிறுவனத்தின் வாடிக்கையாளர் சேவைக்கு மின்னஞ்சல் அல்லது கடிதம் மூலம் முறையான புகார் அளிக்கவும் (48 மணிநேரத்தில் பதில் வர வேண்டும்).\n2. தேசிய நுகர்வோர் உதவி மையத்தை (National Consumer Helpline) 1915 என்ற எண்ணில் அழைத்து புகார் பதிவு செய்யவும்.\n3. தீர்வு கிடைக்கவில்லை என்றால், 'e-Jagriti' இணையதளத்தில் நுகர்வோர் ஆணையத்தில் புகார் அளிக்கவும் (இதற்கு கட்டணம் இல்லை).\n\n**என்னிடமிருந்து உங்களுக்குத் தேவை:**\n1. நீங்கள் நிறுவனத்திற்கு எழுத்துப்பூர்வமாக புகார் அளித்துள்ளீர்களா?\n2. உங்களிடம் வாங்கியதற்கான ரசீது (Invoice) மற்றும் வாரண்டி அட்டை உள்ளதா?\n\n**Law you can cite (checked against official sources):**\n- **Section 2(11), Consumer Protection Act, 2019**: A deficiency is any fault, shortcoming or inadequacy in the quality, nature or manner of a service that the law or a contract requires.\n- **Section 35, Consumer Protection Act, 2019**: A complaint can be filed with the District Commission by the consumer, by a registered consumer association, by one or more consumers on behalf of many with the same interest (with the Commission's permission), or by the Central/State Government or the Central Authority.\n- **Section 69, Consumer Protection Act, 2019**: You must file a consumer complaint within two years from the date the problem (cause of action) arose."
+   }
+  ],
+  "case": {
+   "category": "consumer",
+   "language": "Tamil",
+   "script": "Tamil",
+   "facts": {
+    "product_or_service": "Washing machine",
+    "amount_paid": 32000,
+    "purchase_date": "2026-07-01",
+    "city_state": "Chennai",
+    "summary": "User purchased a washing machine in July 2026 for 32,000 INR, which stopped working after two months, and the service center is refusing to repair it despite the warranty."
+   },
+   "timeline": [
+    {
+     "date": "2026-09-01",
+     "event": "Machine stopped working (approximate)"
+    }
+   ],
+   "evidence_have": [],
+   "evidence_missing": [
+    "Purchase invoice",
+    "Warranty card",
+    "Proof of communication with service center"
+   ],
+   "next_step": "Send a formal written complaint to the company grievance officer.",
+   "approximate": [
+    "purchase_date"
+   ]
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 14.82,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got consumer"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Tamil, reply script Tamil"
+  },
+  {
+   "check": "fact:amount_paid",
+   "pass": true,
+   "detail": "expected ~32, got 32000"
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "error": "All providers failed: groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199131, Requested 1320. Please try again in 3m14.832s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_l"
+ }
+}

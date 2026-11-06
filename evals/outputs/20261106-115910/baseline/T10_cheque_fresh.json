@@ -1,0 +1,107 @@
+{
+ "id": "T10_cheque_fresh",
+ "reply": "This is a classic case of **Cheque Dishonour**, which is a criminal offence in India under **Section 138 of the Negotiable Instruments Act, 1881**.\n\nSince you have received the return memo, you are now within the legal timeline to initiate proceedings. Please follow these steps strictly, as the law is very procedural and time-bound.\n\n### Step 1: Send a Legal Notice (Mandatory)\nYou cannot file a court case immediately. You must first send a formal legal notice to Arun Mehta.\n\n*   **Timeline:** You must send this notice within **30 days** from the date you received the return memo (the intimation from your bank). Since you received the memo on 27 October 2026, you must ensure the notice is dispatched by **26 November 2026**.\n*   **Content:** The notice must clearly state:\n    *   The details of the loan/transaction.\n    *   The cheque number, date, and amount.\n    *   The fact that it was dishonoured due to \"funds insufficient.\"\n    *   A demand for the payment of the cheque amount within **15 days** of the receipt of the notice.\n*   **Method:** Send this via Registered Post with Acknowledgment Due (RPAD) or Speed Post. Keep the postal receipt and the tracking report safely.\n\n### Step 2: Wait for 15 Days\nOnce Arun Mehta receives the notice, he has 15 days to pay the amount.\n*   If he pays the amount within these 15 days, the matter is resolved.\n*   If he fails to pay, or if he ignores the notice, or if he refuses to accept the notice, the \"cause of action\" arises.\n\n### Step 3: File a Criminal Complaint\nIf the 15-day period expires without payment, you can file a criminal complaint under Section 138 of the Negotiable Instruments Act.\n\n*   **Timeline:** You must file the complaint in the appropriate Magistrate’s Court within **30 days** after the expiry of the 15-day notice period.\n*   **Jurisdiction:** You should file the complaint in the court within whose jurisdiction your bank branch (where you deposited the cheque) is located. This was clarified by the Supreme Court in the landmark case *Dashrath Rupsingh Rathod vs. State of Maharashtra* and subsequently amended by the Negotiable Instruments (Amendment) Act, 2015.\n\n### Important Documents You Need to Keep Ready:\n1.  **Original Cheque** (that was dishonoured).\n2.  **Bank Return Memo** (the document stating \"funds insufficient\").\n3.  **Copy of the Legal Notice** sent to Arun Mehta.\n4.  **Postal Receipt** and **Tracking Report** (proof of delivery of the notice).\n5.  **Affidavit** (to be prepared by your lawyer).\n\n### Legal Precedents to Note:\n*   **Section 138 of the NI Act:** This is the primary section that makes cheque bounce a punishable offence (imprisonment up to 2 years or a fine up to twice the cheque amount, or both).\n*   **Presumption of Liability:** Under **Section 139 of the NI Act**, the court presumes that the cheque was issued for the discharge of a debt or liability. The burden of proof lies on Arun Mehta to prove otherwise.\n\n### Recommendation:\nDo not delay. Since you have already received the return memo, **contact a local lawyer immediately** to draft the legal notice. Do not try to draft this yourself, as any technical error in the notice (such as incorrect dates or missing specific legal language) can lead to the dismissal of your case later.\n\n***Disclaimer:** I am an AI, not a practicing lawyer. This information is for educational purposes and does not constitute formal legal advice. Please consult with a qualified advocate in your jurisdiction to handle the filing of the notice and the subsequent complaint.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 4.47,
+  "usage": {
+   "completion_tokens": 850,
+   "prompt_tokens": 111,
+   "total_tokens": 1102
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ],
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ],
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ]
+  ],
+  "violations": [
+   {
+    "type": "case_law",
+    "text": "Dashrath Rupsingh Rathod vs. St",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "landmark",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 139 of Negotiable Instruments Act, 1881",
+    "why": "This section of this Act is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Amendment) Act, 2015",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "NI Act",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 Days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15-day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15-day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "2 years",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

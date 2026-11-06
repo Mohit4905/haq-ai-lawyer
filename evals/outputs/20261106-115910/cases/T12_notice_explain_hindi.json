@@ -1,0 +1,320 @@
+{
+ "case": {
+  "id": "T12_notice_explain_hindi",
+  "group": "core",
+  "turns": [
+   "मुझे वकील का नोटिस आया है अंग्रेज़ी में, समझ नहीं आ रहा। लिखा है: 'Under instructions from my client Mr. S.K. Verma, I hereby call upon you to pay Rs. 1,00,000 towards damages caused to the premises at Flat 4B, Indirapuram, within 15 days of receipt of this notice, failing which my client shall initiate appropriate civil proceedings against you at your risk as to costs.' मैंने वो फ्लैट 2 महीने पहले खाली किया था और कोई नुकसान नहीं किया।"
+  ],
+  "expect": {
+   "category_any": [
+    "notice",
+    "tenancy"
+   ],
+   "script": "Devanagari",
+   "must_mention_any": [
+    [
+     "15"
+    ],
+    [
+     "जवाब",
+     "reply",
+     "रिप्लाई"
+    ]
+   ],
+   "escalate_min": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "नमस्ते। घबराइए मत, कानूनी नोटिस मिलना तनावपूर्ण हो सकता है, लेकिन यह सिर्फ एक दावा है, कोई अदालत का फैसला नहीं। चूंकि आपने फ्लैट 2 महीने पहले खाली कर दिया था और आप कह रहे हैं कि कोई नुकसान नहीं हुआ, तो आपके पास अपना पक्ष रखने का पूरा अधिकार है।\n\n**आपकी कानूनी स्थिति:**\nकानून के अनुसार, मकान मालिक को यह साबित करना होगा कि नुकसान हुआ है और वह आपकी वजह से हुआ है। चूंकि आपने फ्लैट खाली कर दिया है, तो अब यह साबित करना उनके लिए मुश्किल होगा कि नुकसान आपके समय में हुआ था। आपको इस नोटिस का जवाब लिखित में देना चाहिए ताकि आपका पक्ष रिकॉर्ड पर रहे।\n\n**कानून जिसका आप हवाला दे सकते हैं:**\n* **भारतीय अनुबंध अधिनियम, 1872 की धारा 73 (Section 73, Indian Contract Act, 1872):** यह कहता है कि नुकसान के लिए हर्जाना तभी मांगा जा सकता है जब वह वास्तव में हुआ हो और अनुबंध के उल्लंघन का सीधा परिणाम हो। आप कह सकते हैं कि कोई नुकसान नहीं हुआ, इसलिए कोई हर्जाना नहीं बनता।\n* **मॉडल टेनेंसी एक्ट, 2021 की धारा 11 (Model Tenancy Act, 2021, Section 11):** यह सुरक्षा जमा (security deposit) और फ्लैट की स्थिति के बारे में है। आप इसका उपयोग यह तर्क देने के लिए कर सकते हैं कि फ्लैट सही स्थिति में सौंपा गया था।\n\n**अब क्या करें:**\n1. **नोटिस को अनदेखा न करें:** 15 दिन की समय सीमा महत्वपूर्ण है।\n2. **सबूत इकट्ठा करें:** फ्लैट खाली करते समय की कोई फोटो, वीडियो, या मकान मालिक को दी गई चाबियों की रसीद या ईमेल/व्हाट्सएप मैसेज ढूंढें।\n3. **लिखित जवाब भेजें:** एक वकील के माध्यम से या खुद एक औपचारिक जवाब भेजें जिसमें आप स्पष्ट रूप से दावों को नकारें।\n4. **कानूनी सहायता:** यदि मामला आगे बढ़ता है, तो 15100 (NALSA) पर कॉल करें या अपने पास के 'टेली-लॉ' (Tele-Law) केंद्र पर जाएं।\n\nमैं आपको इस नोटिस का जवाब ड्राफ्ट करने में मदद कर सकता हूँ।\n\n**मुझे आपसे यह जानना है:**\n1. क्या आपके पास फ्लैट खाली करते समय की कोई फोटो या वीडियो है, या मकान मालिक से हुई कोई बातचीत (WhatsApp/Email) है जिसमें उन्होंने फ्लैट की स्थिति पर कोई आपत्ति नहीं जताई थी?\n2. क्या आपने फ्लैट खाली करते समय मकान मालिक से 'नो ड्यूज सर्टिफिकेट' (No Dues Certificate) या सुरक्षा जमा (security deposit) वापस लिया था?",
+   "citations": [
+    {
+     "id": "ICA1872-S73",
+     "act": "Indian Contract Act, 1872",
+     "section": "73",
+     "title": "Compensation for breach of contract",
+     "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+     "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "MTA2021-S11",
+     "act": "Model Tenancy Act, 2021",
+     "section": "11",
+     "title": "Security deposit cap and refund (model law only)",
+     "plain": "Under the Model Tenancy Act, the security deposit is what the landlord and tenant agree. It may not exceed 2 months' rent for a home or 6 months' rent for non-residential premises, and it must be refunded when the landlord takes back vacant possession, after deducting anything the tenant owes. This is a model law: it applies only if your state has passed its own law adopting these rules.",
+     "source_url": "https://web.archive.org/web/2024id_/https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 67,
+    "missing": [
+     {
+      "key": "notice_date",
+      "question": "Date on the notice?"
+     },
+     {
+      "key": "received_date",
+      "question": "When did you receive it?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "reply_to_notice"
+    }
+   ],
+   "next_step": "Draft a formal reply to the legal notice denying the allegations.",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "The notice threatens legal proceedings: get it reviewed",
+     "Since a legal notice has been issued, having a lawyer review your response ensures you don't accidentally admit liability."
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Whether user has any proof of the flat's condition at the time of handover."
+   ],
+   "guard": {
+    "initial": {
+     "verified": [
+      [
+       "धारा 73",
+       "Indian Contract Act, 1872"
+      ],
+      [
+       "Section 73",
+       "Indian Contract Act, 1872"
+      ],
+      [
+       "धारा 11",
+       "Model Tenancy Act, 2021"
+      ],
+      [
+       "Section 11",
+       "Model Tenancy Act, 2021"
+      ]
+     ],
+     "violations": [],
+     "warnings": [
+      {
+       "type": "unsupported_number",
+       "text": "15 दिन",
+       "why": "Time period not found in the verified library or calculations."
+      }
+     ],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [
+      [
+       "धारा 73",
+       "Indian Contract Act, 1872"
+      ],
+      [
+       "Section 73",
+       "Indian Contract Act, 1872"
+      ],
+      [
+       "धारा 11",
+       "Model Tenancy Act, 2021"
+      ],
+      [
+       "Section 11",
+       "Model Tenancy Act, 2021"
+      ]
+     ],
+     "violations": [],
+     "warnings": [
+      {
+       "type": "unsupported_number",
+       "text": "15 दिन",
+       "why": "Time period not found in the verified library or calculations."
+      }
+     ],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Devanagari",
+     "got": "Devanagari",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 6.56,
+    "usage": {
+     "completion_tokens": 1006,
+     "prompt_tokens": 3331,
+     "total_tokens": 4462
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": [
+       {
+        "level": "recommended",
+        "reason": "The notice threatens legal proceedings: get it reviewed"
+       }
+      ]
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "notice",
+       "language": "Hindi",
+       "script": "Devanagari",
+       "facts": {
+        "notice_from": "Mr. S.K. Verma",
+        "notice_demands": "Pay Rs. 1,00,000 towards damages to premises",
+        "notice_deadline_days": "15",
+        "notice_text": "Under instructions from my client Mr. S.K. Verma, I hereby call upon you to pay Rs. 1,00,000 towards damages caused to the premises at Flat 4B, Indirapuram, within 15 days of receipt of this notice, failing which my client shall initiate appropriate civil proceedings against you at your risk as to costs.",
+        "possession_handed_over_date": "2026-09-01",
+        "summary": "User received a legal notice from landlord Mr. S.K. Verma demanding 1 lakh for alleged damages to a flat vacated 2 months ago."
+       },
+       "approximate_dates": [
+        "possession_handed_over_date"
+       ],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 4.24,
+       "usage": {
+        "completion_tokens": 269,
+        "prompt_tokens": 1092,
+        "total_tokens": 1506
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 6.56,
+       "usage": {
+        "completion_tokens": 1006,
+        "prompt_tokens": 3331,
+        "total_tokens": 4462
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 10.81
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "मुझे वकील का नोटिस आया है अंग्रेज़ी में, समझ नहीं आ रहा। लिखा है: 'Under instructions from my client Mr. S.K. Verma, I hereby call upon you to pay Rs. 1,00,000 towards damages caused to the premises at Flat 4B, Indirapuram, within 15 days of receipt of this notice, failing which my client shall initiate appropriate civil proceedings against you at your risk as to costs.' मैंने वो फ्लैट 2 महीने पहले खाली किया था और कोई नुकसान नहीं किया।"
+   },
+   {
+    "role": "assistant",
+    "content": "नमस्ते। घबराइए मत, कानूनी नोटिस मिलना तनावपूर्ण हो सकता है, लेकिन यह सिर्फ एक दावा है, कोई अदालत का फैसला नहीं। चूंकि आपने फ्लैट 2 महीने पहले खाली कर दिया था और आप कह रहे हैं कि कोई नुकसान नहीं हुआ, तो आपके पास अपना पक्ष रखने का पूरा अधिकार है।\n\n**आपकी कानूनी स्थिति:**\nकानून के अनुसार, मकान मालिक को यह साबित करना होगा कि नुकसान हुआ है और वह आपकी वजह से हुआ है। चूंकि आपने फ्लैट खाली कर दिया है, तो अब यह साबित करना उनके लिए मुश्किल होगा कि नुकसान आपके समय में हुआ था। आपको इस नोटिस का जवाब लिखित में देना चाहिए ताकि आपका पक्ष रिकॉर्ड पर रहे।\n\n**कानून जिसका आप हवाला दे सकते हैं:**\n* **भारतीय अनुबंध अधिनियम, 1872 की धारा 73 (Section 73, Indian Contract Act, 1872):** यह कहता है कि नुकसान के लिए हर्जाना तभी मांगा जा सकता है जब वह वास्तव में हुआ हो और अनुबंध के उल्लंघन का सीधा परिणाम हो। आप कह सकते हैं कि कोई नुकसान नहीं हुआ, इसलिए कोई हर्जाना नहीं बनता।\n* **मॉडल टेनेंसी एक्ट, 2021 की धारा 11 (Model Tenancy Act, 2021, Section 11):** यह सुरक्षा जमा (security deposit) और फ्लैट की स्थिति के बारे में है। आप इसका उपयोग यह तर्क देने के लिए कर सकते हैं कि फ्लैट सही स्थिति में सौंपा गया था।\n\n**अब क्या करें:**\n1. **नोटिस को अनदेखा न करें:** 15 दिन की समय सीमा महत्वपूर्ण है।\n2. **सबूत इकट्ठा करें:** फ्लैट खाली करते समय की कोई फोटो, वीडियो, या मकान मालिक को दी गई चाबियों की रसीद या ईमेल/व्हाट्सएप मैसेज ढूंढें।\n3. **लिखित जवाब भेजें:** एक वकील के माध्यम से या खुद एक औपचारिक जवाब भेजें जिसमें आप स्पष्ट रूप से दावों को नकारें।\n4. **कानूनी सहायता:** यदि मामला आगे बढ़ता है, तो 15100 (NALSA) पर कॉल करें या अपने पास के 'टेली-लॉ' (Tele-Law) केंद्र पर जाएं।\n\nमैं आपको इस नोटिस का जवाब ड्राफ्ट करने में मदद कर सकता हूँ।\n\n**मुझे आपसे यह जानना है:**\n1. क्या आपके पास फ्लैट खाली करते समय की कोई फोटो या वीडियो है, या मकान मालिक से हुई कोई बातचीत (WhatsApp/Email) है जिसमें उन्होंने फ्लैट की स्थिति पर कोई आपत्ति नहीं जताई थी?\n2. क्या आपने फ्लैट खाली करते समय मकान मालिक से 'नो ड्यूज सर्टिफिकेट' (No Dues Certificate) या सुरक्षा जमा (security deposit) वापस लिया था?"
+   }
+  ],
+  "case": {
+   "category": "notice",
+   "language": "Hindi",
+   "script": "Devanagari",
+   "facts": {
+    "notice_from": "Mr. S.K. Verma",
+    "notice_demands": "100000",
+    "notice_deadline_days": "15",
+    "notice_text": "Under instructions from my client Mr. S.K. Verma, I hereby call upon you to pay Rs. 1,00,000 towards damages caused to the premises at Flat 4B, Indirapuram, within 15 days of receipt of this notice, failing which my client shall initiate appropriate civil proceedings against you at your risk as to costs.",
+    "possession_handed_over_date": "2026-09-01",
+    "summary": "User received a legal notice from landlord Mr. S.K. Verma demanding 1 lakh for alleged damages to a flat vacated 2 months ago."
+   },
+   "timeline": [
+    {
+     "date": "2026-09-01",
+     "event": "Flat vacated"
+    }
+   ],
+   "evidence_have": [],
+   "evidence_missing": [
+    "Photos/videos of flat at time of vacating",
+    "Communication (WhatsApp/Email) with landlord regarding handover"
+   ],
+   "next_step": "Draft a formal reply to the legal notice denying the allegations.",
+   "approximate": [
+    "possession_handed_over_date"
+   ]
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "The notice threatens legal proceedings: get it reviewed",
+    "Since a legal notice has been issued, having a lawyer review your response ensures you don't accidentally admit liability."
+   ]
+  },
+  "log": [
+   {
+    "t": 10.81,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got notice"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Devanagari, reply script Devanagari"
+  },
+  {
+   "check": "mentions:15",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "mentions:जवाब|reply|रिप्लाई",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation>=recommended",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "error": "All providers failed: groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199870, Requested 1337. Please try again in 8m41.424s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_l"
+ }
+}

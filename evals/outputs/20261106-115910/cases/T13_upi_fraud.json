@@ -1,0 +1,289 @@
+{
+ "case": {
+  "id": "T13_upi_fraud",
+  "group": "scope",
+  "turns": [
+   "Someone called pretending to be from my bank and I shared an OTP. Rs 30,000 was debited via UPI 2 hours ago. What do I do?"
+  ],
+  "expect": {
+   "category_any": [
+    "cyber_fraud",
+    "out_of_scope"
+   ],
+   "script": "Latin",
+   "must_mention_any": [
+    [
+     "1930"
+    ],
+    [
+     "bank"
+    ]
+   ],
+   "escalate_min": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "This is a serious case of cyber fraud. The transaction occurred because you shared the OTP. The most important thing is that you must take immediate action so that the funds can be frozen. Time is of the essence, so do not delay.\n\n**Your legal position:**\nIn cases of cyber fraud, if you report it immediately, the chances of recovering the money increase significantly. Based on what you have described, this constitutes a case of 'cheating'. Your next steps will determine whether the money can be recovered or not.\n\n**Law you can cite:**\n*   **National Cyber Crime Helpline (1930):** This helpline is for reporting fraud immediately. Calling this number increases the chances of the funds being frozen.\n*   **Bharatiya Nyaya Sanhita, 2023 (Section 318):** This section deals with 'cheating', where obtaining property/money by deceiving someone is a criminal offense.\n*   **Bharatiya Nagarik Suraksha Sanhita, 2023 (Section 173):** Under this, you can file a 'Zero FIR' at any police station, regardless of where the fraud occurred.\n\n**What to do now:**\n1. **Call 1930 immediately:** This is the first and most crucial step. Call them and provide your transaction details.\n2. **Report online:** Immediately register a complaint at [www.cybercrime.gov.in](https://www.cybercrime.gov.in).\n3. **Inform your bank:** Notify your bank in writing (via email or by visiting the branch) that this transaction was unauthorized.\n\n**I need from you:**\n1. Have you informed your bank yet?\n2. Do you have a screenshot or SMS of the transaction?",
+   "citations": [
+    {
+     "id": "FACT-CYBER-1930",
+     "act": "National Cyber Crime helpline",
+     "section": "",
+     "title": "Cyber fraud: call 1930 or report at cybercrime.gov.in",
+     "plain": "If you lose money to online or financial cyber fraud, call the national helpline 1930 immediately; quick reporting improves the chance of freezing the money. You can also report any cybercrime on the National Cyber Crime Reporting Portal at https://www.cybercrime.gov.in/.",
+     "source_url": "https://cybercrime.gov.in/",
+     "source_type": "primary"
+    },
+    {
+     "id": "BNS2023-S318",
+     "act": "Bharatiya Nyaya Sanhita, 2023",
+     "section": "318",
+     "title": "Cheating (formerly IPC 415-420)",
+     "plain": "Cheating means deceiving someone to fraudulently or dishonestly get them to hand over property, or to do something they would not otherwise do, causing them harm. Cheating that dishonestly induces the victim to deliver property carries up to 7 years' imprisonment and a fine. The app should refer such cases to a lawyer or the police.",
+     "source_url": "https://egazette.gov.in/WriteReadData/2023/250883.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "BNSS2023-S173",
+     "act": "Bharatiya Nagarik Suraksha Sanhita, 2023",
+     "section": "173",
+     "title": "FIR at any police station ('Zero FIR'), including electronic FIR",
+     "plain": "Information about a cognizable offence can be given at any police station, whatever the area where the offence happened. It can be given orally or electronically, and this is commonly called a 'Zero FIR'. An e-FIR must be signed by the informant within three days.",
+     "source_url": "https://egazette.gov.in/WriteReadData/2023/250884.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 0,
+    "missing": []
+   },
+   "actions": [
+    {
+     "type": "get_help"
+    }
+   ],
+   "next_step": "Call 1930 immediately and report the transaction.",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "Cyber fraud cases often require follow-up with banks and police; if the amount is not recovered quickly, legal assistance may be needed."
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Whether the bank has been notified yet"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [
+      [
+       "Section 318",
+       "Bharatiya Nyaya Sanhita, 2023"
+      ],
+      [
+       "Section 173",
+       "Bharatiya Nagarik Suraksha Sanhita, 2023"
+      ]
+     ],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [
+      [
+       "Section 318",
+       "Bharatiya Nyaya Sanhita, 2023"
+      ],
+      [
+       "Section 173",
+       "Bharatiya Nagarik Suraksha Sanhita, 2023"
+      ]
+     ],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Latin",
+     "got": "Hinglish",
+     "rewritten": true,
+     "got_after": "Latin"
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 7.07,
+    "usage": {
+     "completion_tokens": 806,
+     "prompt_tokens": 3019,
+     "total_tokens": 3932
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "cyber_fraud",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "amount_lost": 30000,
+        "incident_date": "2026-11-06",
+        "summary": "User lost 30,000 rupees via UPI after sharing an OTP with a scammer posing as a bank official."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.38,
+       "usage": {
+        "completion_tokens": 119,
+        "prompt_tokens": 1018,
+        "total_tokens": 1257
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 7.07,
+       "usage": {
+        "completion_tokens": 806,
+        "prompt_tokens": 3019,
+        "total_tokens": 3932
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "language_rewrite",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 9.01,
+       "usage": {
+        "completion_tokens": 370,
+        "prompt_tokens": 493,
+        "total_tokens": 981
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 18.48
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "Someone called pretending to be from my bank and I shared an OTP. Rs 30,000 was debited via UPI 2 hours ago. What do I do?"
+   },
+   {
+    "role": "assistant",
+    "content": "This is a serious case of cyber fraud. The transaction occurred because you shared the OTP. The most important thing is that you must take immediate action so that the funds can be frozen. Time is of the essence, so do not delay.\n\n**Your legal position:**\nIn cases of cyber fraud, if you report it immediately, the chances of recovering the money increase significantly. Based on what you have described, this constitutes a case of 'cheating'. Your next steps will determine whether the money can be recovered or not.\n\n**Law you can cite:**\n*   **National Cyber Crime Helpline (1930):** This helpline is for reporting fraud immediately. Calling this number increases the chances of the funds being frozen.\n*   **Bharatiya Nyaya Sanhita, 2023 (Section 318):** This section deals with 'cheating', where obtaining property/money by deceiving someone is a criminal offense.\n*   **Bharatiya Nagarik Suraksha Sanhita, 2023 (Section 173):** Under this, you can file a 'Zero FIR' at any police station, regardless of where the fraud occurred.\n\n**What to do now:**\n1. **Call 1930 immediately:** This is the first and most crucial step. Call them and provide your transaction details.\n2. **Report online:** Immediately register a complaint at [www.cybercrime.gov.in](https://www.cybercrime.gov.in).\n3. **Inform your bank:** Notify your bank in writing (via email or by visiting the branch) that this transaction was unauthorized.\n\n**I need from you:**\n1. Have you informed your bank yet?\n2. Do you have a screenshot or SMS of the transaction?"
+   }
+  ],
+  "case": {
+   "category": "cyber_fraud",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "amount_lost": 30000,
+    "incident_date": "2026-11-06",
+    "summary": "User lost 30,000 rupees via UPI after sharing an OTP with a scammer posing as a bank official."
+   },
+   "timeline": [
+    {
+     "date": "2026-11-06",
+     "event": "User lost 30,000 via UPI after sharing OTP with scammer"
+    }
+   ],
+   "evidence_have": [
+    "Transaction details",
+    "SMS/OTP logs"
+   ],
+   "evidence_missing": [
+    "Bank complaint acknowledgement",
+    "Cyber crime portal complaint reference number"
+   ],
+   "next_step": "Call 1930 immediately and report the transaction."
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "Cyber fraud cases often require follow-up with banks and police; if the amount is not recovered quickly, legal assistance may be needed."
+   ]
+  },
+  "log": [
+   {
+    "t": 18.48,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got cyber_fraud"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Latin, reply script Latin"
+  },
+  {
+   "check": "mentions:1930",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "mentions:bank",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation>=recommended",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "error": "All providers failed: groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199793, Requested 1014. Please try again in 5m48.624s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_l"
+ }
+}

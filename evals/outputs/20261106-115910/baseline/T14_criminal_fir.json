@@ -1,0 +1,115 @@
+{
+ "id": "T14_criminal_fir",
+ "reply": "This is a stressful situation, but it is important to remain calm and act systematically. As an Indian lawyer, I can provide you with the legal framework regarding cheating cases and the process for securing bail.\n\n***Disclaimer:** I am an AI, not your personal lawyer. This information is for educational purposes and does not constitute formal legal advice. You must consult with a criminal defense lawyer in your jurisdiction immediately to handle the specific facts of your case.*\n\n### 1. Likely Sections of Law\nWhen a business partner files a complaint for \"cheating,\" the police typically invoke the **Indian Penal Code (IPC)** (or the **Bharatiya Nyaya Sanhita (BNS)** if the incident occurred after July 1, 2024).\n\n*   **Section 420 IPC (Cheating and dishonestly inducing delivery of property):** This is the most common section used in business disputes. It carries a punishment of up to 7 years imprisonment and a fine.\n*   **Section 406 IPC (Criminal Breach of Trust):** If the allegation involves the misappropriation of funds or assets entrusted to your brother, this section is often added.\n*   **Section 120B IPC (Criminal Conspiracy):** If the police allege that your brother conspired with others to commit the fraud, this section may be added.\n\n*Note: If the case is registered under the new BNS, the corresponding sections would be Section 318 (Cheating) and Section 316 (Criminal Breach of Trust).*\n\n### 2. Is Arrest Mandatory?\n**No, arrest is not mandatory in every case.**\nAccording to the landmark Supreme Court judgment in **Arnesh Kumar vs. State of Bihar (2014)**, the police cannot automatically arrest an accused in cases where the maximum punishment is less than 7 years (which includes Section 420/406 IPC) unless specific conditions are met (e.g., to prevent the accused from committing further offenses, to prevent tampering with evidence, or if the accused is a flight risk).\n\nThe police are required to issue a **Notice under Section 41A of the CrPC** (or Section 35(3) of the BNSS) asking your brother to appear before the Investigating Officer (IO) for questioning, rather than arresting him immediately.\n\n### 3. How to Get Bail\nThere are two primary ways to secure protection from arrest:\n\n#### A. Anticipatory Bail (Section 438 CrPC / Section 482 BNSS)\nIf you fear your brother will be arrested immediately, you should file for **Anticipatory Bail** in the Sessions Court or the High Court.\n*   **What it is:** This is \"pre-arrest\" bail. If granted, the court directs that in the event of an arrest, the police must release your brother on bail immediately.\n*   **Strategy:** Your lawyer will argue that the dispute is purely civil in nature (a business disagreement) and has been given a criminal color to harass your brother. They will emphasize that your brother is willing to cooperate with the investigation.\n\n#### B. Regular Bail\nIf your brother is already arrested, he will be produced before a Magistrate within 24 hours. At this stage, your lawyer will move a **Regular Bail application**.\n*   The court will look at the nature of the accusation, the severity of the punishment, and whether there is a risk of the accused fleeing or tampering with evidence.\n\n### Immediate Steps You Should Take:\n\n1.  **Do not panic or hide:** If the police visit again, ask them to provide a copy of the FIR. You have a legal right to know the contents of the FIR.\n2.  **Hire a Criminal Defense Lawyer:** Do not try to handle this alone. You need a lawyer who specializes in criminal law to draft the Anticipatory Bail application.\n3.  **Gather Documents:** Collect all business agreements, emails, WhatsApp chats, bank statements, and invoices that prove the transaction was a legitimate business deal and not a criminal act. This is crucial to prove that the dispute is **\"Civil in nature.\"**\n4.  **Cooperate (with caution):** If the police issue a notice under Section 41A, your brother must comply and appear before the IO with his lawyer. Do not ignore these notices.\n5.  **Check for \"Civil Color\":** Many business disputes are purely civil (breach of contract). Courts often quash FIRs if they find that the complainant is using the police to recover money rather than reporting a genuine crime. Your lawyer can file a petition under **Section 482 of the CrPC** (or Section 528 of the BNSS) in the High Court to quash the FIR if it is found to be malicious.\n\n**Action Plan:** Contact a local criminal lawyer today to file an Anticipatory Bail application. This is your best defense against immediate detention.",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 7.45,
+  "usage": {
+   "completion_tokens": 1036,
+   "prompt_tokens": 71,
+   "total_tokens": 1224
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [
+   {
+    "type": "outdated_law",
+    "text": "Indian Penal Code",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "CrPC",
+    "why": "Code of Criminal Procedure, 1973 was replaced by the Bharatiya Nagarik Suraksha Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "CrPC",
+    "why": "Code of Criminal Procedure, 1973 was replaced by the Bharatiya Nagarik Suraksha Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "CrPC",
+    "why": "Code of Criminal Procedure, 1973 was replaced by the Bharatiya Nagarik Suraksha Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS)"
+   },
+   {
+    "type": "case_law",
+    "text": "Arnesh Kumar vs. St",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "landmark",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 41A",
+    "why": "Not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "ambiguous_section",
+    "text": "Section 318",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 316",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "7 years",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "7 years",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": [
+  "(?i)(?:section|sec\\.?|s\\.)\\s*\\d+\\w?\\s*(?:of\\s+(?:the\\s+)?)?(?:IPC|Indian Penal Code)"
+ ]
+}

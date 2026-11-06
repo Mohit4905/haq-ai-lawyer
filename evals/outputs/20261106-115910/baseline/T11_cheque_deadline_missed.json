@@ -1,0 +1,112 @@
+{
+ "id": "T11_cheque_deadline_missed",
+ "reply": "Yes, you can still file a case under Section 138 of the Negotiable Instruments Act, 1881, provided you act immediately.\n\nHowever, you must strictly adhere to the timelines prescribed by the law. Here is the step-by-step breakdown of your legal position and the procedure you need to follow:\n\n### 1. The Statutory Timeline (The \"30-Day Rule\")\nUnder Section 138 of the NI Act, the law mandates a specific sequence of events:\n\n*   **The Notice Period:** You are required to send a legal notice to the drawer (the person who issued the cheque) within **30 days** from the date you received the \"Cheque Return Memo\" from your bank.\n*   **The Calculation:** Since your cheque was returned on **10 August 2026**, you have until **9 September 2026** to ensure the legal notice is *sent* (dispatched) to the drawer.\n\n**Crucial Advice:** If you have not sent the notice yet, you must send it via Registered Post with Acknowledgment Due (RPAD) or Speed Post immediately. Do not delay this any further.\n\n### 2. What happens after you send the notice?\nOnce the drawer receives the legal notice, the following timeline applies:\n\n*   **15 Days to Pay:** The drawer has **15 days** from the date of *receipt* of the legal notice to make the payment of Rs 85,000.\n*   **Filing the Complaint:** If the drawer fails to make the payment within these 15 days, the \"cause of action\" arises. You then have **30 days** from the expiry of that 15-day period to file a criminal complaint in the appropriate Magistrate’s Court.\n\n### 3. What if you miss the 30-day notice deadline?\nIf you fail to send the legal notice within 30 days of the cheque return (i.e., by 9 September 2026), you lose the right to file a case under Section 138 of the NI Act.\n\n**If you miss this deadline, your remaining options are:**\n*   **Civil Suit for Recovery:** You can file a civil suit for recovery of money under Order 37 of the Code of Civil Procedure (Summary Suit). This is a civil remedy, not a criminal one, and it generally takes longer than a Section 138 case.\n*   **Police Complaint (Cheating):** If you can prove that the person issued the cheque with the *dishonest intention* to cheat you from the very beginning (Section 420 of the Indian Penal Code), you could theoretically file an FIR. However, courts often view Section 420 cases as civil disputes unless there is clear evidence of fraud/criminal intent.\n\n### Summary of Action Plan:\n1.  **Check the date:** Today is [Current Date]. If it is before 9 September 2026, you are still within the legal window.\n2.  **Draft the Notice:** Immediately consult a lawyer to draft a formal legal notice. It must clearly state the cheque details, the date of return, the reason for return, and a demand for payment within 15 days.\n3.  **Send via Registered Post:** Ensure you send it via Registered Post/Speed Post and keep the tracking receipt and the acknowledgment card (when it returns) safely. These are vital pieces of evidence.\n4.  **Do not wait:** Every day of delay increases the risk of missing the statutory deadline.\n\n***Disclaimer:** I am an AI, not your personal lawyer. This information is for educational purposes and does not constitute formal legal advice. Laws can be subject to specific interpretations by courts. Please consult with a practicing advocate in your jurisdiction immediately to draft and send the notice before your deadline expires.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 7.81,
+  "usage": {
+   "completion_tokens": 822,
+   "prompt_tokens": 88,
+   "total_tokens": 1066
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ],
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ],
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ],
+   [
+    "Order 37",
+    "Code of Civil Procedure, 1908"
+   ]
+  ],
+  "violations": [
+   {
+    "type": "outdated_law",
+    "text": "Indian Penal Code",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "unknown_section",
+    "text": "Section 420",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "NI Act",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30-Day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 Days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15-day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30-day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

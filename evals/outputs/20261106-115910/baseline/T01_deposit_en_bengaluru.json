@@ -1,0 +1,50 @@
+{
+ "id": "T01_deposit_en_bengaluru",
+ "reply": "This is a common issue faced by tenants in Bengaluru. Since you have a **registered rent agreement**, you are in a strong legal position.\n\nUnder Indian law, a security deposit is refundable, subject to deductions for damages beyond \"normal wear and tear.\" A landlord cannot arbitrarily deduct money without providing proof of expenses.\n\nHere is a step-by-step guide on how to handle this situation:\n\n### 1. Review Your Rent Agreement\nThe first step is to check the specific clauses in your registered agreement regarding:\n*   **Security Deposit Refund:** Does it specify a timeline for the refund (e.g., \"within 30 days of vacating\")?\n*   **Painting Charges:** Does the agreement explicitly state that painting charges are mandatory upon vacating, or is it only for \"damages\"?\n*   **Normal Wear and Tear:** Most standard agreements state that the tenant is not liable for \"normal wear and tear\" (fading paint, minor scuffs, etc.). Painting the entire house is often considered a landlord's maintenance responsibility unless you caused specific damage (e.g., holes in walls, broken tiles).\n\n### 2. Send a Formal Legal Notice\nSince it has been over two months, you should escalate this from a casual conversation to a formal demand.\n\n*   **Draft a Legal Notice:** You can draft this yourself or have a lawyer do it. It should state:\n    *   The date you vacated and handed over the keys.\n    *   The amount of the deposit (Rs 60,000).\n    *   The fact that you have requested the refund multiple times.\n    *   A demand for the immediate refund of the balance amount (or the full amount if no damages exist).\n    *   A clear statement that if the amount is not paid within 7–15 days, you will initiate legal proceedings.\n*   **Send via Registered Post:** Send this notice via Registered Post with Acknowledgement Due (RPAD). This serves as legal proof that the landlord received your demand.\n\n### 3. Legal Recourse\nIf the landlord still refuses to pay after the legal notice, you have the following options:\n\n**A. Consumer Forum (Consumer Disputes Redressal Commission)**\n*   **Why:** Many courts have ruled that the relationship between a landlord and tenant (where services are involved) can fall under the Consumer Protection Act, 2019, if the landlord is acting in a commercial capacity or if there is a deficiency in service.\n*   **Process:** You can file a complaint online via the **e-Daakhil** portal. You do not necessarily need a lawyer for this, though it helps.\n\n**B. Civil Suit for Recovery of Money**\n*   **Why:** This is a standard civil remedy under the **Code of Civil Procedure (CPC)**. You can file a suit for the recovery of the deposit amount.\n*   **Process:** You will need to file a summary suit (Order 37 of the CPC) if the agreement is written and the claim is for a liquidated sum of money. This is often faster than a regular civil suit.\n\n**C. Police Complaint (Last Resort)**\n*   If the landlord is threatening you or refusing to acknowledge the agreement, you can file a complaint at the local police station for \"Criminal Breach of Trust\" (Section 406 of the Indian Penal Code). However, police are often reluctant to intervene in civil disputes, so this is usually less effective than a legal notice.\n\n### Important Tips for Your Case:\n1.  **Gather Evidence:** Collect your bank transfer receipts (showing the deposit payment), the rent agreement, and any WhatsApp chats or emails where you asked for the refund and he refused.\n2.  **The \"Painting\" Argument:** If the landlord claims \"painting charges,\" ask him for the **GST invoice** for the painting work done. If he cannot produce a bill, he cannot legally deduct the amount. \"General damage\" is a vague term; he must prove specific damage beyond normal wear and tear.\n3.  **Don't Delay:** While you have a limitation period of 3 years to file a civil suit for recovery of money, it is best to act immediately while the evidence is fresh.\n\n**Recommendation:**\nStart by sending a **formal legal notice** via a lawyer. Often, receiving a notice on a lawyer’s letterhead is enough to make a landlord realize you are serious and that they will lose more money in legal fees than the amount they are trying to withhold.\n\n***Disclaimer:** I am an AI, not a practicing advocate. This information is for educational purposes and does not constitute formal legal advice. Laws can be subject to interpretation. Please consult with a local lawyer in Bengaluru to draft the legal notice and assess the specific clauses of your agreement.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 5.43,
+  "usage": {
+   "completion_tokens": 1006,
+   "prompt_tokens": 139,
+   "total_tokens": 1312
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [
+   [
+    "Order 37",
+    "Code of Civil Procedure, 1908"
+   ]
+  ],
+  "violations": [
+   {
+    "type": "outdated_law",
+    "text": "Indian Penal Code",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   }
+  ],
+  "warnings": [
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "3 years",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}
