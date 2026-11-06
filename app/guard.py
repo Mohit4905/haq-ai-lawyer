@@ -40,11 +40,12 @@ CASE_RES = [
     re.compile(r"(?i)\b(?:landmark|in the case of)\b"),
     re.compile(r"(?:सुप्रीम कोर्ट|उच्च न्यायालय|उच्चतम न्यायालय|हाई कोर्ट)\s*(?:ने)\s*(?:कहा|फैसला|निर्णय)"),
 ]
-# Overconfident claims: Haq must not promise outcomes or pre-judge the other side.
+# Promised outcomes. A lawyer may call a case strong or weak on the facts given (that is an
+# assessment); what Haq must not do is guarantee the result.
 OVERCLAIM_RE = re.compile(
-    r"(?i)\b(?:(?:a|an|very|really)\s+)?(?:solid|strong|clear|airtight|watertight|open[- ]and[- ]shut|winning)\s+case\b"
-    r"|\b(?:clear(?:ly)?|direct(?:ly)?|obvious(?:ly)?|blatant(?:ly)?)\s+(?:a\s+)?(?:violat\w*|breach\w*|illegal)\b|\bdefinitely\s+(?:win|get|succeed|illegal)\b"
-    r"|\b(?:your|the|this)\s+(?:claim|case|position)\s+is\s+(?:very\s+|really\s+)?(?:strong|solid|watertight|airtight)\b"
+    r"(?i)\b(?:(?:a|an|very|really)\s+)?(?:airtight|watertight|open[- ]and[- ]shut|winning)\s+case\b"
+    r"|\bdefinitely\s+(?:win|get|succeed)\b"
+    r"|\b(?:your|the|this)\s+(?:claim|case|position)\s+is\s+(?:very\s+|really\s+)?(?:watertight|airtight|unbeatable)\b"
     r"|\bguarantee[sd]?\b(?!\s+(?:card|period))|\b100\s*%\s*(?:sure|certain|win)|\byou\s+will\s+(?:definitely\s+)?win\b"
     r"|पक्का\s+(?:जीत|केस)|ज़रूर\s+जीत|जरूर\s+जीत|pakka\s+jeet|zaroor\s+jeet"
 )
@@ -277,7 +278,7 @@ def strip_violations(text: str, rep: GuardReport) -> str:
     if removed:
         out += (
             "\n\n_⚠️ I removed a legal reference I could not verify. "
-            "Please confirm the exact law with a lawyer or free legal aid (NALSA helpline 15100)._"
+            "Check the exact provision before quoting it in a notice._"
         )
     return out
 

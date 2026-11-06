@@ -203,7 +203,7 @@ async function send(text) {
   text = (text || "").trim();
   if (!text || busy) return;
   busy = true; $("#send").disabled = true;
-  const langPref = langInfo()[2];  // null for English = auto-detect the language the user types in
+  const langPref = langInfo()[2] || "English";  // reply in the interface language the user picked, whatever they type in
   addMsg("user", esc(text));
   $("#input").value = ""; autosize();
   const tb = typing();
@@ -270,12 +270,27 @@ function renderBanner(t) {
   const b = $("#banner");
   const f = S?.flags || { level: "none" };
   if (!f || f.level === "none") { b.className = "banner hidden"; return; }
+  const rs = (f.reasons || []).slice(-3);
+  // dismissed notes stay closed until the level or the reasons change; emergency help can't be dismissed
+  const sig = f.level + "|" + rs.join("|");
+  if (f.level !== "emergency" && bannerDismissed().includes(sig)) { b.className = "banner hidden"; return; }
   b.className = `banner ${f.level}`;
-  const reasons = (f.reasons || []).slice(-3).map(esc).join(" · ");
-  if (f.level === "emergency") b.innerHTML = `🚨 If you are in danger or thinking of harming yourself, call <a href="tel:112">112</a> (emergency) or <a href="tel:14416">14416</a> (Tele-MANAS, free 24×7). You are not alone. <br><small>${reasons}</small>`;
-  else if (f.level === "urgent") b.innerHTML = `⚖️ <b>Please talk to a lawyer soon.</b> ${reasons}. Free legal aid: call <a href="tel:15100">15100</a> (NALSA) or visit your District Legal Services Authority.`;
-  else b.innerHTML = `💡 A lawyer's review is recommended: ${reasons}. Free legal aid: <a href="tel:15100">15100</a>.`;
+  const reasons = rs.map(esc).join(" · ");
+  const icon = `<svg class="bn-ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 7a3 3 0 0 0 6 0L5 7zM19 7l-3 7a3 3 0 0 0 6 0l-3-7z"/></svg>`;
+  const close = f.level === "emergency" ? "" : `<button class="bn-x" type="button" aria-label="Close" title="Close">×</button>`;
+  let title, body;
+  if (f.level === "emergency") { title = "If you are in danger or thinking of harming yourself"; body = `Call <a href="tel:112">112</a> (emergency) or <a href="tel:14416">14416</a> (Tele-MANAS, free 24×7). You are not alone.${reasons ? `<br><small>${reasons}</small>` : ""}`; }
+  else if (f.level === "urgent") { title = "Talk to a lawyer soon"; body = `${reasons}. Free legal aid: <a href="tel:15100">15100</a> (NALSA) or your District Legal Services Authority.`; }
+  else { title = "A lawyer's review is recommended"; body = `${reasons}. Free legal aid: <a href="tel:15100">15100</a>.`; }
+  b.innerHTML = `${icon}<div class="bn-txt"><div class="bn-t">${title}</div><div class="bn-b">${body}</div></div>${close}`;
+  const x = b.querySelector(".bn-x");
+  if (x) x.onclick = () => {
+    const d = bannerDismissed().filter(s => s !== sig).concat(sig).slice(-50);
+    try { localStorage.setItem("haq_banner_x", JSON.stringify(d)); } catch (e) {}
+    b.className = "banner hidden";
+  };
 }
+function bannerDismissed() { try { return JSON.parse(localStorage.getItem("haq_banner_x") || "[]"); } catch (e) { return []; } }
 
 /* ---------------- documents */
 function renderDocButtons() {
@@ -352,8 +367,9 @@ $("#noticeGo").onclick = async e => {
   e.preventDefault();
   const fd = new FormData();
   fd.append("text", $("#noticeText").value);
-  fd.append("language", langInfo()[2] || S?.case?.language || "English");
-  fd.append("script", S?.case?.script || "Latin");
+  fd.append("language", langInfo()[2] || "English");  // interface language decides the reply language
+  const SCRIPT_OF = { Hindi: "Devanagari", Marathi: "Devanagari", Bengali: "Bengali", Tamil: "Tamil", Telugu: "Telugu", Kannada: "Kannada", Malayalam: "Malayalam", Gujarati: "Gujarati", Punjabi: "Gurmukhi", Odia: "Odia", Urdu: "Arabic" };
+  fd.append("script", SCRIPT_OF[langInfo()[2]] || "Latin");
   if (provider()) fd.append("provider", provider());
   if ($("#noticeFile").files[0]) fd.append("file", $("#noticeFile").files[0]);
   $("#noticeDlg").close();

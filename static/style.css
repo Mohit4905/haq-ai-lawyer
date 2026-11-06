@@ -610,8 +610,28 @@ body.side-collapsed .rail-btn.active::before{display:none}
 :root[data-palette="ink"] .actions button{border:1px solid var(--line);color:var(--ink);border-radius:6px;font-weight:500;background:var(--paper)}
 :root[data-palette="ink"] .actions button:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 :root[data-palette="ink"] .fill{background:var(--chip);color:var(--ink);border-bottom:1px dashed var(--muted);border-radius:2px}
-:root[data-palette="ink"] .banner{border-radius:6px;border:1px solid transparent}
-:root[data-palette="ink"] .banner.recommended{background:var(--paper);color:var(--ink);border-color:var(--line)}
+/* lawyer note: quiet monochrome card with a left rule; red only for emergencies */
+:root[data-palette="ink"] .banner{display:flex;align-items:flex-start;gap:12px;padding:12px 10px 12px 14px;border-radius:8px;
+  background:var(--paper);color:var(--ink);border:1px solid var(--line);border-left:3px solid var(--muted);font-size:14px;line-height:1.5;
+  box-shadow:0 1px 2px rgba(0,0,0,.04);animation:bnIn .18s ease-out}
+:root[data-palette="ink"] .banner.hidden{display:none}
+:root[data-palette="ink"] .banner.recommended,:root[data-palette="ink"] .banner.urgent{background:var(--paper);color:var(--ink);border-color:var(--line)}
+:root[data-palette="ink"] .banner.recommended{border-left-color:var(--muted)}
+:root[data-palette="ink"] .banner.urgent{border-left-color:var(--ink)}
+:root[data-palette="ink"] .banner.emergency{background:var(--bad);color:#fff;border-color:var(--bad);font-weight:400}
+:root[data-palette="ink"] .banner .bn-ic{flex:none;margin-top:2px;color:var(--muted)}
+:root[data-palette="ink"] .banner.urgent .bn-ic{color:var(--ink)}
+:root[data-palette="ink"] .banner.emergency .bn-ic{color:#fff}
+:root[data-palette="ink"] .banner .bn-txt{flex:1;min-width:0}
+:root[data-palette="ink"] .banner .bn-t{font-family:var(--serif);font-weight:600;font-size:15px;margin-bottom:2px}
+:root[data-palette="ink"] .banner .bn-b{color:var(--muted)}
+:root[data-palette="ink"] .banner.emergency .bn-b{color:#fff}
+:root[data-palette="ink"] .banner a{color:inherit;font-weight:600;text-decoration:underline;text-underline-offset:2px}
+:root[data-palette="ink"] .banner.urgent .bn-b a,:root[data-palette="ink"] .banner.recommended .bn-b a{color:var(--ink)}
+:root[data-palette="ink"] .banner .bn-x{flex:none;width:28px;height:28px;margin:-4px 0 0;padding:0;border:0;border-radius:6px;background:transparent;
+  color:var(--muted);font-size:20px;line-height:28px;text-align:center;cursor:pointer}
+:root[data-palette="ink"] .banner .bn-x:hover{background:var(--line);color:var(--ink)}
+@keyframes bnIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 :root[data-palette="ink"] .cite-pop{border-radius:8px}
 :root[data-palette="ink"] .cite-pop a{color:var(--ink);text-decoration:underline}
 

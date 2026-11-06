@@ -134,7 +134,7 @@ def turn(state: dict | None, message: str, provider: str | None = None, today: d
         language=case["language"],
         script=case["script"],
         missing=", ".join(m["question"] for m in comp["missing"][:6]) or "none",
-        playbook="\n".join(f"- {s}" for s in rules.PLAYBOOKS.get(cat, ["Understand the problem first; then point to free legal aid (NALSA 15100) if it is outside deposits, consumer, salary, cheque or notices."])),
+        playbook="\n".join(f"- {s}" for s in rules.PLAYBOOKS.get(cat, ["Understand the problem first and give the general legal position; if it turns out to be outside deposits, consumer, salary, cheque or notices, say a lawyer / free legal aid (NALSA 15100) should handle it."])),
         library=library_text,
         calculated=_calculated_text(calc),
         case_file=_case_file_text(case),
@@ -304,6 +304,8 @@ def strip_ids(text: str) -> str:
         return "" if all(p in ids or re.match(r"^[A-Z]{2,}\d{0,4}-", p) for p in parts) else m.group(0)
 
     text = _ID_BRACKETS.sub(repl, text)
+    # JSON fields the model sometimes echoes into the reply ("**Actions:** [{...}]", "citations: [...]")
+    text = re.sub(r"(?im)^\s*\**\s*(?:actions|citations|next_step|needs_lawyer)\s*\**\s*:\s*\**\s*[\[{].*$", "", text).rstrip()
     # internal field names like "(notice_received_date)" or "(reply_to_notice)"
     return re.sub(r"\s*\((?:[a-z0-9]+_)+[a-z0-9]+\)", "", text)
 
