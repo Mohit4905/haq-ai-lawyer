@@ -1,0 +1,211 @@
+{
+ "case": {
+  "id": "T22_out_of_scope_property",
+  "group": "scope",
+  "turns": [
+   "My uncle has occupied our ancestral land in the village and got the mutation done in his name. How do I get the land back?"
+  ],
+  "expect": {
+   "category_any": [
+    "out_of_scope",
+    "other"
+   ],
+   "escalate_min": "urgent"
+  }
+ },
+ "results": [
+  {
+   "reply": "Property title disputes, especially involving ancestral land and mutation records, are complex and require a thorough examination of land revenue records and succession documents. This is not a simple matter of a refund or a notice; it involves civil litigation to establish your legal title and challenge the mutation entry. Because this involves your family property rights and potential court proceedings, you should not attempt to handle this alone. I strongly recommend you consult a local civil lawyer who specialises in land revenue matters or contact the free legal aid services for guidance on how to file a suit for partition or declaration of title. You can call the national legal aid helpline at 15100 for assistance in finding a lawyer or understanding your rights under the law.",
+   "citations": [
+    {
+     "id": "FACT-NALSA-HELPLINE",
+     "act": "NALSA legal aid helpline",
+     "section": "",
+     "title": "NALSA legal aid helpline 15100",
+     "plain": "Call the national legal aid helpline 15100 (toll-free) for free legal advice and help applying for legal aid. You can also apply for legal aid or victim compensation online via the NALSA website.",
+     "source_url": "https://nalsa.gov.in/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 0,
+    "missing": []
+   },
+   "actions": [
+    {
+     "type": "get_help"
+    }
+   ],
+   "next_step": "Contact NALSA helpline 15100 for free legal aid or consult a local civil lawyer.",
+   "needs_lawyer": {
+    "level": "urgent",
+    "reasons": [
+     "Property title / possession: needs a lawyer",
+     "Property title disputes are complex, involve civil court procedures, and require professional legal representation."
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Whether there is a partition deed",
+    "The specific state where the land is located"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Latin",
+     "got": "Latin",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 22.34,
+    "usage": {
+     "completion_tokens": 407,
+     "prompt_tokens": 3016,
+     "total_tokens": 3523
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": [
+       {
+        "level": "urgent",
+        "reason": "Property title / possession: needs a lawyer"
+       }
+      ]
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "out_of_scope",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "other_party_name": "uncle",
+        "summary": "User is seeking legal recourse for ancestral land occupied by an uncle who has changed the mutation."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 14.34,
+       "usage": {
+        "completion_tokens": 92,
+        "prompt_tokens": 1008,
+        "total_tokens": 1199
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 22.34,
+       "usage": {
+        "completion_tokens": 407,
+        "prompt_tokens": 3016,
+        "total_tokens": 3523
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 36.69
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "My uncle has occupied our ancestral land in the village and got the mutation done in his name. How do I get the land back?"
+   },
+   {
+    "role": "assistant",
+    "content": "Property title disputes, especially involving ancestral land and mutation records, are complex and require a thorough examination of land revenue records and succession documents. This is not a simple matter of a refund or a notice; it involves civil litigation to establish your legal title and challenge the mutation entry. Because this involves your family property rights and potential court proceedings, you should not attempt to handle this alone. I strongly recommend you consult a local civil lawyer who specialises in land revenue matters or contact the free legal aid services for guidance on how to file a suit for partition or declaration of title. You can call the national legal aid helpline at 15100 for assistance in finding a lawyer or understanding your rights under the law."
+   }
+  ],
+  "case": {
+   "category": "out_of_scope",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "other_party_name": "uncle",
+    "summary": "User is seeking legal recourse for ancestral land occupied by an uncle who has changed the mutation."
+   },
+   "timeline": [],
+   "evidence_have": [],
+   "evidence_missing": [
+    "Copy of the land mutation record",
+    "Ancestral property documents/succession certificates",
+    "Proof of possession"
+   ],
+   "next_step": "Contact NALSA helpline 15100 for free legal aid or consult a local civil lawyer."
+  },
+  "flags": {
+   "level": "urgent",
+   "reasons": [
+    "Property title / possession: needs a lawyer",
+    "Property title disputes are complex, involve civil court procedures, and require professional legal representation."
+   ]
+  },
+  "log": [
+   {
+    "t": 36.69,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got out_of_scope"
+  },
+  {
+   "check": "escalation>=urgent",
+   "pass": true,
+   "detail": "got urgent"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": null
+}

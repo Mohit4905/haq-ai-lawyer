@@ -1,0 +1,36 @@
+{
+ "cases": 22,
+ "checks_passed": 134,
+ "checks_total": 136,
+ "by_check": {
+  "asks_clarifying_question": "1/1",
+  "category": "21/21",
+  "deadline": "2/2",
+  "derived": "1/1",
+  "draft_has_no_invented_fill": "4/4",
+  "draft_no_unverified_law": "4/4",
+  "escalation": "18/19",
+  "fact": "15/15",
+  "mentions": "18/18",
+  "must_not": "13/14",
+  "no_unverified_law_shown": "22/22",
+  "reply_language": "15/15"
+ },
+ "assistant_turns": 23,
+ "turns_where_guard_caught_something": 1,
+ "median_latency_s": 10.45,
+ "baseline_no_guardrails": {
+  "answers": 0,
+  "answers_with_any_flag": 0,
+  "answers_citing_case_law": 0,
+  "answers_citing_repealed_law": 0,
+  "answers_citing_provisions_not_in_library": 0,
+  "answers_violating_test_must_not": 0,
+  "raw_flags": 0
+ },
+ "judge_avg_1to5": {},
+ "models_answering": {
+  "gemini/gemini-3.1-flash-lite": 23
+ },
+ "judge_models": {}
+}

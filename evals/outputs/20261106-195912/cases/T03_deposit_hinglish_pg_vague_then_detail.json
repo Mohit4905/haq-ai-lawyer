@@ -1,0 +1,405 @@
+{
+ "case": {
+  "id": "T03_deposit_hinglish_pg_vague_then_detail",
+  "group": "multi_turn",
+  "turns": [
+   "bhai mera paisa nahi de raha",
+   "PG wala hai pune me, 15000 deposit tha. 1 october ko chhoda. ab bolta hai notice period nahi diya isliye nahi dunga. koi agreement nahi tha bas whatsapp pe baat hui thi"
+  ],
+  "expect": {
+   "category": "tenancy",
+   "script": "Hinglish",
+   "first_turn_asks_question": true,
+   "facts": {
+    "deposit_amount": "15"
+   },
+   "must_mention_any": [
+    [
+     "whatsapp",
+     "WhatsApp",
+     "screenshot",
+     "chat"
+    ]
+   ],
+   "escalate_max": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "Bhai, main samajh sakta hoon ki paisa phansa hona kitna pareshan karne wala hota hai. Lekin sahi advice dene ke liye mujhe thoda aur context chahiye. \n\nYe paisa kis cheez ka hai? Jaise ki:\n1. Kya ye kisi ne udhaar (loan) liya tha?\n2. Kya ye aapki salary hai?\n3. Kya ye kisi saman ya service ke liye advance payment thi?\n4. Ya phir ghar ka security deposit hai?\n\nAur kitna amount hai aur kya aapke paas koi proof hai (jaise bank transfer, agreement, ya WhatsApp chat)? Ye details bataiye, phir main aapko bataunga ki aapko legal notice bhejna chahiye ya seedha complaint karni chahiye.",
+   "citations": [],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 0,
+    "missing": []
+   },
+   "actions": [],
+   "next_step": "Ask for details",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "nature of the transaction",
+    "amount",
+    "evidence"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Hinglish",
+     "got": "Hinglish",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 4.7,
+    "usage": {
+     "completion_tokens": 311,
+     "prompt_tokens": 2775,
+     "total_tokens": 3905
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "other",
+       "language": "Hinglish",
+       "script": "Latin",
+       "facts": {
+        "summary": "User is reporting that someone is not returning their money, but the nature of the transaction is unclear."
+       },
+       "approximate_dates": [],
+       "confidence": 0.5
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.02,
+       "usage": {
+        "completion_tokens": 82,
+        "prompt_tokens": 989,
+        "total_tokens": 1173
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 4.7,
+       "usage": {
+        "completion_tokens": 311,
+        "prompt_tokens": 2775,
+        "total_tokens": 3905
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 6.73
+  },
+  {
+   "reply": "Bhai, bina written agreement ke landlord ke liye ye sabit karna mushkil hai ki koi notice period ka rule tha. Agar usne pehle se ye baat clear nahi ki thi, toh wo aapka paisa aise nahi rok sakta. \n\n**My view:** Aapka case strong hai kyunki burden of proof landlord par hai ki wo dikhaye ki aapne notice period ke liye haan kaha tha. Bina kisi written contract ya clear communication ke, wo apni marzi se paise nahi kaat sakta.\n\n**Law on your side:**\n- Indian Contract Act, 1872 (Section 73): Agar koi contract breach hua hai, toh landlord ko ye sabit karna hoga ki kya terms decide hue the. Bina proof ke wo penalty nahi laga sakta.\n\n**What they will say, and your answer:**\n- Wo kahenge: \"Notice period nahi diya.\"\n- Aapka jawab: \"Humare beech koi written agreement nahi tha jisme notice period ka zikr ho. Aap mujhe wo proof dikhayein jahan maine notice period ke liye agree kiya tha.\"\n\n**What I would do:**\n- Aaj hi ek formal message (WhatsApp/Email) bhejiye. Usme likhiye: 'Maine 1 October ko room vacate kiya tha. Mere 15,000 deposit ka refund abhi tak nahi mila hai. Humare beech koi written agreement nahi tha jisme notice period ka zikr ho, isliye aap mera paisa nahi rok sakte. Kripya 3 din ke andar refund process karein, varna mujhe aage legal action lena padega.'\n- Agar 3 din mein jawab na aaye, toh main aapko ek legal notice ka draft bana kar dunga.",
+   "citations": [
+    {
+     "id": "ICA1872-S73",
+     "act": "Indian Contract Act, 1872",
+     "section": "73",
+     "title": "Compensation for breach of contract",
+     "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+     "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Approximate last date to sue for the deposit (3 years)",
+      "date": "2029-10-01",
+      "days_left": 1060,
+      "status": "ok",
+      "basis": "LIM1963-ART55",
+      "note": "Limitation depends on the exact claim; confirm with legal aid before relying on it.",
+      "user_deadline": true
+     }
+    ],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 56,
+    "missing": [
+     {
+      "key": "monthly_rent",
+      "question": "What was the monthly rent (₹)?"
+     },
+     {
+      "key": "deductions_claimed",
+      "question": "Has the landlord claimed any deductions (painting, damage, dues)?"
+     },
+     {
+      "key": "proof_of_payment",
+      "question": "Do you have proof you paid the deposit (bank transfer, receipt)?"
+     },
+     {
+      "key": "other_party_name",
+      "question": "Landlord's name (and address, if you have it)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "deposit_demand_notice"
+    }
+   ],
+   "next_step": "Send a formal demand message",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Did the landlord explicitly mention a notice period in WhatsApp before you moved in?"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [
+      [
+       "Section 73",
+       "Indian Contract Act, 1872"
+      ]
+     ],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [
+      [
+       "Section 73",
+       "Indian Contract Act, 1872"
+      ]
+     ],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Hinglish",
+     "got": "Hinglish",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 10.47,
+    "usage": {
+     "completion_tokens": 666,
+     "prompt_tokens": 4055,
+     "total_tokens": 5766
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "tenancy",
+       "language": "Hinglish",
+       "script": "Latin",
+       "facts": {
+        "deposit_amount": 15000,
+        "written_agreement": false,
+        "possession_handed_over_date": "2026-10-01",
+        "city_state": "Pune",
+        "communications_so_far": "WhatsApp",
+        "summary": "PG owner in Pune refusing to return 15000 deposit, citing lack of notice period."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.2,
+       "usage": {
+        "completion_tokens": 151,
+        "prompt_tokens": 1153,
+        "total_tokens": 1409
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 10.47,
+       "usage": {
+        "completion_tokens": 666,
+        "prompt_tokens": 4055,
+        "total_tokens": 5766
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 12.67
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "bhai mera paisa nahi de raha"
+   },
+   {
+    "role": "assistant",
+    "content": "Bhai, main samajh sakta hoon ki paisa phansa hona kitna pareshan karne wala hota hai. Lekin sahi advice dene ke liye mujhe thoda aur context chahiye. \n\nYe paisa kis cheez ka hai? Jaise ki:\n1. Kya ye kisi ne udhaar (loan) liya tha?\n2. Kya ye aapki salary hai?\n3. Kya ye kisi saman ya service ke liye advance payment thi?\n4. Ya phir ghar ka security deposit hai?\n\nAur kitna amount hai aur kya aapke paas koi proof hai (jaise bank transfer, agreement, ya WhatsApp chat)? Ye details bataiye, phir main aapko bataunga ki aapko legal notice bhejna chahiye ya seedha complaint karni chahiye."
+   },
+   {
+    "role": "user",
+    "content": "PG wala hai pune me, 15000 deposit tha. 1 october ko chhoda. ab bolta hai notice period nahi diya isliye nahi dunga. koi agreement nahi tha bas whatsapp pe baat hui thi"
+   },
+   {
+    "role": "assistant",
+    "content": "Bhai, bina written agreement ke landlord ke liye ye sabit karna mushkil hai ki koi notice period ka rule tha. Agar usne pehle se ye baat clear nahi ki thi, toh wo aapka paisa aise nahi rok sakta. \n\n**My view:** Aapka case strong hai kyunki burden of proof landlord par hai ki wo dikhaye ki aapne notice period ke liye haan kaha tha. Bina kisi written contract ya clear communication ke, wo apni marzi se paise nahi kaat sakta.\n\n**Law on your side:**\n- Indian Contract Act, 1872 (Section 73): Agar koi contract breach hua hai, toh landlord ko ye sabit karna hoga ki kya terms decide hue the. Bina proof ke wo penalty nahi laga sakta.\n\n**What they will say, and your answer:**\n- Wo kahenge: \"Notice period nahi diya.\"\n- Aapka jawab: \"Humare beech koi written agreement nahi tha jisme notice period ka zikr ho. Aap mujhe wo proof dikhayein jahan maine notice period ke liye agree kiya tha.\"\n\n**What I would do:**\n- Aaj hi ek formal message (WhatsApp/Email) bhejiye. Usme likhiye: 'Maine 1 October ko room vacate kiya tha. Mere 15,000 deposit ka refund abhi tak nahi mila hai. Humare beech koi written agreement nahi tha jisme notice period ka zikr ho, isliye aap mera paisa nahi rok sakte. Kripya 3 din ke andar refund process karein, varna mujhe aage legal action lena padega.'\n- Agar 3 din mein jawab na aaye, toh main aapko ek legal notice ka draft bana kar dunga."
+   }
+  ],
+  "case": {
+   "category": "tenancy",
+   "language": "Hinglish",
+   "script": "Latin",
+   "facts": {
+    "summary": "PG owner in Pune refusing to return 15000 deposit, citing lack of notice period.",
+    "deposit_amount": 15000,
+    "written_agreement": false,
+    "possession_handed_over_date": "2026-10-01",
+    "city_state": "Pune",
+    "communications_so_far": "WhatsApp"
+   },
+   "timeline": [
+    {
+     "date": "2026-10-01",
+     "event": "Vacated PG"
+    }
+   ],
+   "evidence_have": [
+    "WhatsApp chat"
+   ],
+   "evidence_missing": [
+    "nature of transaction",
+    "amount",
+    "proof of payment",
+    "Proof of payment (bank transfer/receipt)"
+   ],
+   "next_step": "Send a formal demand message"
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 6.73,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   },
+   {
+    "t": 12.67,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got tenancy"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Hinglish, reply script Hinglish"
+  },
+  {
+   "check": "fact:deposit_amount",
+   "pass": true,
+   "detail": "expected ~15, got 15000"
+  },
+  {
+   "check": "mentions:whatsapp|WhatsApp|screenshot|chat",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "asks_clarifying_question",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": null
+}

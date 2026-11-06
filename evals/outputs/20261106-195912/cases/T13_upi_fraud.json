@@ -1,0 +1,260 @@
+{
+ "case": {
+  "id": "T13_upi_fraud",
+  "group": "scope",
+  "turns": [
+   "Someone called pretending to be from my bank and I shared an OTP. Rs 30,000 was debited via UPI 2 hours ago. What do I do?"
+  ],
+  "expect": {
+   "category_any": [
+    "cyber_fraud",
+    "out_of_scope"
+   ],
+   "script": "Latin",
+   "must_mention_any": [
+    [
+     "1930"
+    ],
+    [
+     "bank"
+    ]
+   ],
+   "escalate_min": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "Look, this is a serious cyber fraud and you need to take immediate action. First of all, call 1930 right away and register your complaint. This is the national cyber crime helpline, and the sooner you report it, the higher the chances of getting your money frozen. After this, immediately go to cybercrime.gov.in and file your complaint.\n\n**My view:** You shared an OTP, which was a mistake, but right now the focus should only be on saving your money. Also, immediately inform the bank in writing (via email or by visiting the branch) that this transaction was unauthorized.\n\n**What I would do:**\n1. Call 1930 immediately to report the incident.\n2. File an online complaint at cybercrime.gov.in.\n3. Send an email to my bank mentioning the transaction time, amount, and 'unauthorized transaction'.\n4. If there is no satisfactory response from the bank within 30 days, we will approach the RBI Ombudsman.\n\n**I need from you:** Have you informed the bank yet? And do you have a screenshot or SMS of the transaction?",
+   "citations": [
+    {
+     "id": "FACT-CYBER-1930",
+     "act": "National Cyber Crime helpline",
+     "section": "",
+     "title": "Cyber fraud: call 1930 or report at cybercrime.gov.in",
+     "plain": "If you lose money to online or financial cyber fraud, call the national helpline 1930 immediately; quick reporting improves the chance of freezing the money. You can also report any cybercrime on the National Cyber Crime Reporting Portal at https://www.cybercrime.gov.in/.",
+     "source_url": "https://cybercrime.gov.in/",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-RBIOS2026-ELIGIBILITY",
+     "act": "Reserve Bank - Integrated Ombudsman Scheme, 2026",
+     "section": "",
+     "title": "When you can complain to the RBI Ombudsman (30-day wait, 90-day limit)",
+     "plain": "First complain to your bank, NBFC or payment company. If it doesn't reply within 30 days (or a longer time set by RBI/NPCI/card network rules), or you are unhappy with its reply, you can go to the RBI Ombudsman. You must do so within 90 days of that timeline ending or of the bank's last reply, whichever is later. The service is free and there is no cap on the amount in dispute.",
+     "source_url": "https://rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=3407",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 0,
+    "missing": []
+   },
+   "actions": [
+    {
+     "type": "get_help"
+    }
+   ],
+   "next_step": "Call 1930 immediately and report the fraud.",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "Fraud is time-critical: report to 1930 and your bank immediately"
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Whether the bank has been informed yet"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Latin",
+     "got": "Hinglish",
+     "rewritten": true,
+     "got_after": "Latin"
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 4.89,
+    "usage": {
+     "completion_tokens": 601,
+     "prompt_tokens": 3483,
+     "total_tokens": 4194
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "cyber_fraud",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "amount_lost": 30000,
+        "incident_date": "2026-11-06",
+        "summary": "User lost 30,000 rupees via UPI after sharing an OTP with a scammer posing as a bank official."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 5.97,
+       "usage": {
+        "completion_tokens": 119,
+        "prompt_tokens": 1018,
+        "total_tokens": 1257
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 4.89,
+       "usage": {
+        "completion_tokens": 601,
+        "prompt_tokens": 3483,
+        "total_tokens": 4194
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "language_rewrite",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 3.62,
+       "usage": {
+        "completion_tokens": 236,
+        "prompt_tokens": 326,
+        "total_tokens": 691
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 14.49
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "Someone called pretending to be from my bank and I shared an OTP. Rs 30,000 was debited via UPI 2 hours ago. What do I do?"
+   },
+   {
+    "role": "assistant",
+    "content": "Look, this is a serious cyber fraud and you need to take immediate action. First of all, call 1930 right away and register your complaint. This is the national cyber crime helpline, and the sooner you report it, the higher the chances of getting your money frozen. After this, immediately go to cybercrime.gov.in and file your complaint.\n\n**My view:** You shared an OTP, which was a mistake, but right now the focus should only be on saving your money. Also, immediately inform the bank in writing (via email or by visiting the branch) that this transaction was unauthorized.\n\n**What I would do:**\n1. Call 1930 immediately to report the incident.\n2. File an online complaint at cybercrime.gov.in.\n3. Send an email to my bank mentioning the transaction time, amount, and 'unauthorized transaction'.\n4. If there is no satisfactory response from the bank within 30 days, we will approach the RBI Ombudsman.\n\n**I need from you:** Have you informed the bank yet? And do you have a screenshot or SMS of the transaction?"
+   }
+  ],
+  "case": {
+   "category": "cyber_fraud",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "amount_lost": 30000,
+    "incident_date": "2026-11-06",
+    "summary": "User lost 30,000 rupees via UPI after sharing an OTP with a scammer posing as a bank official."
+   },
+   "timeline": [
+    {
+     "date": "2026-11-06",
+     "event": "Money debited via UPI after sharing OTP"
+    }
+   ],
+   "evidence_have": [
+    "Transaction details",
+    "SMS/Notification of debit"
+   ],
+   "evidence_missing": [
+    "Bank complaint acknowledgement",
+    "Cyber crime portal complaint reference number"
+   ],
+   "next_step": "Call 1930 immediately and report the fraud."
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "Fraud is time-critical: report to 1930 and your bank immediately"
+   ]
+  },
+  "log": [
+   {
+    "t": 14.49,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got cyber_fraud"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Latin, reply script Latin"
+  },
+  {
+   "check": "mentions:1930",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "mentions:bank",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation>=recommended",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": null
+}

@@ -1,0 +1,391 @@
+{
+ "case": {
+  "id": "T01_deposit_en_bengaluru",
+  "group": "core",
+  "turns": [
+   "I moved out of my rented flat in Bengaluru on 31 August 2026 and handed over the keys the same day. I paid a deposit of Rs 60,000 by bank transfer, rent was 20,000. Landlord Mr. Ramesh Gowda says he'll cut 25,000 for painting and 'general damage' but hasn't shown any bills. It's been over 2 months. We had a registered rent agreement. What can I do?"
+  ],
+  "expect": {
+   "category": "tenancy",
+   "script": "Latin",
+   "facts": {
+    "deposit_amount": "60",
+    "monthly_rent": "20",
+    "possession_handed_over_date": "2026-08-31"
+   },
+   "must_mention_any": [
+    [
+     "notice",
+     "legal notice"
+    ],
+    [
+     "proof",
+     "bills",
+     "receipts",
+     "evidence"
+    ]
+   ],
+   "escalate_max": "recommended",
+   "draft": "deposit_demand_notice"
+  }
+ },
+ "results": [
+  {
+   "reply": "Your case is strong. A landlord cannot deduct a security deposit without any proof or bills. Under the agreement, a tenant is not responsible for 'normal wear and tear' (natural wear resulting from living in the property), and painting costs can only be deducted if the agreement explicitly states that you are required to paint the flat before moving out. Deducting 25,000 without bills is wrong.\n\n**My view:** Your case is solid because you have a registered agreement and you made payments via bank transfer. The landlord deducting money by citing 'general damage' is not legally valid; they must provide proof (bills) for every deduction. It has been 2 months, so you now need to apply pressure formally.\n\n**Law on your side:**\n*   **Contract Law:** Your agreement is a contract. If the landlord is deducting money without any valid reason or proof, it is a breach of contract. You can demand proof of 'actual loss' from them.\n*   **Burden of Proof:** If the matter goes to court, the landlord will have to prove that you caused the damage and that the cost is indeed 25,000.\n\n**What they will say, and your answer:**\n*   *They will say:* \"Painting and repair costs are standard.\"\n*   *Your answer:* \"The agreement allows for 'normal wear and tear.' If you have carried out repairs, please show me the genuine bills and the photos taken at the time of move-out.\"\n\n**What I would do:**\n1.  **Today:** Send them a formal email or WhatsApp message (if you haven't already) clearly stating that you handed over possession on 31 August and have not yet received the full refund. Ask them for the bills.\n2.  **If there is no response within 7 days:** Send a 'Legal Notice' giving them 15 days to process the refund, warning them of legal action otherwise. I can help you draft this.\n\n**I need from you:**\n1. Have you sent any written request (email/WhatsApp) for the refund so far?\n2. Do you have photos or videos of the flat from the time of move-out?\n\n**Law you can cite (checked against official sources):**\n- **Section 73, Indian Contract Act, 1872**: If someone breaks a contract with you, you can claim money for the loss it caused.\n- **Article 55, Limitation Act, 1963**: A suit for compensation for breach of a contract (written or implied), where no other article covers it specifically, must be filed within 3 years.",
+   "citations": [
+    {
+     "id": "ICA1872-S73",
+     "act": "Indian Contract Act, 1872",
+     "section": "73",
+     "title": "Compensation for breach of contract",
+     "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+     "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "LIM1963-ART55",
+     "act": "Limitation Act, 1963",
+     "section": "Schedule, Article 55",
+     "title": "3 years to sue for compensation for breach of contract",
+     "plain": "A suit for compensation for breach of a contract (written or implied), where no other article covers it specifically, must be filed within 3 years. Time runs from the date of the breach. If there are repeated breaches, it runs from the breach you sue on; if the breach is continuing, from when it stops.",
+     "source_url": "https://www.thc.nic.in/Central%20Governmental%20Acts/Limitation%20Act,%202019.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Approximate last date to sue for the deposit (3 years)",
+      "date": "2029-08-31",
+      "days_left": 1029,
+      "status": "ok",
+      "basis": "LIM1963-ART55",
+      "note": "Limitation depends on the exact claim; confirm with legal aid before relying on it.",
+      "user_deadline": true
+     }
+    ],
+    "derived": [
+     {
+      "label": "Deposit size",
+      "value": "3.0 × monthly rent",
+      "basis": "MTA2021-S11",
+      "note": "The Model Tenancy Act caps residential deposits at 2 months' rent, but it applies only in states that have adopted it, and usually only to new agreements."
+     }
+    ]
+   },
+   "completeness": {
+    "pct": 78,
+    "missing": [
+     {
+      "key": "communications_so_far",
+      "question": "How have you asked for it so far (calls, WhatsApp, email)?"
+     },
+     {
+      "key": "proof_of_payment",
+      "question": "Do you have proof you paid the deposit (bank transfer, receipt)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "deposit_demand_notice"
+    }
+   ],
+   "next_step": "Send a formal written demand for the deposit refund via email/WhatsApp.",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Whether the agreement specifically mentions painting charges upon move-out"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Latin",
+     "got": "Hinglish",
+     "rewritten": true,
+     "got_after": "Latin"
+    },
+    "core_citations_added": [
+     "ICA1872-S73",
+     "LIM1963-ART55"
+    ],
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 21.6,
+    "usage": {
+     "completion_tokens": 959,
+     "prompt_tokens": 3993,
+     "total_tokens": 5050
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "tenancy",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "deposit_amount": 60000,
+        "monthly_rent": 20000,
+        "written_agreement": true,
+        "possession_handed_over_date": "2026-08-31",
+        "deductions_claimed": 25000,
+        "city_state": "Bengaluru",
+        "other_party_name": "Ramesh Gowda",
+        "summary": "Landlord refusing to return full security deposit after move-out, claiming deductions without proof."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 9.09,
+       "usage": {
+        "completion_tokens": 180,
+        "prompt_tokens": 1091,
+        "total_tokens": 1394
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 21.6,
+       "usage": {
+        "completion_tokens": 959,
+        "prompt_tokens": 3993,
+        "total_tokens": 5050
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "language_rewrite",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.81,
+       "usage": {
+        "completion_tokens": 461,
+        "prompt_tokens": 582,
+        "total_tokens": 1156
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 33.52
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "I moved out of my rented flat in Bengaluru on 31 August 2026 and handed over the keys the same day. I paid a deposit of Rs 60,000 by bank transfer, rent was 20,000. Landlord Mr. Ramesh Gowda says he'll cut 25,000 for painting and 'general damage' but hasn't shown any bills. It's been over 2 months. We had a registered rent agreement. What can I do?"
+   },
+   {
+    "role": "assistant",
+    "content": "Your case is strong. A landlord cannot deduct a security deposit without any proof or bills. Under the agreement, a tenant is not responsible for 'normal wear and tear' (natural wear resulting from living in the property), and painting costs can only be deducted if the agreement explicitly states that you are required to paint the flat before moving out. Deducting 25,000 without bills is wrong.\n\n**My view:** Your case is solid because you have a registered agreement and you made payments via bank transfer. The landlord deducting money by citing 'general damage' is not legally valid; they must provide proof (bills) for every deduction. It has been 2 months, so you now need to apply pressure formally.\n\n**Law on your side:**\n*   **Contract Law:** Your agreement is a contract. If the landlord is deducting money without any valid reason or proof, it is a breach of contract. You can demand proof of 'actual loss' from them.\n*   **Burden of Proof:** If the matter goes to court, the landlord will have to prove that you caused the damage and that the cost is indeed 25,000.\n\n**What they will say, and your answer:**\n*   *They will say:* \"Painting and repair costs are standard.\"\n*   *Your answer:* \"The agreement allows for 'normal wear and tear.' If you have carried out repairs, please show me the genuine bills and the photos taken at the time of move-out.\"\n\n**What I would do:**\n1.  **Today:** Send them a formal email or WhatsApp message (if you haven't already) clearly stating that you handed over possession on 31 August and have not yet received the full refund. Ask them for the bills.\n2.  **If there is no response within 7 days:** Send a 'Legal Notice' giving them 15 days to process the refund, warning them of legal action otherwise. I can help you draft this.\n\n**I need from you:**\n1. Have you sent any written request (email/WhatsApp) for the refund so far?\n2. Do you have photos or videos of the flat from the time of move-out?\n\n**Law you can cite (checked against official sources):**\n- **Section 73, Indian Contract Act, 1872**: If someone breaks a contract with you, you can claim money for the loss it caused.\n- **Article 55, Limitation Act, 1963**: A suit for compensation for breach of a contract (written or implied), where no other article covers it specifically, must be filed within 3 years."
+   }
+  ],
+  "case": {
+   "category": "tenancy",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "deposit_amount": 60000,
+    "monthly_rent": 20000,
+    "written_agreement": true,
+    "possession_handed_over_date": "2026-08-31",
+    "deductions_claimed": 25000,
+    "city_state": "Bengaluru",
+    "other_party_name": "Ramesh Gowda",
+    "summary": "Landlord refusing to return full security deposit after move-out, claiming deductions without proof."
+   },
+   "timeline": [
+    {
+     "date": "2026-08-31",
+     "event": "Moved out and handed over keys"
+    }
+   ],
+   "evidence_have": [
+    "Registered rent agreement",
+    "Bank transfer proof for deposit"
+   ],
+   "evidence_missing": [
+    "Photos/videos of flat at move-out",
+    "Written communication asking for refund"
+   ],
+   "next_step": "Send a formal written demand for the deposit refund via email/WhatsApp."
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 33.52,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": {
+  "doc_type": "deposit_demand_notice",
+  "title": "Legal Notice for Refund of Security Deposit",
+  "body_markdown": "LEGAL NOTICE\n\nBy Registered Post A.D.\n\nDate: [[FILL: date of sending]]\n\nFrom:\n[[FILL: your full name]]\n[[FILL: your current address]]\n\nTo:\nMr. Ramesh Gowda\n[[FILL: landlord's full address]]\n\nSubject: Demand for refund of security deposit for the premises at [[FILL: address of the rented property]].\n\nDear Sir,\n\n1. I am writing to you regarding the tenancy of the premises located at [[FILL: address of the rented property]], which I vacated on 31 August 2026.\n\n2. As per our registered rent agreement, I had paid a security deposit of Rs. 60,000/- to you via bank transfer at the commencement of the tenancy.\n\n3. On 31 August 2026, I handed over vacant possession of the premises and returned the keys to you. At that time, the property was in good condition, consistent with normal wear and tear.\n\n4. It has been over two months since I vacated the premises, and the security deposit has not been refunded. You have verbally claimed a deduction of Rs. 25,000/- for painting and general damage; however, you have failed to provide any invoices, bills, or evidence justifying these deductions.\n\n5. Under Section 73 of the Indian Contract Act, 1872, you are obligated to compensate for the loss caused by the breach of contract, which includes the failure to refund the deposit as agreed.\n\n6. I hereby demand that you refund the balance of the security deposit, amounting to Rs. 60,000/- (or the undisputed portion thereof), within 15 days of receiving this notice. Please remit the amount to the following bank account:\n\n[[FILL: your bank details (account name, number, bank, IFSC)]]\n\n7. If you fail to comply with this demand within the stipulated period, I shall be constrained to initiate appropriate legal proceedings, including filing a civil suit for recovery of the amount with interest, at your sole risk, cost, and consequence.\n\nCopy retained for record.\n\nSincerely,\n\n[[FILL: your full name]]\n[[FILL: your phone and email]]",
+  "placeholders": [
+   "[[FILL: date of sending]]",
+   "[[FILL: your full name]]",
+   "[[FILL: your current address]]",
+   "[[FILL: landlord's full address]]",
+   "[[FILL: address of the rented property]]",
+   "[[FILL: your bank details (account name, number, bank, IFSC)]]",
+   "[[FILL: your phone and email]]"
+  ],
+  "citations": [
+   {
+    "id": "ICA1872-S73",
+    "act": "Indian Contract Act, 1872",
+    "section": "73",
+    "title": "Compensation for breach of contract",
+    "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+    "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+    "source_type": "primary"
+   }
+  ],
+  "send_instructions": [
+   "Print two copies of the notice on plain paper and sign both.",
+   "Send one copy to the landlord via 'Registered Post A.D.' (Acknowledgement Due) from your nearest post office. This provides you with a tracking number and a signed receipt when they receive it.",
+   "Keep the second copy and the original postal receipt safely with your rent agreement and bank transfer proofs.",
+   "If you do not receive a response or payment within 15 days of the landlord receiving the notice, you may consult a local lawyer or contact the nearest District Legal Services Authority (DLSA) to inquire about filing a civil suit or seeking pre-litigation mediation."
+  ],
+  "guard": {
+   "initial": {
+    "verified": [
+     [
+      "Section 73",
+      "Indian Contract Act, 1872"
+     ]
+    ],
+    "violations": [],
+    "warnings": [
+     {
+      "type": "unsupported_number",
+      "text": "15 days",
+      "why": "Time period not found in the verified library or calculations."
+     }
+    ],
+    "ok": true
+   },
+   "stripped": false
+  },
+  "model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 4.37,
+   "usage": {
+    "completion_tokens": 809,
+    "prompt_tokens": 2282,
+    "total_tokens": 3216
+   },
+   "fallback_attempts": []
+  },
+  "disclaimer": "Draft prepared with AI from what you told Haq. Read every line, fill the [[FILL]] gaps, and remove anything untrue before sending. For large amounts or if the other side has a lawyer, get it checked by a lawyer (free legal aid: NALSA 15100)."
+ },
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got tenancy"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Latin, reply script Latin"
+  },
+  {
+   "check": "fact:deposit_amount",
+   "pass": true,
+   "detail": "expected ~60, got 60000"
+  },
+  {
+   "check": "fact:monthly_rent",
+   "pass": true,
+   "detail": "expected ~20, got 20000"
+  },
+  {
+   "check": "fact:possession_handed_over_date",
+   "pass": true,
+   "detail": "expected ~2026-08-31, got 2026-08-31"
+  },
+  {
+   "check": "mentions:notice|legal notice",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "mentions:proof|bills|receipts|evidence",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "draft_no_unverified_law",
+   "pass": true,
+   "detail": "[]"
+  },
+  {
+   "check": "draft_has_no_invented_fill",
+   "pass": true,
+   "detail": "7 placeholders"
+  }
+ ],
+ "judge": null
+}

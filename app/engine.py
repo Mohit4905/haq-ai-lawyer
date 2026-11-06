@@ -14,6 +14,7 @@ from datetime import date
 from . import guard, kb, prompts, rules
 from .llm import LLMError, chat, chat_json
 
+LARGE_CLAIM = 1_000_000  # ₹10 lakh and above: always recommend a lawyer's review
 MAX_HISTORY = 10  # last N messages sent to the model (case file carries the long-term memory)
 
 DOC_TYPES = {
@@ -228,6 +229,12 @@ def turn(state: dict | None, message: str, provider: str | None = None, today: d
             if rules.LEVEL_ORDER[level] < rules.LEVEL_ORDER["recommended"]:
                 level = "recommended"
             reasons.append(f"Deadline {d['status']}: {d['label']} ({d['date']})")
+    # large claims: a code floor (eval v7: the model told an ₹85 lakh buyer to "absolutely" file alone)
+    money = [v for k, v in (case.get("facts") or {}).items()
+             if isinstance(v, (int, float)) and not isinstance(v, bool) and re.search(r"amount|paid|price|deposit|claim|dues|cheque", k)]
+    if money and max(money) >= LARGE_CLAIM and rules.LEVEL_ORDER[level] < rules.LEVEL_ORDER["recommended"]:
+        level = "recommended"
+        reasons.append(f"Large amount (₹{max(money):,.0f}): have a lawyer review the case before filing")
     if case["category"] == "cyber_fraud" and rules.LEVEL_ORDER[level] < rules.LEVEL_ORDER["recommended"]:
         level, reasons = "recommended", reasons + ["Fraud is time-critical: report to 1930 and your bank immediately"]
     if case["category"] == "out_of_scope" and rules.LEVEL_ORDER[level] < rules.LEVEL_ORDER["urgent"]:

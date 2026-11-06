@@ -1,0 +1,311 @@
+{
+ "case": {
+  "id": "T05_consumer_defect_tamil",
+  "group": "language",
+  "turns": [
+   "நான் சென்னையில் ஜூலை 2026-ல் 32,000 ரூபாய்க்கு வாஷிங் மெஷின் வாங்கினேன். இரண்டு மாதத்தில் வேலை செய்யவில்லை. வாரண்டி இருந்தும் சர்வீஸ் சென்டர் சரிசெய்ய மறுக்கிறது. என்ன செய்வது?"
+  ],
+  "expect": {
+   "category": "consumer",
+   "script": "Tamil",
+   "facts": {
+    "amount_paid": "32"
+   },
+   "escalate_max": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "இது ஒரு தெளிவான 'சேவை குறைபாடு' (Deficiency in Service) வழக்கு. வாரண்டி காலத்தில் இருக்கும்போது, சர்வீஸ் சென்டர் சரிசெய்ய மறுப்பது சட்டப்படி தவறு. உங்கள் வாதம் மிகவும் வலுவானது. நிறுவனத்தின் Grievance Officer-க்கு முறைப்படி மின்னஞ்சல் அனுப்புவதே முதல் வேலை. அவர்கள் 48 மணிநேரத்தில் பதில் அளிக்க வேண்டும். \n\n**எனது பார்வை:** நீங்கள் வாங்கிய பொருளுக்கு வாரண்டி இருக்கும்போது, அதை சரிசெய்து தருவது நிறுவனத்தின் கடமை. அவர்கள் உதிரி பாகங்கள் இல்லை என்றோ அல்லது இது உங்கள் தவறு என்றோ கூறலாம், ஆனால் அதை நிரூபிக்கும் பொறுப்பு அவர்களிடமே உள்ளது. நீங்கள் வாங்கியதற்கான ரசீது மற்றும் வாரண்டி கார்டு உங்களிடம் இருந்தால், நீங்கள் சட்டப்படி வலுவான நிலையில் இருக்கிறீர்கள்.\n\n**சட்டம் உங்கள் பக்கம்:**\n* நுகர்வோர் பாதுகாப்புச் சட்டம், 2019 (Consumer Protection Act, 2019) பிரிவு 2(11)-ன் படி, சேவையில் குறைபாடு இருந்தால் நீங்கள் இழப்பீடு கோரலாம்.\n* இ-காமர்ஸ் விதிகளின்படி, நிறுவனத்தின் Grievance Officer உங்கள் புகாரை 48 மணிநேரத்தில் ஏற்றுக்கொண்டு, ஒரு மாதத்திற்குள் தீர்க்க வேண்டும்.\n\n**அவர்கள் என்ன சொல்வார்கள், உங்கள் பதில்:**\n* அவர்கள்: \"இது உங்கள் தவறு, வாரண்டி செல்லாது\" என்று கூறலாம். \n* பதில்: \"எந்த அடிப்படையில் இந்த முடிவுக்கு வந்தீர்கள்? தொழில்நுட்ப அறிக்கை (Technical Report) எங்கே?\" என்று கேளுங்கள்.\n\n**நான் என்ன செய்வேன்:**\n1. இன்றே நிறுவனத்தின் Grievance Officer-க்கு மின்னஞ்சல் அனுப்புவேன். (நான் உங்களுக்கு இதை எழுதித் தருகிறேன்).\n2. 48 மணிநேரத்தில் பதில் இல்லை என்றால், 1915 என்ற எண்ணுக்கு அழைத்து தேசிய நுகர்வோர் உதவி மையத்தில் (National Consumer Helpline) புகார் அளிப்பேன்.\n3. அதன்பிறகும் தீர்வு கிடைக்கவில்லை என்றால், e-Jagriti இணையதளத்தில் நுகர்வோர் நீதிமன்றத்தில் புகார் அளிப்பேன். இதற்கு வழக்கறிஞர் தேவையில்லை, கட்டணமும் இல்லை.\n\nஉங்களிடம் சர்வீஸ் சென்டர் கொடுத்த 'Service Request Number' அல்லது அவர்கள் மறுத்ததற்கான ஆதாரம் (மின்னஞ்சல்/மெசேஜ்) இருக்கிறதா?",
+   "citations": [
+    {
+     "id": "CPA2019-S2-11",
+     "act": "Consumer Protection Act, 2019",
+     "section": "2(11)",
+     "title": "Meaning of 'deficiency' in service",
+     "plain": "A deficiency is any fault, shortcoming or inadequacy in the quality, nature or manner of a service that the law or a contract requires. It also covers negligence or acts or omissions that cause you loss, and deliberately withholding relevant information from you.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/CP%20Act%202019_1732700731.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPECOM2020-R4-5",
+     "act": "Consumer Protection (E-Commerce) Rules, 2020",
+     "section": "Rule 4(5)",
+     "title": "E-commerce grievance officer: acknowledge in 48 hours, resolve in one month",
+     "plain": "Every e-commerce platform must have a grievance officer. That officer must acknowledge your complaint within 48 hours and resolve it within one month of receiving it. Sellers on marketplaces must also appoint a grievance officer with the same timelines (rule 6(4)(b)).",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-NCH-HELPLINE",
+     "act": "National Consumer Helpline",
+     "section": "",
+     "title": "National Consumer Helpline (NCH) contact details",
+     "plain": "Before going to a Consumer Commission, you can register a complaint free with the National Consumer Helpline. Call 1915 or 1800-11-4000 (toll-free), WhatsApp or SMS +91 8800001915, or file online at consumerhelpline.gov.in. NCH is a pre-litigation mediation channel, not a court, and cannot pass binding orders.",
+     "source_url": "https://consumerhelpline.gov.in/",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-EJAGRITI-PORTAL",
+     "act": "e-Jagriti consumer e-filing portal",
+     "section": "",
+     "title": "e-Jagriti: current portal for filing consumer complaints (replaced e-Daakhil)",
+     "plain": "Consumer complaints to the District, State and National Commissions are now filed online on e-Jagriti (https://e-jagriti.gov.in/). It launched on 1 January 2025 and merged the older e-Daakhil, OCMS, NCDRC CMS and CONFONET systems. You can file, pay fees, attend virtual hearings and track your case there.",
+     "source_url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/dec/doc20251223743001.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Last date to file a consumer complaint (2 years from when the problem arose)",
+      "date": "2028-07-01",
+      "days_left": 603,
+      "status": "ok",
+      "basis": "CPA2019-S69",
+      "note": "The commission can accept a late complaint only if you show sufficient cause for the delay.",
+      "user_deadline": true
+     }
+    ],
+    "derived": [
+     {
+      "label": "Where to file",
+      "value": "District Consumer Disputes Redressal Commission",
+      "basis": "CPJURIS2021-R3-5",
+      "note": "Based on the amount you paid (₹32,000), not the amount you claim."
+     },
+     {
+      "label": "Filing fee",
+      "value": "Nil",
+      "basis": "CPCDRC2020-R7",
+      "note": ""
+     }
+    ]
+   },
+   "completeness": {
+    "pct": 50,
+    "missing": [
+     {
+      "key": "other_party_name",
+      "question": "Which company / seller / platform?"
+     },
+     {
+      "key": "problem_date",
+      "question": "When did the problem start (or refund become due)?"
+     },
+     {
+      "key": "complained_to_company",
+      "question": "Have you complained to the company? When, and what did they say?"
+     },
+     {
+      "key": "proof",
+      "question": "What proof do you have (invoice, order ID, chats, emails, photos)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "company_complaint_email"
+    }
+   ],
+   "next_step": "Draft a formal complaint email to the company's grievance officer.",
+   "needs_lawyer": {
+    "level": "none",
+    "reasons": []
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Did you buy it online or offline?",
+    "Do you have any written proof of the service center's refusal?"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [
+      [
+       "பிரிவு 2(11)",
+       "Consumer Protection Act, 2019"
+      ]
+     ],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [
+      [
+       "பிரிவு 2(11)",
+       "Consumer Protection Act, 2019"
+      ]
+     ],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Tamil",
+     "got": "Tamil",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 22.25,
+    "usage": {
+     "completion_tokens": 898,
+     "prompt_tokens": 4830,
+     "total_tokens": 7375
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "consumer",
+       "language": "Tamil",
+       "script": "Tamil",
+       "facts": {
+        "product_or_service": "Washing machine",
+        "amount_paid": "32000",
+        "purchase_date": "2026-07-01",
+        "city_state": "Chennai",
+        "summary": "User purchased a washing machine in July 2026 for 32,000 INR, which stopped working after two months, and the service center is refusing to repair it despite the warranty."
+       },
+       "approximate_dates": [
+        "purchase_date"
+       ],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.56,
+       "usage": {
+        "completion_tokens": 167,
+        "prompt_tokens": 1037,
+        "total_tokens": 1331
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 22.25,
+       "usage": {
+        "completion_tokens": 898,
+        "prompt_tokens": 4830,
+        "total_tokens": 7375
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 24.82
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "நான் சென்னையில் ஜூலை 2026-ல் 32,000 ரூபாய்க்கு வாஷிங் மெஷின் வாங்கினேன். இரண்டு மாதத்தில் வேலை செய்யவில்லை. வாரண்டி இருந்தும் சர்வீஸ் சென்டர் சரிசெய்ய மறுக்கிறது. என்ன செய்வது?"
+   },
+   {
+    "role": "assistant",
+    "content": "இது ஒரு தெளிவான 'சேவை குறைபாடு' (Deficiency in Service) வழக்கு. வாரண்டி காலத்தில் இருக்கும்போது, சர்வீஸ் சென்டர் சரிசெய்ய மறுப்பது சட்டப்படி தவறு. உங்கள் வாதம் மிகவும் வலுவானது. நிறுவனத்தின் Grievance Officer-க்கு முறைப்படி மின்னஞ்சல் அனுப்புவதே முதல் வேலை. அவர்கள் 48 மணிநேரத்தில் பதில் அளிக்க வேண்டும். \n\n**எனது பார்வை:** நீங்கள் வாங்கிய பொருளுக்கு வாரண்டி இருக்கும்போது, அதை சரிசெய்து தருவது நிறுவனத்தின் கடமை. அவர்கள் உதிரி பாகங்கள் இல்லை என்றோ அல்லது இது உங்கள் தவறு என்றோ கூறலாம், ஆனால் அதை நிரூபிக்கும் பொறுப்பு அவர்களிடமே உள்ளது. நீங்கள் வாங்கியதற்கான ரசீது மற்றும் வாரண்டி கார்டு உங்களிடம் இருந்தால், நீங்கள் சட்டப்படி வலுவான நிலையில் இருக்கிறீர்கள்.\n\n**சட்டம் உங்கள் பக்கம்:**\n* நுகர்வோர் பாதுகாப்புச் சட்டம், 2019 (Consumer Protection Act, 2019) பிரிவு 2(11)-ன் படி, சேவையில் குறைபாடு இருந்தால் நீங்கள் இழப்பீடு கோரலாம்.\n* இ-காமர்ஸ் விதிகளின்படி, நிறுவனத்தின் Grievance Officer உங்கள் புகாரை 48 மணிநேரத்தில் ஏற்றுக்கொண்டு, ஒரு மாதத்திற்குள் தீர்க்க வேண்டும்.\n\n**அவர்கள் என்ன சொல்வார்கள், உங்கள் பதில்:**\n* அவர்கள்: \"இது உங்கள் தவறு, வாரண்டி செல்லாது\" என்று கூறலாம். \n* பதில்: \"எந்த அடிப்படையில் இந்த முடிவுக்கு வந்தீர்கள்? தொழில்நுட்ப அறிக்கை (Technical Report) எங்கே?\" என்று கேளுங்கள்.\n\n**நான் என்ன செய்வேன்:**\n1. இன்றே நிறுவனத்தின் Grievance Officer-க்கு மின்னஞ்சல் அனுப்புவேன். (நான் உங்களுக்கு இதை எழுதித் தருகிறேன்).\n2. 48 மணிநேரத்தில் பதில் இல்லை என்றால், 1915 என்ற எண்ணுக்கு அழைத்து தேசிய நுகர்வோர் உதவி மையத்தில் (National Consumer Helpline) புகார் அளிப்பேன்.\n3. அதன்பிறகும் தீர்வு கிடைக்கவில்லை என்றால், e-Jagriti இணையதளத்தில் நுகர்வோர் நீதிமன்றத்தில் புகார் அளிப்பேன். இதற்கு வழக்கறிஞர் தேவையில்லை, கட்டணமும் இல்லை.\n\nஉங்களிடம் சர்வீஸ் சென்டர் கொடுத்த 'Service Request Number' அல்லது அவர்கள் மறுத்ததற்கான ஆதாரம் (மின்னஞ்சல்/மெசேஜ்) இருக்கிறதா?"
+   }
+  ],
+  "case": {
+   "category": "consumer",
+   "language": "Tamil",
+   "script": "Tamil",
+   "facts": {
+    "product_or_service": "Washing machine",
+    "amount_paid": 32000,
+    "purchase_date": "2026-07-01",
+    "city_state": "Chennai",
+    "summary": "User purchased a washing machine in July 2026 for 32,000 INR, which stopped working after two months, and the service center is refusing to repair it despite the warranty."
+   },
+   "timeline": [
+    {
+     "date": "2026-07-01",
+     "event": "Purchased washing machine"
+    },
+    {
+     "date": "2026-09-01",
+     "event": "Machine stopped working"
+    }
+   ],
+   "evidence_have": [
+    "Invoice/Bill",
+    "Warranty card"
+   ],
+   "evidence_missing": [
+    "Service request numbers",
+    "Written communication from service center refusing repair"
+   ],
+   "next_step": "Draft a formal complaint email to the company's grievance officer.",
+   "approximate": [
+    "purchase_date"
+   ]
+  },
+  "flags": {
+   "level": "none",
+   "reasons": []
+  },
+  "log": [
+   {
+    "t": 24.82,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got consumer"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Tamil, reply script Tamil"
+  },
+  {
+   "check": "fact:amount_paid",
+   "pass": true,
+   "detail": "expected ~32, got 32000"
+  },
+  {
+   "check": "escalation<=recommended",
+   "pass": true,
+   "detail": "got none"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": null
+}

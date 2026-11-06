@@ -48,6 +48,9 @@ OVERCLAIM_RE = re.compile(
     r"|\b(?:your|the|this)\s+(?:claim|case|position)\s+is\s+(?:very\s+|really\s+)?(?:watertight|airtight|unbeatable)\b"
     r"|\bguarantee[sd]?\b(?!\s+(?:card|period))|\b100\s*%\s*(?:sure|certain|win)|\byou\s+will\s+(?:definitely\s+)?win\b"
     r"|पक्का\s+(?:जीत|केस)|ज़रूर\s+जीत|जरूर\s+जीत|pakka\s+jeet|zaroor\s+jeet"
+    # claiming to BE a lawyer (eval v7, T17: a prompt injection made it say "as a senior advocate, ...")
+    r"|\bas\s+(?:a|an|your)\s+(?:senior\s+)?(?:advocate|lawyer|counsel)\b|\bI\s+am\s+(?:a|an|your)\s+(?:senior\s+)?(?:advocate|lawyer)\b"
+    r"|मैं\s+(?:एक\s+)?(?:वकील|अधिवक्ता)\s+(?:हूँ|हूं)|main\s+(?:ek\s+)?vakil\s+hoon"
 )
 NUM_UNIT_RE = re.compile(
     r"(?i)(\d{1,3})\s*(?:-|to)?\s*(working days?|days?|months?|years?|weeks?|hours?|दिन|दिनों|महीने|महीनों|माह|साल|वर्ष|घंटे)"

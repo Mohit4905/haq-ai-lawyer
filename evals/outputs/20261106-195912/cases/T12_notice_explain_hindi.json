@@ -1,0 +1,291 @@
+{
+ "case": {
+  "id": "T12_notice_explain_hindi",
+  "group": "core",
+  "turns": [
+   "मुझे वकील का नोटिस आया है अंग्रेज़ी में, समझ नहीं आ रहा। लिखा है: 'Under instructions from my client Mr. S.K. Verma, I hereby call upon you to pay Rs. 1,00,000 towards damages caused to the premises at Flat 4B, Indirapuram, within 15 days of receipt of this notice, failing which my client shall initiate appropriate civil proceedings against you at your risk as to costs.' मैंने वो फ्लैट 2 महीने पहले खाली किया था और कोई नुकसान नहीं किया।"
+  ],
+  "expect": {
+   "category_any": [
+    "notice",
+    "tenancy"
+   ],
+   "script": "Devanagari",
+   "must_mention_any": [
+    [
+     "15"
+    ],
+    [
+     "जवाब",
+     "reply",
+     "रिप्लाई"
+    ]
+   ],
+   "escalate_min": "recommended"
+  }
+ },
+ "results": [
+  {
+   "reply": "घबराइए मत, यह एक कानूनी नोटिस है, लेकिन इसका मतलब यह नहीं कि आप गलत हैं। दो महीने बाद 1 लाख रुपये का दावा करना बहुत संदिग्ध है। जब आपने फ्लैट खाली किया था, तब उन्होंने कोई आपत्ति क्यों नहीं जताई? कानून के अनुसार, उन्हें यह साबित करना होगा कि नुकसान आपकी वजह से हुआ है और वह 'सामान्य टूट-फूट' (normal wear and tear) से ज्यादा है।\n\n**मेरी राय:** आपका केस मजबूत है क्योंकि आपने फ्लैट दो महीने पहले खाली कर दिया था। अगर कोई नुकसान होता, तो उन्हें पजेशन (possession) लेते समय ही बताना चाहिए था। अब वे जो दावा कर रहे हैं, उसे साबित करने की जिम्मेदारी पूरी तरह से उन पर है।\n\n**कानून आपकी तरफ है:**\n*   भारतीय अनुबंध अधिनियम (Indian Contract Act, 1872) की धारा 73 के तहत, उन्हें यह साबित करना होगा कि नुकसान वास्तव में हुआ है और वह आपकी लापरवाही का नतीजा है। वे मनमाना जुर्माना नहीं लगा सकते।\n\n**वे क्या कहेंगे और आपका जवाब:**\n*   वे कह सकते हैं कि उन्हें नुकसान बाद में पता चला। आप जवाब देंगे कि पजेशन लेते समय उन्होंने फ्लैट का निरीक्षण (inspection) किया था और तब कोई शिकायत नहीं थी।\n\n**मैं क्या करूँगा:**\n1. आज ही एक लिखित जवाब (Reply) तैयार करें। इसमें स्पष्ट रूप से लिखें कि आपने फ्लैट सही स्थिति में सौंपा था और यह दावा निराधार है।\n2. उनसे उन बिलों या सबूतों की मांग करें जिनके आधार पर वे 1 लाख रुपये मांग रहे हैं।\n3. अगर आपके पास फ्लैट खाली करते समय की कोई फोटो या वीडियो है, तो उसे संभाल कर रखें।\n\n**मुझे आपसे यह जानना है:**\n1. यह नोटिस आपको किस तारीख को मिला था? (ताकि हम 15 दिन की समय सीमा का हिसाब रख सकें)\n2. क्या फ्लैट खाली करते समय आपने कोई 'हैंडओवर डॉक्यूमेंट' (handover document) साइन किया था या कोई ईमेल/मैसेज भेजा था?",
+   "citations": [
+    {
+     "id": "ICA1872-S73",
+     "act": "Indian Contract Act, 1872",
+     "section": "73",
+     "title": "Compensation for breach of contract",
+     "plain": "If someone breaks a contract with you, you can claim money for the loss it caused. The loss must be one that naturally follows from the breach, or one both sides knew was likely when they made the contract. Remote or indirect losses are not covered. This is the basis for claiming back an unpaid deposit, rent or salary owed under a contract.",
+     "source_url": "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 67,
+    "missing": [
+     {
+      "key": "notice_date",
+      "question": "Date on the notice?"
+     },
+     {
+      "key": "received_date",
+      "question": "When did you receive it?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "reply_to_notice"
+    }
+   ],
+   "next_step": "Draft a formal reply to the notice denying the claims.",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "The notice threatens legal proceedings: get it reviewed",
+     "The amount is significant (1 lakh) and it is a formal legal notice."
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Date of receipt of notice",
+    "Existence of handover documents"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [
+      [
+       "धारा 73",
+       "Indian Contract Act, 1872"
+      ]
+     ],
+     "violations": [],
+     "warnings": [
+      {
+       "type": "unsupported_number",
+       "text": "15 दिन",
+       "why": "Time period not found in the verified library or calculations."
+      }
+     ],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [
+      [
+       "धारा 73",
+       "Indian Contract Act, 1872"
+      ]
+     ],
+     "violations": [],
+     "warnings": [
+      {
+       "type": "unsupported_number",
+       "text": "15 दिन",
+       "why": "Time period not found in the verified library or calculations."
+      }
+     ],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Devanagari",
+     "got": "Devanagari",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 7.49,
+    "usage": {
+     "completion_tokens": 758,
+     "prompt_tokens": 3795,
+     "total_tokens": 5667
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": [
+       {
+        "level": "recommended",
+        "reason": "The notice threatens legal proceedings: get it reviewed"
+       }
+      ]
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "notice",
+       "language": "Hindi",
+       "script": "Devanagari",
+       "facts": {
+        "notice_from": "Mr. S.K. Verma",
+        "notice_demands": "Pay Rs. 1,00,000 towards damages to premises",
+        "notice_deadline_days": "15",
+        "notice_text": "Under instructions from my client Mr. S.K. Verma, I hereby call upon you to pay Rs. 1,00,000 towards damages caused to the premises at Flat 4B, Indirapuram, within 15 days of receipt of this notice, failing which my client shall initiate appropriate civil proceedings against you at your risk as to costs.",
+        "possession_handed_over_date": "2026-09-01",
+        "summary": "User received a legal notice from landlord Mr. S.K. Verma demanding 1 lakh for alleged damages to a flat vacated 2 months ago."
+       },
+       "approximate_dates": [
+        "possession_handed_over_date"
+       ],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.17,
+       "usage": {
+        "completion_tokens": 269,
+        "prompt_tokens": 1092,
+        "total_tokens": 1506
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 7.49,
+       "usage": {
+        "completion_tokens": 758,
+        "prompt_tokens": 3795,
+        "total_tokens": 5667
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 9.68
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "मुझे वकील का नोटिस आया है अंग्रेज़ी में, समझ नहीं आ रहा। लिखा है: 'Under instructions from my client Mr. S.K. Verma, I hereby call upon you to pay Rs. 1,00,000 towards damages caused to the premises at Flat 4B, Indirapuram, within 15 days of receipt of this notice, failing which my client shall initiate appropriate civil proceedings against you at your risk as to costs.' मैंने वो फ्लैट 2 महीने पहले खाली किया था और कोई नुकसान नहीं किया।"
+   },
+   {
+    "role": "assistant",
+    "content": "घबराइए मत, यह एक कानूनी नोटिस है, लेकिन इसका मतलब यह नहीं कि आप गलत हैं। दो महीने बाद 1 लाख रुपये का दावा करना बहुत संदिग्ध है। जब आपने फ्लैट खाली किया था, तब उन्होंने कोई आपत्ति क्यों नहीं जताई? कानून के अनुसार, उन्हें यह साबित करना होगा कि नुकसान आपकी वजह से हुआ है और वह 'सामान्य टूट-फूट' (normal wear and tear) से ज्यादा है।\n\n**मेरी राय:** आपका केस मजबूत है क्योंकि आपने फ्लैट दो महीने पहले खाली कर दिया था। अगर कोई नुकसान होता, तो उन्हें पजेशन (possession) लेते समय ही बताना चाहिए था। अब वे जो दावा कर रहे हैं, उसे साबित करने की जिम्मेदारी पूरी तरह से उन पर है।\n\n**कानून आपकी तरफ है:**\n*   भारतीय अनुबंध अधिनियम (Indian Contract Act, 1872) की धारा 73 के तहत, उन्हें यह साबित करना होगा कि नुकसान वास्तव में हुआ है और वह आपकी लापरवाही का नतीजा है। वे मनमाना जुर्माना नहीं लगा सकते।\n\n**वे क्या कहेंगे और आपका जवाब:**\n*   वे कह सकते हैं कि उन्हें नुकसान बाद में पता चला। आप जवाब देंगे कि पजेशन लेते समय उन्होंने फ्लैट का निरीक्षण (inspection) किया था और तब कोई शिकायत नहीं थी।\n\n**मैं क्या करूँगा:**\n1. आज ही एक लिखित जवाब (Reply) तैयार करें। इसमें स्पष्ट रूप से लिखें कि आपने फ्लैट सही स्थिति में सौंपा था और यह दावा निराधार है।\n2. उनसे उन बिलों या सबूतों की मांग करें जिनके आधार पर वे 1 लाख रुपये मांग रहे हैं।\n3. अगर आपके पास फ्लैट खाली करते समय की कोई फोटो या वीडियो है, तो उसे संभाल कर रखें।\n\n**मुझे आपसे यह जानना है:**\n1. यह नोटिस आपको किस तारीख को मिला था? (ताकि हम 15 दिन की समय सीमा का हिसाब रख सकें)\n2. क्या फ्लैट खाली करते समय आपने कोई 'हैंडओवर डॉक्यूमेंट' (handover document) साइन किया था या कोई ईमेल/मैसेज भेजा था?"
+   }
+  ],
+  "case": {
+   "category": "notice",
+   "language": "Hindi",
+   "script": "Devanagari",
+   "facts": {
+    "notice_from": "Mr. S.K. Verma",
+    "notice_demands": "100000",
+    "notice_deadline_days": "15",
+    "notice_text": "Under instructions from my client Mr. S.K. Verma, I hereby call upon you to pay Rs. 1,00,000 towards damages caused to the premises at Flat 4B, Indirapuram, within 15 days of receipt of this notice, failing which my client shall initiate appropriate civil proceedings against you at your risk as to costs.",
+    "possession_handed_over_date": "2026-09-01",
+    "summary": "User received a legal notice from landlord Mr. S.K. Verma demanding 1 lakh for alleged damages to a flat vacated 2 months ago."
+   },
+   "timeline": [
+    {
+     "date": "2026-09-01",
+     "event": "Flat vacated"
+    },
+    {
+     "date": "Today",
+     "event": "Received legal notice"
+    }
+   ],
+   "evidence_have": [],
+   "evidence_missing": [
+    "Photos/videos of flat at handover",
+    "Handover document/email",
+    "Date of receipt of notice"
+   ],
+   "next_step": "Draft a formal reply to the notice denying the claims.",
+   "approximate": [
+    "possession_handed_over_date"
+   ]
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "The notice threatens legal proceedings: get it reviewed",
+    "The amount is significant (1 lakh) and it is a formal legal notice."
+   ]
+  },
+  "log": [
+   {
+    "t": 9.68,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got notice"
+  },
+  {
+   "check": "reply_language",
+   "pass": true,
+   "detail": "expected Devanagari, reply script Devanagari"
+  },
+  {
+   "check": "mentions:15",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "mentions:जवाब|reply|रिप्लाई",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "escalation>=recommended",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": null
+}
