@@ -19,7 +19,10 @@ def _sb():
     url, key = os.getenv("SUPABASE_URL"), os.getenv("SUPABASE_SERVICE_ROLE_KEY")
     if not url or not key:
         raise RuntimeError("Supabase service role not configured")
-    return url.rstrip("/"), {"apikey": key, "Authorization": f"Bearer {key}", "Content-Type": "application/json"}
+    h = {"apikey": key, "Content-Type": "application/json"}
+    if not key.startswith("sb_"):  # legacy JWT keys also go in Authorization; new sb_secret_ keys only in apikey
+        h["Authorization"] = f"Bearer {key}"
+    return url.rstrip("/"), h
 
 
 def _send_email(to: str, subject: str, html_body: str) -> None:
