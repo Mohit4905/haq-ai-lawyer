@@ -76,15 +76,15 @@ function courtCard(c) {
     <dl class="cc-grid">
       ${row("court_court", esc(c.court) + (c.court_no ? ` · ${esc(tr("court_no"))} ${esc(c.court_no)}` : ""))}
       ${row("court_judge", esc((c.judges || []).join(", ")))}
-      ${row("court_case", esc([c.case_type, c.case_number || c.registration?.number].filter(Boolean).join(" ")) + `<br><span class="muted small">CNR ${esc(c.cnr)}</span>`)}
-      ${row("court_filed", esc([c.filing?.number, courtDate(c.filing?.date)].filter(x => x && x !== "-").join(" · ")))}
+      ${row("court_case", esc([c.case_type, c.registration?.number || c.case_number].filter(Boolean).join(" ")) + `<br><span class="muted small">CNR ${esc(c.cnr)}</span>`)}
+      ${row("court_filed", esc([c.filing?.number ? tr("court_filing_no") + " " + c.filing.number : "", courtDate(c.filing?.date)].filter(x => x && x !== "-").join(" · ")))}
       ${row("court_pet", people(c.petitioners, c.petitioner_advocates))}
       ${row("court_res", people(c.respondents, c.respondent_advocates))}
       ${row("court_acts", esc(c.acts || ""))}
       ${disposed ? "" : row("court_last", esc(courtDate(c.last_hearing)))}
     </dl>
     ${c.orders?.length ? `<div class="cc-sub">${esc(tr("court_orders"))} (${c.orders.length})</div><div class="cc-orders">${c.orders.slice(0, 12).map((o, i) => `
-      <div class="cc-order"><span class="cc-od">${esc(courtDate(o.date))}</span><span class="cc-ol">${o.kind === "judgment" ? `<b>${esc(o.label)}</b>` : esc(o.label)}</span><button class="ghost small" type="button" data-i="${i}">${esc(tr("court_explain"))}</button></div>`).join("")}</div>` : `<p class="small muted">${esc(tr("court_no_orders"))}</p>`}
+      <div class="cc-order"><span class="cc-od">${esc(courtDate(o.date))}</span><span class="cc-ol">${o.kind === "judgment" ? `<b>${esc(o.label)}</b>` : esc(o.label)}</span><button class="ghost small" type="button" data-i="${i}">${esc(tr("court_explain"))}</button></div>`).join("")}</div>` : `<p class="small muted cc-empty">${esc(tr("court_no_orders"))}</p>`}
     ${c.hearings?.length ? `<details class="cc-hist"><summary class="small">${esc(tr("court_hist"))} (${c.hearings.length})</summary><ol>${c.hearings.map(h => `<li><span class="cc-od">${esc(courtDate(h.date))}</span> ${esc(h.purpose || "")}${h.judge ? ` <span class="muted small">· ${esc(h.judge)}</span>` : ""}</li>`).join("")}</ol></details>` : ""}
     <div class="cc-foot"><span>${esc(tr("court_source"))}${c.fetched_at ? ` · ${esc(c.fetched_at)}` : ""}</span><button class="link-btn inline cc-refresh" type="button">${esc(tr("court_refresh"))}</button></div>`;
   el.querySelectorAll(".cc-order button").forEach(b => b.onclick = () => explainOrder(c, c.orders[+b.dataset.i]));

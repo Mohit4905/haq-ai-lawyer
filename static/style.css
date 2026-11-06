@@ -873,6 +873,7 @@ body.side-collapsed .rail-btn.active::before{display:none}
 .cc-grid dd{margin:0;min-width:0;overflow-wrap:anywhere}
 .cc-sub{font-size:12px;font-weight:600;color:var(--muted);padding:4px 14px 6px;border-top:1px solid var(--line);padding-top:10px}
 .cc-orders{padding:0 8px 8px}
+.cc-empty{margin:0;padding:10px 14px;border-top:1px solid var(--line)}
 .cc-order{display:flex;align-items:center;gap:10px;padding:6px;border-radius:6px;font-size:14px}
 .cc-order:hover{background:color-mix(in srgb,var(--ink) 4%,transparent)}
 .cc-od{color:var(--muted);font-size:13px;white-space:nowrap;min-width:92px}

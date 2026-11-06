@@ -502,7 +502,7 @@ Object.assign(window.HAQ_I18N["en"], {
   court_intro: "Here is the latest from the court record for CNR {cnr}.", court_refreshed: "Refreshed the court record for CNR {cnr}.",
   court_track_q: "Track my court case: {cnr}", court_explain_q: "Explain the court's order: {label} ({date})",
   court_next: "Next hearing", court_decided: "Decided on", court_cal: "Add to calendar", court_court: "Court", court_no: "Court no.", court_judge: "Judge",
-  court_case: "Case", court_filed: "Filed", court_pet: "Petitioner", court_res: "Respondent", court_adv: "Advocate", court_acts: "Acts / sections",
+  court_case: "Case", court_filed: "Filed", court_filing_no: "Filing no.", court_pet: "Petitioner", court_res: "Respondent", court_adv: "Advocate", court_acts: "Acts / sections",
   court_last: "Last hearing", court_orders: "Orders and judgments", court_explain: "Explain", court_no_orders: "No orders uploaded yet.",
   court_hist: "Hearing history", court_source: "Source: eCourts record via eCourtsIndia", court_refresh: "Refresh",
   court_reading: "Reading the order…", court_searching: "Searching…", court_none: "No cases found for this name.", court_jud_none: "No judgments found in the sample for this search.",
