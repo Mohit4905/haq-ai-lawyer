@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light" data-palette="indigo">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,7 +7,7 @@
 <meta name="description" content="Haq helps ordinary people in India understand and act on everyday legal problems: deposits, refunds, unpaid salary, bounced cheques, legal notices.">
 <script>
   /* apply saved theme before paint (default: light) */
-  try { document.documentElement.dataset.theme = localStorage.getItem("haq_theme") || "light"; } catch (e) {}
+  try { document.documentElement.dataset.theme = localStorage.getItem("haq_theme") || "light"; document.documentElement.dataset.palette = localStorage.getItem("haq_palette") || "indigo"; } catch (e) {}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,13 +45,17 @@
     <div id="banner" class="banner hidden"></div>
     <div id="chat" class="chat" aria-live="polite">
       <div id="welcome" class="welcome">
-        <h1 data-i18n="welcome_h">What's the problem? Tell me in your own words.</h1>
-        <p class="sub" data-i18n="welcome_p">Type or speak in your language.</p>
-        <ol class="how">
-          <li><span>1</span><b data-i18n="how1">Tell your problem</b></li>
-          <li><span>2</span><b data-i18n="how2">Know your rights &amp; deadlines</b></li>
-          <li><span>3</span><b data-i18n="how3">Get your notice drafted</b></li>
-        </ol>
+        <div class="hero">
+          <div class="hero-glow" aria-hidden="true"></div>
+          <div class="hero-badge">⚖️ <span data-i18n="tagline">Free help with everyday legal problems, in your language</span></div>
+          <h1 data-i18n="welcome_h">What's the problem? Tell me in your own words.</h1>
+          <p class="sub" data-i18n="welcome_p">Type or speak in your language.</p>
+          <ol class="how">
+            <li><span>1</span><b data-i18n="how1">Tell your problem</b></li>
+            <li><span>2</span><b data-i18n="how2">Know your rights &amp; deadlines</b></li>
+            <li><span>3</span><b data-i18n="how3">Get your notice drafted</b></li>
+          </ol>
+        </div>
         <div class="cards" id="cards"></div>
         <p class="trust">🛡️ <span data-i18n="trust">Every law Haq mentions is first checked against official sources.</span></p>
       </div>

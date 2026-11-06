@@ -55,3 +55,10 @@ A notice demanding unpaid *society maintenance charges* was flagged as a 'Family
 1. Intake mapping hint: 'the bank returned the cheque on X' becomes the return-memo date. Before this, the deadline wasn't computed for that phrasing.
 2. When a user deadline is coming up, the reply states it in the first line, even while it's still asking questions.
 Both were checked by hand on the live deployment. The 22-case suite was **not** re-run after these, so the v4 numbers describe the code as of commit 892747a plus the maintenance-regex fix.
+
+## After v4: lawyer-style answers (user feedback)
+Feedback from testing the live app: replies read like a cautious chatbot and cited no sections the user could quote. Changes:
+- The prompt now requires a structure: *Your legal position → Law you can cite (exact verified provisions + how each helps) → What to do now → max 2 questions*, from the first message.
+- Code guarantee: if a covered problem's reply cites no verified provision, code appends the core provisions for that category (`rules.CORE_CITATIONS`), all from the verified library.
+- Bug found while testing: the salary 'full & final due within 2 working days' date was treated as the *user's* missed deadline. It's the *employer's* deadline (passing it puts the employer in default). Fixed (`mine=False`). Deadline alerts are now in Hindi/Hinglish as well.
+**The eval suite must be re-run on this version** (see v5).

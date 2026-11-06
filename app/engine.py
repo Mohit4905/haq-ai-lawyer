@@ -237,6 +237,22 @@ def turn(state: dict | None, message: str, provider: str | None = None, today: d
         level = prev_level
     state["flags"] = {"level": level, "reasons": list(dict.fromkeys(state["flags"].get("reasons", []) + reasons))[-6:]}
 
+    # 7b. citable-law guarantee: a covered problem always shows verified provisions the user can cite
+    core = rules.CORE_CITATIONS.get(case["category"] or "", [])
+    if core and not rep.verified and not any(f["level"] in ("urgent", "emergency") for f in flags):
+        idx = kb.by_id()
+        lines = []
+        for cid in core:
+            e = idx.get(cid)
+            if e:
+                first = re.split(r"(?<=[.!?])\s", e["plain"].strip())[0]
+                lines.append(f"- **{rules.provision_label(e)}**: {first}")
+        if lines:
+            head = rules.CITE_HEADING.get(case.get("language") or "", "Law you can cite (checked against official sources)")
+            reply += f"\n\n**{head}:**\n" + "\n".join(lines)
+            out["citations"] = list(dict.fromkeys((out.get("citations") or []) + core))
+            guard_log["core_citations_added"] = core
+
     # 8a. deadline safety net: a passed deadline must be visible even if the model glossed over it
     passed = [d for d in calc.get("deadlines", []) if d["status"] == "passed" and d.get("user_deadline", True)]
     for d in passed:
@@ -244,7 +260,8 @@ def turn(state: dict | None, message: str, provider: str | None = None, today: d
         variants = {d["date"], dt.strftime("%d %b %Y").lstrip("0"), dt.strftime("%d %B").lstrip("0"), dt.strftime("%d-%m-%Y"), dt.strftime("%d/%m/%Y")}
         lowered = reply.lower()
         if not any(v.lower() in lowered for v in variants):
-            reply += f"\n\n⚠️ **Deadline check (calculated by Haq, not AI):** {d['label']}: **{dt.strftime('%d %b %Y')}**, which has passed. Please speak to a lawyer or free legal aid (15100) soon to check what options remain."
+            key = "hi" if case.get("script") == "Devanagari" else ("hinglish" if case.get("language") == "Hinglish" else "en")
+            reply += "\n\n" + rules.DEADLINE_ALERT[key].format(label=d["label"], date=dt.strftime("%d %b %Y"))
     guard_log["deadline_alerts_added"] = len([1 for d in passed if d["label"] in reply])
 
     # 8b. safety text is added by code, never left to the model

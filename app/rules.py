@@ -122,6 +122,34 @@ PLAYBOOKS: dict[str, list[str]] = {
     ],
 }
 
+# Core provisions a user can cite, per problem type (all verified ids). If the model's reply
+# cites none, code appends these, so a covered case always shows citable law.
+CORE_CITATIONS: dict[str, list[str]] = {
+    "tenancy": ["ICA1872-S73", "LIM1963-ART55"],
+    "consumer": ["CPA2019-S2-11", "CPA2019-S35", "CPA2019-S69"],
+    "salary": ["COW2019-S17", "COW2019-S45", "COW2019-S2K"],
+    "cheque_bounce": ["NIA1881-S138", "NIA1881-S142-1", "NIA1881-S142-2"],
+}
+CITE_HEADING = {
+    "Hindi": "आप ये क़ानून उद्धृत कर सकते हैं (सरकारी स्रोत से जाँचे हुए)",
+    "Hinglish": "Aap yeh kanoon cite kar sakte hain (official source se verified)",
+    "Punjabi": "ਤੁਸੀਂ ਇਹ ਕਾਨੂੰਨ ਹਵਾਲੇ ਵਜੋਂ ਦੇ ਸਕਦੇ ਹੋ (ਸਰਕਾਰੀ ਸਰੋਤ ਨਾਲ ਜਾਂਚੇ)",
+    "Marathi": "तुम्ही हे कायदे उद्धृत करू शकता (अधिकृत स्रोतातून तपासलेले)",
+}
+
+
+def provision_label(e: dict) -> str:
+    s = str(e.get("section") or "").strip()
+    act = e["act"]
+    if not s:
+        return act
+    m = re.search(r"(?i)article\s*(\S+)", s)
+    if m:
+        return f"Article {m.group(1)}, {act}"
+    if re.match(r"(?i)^(order|rule)", s):
+        return f"{s}, {act}"
+    return f"Section {s}, {act}"
+
 # ------------------------------------------------------------------ red flags
 # (regex, level, reason). level: "emergency" > "urgent" > "recommended"
 RED_FLAGS: list[tuple[str, str, str]] = [
@@ -141,6 +169,12 @@ EMERGENCY_PREFIX = {
     "en": "🚨 **If you are in danger right now, call 112.** If you are thinking of harming yourself, please call **Tele-MANAS 14416** (free, 24×7). You are not alone.\n\n",
     "hi": "🚨 **अगर आप अभी ख़तरे में हैं तो 112 पर कॉल करें।** अगर ख़ुद को नुकसान पहुँचाने के विचार आ रहे हैं तो **टेली-मानस 14416** पर कॉल करें (मुफ़्त, 24×7)। आप अकेले नहीं हैं।\n\n",
     "hinglish": "🚨 **Agar aap abhi khatre mein hain to 112 call karein.** Agar khud ko nuksaan pahunchane ke khayal aa rahe hain to **Tele-MANAS 14416** par call karein (free, 24×7). Aap akele nahi hain.\n\n",
+}
+
+DEADLINE_ALERT = {
+    "en": "⚠️ **Deadline check (calculated by Haq, not AI):** {label}: **{date}**, which has passed. Please speak to a lawyer or free legal aid (15100) soon to check what options remain.",
+    "hi": "⚠️ **समय-सीमा जाँच (हक़ के कोड से गणना, AI से नहीं):** {label}: **{date}**, यह तारीख़ निकल चुकी है। जल्द किसी वकील या मुफ़्त कानूनी सहायता (15100) से बात करें कि अब क्या विकल्प बचे हैं।",
+    "hinglish": "⚠️ **Deadline check (Haq ke code se calculate, AI se nahi):** {label}: **{date}**, yeh tareekh nikal chuki hai. Jaldi kisi vakeel ya free legal aid (15100) se baat kijiye ki ab kya options bache hain.",
 }
 
 EMERGENCY_CONTACTS = [
@@ -341,7 +375,7 @@ def compute(category: str | None, facts: dict, today: date | None = None) -> dic
                 d += timedelta(days=1)
                 if d.weekday() < 6:  # Mon-Sat counted as working days (assumption)
                     added += 1
-            out["deadlines"].append(_deadline("Full & final wages were due by (2 working days after leaving)", d, "COW2019-S17", "Assumes a Mon–Sat working week.", today))
+            out["deadlines"].append(_deadline("Employer had to pay your full & final wages by (2 working days after you left)", d, "COW2019-S17", "This is the employer's legal deadline; if it has passed, the employer is in default. Assumes a Mon–Sat working week.", today, mine=False))
         due = parse_date(f.get("salary_due_date")) or lwd
         if due:
             out["deadlines"].append(_deadline("Approximate last date to file a wage claim with the labour authority (3 years)", add_months(due, 36), "COW2019-S45", "", today))

@@ -22,6 +22,12 @@ for cat, steps in rules.PLAYBOOKS.items():
         for i in re.findall(r"[A-Z][A-Z0-9]+-[A-Za-z0-9\-()]+", s):
             if i not in ids:
                 fails.append(f"PLAYBOOKS[{cat}] -> missing {i}")
+for cat, lst in rules.CORE_CITATIONS.items():
+    for i in lst:
+        if i not in ids:
+            fails.append(f"CORE_CITATIONS[{cat}] -> missing {i}")
+        elif not guard.check(rules.provision_label(kb.by_id()[i]) + ".").ok:
+            fails.append(f"guard rejects core citation label: {rules.provision_label(kb.by_id()[i])}")
 for name in ("FEE_BASIS", "FORUM_BASIS"):
     if getattr(rules, name) not in ids:
         fails.append(f"rules.{name} missing")
