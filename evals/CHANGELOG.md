@@ -50,3 +50,8 @@ Pinned: `gemini-3.1-flash-lite` (intake + replies + baseline); judge: Groq `gpt-
 
 ## After v4: bug found in an end-to-end API test
 A notice demanding unpaid *society maintenance charges* was flagged as a 'Family law matter', because the red-flag regex matched the bare word 'maintenance'. The regex now requires spousal/child context (e.g. 'maintenance from my husband', 'गुजारा भत्ता'). A unit test was added. This doesn't affect any of the 22 eval cases (none mention maintenance), so v4 wasn't re-run.
+
+## After v4: two small prompt changes from testing the live app
+1. Intake mapping hint: 'the bank returned the cheque on X' becomes the return-memo date. Before this, the deadline wasn't computed for that phrasing.
+2. When a user deadline is coming up, the reply states it in the first line, even while it's still asking questions.
+Both were checked by hand on the live deployment. The 22-case suite was **not** re-run after these, so the v4 numbers describe the code as of commit 892747a plus the maintenance-regex fix.
