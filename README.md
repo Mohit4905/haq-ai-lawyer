@@ -12,6 +12,8 @@ pinned: false
 
 # Haq (हक़): AI legal help for everyday problems in India
 
+**Live app:** https://haq-46bx.onrender.com (free instance: the first load after idling takes ~50s)
+
 Haq helps an ordinary person in India act on an everyday legal problem. You can type or speak in Hindi, English, Hinglish, Tamil, Bengali and other languages. Haq:
 
 1. **Builds the case.** It turns a messy story into a structured case file (facts, timeline, proof you have, proof you still need) and asks only for what's missing.

@@ -44,7 +44,7 @@ The **backend is stateless**: the browser sends the whole conversation each time
 
 ## 4. Live demo on a new input (they will ask)
 
-1. `cd haq`, activate the venv, run `uvicorn app.main:app --port 8000` (or open the deployed link).
+1. Open https://haq-46bx.onrender.com a few minutes early (the free instance sleeps; the first load takes ~50s). Local backup: `cd haq`, then `.\.venv\Scripts\python.exe -m uvicorn app.main:app --port 8000`.
 2. Type their scenario. Point out: the case file filling up (right panel), deadlines with their source links, the 🛡️ chip (click a law chip to see the official source), escalation banners.
 3. Click **Draft** and show the `[[FILL]]` gaps, Word download, and "how to send".
 4. **Practice** tab: role-play, then feedback scores.
