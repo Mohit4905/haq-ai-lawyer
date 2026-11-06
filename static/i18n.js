@@ -472,3 +472,16 @@ Object.assign(window.HAQ_I18N.en, { ph_short: "Describe your problem…" });
 Object.assign(window.HAQ_I18N.hi, { ph_short: "अपनी समस्या लिखें…" });
 Object.assign(window.HAQ_I18N.hinglish, { ph_short: "Apni problem likhiye…" });
 Object.assign(window.HAQ_I18N.pa, { ph_short: "ਆਪਣੀ ਸਮੱਸਿਆ ਲਿਖੋ…" });
+
+/* composer placeholder: simply 'Ask Haq…' */
+Object.assign(window.HAQ_I18N["en"], { ph: "Ask Haq…", ph_short: "Ask Haq…" });
+Object.assign(window.HAQ_I18N["hi"], { ph: "हक़ से पूछें…", ph_short: "हक़ से पूछें…" });
+Object.assign(window.HAQ_I18N["hinglish"], { ph: "Haq se poochiye…", ph_short: "Haq se poochiye…" });
+Object.assign(window.HAQ_I18N["pa"], { ph: "ਹੱਕ ਨੂੰ ਪੁੱਛੋ…", ph_short: "ਹੱਕ ਨੂੰ ਪੁੱਛੋ…" });
+Object.assign(window.HAQ_I18N["bn"], { ph: "হককে জিজ্ঞাসা করুন…", ph_short: "হককে জিজ্ঞাসা করুন…" });
+Object.assign(window.HAQ_I18N["mr"], { ph: "हकला विचारा…", ph_short: "हकला विचारा…" });
+Object.assign(window.HAQ_I18N["gu"], { ph: "હકને પૂછો…", ph_short: "હકને પૂછો…" });
+Object.assign(window.HAQ_I18N["ta"], { ph: "ஹக்கிடம் கேளுங்கள்…", ph_short: "ஹக்கிடம் கேளுங்கள்…" });
+Object.assign(window.HAQ_I18N["te"], { ph: "హక్‌ని అడగండి…", ph_short: "హక్‌ని అడగండి…" });
+Object.assign(window.HAQ_I18N["kn"], { ph: "ಹಕ್‌ಗೆ ಕೇಳಿ…", ph_short: "ಹಕ್‌ಗೆ ಕೇಳಿ…" });
+Object.assign(window.HAQ_I18N["ml"], { ph: "ഹഖിനോട് ചോദിക്കൂ…", ph_short: "ഹഖിനോട് ചോദിക്കൂ…" });

@@ -501,3 +501,11 @@ body.side-collapsed #toggleSide{display:grid}
   .msg{margin:12px 0}
 }
 input[type=password]::-ms-reveal,input[type=password]::-ms-clear{display:none}
+
+/* composer icons (line icons, Claude-like) */
+.composer .icon{display:grid;place-items:center;color:var(--muted)}
+.composer .icon:hover{color:var(--ink)}
+.composer .icon svg,.composer .send svg{display:block}
+.composer .send{display:grid;place-items:center;border-radius:12px}
+.composer .send:disabled{opacity:.45}
+.composer .mic.rec{color:#fff;background:var(--bad);animation:pulse 1.2s infinite}
