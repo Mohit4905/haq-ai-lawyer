@@ -130,6 +130,72 @@ with sync_playwright() as p:
 
     step("conversation survives page reload", persists)
 
+    def tracker():
+        page.click(".tab[data-tab=case]")
+        page.wait_for_selector("#tracker:not(.hidden)", timeout=10_000)
+        n = page.locator("#checklist li").count()
+        page.locator("#checklist input").first.check()
+        page.fill("#addStepInput", "Call the landlord's brother")
+        page.press("#addStepInput", "Enter")
+        page.locator(".st-step[data-s=notice_sent]").click()
+        page.reload(); page.wait_for_selector("#tracker:not(.hidden)")
+        checked = page.locator("#checklist input:checked").count()
+        on = page.locator(".st-step.on").inner_text()
+        page.screenshot(path=SHOTS / "12_tracker.png")
+        assert n >= 4 and checked >= 1 and page.locator("#checklist li").count() == n + 1, (n, checked)
+        return f"{n} steps + 1 custom, {checked} ticked, status '{on}' kept after reload"
+
+    step("case tracker + checklist (persists)", tracker)
+
+    def calendar():
+        page.click(".tab[data-tab=deadlines]")
+        with page.expect_download(timeout=20_000) as dl:
+            page.locator("#deadlines .cal-btn").first.click()
+        path = SHOTS / "deadline.ics"
+        dl.value.save_as(path)
+        txt = path.read_text(encoding="utf-8")
+        assert "BEGIN:VCALENDAR" in txt and "VALARM" in txt and "DTSTART;VALUE=DATE:" in txt
+        return f".ics with {txt.count('BEGIN:VALARM')} alarm(s)"
+
+    step("add deadline to calendar (.ics)", calendar)
+
+    def evidence():
+        page.click(".tab[data-tab=evidence]")
+        rec = SHOTS / "rent_receipt.txt"
+        rec.write_text("RENT & DEPOSIT RECEIPT\nReceived from Rahul Sharma the sum of Rs 40,000 (Rupees Forty Thousand only) as refundable security deposit "
+                       "for Flat 12B, Kothrud, Pune, on 1 January 2025, paid by UPI ref 501234567890.\nMonthly rent: Rs 20,000.\nLandlord: Suresh Patil (signed)", encoding="utf-8")
+        page.set_input_files("#evFile", str(rec))
+        page.wait_for_selector(".ev-item", timeout=10_000)
+        page.locator(".ev-item [data-act=read]").first.click()
+        page.wait_for_selector(".ev-card", timeout=180_000)
+        page.screenshot(path=SHOTS / "13_evidence_read.png")
+        rows = page.locator(".ev-rows input:checked").count()
+        page.locator(".ev-card [data-act=apply]").click()
+        page.wait_for_selector(".ok-text", timeout=10_000)
+        page.click(".tab[data-tab=case]")
+        tl = page.inner_text("#timeline")
+        assert "Jan 2025" in tl or "2025" in tl, tl
+        return f"AI proposed {rows} item(s); applied; timeline now has: {tl[:80]!r}"
+
+    step("evidence locker: upload → AI read → add to case file", evidence)
+
+    def my_cases():
+        first = page.locator(".case-item.active b").inner_text()
+        page.click("#newCase2")
+        page.wait_for_selector("#welcome:not(.hidden)")
+        page.locator(".card[data-card=cheque]").click()
+        page.click("#send")
+        page.wait_for_selector(".msg.bot .bubble .meta", timeout=240_000)
+        n = page.locator(".case-item").count()
+        page.locator(".case-item", has_text=first[:15]).first.click()
+        page.wait_for_selector(".msg.bot")
+        back = page.locator(".msg.user").first.inner_text()
+        page.screenshot(path=SHOTS / "14_my_cases.png")
+        assert n >= 2 and "40000" in back, (n, back[:60])
+        return f"{n} cases in sidebar; switched back to the first case"
+
+    step("My cases: new case + switch back", my_cases)
+
     def notice():
         page.click("#newCase")
         page.wait_for_selector("#welcome:not(.hidden)")

@@ -2,8 +2,9 @@
 from __future__ import annotations
 
 import io
+import os
 
-from fastapi import FastAPI, File, Form, UploadFile
+from fastapi import FastAPI, File, Form, Request, UploadFile
 from fastapi.responses import FileResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -53,7 +54,55 @@ def get_config():
         "categories": rules.CATEGORIES,
         "doc_types": {k: v["label"] for k, v in documents.DOCS.items()},
         "doc_types_by_category": engine.DOC_TYPES,
+        "case_steps": {k: [{"id": i, "en": en, "hi": hi} for i, en, hi in v] for k, v in rules.CASE_STEPS.items()},
+        "case_statuses": rules.CASE_STATUSES,
+        # public values only (the anon key is designed to be public; access is enforced by row-level security)
+        "supabase": {"url": os.getenv("SUPABASE_URL") or None, "anon_key": os.getenv("SUPABASE_ANON_KEY") or None,
+                     "google": os.getenv("SUPABASE_GOOGLE_LOGIN") == "1"},
+        "email_reminders": bool(os.getenv("BREVO_API_KEY") and os.getenv("SUPABASE_SERVICE_ROLE_KEY")),
     }
+
+
+@app.post("/api/cron/reminders")
+def cron_reminders(request: Request):
+    """Called once a day by the GitHub Actions workflow (.github/workflows/reminders.yml)."""
+    from . import accounts
+
+    secret = os.getenv("CRON_SECRET")
+    if not secret or request.headers.get("x-cron-secret") != secret:
+        return JSONResponse({"error": "forbidden"}, status_code=403)
+    try:
+        return accounts.run_reminders()
+    except Exception as e:  # noqa: BLE001
+        return JSONResponse({"error": str(e)[:300]}, status_code=500)
+
+
+@app.post("/api/account/delete")
+def account_delete(request: Request):
+    from . import accounts
+
+    auth = request.headers.get("authorization", "")
+    if not auth.lower().startswith("bearer "):
+        return JSONResponse({"error": "not signed in"}, status_code=401)
+    try:
+        return accounts.delete_account(auth.split(" ", 1)[1])
+    except Exception as e:  # noqa: BLE001
+        return JSONResponse({"error": str(e)[:200]}, status_code=500)
+
+
+@app.post("/api/evidence")
+async def evidence_ep(
+    file: UploadFile = File(...),
+    category: str = Form(""),
+    language: str = Form("English"),
+    provider: str = Form(""),
+):
+    from datetime import date as _date
+
+    from . import evidence
+
+    raw = await file.read()
+    return evidence.extract(category or None, language, file.filename or "", file.content_type, raw, _date.today().isoformat(), provider or None)
 
 
 @app.get("/api/kb")

@@ -211,7 +211,7 @@ async function send(text) {
   if (res.error) { addMsg("bot", `<p>⚠️ ${esc(res.error)}</p><p class="small muted">Try again, or switch the model (⚙︎ at the top).</p>`); return; }
   S = res.state;
   VIEW.turns.push({ reply: res.reply, citations: res.citations, guard: res.guard, actions: res.actions, model: res.model, latency_s: res.latency_s, calculated: res.calculated, completeness: res.completeness, needs_lawyer: res.needs_lawyer, emergency_contacts: res.emergency_contacts });
-  store.set("haq_state", S); store.set("haq_view", VIEW);
+  persist();
   addMsg("bot", md(res.reply), renderBotExtras(res));
   renderCase(VIEW.turns[VIEW.turns.length - 1]);
   if ($("#autoSpeak")?.checked) speak(res.reply);
@@ -236,26 +236,30 @@ function renderCase(t) {
   $("#caseBody").classList.toggle("hidden", !has);
   renderBanner(t);
   renderDocButtons();
-  if (!has) { $("#deadlines").innerHTML = `<div class="empty">${esc(tr("dead_empty"))}</div>`; $("#derived").innerHTML = ""; return; }
+  if (!has) { $("#deadlines").innerHTML = `<div class="empty">${esc(tr("dead_empty"))}</div>`; $("#derived").innerHTML = ""; $("#calAll").classList.add("hidden"); try { renderTracker(); } catch (e) {} return; }
   $("#catPill").textContent = CAT_LABEL[c.category] || c.category || "-";
   $("#langPill").textContent = c.language ? `🗣 ${c.language}` : "";
   const comp = t?.completeness || { pct: 0, missing: [] };
   $("#meter").style.width = comp.pct + "%";
   $("#meterLabel").textContent = comp.missing?.length ? `Case file ${comp.pct}% complete · still need: ${comp.missing.slice(0, 3).map(m => m.question.replace(/\?.*/, "")).join("; ")}` : (comp.pct ? "Case file complete ✓" : "");
-  $("#facts").innerHTML = Object.entries(c.facts || {}).filter(([k]) => k !== "summary").map(([k, v]) => `<dt>${esc(FACT_LABELS[k] || k.replace(/_/g, " "))}</dt><dd>${esc(v)}</dd>`).join("") || `<dd class="muted">-</dd>`;
-  $("#timeline").innerHTML = (c.timeline || []).map(e => `<li><span class="d">${esc(e.date)}</span>${esc(e.event)}</li>`).join("") || `<li class="muted">-</li>`;
-  $("#evidence").innerHTML = (c.evidence_have || []).map(e => `<li>✅ ${esc(e)}</li>`).join("") + (c.evidence_missing || []).map(e => `<li>⬜ <span class="muted">Get:</span> ${esc(e)}</li>`).join("") || `<li class="muted">-</li>`;
+  $("#facts").innerHTML = Object.entries(c.facts || {}).filter(([k]) => k !== "summary").map(([k, v]) => `<dt>${esc(FACT_LABELS[k] || humanize(k))}</dt><dd>${esc(fmtFact(k, v))}</dd>`).join("") || `<dd class="muted">-</dd>`;
+  $("#timeline").innerHTML = (c.timeline || []).map(e => `<li><span class="d">${esc(/^\d{4}-\d{2}-\d{2}$/.test(e.date) ? fmtDate(e.date) : e.date)}</span>${esc(e.event)}</li>`).join("") || `<li class="muted">-</li>`;
+  $("#evidence").innerHTML = (c.evidence_have || []).map(e => `<li>✅ ${esc(/_/.test(e) && !/\s/.test(e) ? humanize(e) : e)}</li>`).join("") + (c.evidence_missing || []).map(e => `<li>⬜ <span class="muted">${esc(tr("get"))}:</span> ${esc(/_/.test(e) && !/\s/.test(e) ? humanize(e) : e)}</li>`).join("") || `<li class="muted">-</li>`;
   $("#nextStep").classList.toggle("hidden", !c.next_step);
   $("#nextStep").innerHTML = `<b>Next step:</b> ${esc(c.next_step || "")}`;
   // deadlines
   const calc = t?.calculated || { deadlines: [], derived: [] };
   const kbById = Object.fromEntries((window.KB || []).map(e => [e.id, e]));
   const basis = b => b && kbById[b] ? `<a href="${esc(kbById[b].source_url)}" target="_blank" rel="noopener">${esc(kbById[b].act)}${esc(secLabel(kbById[b].section))}</a>` : (b ? esc(b) : "as stated in the notice");
-  $("#deadlines").innerHTML = calc.deadlines.length ? calc.deadlines.map(d => `<div class="deadline ${d.status}">
+  $("#deadlines").innerHTML = calc.deadlines.length ? calc.deadlines.map((d, i) => `<div class="deadline ${d.status}">
       <div class="lbl">${esc(d.label)}</div>
       <div class="when">${fmtDate(d.date)} <span class="badge ${d.status}">${d.days_left < 0 ? `passed ${-d.days_left}d ago` : `${d.days_left} days left`}</span></div>
-      <div class="small muted">Basis: ${basis(d.basis)}${d.note ? " · " + esc(d.note) : ""}</div></div>`).join("")
+      <div class="small muted">Basis: ${basis(d.basis)}${d.note ? " · " + esc(d.note) : ""}</div>
+      ${d.user_deadline !== false && d.days_left >= 0 ? `<button class="ghost small cal-btn" data-i="${i}">📅 ${esc(tr("add_cal"))}</button>` : (d.user_deadline === false ? `<div class="tiny muted">${esc(tr("their_deadline"))}</div>` : "")}</div>`).join("")
     : `<div class="empty">${esc(tr("dead_empty"))}</div>`;
+  $$("#deadlines .cal-btn").forEach(b => b.onclick = () => downloadIcs([calc.deadlines[+b.dataset.i]], "haq-deadline.ics"));
+  $("#calAll").classList.toggle("hidden", !userDeadlines().length);
+  try { renderTracker(); window.renderReminderToggle && window.renderReminderToggle(); } catch (e) {}
   $("#derived").innerHTML = calc.derived.map(d => `<div class="deadline"><div class="lbl">${esc(d.label)}</div><div class="when">${esc(d.value)}</div><div class="small muted">Basis: ${basis(d.basis)}${d.note ? " · " + esc(d.note) : ""}</div></div>`).join("");
 }
 function fmtDate(iso) { try { return new Date(iso + "T00:00:00").toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }); } catch { return iso; } }
@@ -316,7 +320,7 @@ async function startPractice() {
   practice = []; $("#practiceFeedback").innerHTML = ""; renderPractice();
   const r = await api("/api/practice", { case: S.case, history: [], provider: provider() });
   if (r.error) { $("#practiceChat").innerHTML = `<div class="empty">⚠️ ${esc(r.error)}</div>`; return; }
-  practice.push({ role: "other", content: r.reply }); store.set("haq_practice", practice); renderPractice();
+  practice.push({ role: "other", content: r.reply }); persist(); renderPractice();
 }
 $("#practiceForm").onsubmit = async e => {
   e.preventDefault();
@@ -324,7 +328,7 @@ $("#practiceForm").onsubmit = async e => {
   if (!practice.length) await startPractice();
   practice.push({ role: "user", content: v }); $("#practiceInput").value = ""; renderPractice();
   const r = await api("/api/practice", { case: S.case, history: practice, provider: provider() });
-  practice.push({ role: "other", content: r.error ? "⚠️ " + r.error : r.reply }); store.set("haq_practice", practice); renderPractice();
+  practice.push({ role: "other", content: r.error ? "⚠️ " + r.error : r.reply }); persist(); renderPractice();
 };
 $("#practiceStart").onclick = startPractice;
 $("#practiceEnd").onclick = async () => {
@@ -374,7 +378,7 @@ $("#noticeGo").onclick = async e => {
   S.messages.push({ role: "assistant", content: `Explanation: ${r.plain_summary} They want: ${r.what_they_want}. Risk: ${r.risk_level}.` });
   VIEW.turns.push({ reply: r.plain_summary, citations: [], guard: { initial: r.guard, final: r.guard }, actions: [{ type: "draft", doc: "reply_to_notice" }], model: r.model, latency_s: r.model?.latency_s });
   if (r.needs_lawyer?.level === "urgent") S.flags = { level: "urgent", reasons: [r.needs_lawyer.reason] };
-  store.set("haq_state", S); store.set("haq_view", VIEW);
+  persist();
   renderCase(VIEW.turns.at(-1));
 };
 
@@ -435,10 +439,12 @@ function openTab(name) {
   $$(".panel").forEach(p => p.classList.toggle("active", p.id === "p-" + name));
   if (innerWidth <= 900) $("#caseCol").classList.add("open");
   if (name === "practice") renderPractice();
+  if (name === "evidence") renderEvidence();
 }
 $$(".tab").forEach(t => t.onclick = () => openTab(t.dataset.tab));
 $("#toggleCase").onclick = () => $("#caseCol").classList.toggle("open");
-$("#newCase").onclick = () => { if (S?.messages?.length && !confirm("Start a new case? This clears the current conversation on this device.")) return; S = null; VIEW = { turns: [] }; practice = []; ["haq_state", "haq_view", "haq_practice"].forEach(store.del); $("#docOut").innerHTML = ""; $("#practiceFeedback").innerHTML = ""; renderAll(); };
+$("#newCase").onclick = () => Cases.create();
+$("#calAll").onclick = () => downloadIcs(userDeadlines());
 $("#lang").onchange = () => { store.set("haq_lang", $("#lang").value); applyI18n(); };
 $("#themeBtn").onclick = () => setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
 $("#provider").onchange = () => store.set("haq_provider", $("#provider").value);
@@ -468,7 +474,7 @@ function renderHelp() {
   $("#kbList").innerHTML = (window.KB || []).map(e => `<div><b>${esc(e.act)}${e.section ? " ·" + esc(secLabel(e.section)) : ""}</b>: ${esc(e.title)} <a href="${esc(e.source_url)}" target="_blank" rel="noopener">source↗</a></div>`).join("");
 }
 
-(async function init() {
+window.addEventListener("DOMContentLoaded", async function init() {
   $("#lang").innerHTML = LANGS.map(([c, n]) => `<option value="${c}">${n}</option>`).join("");
   const legacy = { auto: "en", "en-IN": "en", "hi-IN": "hi", "pa-IN": "pa", "bn-IN": "bn", "mr-IN": "mr", "gu-IN": "gu", "ta-IN": "ta", "te-IN": "te", "kn-IN": "kn", "ml-IN": "ml" };
   let sl = store.get("haq_lang", "en"); sl = legacy[sl] || sl; if (!STR[sl]) sl = "en"; $("#lang").value = sl;
@@ -479,5 +485,7 @@ function renderHelp() {
   const ps = $("#provider");
   ps.innerHTML = (CONFIG.providers || []).map(p => `<option value="${esc(p.name)}">${esc(p.name)} · ${esc(p.main_model.split("/").pop())}</option>`).join("") || `<option value="">no model configured</option>`;
   const sp = store.get("haq_provider", CONFIG.primary); if ([...ps.options].some(o => o.value === sp)) ps.value = sp;
-  renderHelp(); renderAll();
-})();
+  Cases.load(); renderHelp(); renderAll(); renderCaseList(); renderEvidence();
+  if (window.initAuth) window.initAuth(CONFIG.supabase);
+  $("#pfClose") && ($("#pfClose").onclick = () => $("#profileDlg").close());
+});

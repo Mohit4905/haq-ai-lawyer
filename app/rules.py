@@ -122,6 +122,52 @@ PLAYBOOKS: dict[str, list[str]] = {
     ],
 }
 
+# ------------------------------------------------------------------ case tracker
+CASE_STATUSES = ["new", "notice_sent", "waiting", "complaint_filed", "resolved", "closed"]
+
+# Action checklist per problem type: (id, English, Hindi). Ordered; derived from PLAYBOOKS.
+CASE_STEPS: dict[str, list[tuple[str, str, str]]] = {
+    "tenancy": [
+        ("proof", "Collect proof: agreement, deposit payment, move-out/handover date, chats", "सबूत जुटाएँ: एग्रीमेंट, डिपॉज़िट भुगतान, घर खाली करने की तारीख़, चैट"),
+        ("ask", "Ask for the deposit in writing (WhatsApp/email) with bank details", "लिखित में डिपॉज़िट माँगें (WhatsApp/ईमेल), बैंक विवरण के साथ"),
+        ("notice", "Send a legal notice (15 days to pay); keep the postal receipt", "लीगल नोटिस भेजें (15 दिन में भुगतान); डाक रसीद रखें"),
+        ("aid", "Approach DLSA / Lok Adalat or call NALSA 15100 (free)", "DLSA / लोक अदालत जाएँ या NALSA 15100 पर कॉल करें (मुफ़्त)"),
+        ("suit", "If still unpaid: civil suit for recovery within 3 years (lawyer advised)", "फिर भी न मिले तो: 3 साल के भीतर वसूली का दीवानी मुकदमा (वकील की सलाह)"),
+    ],
+    "consumer": [
+        ("proof", "Keep invoice, order ID, ticket numbers, chats, photos", "बिल, ऑर्डर ID, टिकट नंबर, चैट, फ़ोटो सँभालें"),
+        ("complain", "Complain in writing to the company / grievance officer", "कंपनी / ग्रीवेंस ऑफ़िसर को लिखित शिकायत करें"),
+        ("nch", "Register on National Consumer Helpline 1915 (free)", "नेशनल कंज़्यूमर हेल्पलाइन 1915 पर शिकायत दर्ज करें (मुफ़्त)"),
+        ("notice", "Optional: legal notice to the company", "वैकल्पिक: कंपनी को लीगल नोटिस"),
+        ("file", "File a consumer complaint on e-Jagriti within 2 years", "2 साल के भीतर e-Jagriti पर उपभोक्ता शिकायत दर्ज करें"),
+    ],
+    "salary": [
+        ("proof", "Collect proof: offer letter, payslips, bank credits, attendance, ID card", "सबूत जुटाएँ: ऑफ़र लेटर, सैलरी स्लिप, बैंक क्रेडिट, हाज़िरी, ID कार्ड"),
+        ("ask", "Email HR listing unpaid months and the amount", "HR को ईमेल करें: बकाया महीने और रकम"),
+        ("notice", "Send a demand notice (15 days)", "डिमांड नोटिस भेजें (15 दिन)"),
+        ("claim", "File a wage claim: labour office / SAMADHAN portal (within 3 years)", "वेतन दावा करें: लेबर ऑफ़िस / SAMADHAN पोर्टल (3 साल के भीतर)"),
+        ("aid", "Need help? NALSA 15100 (free legal aid)", "मदद चाहिए? NALSA 15100 (मुफ़्त कानूनी सहायता)"),
+    ],
+    "cheque_bounce": [
+        ("memo", "Keep the cheque copy and the bank's return memo", "चेक की कॉपी और बैंक का रिटर्न मेमो सँभालें"),
+        ("notice", "Send the demand notice within 30 days of the memo (registered post)", "मेमो के 30 दिन के भीतर डिमांड नोटिस भेजें (रजिस्टर्ड डाक)"),
+        ("track", "Track delivery; the 15 days to pay start when they receive it", "डिलीवरी ट्रैक करें; भुगतान के 15 दिन मिलने की तारीख़ से शुरू"),
+        ("complaint", "If unpaid: file the complaint within 1 month after those 15 days (lawyer advised)", "भुगतान न हो तो: उन 15 दिनों के बाद 1 महीने के भीतर शिकायत (वकील की सलाह)"),
+    ],
+    "notice": [
+        ("read", "Note the deadline in the notice and who sent it", "नोटिस की समय-सीमा और भेजने वाले को नोट करें"),
+        ("proof", "Collect your proof (photos, handover report, payments, chats)", "अपने सबूत जुटाएँ (फ़ोटो, हैंडओवर रिपोर्ट, भुगतान, चैट)"),
+        ("reply", "Send a written reply before the deadline", "समय-सीमा से पहले लिखित जवाब भेजें"),
+        ("lawyer", "Large amount or court/police involved? See a lawyer / NALSA 15100", "बड़ी रकम या कोर्ट/पुलिस? वकील / NALSA 15100 से मिलें"),
+    ],
+    "cyber_fraud": [
+        ("1930", "Call 1930 and report on cybercrime.gov.in immediately", "तुरंत 1930 पर कॉल करें और cybercrime.gov.in पर रिपोर्ट करें"),
+        ("bank", "Inform your bank in writing; keep the complaint number", "बैंक को लिखित सूचना दें; शिकायत नंबर रखें"),
+        ("fir", "File a police complaint / FIR (zero FIR possible)", "पुलिस शिकायत / FIR करें (ज़ीरो FIR संभव)"),
+        ("ombudsman", "No resolution in 30 days? RBI Ombudsman (cms.rbi.org.in) within 90 days", "30 दिन में हल नहीं? 90 दिन के भीतर RBI लोकपाल (cms.rbi.org.in)"),
+    ],
+}
+
 # Core provisions a user can cite, per problem type (all verified ids). If the model's reply
 # cites none, code appends these, so a covered case always shows citable law.
 CORE_CITATIONS: dict[str, list[str]] = {

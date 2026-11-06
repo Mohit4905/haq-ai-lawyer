@@ -80,7 +80,7 @@ def chat(
     attempts = []
     for p in chain:
         if tier == "vision":
-            models = [p.vision_model] if p.vision_model else []
+            models = ([p.vision_model] if p.vision_model else []) + (list(p.alt_models) if p.name == "gemini" else [])  # gemini alternates are multimodal
             if not models:
                 attempts.append(f"{p.name}: no vision model")
                 continue

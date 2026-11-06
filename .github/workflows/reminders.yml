@@ -1,0 +1,16 @@
+name: Daily deadline reminders
+on:
+  schedule:
+    - cron: "30 2 * * *"   # 08:00 IST every day
+  workflow_dispatch: {}
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wake the app and send due reminders
+        env:
+          HAQ_URL: ${{ secrets.HAQ_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          if [ -z "$HAQ_URL" ] || [ -z "$CRON_SECRET" ]; then echo "Secrets not set; skipping"; exit 0; fi
+          curl -sS --retry 3 --retry-delay 20 --max-time 120 -X POST "$HAQ_URL/api/cron/reminders" -H "X-Cron-Secret: $CRON_SECRET" -w "\nHTTP %{http_code}\n"

@@ -18,6 +18,7 @@
 <body>
 <header class="top">
   <div class="brand">
+    <button class="icon-btn side-toggle" id="toggleSide" type="button" aria-label="My cases">☰</button>
     <div class="logo" aria-hidden="true">हक़</div>
     <div>
       <div class="name">Haq</div>
@@ -41,6 +42,13 @@
 </header>
 
 <main class="layout">
+  <aside class="side" id="side">
+    <div class="profile" id="profileBox"></div>
+    <button class="primary wide" id="newCase2" type="button">＋ <span data-i18n="new_case">New case</span></button>
+    <div class="side-h"><span data-i18n="my_cases">My cases</span></div>
+    <input id="caseSearch" class="side-search" data-i18n-ph="search_cases" placeholder="Search cases…">
+    <div class="case-list" id="caseList"></div>
+  </aside>
   <section class="chat-col">
     <div id="banner" class="banner hidden"></div>
     <div id="chat" class="chat" aria-live="polite">
@@ -76,11 +84,20 @@
       <button class="tab active" data-tab="case" data-i18n="t_case">Case file</button>
       <button class="tab" data-tab="deadlines" data-i18n="t_dead">Deadlines</button>
       <button class="tab" data-tab="docs" data-i18n="t_docs">Documents</button>
+      <button class="tab" data-tab="evidence"><span data-i18n="t_ev">Evidence</span> <span id="evCount" class="muted"></span></button>
       <button class="tab" data-tab="practice" data-i18n="t_prac">Practice</button>
       <button class="tab" data-tab="help" data-i18n="t_help">Get help</button>
     </nav>
 
     <div class="panel active" id="p-case">
+      <div id="tracker" class="tracker hidden">
+        <h3 data-i18n="tracker_h">Case progress</h3>
+        <div class="status-steps" id="statusSteps"></div>
+        <div class="row between"><span class="small muted" id="checkLabel"></span></div>
+        <div class="meter"><div class="meter-fill" id="checkFill"></div></div>
+        <ul id="checklist" class="checklist"></ul>
+        <form id="addStep" class="add-step"><input id="addStepInput" data-i18n-ph="add_step" placeholder="Add your own step…"><button class="ghost small" type="submit">＋</button></form>
+      </div>
       <div class="empty" data-i18n="case_empty">Your case file builds itself as you talk.</div>
       <div id="caseBody" class="hidden">
         <div class="row between"><span class="pill" id="catPill">-</span><span class="muted small" id="langPill"></span></div>
@@ -99,6 +116,8 @@
 
     <div class="panel" id="p-deadlines">
       <p class="muted small" data-i18n="dead_note">Calculated by code (not AI) from your dates.</p>
+      <div class="remind-row"><button class="ghost small" id="calAll" type="button">📅 <span data-i18n="add_all_cal">Add all to my calendar</span></button></div>
+      <div id="remindBox"></div>
       <div id="deadlines"><div class="empty" data-i18n="dead_empty">Tell Haq your dates and your deadlines appear here.</div></div>
       <div id="derived"></div>
     </div>
@@ -112,6 +131,15 @@
           <option>Gujarati</option><option>Tamil</option><option>Telugu</option><option>Kannada</option><option>Malayalam</option>
         </select></label></div>
       <div id="docOut"></div>
+    </div>
+
+    <div class="panel" id="p-evidence">
+      <p class="muted small" data-i18n="ev_note">Keep your proof in one place.</p>
+      <label class="dropzone" id="dropzone">
+        <input type="file" id="evFile" accept="image/*,application/pdf,text/plain" multiple hidden>
+        <span class="dz-ico">📎</span><b data-i18n="ev_add">Add receipts, chats, agreements, photos</b><small class="muted" data-i18n="ev_add_sub">Tap to choose or drop files here (max 8 MB each)</small>
+      </label>
+      <div id="evList" class="ev-list"></div>
     </div>
 
     <div class="panel" id="p-practice">
@@ -154,8 +182,49 @@
   </form>
 </dialog>
 
+<dialog id="authDlg">
+  <div class="dlg">
+    <h2>🔐 <span data-i18n="sign_in">Sign in</span></h2>
+    <p class="small muted" data-i18n="sign_in_why">Save your cases to your account and open them on any device.</p>
+    <form id="authForm1">
+      <div id="authStep1">
+        <input id="authEmail" type="email" required placeholder="you@example.com" class="field">
+        <div class="row end"><button class="primary" type="submit" data-i18n="send_code">Email me a sign-in link / code</button></div>
+        <button class="ghost wide hidden" id="googleBtn" type="button">G&nbsp; <span data-i18n="google">Continue with Google</span></button>
+      </div>
+    </form>
+    <form id="authForm2">
+      <div id="authStep2" class="hidden">
+        <p class="small"><span data-i18n="code_sent">We sent an email to</span> <b id="authSentTo"></b>. <span data-i18n="code_hint">Click the link in it, or type the 6-digit code here:</span></p>
+        <input id="authCode" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="123456" class="field">
+        <div class="row end"><button class="primary" type="submit" data-i18n="verify">Verify</button></div>
+      </div>
+    </form>
+    <p class="small" id="authMsg"></p>
+    <p class="tiny muted" data-i18n="privacy_note">Your cases are private: only you can see them. You can delete everything anytime from your profile.</p>
+    <form method="dialog" class="row end"><button class="ghost" data-i18n="cancel">Cancel</button></form>
+  </div>
+</dialog>
+
+<dialog id="profileDlg">
+  <form id="pfForm" class="dlg">
+    <h2>⚙︎ <span data-i18n="profile">Profile</span></h2>
+    <p class="small muted" id="pfEmail"></p>
+    <label class="small"><span data-i18n="pf_name">Name</span><input id="pfName" class="field"></label>
+    <label class="small"><span data-i18n="pf_city">City / State</span><input id="pfCity" class="field"></label>
+    <label class="toggle small"><input type="checkbox" id="pfEmailRem"> <span data-i18n="pf_rem">Email me before my deadlines</span></label>
+    <div class="row end"><span class="small" id="pfMsg"></span><button class="primary" type="submit" data-i18n="save">Save</button></div>
+    <hr>
+    <button class="danger small" type="button" id="pfDelete">🗑 <span data-i18n="delete_all">Delete all my data</span></button>
+    <div class="row end"><button class="ghost" type="button" id="pfClose" data-i18n="close">Close</button></div>
+  </form>
+</dialog>
+
 <div id="cite-pop" class="cite-pop hidden" role="dialog"></div>
 <script src="/static/i18n.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.50.0/dist/umd/supabase.min.js"></script>
 <script src="/static/app.js"></script>
+<script src="/static/cases.js"></script>
+<script src="/static/auth.js"></script>
 </body>
 </html>
