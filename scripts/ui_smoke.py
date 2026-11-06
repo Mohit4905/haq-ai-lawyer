@@ -77,7 +77,7 @@ with sync_playwright() as p:
     step("send Hinglish message, get a reply", chat)
 
     def case_panel():
-        page.click(".rail .tab[data-tab=case]")
+        page.click(".side-nav .tab[data-tab=case]")
         assert page.is_visible("#caseBody"), "case panel not visible"
         facts = page.locator("#facts dt").count()
         cat = page.inner_text("#catPill")
@@ -202,7 +202,7 @@ with sync_playwright() as p:
     step("evidence locker: upload → AI read → add to case file", evidence)
 
     def my_cases():
-        page.click(".rail .tab[data-tab=cases]")
+        page.click("#backBtn") if page.is_visible("#backBtn") else None
         first = page.locator(".case-item.active b").inner_text()
         page.click("#newCase2")
         page.wait_for_selector("#welcome:not(.hidden)")
@@ -269,23 +269,26 @@ with sync_playwright() as p:
 
     def sidebar():
         page.click("#collapseSide")
-        hidden = not page.is_visible("#side")
+        collapsed = page.evaluate("document.body.classList.contains('side-collapsed')") and not page.is_visible(".side-scroll")
+        icons = page.is_visible(".side-nav .tab[data-tab=deadlines]")  # collapsed = icon strip
         page.screenshot(path=SHOTS / "15_collapsed.png")
         page.reload(); page.wait_for_selector("#chat")
-        still = not page.is_visible("#side")
-        rail = page.is_visible("#rail")  # the icon rail stays when the panel is closed
-        page.click(".rail .tab[data-tab=cases]")
-        back = page.is_visible("#side") and rail
-        page.click(".rail .tab[data-tab=cases]")  # clicking the active icon again closes the panel (VS Code behaviour)
-        again = not page.is_visible("#side")
-        page.click(".rail .tab[data-tab=deadlines]")
-        back = back and again and page.is_visible("#p-deadlines")
+        still = page.evaluate("document.body.classList.contains('side-collapsed')")
+        page.click("#brandBtn")
+        back = page.is_visible(".side-scroll") and page.is_visible("#caseList") or page.is_visible("#viewBar")
+        page.click(".side-nav .tab[data-tab=deadlines]")
+        sec = page.is_visible("#p-deadlines") and page.is_visible("#backBtn")
+        page.click("#backBtn")
+        home = page.is_visible("#p-cases")
         page.click("#settingsBtn")
-        menu = page.is_visible("#settingsPop") and page.is_visible("#lang") and page.is_visible("#provider")
+        menu = page.is_visible("#settingsPop") and page.is_visible("#lang") and page.is_visible("#provider") and not page.is_visible("#acctPop")
         page.screenshot(path=SHOTS / "16_settings.png")
+        page.click("#acctBtn")
+        acct = page.is_visible("#acctPop") and not page.is_visible("#settingsPop") and not page.is_visible("#lang")
+        page.screenshot(path=SHOTS / "17_account.png")
         page.keyboard.press("Escape")
-        assert hidden and still and back and menu, (hidden, still, back, menu)
-        return "panel closes -> remembered after reload -> rail icon reopens / closes it; settings menu works"
+        assert collapsed and icons and still and back and sec and home and menu and acct, (collapsed, icons, still, back, sec, home, menu, acct)
+        return "collapse to icon strip -> remembered -> expand; section + back; settings and account menus separate"
 
     step("sidebar collapse/expand + settings menu", sidebar)
 

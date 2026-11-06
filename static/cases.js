@@ -120,17 +120,32 @@ function renderCaseList() {
     return `<div class="case-item ${c.id === Cases.currentId ? "active" : ""}" data-id="${c.id}" tabindex="0" role="button">
       <span class="ci-emoji">${CAT_EMOJI[cat] || "💬"}</span>
       <span class="ci-main"><b>${esc(title)}</b><small><span class="st st-${c.status}">${esc(statusText(c.status))}</span> · ${d}</small></span>
-      <span class="ci-actions"><button class="ci-btn" data-act="rename" title="${esc(tr("rename"))}">✎</button><button class="ci-btn" data-act="delete" title="${esc(tr("delete"))}">🗑</button></span></div>`;
+      <span class="ci-actions"><button class="ci-btn ci-more" data-act="more" title="${esc(tr("rename"))} / ${esc(tr("delete"))}" aria-label="More"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></button></span></div>`;
   }).join("") || `<div class="muted small" style="padding:8px">${esc(tr("no_cases"))}</div>`;
   box.querySelectorAll(".case-item").forEach(el => {
     el.onclick = e => {
       const act = e.target.closest(".ci-btn")?.dataset.act, id = el.dataset.id;
-      if (act === "rename") { const t = prompt(tr("rename"), Cases.all[id].title || ""); if (t != null && t.trim()) Cases.rename(id, t.trim()); }
-      else if (act === "delete") { if (confirm(tr("confirm_delete"))) Cases.remove(id); }
+      if (act === "more") { e.stopPropagation(); caseMenu(e.target.closest(".ci-btn"), id); }
       else Cases.switchTo(id);
     };
     el.onkeydown = e => { if (e.key === "Enter") Cases.switchTo(el.dataset.id); };
   });
+}
+
+/* "⋯" menu on a case: Rename / Delete */
+function caseMenu(btn, id) {
+  let m = $("#ciMenu");
+  if (!m) {
+    m = document.createElement("div"); m.id = "ciMenu"; m.className = "ci-menu hidden"; document.body.appendChild(m);
+    document.addEventListener("click", e => { if (!e.target.closest("#ciMenu")) m.classList.add("hidden"); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") m.classList.add("hidden"); });
+  }
+  m.innerHTML = `<button data-act="rename">${esc(tr("rename"))}</button><button data-act="delete" class="bad-text">${esc(tr("delete"))}</button>`;
+  const r = btn.getBoundingClientRect();
+  m.style.top = Math.min(r.bottom + 4, innerHeight - 100) + "px"; m.style.left = Math.max(8, r.right - 160) + "px";
+  m.classList.remove("hidden");
+  m.querySelector("[data-act=rename]").onclick = () => { m.classList.add("hidden"); const t = prompt(tr("rename"), Cases.all[id].title || ""); if (t != null && t.trim()) Cases.rename(id, t.trim()); };
+  m.querySelector("[data-act=delete]").onclick = () => { m.classList.add("hidden"); if (confirm(tr("confirm_delete"))) Cases.remove(id); };
 }
 
 /* ---------------- tracker: status + checklist */
