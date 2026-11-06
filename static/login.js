@@ -69,8 +69,9 @@
     await ready; if (!sb) return;
     msg("…", false);
     const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: location.origin + "/login?reset=1" });
-    // same message whether or not the account exists (don't reveal which emails are registered)
-    if (error && /rate|seconds|too many/i.test(error.message)) msg("⚠️ " + error.message, true);
+    // Supabase answers the same for known and unknown emails, so showing its errors reveals nothing
+    // about which accounts exist; a failure here means the email could not be sent (e.g. SMTP problem).
+    if (error) msg("⚠️ " + (/sending/i.test(error.message) ? tr("reset_failed") : error.message), true);
     else msg(tr("reset_sent"), false);
   };
   $("#resetForm").onsubmit = async e => {

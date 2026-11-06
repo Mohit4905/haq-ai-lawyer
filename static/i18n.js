@@ -534,6 +534,7 @@ Object.assign(window.HAQ_I18N["en"], {
   doc_blanks_left: "{n} details missing", doc_ready_send: "Ready to send", doc_open: "Open in Documents", doc_copy: "Copy",
   doc_show_full: "Show full document", doc_show_less: "Show less", doc_drafting: "Drafting your {doc}…", doc_answer_in_chat: "answer the questions in the chat",
   forgot_pw: "Forgot password?", reset_sent: "If an account exists for this email, we've sent a link to reset your password. Check your inbox and spam.",
+  reset_failed: "We couldn't send the reset email right now. Please try again in a few minutes.",
   reset_need_email: "Type your email above first, then press \"Forgot password?\".", new_pw_title: "Set a new password", new_pw_btn: "Save new password", pw_updated: "Password updated. Signing you in…",
 });
 Object.assign(window.HAQ_I18N["hi"], {
