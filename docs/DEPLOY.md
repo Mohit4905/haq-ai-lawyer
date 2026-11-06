@@ -16,7 +16,7 @@
 1. Create a free account at https://huggingface.co/join.
 2. Go to https://huggingface.co/new-space:
    - Space name: `haq`
-   - SDK: **Docker** → template **Blank**
+   - SDK: **Gradio** → template **Blank** (Docker Spaces are paid now; the Gradio Space runs `space_app.py`, which starts the same FastAPI app)
    - Hardware: **CPU basic (free)**
    - Visibility: **Public**
    - Click **Create Space**
@@ -32,6 +32,10 @@
    ```
    When asked for a username, enter your HF username. For the password, paste the **token** (not your password).
 6. The Space builds for 2–4 minutes (watch the **Logs** tab). When it shows **Running**, open `https://<your-hf-username>-haq.hf.space`.
+
+## Backup: Render.com (if Spaces don't work)
+1. https://render.com → sign in with GitHub → **New → Blueprint** → pick `haq-ai-lawyer` (it reads `render.yaml`).
+2. Enter `GROQ_API_KEY` and `GEMINI_API_KEY` when asked → **Apply**. The URL looks like `https://haq-xxxx.onrender.com`. The free plan sleeps when idle, and the first request takes ~50s.
 
 ## Updating later
 After any change: `git add -A`, `git commit -m "..."`, `git push origin main`, `git push space main`.

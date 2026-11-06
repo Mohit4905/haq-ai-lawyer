@@ -3,8 +3,10 @@ title: Haq - AI legal help
 emoji: ⚖️
 colorFrom: green
 colorTo: yellow
-sdk: docker
-app_port: 7860
+sdk: gradio
+sdk_version: 6.31.0
+app_file: space_app.py
+python_version: "3.12"
 pinned: false
 ---
 
