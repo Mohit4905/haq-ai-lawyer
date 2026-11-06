@@ -133,7 +133,7 @@ with sync_playwright() as p:
     def notice():
         page.click("#newCase")
         page.wait_for_selector("#welcome:not(.hidden)")
-        page.click("#noticeCard")
+        page.click(".card[data-card=notice]")
         page.fill("#noticeText", "LEGAL NOTICE. Under instructions from my client Mr. S.K. Verma, I call upon you to pay Rs. 1,00,000 towards damages to Flat 4B within 15 days of receipt of this notice, failing which my client shall initiate civil proceedings against you at your risk as to costs.")
         page.click("#noticeGo")
         page.wait_for_selector(".notice-card", timeout=180_000)
@@ -142,15 +142,35 @@ with sync_playwright() as p:
 
     step("explain a pasted notice", notice)
 
-    def hindi_ui():
+    def languages():
         page.click("#newCase")
-        page.select_option("#lang", "hi-IN")
-        h = page.inner_text(".welcome h1")
-        page.select_option("#lang", "auto")
-        assert any("ऀ" <= c <= "ॿ" for c in h), h
-        return h
+        out = []
+        for code, lo, hi in [("hi", "ऀ", "ॿ"), ("pa", "਀", "੿"), ("ta", "஀", "௿")]:
+            page.select_option("#lang", code)
+            h = page.inner_text(".welcome h1")
+            card = page.locator(".card b").first.inner_text()
+            assert any(lo <= c <= hi for c in h + card), (code, h, card)
+            out.append(f"{code}: {h[:22]}")
+        page.screenshot(path=SHOTS / "10_tamil_ui.png")
+        page.select_option("#lang", "en")
+        assert page.locator(".card").count() == 8, "expected 8 problem cards"
+        return " | ".join(out)
 
-    step("Hindi interface text", hindi_ui)
+    step("language switcher (Hindi, Punjabi, Tamil) + 8 cards", languages)
+
+    def theme():
+        assert page.evaluate("document.documentElement.dataset.theme") == "light", "default should be light"
+        bg_light = page.evaluate("getComputedStyle(document.body).backgroundColor")
+        page.click("#themeBtn")
+        bg_dark = page.evaluate("getComputedStyle(document.body).backgroundColor")
+        page.screenshot(path=SHOTS / "11_dark.png")
+        page.reload()
+        kept = page.evaluate("document.documentElement.dataset.theme")
+        page.click("#themeBtn")
+        assert bg_light != bg_dark and kept == "dark", (bg_light, bg_dark, kept)
+        return f"light {bg_light} -> dark {bg_dark}, remembered after reload"
+
+    step("light default + dark toggle", theme)
 
     def mobile():
         m = browser.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)

@@ -13,39 +13,41 @@ let CONFIG = null;
 let practice = store.get("haq_practice", []);
 let busy = false;
 
-/* ---------------- i18n (UI chrome only; the AI replies in any language) */
-const I18N = {
-  hi: {
-    tagline: "रोज़मर्रा की कानूनी समस्याओं में मुफ़्त मदद, आपकी भाषा में",
-    new_case: "नया केस", welcome_h: "क्या समस्या है? अपने शब्दों में बताइए।",
-    welcome_p: "किसी भी भारतीय भाषा में लिखें या बोलें। मैं समझाऊँगा कि आप कहाँ खड़े हैं, आपके पास क्या रास्ते हैं, और ज़रूरी नोटिस या पत्र तैयार करूँगा, मुफ़्त।",
-    c1: "डिपॉज़िट वापस नहीं मिला", c1s: "मकान मालिक / PG पैसा नहीं लौटा रहा", c2: "रिफ़ंड / ख़राब सामान", c2s: "ऑनलाइन ऑर्डर, सर्विस, वारंटी",
-    c3: "सैलरी नहीं मिली", c3s: "बकाया वेतन, फ़ुल एंड फ़ाइनल", c4: "चेक बाउंस", c4s: "समय-सीमा सख़्त है, जल्दी करें", c5: "मुझे लीगल नोटिस मिला", c5s: "टेक्स्ट पेस्ट करें या फ़ोटो डालें",
-    trust: "हक़ जो भी क़ानून बताता है, वह पहले एक जाँची हुई लाइब्रेरी से मिलाया जाता है। हक़ वकील नहीं है; ज़रूरत हो तो बताता है कि वकील से मिलें।",
-    ph: "यहाँ लिखें… जैसे 'मकान मालिक 40,000 का डिपॉज़िट वापस नहीं कर रहा'",
-    foot: "हक़ कानूनी जानकारी देता है, कानूनी सलाह नहीं। मुफ़्त कानूनी सहायता: NALSA हेल्पलाइन 15100।",
-    t_case: "केस फ़ाइल", t_dead: "समय-सीमा", t_docs: "दस्तावेज़", t_prac: "अभ्यास", t_help: "मदद",
-    case_empty: "बात करते-करते आपकी केस फ़ाइल अपने आप बनती है: क्या हुआ, कब, कितना पैसा, और क्या सबूत हैं।",
-    h_facts: "मुख्य तथ्य", h_timeline: "घटनाक्रम", h_evidence: "सबूत",
-    dead_note: "ये तारीख़ें कोड से गिनी गई हैं (AI से नहीं), हर एक के साथ उसका क़ानून। फिर भी जाँच लें।",
-    dead_empty: "तारीख़ें बताइए (जैसे घर कब खाली किया, चेक कब बाउंस हुआ), समय-सीमा यहाँ दिखेगी।",
-    docs_note: "हक़ आपकी केस फ़ाइल से दस्तावेज़ बनाता है। जो जानकारी नहीं है वह [[FILL]] से चिह्नित होती है, गढ़ी नहीं जाती।",
-    prac_note: "असली बातचीत से पहले अभ्यास करें। हक़ दूसरी तरफ़ का किरदार निभाएगा; अंत में फ़ीडबैक मिलेगा।",
-    prac_start: "अभ्यास शुरू करें", prac_end: "ख़त्म करें और फ़ीडबैक लें",
-  },
-};
-function uiLang() { const v = $("#lang").value; return v === "hi-IN" || v === "mr-IN" ? "hi" : "en"; }
-const EN_DEFAULTS = {};
+/* ---------------- i18n (page text; the AI replies in the chosen language separately) */
+const LANGS = window.HAQ_LANGS, STR = window.HAQ_I18N;
+function uiLang() { return ($("#lang") && $("#lang").value) || "en"; }
+function tr(k) { const L = STR[uiLang()] || {}; return L[k] ?? STR.en[k] ?? k; }
+function langInfo() { return LANGS.find(l => l[0] === uiLang()) || LANGS[0]; }
 function applyI18n() {
-  const L = I18N[uiLang()] || {};
-  $$("[data-i18n]").forEach(el => {
-    const k = el.dataset.i18n;
-    if (!(k in EN_DEFAULTS)) EN_DEFAULTS[k] = el.textContent;
-    el.textContent = L[k] || EN_DEFAULTS[k];
+  document.documentElement.lang = uiLang() === "hinglish" ? "hi" : uiLang();
+  $$("[data-i18n]").forEach(el => { el.textContent = tr(el.dataset.i18n); });
+  $$("[data-i18n-ph]").forEach(el => { el.placeholder = tr(el.dataset.i18nPh); });
+  $$("[data-i18n-title]").forEach(el => { el.title = tr(el.dataset.i18nTitle); el.setAttribute("aria-label", tr(el.dataset.i18nTitle)); });
+  renderCards();
+  const name = langInfo()[2];
+  if (name && [...$("#docLang").options].some(o => o.value === name || o.textContent === name)) $("#docLang").value = name;
+  try { renderCase(VIEW.turns[VIEW.turns.length - 1]); } catch (e) {}
+}
+function renderCards() {
+  const box = $("#cards"); if (!box) return;
+  box.innerHTML = "";
+  window.HAQ_CARDS.forEach(([id, emoji, isNotice]) => {
+    const [title, sub, prompt] = tr("c_" + id);
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "card" + (id === "upi_fraud" || id === "cheque" ? " urgent" : "");
+    b.dataset.card = id;
+    if (!isNotice) b.dataset.prompt = prompt;
+    b.innerHTML = `<span class="emoji">${emoji}</span><b>${esc(title)}</b><small>${esc(sub)}</small>`;
+    b.onclick = () => { if (isNotice) { $("#noticeDlg").showModal(); return; } $("#input").value = prompt; autosize(); $("#input").focus(); };
+    box.appendChild(b);
   });
-  const ta = $("#input");
-  if (!("ph" in EN_DEFAULTS)) EN_DEFAULTS.ph = ta.placeholder;
-  ta.placeholder = L.ph || EN_DEFAULTS.ph;
+}
+/* ---------------- theme (light default) */
+function setTheme(th) {
+  document.documentElement.dataset.theme = th;
+  try { localStorage.setItem("haq_theme", th); } catch (e) {}
+  $("#themeBtn").textContent = th === "dark" ? "☀️" : "🌙";
 }
 
 /* ---------------- tiny safe markdown */
@@ -199,8 +201,7 @@ async function send(text) {
   text = (text || "").trim();
   if (!text || busy) return;
   busy = true; $("#send").disabled = true;
-  const LANG_NAME = { "en-IN": "English", "hi-IN": "Hindi", hinglish: "Hinglish", "bn-IN": "Bengali", "ta-IN": "Tamil", "te-IN": "Telugu", "mr-IN": "Marathi", "gu-IN": "Gujarati", "kn-IN": "Kannada", "ml-IN": "Malayalam", "pa-IN": "Punjabi" };
-  const langPref = LANG_NAME[$("#lang").value] || null;
+  const langPref = langInfo()[2];  // null for English = auto-detect the language the user types in
   addMsg("user", esc(text));
   $("#input").value = ""; autosize();
   const tb = typing();
@@ -235,7 +236,7 @@ function renderCase(t) {
   $("#caseBody").classList.toggle("hidden", !has);
   renderBanner(t);
   renderDocButtons();
-  if (!has) { $("#deadlines").innerHTML = `<div class="empty">${esc(EN_DEFAULTS.dead_empty || "Share dates and deadlines appear here.")}</div>`; $("#derived").innerHTML = ""; return; }
+  if (!has) { $("#deadlines").innerHTML = `<div class="empty">${esc(tr("dead_empty"))}</div>`; $("#derived").innerHTML = ""; return; }
   $("#catPill").textContent = CAT_LABEL[c.category] || c.category || "-";
   $("#langPill").textContent = c.language ? `🗣 ${c.language}` : "";
   const comp = t?.completeness || { pct: 0, missing: [] };
@@ -254,7 +255,7 @@ function renderCase(t) {
       <div class="lbl">${esc(d.label)}</div>
       <div class="when">${fmtDate(d.date)} <span class="badge ${d.status}">${d.days_left < 0 ? `passed ${-d.days_left}d ago` : `${d.days_left} days left`}</span></div>
       <div class="small muted">Basis: ${basis(d.basis)}${d.note ? " · " + esc(d.note) : ""}</div></div>`).join("")
-    : `<div class="empty">${esc(EN_DEFAULTS.dead_empty || "Share dates and deadlines appear here.")}</div>`;
+    : `<div class="empty">${esc(tr("dead_empty"))}</div>`;
   $("#derived").innerHTML = calc.derived.map(d => `<div class="deadline"><div class="lbl">${esc(d.label)}</div><div class="when">${esc(d.value)}</div><div class="small muted">Basis: ${basis(d.basis)}${d.note ? " · " + esc(d.note) : ""}</div></div>`).join("");
 }
 function fmtDate(iso) { try { return new Date(iso + "T00:00:00").toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }); } catch { return iso; } }
@@ -274,7 +275,7 @@ function renderBanner(t) {
 function renderDocButtons() {
   const cat = S?.case?.category;
   const list = (CONFIG?.doc_types_by_category?.[cat]) || [];
-  $("#docButtons").innerHTML = list.length ? "" : `<div class="empty">Tell Haq about your problem first. Documents for your type of case will appear here.</div>`;
+  $("#docButtons").innerHTML = list.length ? "" : `<div class="empty">${esc(tr("docs_empty"))}</div>`;
   list.forEach(d => {
     const b = document.createElement("button"); b.className = "ghost"; b.textContent = "📝 " + shortDoc(d);
     b.onclick = () => draftDoc(d); $("#docButtons").appendChild(b);
@@ -340,14 +341,12 @@ $("#practiceEnd").onclick = async () => {
 };
 
 /* ---------------- notice explainer */
-$("#noticeCard").onclick = () => $("#noticeDlg").showModal();
 $("#attach").onclick = () => $("#noticeDlg").showModal();
 $("#noticeGo").onclick = async e => {
   e.preventDefault();
   const fd = new FormData();
   fd.append("text", $("#noticeText").value);
-  const sel = $("#lang");
-  fd.append("language", sel.value === "auto" ? (S?.case?.language || "English") : sel.selectedOptions[0].textContent);
+  fd.append("language", langInfo()[2] || S?.case?.language || "English");
   fd.append("script", S?.case?.script || "Latin");
   if (provider()) fd.append("provider", provider());
   if ($("#noticeFile").files[0]) fd.append("file", $("#noticeFile").files[0]);
@@ -381,7 +380,7 @@ $("#noticeGo").onclick = async e => {
 
 /* ---------------- voice: server Whisper first, browser speech recognition as fallback */
 let rec = null, chunks = [], recognizer = null;
-function langCode() { const v = $("#lang").value; return v === "auto" || v === "hinglish" ? "" : v.split("-")[0]; }
+function langCode() { return ["en", "hinglish"].includes(uiLang()) ? "" : langInfo()[3].split("-")[0]; }  // "" = Whisper auto-detects
 $("#mic").onclick = async () => {
   if (rec && rec.state === "recording") { rec.stop(); return; }
   if (recognizer) { recognizer.stop(); return; }
@@ -409,7 +408,7 @@ function browserSTT() {
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SR) { alert("Voice input needs Chrome/Edge, or a server speech key."); return; }
   recognizer = new SR();
-  const v = $("#lang").value; recognizer.lang = v === "auto" || v === "hinglish" ? "hi-IN" : v;
+  recognizer.lang = langInfo()[3];
   recognizer.interimResults = true;
   recognizer.onresult = e => { $("#input").value = [...e.results].map(r => r[0].transcript).join(" "); autosize(); };
   recognizer.onend = () => { $("#mic").classList.remove("rec"); recognizer = null; if ($("#input").value.trim()) send($("#input").value); };
@@ -421,7 +420,7 @@ function speak(text) {
   const u = new SpeechSynthesisUtterance(String(text).replace(/[*_#>`\[\]]/g, ""));
   const sc = S?.case?.script || "";
   const map = { Devanagari: "hi-IN", Tamil: "ta-IN", Bengali: "bn-IN", Telugu: "te-IN", Kannada: "kn-IN", Gujarati: "gu-IN", Malayalam: "ml-IN", Gurmukhi: "pa-IN" };
-  u.lang = $("#lang").value.includes("-") ? $("#lang").value : (map[sc] || "en-IN");
+  u.lang = uiLang() === "en" ? (map[sc] || "en-IN") : langInfo()[3];
   const voice = speechSynthesis.getVoices().find(v => v.lang === u.lang); if (voice) u.voice = voice;
   speechSynthesis.speak(u);
 }
@@ -431,7 +430,6 @@ function autosize() { const t = $("#input"); t.style.height = "auto"; t.style.he
 $("#input").addEventListener("input", autosize);
 $("#input").addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send($("#input").value); } });
 $("#composer").onsubmit = e => { e.preventDefault(); send($("#input").value); };
-$$(".card[data-prompt]").forEach(c => c.onclick = () => { $("#input").value = c.dataset.prompt; autosize(); $("#input").focus(); });
 function openTab(name) {
   $$(".tab").forEach(t => t.classList.toggle("active", t.dataset.tab === name));
   $$(".panel").forEach(p => p.classList.toggle("active", p.id === "p-" + name));
@@ -442,6 +440,7 @@ $$(".tab").forEach(t => t.onclick = () => openTab(t.dataset.tab));
 $("#toggleCase").onclick = () => $("#caseCol").classList.toggle("open");
 $("#newCase").onclick = () => { if (S?.messages?.length && !confirm("Start a new case? This clears the current conversation on this device.")) return; S = null; VIEW = { turns: [] }; practice = []; ["haq_state", "haq_view", "haq_practice"].forEach(store.del); $("#docOut").innerHTML = ""; $("#practiceFeedback").innerHTML = ""; renderAll(); };
 $("#lang").onchange = () => { store.set("haq_lang", $("#lang").value); applyI18n(); };
+$("#themeBtn").onclick = () => setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
 $("#provider").onchange = () => store.set("haq_provider", $("#provider").value);
 $("#exportCase").onclick = () => {
   const c = S.case, calc = VIEW.turns.at(-1)?.calculated || { deadlines: [] };
@@ -470,7 +469,11 @@ function renderHelp() {
 }
 
 (async function init() {
-  const sl = store.get("haq_lang", "auto"); $("#lang").value = sl; applyI18n();
+  $("#lang").innerHTML = LANGS.map(([c, n]) => `<option value="${c}">${n}</option>`).join("");
+  const legacy = { auto: "en", "en-IN": "en", "hi-IN": "hi", "pa-IN": "pa", "bn-IN": "bn", "mr-IN": "mr", "gu-IN": "gu", "ta-IN": "ta", "te-IN": "te", "kn-IN": "kn", "ml-IN": "ml" };
+  let sl = store.get("haq_lang", "en"); sl = legacy[sl] || sl; if (!STR[sl]) sl = "en"; $("#lang").value = sl;
+  setTheme(document.documentElement.dataset.theme === "dark" ? "dark" : "light");
+  applyI18n();
   try { CONFIG = await (await fetch("/api/config")).json(); } catch { CONFIG = { providers: [] }; }
   try { window.KB = await (await fetch("/api/kb")).json(); } catch { window.KB = []; }
   const ps = $("#provider");
