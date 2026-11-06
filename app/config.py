@@ -167,6 +167,18 @@ def stt_provider() -> Provider | None:
     return None
 
 
+def supabase_url() -> str | None:
+    """Supabase project URLs always end in .supabase.co; fix common typos (".com", spaces, trailing slash)."""
+    u = (os.getenv("SUPABASE_URL") or "").strip().rstrip("/")
+    if not u:
+        return None
+    if u.endswith(".supabase.com"):
+        u = u[: -len(".supabase.com")] + ".supabase.co"
+    if not u.startswith("http"):
+        u = "https://" + u
+    return u
+
+
 def public_config() -> dict:
     return {
         "primary": primary_provider_name(),

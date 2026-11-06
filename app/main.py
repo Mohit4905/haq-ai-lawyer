@@ -57,7 +57,7 @@ def get_config():
         "case_steps": {k: [{"id": i, "en": en, "hi": hi} for i, en, hi in v] for k, v in rules.CASE_STEPS.items()},
         "case_statuses": rules.CASE_STATUSES,
         # public values only (the anon key is designed to be public; access is enforced by row-level security)
-        "supabase": {"url": os.getenv("SUPABASE_URL") or None, "anon_key": os.getenv("SUPABASE_ANON_KEY") or None,
+        "supabase": {"url": config.supabase_url(), "anon_key": (os.getenv("SUPABASE_ANON_KEY") or "").strip() or None,
                      "google": os.getenv("SUPABASE_GOOGLE_LOGIN") == "1"},
         "email_reminders": bool(os.getenv("BREVO_API_KEY") and os.getenv("SUPABASE_SERVICE_ROLE_KEY")),
     }
@@ -75,6 +75,24 @@ def cron_reminders(request: Request):
         return accounts.run_reminders()
     except Exception as e:  # noqa: BLE001
         return JSONResponse({"error": str(e)[:300]}, status_code=500)
+
+
+class SignupIn(BaseModel):
+    email: str
+    password: str
+    first_name: str
+
+
+@app.post("/api/signup")
+def signup_ep(inp: SignupIn, request: Request):
+    from . import accounts
+
+    ip = request.headers.get("x-forwarded-for", "").split(",")[0].strip() or (request.client.host if request.client else "?")
+    try:
+        res = accounts.signup(inp.email, inp.password, inp.first_name, ip)
+    except Exception as e:  # noqa: BLE001
+        return JSONResponse({"ok": False, "error": "server", "detail": str(e)[:160]}, status_code=500)
+    return JSONResponse(res, status_code=200 if res.get("ok") else 400)
 
 
 @app.post("/api/account/delete")
@@ -179,3 +197,8 @@ app.mount("/static", StaticFiles(directory=STATIC), name="static")
 @app.get("/")
 def index():
     return FileResponse(STATIC / "index.html")
+
+
+@app.get("/login")
+def login_page():
+    return FileResponse(STATIC / "login.html")

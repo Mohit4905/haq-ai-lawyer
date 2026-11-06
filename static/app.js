@@ -22,6 +22,7 @@ function applyI18n() {
   document.documentElement.lang = uiLang() === "hinglish" ? "hi" : uiLang();
   $$("[data-i18n]").forEach(el => { el.textContent = tr(el.dataset.i18n); });
   $$("[data-i18n-ph]").forEach(el => { el.placeholder = tr(el.dataset.i18nPh); });
+  if (innerWidth <= 600) $("#input").placeholder = tr("ph_short");  // long example wraps on phones
   $$("[data-i18n-title]").forEach(el => { el.title = tr(el.dataset.i18nTitle); el.setAttribute("aria-label", tr(el.dataset.i18nTitle)); });
   renderCards();
   const name = langInfo()[2];
@@ -437,12 +438,13 @@ $("#composer").onsubmit = e => { e.preventDefault(); send($("#input").value); };
 function openTab(name) {
   $$(".tab").forEach(t => t.classList.toggle("active", t.dataset.tab === name));
   $$(".panel").forEach(p => p.classList.toggle("active", p.id === "p-" + name));
-  if (innerWidth <= 900) $("#caseCol").classList.add("open");
+  $("#secCase") && ($("#secCase").open = true);
+  window.openSide && window.openSide();
   if (name === "practice") renderPractice();
   if (name === "evidence") renderEvidence();
 }
 $$(".tab").forEach(t => t.onclick = () => openTab(t.dataset.tab));
-$("#toggleCase").onclick = () => $("#caseCol").classList.toggle("open");
+
 $("#newCase") && ($("#newCase").onclick = () => Cases.create());
 $("#calAll").onclick = () => downloadIcs(userDeadlines());
 $("#lang").onchange = () => { store.set("haq_lang", $("#lang").value); applyI18n(); };

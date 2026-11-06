@@ -25,6 +25,10 @@ def step(name, fn):
         results.append((True, name, f"{detail} ({time.time() - t:.1f}s)"))
     except Exception as e:  # noqa: BLE001
         results.append((False, name, f"{type(e).__name__}: {str(e)[:300]}"))
+        try:
+            page.screenshot(path=SHOTS / ("FAIL_" + "".join(ch if ch.isalnum() else "_" for ch in name)[:40] + ".png"))
+        except Exception:  # noqa: BLE001
+            pass
 
 
 with sync_playwright() as p:
@@ -34,6 +38,23 @@ with sync_playwright() as p:
     page.on("pageerror", lambda e: js_errors.append(f"pageerror: {e}"))
     page.on("console", lambda m: js_errors.append(f"console.{m.type}: {m.text}") if m.type == "error" else None)
     page.on("dialog", lambda d: d.accept())
+
+    def login_page():
+        lp = browser.new_context(viewport={"width": 1440, "height": 900}).new_page()
+        lp.on("pageerror", lambda e: js_errors.append(f"pageerror(login): {e}"))
+        lp.goto(URL, timeout=120_000)
+        lp.wait_for_url("**/login", timeout=30_000)
+        lp.wait_for_selector("#guestBtn")
+        lp.screenshot(path=SHOTS / "00_login.png")
+        has_google = lp.locator("#googleBtn").is_visible(); has_email = lp.locator("#emailBtn").is_visible()
+        lp.click("#guestBtn")
+        lp.wait_for_selector(".card[data-prompt]", timeout=30_000)
+        lp.goto(URL); lp.wait_for_selector(".card[data-prompt]", timeout=30_000)  # guest choice remembered
+        lp.context.close()
+        return f"first visit -> /login (google={has_google}, email={has_email}) -> guest -> app; remembered"
+
+    step("login page: first visit, continue as guest", login_page)
+    page.add_init_script("try{ if(!localStorage.getItem('haq_mode')) localStorage.setItem('haq_mode','\"guest\"'); }catch(e){}")
 
     def load():
         page.goto(URL, timeout=120_000)
@@ -212,13 +233,19 @@ with sync_playwright() as p:
         page.click("#newCase2")
         out = []
         for code, lo, hi in [("hi", "ऀ", "ॿ"), ("pa", "਀", "੿"), ("ta", "஀", "௿")]:
+            if not page.is_visible("#lang"):
+                page.click("#settingsBtn")
+                page.wait_for_selector("#lang", state="visible", timeout=5000)
             page.select_option("#lang", code)
             h = page.inner_text(".welcome h1")
             card = page.locator(".card b").first.inner_text()
             assert any(lo <= c <= hi for c in h + card), (code, h, card)
             out.append(f"{code}: {h[:22]}")
         page.screenshot(path=SHOTS / "10_tamil_ui.png")
+        if not page.is_visible("#lang"):
+            page.click("#settingsBtn")
         page.select_option("#lang", "en")
+        page.keyboard.press("Escape")
         assert page.locator(".card").count() == 8, "expected 8 problem cards"
         return " | ".join(out)
 
@@ -227,25 +254,45 @@ with sync_playwright() as p:
     def theme():
         assert page.evaluate("document.documentElement.dataset.theme") == "light", "default should be light"
         bg_light = page.evaluate("getComputedStyle(document.body).backgroundColor")
-        page.click("#themeBtn")
+        page.click("#settingsBtn"); page.click("#themeBtn")
         bg_dark = page.evaluate("getComputedStyle(document.body).backgroundColor")
         page.screenshot(path=SHOTS / "11_dark.png")
         page.reload()
         kept = page.evaluate("document.documentElement.dataset.theme")
-        page.click("#themeBtn")
+        page.click("#settingsBtn"); page.click("#themeBtn"); page.keyboard.press("Escape")
         assert bg_light != bg_dark and kept == "dark", (bg_light, bg_dark, kept)
         return f"light {bg_light} -> dark {bg_dark}, remembered after reload"
 
     step("light default + dark toggle", theme)
 
+    def sidebar():
+        page.click("#collapseSide")
+        hidden = not page.is_visible("#side")
+        page.screenshot(path=SHOTS / "15_collapsed.png")
+        page.reload(); page.wait_for_selector("#chat")
+        still = not page.is_visible("#side")
+        page.click("#toggleSide")
+        back = page.is_visible("#side")
+        page.click("#settingsBtn")
+        menu = page.is_visible("#settingsPop") and page.is_visible("#lang") and page.is_visible("#provider")
+        page.screenshot(path=SHOTS / "16_settings.png")
+        page.keyboard.press("Escape")
+        assert hidden and still and back and menu, (hidden, still, back, menu)
+        return "collapse -> remembered after reload -> reopen; settings menu at the bottom works"
+
+    step("sidebar collapse/expand + settings menu", sidebar)
+
     def mobile():
         m = browser.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
         mp = m.new_page()
+        mp.goto(URL + "/login", timeout=120_000); mp.wait_for_selector("#guestBtn")
+        mp.screenshot(path=SHOTS / "08a_mobile_login.png")
+        mp.add_init_script("try{ localStorage.setItem('haq_mode','\"guest\"'); }catch(e){}")
         mp.goto(URL, timeout=120_000)
         mp.wait_for_selector(".card[data-prompt]")
         overflow = mp.evaluate("document.documentElement.scrollWidth > window.innerWidth + 1")
         mp.screenshot(path=SHOTS / "08_mobile.png")
-        mp.click("#toggleCase")
+        mp.click("#toggleSide")
         time.sleep(0.4)
         mp.screenshot(path=SHOTS / "09_mobile_casepanel.png")
         m.close()

@@ -380,3 +380,95 @@ Object.assign(window.HAQ_I18N.pa, {
   delete_all: "ਮੇਰਾ ਸਾਰਾ ਡਾਟਾ ਹਟਾਓ", confirm_delete_all: "ਤੁਹਾਡੇ ਸਾਰੇ ਕੇਸ, ਸਬੂਤ, ਰਿਮਾਈਂਡਰ ਅਤੇ ਪ੍ਰੋਫ਼ਾਈਲ ਹਟਾਉਣੇ ਹਨ? ਇਹ ਵਾਪਸ ਨਹੀਂ ਹੋਵੇਗਾ।",
   deleted_all: "ਤੁਹਾਡਾ ਸਾਰਾ ਡਾਟਾ ਹਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ।",
 });
+/* ---- login page ---- */
+Object.assign(window.HAQ_I18N.en, {
+  login_h: "Know your rights. Get your money back.", lp1: "Explains the exact law you can cite, checked against official sources",
+  lp2: "Works out your deadlines and reminds you", lp3: "Drafts your legal notice or complaint for free", lp4: "Talk or type in Hindi, English, Hinglish and 8 more languages",
+  login_title: "Welcome to Haq", login_sub: "Sign in to save your cases and open them on any device, or continue as a guest.",
+  continue_email: "Continue with email", continue_guest: "Continue as guest", or: "or",
+  guest_note: "As a guest, your cases are saved only on this device. You can sign in later to keep them.",
+  email_label: "Your email", send_link: "Send me a sign-in link", back: "← Back", check_email: "Check your email",
+  code_hint2: "Open the email and tap the sign-in link on this device. If the email has a 6-digit code, you can type it here instead:",
+  accounts_off: "Sign-in isn't set up on this server yet. You can continue as a guest.",
+  google_off: "Google sign-in isn't switched on yet. Please use email or continue as a guest.",
+  email_limited: "We couldn't send the email right now. Please use Google or continue as a guest.",
+});
+Object.assign(window.HAQ_I18N.hi, {
+  login_h: "अपने अधिकार जानिए। अपना पैसा वापस पाइए।", lp1: "वह सटीक क़ानून बताता है जिसका आप हवाला दे सकते हैं, सरकारी स्रोतों से जाँचा हुआ",
+  lp2: "आपकी समय-सीमा निकालता है और याद दिलाता है", lp3: "आपका लीगल नोटिस या शिकायत मुफ़्त तैयार करता है", lp4: "हिंदी, अंग्रेज़ी, हिंग्लिश और 8 और भाषाओं में बोलें या लिखें",
+  login_title: "हक़ में आपका स्वागत है", login_sub: "अपने केस सेव करने और किसी भी डिवाइस पर खोलने के लिए साइन इन करें, या मेहमान के रूप में जारी रखें।",
+  continue_email: "ईमेल से जारी रखें", continue_guest: "मेहमान के रूप में जारी रखें", or: "या",
+  guest_note: "मेहमान के रूप में आपके केस सिर्फ़ इसी डिवाइस पर सेव होंगे। बाद में साइन इन करके उन्हें रख सकते हैं।",
+  email_label: "आपका ईमेल", send_link: "मुझे साइन-इन लिंक भेजें", back: "← वापस", check_email: "अपना ईमेल देखें",
+  code_hint2: "ईमेल खोलें और इसी डिवाइस पर साइन-इन लिंक दबाएँ। अगर ईमेल में 6 अंकों का कोड है, तो उसे यहाँ लिख सकते हैं:",
+  accounts_off: "इस सर्वर पर अभी साइन-इन चालू नहीं है। आप मेहमान के रूप में जारी रख सकते हैं।",
+  google_off: "Google साइन-इन अभी चालू नहीं है। कृपया ईमेल का उपयोग करें या मेहमान के रूप में जारी रखें।",
+  email_limited: "अभी ईमेल नहीं भेजा जा सका। कृपया Google का उपयोग करें या मेहमान के रूप में जारी रखें।",
+});
+Object.assign(window.HAQ_I18N.hinglish, {
+  login_h: "Apne adhikaar jaaniye. Apna paisa wapas paaiye.", lp1: "Woh exact kanoon batata hai jo aap cite kar sakte hain, official sources se verified",
+  lp2: "Aapki deadlines nikalta hai aur yaad dilata hai", lp3: "Aapka legal notice ya complaint free mein taiyaar karta hai", lp4: "Hindi, English, Hinglish aur 8 aur bhashaon mein boliye ya likhiye",
+  login_title: "Haq mein aapka swagat hai", login_sub: "Apne cases save karne aur kisi bhi device par kholne ke liye sign in kijiye, ya guest ke roop mein continue kijiye.",
+  continue_email: "Email se continue karein", continue_guest: "Guest ke roop mein continue karein", or: "ya",
+  guest_note: "Guest ke roop mein aapke cases sirf isi device par save honge. Baad mein sign in karke unhe rakh sakte hain.",
+  email_label: "Aapka email", send_link: "Mujhe sign-in link bhejiye", back: "← Wapas", check_email: "Apna email dekhiye",
+  code_hint2: "Email kholiye aur isi device par sign-in link dabaiye. Agar email mein 6 digit ka code hai, toh yahan likh sakte hain:",
+  accounts_off: "Is server par abhi sign-in chalu nahi hai. Aap guest ke roop mein continue kar sakte hain.",
+  google_off: "Google sign-in abhi chalu nahi hai. Email use kijiye ya guest ke roop mein continue kijiye.",
+  email_limited: "Abhi email nahi bheja ja saka. Google use kijiye ya guest ke roop mein continue kijiye.",
+});
+Object.assign(window.HAQ_I18N.pa, {
+  login_h: "ਆਪਣੇ ਅਧਿਕਾਰ ਜਾਣੋ। ਆਪਣਾ ਪੈਸਾ ਵਾਪਸ ਲਓ।", lp1: "ਉਹ ਸਹੀ ਕਾਨੂੰਨ ਦੱਸਦਾ ਹੈ ਜਿਸਦਾ ਤੁਸੀਂ ਹਵਾਲਾ ਦੇ ਸਕਦੇ ਹੋ, ਸਰਕਾਰੀ ਸਰੋਤਾਂ ਨਾਲ ਜਾਂਚਿਆ",
+  lp2: "ਤੁਹਾਡੀਆਂ ਸਮਾਂ-ਸੀਮਾਵਾਂ ਕੱਢਦਾ ਹੈ ਅਤੇ ਯਾਦ ਕਰਵਾਉਂਦਾ ਹੈ", lp3: "ਤੁਹਾਡਾ ਕਾਨੂੰਨੀ ਨੋਟਿਸ ਜਾਂ ਸ਼ਿਕਾਇਤ ਮੁਫ਼ਤ ਤਿਆਰ ਕਰਦਾ ਹੈ", lp4: "ਹਿੰਦੀ, ਅੰਗਰੇਜ਼ੀ, ਹਿੰਗਲਿਸ਼ ਅਤੇ 8 ਹੋਰ ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ ਬੋਲੋ ਜਾਂ ਲਿਖੋ",
+  login_title: "ਹੱਕ ਵਿੱਚ ਤੁਹਾਡਾ ਸੁਆਗਤ ਹੈ", login_sub: "ਆਪਣੇ ਕੇਸ ਸੇਵ ਕਰਨ ਅਤੇ ਕਿਸੇ ਵੀ ਡਿਵਾਈਸ 'ਤੇ ਖੋਲ੍ਹਣ ਲਈ ਸਾਈਨ ਇਨ ਕਰੋ, ਜਾਂ ਮਹਿਮਾਨ ਵਜੋਂ ਜਾਰੀ ਰੱਖੋ।",
+  continue_email: "ਈਮੇਲ ਨਾਲ ਜਾਰੀ ਰੱਖੋ", continue_guest: "ਮਹਿਮਾਨ ਵਜੋਂ ਜਾਰੀ ਰੱਖੋ", or: "ਜਾਂ",
+  guest_note: "ਮਹਿਮਾਨ ਵਜੋਂ ਤੁਹਾਡੇ ਕੇਸ ਸਿਰਫ਼ ਇਸੇ ਡਿਵਾਈਸ 'ਤੇ ਸੇਵ ਹੋਣਗੇ। ਬਾਅਦ ਵਿੱਚ ਸਾਈਨ ਇਨ ਕਰਕੇ ਰੱਖ ਸਕਦੇ ਹੋ।",
+  email_label: "ਤੁਹਾਡੀ ਈਮੇਲ", send_link: "ਮੈਨੂੰ ਸਾਈਨ-ਇਨ ਲਿੰਕ ਭੇਜੋ", back: "← ਵਾਪਸ", check_email: "ਆਪਣੀ ਈਮੇਲ ਦੇਖੋ",
+  code_hint2: "ਈਮੇਲ ਖੋਲ੍ਹੋ ਅਤੇ ਇਸੇ ਡਿਵਾਈਸ 'ਤੇ ਸਾਈਨ-ਇਨ ਲਿੰਕ ਦਬਾਓ। ਜੇ ਈਮੇਲ ਵਿੱਚ 6 ਅੰਕਾਂ ਦਾ ਕੋਡ ਹੈ, ਤਾਂ ਇੱਥੇ ਲਿਖ ਸਕਦੇ ਹੋ:",
+  accounts_off: "ਇਸ ਸਰਵਰ 'ਤੇ ਹਾਲੇ ਸਾਈਨ-ਇਨ ਚਾਲੂ ਨਹੀਂ ਹੈ। ਤੁਸੀਂ ਮਹਿਮਾਨ ਵਜੋਂ ਜਾਰੀ ਰੱਖ ਸਕਦੇ ਹੋ।",
+  google_off: "Google ਸਾਈਨ-ਇਨ ਹਾਲੇ ਚਾਲੂ ਨਹੀਂ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਈਮੇਲ ਵਰਤੋ ਜਾਂ ਮਹਿਮਾਨ ਵਜੋਂ ਜਾਰੀ ਰੱਖੋ।",
+  email_limited: "ਹੁਣੇ ਈਮੇਲ ਨਹੀਂ ਭੇਜੀ ਜਾ ਸਕੀ। ਕਿਰਪਾ ਕਰਕੇ Google ਵਰਤੋ ਜਾਂ ਮਹਿਮਾਨ ਵਜੋਂ ਜਾਰੀ ਰੱਖੋ।",
+});
+/* ---- Claude-style shell ---- */
+Object.assign(window.HAQ_I18N.en, { this_case: "This case", ai_model: "AI model", foot_short: "Haq gives legal information, not legal advice. Check important details." });
+Object.assign(window.HAQ_I18N.hi, { this_case: "यह केस", ai_model: "AI मॉडल", foot_short: "हक़ कानूनी जानकारी देता है, कानूनी सलाह नहीं। ज़रूरी बातें जाँच लें।" });
+Object.assign(window.HAQ_I18N.hinglish, { this_case: "Yeh case", ai_model: "AI model", foot_short: "Haq legal jaankari deta hai, legal salah nahi. Zaroori baatein check kar lijiye." });
+Object.assign(window.HAQ_I18N.pa, { this_case: "ਇਹ ਕੇਸ", ai_model: "AI ਮਾਡਲ", foot_short: "ਹੱਕ ਕਾਨੂੰਨੀ ਜਾਣਕਾਰੀ ਦਿੰਦਾ ਹੈ, ਕਾਨੂੰਨੀ ਸਲਾਹ ਨਹੀਂ। ਜ਼ਰੂਰੀ ਗੱਲਾਂ ਜਾਂਚ ਲਓ।" });
+/* ---- login / create account ---- */
+Object.assign(window.HAQ_I18N.en, {
+  tab_login: "Log in", tab_signup: "Create account", or_email: "or with email", email_label: "Email", password: "Password", first_name: "First name",
+  login_btn: "Log in", signup_btn: "Create account", new_here: "New to Haq?", have_account: "Already have an account?",
+  pw_rule: "Password must be at least 8 characters.", signup_title: "Create your Haq account", creating: "Creating your account…",
+  bad_login: "Wrong email or password. New here? Create an account.", err_exists: "An account with this email already exists. Please log in.",
+  err_email: "Please enter a valid email address.", err_name: "Please enter your first name.", err_rate: "Too many attempts. Please try again in a few minutes.",
+  err_server: "Something went wrong. Please try again, or continue as a guest.",
+});
+Object.assign(window.HAQ_I18N.hi, {
+  tab_login: "लॉग इन", tab_signup: "नया अकाउंट बनाएँ", or_email: "या ईमेल से", email_label: "ईमेल", password: "पासवर्ड", first_name: "पहला नाम",
+  login_btn: "लॉग इन करें", signup_btn: "अकाउंट बनाएँ", new_here: "हक़ पर नए हैं?", have_account: "पहले से अकाउंट है?",
+  pw_rule: "पासवर्ड कम से कम 8 अक्षरों का होना चाहिए।", signup_title: "अपना हक़ अकाउंट बनाएँ", creating: "आपका अकाउंट बन रहा है…",
+  bad_login: "ईमेल या पासवर्ड ग़लत है। नए हैं? अकाउंट बनाएँ।", err_exists: "इस ईमेल से अकाउंट पहले से है। कृपया लॉग इन करें।",
+  err_email: "कृपया सही ईमेल लिखें।", err_name: "कृपया अपना पहला नाम लिखें।", err_rate: "बहुत ज़्यादा कोशिशें। कुछ मिनट बाद फिर कोशिश करें।",
+  err_server: "कुछ गड़बड़ हुई। फिर कोशिश करें, या मेहमान के रूप में जारी रखें।",
+});
+Object.assign(window.HAQ_I18N.hinglish, {
+  tab_login: "Log in", tab_signup: "Naya account banayein", or_email: "ya email se", email_label: "Email", password: "Password", first_name: "Pehla naam",
+  login_btn: "Log in karein", signup_btn: "Account banayein", new_here: "Haq par naye hain?", have_account: "Pehle se account hai?",
+  pw_rule: "Password kam se kam 8 characters ka hona chahiye.", signup_title: "Apna Haq account banayein", creating: "Aapka account ban raha hai…",
+  bad_login: "Email ya password galat hai. Naye hain? Account banayein.", err_exists: "Is email se account pehle se hai. Kripya log in karein.",
+  err_email: "Sahi email likhiye.", err_name: "Apna pehla naam likhiye.", err_rate: "Bahut zyada koshishein. Kuch minute baad try kijiye.",
+  err_server: "Kuch gadbad hui. Dobara try kijiye, ya guest ke roop mein continue kijiye.",
+});
+Object.assign(window.HAQ_I18N.pa, {
+  tab_login: "ਲੌਗ ਇਨ", tab_signup: "ਨਵਾਂ ਖਾਤਾ ਬਣਾਓ", or_email: "ਜਾਂ ਈਮੇਲ ਨਾਲ", email_label: "ਈਮੇਲ", password: "ਪਾਸਵਰਡ", first_name: "ਪਹਿਲਾ ਨਾਮ",
+  login_btn: "ਲੌਗ ਇਨ ਕਰੋ", signup_btn: "ਖਾਤਾ ਬਣਾਓ", new_here: "ਹੱਕ 'ਤੇ ਨਵੇਂ ਹੋ?", have_account: "ਪਹਿਲਾਂ ਤੋਂ ਖਾਤਾ ਹੈ?",
+  pw_rule: "ਪਾਸਵਰਡ ਘੱਟੋ-ਘੱਟ 8 ਅੱਖਰਾਂ ਦਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ।", signup_title: "ਆਪਣਾ ਹੱਕ ਖਾਤਾ ਬਣਾਓ", creating: "ਤੁਹਾਡਾ ਖਾਤਾ ਬਣ ਰਿਹਾ ਹੈ…",
+  bad_login: "ਈਮੇਲ ਜਾਂ ਪਾਸਵਰਡ ਗ਼ਲਤ ਹੈ। ਨਵੇਂ ਹੋ? ਖਾਤਾ ਬਣਾਓ।", err_exists: "ਇਸ ਈਮੇਲ ਨਾਲ ਖਾਤਾ ਪਹਿਲਾਂ ਤੋਂ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਲੌਗ ਇਨ ਕਰੋ।",
+  err_email: "ਕਿਰਪਾ ਕਰਕੇ ਸਹੀ ਈਮੇਲ ਲਿਖੋ।", err_name: "ਕਿਰਪਾ ਕਰਕੇ ਆਪਣਾ ਪਹਿਲਾ ਨਾਮ ਲਿਖੋ।", err_rate: "ਬਹੁਤ ਜ਼ਿਆਦਾ ਕੋਸ਼ਿਸ਼ਾਂ। ਕੁਝ ਮਿੰਟਾਂ ਬਾਅਦ ਫਿਰ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
+  err_server: "ਕੁਝ ਗੜਬੜ ਹੋਈ। ਫਿਰ ਕੋਸ਼ਿਸ਼ ਕਰੋ, ਜਾਂ ਮਹਿਮਾਨ ਵਜੋਂ ਜਾਰੀ ਰੱਖੋ।",
+});
+/* short placeholder for small screens */
+Object.assign(window.HAQ_I18N.en, { ph_short: "Describe your problem…" });
+Object.assign(window.HAQ_I18N.hi, { ph_short: "अपनी समस्या लिखें…" });
+Object.assign(window.HAQ_I18N.hinglish, { ph_short: "Apni problem likhiye…" });
+Object.assign(window.HAQ_I18N.pa, { ph_short: "ਆਪਣੀ ਸਮੱਸਿਆ ਲਿਖੋ…" });

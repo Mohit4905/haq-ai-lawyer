@@ -49,20 +49,29 @@
   };
   window.HAQ_CLOUD = CLOUD;
 
+  // compact account row at the bottom of the sidebar (Claude-style); actions live in the ⚙ menu
   function profileHtml() {
-    if (!sb) return `<div class="pf guest"><div class="pf-av">👤</div><div><b>${esc(tr("guest"))}</b><small>${esc(tr("saved_device"))}</small></div></div>`;
-    if (!user) return `<div class="pf guest"><div class="pf-av">👤</div><div><b>${esc(tr("guest"))}</b><small>${esc(tr("saved_device"))}</small></div></div>
-      <button class="primary small wide" id="signInBtn">🔐 ${esc(tr("sign_in"))}</button><small class="muted tiny">${esc(tr("sign_in_why"))}</small>`;
+    if (!user) return `<div class="pf guest"><div class="pf-av">👤</div><div><b>${esc(tr("guest"))}</b><small>${esc(tr("saved_device"))}</small></div></div>`
+      + (sb ? `<button class="link-btn tiny" id="signInRow">${esc(tr("sign_in"))} →</button>` : "");
     const name = profile?.full_name || user.email?.split("@")[0] || "";
-    return `<div class="pf"><div class="pf-av in">${esc((name[0] || "?").toUpperCase())}</div><div><b>${esc(name)}</b><small>${esc(user.email || "")}</small></div></div>
-      <div class="row"><button class="ghost small" id="profileBtn">⚙︎ ${esc(tr("profile"))}</button><button class="ghost small" id="signOutBtn">${esc(tr("sign_out"))}</button></div>
-      <small class="muted tiny">☁️ ${esc(tr("saved_cloud"))}</small>`;
+    return `<div class="pf"><div class="pf-av in">${esc((name[0] || "?").toUpperCase())}</div><div><b>${esc(name)}</b><small>☁️ ${esc(user.email || "")}</small></div></div>`;
+  }
+  function menuHtml() {
+    if (!sb) return "";
+    if (!user) return `<button class="sp-item accent" id="signInBtn">🔐 ${esc(tr("sign_in"))}<small>${esc(tr("sign_in_why"))}</small></button>`;
+    return `<button class="sp-item" id="profileBtn">👤 ${esc(tr("profile"))}</button><button class="sp-item" id="signOutBtn">↩ ${esc(tr("sign_out"))}</button>`;
   }
   function renderProfile() {
     const box = $("#profileBox"); if (!box) return;
     box.innerHTML = profileHtml();
-    $("#signInBtn")?.addEventListener("click", openSignIn);
-    $("#signOutBtn")?.addEventListener("click", async () => { await sb.auth.signOut(); });
+    const menu = $("#acctMenu"); if (menu) menu.innerHTML = menuHtml();
+    $("#signInBtn")?.addEventListener("click", () => { location.href = "/login"; });
+    $("#signInRow")?.addEventListener("click", () => { location.href = "/login"; });
+    $("#signOutBtn")?.addEventListener("click", async () => {
+      try { await sb.auth.signOut(); } catch (e) {}
+      try { localStorage.removeItem("haq_mode"); } catch (e) {}
+      location.href = "/login";
+    });
     $("#profileBtn")?.addEventListener("click", openProfile);
     renderReminderToggle();
   }
@@ -80,28 +89,6 @@
   }
   window.renderReminderToggle = renderReminderToggle;
 
-  function openSignIn() {
-    const d = $("#authDlg");
-    $("#authStep1").classList.remove("hidden"); $("#authStep2").classList.add("hidden"); $("#authMsg").textContent = "";
-    $("#googleBtn").classList.toggle("hidden", !CONFIG?.supabase?.google);
-    d.showModal();
-  }
-  async function sendCode(e) {
-    e.preventDefault();
-    const email = $("#authEmail").value.trim(); if (!email) return;
-    $("#authMsg").textContent = "…";
-    const { error } = await sb.auth.signInWithOtp({ email, options: { emailRedirectTo: location.origin, shouldCreateUser: true } });
-    if (error) { $("#authMsg").textContent = "⚠️ " + error.message; return; }
-    $("#authStep1").classList.add("hidden"); $("#authStep2").classList.remove("hidden");
-    $("#authSentTo").textContent = email; $("#authMsg").textContent = "";
-  }
-  async function verifyCode(e) {
-    e.preventDefault();
-    const email = $("#authEmail").value.trim(), token = $("#authCode").value.trim();
-    const { error } = await sb.auth.verifyOtp({ email, token, type: "email" });
-    if (error) { $("#authMsg").textContent = "⚠️ " + error.message; return; }
-    $("#authDlg").close();
-  }
   async function openProfile() {
     const d = $("#profileDlg");
     $("#pfName").value = profile?.full_name || ""; $("#pfCity").value = profile?.city || ""; $("#pfEmailRem").checked = profile?.email_reminders !== false;
@@ -133,13 +120,11 @@
     renderProfile();
     if (!cfg?.url || !cfg?.anon_key || !window.supabase) return;
     sb = window.supabase.createClient(cfg.url, cfg.anon_key, { auth: { persistSession: true, detectSessionInUrl: true } });
-    $("#authForm1").addEventListener("submit", sendCode);
-    $("#authForm2").addEventListener("submit", verifyCode);
-    $("#googleBtn").addEventListener("click", () => sb.auth.signInWithOAuth({ provider: "google", options: { redirectTo: location.origin } }));
     $("#pfForm").addEventListener("submit", saveProfile);
     $("#pfDelete").addEventListener("click", deleteAll);
     const { data: { session } } = await sb.auth.getSession();
     user = session?.user || null;
+    if (user) { try { localStorage.setItem("haq_mode", '"account"'); } catch (e) {} if (/access_token|[?&]code=/.test(location.hash + location.search)) history.replaceState(null, "", "/"); }
     if (user) { const { data } = await sb.from("profiles").select("*").eq("id", user.id).maybeSingle(); profile = data; }
     renderProfile();
     if (user) await CLOUD.pullMerge();

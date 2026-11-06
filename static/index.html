@@ -8,6 +8,12 @@
 <script>
   /* apply saved theme before paint (default: light) */
   try { document.documentElement.dataset.theme = localStorage.getItem("haq_theme") || "light"; document.documentElement.dataset.palette = localStorage.getItem("haq_palette") || "indigo"; } catch (e) {}
+  /* first visit -> login page (unless returning from a sign-in link, already signed in, or chose guest) */
+  try {
+    var fromAuth = /access_token|refresh_token|[?&]code=|error_description/.test(location.hash + location.search);
+    var hasSession = Object.keys(localStorage).some(function (k) { return /^sb-.*-auth-token$/.test(k); });
+    if (!fromAuth && !hasSession && !localStorage.getItem("haq_mode")) location.replace("/login");
+  } catch (e) {}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,69 +22,24 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230f5b52'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='%23f7c873' font-family='serif'>ह</text></svg>">
 </head>
 <body>
-<header class="top">
-  <div class="brand">
-    <button class="icon-btn side-toggle" id="toggleSide" type="button" aria-label="My cases">☰</button>
-    <div class="logo" aria-hidden="true">हक़</div>
-    <div>
-      <div class="name">Haq</div>
-      <div class="tag" data-i18n="tagline">Free help with everyday legal problems, in your language</div>
-    </div>
-  </div>
-  <div class="top-actions">
-    <label class="lang-btn" title="Language / भाषा">
-      <span aria-hidden="true">🌐</span>
-      <span class="lang-label" data-i18n="lang_label">Language</span>
-      <select id="lang" aria-label="Language"></select>
-    </label>
-    <button class="icon-btn" id="themeBtn" type="button" data-i18n-title="theme" title="Light / dark mode" aria-label="Light / dark mode">🌙</button>
-    <label class="sel model" title="AI model (swappable)">
-      <span aria-hidden="true">⚙︎</span>
-      <select id="provider" aria-label="AI model"></select>
-    </label>
-    <button class="ghost only-mobile" id="toggleCase" aria-label="Case file">📁</button>
-  </div>
-</header>
+
 
 <main class="layout">
   <aside class="side" id="side">
-    <div class="profile" id="profileBox"></div>
-    <button class="primary wide" id="newCase2" type="button">＋ <span data-i18n="new_case">New case</span></button>
-    <div class="side-h"><span data-i18n="my_cases">My cases</span></div>
-    <input id="caseSearch" class="side-search" data-i18n-ph="search_cases" placeholder="Search cases…">
-    <div class="case-list" id="caseList"></div>
-  </aside>
-  <section class="chat-col">
-    <div id="banner" class="banner hidden"></div>
-    <div id="chat" class="chat" aria-live="polite">
-      <div id="welcome" class="welcome">
-        <div class="hero">
-          <div class="hero-glow" aria-hidden="true"></div>
-          <div class="hero-badge">⚖️ <span data-i18n="tagline">Free help with everyday legal problems, in your language</span></div>
-          <h1 data-i18n="welcome_h">What's the problem? Tell me in your own words.</h1>
-          <p class="sub" data-i18n="welcome_p">Type or speak in your language.</p>
-          <ol class="how">
-            <li><span>1</span><b data-i18n="how1">Tell your problem</b></li>
-            <li><span>2</span><b data-i18n="how2">Know your rights &amp; deadlines</b></li>
-            <li><span>3</span><b data-i18n="how3">Get your notice drafted</b></li>
-          </ol>
-        </div>
-        <div class="cards" id="cards"></div>
-        <p class="trust">🛡️ <span data-i18n="trust">Every law Haq mentions is first checked against official sources.</span></p>
-      </div>
+    <div class="side-head">
+      <div class="brand"><div class="logo" aria-hidden="true">हक़</div><div class="name">Haq</div></div>
+      <button class="icon-btn plain" id="collapseSide" type="button" title="Close sidebar" aria-label="Close sidebar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16"/></svg></button>
     </div>
-
-    <form id="composer" class="composer" autocomplete="off">
-      <button type="button" class="icon" id="attach" title="Upload a notice (photo/PDF)" aria-label="Upload a notice">📎</button>
-      <textarea id="input" rows="1" data-i18n-ph="ph" placeholder="Type here…"></textarea>
-      <button type="button" class="icon mic" id="mic" title="Speak" aria-label="Speak">🎙️</button>
-      <button type="submit" class="send" id="send" title="Send" aria-label="Send">➤</button>
-      <input type="file" id="file" accept="image/*,application/pdf" hidden>
-    </form>
-    <div class="foot" data-i18n="foot">Haq gives legal information, not legal advice. Free legal aid: NALSA helpline 15100.</div>
-  </section>
-
-  <aside class="case-col" id="caseCol">
+    <button class="newcase-btn" id="newCase2" type="button"><span class="plus">＋</span> <span data-i18n="new_case">New case</span></button>
+    <div class="side-scroll">
+      <details class="side-sec" id="secCases" open>
+        <summary><span data-i18n="my_cases">My cases</span></summary>
+        <input id="caseSearch" class="side-search" data-i18n-ph="search_cases" placeholder="Search cases…">
+        <div class="case-list" id="caseList"></div>
+      </details>
+      <details class="side-sec" id="secCase" open>
+        <summary><span data-i18n="this_case">This case</span></summary>
+        <div class="case-col" id="caseCol">
     <nav class="tabs" role="tablist">
       <button class="tab active" data-tab="case" data-i18n="t_case">Case file</button>
       <button class="tab" data-tab="deadlines" data-i18n="t_dead">Deadlines</button>
@@ -165,7 +126,56 @@
       <p class="small muted" data-i18n="help_lib">Haq can only mention laws in this list.</p>
       <div id="kbList" class="kb-list"></div>
     </div>
+  </div>
+      </details>
+    </div>
+    <div class="side-foot">
+      <div class="profile" id="profileBox"></div>
+      <button class="icon-btn plain" id="settingsBtn" type="button" title="Settings" aria-label="Settings" aria-haspopup="true">⚙︎</button>
+      <div class="settings-pop hidden" id="settingsPop" role="menu">
+        <div class="sp-row"><span>🌐 <span data-i18n="lang_label">Language</span></span><select id="lang" aria-label="Language"></select></div>
+        <div class="sp-row"><span>🌓 <span data-i18n="theme">Light / dark mode</span></span><button class="icon-btn" id="themeBtn" type="button" aria-label="Light / dark mode">🌙</button></div>
+        <div class="sp-row"><span>🤖 <span data-i18n="ai_model">AI model</span></span><select id="provider" aria-label="AI model"></select></div>
+        <div id="acctMenu"></div>
+        <div class="sp-foot tiny muted" data-i18n="foot">Haq gives legal information, not legal advice. Free legal aid: NALSA helpline 15100.</div>
+      </div>
+    </div>
   </aside>
+  <section class="chat-col">
+    <div class="chat-top">
+      <button class="icon-btn plain" id="toggleSide" type="button" title="Open sidebar" aria-label="Open sidebar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16"/></svg></button>
+      <div class="chat-title" id="chatTitle">Haq</div>
+    </div>
+    <div id="banner" class="banner hidden"></div>
+    <div id="chat" class="chat" aria-live="polite">
+      <div id="welcome" class="welcome">
+        <div class="hero">
+          <div class="hero-glow" aria-hidden="true"></div>
+          <div class="hero-badge">⚖️ <span data-i18n="tagline">Free help with everyday legal problems, in your language</span></div>
+          <h1 data-i18n="welcome_h">What's the problem? Tell me in your own words.</h1>
+          <p class="sub" data-i18n="welcome_p">Type or speak in your language.</p>
+          <ol class="how">
+            <li><span>1</span><b data-i18n="how1">Tell your problem</b></li>
+            <li><span>2</span><b data-i18n="how2">Know your rights &amp; deadlines</b></li>
+            <li><span>3</span><b data-i18n="how3">Get your notice drafted</b></li>
+          </ol>
+        </div>
+        <div class="cards" id="cards"></div>
+        <p class="trust">🛡️ <span data-i18n="trust">Every law Haq mentions is first checked against official sources.</span></p>
+      </div>
+    </div>
+
+    <form id="composer" class="composer" autocomplete="off">
+      <button type="button" class="icon" id="attach" title="Upload a notice (photo/PDF)" aria-label="Upload a notice">📎</button>
+      <textarea id="input" rows="1" data-i18n-ph="ph" placeholder="Type here…"></textarea>
+      <button type="button" class="icon mic" id="mic" title="Speak" aria-label="Speak">🎙️</button>
+      <button type="submit" class="send" id="send" title="Send" aria-label="Send">➤</button>
+      <input type="file" id="file" accept="image/*,application/pdf" hidden>
+    </form>
+    <div class="foot" data-i18n="foot_short">Haq gives legal information, not legal advice. Free legal aid: NALSA helpline 15100.</div>
+  </section>
+
+  
 </main>
 
 <dialog id="noticeDlg">
@@ -179,30 +189,6 @@
       <button id="noticeGo" value="default" class="primary" data-i18n="explain">Explain</button>
     </div>
   </form>
-</dialog>
-
-<dialog id="authDlg">
-  <div class="dlg">
-    <h2>🔐 <span data-i18n="sign_in">Sign in</span></h2>
-    <p class="small muted" data-i18n="sign_in_why">Save your cases to your account and open them on any device.</p>
-    <form id="authForm1">
-      <div id="authStep1">
-        <input id="authEmail" type="email" required placeholder="you@example.com" class="field">
-        <div class="row end"><button class="primary" type="submit" data-i18n="send_code">Email me a sign-in link / code</button></div>
-        <button class="ghost wide hidden" id="googleBtn" type="button">G&nbsp; <span data-i18n="google">Continue with Google</span></button>
-      </div>
-    </form>
-    <form id="authForm2">
-      <div id="authStep2" class="hidden">
-        <p class="small"><span data-i18n="code_sent">We sent an email to</span> <b id="authSentTo"></b>. <span data-i18n="code_hint">Click the link in it, or type the 6-digit code here:</span></p>
-        <input id="authCode" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="123456" class="field">
-        <div class="row end"><button class="primary" type="submit" data-i18n="verify">Verify</button></div>
-      </div>
-    </form>
-    <p class="small" id="authMsg"></p>
-    <p class="tiny muted" data-i18n="privacy_note">Your cases are private: only you can see them. You can delete everything anytime from your profile.</p>
-    <form method="dialog" class="row end"><button class="ghost" data-i18n="cancel">Cancel</button></form>
-  </div>
 </dialog>
 
 <dialog id="profileDlg">
@@ -225,5 +211,6 @@
 <script src="/static/app.js"></script>
 <script src="/static/cases.js"></script>
 <script src="/static/auth.js"></script>
+<script src="/static/layout.js"></script>
 </body>
 </html>

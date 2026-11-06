@@ -43,7 +43,8 @@ CASE_RES = [
 # Overconfident claims: Haq must not promise outcomes or pre-judge the other side.
 OVERCLAIM_RE = re.compile(
     r"(?i)\b(?:(?:a|an|very|really)\s+)?(?:solid|strong|clear|airtight|watertight|open[- ]and[- ]shut|winning)\s+case\b"
-    r"|\bclear(?:ly)?\s+(?:violat\w*|breach\w*|illegal)\b|\bdefinitely\s+(?:win|get|succeed|illegal)\b"
+    r"|\b(?:clear(?:ly)?|direct(?:ly)?|obvious(?:ly)?|blatant(?:ly)?)\s+(?:a\s+)?(?:violat\w*|breach\w*|illegal)\b|\bdefinitely\s+(?:win|get|succeed|illegal)\b"
+    r"|\b(?:your|the|this)\s+(?:claim|case|position)\s+is\s+(?:very\s+|really\s+)?(?:strong|solid|watertight|airtight)\b"
     r"|\bguarantee[sd]?\b(?!\s+(?:card|period))|\b100\s*%\s*(?:sure|certain|win)|\byou\s+will\s+(?:definitely\s+)?win\b"
     r"|पक्का\s+(?:जीत|केस)|ज़रूर\s+जीत|जरूर\s+जीत|pakka\s+jeet|zaroor\s+jeet"
 )

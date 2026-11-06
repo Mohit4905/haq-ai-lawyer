@@ -104,10 +104,11 @@ const Cases = {
 };
 function persist() { Cases.touch(); }
 function resetPanels() { $("#docOut").innerHTML = ""; $("#practiceFeedback").innerHTML = ""; renderTracker(); renderEvidence(); }
-function closeDrawers() { $("#side")?.classList.remove("open"); }
+function closeDrawers() { if (innerWidth <= 900) $("#side")?.classList.remove("open"); }
 
 /* ---------------- sidebar: My cases */
 function renderCaseList() {
+  window.renderChatTitle && window.renderChatTitle();
   const box = $("#caseList"); if (!box) return;
   const q = ($("#caseSearch")?.value || "").toLowerCase();
   const items = Cases.sorted().filter(c => c.data?.state?.messages?.length || c.evidence?.length || c.id === Cases.currentId)
@@ -163,7 +164,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   $("#caseSearch")?.addEventListener("input", renderCaseList);
   $("#newCase2")?.addEventListener("click", () => Cases.create());
-  $("#toggleSide")?.addEventListener("click", () => $("#side").classList.toggle("open"));
 });
 
 /* ---------------- calendar reminders (.ics, works without an account) */

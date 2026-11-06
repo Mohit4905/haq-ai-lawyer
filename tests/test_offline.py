@@ -190,7 +190,8 @@ def test_mixed_script_message():
 
 
 def test_overclaim():
-    for t in ["You have a solid case.", "The company is in clear violation of the rules.", "You will definitely win.", "I guarantee a refund.", "Aap pakka jeet jaoge"]:
+    for t in ["You have a solid case.", "The company is in clear violation of the rules.", "You will definitely win.", "I guarantee a refund.", "Aap pakka jeet jaoge",
+              "This is a direct violation of Section 17.", "Your claim is strong because the law covers you."]:
         assert any(v["type"] == "overclaim" for v in guard.check(t).violations), t
     for t in ["No one can guarantee a win in court.", "The phone has a warranty and a guarantee card.", "From what you've told me, you have good grounds."]:
         assert not any(v["type"] == "overclaim" for v in guard.check(t).violations), t

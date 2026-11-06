@@ -16,7 +16,9 @@ OFFSETS = (7, 1, 0)  # days before the deadline
 
 
 def _sb():
-    url, key = os.getenv("SUPABASE_URL"), os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+    from .config import supabase_url
+
+    url, key = supabase_url(), (os.getenv("SUPABASE_SERVICE_ROLE_KEY") or "").strip()
     if not url or not key:
         raise RuntimeError("Supabase service role not configured")
     h = {"apikey": key, "Content-Type": "application/json"}
@@ -86,6 +88,41 @@ def run_reminders(today: date | None = None) -> dict:
         except Exception as e:  # noqa: BLE001
             errors.append(str(e)[:200])
     return {"date": today.isoformat(), "sent": sent, "skipped": skipped, "errors": errors}
+
+
+_SIGNUPS: dict[str, list[float]] = {}
+
+
+def signup(email: str, password: str, first_name: str, client_ip: str) -> dict:
+    """Create an email+password account (no confirmation email: Supabase's free sender only reaches team members).
+    The browser then signs in with the same email/password. Basic validation + per-IP rate limit."""
+    import re as _re
+    import time as _time
+
+    email = (email or "").strip().lower()
+    first_name = (first_name or "").strip()[:60]
+    if not _re.fullmatch(r"[^@\s]{1,64}@[^@\s]{1,190}\.[a-z]{2,}", email):
+        return {"ok": False, "error": "bad_email"}
+    if len(password or "") < 8:
+        return {"ok": False, "error": "short_password"}
+    if not first_name:
+        return {"ok": False, "error": "no_name"}
+    now = _time.time()
+    hits = [t for t in _SIGNUPS.get(client_ip, []) if now - t < 600]
+    if len(hits) >= 5:
+        return {"ok": False, "error": "rate_limited"}
+    _SIGNUPS[client_ip] = hits + [now]
+    url, h = _sb()
+    r = httpx.post(f"{url}/auth/v1/admin/users", headers=h, timeout=30,
+                   json={"email": email, "password": password, "email_confirm": True, "user_metadata": {"first_name": first_name}})
+    if r.status_code in (409, 422) or "already" in r.text.lower():
+        return {"ok": False, "error": "exists"}
+    if r.status_code >= 300:
+        return {"ok": False, "error": "server", "detail": r.text[:160]}
+    uid = r.json()["id"]
+    httpx.post(f"{url}/rest/v1/profiles", headers={**h, "Prefer": "resolution=merge-duplicates"}, timeout=30,
+               json={"id": uid, "full_name": first_name})
+    return {"ok": True}
 
 
 def delete_account(user_jwt: str) -> dict:
