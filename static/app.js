@@ -48,7 +48,7 @@ function renderCards() {
 function setTheme(th) {
   document.documentElement.dataset.theme = th;
   try { localStorage.setItem("haq_theme", th); } catch (e) {}
-  $("#themeBtn").textContent = th === "dark" ? "☀️" : "🌙";
+  $("#themeBtn").innerHTML = th === "dark" ? '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>' : '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
 }
 
 /* ---------------- tiny safe markdown */
@@ -70,6 +70,7 @@ function md(text) {
     let m;
     if (!l.trim()) { close(); continue; }
     if ((m = l.match(/^#{1,4}\s+(.*)/))) { close(); html += `<h4>${inline(m[1])}</h4>`; continue; }
+    if ((m = l.match(/^\*\*([^*]{2,60}?)[:：]\*\*\s*(.*)$/) || l.match(/^\*\*([^*]{2,60}?)\*\*[:：]\s*(.*)$/))) { close(); html += `<h4>${inline(m[1])}</h4>`; if (m[2]) html += `<p>${inline(m[2])}</p>`; continue; }
     if ((m = l.match(/^\s*[-*•]\s+(.*)/))) { if (list !== "ul") { close(); html += "<ul>"; list = "ul"; } html += `<li>${inline(m[1])}</li>`; continue; }
     if ((m = l.match(/^\s*\d+[.)]\s+(.*)/))) { if (list !== "ol") { close(); html += "<ol>"; list = "ol"; } html += `<li>${inline(m[1])}</li>`; continue; }
     close(); html += `<p>${inline(l)}</p>`;
@@ -148,9 +149,9 @@ function renderBotExtras(t) {
     const key = a.type + (a.doc || "");
     if (seen.has(key)) return; seen.add(key);
     const btn = document.createElement("button");
-    if (a.type === "draft" && CONFIG?.doc_types?.[a.doc]) { btn.textContent = "📝 Draft: " + shortDoc(a.doc); btn.onclick = () => { openTab("docs"); draftDoc(a.doc); }; }
-    else if (a.type === "practice") { btn.textContent = "🎭 Practise the conversation"; btn.onclick = () => { openTab("practice"); startPractice(); }; }
-    else if (a.type === "get_help") { btn.textContent = "🤝 Free legal help"; btn.onclick = () => openTab("help"); }
+    if (a.type === "draft" && CONFIG?.doc_types?.[a.doc]) { btn.textContent = "Draft: " + shortDoc(a.doc); btn.onclick = () => { openTab("docs"); draftDoc(a.doc); }; }
+    else if (a.type === "practice") { btn.textContent = "Practise the conversation"; btn.onclick = () => { openTab("practice"); startPractice(); }; }
+    else if (a.type === "get_help") { btn.textContent = "Free legal help"; btn.onclick = () => openTab("help"); }
     else return;
     acts.appendChild(btn);
   });
@@ -256,7 +257,7 @@ function renderCase(t) {
       <div class="lbl">${esc(d.label)}</div>
       <div class="when">${fmtDate(d.date)} <span class="badge ${d.status}">${d.days_left < 0 ? `passed ${-d.days_left}d ago` : `${d.days_left} days left`}</span></div>
       <div class="small muted">Basis: ${basis(d.basis)}${d.note ? " · " + esc(d.note) : ""}</div>
-      ${d.user_deadline !== false && d.days_left >= 0 ? `<button class="ghost small cal-btn" data-i="${i}">📅 ${esc(tr("add_cal"))}</button>` : (d.user_deadline === false ? `<div class="tiny muted">${esc(tr("their_deadline"))}</div>` : "")}</div>`).join("")
+      ${d.user_deadline !== false && d.days_left >= 0 ? `<button class="ghost small cal-btn" data-i="${i}">${esc(tr("add_cal"))}</button>` : (d.user_deadline === false ? `<div class="tiny muted">${esc(tr("their_deadline"))}</div>` : "")}</div>`).join("")
     : `<div class="empty">${esc(tr("dead_empty"))}</div>`;
   $$("#deadlines .cal-btn").forEach(b => b.onclick = () => downloadIcs([calc.deadlines[+b.dataset.i]], "haq-deadline.ics"));
   $("#calAll").classList.toggle("hidden", !userDeadlines().length);
@@ -282,7 +283,7 @@ function renderDocButtons() {
   const list = (CONFIG?.doc_types_by_category?.[cat]) || [];
   $("#docButtons").innerHTML = list.length ? "" : `<div class="empty">${esc(tr("docs_empty"))}</div>`;
   list.forEach(d => {
-    const b = document.createElement("button"); b.className = "ghost"; b.textContent = "📝 " + shortDoc(d);
+    const b = document.createElement("button"); b.className = "ghost"; b.textContent = shortDoc(d);
     b.onclick = () => draftDoc(d); $("#docButtons").appendChild(b);
   });
 }

@@ -213,7 +213,7 @@ async function evidenceBlob(c, e) {
 async function renderEvidence() {
   const box = $("#evList"); if (!box) return;
   const c = Cases.cur(); const list = c?.evidence || [];
-  $("#evCount").textContent = list.length ? `(${list.length})` : "";
+  $("#evCount").textContent = list.length ? String(list.length) : "";
   if (!list.length) { box.innerHTML = `<div class="empty">${esc(tr("ev_empty"))}</div>`; return; }
   box.innerHTML = list.map(e => `<div class="ev-item" data-id="${e.id}">
       <div class="ev-thumb" data-thumb="${e.id}">${e.type.startsWith("image/") ? "" : "📄"}</div>
@@ -241,7 +241,7 @@ function extractHtml(e) {
   if (x.error) return `<div class="small bad-text">⚠️ ${esc(x.error)}</div>`;
   const facts = Object.entries(x.facts_update || {}).filter(([, v]) => v !== null && v !== "");
   const rows = [
-    ...(x.dates || []).map((d, i) => `<label><input type="checkbox" data-kind="date" data-i="${i}" ${e.applied ? "disabled" : "checked"}> 📅 ${esc(fmtDate(d.date))}: ${esc(d.what)}</label>`),
+    ...(x.dates || []).map((d, i) => `<label><input type="checkbox" data-kind="date" data-i="${i}" ${e.applied ? "disabled" : "checked"}> ${esc(fmtDate(d.date))}: ${esc(d.what)}</label>`),
     ...(x.amounts || []).map((a, i) => `<label class="muted">💰 ${esc(inrFmt(a.amount))}: ${esc(a.what)}</label>`),
     ...facts.map(([k, v], i) => `<label><input type="checkbox" data-kind="fact" data-k="${esc(k)}" ${e.applied ? "disabled" : "checked"}> 🗂 ${esc(FACT_LABELS[k] || humanize(k))}: <b>${esc(fmtFact(k, v))}</b></label>`),
   ].join("");

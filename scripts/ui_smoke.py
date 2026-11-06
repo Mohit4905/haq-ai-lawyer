@@ -77,6 +77,7 @@ with sync_playwright() as p:
     step("send Hinglish message, get a reply", chat)
 
     def case_panel():
+        page.click(".rail .tab[data-tab=case]")
         assert page.is_visible("#caseBody"), "case panel not visible"
         facts = page.locator("#facts dt").count()
         cat = page.inner_text("#catPill")
@@ -201,6 +202,7 @@ with sync_playwright() as p:
     step("evidence locker: upload → AI read → add to case file", evidence)
 
     def my_cases():
+        page.click(".rail .tab[data-tab=cases]")
         first = page.locator(".case-item.active b").inner_text()
         page.click("#newCase2")
         page.wait_for_selector("#welcome:not(.hidden)")
@@ -271,14 +273,19 @@ with sync_playwright() as p:
         page.screenshot(path=SHOTS / "15_collapsed.png")
         page.reload(); page.wait_for_selector("#chat")
         still = not page.is_visible("#side")
-        page.click("#toggleSide")
-        back = page.is_visible("#side")
+        rail = page.is_visible("#rail")  # the icon rail stays when the panel is closed
+        page.click(".rail .tab[data-tab=cases]")
+        back = page.is_visible("#side") and rail
+        page.click(".rail .tab[data-tab=cases]")  # clicking the active icon again closes the panel (VS Code behaviour)
+        again = not page.is_visible("#side")
+        page.click(".rail .tab[data-tab=deadlines]")
+        back = back and again and page.is_visible("#p-deadlines")
         page.click("#settingsBtn")
         menu = page.is_visible("#settingsPop") and page.is_visible("#lang") and page.is_visible("#provider")
         page.screenshot(path=SHOTS / "16_settings.png")
         page.keyboard.press("Escape")
         assert hidden and still and back and menu, (hidden, still, back, menu)
-        return "collapse -> remembered after reload -> reopen; settings menu at the bottom works"
+        return "panel closes -> remembered after reload -> rail icon reopens / closes it; settings menu works"
 
     step("sidebar collapse/expand + settings menu", sidebar)
 

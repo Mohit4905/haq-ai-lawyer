@@ -12,7 +12,7 @@
     document.documentElement.lang = lang() === "hinglish" ? "hi" : lang();
     document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = tr(el.dataset.i18n); });
   }
-  function setTheme(th) { document.documentElement.dataset.theme = th; try { localStorage.setItem("haq_theme", th); } catch {} $("#themeBtn").textContent = th === "dark" ? "☀️" : "🌙"; }
+  function setTheme(th) { document.documentElement.dataset.theme = th; try { localStorage.setItem("haq_theme", th); } catch {} $("#themeBtn").innerHTML = th === "dark" ? '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>' : '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>'; }
   const msg = (t, bad) => { $("#msg").textContent = t || ""; $("#msg").className = "small login-msg" + (bad ? " bad-text" : " ok-text"); };
   const busy = (form, on) => form.querySelectorAll("button, input").forEach(el => (el.disabled = on));
   const goApp = () => { store.set("haq_mode", "account"); location.replace("/"); };

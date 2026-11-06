@@ -51,15 +51,15 @@
 
   // compact account row at the bottom of the sidebar (Claude-style); actions live in the ⚙ menu
   function profileHtml() {
-    if (!user) return `<div class="pf guest"><div class="pf-av">👤</div><div><b>${esc(tr("guest"))}</b><small>${esc(tr("saved_device"))}</small></div></div>`
+    if (!user) return `<div class="pf guest"><div class="pf-av"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div><div><b>${esc(tr("guest"))}</b><small>${esc(tr("saved_device"))}</small></div></div>`
       + (sb ? `<button class="link-btn tiny" id="signInRow">${esc(tr("sign_in"))} →</button>` : "");
     const name = profile?.full_name || user.email?.split("@")[0] || "";
-    return `<div class="pf"><div class="pf-av in">${esc((name[0] || "?").toUpperCase())}</div><div><b>${esc(name)}</b><small>☁️ ${esc(user.email || "")}</small></div></div>`;
+    return `<div class="pf"><div class="pf-av in">${esc((name[0] || "?").toUpperCase())}</div><div><b>${esc(name)}</b><small>${esc(user.email || "")}</small></div></div>`;
   }
   function menuHtml() {
     if (!sb) return "";
-    if (!user) return `<button class="sp-item accent" id="signInBtn">🔐 ${esc(tr("sign_in"))}<small>${esc(tr("sign_in_why"))}</small></button>`;
-    return `<button class="sp-item" id="profileBtn">👤 ${esc(tr("profile"))}</button><button class="sp-item" id="signOutBtn">↩ ${esc(tr("sign_out"))}</button>`;
+    if (!user) return `<button class="sp-item accent" id="signInBtn">${esc(tr("sign_in"))}<small>${esc(tr("sign_in_why"))}</small></button>`;
+    return `<button class="sp-item" id="profileBtn">${esc(tr("profile"))}</button><button class="sp-item" id="signOutBtn">${esc(tr("sign_out"))}</button>`;
   }
   function renderProfile() {
     const box = $("#profileBox"); if (!box) return;
@@ -81,10 +81,10 @@
     const box = $("#remindBox"); if (!box) return;
     const c = Cases.cur();
     if (!user || !CONFIG?.email_reminders) {
-      box.innerHTML = user ? "" : `<p class="tiny muted">✉️ ${esc(tr("remind_signin"))}</p>`;
+      box.innerHTML = user ? "" : `<p class="tiny muted">${esc(tr("remind_signin"))}</p>`;
       return;
     }
-    box.innerHTML = `<label class="toggle"><input type="checkbox" id="remindChk" ${c?.remind ? "checked" : ""}> ✉️ ${esc(tr("remind_email"))} <b>${esc(user.email)}</b></label>`;
+    box.innerHTML = `<label class="toggle"><input type="checkbox" id="remindChk" ${c?.remind ? "checked" : ""}> ${esc(tr("remind_email"))} <b>${esc(user.email)}</b></label>`;
     $("#remindChk").onchange = async e => { c.remind = e.target.checked; Cases.touch(false); await CLOUD.syncReminders(c); };
   }
   window.renderReminderToggle = renderReminderToggle;

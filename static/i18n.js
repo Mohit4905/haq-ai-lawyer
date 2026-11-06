@@ -485,3 +485,9 @@ Object.assign(window.HAQ_I18N["ta"], { ph: "ஹக்கிடம் கேள�
 Object.assign(window.HAQ_I18N["te"], { ph: "హక్‌ని అడగండి…", ph_short: "హక్‌ని అడగండి…" });
 Object.assign(window.HAQ_I18N["kn"], { ph: "ಹಕ್‌ಗೆ ಕೇಳಿ…", ph_short: "ಹಕ್‌ಗೆ ಕೇಳಿ…" });
 Object.assign(window.HAQ_I18N["ml"], { ph: "ഹഖിനോട് ചോദിക്കൂ…", ph_short: "ഹഖിനോട് ചോദിക്കൂ…" });
+
+/* rail tooltips */
+Object.assign(window.HAQ_I18N["en"], { settings: "Settings", account: "Account" });
+Object.assign(window.HAQ_I18N["hi"], { settings: "सेटिंग्स", account: "खाता" });
+Object.assign(window.HAQ_I18N["hinglish"], { settings: "Settings", account: "Account" });
+Object.assign(window.HAQ_I18N["pa"], { settings: "ਸੈਟਿੰਗਾਂ", account: "ਖਾਤਾ" });
