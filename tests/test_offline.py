@@ -218,6 +218,16 @@ def test_detect_script():
     assert guard.detect_script("আমি কলকাতায়") == "Bengali"
 
 
+def test_draft_fill_grounding():
+    from app.documents import _grounded, blanks
+    assert _grounded("1 September 2025", "I paid the deposit on 1 September 2025", "start date of tenancy")
+    assert not _grounded("6 November 2026", "my name is Priya", "date of sending")  # invented date rejected
+    assert _grounded("6 November 2026", "send it today", "date of sending")
+    assert _grounded("Priya Sharma", "my name is priya sharma", "your full name")
+    assert not _grounded("Ramesh Gowda", "my name is Priya", "landlord's name")
+    assert blanks("A [[FILL: your full name]] B [[FILL: Your full name]] C [[FILL]]") == ["your full name", "missing detail"]
+
+
 if __name__ == "__main__":
     setup()
     fails = 0

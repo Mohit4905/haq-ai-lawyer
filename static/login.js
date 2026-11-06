@@ -50,10 +50,41 @@
     }
     sb = window.supabase.createClient(cfg.url, cfg.anon_key, { auth: { persistSession: true, detectSessionInUrl: true } });
     markReady();
+    // a password-reset link lands here with a recovery session: ask for the new password first
+    const recovering = /reset=1/.test(location.search) || /type=recovery/.test(location.hash);
+    sb.auth.onAuthStateChange((e, s) => { if (e === "PASSWORD_RECOVERY" || (s && recovering)) showReset(); else if (s) goApp(); });
     const { data } = await sb.auth.getSession();
-    if (data.session) { goApp(); return; }
-    sb.auth.onAuthStateChange((_e, s) => { if (s) goApp(); });
+    if (data.session) { if (recovering) showReset(); else goApp(); }
   })();
+
+  function showReset() {
+    document.querySelectorAll("#googleBtn, .or, #loginForm, #signupForm, .auth-tabs, .guest-row").forEach(el => el.classList.add("hidden"));
+    $("#resetForm").classList.remove("hidden");
+    $("#loginTitle").textContent = tr("new_pw_title");
+    $("#rpPass").focus();
+  }
+  $("#forgotBtn").onclick = async () => {
+    const email = $("#liEmail").value.trim().toLowerCase();
+    if (!email || !$("#liEmail").checkValidity()) { msg(tr("reset_need_email"), true); $("#liEmail").focus(); return; }
+    await ready; if (!sb) return;
+    msg("…", false);
+    const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: location.origin + "/login?reset=1" });
+    // same message whether or not the account exists (don't reveal which emails are registered)
+    if (error && /rate|seconds|too many/i.test(error.message)) msg("⚠️ " + error.message, true);
+    else msg(tr("reset_sent"), false);
+  };
+  $("#resetForm").onsubmit = async e => {
+    e.preventDefault();
+    const password = $("#rpPass").value;
+    if (password.length < 8) { msg(tr("pw_rule"), true); return; }
+    busy(e.target, true);
+    const { error } = await sb.auth.updateUser({ password });
+    busy(e.target, false);
+    if (error) { msg("⚠️ " + error.message, true); return; }
+    msg(tr("pw_updated"), false);
+    history.replaceState(null, "", "/login");
+    setTimeout(goApp, 600);
+  };
 
   $("#googleBtn").onclick = async () => {
     await ready; if (!sb) return;

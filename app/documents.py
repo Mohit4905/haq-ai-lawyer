@@ -119,6 +119,60 @@ def draft(state: dict, doc_type: str, doc_language: str = "English", provider: s
     }
 
 
+FILL_RE = re.compile(r"\[\[FILL:?\s*([^\]]*)\]\]")
+
+
+def blanks(body: str) -> list[str]:
+    """Distinct [[FILL: label]] labels in order of appearance (same label = one question)."""
+    out: list[str] = []
+    for m in FILL_RE.finditer(body):
+        lab = m.group(1).strip() or "missing detail"
+        if lab.lower() not in (x.lower() for x in out):
+            out.append(lab)
+    return out
+
+
+def _grounded(value: str, answer: str, label: str) -> bool:
+    """A filled value must come from the user's message (dates may be reformatted)."""
+    norm = lambda s: re.sub(r"[^\w]+", " ", s.lower()).split()  # noqa: E731
+    v, a = norm(value), set(norm(answer))
+    if re.search(r"(?i)\bdate|\bday\b|\bwhen\b", label) and re.search(r"(?i)\btoday\b|\baaj\b|आज", answer):
+        return True  # "today" is turned into today's date by the model
+    return bool(v) and sum(t in a for t in v) / len(v) >= 0.6
+
+
+def fill(body: str, answer: str, provider: str | None = None, today: date | None = None) -> dict:
+    """Fill a draft's [[FILL]] blanks from the user's chat reply. Code does the substitution;
+    the model only says which part of the reply answers which blank, and values not found in
+    the reply are rejected."""
+    labels = blanks(body)
+    if not labels or not answer.strip():
+        return {"body_markdown": body, "filled": {}, "remaining": labels}
+    sys = prompts.DRAFT_FILL.format(today=(today or date.today()).strftime("%d %B %Y"),
+                                    blanks="\n".join(f"{i + 1}. {lab}" for i, lab in enumerate(labels)))
+    try:
+        out, res = chat_json([{"role": "system", "content": sys}, {"role": "user", "content": answer}],
+                             tier="fast", temperature=0, max_tokens=900, provider=provider)
+    except LLMError as e:
+        return {"error": str(e)}
+    filled: dict[str, str] = {}
+    for k, v in (out.get("values") or {}).items():
+        v = re.sub(r"\s+", " ", str(v or "")).strip()
+        if not v or "[[" in v or len(v) > 400:
+            continue
+        k = str(k).strip()
+        lab = labels[int(k) - 1] if k.isdigit() and 0 < int(k) <= len(labels) else next((x for x in labels if x.lower() == k.lower()), None)
+        if lab and _grounded(v, answer, lab):
+            filled[lab] = v
+
+    def sub(m: re.Match) -> str:
+        lab = (m.group(1).strip() or "missing detail").lower()
+        return next((v for x, v in filled.items() if x.lower() == lab), m.group(0))
+
+    new = FILL_RE.sub(sub, body)
+    return {"body_markdown": new, "filled": filled, "remaining": blanks(new), "model": res.meta()}
+
+
 def to_docx(title: str, body_markdown: str) -> bytes:
     from docx import Document
     from docx.shared import Pt

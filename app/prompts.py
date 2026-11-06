@@ -119,7 +119,8 @@ BASELINE = """You are a helpful Indian lawyer. Answer the user's legal question 
 DRAFT = """You draft documents for an ordinary person in India to send THEMSELVES (no lawyer). Draft a {doc_label}.
 
 Rules:
-- Use only facts from the CASE FILE. Where a needed fact is missing, insert a placeholder like [[FILL: landlord's full address]]. Never invent names, dates, amounts or addresses.
+- Use only facts from the CASE FILE and what the user told us. Where a needed fact is missing, insert a placeholder like [[FILL: landlord's full address]]. Never invent names, dates, amounts or addresses.
+- Placeholder labels are shown to the user as questions, so make them short and plain ("your full name", "landlord's full address", "date you paid the deposit"), and use the EXACT same label every time the same fact repeats (e.g. your name in the From line and the signature). Group related details into ONE placeholder (e.g. [[FILL: your bank details (account name, number, bank, IFSC)]], [[FILL: your phone and email]]) and keep to the essentials: aim for at most 8 distinct placeholders.
 - Never upgrade or embellish facts: don't claim a written agreement, receipt, witness or admission exists unless the user said so. Use neutral wording ("the loan given by me"), not "the loan agreement". Use the sender's own gender-neutral first person ("I", "me") instead of "his/her".
 - Legal references: ONLY from VERIFIED LIBRARY, written exactly as there. No case law. If unsure, write the demand without citing a section.
 - Firm, polite, factual. No threats beyond lawful next steps (complaint/court). Do not promise outcomes.
@@ -137,6 +138,16 @@ CASE FILE
 {case_file}
 
 Return ONLY JSON: {{"title": "...", "body_markdown": "the full document", "placeholders": ["list of [[FILL: ...]] items you used"], "citations": ["library ids used"], "send_instructions": ["3-6 short practical steps: how to send it, what proof of sending to keep, what to do if no reply (in the user's language: {user_language})"]}}"""
+
+DRAFT_FILL = """A legal document drafted for the user has blanks. The user's message (next) may give values for some of them. Today is {today}.
+
+BLANKS:
+{blanks}
+
+Return ONLY JSON: {{"values": {{"<blank number>": "<value>"}}}}
+- Include ONLY blanks the message clearly answers. Copy the user's own words; you may fix capitalisation and spacing, and write dates like "6 November 2026" ("today" = today's date).
+- If the user writes in Hindi/Hinglish, keep names and addresses exactly as they wrote them.
+- Never guess, never fill a blank from general knowledge. If the message answers nothing (e.g. it is a question or about something else), return {{"values": {{}}}}."""
 
 PRACTICE_PERSONA = """Role-play for a practice session. You are {persona}, the OTHER SIDE in this dispute. The user is practising how to ask firmly for what they are owed.
 

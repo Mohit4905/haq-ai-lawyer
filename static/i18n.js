@@ -491,3 +491,51 @@ Object.assign(window.HAQ_I18N["en"], { settings: "Settings", account: "Account" 
 Object.assign(window.HAQ_I18N["hi"], { settings: "सेटिंग्स", account: "खाता" });
 Object.assign(window.HAQ_I18N["hinglish"], { settings: "Settings", account: "Account" });
 Object.assign(window.HAQ_I18N["pa"], { settings: "ਸੈਟਿੰਗਾਂ", account: "ਖਾਤਾ" });
+
+/* sidebar date groups */
+Object.assign(window.HAQ_I18N["en"], { grp_today: "Today", grp_week: "Previous 7 days", grp_older: "Older" });
+Object.assign(window.HAQ_I18N["hi"], { grp_today: "आज", grp_week: "पिछले 7 दिन", grp_older: "पुराने" });
+Object.assign(window.HAQ_I18N["hinglish"], { grp_today: "Aaj", grp_week: "Pichhle 7 din", grp_older: "Purane" });
+Object.assign(window.HAQ_I18N["pa"], { grp_today: "ਅੱਜ", grp_week: "ਪਿਛਲੇ 7 ਦਿਨ", grp_older: "ਪੁਰਾਣੇ" });
+
+/* drafts in the chat + forgot password */
+Object.assign(window.HAQ_I18N["en"], {
+  doc_ready: "Here is your draft: {doc}. It is also saved under Documents.", doc_need: "To complete it, I need these details:",
+  doc_reply_hint: "Reply here in one message, for example: \"Name: Priya Sharma, address: 12 MG Road, Pune\". You can answer some now and the rest later.",
+  doc_updated: "Done, I've added those details to the draft.", doc_still: "Still needed:",
+  doc_complete: "The draft is complete. Read it once, then download it as Word or PDF and send it.",
+  doc_blanks_left: "{n} details missing", doc_ready_send: "Ready to send", doc_open: "Open in Documents", doc_copy: "Copy",
+  doc_show_full: "Show full document", doc_show_less: "Show less", doc_drafting: "Drafting your {doc}…", doc_answer_in_chat: "answer the questions in the chat",
+  forgot_pw: "Forgot password?", reset_sent: "If an account exists for this email, we've sent a link to reset your password. Check your inbox and spam.",
+  reset_need_email: "Type your email above first, then press \"Forgot password?\".", new_pw_title: "Set a new password", new_pw_btn: "Save new password", pw_updated: "Password updated. Signing you in…",
+});
+Object.assign(window.HAQ_I18N["hi"], {
+  doc_ready: "आपका ड्राफ़्ट तैयार है: {doc}. यह Documents में भी सेव है।", doc_need: "इसे पूरा करने के लिए मुझे ये जानकारी चाहिए:",
+  doc_reply_hint: "यहीं एक मैसेज में जवाब दें, जैसे: \"नाम: प्रिया शर्मा, पता: 12 एमजी रोड, पुणे\"। कुछ अभी और बाकी बाद में भी बता सकते हैं।",
+  doc_updated: "हो गया, ये जानकारी ड्राफ़्ट में जोड़ दी है।", doc_still: "अभी भी चाहिए:",
+  doc_complete: "ड्राफ़्ट पूरा है। एक बार पढ़ लें, फिर Word या PDF में डाउनलोड करके भेजें।",
+  doc_blanks_left: "{n} जानकारी बाकी", doc_ready_send: "भेजने के लिए तैयार", doc_open: "Documents में खोलें", doc_copy: "कॉपी",
+  doc_show_full: "पूरा दस्तावेज़ देखें", doc_show_less: "कम दिखाएँ", doc_drafting: "{doc} ड्राफ़्ट हो रहा है…", doc_answer_in_chat: "चैट में सवालों के जवाब दें",
+  forgot_pw: "पासवर्ड भूल गए?", reset_sent: "अगर इस ईमेल से अकाउंट है, तो हमने पासवर्ड बदलने का लिंक भेज दिया है। इनबॉक्स और स्पैम देखें।",
+  reset_need_email: "पहले ऊपर अपना ईमेल लिखें, फिर \"पासवर्ड भूल गए?\" दबाएँ।", new_pw_title: "नया पासवर्ड बनाएँ", new_pw_btn: "नया पासवर्ड सेव करें", pw_updated: "पासवर्ड बदल गया। साइन इन हो रहा है…",
+});
+Object.assign(window.HAQ_I18N["hinglish"], {
+  doc_ready: "Aapka draft taiyaar hai: {doc}. Yeh Documents mein bhi save hai.", doc_need: "Ise poora karne ke liye mujhe yeh details chahiye:",
+  doc_reply_hint: "Yahin ek message mein jawab dijiye, jaise: \"Naam: Priya Sharma, pata: 12 MG Road, Pune\". Kuch abhi aur baaki baad mein bhi bata sakte hain.",
+  doc_updated: "Ho gaya, yeh details draft mein jod di hain.", doc_still: "Abhi bhi chahiye:",
+  doc_complete: "Draft poora hai. Ek baar padh lijiye, phir Word ya PDF mein download karke bhejiye.",
+  doc_blanks_left: "{n} details baaki", doc_ready_send: "Bhejne ke liye taiyaar", doc_open: "Documents mein kholein", doc_copy: "Copy",
+  doc_show_full: "Poora document dekhein", doc_show_less: "Kam dikhayein", doc_drafting: "{doc} draft ho raha hai…", doc_answer_in_chat: "chat mein sawaalon ke jawab dijiye",
+  forgot_pw: "Password bhool gaye?", reset_sent: "Agar is email se account hai, toh humne password reset ka link bhej diya hai. Inbox aur spam dekhiye.",
+  reset_need_email: "Pehle upar apna email likhiye, phir \"Password bhool gaye?\" dabaiye.", new_pw_title: "Naya password banayein", new_pw_btn: "Naya password save karein", pw_updated: "Password badal gaya. Sign in ho raha hai…",
+});
+Object.assign(window.HAQ_I18N["pa"], {
+  doc_ready: "ਤੁਹਾਡਾ ਡਰਾਫ਼ਟ ਤਿਆਰ ਹੈ: {doc}. ਇਹ Documents ਵਿੱਚ ਵੀ ਸੇਵ ਹੈ।", doc_need: "ਇਸਨੂੰ ਪੂਰਾ ਕਰਨ ਲਈ ਮੈਨੂੰ ਇਹ ਜਾਣਕਾਰੀ ਚਾਹੀਦੀ ਹੈ:",
+  doc_reply_hint: "ਇੱਥੇ ਇੱਕ ਸੁਨੇਹੇ ਵਿੱਚ ਜਵਾਬ ਦਿਓ, ਜਿਵੇਂ: \"ਨਾਮ: ਪ੍ਰਿਆ ਸ਼ਰਮਾ, ਪਤਾ: 12 ਐਮਜੀ ਰੋਡ, ਪੁਣੇ\"।",
+  doc_updated: "ਹੋ ਗਿਆ, ਇਹ ਜਾਣਕਾਰੀ ਡਰਾਫ਼ਟ ਵਿੱਚ ਜੋੜ ਦਿੱਤੀ ਹੈ।", doc_still: "ਹਾਲੇ ਵੀ ਚਾਹੀਦਾ ਹੈ:",
+  doc_complete: "ਡਰਾਫ਼ਟ ਪੂਰਾ ਹੈ। ਇੱਕ ਵਾਰ ਪੜ੍ਹੋ, ਫਿਰ Word ਜਾਂ PDF ਵਿੱਚ ਡਾਊਨਲੋਡ ਕਰਕੇ ਭੇਜੋ।",
+  doc_blanks_left: "{n} ਜਾਣਕਾਰੀ ਬਾਕੀ", doc_ready_send: "ਭੇਜਣ ਲਈ ਤਿਆਰ", doc_open: "Documents ਵਿੱਚ ਖੋਲ੍ਹੋ", doc_copy: "ਕਾਪੀ",
+  doc_show_full: "ਪੂਰਾ ਦਸਤਾਵੇਜ਼ ਵੇਖੋ", doc_show_less: "ਘੱਟ ਵੇਖੋ", doc_drafting: "{doc} ਡਰਾਫ਼ਟ ਹੋ ਰਿਹਾ ਹੈ…", doc_answer_in_chat: "ਚੈਟ ਵਿੱਚ ਸਵਾਲਾਂ ਦੇ ਜਵਾਬ ਦਿਓ",
+  forgot_pw: "ਪਾਸਵਰਡ ਭੁੱਲ ਗਏ?", reset_sent: "ਜੇ ਇਸ ਈਮੇਲ ਨਾਲ ਖਾਤਾ ਹੈ, ਤਾਂ ਅਸੀਂ ਪਾਸਵਰਡ ਬਦਲਣ ਦਾ ਲਿੰਕ ਭੇਜ ਦਿੱਤਾ ਹੈ। ਇਨਬਾਕਸ ਅਤੇ ਸਪੈਮ ਵੇਖੋ।",
+  reset_need_email: "ਪਹਿਲਾਂ ਉੱਪਰ ਆਪਣਾ ਈਮੇਲ ਲਿਖੋ, ਫਿਰ \"ਪਾਸਵਰਡ ਭੁੱਲ ਗਏ?\" ਦਬਾਓ।", new_pw_title: "ਨਵਾਂ ਪਾਸਵਰਡ ਬਣਾਓ", new_pw_btn: "ਨਵਾਂ ਪਾਸਵਰਡ ਸੇਵ ਕਰੋ", pw_updated: "ਪਾਸਵਰਡ ਬਦਲ ਗਿਆ। ਸਾਈਨ ਇਨ ਹੋ ਰਿਹਾ ਹੈ…",
+});

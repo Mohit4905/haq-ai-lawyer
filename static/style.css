@@ -824,3 +824,40 @@ body.side-collapsed .rail-btn.active::before{display:none}
   :root[data-palette="ink"] #collapseSide{display:grid}
   :root[data-palette="ink"] .settings-pop,:root[data-palette="ink"] body.side-collapsed .settings-pop{left:10px;right:10px;width:auto;bottom:70px}
 }
+
+/* ================= v5: sidebar polish + drafts in the chat ================= */
+:root[data-palette="ink"] .side #newCase2{border:1px solid var(--line);background:var(--paper);box-shadow:0 1px 2px rgba(0,0,0,.05);font-weight:500;margin:2px 0 8px}
+:root[data-palette="ink"] .side #newCase2:hover{border-color:color-mix(in srgb,var(--ink) 35%,var(--line))}
+:root[data-palette="ink"] .side .nav-item.tab svg{color:var(--muted);transition:color .12s}
+:root[data-palette="ink"] .side .nav-item.tab:hover svg,:root[data-palette="ink"] .side .nav-item.tab.active svg{color:var(--ink)}
+:root[data-palette="ink"] .side .side-nav{border-bottom:1px solid var(--line);margin:0 8px;padding:2px 0 10px}
+:root[data-palette="ink"] .side .sec-h{font-family:var(--serif);font-size:15px;font-weight:600;color:var(--ink);padding:14px 10px 2px}
+.ci-group{font-size:12px;font-weight:500;color:var(--muted);padding:10px 10px 4px;letter-spacing:.01em}
+:root[data-palette="ink"] .side .case-item.active{box-shadow:inset 2px 0 0 var(--ink);border-radius:2px 8px 8px 2px}
+:root[data-palette="ink"] .side .case-item{transition:background .12s}
+:root[data-palette="ink"] .acct-row .acct-txt small,:root[data-palette="ink"] .acct-row small{color:var(--muted)}
+@media(min-width:901px){
+  :root[data-palette="ink"] body.side-collapsed .side #newCase2{border-color:transparent;background:transparent;box-shadow:none;margin:0}
+  :root[data-palette="ink"] body.side-collapsed .side .side-nav{border-bottom:0;margin:0}
+}
+
+/* draft card in the chat */
+.doc-card{margin-top:12px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}
+.doc-card-h{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink)}
+.doc-card-h svg{flex:none;color:var(--muted)}
+.doc-card-h b{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--serif);font-weight:600}
+.doc-state{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:1px 9px;white-space:nowrap}
+.doc-state.ok{color:var(--ink);border-color:var(--ink)}
+.doc-paper{padding:18px 20px 8px;font-family:var(--serif);font-size:14.5px;line-height:1.65;position:relative;color:var(--ink)}
+.doc-paper h1,.doc-paper h2,.doc-paper h3,.doc-paper h4{font-size:15px;margin:10px 0 6px;text-align:left}
+.doc-paper.clipped{max-height:320px;overflow:hidden}
+.doc-paper.clipped::after{content:"";position:absolute;left:0;right:0;bottom:0;height:80px;background:linear-gradient(to bottom,transparent,var(--paper))}
+.doc-paper mark.fill{background:var(--chip,#eee);color:var(--ink);border-bottom:1px dashed var(--muted);border-radius:2px;padding:0 3px;font-family:var(--sans,inherit);font-size:.92em}
+.doc-more{display:block;margin:2px 20px 8px;font-size:13px}
+.doc-card-a{display:flex;flex-wrap:wrap;gap:6px;padding:10px 12px;border-top:1px solid var(--line)}
+.doc-ask{margin-top:14px}
+.doc-ask ol{margin:6px 0 10px}
+
+/* login: forgot password */
+.forgot-row{display:flex;justify-content:flex-end;margin-top:-4px}
+.forgot-row .link-btn{font-size:13px}

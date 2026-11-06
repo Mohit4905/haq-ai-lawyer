@@ -47,6 +47,32 @@ def health():
     return {"ok": True, "kb_entries": len(kb.load_kb()), **config.public_config()}
 
 
+_GOOGLE = {"t": 0.0, "on": False}
+
+
+def _google_enabled() -> bool:
+    """Google sign-in shows as available once it is enabled in Supabase (read from the public
+    auth settings, cached 5 minutes). SUPABASE_GOOGLE_LOGIN=1/0 forces it on/off."""
+    import time
+
+    import httpx
+
+    forced = os.getenv("SUPABASE_GOOGLE_LOGIN")
+    if forced in ("0", "1"):
+        return forced == "1"
+    url, anon = config.supabase_url(), (os.getenv("SUPABASE_ANON_KEY") or "").strip()
+    if not url or not anon:
+        return False
+    if time.time() - _GOOGLE["t"] > 300:
+        try:
+            r = httpx.get(f"{url}/auth/v1/settings", headers={"apikey": anon}, timeout=5)
+            _GOOGLE["on"] = bool(r.json().get("external", {}).get("google"))
+        except Exception:
+            pass
+        _GOOGLE["t"] = time.time()
+    return _GOOGLE["on"]
+
+
 @app.get("/api/config")
 def get_config():
     return {
@@ -58,7 +84,7 @@ def get_config():
         "case_statuses": rules.CASE_STATUSES,
         # public values only (the anon key is designed to be public; access is enforced by row-level security)
         "supabase": {"url": config.supabase_url(), "anon_key": (os.getenv("SUPABASE_ANON_KEY") or "").strip() or None,
-                     "google": os.getenv("SUPABASE_GOOGLE_LOGIN") == "1"},
+                     "google": _google_enabled()},
         "email_reminders": bool(os.getenv("BREVO_API_KEY") and os.getenv("SUPABASE_SERVICE_ROLE_KEY")),
     }
 
@@ -141,6 +167,17 @@ def chat(inp: ChatIn):
 @app.post("/api/draft")
 def draft(inp: DraftIn):
     return documents.draft(inp.state, inp.doc_type, inp.doc_language, provider=inp.provider)
+
+
+class FillIn(BaseModel):
+    body_markdown: str
+    answer: str
+    provider: str | None = None
+
+
+@app.post("/api/draft/fill")
+def draft_fill(inp: FillIn):
+    return documents.fill(inp.body_markdown[:20000], inp.answer[:3000], provider=inp.provider)
 
 
 @app.post("/api/docx")

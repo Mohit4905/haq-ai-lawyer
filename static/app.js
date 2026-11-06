@@ -126,6 +126,11 @@ function guardChip(g) {
 
 function renderBotExtras(t) {
   const box = document.createElement("div");
+  if (t.doc) {  // intro text (in the bubble) -> the document -> the questions for its blanks
+    box.appendChild(docCard(t.doc));
+    if (t.ask) { const a = document.createElement("div"); a.className = "doc-ask"; a.innerHTML = md(t.ask); box.appendChild(a); }
+    return box;
+  }
   const meta = document.createElement("div");
   meta.className = "meta";
   (t.citations || []).forEach(c => {
@@ -149,7 +154,7 @@ function renderBotExtras(t) {
     const key = a.type + (a.doc || "");
     if (seen.has(key)) return; seen.add(key);
     const btn = document.createElement("button");
-    if (a.type === "draft" && CONFIG?.doc_types?.[a.doc]) { btn.textContent = "Draft: " + shortDoc(a.doc); btn.onclick = () => { openTab("docs"); draftDoc(a.doc); }; }
+    if (a.type === "draft" && CONFIG?.doc_types?.[a.doc]) { btn.textContent = "Draft: " + shortDoc(a.doc); btn.onclick = () => draftDoc(a.doc); }
     else if (a.type === "practice") { btn.textContent = "Practise the conversation"; btn.onclick = () => { openTab("practice"); startPractice(); }; }
     else if (a.type === "get_help") { btn.textContent = "Free legal help"; btn.onclick = () => openTab("help"); }
     else return;
@@ -189,13 +194,14 @@ document.addEventListener("click", e => { if (!e.target.closest("#cite-pop")) $(
 
 function renderAll() {
   $("#chat").querySelectorAll(".msg").forEach(n => n.remove());
-  if (!S || !S.messages.length) { $("#welcome").classList.remove("hidden"); renderCase(null); return; }
+  if (!S || !S.messages.length) { $("#welcome").classList.remove("hidden"); renderCase(null); renderDocPanel(null); return; }
   let ti = 0;
   S.messages.forEach(m => {
     if (m.role === "user") addMsg("user", esc(m.content));
-    else { const t = VIEW.turns[ti++] || { reply: m.content }; addMsg("bot", md(m.content), renderBotExtras(t)); }
+    else { const t = VIEW.turns[ti++] || { reply: m.content }; addMsg("bot", md(t.doc && t.intro != null ? t.intro : m.content), renderBotExtras(t)); }
   });
   renderCase(VIEW.turns[VIEW.turns.length - 1]);
+  renderDocPanel([...VIEW.turns].reverse().find(t => t.doc)?.doc);
 }
 
 /* ---------------- send */
@@ -207,6 +213,7 @@ async function send(text) {
   addMsg("user", esc(text));
   $("#input").value = ""; autosize();
   const tb = typing();
+  if (await tryFillDoc(text, tb)) { busy = false; $("#send").disabled = false; return; }
   const res = await api("/api/chat", { state: S, message: text, provider: provider(), lang_pref: langPref });
   tb.parentElement.remove();
   busy = false; $("#send").disabled = false;
@@ -302,29 +309,114 @@ function renderDocButtons() {
     b.onclick = () => draftDoc(d); $("#docButtons").appendChild(b);
   });
 }
-async function draftDoc(docType) {
-  if (!S) return;
+/* Drafts live in the chat (a document card + the questions for its blanks) and are mirrored
+   in the Documents panel. Replies to those questions fill the blanks (/api/draft/fill). */
+const FILL_RX = /\[\[FILL:?\s*([^\]]*)\]\]/g;
+function docBlanks(body) {
+  const out = [];
+  for (const m of String(body || "").matchAll(FILL_RX)) { const l = (m[1] || "").trim() || "missing detail"; if (!out.some(x => x.toLowerCase() === l.toLowerCase())) out.push(l); }
+  return out;
+}
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+function docAsk(blanks) { return blanks.map((b, i) => `${i + 1}. ${cap(b)}`).join("\n"); }
+function docPaperHtml(body) { return md(body).replace(/\[\[FILL:?\s*([^\]]*)\]\]/g, (_, l) => `<mark class="fill">${l.trim() || "…"}</mark>`); }
+async function docDownload(doc) {
+  const r = await fetch("/api/docx", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ title: doc.title, body_markdown: doc.body }) });
+  const blob = await r.blob(); const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = doc.title.replace(/[^\w\- ]/g, "").slice(0, 60) + ".docx"; a.click();
+}
+function docPrint(doc) { const w = open("", "_blank"); w.document.write(`<html><head><title>${esc(doc.title)}</title><style>body{font-family:Georgia,serif;max-width:720px;margin:40px auto;line-height:1.6;white-space:pre-wrap}</style></head><body>${esc(doc.body)}</body></html>`); w.document.close(); w.print(); }
+const ICON_DOC = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>`;
+
+function docCard(doc) {
+  const n = docBlanks(doc.body).length;
+  const card = document.createElement("div");
+  card.className = "doc-card";
+  card.innerHTML = `<div class="doc-card-h">${ICON_DOC}<b>${esc(doc.title)}</b><span class="doc-state ${n ? "" : "ok"}">${n ? esc(tr("doc_blanks_left").replace("{n}", n)) : esc(tr("doc_ready_send"))}</span></div>
+    <div class="doc-paper clipped">${docPaperHtml(doc.body)}</div>
+    <button class="doc-more link-btn" type="button">${esc(tr("doc_show_full"))}</button>
+    <div class="doc-card-a"><button class="ghost small" data-a="word">Word</button><button class="ghost small" data-a="pdf">Print / PDF</button><button class="ghost small" data-a="copy">${esc(tr("doc_copy"))}</button><button class="ghost small" data-a="open">${esc(tr("doc_open"))}</button></div>`;
+  const paper = card.querySelector(".doc-paper"), more = card.querySelector(".doc-more");
+  more.onclick = () => { paper.classList.toggle("clipped"); more.textContent = tr(paper.classList.contains("clipped") ? "doc_show_full" : "doc_show_less"); };
+  card.querySelector("[data-a=word]").onclick = () => docDownload(doc);
+  card.querySelector("[data-a=pdf]").onclick = () => docPrint(doc);
+  card.querySelector("[data-a=copy]").onclick = e => { navigator.clipboard?.writeText(doc.body); e.target.textContent = "✓"; };
+  card.querySelector("[data-a=open]").onclick = () => { renderDocPanel(doc); openTab("docs"); if (innerWidth <= 900) { $("#side").classList.add("open"); } };
+  return card;
+}
+
+function renderDocPanel(doc) {
   const out = $("#docOut");
-  out.innerHTML = `<div class="empty">Drafting ${esc(shortDoc(docType))}… <span class="typing"><i></i><i></i><i></i></span></div>`;
-  const res = await api("/api/draft", { state: S, doc_type: docType, doc_language: $("#docLang").value, provider: provider() });
-  if (res.error) { out.innerHTML = `<div class="empty">⚠️ ${esc(res.error)}</div>`; return; }
-  const g = res.guard?.initial || {};
+  if (!doc) { out.innerHTML = ""; return; }
+  const g = doc.guard?.initial || {}, n = docBlanks(doc.body).length;
   out.innerHTML = `<div class="docbox">
-    <div class="doc-head"><b>${esc(res.title)}</b><span>
-      <button class="ghost small" id="dlDocx">⬇ Word</button>
-      <button class="ghost small" id="cpDoc">Copy</button>
+    <div class="doc-head"><b>${esc(doc.title)}</b><span>
+      <button class="ghost small" id="dlDocx">Word</button>
+      <button class="ghost small" id="cpDoc">${esc(tr("doc_copy"))}</button>
       <button class="ghost small" id="prDoc">Print / PDF</button></span></div>
-    <textarea id="docText">${esc(res.body_markdown)}</textarea>
-    <div class="doc-foot">${res.placeholders?.length ? `✏️ Fill ${res.placeholders.length} gap(s) marked [[FILL]] before sending. ` : ""}${g.violations?.length ? `🛡️ ${g.violations.length} unverified reference(s) removed. ` : "🛡️ References checked. "}${esc(res.disclaimer)}</div>
+    <textarea id="docText">${esc(doc.body)}</textarea>
+    <div class="doc-foot">${n ? esc(tr("doc_blanks_left").replace("{n}", n)) + ": " + esc(tr("doc_answer_in_chat")) + " " : ""}${g.violations?.length ? `${g.violations.length} unverified reference(s) removed. ` : "References checked. "}${esc(doc.disclaimer || "")}</div>
   </div>
-  ${res.send_instructions?.length ? `<h3>How to send it</h3><ol class="small">${res.send_instructions.map(s => `<li>${esc(s)}</li>`).join("")}</ol>` : ""}
-  <div class="meta">${(res.citations || []).map(c => `<a class="chip law" href="${esc(c.source_url)}" target="_blank" rel="noopener">§ ${esc(c.act.replace(/,\s*\d{4}$/, ""))}${esc(secLabel(c.section))}</a>`).join("")}<span class="chip model">${esc(res.model?.provider)}/${esc((res.model?.model || "").split("/").pop())}</span></div>`;
-  $("#dlDocx").onclick = async () => {
-    const r = await fetch("/api/docx", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ title: res.title, body_markdown: $("#docText").value }) });
-    const blob = await r.blob(); const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = res.title.replace(/[^\w\- ]/g, "").slice(0, 60) + ".docx"; a.click();
-  };
-  $("#cpDoc").onclick = () => navigator.clipboard?.writeText($("#docText").value);
-  $("#prDoc").onclick = () => { const w = open("", "_blank"); w.document.write(`<html><head><title>${esc(res.title)}</title><style>body{font-family:Georgia,serif;max-width:720px;margin:40px auto;line-height:1.6;white-space:pre-wrap}</style></head><body>${esc($("#docText").value)}</body></html>`); w.document.close(); w.print(); };
+  ${doc.send_instructions?.length ? `<h3>How to send it</h3><ol class="small">${doc.send_instructions.map(s => `<li>${esc(s)}</li>`).join("")}</ol>` : ""}
+  <div class="meta">${(doc.citations || []).map(c => `<a class="chip law" href="${esc(c.source_url)}" target="_blank" rel="noopener">§ ${esc(c.act.replace(/,\s*\d{4}$/, ""))}${esc(secLabel(c.section))}</a>`).join("")}${doc.model ? `<span class="chip model">${esc(doc.model.provider)}/${esc((doc.model.model || "").split("/").pop())}</span>` : ""}</div>`;
+  $("#docText").oninput = e => { doc.body = e.target.value; clearTimeout(renderDocPanel.t); renderDocPanel.t = setTimeout(persist, 600); };
+  $("#dlDocx").onclick = () => docDownload(doc);
+  $("#cpDoc").onclick = () => navigator.clipboard?.writeText(doc.body);
+  $("#prDoc").onclick = () => docPrint(doc);
+}
+
+function pushDocTurn(doc, [intro, ask]) {
+  const last = VIEW.turns[VIEW.turns.length - 1] || {};
+  const text = intro + (ask ? "\n\n" + ask : "");  // the model sees both in the history
+  const t = { reply: text, intro, ask, doc, calculated: last.calculated, completeness: last.completeness, needs_lawyer: last.needs_lawyer };
+  S.messages.push({ role: "assistant", content: text });
+  VIEW.turns.push(t);
+  persist();
+  addMsg("bot", md(intro), renderBotExtras(t));
+  renderDocPanel(doc);
+}
+// -> [text above the document, questions below it]
+function docMessage(doc, updated) {
+  const b = docBlanks(doc.body);
+  if (!b.length) return [(updated ? tr("doc_updated") + " " : "") + tr("doc_complete"), ""];
+  return [updated ? tr("doc_updated") : tr("doc_ready").replace("{doc}", doc.title),
+          (updated ? tr("doc_still") : tr("doc_need")) + "\n\n" + docAsk(b) + "\n\n" + tr("doc_reply_hint")];
+}
+// the latest draft that still has blanks, if it is among the last few replies
+function pendingDoc() {
+  for (let i = VIEW.turns.length - 1; i >= Math.max(0, VIEW.turns.length - 3); i--) {
+    const d = VIEW.turns[i]?.doc;
+    if (d) return docBlanks(d.body).length ? d : null;
+  }
+  return null;
+}
+
+async function draftDoc(docType) {
+  if (!S || busy) return;
+  if (innerWidth <= 900) $("#side").classList.remove("open");
+  busy = true; $("#send").disabled = true;
+  const tb = typing();
+  tb.insertAdjacentHTML("beforeend", ` <span class="muted small">${esc(tr("doc_drafting").replace("{doc}", shortDoc(docType)))}</span>`);
+  $("#docOut").innerHTML = `<div class="empty">${esc(tr("doc_drafting").replace("{doc}", shortDoc(docType)))} <span class="typing"><i></i><i></i><i></i></span></div>`;
+  const res = await api("/api/draft", { state: S, doc_type: docType, doc_language: $("#docLang").value, provider: provider() });
+  tb.parentElement.remove();
+  busy = false; $("#send").disabled = false;
+  if (res.error) { addMsg("bot", `<p>⚠️ ${esc(res.error)}</p>`); $("#docOut").innerHTML = `<div class="empty">⚠️ ${esc(res.error)}</div>`; return; }
+  const doc = { type: docType, title: res.title, body: res.body_markdown, citations: res.citations, send_instructions: res.send_instructions, guard: res.guard, model: res.model, disclaimer: res.disclaimer };
+  pushDocTurn(doc, docMessage(doc, false));
+  $("#input").focus();
+}
+
+// a chat reply to the draft's questions fills its blanks; returns true if it did
+async function tryFillDoc(text, tb) {
+  const pd = pendingDoc();
+  if (!pd) return false;
+  const f = await api("/api/draft/fill", { body_markdown: pd.body, answer: text, provider: provider() });
+  if (f.error || !f.filled || !Object.keys(f.filled).length) return false;
+  tb.parentElement.remove();
+  S.messages.push({ role: "user", content: text });
+  const doc = Object.assign({}, pd, { body: f.body_markdown });
+  pushDocTurn(doc, docMessage(doc, true));
+  return true;
 }
 
 /* ---------------- practice */

@@ -113,7 +113,20 @@ function renderCaseList() {
   const q = ($("#caseSearch")?.value || "").toLowerCase();
   const items = Cases.sorted().filter(c => c.data?.state?.messages?.length || c.evidence?.length || c.id === Cases.currentId)
     .filter(c => !q || (c.title || "").toLowerCase().includes(q));
+  // ChatGPT-style date groups: Today / Previous 7 days / Older
+  const day0 = new Date(); day0.setHours(0, 0, 0, 0);
+  const groupOf = c => { const t = new Date(c.updated || c.created); return t >= day0 ? "grp_today" : t >= day0 - 6 * 864e5 ? "grp_week" : "grp_older"; };
+  let lastGroup = null;
   box.innerHTML = items.map(c => {
+    const g = q ? null : groupOf(c);
+    const head = g && g !== lastGroup ? `<div class="ci-group">${esc(tr(g))}</div>` : "";
+    lastGroup = g;
+    return head + caseItemHtml(c);
+  }).join("") || `<div class="muted small" style="padding:8px">${esc(tr("no_cases"))}</div>`;
+  bindCaseItems(box);
+}
+function caseItemHtml(c) {
+  {
     const cat = c.data?.state?.case?.category || "other";
     const title = c.title || tr("untitled");
     const d = new Date(c.updated || c.created).toLocaleDateString("en-IN", { day: "numeric", month: "short" });
@@ -121,7 +134,9 @@ function renderCaseList() {
       <span class="ci-emoji">${CAT_EMOJI[cat] || "💬"}</span>
       <span class="ci-main"><b>${esc(title)}</b><small><span class="st st-${c.status}">${esc(statusText(c.status))}</span> · ${d}</small></span>
       <span class="ci-actions"><button class="ci-btn ci-more" data-act="more" title="${esc(tr("rename"))} / ${esc(tr("delete"))}" aria-label="More"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></button></span></div>`;
-  }).join("") || `<div class="muted small" style="padding:8px">${esc(tr("no_cases"))}</div>`;
+  }
+}
+function bindCaseItems(box) {
   box.querySelectorAll(".case-item").forEach(el => {
     el.onclick = e => {
       const act = e.target.closest(".ci-btn")?.dataset.act, id = el.dataset.id;
