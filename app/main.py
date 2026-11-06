@@ -325,3 +325,13 @@ def index():
 @app.get("/login")
 def login_page():
     return FileResponse(STATIC / "login.html")
+
+
+@app.get("/privacy")
+def privacy_page():
+    return FileResponse(STATIC / "privacy.html")
+
+
+@app.get("/terms")
+def terms_page():
+    return FileResponse(STATIC / "terms.html")
