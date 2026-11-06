@@ -25,7 +25,8 @@
     async deleteEvidence(c, e) { if (!sb || !user) return; await sb.storage.from("evidence").remove([CLOUD.path(c, e)]); },
     async syncReminders(c) {
       if (!sb || !user) return;
-      const dls = (c.data?.view?.turns?.at(-1)?.calculated?.deadlines || []).filter(d => d.user_deadline !== false && d.days_left >= 0);
+      const lastCalc = [...(c.data?.view?.turns || [])].reverse().find(t => t && t.calculated);  // court/draft turns carry no deadlines
+      const dls = (lastCalc?.calculated?.deadlines || []).filter(d => d.user_deadline !== false && d.days_left >= 0);
       await sb.from("reminders").delete().eq("case_id", c.id);
       if (!c.remind || !dls.length) return;
       await sb.from("reminders").insert(dls.map(d => ({ user_id: user.id, case_id: c.id, label: d.label, due_date: d.date, basis: d.basis || null, case_title: c.title || null })));
@@ -104,16 +105,26 @@
   }
   async function deleteAll() {
     if (!confirm(tr("confirm_delete_all"))) return;
-    const { data } = await sb.from("cases").select("id,data");
-    for (const r of data || []) for (const e of r.data?.evidence || []) await sb.storage.from("evidence").remove([`${user.id}/${r.id}/${e.id}`]).catch(() => {});
-    await sb.from("reminders").delete().eq("user_id", user.id);
-    await sb.from("cases").delete().eq("user_id", user.id);
-    await sb.from("profiles").delete().eq("id", user.id);
-    const { data: s } = await sb.auth.getSession();
-    await fetch("/api/account/delete", { method: "POST", headers: { Authorization: "Bearer " + (s.session?.access_token || "") } }).catch(() => {});
-    await sb.auth.signOut();
+    const fails = [];
+    try {
+      const { data } = await sb.from("cases").select("id,data");
+      for (const r of data || []) for (const e of r.data?.evidence || []) await sb.storage.from("evidence").remove([`${user.id}/${r.id}/${e.id}`]).catch(() => {});
+      for (const [t, col, v] of [["reminders", "user_id", user.id], ["cases", "user_id", user.id], ["profiles", "id", user.id]]) {
+        const { error } = await sb.from(t).delete().eq(col, v); if (error) fails.push(t);
+      }
+      const { data: s } = await sb.auth.getSession();
+      const r = await fetch("/api/account/delete", { method: "POST", headers: { Authorization: "Bearer " + (s.session?.access_token || "") } });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || !j.ok) fails.push("account");
+    } catch (e) { fails.push("network"); }
+    if (fails.length) { alert(tr("delete_failed")); return; }  // don't claim success (audit)
+    // the data is gone from the server: also clear this device's copy
+    try { ["haq_cases", "haq_current", "haq_view", "haq_mode"].forEach(k => localStorage.removeItem(k)); } catch (e) {}
+    try { indexedDB.deleteDatabase("haq"); } catch (e) {}  // the evidence store (cases.js EvDB)
+    await sb.auth.signOut().catch(() => {});
     $("#profileDlg").close();
     alert(tr("deleted_all"));
+    location.href = "/login";
   }
 
   window.initAuth = async function initAuth(cfg) {
@@ -128,9 +139,10 @@
     if (user) { const { data } = await sb.from("profiles").select("*").eq("id", user.id).maybeSingle(); profile = data; }
     renderProfile();
     if (user) await CLOUD.pullMerge();
-    sb.auth.onAuthStateChange(async (_ev, s) => {
+    // supabase-js: don't await other Supabase calls inside this callback (can deadlock); defer them
+    sb.auth.onAuthStateChange((_ev, s) => {
       const was = user?.id; user = s?.user || null;
-      if (user && user.id !== was) { const { data } = await sb.from("profiles").select("*").eq("id", user.id).maybeSingle(); profile = data; renderProfile(); await CLOUD.pullMerge(); }
+      if (user && user.id !== was) setTimeout(async () => { const { data } = await sb.from("profiles").select("*").eq("id", user.id).maybeSingle(); profile = data; renderProfile(); await CLOUD.pullMerge(); }, 0);
       if (!user && was) { profile = null; renderProfile(); }
     });
   };

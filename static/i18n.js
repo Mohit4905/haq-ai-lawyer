@@ -494,7 +494,7 @@ Object.assign(window.HAQ_I18N["pa"], { settings: "ਸੈਟਿੰਗਾਂ", acc
 
 /* court case tracking (English; other languages fall back to these until translated) */
 Object.assign(window.HAQ_I18N["en"], {
-  t_court: "Court case", court_h1: "Track a court case", court_h2: "Past judgments",
+  t_court: "Track case", back_chat: "Back to chat", court_h1: "Track a court case", court_h2: "Past judgments",
   court_note: "Enter the 16-character CNR number from your case papers or the eCourts website. Status, next hearing, orders and judgments appear in the chat. You can also paste a CNR straight into the chat.",
   court_track: "Track", court_search: "Search", court_by_name: "Don't know the CNR? Search by party name", court_party_ph: "Name of a party, e.g. your full name",
   court_official: "Or find your CNR on the official eCourts website ↗", court_off: "Live case tracking isn't switched on yet.",
@@ -515,9 +515,9 @@ Object.assign(window.HAQ_I18N["en"], {
   court_err_notext: "The text of this order isn't available yet (the court may have uploaded only a scan).", court_err_limit: "Too many court lookups from this device. Please try again in an hour.",
   court_jud_down: "The judgments service (kanoon.dev pilot) is temporarily unavailable. Please try again later.",
 });
-Object.assign(window.HAQ_I18N["hi"], { t_court: "कोर्ट केस", court_h1: "कोर्ट केस ट्रैक करें", court_track: "ट्रैक करें", court_next: "अगली सुनवाई", court_decided: "फ़ैसले की तारीख़", court_explain: "समझाएँ", court_orders: "आदेश और फ़ैसले" });
-Object.assign(window.HAQ_I18N["hinglish"], { t_court: "Court case", court_h1: "Court case track karein", court_track: "Track karein", court_next: "Agli sunwai", court_decided: "Faisle ki tareekh", court_explain: "Samjhaiye", court_orders: "Orders aur faisle" });
-Object.assign(window.HAQ_I18N["pa"], { t_court: "ਕੋਰਟ ਕੇਸ", court_h1: "ਕੋਰਟ ਕੇਸ ਟ੍ਰੈਕ ਕਰੋ", court_track: "ਟ੍ਰੈਕ ਕਰੋ", court_next: "ਅਗਲੀ ਸੁਣਵਾਈ", court_explain: "ਸਮਝਾਓ" });
+Object.assign(window.HAQ_I18N["hi"], { t_court: "केस ट्रैक करें", back_chat: "चैट पर वापस", court_h1: "कोर्ट केस ट्रैक करें", court_track: "ट्रैक करें", court_next: "अगली सुनवाई", court_decided: "फ़ैसले की तारीख़", court_explain: "समझाएँ", court_orders: "आदेश और फ़ैसले" });
+Object.assign(window.HAQ_I18N["hinglish"], { t_court: "Case track karein", back_chat: "Chat par wapas", court_h1: "Court case track karein", court_track: "Track karein", court_next: "Agli sunwai", court_decided: "Faisle ki tareekh", court_explain: "Samjhaiye", court_orders: "Orders aur faisle" });
+Object.assign(window.HAQ_I18N["pa"], { t_court: "ਕੇਸ ਟ੍ਰੈਕ ਕਰੋ", back_chat: "ਚੈਟ 'ਤੇ ਵਾਪਸ", court_h1: "ਕੋਰਟ ਕੇਸ ਟ੍ਰੈਕ ਕਰੋ", court_track: "ਟ੍ਰੈਕ ਕਰੋ", court_next: "ਅਗਲੀ ਸੁਣਵਾਈ", court_explain: "ਸਮਝਾਓ" });
 
 /* sidebar date groups */
 Object.assign(window.HAQ_I18N["en"], { grp_today: "Today", grp_week: "Previous 7 days", grp_older: "Older" });
@@ -535,6 +535,12 @@ Object.assign(window.HAQ_I18N["en"], {
   doc_show_full: "Show full document", doc_show_less: "Show less", doc_drafting: "Drafting your {doc}…", doc_answer_in_chat: "answer the questions in the chat",
   forgot_pw: "Forgot password?", reset_sent: "If an account exists for this email, we've sent a link to reset your password. Check your inbox and spam.",
   reset_failed: "We couldn't send the reset email right now. Please try again in a few minutes.",
+  err_network: "Can't reach Haq. Check your internet connection and try again.", err_busy: "Haq is busy right now (free AI limit). Please try again in a minute.",
+  err_server: "Something went wrong on our side. Please try again.",
+  err_limit: "You've sent a lot of requests in the last hour. Please try again a little later.", err_too_large: "That file is too large (max 10 MB).", wait_reply: "Please wait for Haq to finish answering first.",
+  delete_failed: "Some of your data could not be deleted. Nothing was removed from this device; please try again.", doc_dl_failed: "The Word file couldn't be made. Please try again or use Copy.",
+  ev_bad_type: "only photos, PDFs and text files can be added.", notice_empty: "Paste the notice text or choose a photo/PDF of it first.",
+  privacy: "Privacy", terms: "Terms",
   reset_need_email: "Type your email above first, then press \"Forgot password?\".", new_pw_title: "Set a new password", new_pw_btn: "Save new password", pw_updated: "Password updated. Signing you in…",
 });
 Object.assign(window.HAQ_I18N["hi"], {

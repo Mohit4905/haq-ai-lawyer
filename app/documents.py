@@ -7,7 +7,6 @@ made-up values.
 from __future__ import annotations
 
 import io
-import json
 import re
 from datetime import date
 
@@ -64,7 +63,11 @@ DOCS: dict[str, dict] = {
 def draft(state: dict, doc_type: str, doc_language: str = "English", provider: str | None = None, today: date | None = None) -> dict:
     if doc_type not in DOCS:
         return {"error": f"Unknown document type {doc_type}"}
-    case = state["case"]
+    case = state.get("case") if isinstance(state, dict) else None
+    if not isinstance(case, dict) or not case.get("category"):  # audit: a state without 'case' used to 500
+        return {"error": "Tell Haq about your problem in the chat first, then ask for the draft."}
+    if not isinstance(case.get("facts"), dict):
+        case["facts"] = {}
     entries = kb.retrieve(case.get("category"))
     allowed = {e["id"] for e in entries}
     calc = rules.compute(case.get("category"), case.get("facts", {}), today)
@@ -156,7 +159,10 @@ def fill(body: str, answer: str, provider: str | None = None, today: date | None
     except LLMError as e:
         return {"error": str(e)}
     filled: dict[str, str] = {}
-    for k, v in (out.get("values") or {}).items():
+    vals = out.get("values") if isinstance(out, dict) else None
+    if isinstance(vals, list):  # some models answer [{"blank": 1, "value": ...}] or a plain list (audit: .items() crashed)
+        vals = {str(x.get("blank", i + 1)) if isinstance(x, dict) else str(i + 1): (x.get("value") if isinstance(x, dict) else x) for i, x in enumerate(vals)}
+    for k, v in (vals if isinstance(vals, dict) else {}).items():
         v = re.sub(r"\s+", " ", str(v or "")).strip()
         if not v or "[[" in v or len(v) > 400:
             continue

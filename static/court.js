@@ -47,6 +47,7 @@ function courtSummaryText(c) {
 async function trackCase(cnr, userText, fresh = false) {
   if (busy) return;
   if (innerWidth <= 900) $("#side").classList.remove("open");
+  window.showChat && window.showChat();  // the case card appears in the chat
   busy = true; $("#send").disabled = true;
   if (userText) addMsg("user", esc(userText));
   const tb = typing();
@@ -54,8 +55,8 @@ async function trackCase(cnr, userText, fresh = false) {
   tb.parentElement.remove(); busy = false; $("#send").disabled = false;
   if (c.error) {
     ensureS(); if (userText) S.messages.push({ role: "user", content: userText });
-    const msg = courtErr(c.error);
-    S.messages.push({ role: "assistant", content: msg }); VIEW.turns.push({ reply: msg }); persist();
+    const msg = courtErr(c.error), prev = lastCaseTurn() || {};
+    S.messages.push({ role: "assistant", content: msg }); VIEW.turns.push({ reply: msg, calculated: prev.calculated, completeness: prev.completeness }); persist();
     addMsg("bot", `<p>${esc(msg)}</p>`); return;
   }
   const intro = tr(fresh ? "court_refreshed" : "court_intro").replace("{cnr}", c.cnr);
@@ -99,6 +100,7 @@ function courtCard(c) {
 
 async function explainOrder(c, o) {
   if (busy || !o) return;
+  window.showChat && window.showChat();
   busy = true; $("#send").disabled = true;
   const userText = tr("court_explain_q").replace("{label}", o.label).replace("{date}", courtDate(o.date));
   addMsg("user", esc(userText));
@@ -110,7 +112,8 @@ async function explainOrder(c, o) {
   if (r.error && !r.markdown) {
     ensureS(); S.messages.push({ role: "user", content: userText });
     const msg = /^[a-z_]+$/.test(r.error) ? courtErr(r.error) : "⚠️ " + r.error;
-    S.messages.push({ role: "assistant", content: msg }); VIEW.turns.push({ reply: msg }); persist(); addMsg("bot", `<p>${esc(msg)}</p>`); return;
+    const prev = lastCaseTurn() || {};
+    S.messages.push({ role: "assistant", content: msg }); VIEW.turns.push({ reply: msg, calculated: prev.calculated, completeness: prev.completeness }); persist(); addMsg("bot", `<p>${esc(msg)}</p>`); return;
   }
   const summary = r.summary || tr("court_no_summary");
   pushCourtTurn(userText, { order: { cnr: c.cnr, label: o.label, date: o.date, text: r.markdown || "" }, intro: summary, reply: `Summary of the court order (${o.label}, ${courtDate(o.date)}) in CNR ${c.cnr}:\n${summary}`, model: r.model });
@@ -141,7 +144,7 @@ async function judgmentSearch(q) {
   box.innerHTML = `<div class="empty small">${esc(tr("court_searching"))} <span class="typing"><i></i><i></i><i></i></span></div>`;
   const r = await api("/api/court/judgments", { q });
   if (r.error) { box.innerHTML = `<p class="small bad-text">${esc(r.error === "unavailable" || r.error === "unreachable" ? tr("court_jud_down") : courtErr(r.error))}</p>`; return; }
-  box.innerHTML = r.results.length ? r.results.map(x => `<div class="cr-item">${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener"><b>${esc(x.title)}</b></a>` : `<b>${esc(x.title)}</b>`}
+  box.innerHTML = r.results.length ? r.results.map(x => `<div class="cr-item">${x.url && /^https?:\/\//i.test(x.url) ? `<a href="${esc(x.url)}" target="_blank" rel="noopener"><b>${esc(x.title)}</b></a>` : `<b>${esc(x.title)}</b>`}
       <span class="small muted">${esc([x.court, x.date ? courtDate(x.date) : ""].filter(Boolean).join(" · "))}</span>
       ${x.snippet ? `<span class="small">${esc(x.snippet)}</span>` : ""}</div>`).join("") + `<p class="tiny muted">${esc(r.source || "")}</p>`
     : `<p class="small muted">${esc(tr("court_jud_none"))}</p>`;

@@ -79,7 +79,10 @@ const Cases = {
     if (window.HAQ_CLOUD?.user) { clearTimeout(this._t); this._t = setTimeout(() => window.HAQ_CLOUD.pushCase(c), 1200); }
   },
   saveLocal() { store.set("haq_cases", this.all); store.set("haq_current", this.currentId); },
+  // while Haq is answering, the reply would land in whichever case is open, so switching waits (audit)
+  locked() { if (typeof busy !== "undefined" && busy) { alert(tr("wait_reply")); return true; } return false; },
   create() {
+    if (this.locked()) return;
     this.fromGlobals();
     const empty = Object.values(this.all).find(c => !c.data?.state?.messages?.length && !c.evidence?.length);
     const c = empty || this.blank();
@@ -89,11 +92,13 @@ const Cases = {
   },
   switchTo(id) {
     if (!this.all[id] || id === this.currentId) { closeDrawers(); return; }
+    if (this.locked()) return;
     this.fromGlobals(); this.currentId = id; this.toGlobals(); this.saveLocal();
     resetPanels(); renderAll(); renderCaseList(); closeDrawers();
   },
   async remove(id) {
     const c = this.all[id]; if (!c) return;
+    if (id === this.currentId && this.locked()) return;
     for (const e of c.evidence || []) await EvDB.del(e.id).catch(() => {});
     if (window.HAQ_CLOUD?.user) await window.HAQ_CLOUD.deleteCase(c).catch(() => {});
     delete this.all[id];
@@ -202,8 +207,9 @@ function icsEscape(s) { return String(s || "").replace(/\\/g, "\\\\").replace(/;
 function makeIcs(deadlines) {
   const stamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d+Z$/, "Z");
   const ev = deadlines.map(d => {
+    // next day from LOCAL date parts (toISOString() shifted IST midnight back a day: DTEND == DTSTART, audit)
     const end = new Date(d.date + "T00:00:00"); end.setDate(end.getDate() + 1);
-    const endIso = end.toISOString().slice(0, 10);
+    const endIso = `${end.getFullYear()}-${String(end.getMonth() + 1).padStart(2, "0")}-${String(end.getDate()).padStart(2, "0")}`;
     const alarms = [7, 1].filter(n => d.days_left > n).map(n => `BEGIN:VALARM\r\nTRIGGER:-P${n}D\r\nACTION:DISPLAY\r\nDESCRIPTION:${icsEscape("Haq: " + d.label)}\r\nEND:VALARM`).join("\r\n");
     return ["BEGIN:VEVENT", `UID:${uid()}@haq`, `DTSTAMP:${stamp}`, `DTSTART;VALUE=DATE:${icsDate(d.date)}`, `DTEND;VALUE=DATE:${icsDate(endIso)}`,
       `SUMMARY:${icsEscape("⚖️ Haq deadline: " + d.label)}`,
@@ -218,7 +224,7 @@ function downloadIcs(deadlines, name = "haq-deadlines.ics") {
   a.download = name; a.click();
 }
 function userDeadlines() {
-  const calc = VIEW.turns.at(-1)?.calculated || { deadlines: [] };
+  const calc = lastCaseTurn()?.calculated || { deadlines: [] };
   return (calc.deadlines || []).filter(d => d.user_deadline !== false && d.days_left >= 0);
 }
 
@@ -227,6 +233,9 @@ function fmtSize(n) { return n > 1e6 ? (n / 1e6).toFixed(1) + " MB" : Math.max(1
 async function addEvidenceFiles(files) {
   const c = Cases.cur();
   for (const f of files) {
+    // the file picker's accept= filter is bypassed by drag-and-drop, so check the type here too
+    const okType = /^image\//.test(f.type) || f.type === "application/pdf" || f.type === "text/plain" || (!f.type && /\.(jpe?g|png|webp|gif|heic|pdf|txt)$/i.test(f.name));
+    if (!okType) { alert(`${f.name}: ${tr("ev_bad_type")}`); continue; }
     if (f.size > 8e6) { alert(`${f.name}: ${tr("too_big")}`); continue; }
     const e = { id: uid(), name: f.name, type: f.type || "", size: f.size, added: new Date().toISOString(), extract: null, applied: false };
     try { await EvDB.put(e.id, f); } catch (err) { alert("Could not save the file on this device: " + err); continue; }
@@ -266,9 +275,19 @@ async function renderEvidence() {
     const ap = el.querySelector("[data-act=apply]"); if (ap) ap.onclick = () => applyEvidence(c, e, el);
   });
 }
+// model output is untrusted in shape too: a string where a list was expected must not break the locker (audit)
+const asList = v => (Array.isArray(v) ? v : []);
+function normExtract(x) {
+  x.dates = asList(x.dates).filter(d => d && typeof d === "object");
+  x.amounts = asList(x.amounts).filter(a => a && typeof a === "object");
+  x.proves = asList(x.proves).map(String);
+  if (!x.facts_update || typeof x.facts_update !== "object" || Array.isArray(x.facts_update)) x.facts_update = {};
+  return x;
+}
 function extractHtml(e) {
   const x = e.extract;
   if (x.error) return `<div class="small bad-text">⚠️ ${esc(x.error)}</div>`;
+  normExtract(x);
   const facts = Object.entries(x.facts_update || {}).filter(([, v]) => v !== null && v !== "");
   const rows = [
     ...(x.dates || []).map((d, i) => `<label><input type="checkbox" data-kind="date" data-i="${i}" ${e.applied ? "disabled" : "checked"}> ${esc(fmtDate(d.date))}: ${esc(d.what)}</label>`),

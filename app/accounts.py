@@ -57,7 +57,7 @@ def run_reminders(today: date | None = None) -> dict:
     days = [(today + timedelta(days=o)).isoformat() for o in OFFSETS]
     r = httpx.get(f"{url}/rest/v1/reminders", headers=h, params={"due_date": f"in.({','.join(days)})", "select": "*"}, timeout=30)
     r.raise_for_status()
-    sent, skipped, errors = 0, 0, []
+    sent, skipped, errors = 0, 0, []  # noqa: F841 (errors is filled below)
     emails: dict[str, str | None] = {}
     prefs: dict[str, bool] = {}
     for rem in r.json():
@@ -68,8 +68,12 @@ def run_reminders(today: date | None = None) -> dict:
             skipped += 1
             continue
         if uid not in prefs:
-            pr = httpx.get(f"{url}/rest/v1/profiles", headers=h, params={"id": f"eq.{uid}", "select": "email_reminders"}, timeout=30).json()
-            prefs[uid] = (pr[0].get("email_reminders") is not False) if pr else True
+            try:  # one bad lookup must not abort the whole daily run (audit)
+                pr = httpx.get(f"{url}/rest/v1/profiles", headers=h, params={"id": f"eq.{uid}", "select": "email_reminders"}, timeout=30).json()
+                prefs[uid] = (pr[0].get("email_reminders") is not False) if isinstance(pr, list) and pr else True
+            except Exception as e:  # noqa: BLE001
+                errors.append(f"profile lookup: {str(e)[:120]}")
+                prefs[uid] = True
         if not prefs[uid]:
             skipped += 1
             continue
@@ -115,10 +119,21 @@ def signup(email: str, password: str, first_name: str, client_ip: str) -> dict:
     url, h = _sb()
     r = httpx.post(f"{url}/auth/v1/admin/users", headers=h, timeout=30,
                    json={"email": email, "password": password, "email_confirm": True, "user_metadata": {"first_name": first_name}})
-    if r.status_code in (409, 422) or "already" in r.text.lower():
-        return {"ok": False, "error": "exists"}
+    try:
+        body = r.json() if r.content else {}
+    except ValueError:
+        body = {}
+    code = str(body.get("error_code") or body.get("code") or "") if isinstance(body, dict) else ""
     if r.status_code >= 300:
-        return {"ok": False, "error": "server", "detail": r.text[:160]}
+        # not every 422 means "exists" (audit: a weak password was reported as an existing account)
+        if code in ("email_exists", "user_already_exists") or "already" in r.text.lower():
+            return {"ok": False, "error": "exists"}
+        if code == "weak_password" or "password" in r.text.lower():
+            return {"ok": False, "error": "short_password"}
+        if code in ("email_address_invalid", "validation_failed"):
+            return {"ok": False, "error": "bad_email"}
+        print("[signup-upstream]", r.status_code, r.text[:200], flush=True)
+        return {"ok": False, "error": "server"}
     uid = r.json()["id"]
     httpx.post(f"{url}/rest/v1/profiles", headers={**h, "Prefer": "resolution=merge-duplicates"}, timeout=30,
                json={"id": uid, "full_name": first_name})

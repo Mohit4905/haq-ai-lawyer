@@ -428,11 +428,10 @@ def compute(category: str | None, facts: dict, today: date | None = None) -> dic
 
     elif category == "notice":
         rec = parse_date(f.get("received_date"))
-        try:
-            days = int(re.sub(r"\D", "", str(f.get("notice_deadline_days") or "")) or 0)
-        except ValueError:
-            days = 0
-        if rec and days:
+        # first 1-3 digit number only: "15 days, by 20.03.2026" used to become 152032026 days (audit: OverflowError -> 500)
+        m = re.search(r"\b(\d{1,3})\b", str(f.get("notice_deadline_days") or ""))
+        days = int(m.group(1)) if m else 0
+        if rec and 0 < days <= 365:
             out["deadlines"].append(_deadline(f"Deadline given in the notice ({days} days from receipt)", rec + timedelta(days=days), "", "This is the sender's deadline, not a court order. Missing it doesn't automatically mean you lose, but don't ignore it.", today, mine=True))
 
     return out

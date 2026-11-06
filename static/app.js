@@ -80,12 +80,24 @@ function md(text) {
 }
 
 /* ---------------- API */
+// Never throws: a network failure or bad response comes back as {error}, so callers can always
+// reset their busy/typing state (audit: an offline send used to freeze the composer for good).
 async function api(path, body, isForm = false) {
-  const r = await fetch(path, isForm ? { method: "POST", body } : { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
-  let j; try { j = await r.json(); } catch { j = { error: `Server error ${r.status}` }; }
-  if (!r.ok && !j.error) j.error = `Server error ${r.status}`;
+  let r;
+  try {
+    r = await fetch(path, isForm ? { method: "POST", body } : { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  } catch (e) { return { error: tr("err_network") }; }
+  let j; try { j = await r.json(); } catch { j = {}; }
+  if (!j || typeof j !== "object") j = {};
+  if (!r.ok && !j.error) j.error = r.status === 429 ? tr("err_busy") : tr("err_server");
+  if (!path.startsWith("/api/court")) {  // court.js maps its own codes
+    if (j.error === "too_many") j.error = tr("err_limit");
+    if (j.error === "too_large") j.error = tr("err_too_large");
+  }
   return j;
 }
+// the last turn that carries case data (deadlines etc.); drafts/court/notice turns may not
+function lastCaseTurn() { return [...(VIEW?.turns || [])].reverse().find(t => t && t.calculated) || VIEW?.turns?.at(-1); }
 function provider() { return $("#provider").value || null; }
 
 /* ---------------- chat rendering */
@@ -202,7 +214,7 @@ function renderAll() {
     if (m.role === "user") addMsg("user", esc(m.content));
     else { const t = VIEW.turns[ti++] || { reply: m.content }; addMsg("bot", md(t.intro != null ? t.intro : m.content), renderBotExtras(t)); }
   });
-  renderCase(VIEW.turns[VIEW.turns.length - 1]);
+  renderCase(lastCaseTurn());
   renderDocPanel([...VIEW.turns].reverse().find(t => t.doc)?.doc);
 }
 
@@ -327,8 +339,11 @@ const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
 function docAsk(blanks) { return blanks.map((b, i) => `${i + 1}. ${cap(b)}`).join("\n"); }
 function docPaperHtml(body) { return md(body).replace(/\[\[FILL:?\s*([^\]]*)\]\]/g, (_, l) => `<mark class="fill">${l.trim() || "…"}</mark>`); }
 async function docDownload(doc) {
-  const r = await fetch("/api/docx", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ title: doc.title, body_markdown: doc.body }) });
-  const blob = await r.blob(); const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = doc.title.replace(/[^\w\- ]/g, "").slice(0, 60) + ".docx"; a.click();
+  let r;
+  try { r = await fetch("/api/docx", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ title: doc.title, body_markdown: doc.body }) }); } catch (e) { r = null; }
+  if (!r || !r.ok) { alert(tr("doc_dl_failed")); return; }  // don't save an error page as a .docx (audit)
+  const blob = await r.blob(); const a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+  a.download = (String(doc.title || "").replace(/[^\p{L}\p{N}\- ]/gu, "").trim().slice(0, 60) || "haq-document") + ".docx"; a.click();
 }
 function docPrint(doc) { const w = open("", "_blank"); w.document.write(`<html><head><title>${esc(doc.title)}</title><style>body{font-family:Georgia,serif;max-width:720px;margin:40px auto;line-height:1.6;white-space:pre-wrap}</style></head><body>${esc(doc.body)}</body></html>`); w.document.close(); w.print(); }
 const ICON_DOC = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>`;
@@ -346,7 +361,7 @@ function docCard(doc) {
   card.querySelector("[data-a=word]").onclick = () => docDownload(doc);
   card.querySelector("[data-a=pdf]").onclick = () => docPrint(doc);
   card.querySelector("[data-a=copy]").onclick = e => { navigator.clipboard?.writeText(doc.body); e.target.textContent = "✓"; };
-  card.querySelector("[data-a=open]").onclick = () => { renderDocPanel(doc); openTab("docs"); if (innerWidth <= 900) { $("#side").classList.add("open"); } };
+  card.querySelector("[data-a=open]").onclick = () => { renderDocPanel(doc); openTab("docs"); };
   return card;
 }
 
@@ -399,6 +414,7 @@ function pendingDoc() {
 async function draftDoc(docType) {
   if (!S || busy) return;
   if (innerWidth <= 900) $("#side").classList.remove("open");
+  window.showChat && window.showChat();  // the draft appears in the chat
   busy = true; $("#send").disabled = true;
   const tb = typing();
   tb.insertAdjacentHTML("beforeend", ` <span class="muted small">${esc(tr("doc_drafting").replace("{doc}", shortDoc(docType)))}</span>`);
@@ -441,6 +457,7 @@ $("#practiceForm").onsubmit = async e => {
   e.preventDefault();
   const v = $("#practiceInput").value.trim(); if (!v) return;
   if (!practice.length) await startPractice();
+  if (!practice.length || !S?.case) return;  // no case yet: startPractice already said what to do (audit: S.case on null)
   practice.push({ role: "user", content: v }); $("#practiceInput").value = ""; renderPractice();
   const r = await api("/api/practice", { case: S.case, history: practice, provider: provider() });
   practice.push({ role: "other", content: r.error ? "⚠️ " + r.error : r.reply }); persist(); renderPractice();
@@ -463,6 +480,8 @@ $("#practiceEnd").onclick = async () => {
 $("#attach").onclick = () => $("#noticeDlg").showModal();
 $("#noticeGo").onclick = async e => {
   e.preventDefault();
+  if (!$("#noticeText").value.trim() && !$("#noticeFile").files[0]) { alert(tr("notice_empty")); $("#noticeText").focus(); return; }
+  if (busy) return;
   const fd = new FormData();
   fd.append("text", $("#noticeText").value);
   fd.append("language", langInfo()[2] || "English");  // interface language decides the reply language
@@ -471,10 +490,13 @@ $("#noticeGo").onclick = async e => {
   if (provider()) fd.append("provider", provider());
   if ($("#noticeFile").files[0]) fd.append("file", $("#noticeFile").files[0]);
   $("#noticeDlg").close();
+  window.showChat && window.showChat();
   addMsg("user", esc($("#noticeText").value ? "📄 " + $("#noticeText").value.slice(0, 300) + ($("#noticeText").value.length > 300 ? "…" : "") : "📄 (uploaded notice)"));
   const tb = typing();
+  busy = true; $("#send").disabled = true;
   const r = await api("/api/explain", fd, true);
   tb.parentElement.remove();
+  busy = false; $("#send").disabled = false;
   if (r.error) { addMsg("bot", `<p>⚠️ ${esc(r.error)}</p>`); return; }
   const html = `<p><b>${esc(r.notice_kind || "Notice")}</b>: ${esc(r.plain_summary)}</p>
     <div class="notice-card small"><div><b>From:</b> ${esc(r.who_sent)}</div><div><b>They want:</b> ${esc(r.what_they_want)}</div>
@@ -488,14 +510,16 @@ $("#noticeGo").onclick = async e => {
   addMsg("bot", html);
   // seed the conversation so the chat continues with context
   S = S || { version: 1, messages: [], case: { category: null, facts: {}, timeline: [], evidence_have: [], evidence_missing: [] }, flags: { level: "none", reasons: [] }, log: [] };
-  S.case.category = r.category && r.category !== "other" ? "notice" : "notice";
+  if (!S.case.category || S.case.category === "other") S.case.category = "notice";  // don't overwrite an existing case's type
   Object.assign(S.case.facts, { notice_from: r.who_sent, notice_demands: r.what_they_want, notice_deadline_days: r.deadline_in_notice || "", summary: r.plain_summary });
   S.messages.push({ role: "user", content: "I received this notice:\n" + ($("#noticeText").value || r.extracted_text || "").slice(0, 3000) });
   S.messages.push({ role: "assistant", content: `Explanation: ${r.plain_summary} They want: ${r.what_they_want}. Risk: ${r.risk_level}.` });
-  VIEW.turns.push({ reply: r.plain_summary, citations: [], guard: { initial: r.guard, final: r.guard }, actions: [{ type: "draft", doc: "reply_to_notice" }], model: r.model, latency_s: r.model?.latency_s });
+  const prev = lastCaseTurn() || {};  // keep the case's deadlines (audit: they vanished after a notice)
+  VIEW.turns.push({ reply: r.plain_summary, citations: [], guard: { initial: r.guard, final: r.guard }, actions: [{ type: "draft", doc: "reply_to_notice" }], model: r.model, latency_s: r.model?.latency_s,
+                    calculated: prev.calculated, completeness: prev.completeness });
   if (r.needs_lawyer?.level === "urgent") S.flags = { level: "urgent", reasons: [r.needs_lawyer.reason] };
   persist();
-  renderCase(VIEW.turns.at(-1));
+  renderCase(lastCaseTurn());
 };
 
 /* ---------------- voice: server Whisper first, browser speech recognition as fallback */

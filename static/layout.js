@@ -1,6 +1,6 @@
 /* ChatGPT-style sidebar: brand + search + collapse on top, labelled sections, "My cases" list,
    profile row at the bottom. Collapsed = narrow icon strip (remembered). Phones: slide-in drawer.
-   A section (Case file, Deadlines…) opens inside the sidebar with a back arrow to My cases.
+   A tool (Case file, Deadlines, Track case…) opens in the main area, with back/close to the chat.
    Profile icon -> account only; gear -> settings. */
 (function () {
   const body = document.body;
@@ -18,12 +18,32 @@
   function closeSide() { if (mobile()) side().classList.remove("open"); else setCollapsed(true); }
   window.openSide = openSide; window.closeSide = closeSide;
 
-  function setView(name) {
-    const t = $("#sideTitle"); if (t) t.textContent = tr(VIEW_KEYS[name] || "my_cases");
-    $("#viewBar")?.classList.toggle("hidden", !name || name === "cases");
+  // Tools (Case file, Deadlines, Documents, Evidence, Practice, Track case, Get help) open in the
+  // main area over the chat; the sidebar always shows the menu + My cases.
+  let curTool = null;
+  function openTool(name) {
+    if (!name || name === "cases" || !$("#p-" + name)) return closeTool();
+    curTool = name;
+    $$(".side-nav .tab").forEach(t => t.classList.toggle("active", t.dataset.tab === name));
+    $$("#toolBody .panel").forEach(p => p.classList.toggle("active", p.id === "p-" + name));
+    $("#toolTitle").textContent = tr(VIEW_KEYS[name]);
+    $("#toolView").classList.remove("hidden");
+    body.classList.add("tool-open");
+    $("#toolBody").scrollTop = 0;
+    $("#secCase") && ($("#secCase").open = true);
+    try { if (name === "practice") renderPractice(); if (name === "evidence") renderEvidence(); } catch (e) {}
+    if (mobile()) side().classList.remove("open");
+    try { sessionStorage.setItem("haq_tool", name); } catch (e) {}  // reopened after a reload in this tab
   }
-  const curView = () => ($(".panel.active")?.id || "p-cases").slice(2);
-  window.renderSideTitle = () => setView(curView());
+  function closeTool() {
+    curTool = null;
+    try { sessionStorage.removeItem("haq_tool"); } catch (e) {}
+    $("#toolView")?.classList.add("hidden");
+    body.classList.remove("tool-open");
+    $$(".side-nav .tab").forEach(t => t.classList.remove("active"));
+  }
+  window.showChat = closeTool;
+  window.renderSideTitle = () => { if (curTool) $("#toolTitle").textContent = tr(VIEW_KEYS[curTool]); };
 
   // bottom profile row mirrors the account box that auth.js renders
   function syncAcct() {
@@ -45,28 +65,21 @@
     let saved = null; try { saved = localStorage.getItem("haq_side"); } catch (e) {}
     if (saved === "closed" && !mobile()) body.classList.add("side-collapsed");
 
-    if (typeof window.openTab === "function") {
-      const orig = window.openTab;
-      window.openTab = name => { orig(name); setView(name); try { localStorage.setItem("haq_view", name); } catch (e) {} };
-    }
-    // reopen the section the user had last (without forcing the sidebar open)
-    let v = null; try { v = localStorage.getItem("haq_view"); } catch (e) {}
-    if (v && v !== "cases" && $("#p-" + v)) {
-      $$(".tab").forEach(t => t.classList.toggle("active", t.dataset.tab === v));
-      $$(".panel").forEach(p => p.classList.toggle("active", p.id === "p-" + v));
-      try { if (v === "evidence" && typeof renderEvidence === "function") renderEvidence(); if (v === "practice" && typeof renderPractice === "function") renderPractice(); } catch (e) {}
-    }
-    window.renderSideTitle();
+    // move every tool panel out of the sidebar into the main tool view (listeners move with them)
+    $$(".side-scroll .panel").forEach(p => { if (p.id !== "p-cases") { p.classList.remove("active"); $("#toolBody").appendChild(p); } });
+    $("#p-cases").classList.add("active");
+    window.openTab = openTool;  // every openTab("docs") etc. in the app now opens the main-area view
+    let again = null; try { again = sessionStorage.getItem("haq_tool"); } catch (e) {}
+    if (again) openTool(again);
 
-    // sections: click opens it; clicking the open one again goes back to My cases
-    $$(".side-nav .tab").forEach(b => (b.onclick = () => {
-      if (b.classList.contains("active") && isOpen()) window.openTab("cases");
-      else window.openTab(b.dataset.tab);
-    }));
-    $("#backBtn").onclick = () => window.openTab("cases");
-    $("#brandBtn").onclick = () => (isOpen() ? window.openTab("cases") : openSide());
+    // a tool: click opens it in the main area; clicking the open one again goes back to the chat
+    $$(".side-nav .tab").forEach(b => (b.onclick = () => (b.classList.contains("active") ? closeTool() : openTool(b.dataset.tab))));
+    $("#toolBack").onclick = closeTool;
+    $("#toolClose").onclick = closeTool;
+    document.addEventListener("keydown", e => { if (e.key === "Escape" && curTool && !document.querySelector("dialog[open]")) closeTool(); });
+    $("#brandBtn").onclick = () => (isOpen() ? closeTool() : openSide());
     $("#searchBtn").onclick = () => {
-      window.openTab("cases");
+      if (!isOpen()) openSide();
       const s = $("#caseSearch"); s.classList.toggle("hidden");
       if (!s.classList.contains("hidden")) s.focus(); else if (s.value) { s.value = ""; renderCaseList(); }
     };
@@ -75,7 +88,9 @@
 
     // New case (Cases.create runs first, from cases.js): show My cases, clear + focus the message box
     $("#newCase2").addEventListener("click", () => {
-      if (mobile()) side().classList.remove("open"); else if (isOpen()) window.openTab("cases");
+      if (typeof busy !== "undefined" && busy) return;  // Cases.create already told the user to wait
+      if (mobile()) side().classList.remove("open");
+      closeTool();
       const s = $("#caseSearch"); if (s && s.value) { s.value = ""; renderCaseList(); }
       const inp = $("#input"); inp.value = ""; try { autosize(); } catch (e) {}
       $("#chat").scrollTop = 0;
@@ -84,7 +99,12 @@
     });
 
     // phones: picking a case closes the drawer; tapping outside closes it
-    $("#caseList")?.addEventListener("click", e => { if (mobile() && e.target.closest(".case-item") && !e.target.closest(".ci-btn")) side().classList.remove("open"); });
+    // picking a case shows its chat (and closes the drawer on phones)
+    $("#caseList")?.addEventListener("click", e => {
+      if (!e.target.closest(".case-item") || e.target.closest(".ci-btn")) return;
+      closeTool();
+      if (mobile()) side().classList.remove("open");
+    });
     document.addEventListener("click", e => {
       if (mobile() && side().classList.contains("open") && !e.target.closest("#side") && !e.target.closest("#toggleSide") && !e.target.closest(".settings-pop") && !e.target.closest("dialog") && !e.target.closest("#ciMenu")) side().classList.remove("open");
     });
@@ -93,7 +113,11 @@
     // profile icon -> account only; gear -> settings
     $("#acctBtn").onclick = e => togglePop("#acctPop", e);
     $("#settingsBtn").onclick = e => togglePop("#settingsPop", e);
-    document.addEventListener("click", e => { if (!e.target.closest(".settings-pop") && !e.target.closest("#settingsBtn") && !e.target.closest("#acctBtn")) closePops(); });
+    // composedPath(): a button that redraws its own icon (theme toggle) detaches e.target, so closest() would miss the popover
+    document.addEventListener("click", e => {
+      const inside = e.composedPath().some(el => el.classList && (el.classList.contains("settings-pop") || el.id === "settingsBtn" || el.id === "acctBtn"));
+      if (!inside) closePops();
+    });
     document.addEventListener("keydown", e => { if (e.key === "Escape") closePops(); });
 
     const box = $("#profileBox");

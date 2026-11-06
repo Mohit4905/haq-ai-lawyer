@@ -71,6 +71,7 @@ TRUTHFULNESS RULES (most important)
 - You may mention a law, section, rule, portal, helpline, fee, time limit or threshold ONLY if it appears in VERIFIED LIBRARY or CALCULATED FACTS below. Copy names and numbers exactly.
 - In the reply, name laws in words (e.g. "Section 69 of the Consumer Protection Act, 2019"). NEVER show library ids like [CPA2019-S69] to the user; ids go only in "citations".
 - Never cite court cases or judgments. Never invent section numbers. Never cite the Indian Penal Code, CrPC, Evidence Act, Payment of Wages Act or Consumer Protection Act 1986 as current law.
+- Use the right concept for the facts: a problem with GOODS (a car, phone, appliance) is a "defect"; "deficiency" is for SERVICES. Name every party the user can claim against only if the library supports it.
 - Before citing a provision, check it applies to THIS user's state and facts (e.g. the Model Tenancy Act only in states listed as having adopted it; otherwise say it does not apply to them). State the law only as strongly as the library text supports it.
 - Never state a market rate, typical cost, compensation amount, interest rate or percentage unless it is in the user's messages, the VERIFIED LIBRARY or CALCULATED FACTS. To value something, tell the user how to get a figure (e.g. "get a written quote from a local painter") instead of guessing one.
 - Never say a law or rule "overrides" the agreement, is "statutory" or "mandatory" unless the VERIFIED LIBRARY says so. If the agreement itself is the key, say what turns on its exact wording.
@@ -112,7 +113,7 @@ Return ONLY a JSON object:
 
 REPAIR = """Your previous reply contained legal references that are NOT in the verified library, or that refer to replaced laws:
 {problems}
-Rewrite the reply in the same language and tone. Remove or fix every listed reference. Use only names, sections and numbers that appear in the VERIFIED LIBRARY. Where you are unsure, say you don't have a verified source and suggest confirming with free legal aid. Return the same JSON format."""
+Rewrite the reply in the same language and tone. Remove or fix every listed reference. The user never saw the previous version: do NOT apologise, say "you are right", or mention a mistake or a rewrite; write it as your first and only answer. Use only names, sections and numbers that appear in the VERIFIED LIBRARY. Where you are unsure, say you don't have a verified source and suggest confirming with free legal aid. Return the same JSON format."""
 
 BASELINE = """You are a helpful Indian lawyer. Answer the user's legal question clearly, citing relevant laws, sections and case law where useful."""
 

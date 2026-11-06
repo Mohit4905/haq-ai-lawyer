@@ -87,6 +87,8 @@ with sync_playwright() as p:
     step("case file panel fills in", case_panel)
 
     def chips():
+        if page.is_visible("#toolClose"):
+            page.click("#toolClose")  # tools open over the chat; go back to it
         g = page.locator(".chip.guard-ok, .chip.guard-fix").count()
         laws = page.locator(".chip.law").count()
         if laws:
@@ -111,7 +113,10 @@ with sync_playwright() as p:
     def draft():
         page.click(".tab[data-tab=docs]")
         page.locator("#docButtons button").first.click()
-        page.wait_for_selector("#docText", timeout=240_000)
+        page.wait_for_selector(".msg.bot .doc-card", timeout=240_000)  # the draft appears in the chat
+        assert page.is_visible("#chat"), "chat not shown after drafting"
+        page.click(".tab[data-tab=docs]")  # ...and is mirrored in Documents
+        page.wait_for_selector("#docText", timeout=10_000)
         body = page.input_value("#docText")
         page.screenshot(path=SHOTS / "05_draft.png")
         with page.expect_download(timeout=60_000) as dl:
@@ -147,6 +152,8 @@ with sync_playwright() as p:
 
     def persists():
         page.reload()
+        page.wait_for_selector("#toolView:not(.hidden) #p-help.active", timeout=30_000)  # the open tool comes back after a reload
+        page.click("#toolClose")
         page.wait_for_selector(".msg.bot", timeout=30_000)
         return f"{page.locator('.msg').count()} messages restored after reload"
 
@@ -202,7 +209,7 @@ with sync_playwright() as p:
     step("evidence locker: upload → AI read → add to case file", evidence)
 
     def my_cases():
-        page.click("#backBtn") if page.is_visible("#backBtn") else None
+        page.click("#toolClose") if page.is_visible("#toolClose") else None
         first = page.locator(".case-item.active b").inner_text()
         page.click("#newCase2")
         page.wait_for_selector("#welcome:not(.hidden)")
@@ -277,9 +284,10 @@ with sync_playwright() as p:
         page.click("#brandBtn")
         back = page.is_visible(".side-scroll") and page.is_visible("#caseList") or page.is_visible("#viewBar")
         page.click(".side-nav .tab[data-tab=deadlines]")
-        sec = page.is_visible("#p-deadlines") and page.is_visible("#backBtn")
-        page.click("#backBtn")
-        home = page.is_visible("#p-cases")
+        # the tool opens in the main area; the sidebar keeps My cases; the chat is hidden behind it
+        sec = page.is_visible("#toolView #p-deadlines") and page.is_visible("#caseList") and not page.is_visible("#composer")
+        page.click("#toolClose")
+        home = page.is_visible("#p-cases") and page.is_visible("#composer") and not page.is_visible("#toolView")
         page.click("#settingsBtn")
         menu = page.is_visible("#settingsPop") and page.is_visible("#lang") and page.is_visible("#provider") and not page.is_visible("#acctPop")
         page.screenshot(path=SHOTS / "16_settings.png")

@@ -192,8 +192,8 @@ def turn(state: dict | None, message: str, provider: str | None = None, today: d
     mismatch = (
         (want not in ("Latin", "Hinglish") and got != want)
         or (want == "Hinglish" and got != "Hinglish" and guard.hinglish_score(reply) < 0.06)
-        or (want == "Latin" and got != "Latin" and (got != "Hinglish" or guard.hinglish_score(reply) > 0.15))
-    )
+        or (want == "Latin" and got != "Latin" and (got != "Hinglish" or guard.hinglish_score(reply) > 0.15 or lang_pref == "English"))
+    )  # an explicit English choice in the UI means English, even for lightly Hinglish replies (QA probe)
     guard_log["language"] = {"wanted": want, "got": got, "rewritten": False}
     if mismatch:
         try:

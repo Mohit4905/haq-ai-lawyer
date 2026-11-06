@@ -183,7 +183,7 @@ def search(name: str, state: str | None = None, page_size: int = 10) -> dict:
 def order_text(cnr: str, filename: str) -> dict:
     cnr = normalise_cnr(cnr)
     filename = (filename or "").split("/")[-1]
-    if not CNR_RE.match(cnr) or not re.match(r"^[\w.\-]{1,120}$", filename):
+    if not CNR_RE.match(cnr) or not re.match(r"^[\w\-]+(?:\.[\w\-]+)*$", filename) or len(filename) > 120:  # no "..", no "/"
         return {"error": "bad_request"}
     key = f"order:{cnr}:{filename}"
     hit = _CACHE.get(key)
@@ -220,6 +220,12 @@ def _first(d: dict, *keys):
         if v not in (None, "", []):
             return v
     return None
+
+
+def _safe_url(u) -> str | None:
+    """Only http(s) links from a third-party API reach an href (a javascript: URL would be XSS on click)."""
+    u = str(u or "").strip()
+    return u if re.match(r"^https?://[^\s\"'<>]+$", u, re.I) else None
 
 
 def judgments(q: str, limit: int = 5) -> dict:
@@ -260,6 +266,6 @@ def judgments(q: str, limit: int = 5) -> dict:
             "court": _first(merged, "court_name", "court", "court_code"),
             "date": _first(merged, "date", "decision_date", "judgment_date", "decided_on"),
             "snippet": re.sub(r"<[^>]+>", "", str(snippet or ""))[:400],
-            "url": _first(merged, "source_url", "matching_page_url", "document_url", "url"),
+            "url": _safe_url(_first(merged, "source_url", "matching_page_url", "document_url", "url")),
         })
     return {"results": rows, "source": "kanoon.dev pilot (small historical sample; not a complete database)"}

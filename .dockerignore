@@ -1,0 +1,9 @@
+# never bake secrets or local environments into the image (QA audit)
+.env
+.env.*
+.venv/
+__pycache__/
+*.pyc
+.git/
+ui_shots/
+evals/dev_runs/

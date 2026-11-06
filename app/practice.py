@@ -75,8 +75,14 @@ def explain_notice(text: str | None, image_bytes: bytes | None, mime: str | None
         out, res = chat_json([{"role": "user", "content": sys}], tier="main", temperature=0.1, max_tokens=1200, provider=provider)
     except LLMError as e:
         return {"error": str(e)}
+    # model JSON is untrusted in shape: lists may come back as null or a string (audit: TypeError -> 500)
+    for k in ("do_now", "do_not", "laws_mentioned_in_notice"):
+        v = out.get(k)
+        out[k] = [str(x) for x in v] if isinstance(v, list) else ([str(v)] if isinstance(v, str) and v.strip() else [])
+    if not isinstance(out.get("needs_lawyer"), dict):
+        out["needs_lawyer"] = {"level": "none", "reason": ""}
     # guard the explanation fields we generated (not the notice itself, which may cite anything)
-    gen = " ".join(str(out.get(k, "")) for k in ("plain_summary", "what_they_want", "risk_reason")) + " " + " ".join(map(str, out.get("do_now", []) + out.get("do_not", [])))
+    gen = " ".join(str(out.get(k, "")) for k in ("plain_summary", "what_they_want", "risk_reason")) + " " + " ".join(out["do_now"] + out["do_not"])
     rep = guard.check(gen, {e["id"] for e in entries}, lib + text)
     flags = rules.red_flags(text)
     if any(f["level"] in ("urgent", "emergency") for f in flags):

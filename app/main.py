@@ -16,6 +16,82 @@ app = FastAPI(title="Haq: AI legal help for everyday problems in India")
 STATIC = config.ROOT / "static"
 
 
+# ------------------------------------------------------------------ request guard (QA audit)
+# Per-client hourly limits for everything that spends AI quota or paid eCourts credits, a global
+# daily cap on eCourts, and body-size caps. Limits can be tuned with env vars.
+_HITS: dict[str, list[float]] = {}
+_LIMITS = {
+    "/api/chat": ("chat", int(os.getenv("CHAT_LIMIT_PER_HOUR", "80"))),
+    "/api/draft": ("ai", int(os.getenv("AI_LIMIT_PER_HOUR", "60"))), "/api/draft/fill": ("ai", int(os.getenv("AI_LIMIT_PER_HOUR", "60"))),
+    "/api/explain": ("ai", int(os.getenv("AI_LIMIT_PER_HOUR", "60"))), "/api/evidence": ("ai", int(os.getenv("AI_LIMIT_PER_HOUR", "60"))),
+    "/api/practice": ("ai", int(os.getenv("AI_LIMIT_PER_HOUR", "60"))), "/api/transcribe": ("ai", int(os.getenv("AI_LIMIT_PER_HOUR", "60"))),
+    "/api/court/case": ("court", int(os.getenv("COURT_LIMIT_PER_HOUR", "40"))), "/api/court/search": ("court", int(os.getenv("COURT_LIMIT_PER_HOUR", "40"))),
+    "/api/court/order": ("court", int(os.getenv("COURT_LIMIT_PER_HOUR", "40"))), "/api/court/judgments": ("kanoon", 60),
+    "/api/signup": ("signup", 10), "/api/docx": ("docx", 120),
+}
+_PAID = ("/api/court/case", "/api/court/search", "/api/court/order")
+_UPLOADS = ("/api/evidence", "/api/explain", "/api/transcribe")
+MAX_UPLOAD = 10_000_000
+MAX_JSON = 800_000
+
+
+def client_ip(request: Request) -> str:
+    """Render sits behind Cloudflare, which sets CF-Connecting-IP / True-Client-IP and overwrites
+    any value the client sends. The FIRST X-Forwarded-For hop is client-controlled, so it's never used."""
+    for h in ("cf-connecting-ip", "true-client-ip"):
+        v = (request.headers.get(h) or "").strip()
+        if v:
+            return v
+    hops = [x.strip() for x in (request.headers.get("x-forwarded-for") or "").split(",") if x.strip()]
+    return hops[-1] if hops else (request.client.host if request.client else "?")
+
+
+def _over(key: str, limit: int, window: float = 3600) -> bool:
+    import time
+
+    now = time.time()
+    hits = [t for t in _HITS.get(key, []) if now - t < window]
+    over = len(hits) >= limit
+    if not over:
+        hits.append(now)
+    _HITS[key] = hits
+    if len(_HITS) > 5000:  # forget idle clients so the table can't grow without bound
+        for k in [k for k, v in _HITS.items() if not v or now - v[-1] > 86400]:
+            _HITS.pop(k, None)
+    return over
+
+
+@app.middleware("http")
+async def request_guard(request: Request, call_next):
+    path = request.url.path
+    if request.method == "POST" and path.startswith("/api/"):
+        try:
+            size = int(request.headers.get("content-length") or 0)
+        except ValueError:
+            size = 0
+        if size > (MAX_UPLOAD if path in _UPLOADS else MAX_JSON):
+            return JSONResponse({"error": "too_large"}, status_code=413)
+        lim = _LIMITS.get(path)
+        if lim and _over(f"{lim[0]}|{client_ip(request)}", lim[1]):
+            return JSONResponse({"error": "too_many"}, status_code=429)
+        if path in _PAID and _over("court-global-day", int(os.getenv("COURT_DAILY_CAP", "300")), window=86400):
+            return JSONResponse({"error": "no_credits"}, status_code=429)
+    return await call_next(request)
+
+
+def _soft(res):
+    """Don't show raw provider errors (model names, HTTP bodies) to users; log them instead."""
+    import re as _re
+
+    if isinstance(res, dict) and isinstance(res.get("error"), str):
+        e = res["error"]
+        if len(e) > 140 or _re.search(r"(?i)HTTP \d|groq|gemini|openrouter|openai|anthropic|rate.?limit|api key|traceback|quota", e):
+            print("[upstream-error]", e[:600], flush=True)
+            res["error"] = "The AI service is busy or unavailable right now. Please try again in a minute."
+            res.pop("trace", None)
+    return res
+
+
 class ChatIn(BaseModel):
     state: dict | None = None
     message: str
@@ -113,11 +189,12 @@ class SignupIn(BaseModel):
 def signup_ep(inp: SignupIn, request: Request):
     from . import accounts
 
-    ip = request.headers.get("x-forwarded-for", "").split(",")[0].strip() or (request.client.host if request.client else "?")
+    ip = client_ip(request)
     try:
         res = accounts.signup(inp.email, inp.password, inp.first_name, ip)
     except Exception as e:  # noqa: BLE001
-        return JSONResponse({"ok": False, "error": "server", "detail": str(e)[:160]}, status_code=500)
+        print("[signup-error]", str(e)[:300], flush=True)
+        return JSONResponse({"ok": False, "error": "server"}, status_code=500)
     return JSONResponse(res, status_code=200 if res.get("ok") else 400)
 
 
@@ -131,7 +208,8 @@ def account_delete(request: Request):
     try:
         return accounts.delete_account(auth.split(" ", 1)[1])
     except Exception as e:  # noqa: BLE001
-        return JSONResponse({"error": str(e)[:200]}, status_code=500)
+        print("[delete-error]", str(e)[:300], flush=True)
+        return JSONResponse({"ok": False, "error": "server"}, status_code=500)
 
 
 @app.post("/api/evidence")
@@ -145,8 +223,14 @@ async def evidence_ep(
 
     from . import evidence
 
-    raw = await file.read()
-    return evidence.extract(category or None, language, file.filename or "", file.content_type, raw, _date.today().isoformat(), provider or None)
+    raw = await file.read(MAX_UPLOAD + 1)  # chunked uploads have no Content-Length, so cap the read too
+    if len(raw) > MAX_UPLOAD:
+        return JSONResponse({"error": "too_large"}, status_code=413)
+    try:
+        return _soft(evidence.extract(category or None, language, file.filename or "", file.content_type, raw, _date.today().isoformat(), provider or None))
+    except Exception as e:  # noqa: BLE001
+        print("[evidence-error]", str(e)[:300], flush=True)
+        return JSONResponse({"error": "Couldn't read this file. Try a clearer photo or a PDF."}, status_code=422)
 
 
 @app.get("/api/kb")
@@ -161,12 +245,12 @@ def chat(inp: ChatIn):
         return JSONResponse({"error": "Empty message"}, status_code=400)
     if len(msg) > 6000:
         msg = msg[:6000]
-    return engine.turn(inp.state, msg, provider=inp.provider, lang_pref=inp.lang_pref)
+    return _soft(engine.turn(inp.state, msg, provider=inp.provider, lang_pref=inp.lang_pref))
 
 
 @app.post("/api/draft")
 def draft(inp: DraftIn):
-    return documents.draft(inp.state, inp.doc_type, inp.doc_language, provider=inp.provider)
+    return _soft(documents.draft(inp.state, inp.doc_type, inp.doc_language, provider=inp.provider))
 
 
 class CourtCaseIn(BaseModel):
@@ -192,23 +276,6 @@ class JudgmentsIn(BaseModel):
     q: str
 
 
-_COURT_HITS: dict[str, list[float]] = {}
-
-
-def _court_ok(request: Request, limit: int = int(os.getenv("COURT_LIMIT_PER_HOUR", "40"))) -> bool:
-    """eCourts lookups cost credits: cap them per client (IP) per hour."""
-    import time
-
-    ip = (request.headers.get("x-forwarded-for") or "").split(",")[0].strip() or (request.client.host if request.client else "?")
-    now = time.time()
-    hits = [t for t in _COURT_HITS.get(ip, []) if now - t < 3600]
-    ok = len(hits) < limit
-    if ok:
-        hits.append(now)
-    _COURT_HITS[ip] = hits
-    return ok
-
-
 @app.get("/api/court/status")
 def court_status():
     from . import courts
@@ -217,34 +284,28 @@ def court_status():
 
 
 @app.post("/api/court/case")
-def court_case(inp: CourtCaseIn, request: Request):
+def court_case(inp: CourtCaseIn):
     from . import courts
 
-    if not _court_ok(request):
-        return {"error": "too_many"}
     return courts.case(inp.cnr, fresh=inp.fresh)
 
 
 @app.post("/api/court/search")
-def court_search(inp: CourtSearchIn, request: Request):
+def court_search(inp: CourtSearchIn):
     from . import courts
 
-    if not _court_ok(request):
-        return {"error": "too_many"}
     return courts.search(inp.name, inp.state)
 
 
 @app.post("/api/court/order")
-def court_order(inp: CourtOrderIn, request: Request):
+def court_order(inp: CourtOrderIn):
     """Order text (eCourts) + a plain-language summary that restates only the order."""
     from . import courts
 
-    if not _court_ok(request):
-        return {"error": "too_many"}
     o = courts.order_text(inp.cnr, inp.file)
     if "error" in o:
         return o
-    s = courts.explain_order(o["markdown"], inp.case, inp.language, inp.script, inp.provider)
+    s = _soft(courts.explain_order(o["markdown"], inp.case, inp.language, inp.script, inp.provider))
     return {"markdown": o["markdown"], **s}
 
 
@@ -263,25 +324,30 @@ class FillIn(BaseModel):
 
 @app.post("/api/draft/fill")
 def draft_fill(inp: FillIn):
-    return documents.fill(inp.body_markdown[:20000], inp.answer[:3000], provider=inp.provider)
+    return _soft(documents.fill(inp.body_markdown[:20000], inp.answer[:3000], provider=inp.provider))
 
 
 @app.post("/api/docx")
 def docx(inp: DocxIn):
+    from urllib.parse import quote
+
     data = documents.to_docx(inp.title, inp.body_markdown)
-    safe = "".join(c for c in inp.title if c.isalnum() or c in " -_")[:60] or "document"
+    name = "".join(c for c in inp.title if c.isalnum() or c in " -_")[:60].strip() or "document"
+    ascii_name = "".join(c for c in name if c.isascii()).strip() or "document"
+    # headers must be latin-1: ASCII fallback + RFC 5987 UTF-8 name (a Hindi title used to 500, audit)
     return Response(
         data,
         media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        headers={"Content-Disposition": f'attachment; filename="{safe}.docx"'},
+        headers={"Content-Disposition": f"attachment; filename=\"{ascii_name}.docx\"; filename*=UTF-8''{quote(name + '.docx')}"},
     )
 
 
 @app.post("/api/practice")
 def practice_ep(inp: PracticeIn):
+    history = [m for m in (inp.history or []) if isinstance(m, dict)][-30:]
     if inp.feedback:
-        return practice.practice_feedback(inp.case, inp.history, inp.provider)
-    return practice.practice_turn(inp.case, inp.history, inp.provider)
+        return _soft(practice.practice_feedback(inp.case or {}, history, inp.provider))
+    return _soft(practice.practice_turn(inp.case or {}, history, inp.provider))
 
 
 @app.post("/api/explain")
@@ -294,24 +360,35 @@ async def explain(
 ):
     img, mime = None, None
     if file is not None:
-        raw = await file.read()
+        raw = await file.read(MAX_UPLOAD + 1)
+        if len(raw) > MAX_UPLOAD:
+            return JSONResponse({"error": "too_large"}, status_code=413)
         if (file.content_type or "").endswith("pdf") or (file.filename or "").lower().endswith(".pdf"):
-            from pypdf import PdfReader
+            try:
+                from pypdf import PdfReader
 
-            reader = PdfReader(io.BytesIO(raw))
-            text = (text + "\n" + "\n".join((p.extract_text() or "") for p in reader.pages[:6])).strip()
-        else:
+                reader = PdfReader(io.BytesIO(raw))
+                text = (text + "\n" + "\n".join((p.extract_text() or "") for p in reader.pages[:6])).strip()
+            except Exception:  # noqa: BLE001  (corrupt/encrypted PDF used to 500, audit)
+                return JSONResponse({"error": "Couldn't read this PDF. Try a photo of the notice, or paste its text."}, status_code=422)
+        elif (file.content_type or "").startswith("image/"):
             img, mime = raw, file.content_type
-    return practice.explain_notice(text or None, img, mime, language, script, provider or None)
+        else:
+            return JSONResponse({"error": "Please upload a photo or a PDF of the notice."}, status_code=415)
+    if not (text or "").strip() and img is None:
+        return JSONResponse({"error": "Paste the notice text or upload a photo/PDF of it."}, status_code=400)
+    return _soft(practice.explain_notice(text or None, img, mime, language, script, provider or None))
 
 
 @app.post("/api/transcribe")
 async def stt(audio: UploadFile = File(...), language: str = Form("")):
-    raw = await audio.read()
+    raw = await audio.read(MAX_UPLOAD + 1)
+    if len(raw) > MAX_UPLOAD:
+        return JSONResponse({"error": "too_large"}, status_code=413)
     try:
         return transcribe(raw, audio.filename or "audio.webm", language or None)
     except LLMError as e:
-        return JSONResponse({"error": str(e)}, status_code=503)
+        return JSONResponse(_soft({"error": str(e)}), status_code=503)
 
 
 app.mount("/static", StaticFiles(directory=STATIC), name="static")

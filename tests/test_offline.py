@@ -192,7 +192,8 @@ def test_mixed_script_message():
 def test_overclaim():
     for t in ["You have an open-and-shut case.", "You will definitely win.", "I guarantee a refund.", "Aap pakka jeet jaoge",
               "Your claim is watertight.", "I am 100% sure you will get it.",
-              "As a senior advocate, I have to be honest with you.", "I am your lawyer and I say file it."]:
+              "As a senior advocate, I have to be honest with you.", "I am your lawyer and I say file it.",
+              "Look, this case is absolutely clear.", "Dekhiye, yeh case bilkul clear hai.", "यह मामला बिल्कुल साफ़ है"]:
         assert any(v["type"] == "overclaim" for v in guard.check(t).violations), t
     # a lawyer's assessment of strength is allowed; only promised outcomes are blocked
     for t in ["No one can guarantee a win in court.", "The phone has a warranty and a guarantee card.", "From what you've told me, you have good grounds.",

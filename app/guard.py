@@ -45,6 +45,8 @@ CASE_RES = [
 OVERCLAIM_RE = re.compile(
     r"(?i)\b(?:(?:a|an|very|really)\s+)?(?:airtight|watertight|open[- ]and[- ]shut|winning)\s+case\b"
     r"|\bdefinitely\s+(?:win|get|succeed)\b"
+    r"|\b(?:case|claim|this|it)\s+is\s+(?:absolutely|completely|totally|100\s*%)\s+(?:clear|certain|sure)\b"  # QA probe: "this case is absolutely clear"
+    r"|\b(?:case|mamla|maamla)\s+(?:bilkul|ekdum|poori\s+tarah)\s+(?:clear|saaf|pakka)\b|(?:केस|मामला)\s+(?:बिल्कुल|एकदम)\s+(?:साफ़|साफ|पक्का|क्लियर)"
     r"|\b(?:your|the|this)\s+(?:claim|case|position)\s+is\s+(?:very\s+|really\s+)?(?:watertight|airtight|unbeatable)\b"
     r"|\bguarantee[sd]?\b(?!\s+(?:card|period))|\b100\s*%\s*(?:sure|certain|win)|\byou\s+will\s+(?:definitely\s+)?win\b"
     r"|पक्का\s+(?:जीत|केस)|ज़रूर\s+जीत|जरूर\s+जीत|pakka\s+jeet|zaroor\s+jeet"
