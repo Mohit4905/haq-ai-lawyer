@@ -127,7 +127,7 @@ function renderBotExtras(t) {
   (t.citations || []).forEach(c => {
     const s = document.createElement("span");
     s.className = "chip law";
-    s.textContent = `§ ${c.act.replace(/,\s*\d{4}$/, "")}${c.section ? " s." + c.section : ""}`;
+    s.textContent = `§ ${c.act.replace(/,\s*\d{4}$/, "")}${secLabel(c.section)}`;
     s.onclick = e => showCite(e, c);
     meta.appendChild(s);
   });
@@ -160,10 +160,20 @@ const DOC_SHORT = {
   cheque_demand_notice_s138: "Cheque bounce notice (s.138)", reply_to_notice: "Reply to the notice",
 };
 function shortDoc(d) { return DOC_SHORT[d] || d; }
+// "69" -> "s.69"; "Schedule, Article 55" -> "Art. 55"; "Order XXXVII" -> "Order XXXVII"; "Rule 4(5)" -> "r.4(5)"
+function secLabel(s) {
+  s = String(s || "").trim();
+  if (!s) return "";
+  let m;
+  if ((m = s.match(/article\s*(\S+)/i))) return " Art. " + m[1];
+  if ((m = s.match(/^rules?\s*(.+)/i))) return " r." + m[1];
+  if (/^order/i.test(s)) return " " + s;
+  return /^\d/.test(s) ? " s." + s : " " + s;
+}
 
 function showCite(e, c) {
   const p = $("#cite-pop");
-  p.innerHTML = `<b>${esc(c.act)}${c.section ? " · Section " + esc(c.section) : ""}</b><br><span class="muted small">${esc(c.title)}</span><p>${esc(c.plain)}</p>
+  p.innerHTML = `<b>${esc(c.act)}${c.section ? " ·" + esc(secLabel(c.section)) : ""}</b><br><span class="muted small">${esc(c.title)}</span><p>${esc(c.plain)}</p>
     <a href="${esc(c.source_url)}" target="_blank" rel="noopener">Official source ↗</a> <span class="muted small">(${esc(c.source_type)})</span>`;
   p.classList.remove("hidden");
   const r = e.target.getBoundingClientRect();
@@ -239,7 +249,7 @@ function renderCase(t) {
   // deadlines
   const calc = t?.calculated || { deadlines: [], derived: [] };
   const kbById = Object.fromEntries((window.KB || []).map(e => [e.id, e]));
-  const basis = b => b && kbById[b] ? `<a href="${esc(kbById[b].source_url)}" target="_blank" rel="noopener">${esc(kbById[b].act)}${kbById[b].section ? " s." + esc(kbById[b].section) : ""}</a>` : (b ? esc(b) : "as stated in the notice");
+  const basis = b => b && kbById[b] ? `<a href="${esc(kbById[b].source_url)}" target="_blank" rel="noopener">${esc(kbById[b].act)}${esc(secLabel(kbById[b].section))}</a>` : (b ? esc(b) : "as stated in the notice");
   $("#deadlines").innerHTML = calc.deadlines.length ? calc.deadlines.map(d => `<div class="deadline ${d.status}">
       <div class="lbl">${esc(d.label)}</div>
       <div class="when">${fmtDate(d.date)} <span class="badge ${d.status}">${d.days_left < 0 ? `passed ${-d.days_left}d ago` : `${d.days_left} days left`}</span></div>
@@ -286,7 +296,7 @@ async function draftDoc(docType) {
     <div class="doc-foot">${res.placeholders?.length ? `✏️ Fill ${res.placeholders.length} gap(s) marked [[FILL]] before sending. ` : ""}${g.violations?.length ? `🛡️ ${g.violations.length} unverified reference(s) removed. ` : "🛡️ References checked. "}${esc(res.disclaimer)}</div>
   </div>
   ${res.send_instructions?.length ? `<h3>How to send it</h3><ol class="small">${res.send_instructions.map(s => `<li>${esc(s)}</li>`).join("")}</ol>` : ""}
-  <div class="meta">${(res.citations || []).map(c => `<a class="chip law" href="${esc(c.source_url)}" target="_blank" rel="noopener">§ ${esc(c.act)}${c.section ? " s." + esc(c.section) : ""}</a>`).join("")}<span class="chip model">${esc(res.model?.provider)}/${esc((res.model?.model || "").split("/").pop())}</span></div>`;
+  <div class="meta">${(res.citations || []).map(c => `<a class="chip law" href="${esc(c.source_url)}" target="_blank" rel="noopener">§ ${esc(c.act.replace(/,\s*\d{4}$/, ""))}${esc(secLabel(c.section))}</a>`).join("")}<span class="chip model">${esc(res.model?.provider)}/${esc((res.model?.model || "").split("/").pop())}</span></div>`;
   $("#dlDocx").onclick = async () => {
     const r = await fetch("/api/docx", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ title: res.title, body_markdown: $("#docText").value }) });
     const blob = await r.blob(); const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = res.title.replace(/[^\w\- ]/g, "").slice(0, 60) + ".docx"; a.click();
@@ -456,7 +466,7 @@ const HELP = [
 ];
 function renderHelp() {
   $("#helpList").innerHTML = (window.HELP_OVERRIDE || HELP).map(([a, b, u]) => `<li><b>${esc(a)}</b><br><a href="${esc(u)}" target="_blank" rel="noopener">${esc(b)}</a></li>`).join("");
-  $("#kbList").innerHTML = (window.KB || []).map(e => `<div><b>${esc(e.act)}${e.section ? " · s." + esc(e.section) : ""}</b>: ${esc(e.title)} <a href="${esc(e.source_url)}" target="_blank" rel="noopener">source↗</a></div>`).join("");
+  $("#kbList").innerHTML = (window.KB || []).map(e => `<div><b>${esc(e.act)}${e.section ? " ·" + esc(secLabel(e.section)) : ""}</b>: ${esc(e.title)} <a href="${esc(e.source_url)}" target="_blank" rel="noopener">source↗</a></div>`).join("");
 }
 
 (async function init() {

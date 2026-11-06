@@ -93,9 +93,16 @@ def draft(state: dict, doc_type: str, doc_language: str = "English", provider: s
         body = guard.strip_violations(body, rep)
         stripped = True
     # the "how to send it" steps are guarded too: drop any step that cites unverified law
+    raw_steps = out.get("send_instructions", []) or []
+    if isinstance(raw_steps, str):
+        raw_steps = [raw_steps]
+    flat = []
+    for s in raw_steps:  # models sometimes return all steps in one numbered string
+        parts = re.split(r"(?:^|\s)\d{1,2}[.)]\s+", str(s))
+        flat += [x.strip() for x in parts if x.strip()]
     steps = []
-    for s in out.get("send_instructions", []) or []:
-        if guard.check(str(s), allowed, support).ok:
+    for s in flat:
+        if guard.check(s, allowed, support).ok:
             steps.append(s)
     out["send_instructions"] = steps
     placeholders = re.findall(r"\[\[FILL:?[^\]]*\]\]", body)
