@@ -40,6 +40,13 @@ CASE_RES = [
     re.compile(r"(?i)\b(?:landmark|in the case of)\b"),
     re.compile(r"(?:सुप्रीम कोर्ट|उच्च न्यायालय|उच्चतम न्यायालय|हाई कोर्ट)\s*(?:ने)\s*(?:कहा|फैसला|निर्णय)"),
 ]
+# Overconfident claims: Haq must not promise outcomes or pre-judge the other side.
+OVERCLAIM_RE = re.compile(
+    r"(?i)\b(?:(?:a|an|very|really)\s+)?(?:solid|strong|clear|airtight|watertight|open[- ]and[- ]shut|winning)\s+case\b"
+    r"|\bclear(?:ly)?\s+(?:violat\w*|breach\w*|illegal)\b|\bdefinitely\s+(?:win|get|succeed|illegal)\b"
+    r"|\bguarantee[sd]?\b(?!\s+(?:card|period))|\b100\s*%\s*(?:sure|certain|win)|\byou\s+will\s+(?:definitely\s+)?win\b"
+    r"|पक्का\s+(?:जीत|केस)|ज़रूर\s+जीत|जरूर\s+जीत|pakka\s+jeet|zaroor\s+jeet"
+)
 NUM_UNIT_RE = re.compile(
     r"(?i)(\d{1,3})\s*(?:-|to)?\s*(working days?|days?|months?|years?|weeks?|hours?|दिन|दिनों|महीने|महीनों|माह|साल|वर्ष|घंटे)"
 )
@@ -138,6 +145,13 @@ def check(text: str, allowed_ids: set[str] | None = None, support_text: str = ""
                 rep.violations.append(
                     {"type": "outdated_law", "text": m.group(0), "why": f"{old} {info['status']}", "suggestion": info["replacement"]}
                 )
+
+    # 2b. overclaims (promising outcomes) unless clearly negated ("no one can guarantee")
+    for m in OVERCLAIM_RE.finditer(text):
+        ctx = text[max(0, m.start() - 40) : m.start()].lower()
+        if re.search(r"(?:no one|nobody|can't|cannot|can not|not|never|no)\b[^.]{0,25}$", ctx) or re.search(r"(नहीं|नही|nahi)\s*$", ctx):
+            continue
+        rep.violations.append({"type": "overclaim", "text": m.group(0), "why": "Don't promise or pre-judge the outcome; say what the facts suggest and what depends on evidence."})
 
     # 2. case law
     for rx in CASE_RES:
@@ -257,6 +271,8 @@ def strip_violations(text: str, rep: GuardReport) -> str:
                 joined = prefix.group(0) + joined.lstrip()
             out_lines.append(joined)
     out = "\n".join(out_lines)
+    if removed and all(v["type"] == "overclaim" for v in rep.violations):
+        return out  # an over-confident sentence was dropped; nothing for the user to verify
     if removed:
         out += (
             "\n\n_⚠️ I removed a legal reference I could not verify. "

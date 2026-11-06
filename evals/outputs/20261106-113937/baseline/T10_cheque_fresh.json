@@ -1,0 +1,100 @@
+{
+ "id": "T10_cheque_fresh",
+ "reply": "This is a classic case of **Cheque Dishonour**, which is a criminal offence in India under **Section 138 of the Negotiable Instruments Act, 1881**.\n\nSince you have received the return memo, you have a clear legal path to recover your money. Please follow these steps strictly, as the timelines are very rigid.\n\n### 1. The Legal Framework (Section 138)\nSection 138 of the Negotiable Instruments Act makes the dishonour of a cheque for \"insufficient funds\" a punishable offence, provided specific procedural steps are followed.\n\n### 2. Immediate Steps You Must Take\n\n**Step 1: Send a Legal Notice (Crucial)**\nYou must send a formal legal notice to Arun Mehta.\n*   **Timeline:** This notice must be sent **within 30 days** from the date you received the return memo (i.e., by 26 November 2026).\n*   **Content:** The notice must clearly state:\n    *   The details of the loan/transaction.\n    *   The details of the cheque (number, date, amount, bank).\n    *   The fact that the cheque was dishonoured.\n    *   A demand for the payment of the cheque amount within **15 days** of the receipt of the notice.\n*   **Mode:** Send this via Registered Post with Acknowledgment Due (RPAD) or Speed Post. Keep the receipt and the tracking report safely.\n\n**Step 2: Wait for 15 Days**\nOnce Arun Mehta receives the notice, he has 15 days to pay the amount.\n*   If he pays, the matter is resolved.\n*   If he does not pay within these 15 days, the \"cause of action\" arises, and you are legally entitled to file a criminal complaint.\n\n**Step 3: Filing the Complaint**\nIf he fails to pay after the 15-day period expires:\n*   **Timeline:** You must file a criminal complaint in the Magistrate’s Court having jurisdiction (usually where your bank is located) **within 30 days** after the expiry of the 15-day notice period.\n*   **Documents needed:**\n    *   Original cheque.\n    *   Original return memo from the bank.\n    *   Copy of the legal notice sent.\n    *   Postal receipt and acknowledgment card (proof of delivery).\n    *   An affidavit supporting your complaint.\n\n### 3. Important Considerations\n\n*   **Jurisdiction:** Under the amended Negotiable Instruments Act, the case is generally filed in the court within whose jurisdiction the bank branch where you deposited the cheque is located.\n*   **Limitation Period:** Do not miss the deadlines. If you miss the 30-day window to send the notice or the 30-day window to file the complaint, your case may be dismissed on technical grounds.\n*   **Consult a Lawyer:** While you can draft a notice yourself, it is highly recommended to hire a lawyer to draft the legal notice and file the complaint. A lawyer will ensure the language is legally sound and that all procedural requirements are met to avoid dismissal.\n*   **Civil Remedy:** Apart from the criminal case under Section 138, you also have the option to file a **Summary Suit under Order 37 of the Code of Civil Procedure (CPC)** for the recovery of money. This is a civil remedy and can be pursued simultaneously with the criminal case.\n\n### Summary Checklist for You:\n1.  **Today:** Contact a lawyer to draft the legal notice.\n2.  **By 26 Nov 2026:** Ensure the notice is dispatched via Registered Post.\n3.  **After 15 days of receipt:** If no payment is made, file the criminal complaint in court.\n\n***Disclaimer:** I am an AI, not a practicing advocate. This information is for educational purposes and does not constitute formal legal advice. Laws can be subject to specific factual nuances. Please consult with a qualified lawyer in your jurisdiction to handle the filing of your case.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 3.97,
+  "usage": {
+   "completion_tokens": 869,
+   "prompt_tokens": 111,
+   "total_tokens": 1131
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ],
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ],
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ],
+   [
+    "Order 37",
+    "Code of Civil Procedure, 1908"
+   ]
+  ],
+  "violations": [],
+  "warnings": [
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 Days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15-day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15-day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30-day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30-day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": true
+ },
+ "must_not_hits": []
+}

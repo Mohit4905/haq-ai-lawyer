@@ -189,6 +189,13 @@ def test_mixed_script_message():
     assert guard.detect_script(msg) == "Devanagari"
 
 
+def test_overclaim():
+    for t in ["You have a solid case.", "The company is in clear violation of the rules.", "You will definitely win.", "I guarantee a refund.", "Aap pakka jeet jaoge"]:
+        assert any(v["type"] == "overclaim" for v in guard.check(t).violations), t
+    for t in ["No one can guarantee a win in court.", "The phone has a warranty and a guarantee card.", "From what you've told me, you have good grounds."]:
+        assert not any(v["type"] == "overclaim" for v in guard.check(t).violations), t
+
+
 def test_maintenance_not_family():
     # society/building maintenance charges are not a family-law matter
     assert not any("Family" in f["reason"] for f in rules.red_flags("pay Rs 50,000 towards unpaid maintenance charges of the society"))

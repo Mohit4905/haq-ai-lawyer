@@ -1,0 +1,43 @@
+{
+ "id": "T13_upi_fraud",
+ "reply": "This is a time-sensitive situation. Because the transaction happened only two hours ago, you are within the \"Golden Hour\" window, which significantly increases your chances of recovering the money.\n\nAs an Indian lawyer, I advise you to follow these steps immediately, in this specific order:\n\n### 1. Immediate Action: Report the Fraud (The \"Golden Hour\")\nThe Reserve Bank of India (RBI) has strict guidelines regarding customer liability in unauthorized electronic banking transactions. The faster you report, the less liability you have.\n\n*   **Call the National Cyber Crime Helpline:** Dial **1930** immediately. This is the government’s dedicated helpline for financial cyber fraud. Provide them with the transaction details.\n*   **File an Online Complaint:** Go to the [National Cyber Crime Reporting Portal (cybercrime.gov.in)](https://www.cybercrime.gov.in/). Register your complaint there. This creates an official digital trail that is essential for police investigation.\n*   **Contact Your Bank:** Call your bank’s official customer care number (use the number on the back of your debit card or their official website, *not* a number from a Google search, as those are often fake).\n    *   **Request a \"Chargeback\" or \"Transaction Dispute\":** Tell them clearly that this was an unauthorized transaction due to fraud.\n    *   **Block your account/UPI:** Ask them to freeze your UPI ID and debit card immediately to prevent further debits.\n    *   **Get an Acknowledgement:** Ask for a \"Ticket Number\" or \"Complaint Reference Number\" for your call. This is your proof that you reported the fraud within the stipulated time.\n\n### 2. Legal Context: Your Liability\nUnder the **RBI Circular on \"Customer Protection – Limiting Liability of Customers in Unauthorised Electronic Banking Transactions\" (DBR.No.Leg.BC.78/09.07.005/2017-18)**:\n\n*   **Zero Liability:** If you report the unauthorized transaction to the bank **within 3 working days**, your liability is **zero**.\n*   **Limited Liability:** If you report it between 4 to 7 working days, your liability is limited to the transaction amount or the amount specified by the RBI, whichever is lower.\n*   **Full Liability:** If you report it after 7 working days, your liability will be determined as per the bank’s board-approved policy.\n\n**Crucial Note:** While the RBI circular generally protects customers, banks often argue that sharing an OTP constitutes \"gross negligence\" on the customer's part. However, courts and the Banking Ombudsman have frequently ruled that if the bank failed to implement adequate security measures or if the fraud was sophisticated, the customer should not be held solely liable.\n\n### 3. Next Steps for Documentation\n*   **Visit your Bank Branch:** Go to your home branch tomorrow morning. Submit a written letter addressed to the Branch Manager detailing the incident, the time of the transaction, the time you reported it, and the reference number provided by the helpline. **Get a stamped acknowledgement copy.**\n*   **Police FIR:** If the bank does not resolve the issue or if the amount is significant, you may need to visit your local police station to file an FIR (First Information Report). The online complaint (from step 1) is often treated as an FIR in many jurisdictions, but a physical visit ensures you have a copy for your records.\n\n### 4. What if the Bank refuses to refund?\nIf the bank denies your claim, you have a legal remedy:\n\n1.  **Internal Grievance Redressal:** If the bank rejects your claim, you must first appeal to their internal grievance officer.\n2.  **Banking Ombudsman:** If the bank fails to resolve the issue within 30 days, you can file a complaint with the **RBI Banking Ombudsman**. This is a free, quasi-judicial forum designed to resolve disputes between banks and customers. You can file this online at [cms.rbi.org.in](https://cms.rbi.org.in/).\n\n### Important Warnings:\n*   **Do not trust anyone claiming to be a \"Cyber Police Officer\" who calls you back** asking for more money to \"process the refund.\" This is a common secondary scam.\n*   **Do not download any screen-sharing apps** (like AnyDesk or TeamViewer) if anyone asks you to do so to \"help\" you recover the money.\n\n**Summary:** Your priority right now is to **call 1930** and **notify your bank**. Do not wait until tomorrow morning.\n\n***Disclaimer:** I am an AI, not your personal attorney. This information is for educational purposes and does not constitute a formal attorney-client relationship. Please consult with a local advocate if the bank refuses to cooperate.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 6.82,
+  "usage": {
+   "completion_tokens": 1016,
+   "prompt_tokens": 66,
+   "total_tokens": 1214
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [],
+  "warnings": [
+   {
+    "type": "unsupported_number",
+    "text": "3 working days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "7 working days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "7 working days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": true
+ },
+ "must_not_hits": []
+}

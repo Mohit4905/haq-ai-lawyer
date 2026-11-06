@@ -1,0 +1,48 @@
+{
+ "id": "T20_builder_delay_big",
+ "reply": "Yes, you can absolutely file a consumer complaint yourself. You do not necessarily need a lawyer to represent you in the Consumer Commission, although having one can be helpful if the builder contests the case aggressively.\n\nHere is a breakdown of your legal position, the relevant laws, and the steps you should take.\n\n### 1. Your Legal Standing\nUnder the **Consumer Protection Act, 2019**, you are a \"Consumer\" because you hired the services of the builder for consideration (payment). The failure of the builder to deliver possession by the promised date constitutes **\"Deficiency in Service\"** and **\"Unfair Trade Practice.\"**\n\n### 2. Where to File (Jurisdiction)\nSince the value of your claim is Rs 85 lakh, you fall under the jurisdiction of the **State Consumer Disputes Redressal Commission (SCDRC), Haryana**.\n\n*   **Pecuniary Jurisdiction:** Under the 2019 Act, the District Commission handles cases up to Rs 50 lakh, and the State Commission handles cases between Rs 50 lakh and Rs 2 crore. Since your claim is Rs 85 lakh, you must file directly with the State Commission in Panchkula (or the relevant bench for Gurugram).\n\n### 3. Key Legal Precedents\nThe Supreme Court of India has consistently ruled in favor of homebuyers in such cases. Two landmark judgments you should be aware of:\n\n*   **Fortune Infrastructure vs. Trevor D'Lima (2018):** The Supreme Court held that a person cannot be made to wait indefinitely for the possession of the flat. If the builder fails to deliver within a reasonable time, the buyer is entitled to a refund with interest.\n*   **Kolkata West International City Pvt. Ltd. vs. Devasis Rudra (2019):** The Court reiterated that it is unfair to expect a buyer to wait indefinitely for possession, and the buyer is entitled to a refund of the principal amount along with interest.\n\n### 4. Steps to File the Complaint Yourself\n\n**Step 1: Send a Legal Notice (Highly Recommended)**\nBefore filing, send a formal legal notice to the builder via registered post. Demand either:\n*   Immediate possession with delay compensation (as per the RERA agreement), OR\n*   A full refund of the principal amount (Rs 85 lakh) along with interest (usually 12-18% per annum) and compensation for mental agony.\n*   *Note:* Even if you file yourself, getting a lawyer to draft this notice is a small investment that often forces builders to settle before litigation.\n\n**Step 2: Prepare the Complaint**\nYour complaint must include:\n*   **Details of the parties:** Your name/address and the builder’s registered office address.\n*   **Facts of the case:** Dates of payment, the Buyer’s Agreement, the promised date of possession, and proof of non-delivery.\n*   **Evidence:** Attach copies of the payment receipts, the Builder-Buyer Agreement (BBA), and any email correspondence.\n*   **Relief sought:** Clearly state what you want (e.g., \"Refund of Rs 85 lakh + 12% interest from the date of payment + Rs 5 lakh for mental harassment + Rs 50,000 for litigation costs\").\n\n**Step 3: Filing via E-Daakhil**\nYou do not need to physically visit the court. The Government of India has launched the **[E-Daakhil portal](https://edaakhil.nic.in/)**, which allows you to file consumer complaints online from your home. You will need to register, upload your documents, and pay the nominal court fee online.\n\n### 5. Important Considerations\n*   **RERA vs. Consumer Court:** You also have the option to approach the **Haryana Real Estate Regulatory Authority (HRERA)**. RERA is often faster for execution (getting your money back). You can file a complaint on the [HRERA Gurugram website](https://haryanarera.gov.in/).\n*   **Can you do both?** You can approach either RERA or the Consumer Commission, but generally, it is advised to pick one forum to avoid conflicting proceedings. RERA is specifically designed for real estate disputes and is often more effective for recovery.\n\n**My Advice:**\n1.  Check your Builder-Buyer Agreement for the \"Grace Period\" clause.\n2.  If you want a refund, **HRERA** is often the most efficient route for Gurugram properties.\n3.  If you want to pursue the Consumer Commission, you can definitely do it yourself, but ensure your documentation (payment receipts and agreement) is perfectly organized.\n\n***Disclaimer:** I am an AI, not your personal attorney. This information is for educational purposes and does not constitute formal legal advice. Laws and procedures can change; I strongly recommend consulting with a local advocate in Gurugram to review your specific Builder-Buyer Agreement before filing.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 5.38,
+  "usage": {
+   "completion_tokens": 1055,
+   "prompt_tokens": 75,
+   "total_tokens": 1256
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [
+   {
+    "type": "case_law",
+    "text": "Fortune Infrastructure vs. Tr",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Kolkata West International City Pvt. Ltd. vs. De",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "RERA vs. Co",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Supreme Court held",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "landmark",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   }
+  ],
+  "warnings": [],
+  "ok": false
+ },
+ "must_not_hits": []
+}

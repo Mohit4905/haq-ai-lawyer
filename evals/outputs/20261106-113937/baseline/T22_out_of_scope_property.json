@@ -1,0 +1,58 @@
+{
+ "id": "T22_out_of_scope_property",
+ "reply": "This is a common and complex issue in Indian property law, often involving ancestral property disputes. Since your uncle has already mutated the land in his name, you are dealing with a situation where the official revenue records have been altered.\n\nTo recover your share of the ancestral land, you need to follow a structured legal approach. Here is a step-by-step guide on how to proceed under Indian law.\n\n### 1. Understand the Legal Status of Ancestral Property\nUnder the **Hindu Succession Act, 1956**, ancestral property is property inherited from your father, grandfather, or great-grandfather. You acquire a right to this property by birth (coparcenary right).\n\n*   **Mutation is not Title:** It is crucial to understand that **mutation (dakhil-kharij) does not confer title.** Mutation is merely for tax collection purposes and to update revenue records. It does not prove ownership. If the mutation was done fraudulently or without your consent, it can be challenged.\n\n### 2. Immediate Steps to Take\n\n#### A. Obtain Certified Copies\nBefore filing any case, you need evidence. Go to the local Tehsildar’s office or the Land Revenue Department and obtain:\n*   **Certified copies of the mutation order:** This will show *how* and *on what basis* the mutation was done (e.g., did he claim a fake Will? Did he claim you relinquished your rights?).\n*   **Record of Rights (ROR) / Khatauni:** To see the current status of the land.\n*   **Genealogy (Vanshavali):** To prove your lineage and your right to the ancestral property.\n\n#### B. Challenge the Mutation\nIf the mutation was done recently, you can file an appeal before the **Revenue Court (Tehsildar/SDM/Collector)**.\n*   You can argue that the mutation was done illegally, without notice to the legal heirs, or based on fraudulent documents.\n*   **Relevant Law:** Most state-specific Land Revenue Acts (e.g., UP Revenue Code, Maharashtra Land Revenue Code) have provisions for appealing mutation orders within a specific timeframe.\n\n### 3. Filing a Civil Suit (The Main Remedy)\nSince mutation is not title, the Revenue Court cannot decide on the *ownership* of the land. For that, you must approach the **Civil Court**.\n\n*   **Suit for Partition:** You should file a \"Suit for Partition and Separate Possession.\" In this suit, you ask the court to declare your share in the ancestral property and divide it by metes and bounds.\n*   **Suit for Declaration and Permanent Injunction:** You can ask the court to declare the mutation in your uncle's name as null and void and seek an injunction to prevent him from selling or further encroaching on the land.\n\n### 4. Important Legal Principles & Case Law\n*   **Coparcenary Rights:** Under the **Hindu Succession (Amendment) Act, 2005**, daughters have equal rights as sons in ancestral property.\n*   **Limitation Act, 1963:** You must act quickly. While there is no fixed limitation for partition of ancestral property, the longer you wait, the harder it becomes to prove your case, especially if your uncle claims \"Adverse Possession.\"\n*   **Case Law Reference:**\n    *   *Suraj Bhan vs. State of NCT of Delhi (2010):* The Supreme Court reiterated that mutation of property in revenue records neither creates nor extinguishes title to the property, nor does it have any presumptive value on the title. It only enables the state to collect revenue.\n    *   *Vineeta Sharma vs. Rakesh Sharma (2020):* This landmark Supreme Court judgment clarified that daughters have coparcenary rights in ancestral property regardless of whether the father was alive in 2005.\n\n### Recommended Strategy\n1.  **Legal Notice:** Send a formal legal notice through a lawyer to your uncle, demanding your share and challenging the illegal mutation. This serves as evidence that you have been actively asserting your rights.\n2.  **Revenue Appeal:** Simultaneously challenge the mutation order in the Revenue Court to prevent him from using the mutation as a shield to sell the land to a third party.\n3.  **Civil Suit:** File the Suit for Partition in the Civil Court having jurisdiction over the village where the land is located.\n4.  **Lis Pendens:** Once the civil suit is filed, ensure you register a *Lis Pendens* (notice of pending litigation) so that your uncle cannot sell the property to an innocent third party while the case is ongoing.\n\n**Disclaimer:** *I am an AI, not a practicing advocate. Property laws in India vary significantly by state (e.g., UP, Punjab, and Maharashtra have different Land Revenue Codes). You must consult with a local civil lawyer who specializes in property disputes to review your specific land documents and file the appropriate petition.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 15.71,
+  "usage": {
+   "completion_tokens": 1034,
+   "prompt_tokens": 56,
+   "total_tokens": 1205
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [
+   {
+    "type": "case_law",
+    "text": "Suraj Bhan vs. St",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "Vineeta Sharma vs. Ra",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "case_law",
+    "text": "landmark",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Hindu Succession Act, 1956",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "UP Revenue Code",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Maharashtra Land Revenue Code",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Amendment) Act, 2005",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [],
+  "ok": false
+ },
+ "must_not_hits": []
+}

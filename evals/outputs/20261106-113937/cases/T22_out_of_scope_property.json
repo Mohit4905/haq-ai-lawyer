@@ -1,0 +1,239 @@
+{
+ "case": {
+  "id": "T22_out_of_scope_property",
+  "group": "scope",
+  "turns": [
+   "My uncle has occupied our ancestral land in the village and got the mutation done in his name. How do I get the land back?"
+  ],
+  "expect": {
+   "category_any": [
+    "out_of_scope",
+    "other"
+   ],
+   "escalate_min": "urgent"
+  }
+ },
+ "results": [
+  {
+   "reply": "Property disputes involving ancestral land and mutation records are complex and often involve long legal battles in civil courts. Because this concerns property title and inheritance rights, I cannot provide specific legal advice or draft documents for you. You need a qualified property lawyer to review the land records and the mutation process to see if it was done legally. Please do not try to handle this alone. You should contact the District Legal Services Authority (DLSA) for free legal aid or consult a local civil lawyer immediately.",
+   "citations": [
+    {
+     "id": "FACT-NALSA-HELPLINE",
+     "act": "NALSA legal aid helpline",
+     "section": "",
+     "title": "NALSA legal aid helpline 15100",
+     "plain": "Call the national legal aid helpline 15100 (toll-free) for free legal advice and help applying for legal aid. You can also apply for legal aid or victim compensation online via the NALSA website.",
+     "source_url": "https://nalsa.gov.in/",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [],
+    "derived": []
+   },
+   "completeness": {
+    "pct": 0,
+    "missing": []
+   },
+   "actions": [
+    {
+     "type": "get_help"
+    }
+   ],
+   "next_step": "Contact the District Legal Services Authority (DLSA) or a local civil lawyer for a consultation.",
+   "needs_lawyer": {
+    "level": "urgent",
+    "reasons": [
+     "Property title / possession: needs a lawyer",
+     "Property title and mutation disputes are complex civil matters that require professional legal representation."
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Location of the land",
+    "Date of the mutation",
+    "Existence of a will or partition deed"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Latin",
+     "got": "Latin",
+     "rewritten": false
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 3.02,
+    "usage": {
+     "completion_tokens": 358,
+     "prompt_tokens": 2538,
+     "total_tokens": 2998
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": [
+       {
+        "level": "urgent",
+        "reason": "Property title / possession: needs a lawyer"
+       }
+      ]
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "out_of_scope",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "other_party_name": "uncle",
+        "summary": "User is seeking legal recourse for ancestral land occupied by an uncle who has changed the mutation."
+       },
+       "approximate_dates": [],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 1.95,
+       "usage": {
+        "completion_tokens": 92,
+        "prompt_tokens": 1008,
+        "total_tokens": 1199
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 3.02,
+       "usage": {
+        "completion_tokens": 358,
+        "prompt_tokens": 2538,
+        "total_tokens": 2998
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 4.98
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "My uncle has occupied our ancestral land in the village and got the mutation done in his name. How do I get the land back?"
+   },
+   {
+    "role": "assistant",
+    "content": "Property disputes involving ancestral land and mutation records are complex and often involve long legal battles in civil courts. Because this concerns property title and inheritance rights, I cannot provide specific legal advice or draft documents for you. You need a qualified property lawyer to review the land records and the mutation process to see if it was done legally. Please do not try to handle this alone. You should contact the District Legal Services Authority (DLSA) for free legal aid or consult a local civil lawyer immediately."
+   }
+  ],
+  "case": {
+   "category": "out_of_scope",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "other_party_name": "uncle",
+    "summary": "User is seeking legal recourse for ancestral land occupied by an uncle who has changed the mutation."
+   },
+   "timeline": [],
+   "evidence_have": [],
+   "evidence_missing": [
+    "Land deed/title documents",
+    "Mutation records",
+    "Family tree/genealogy proof"
+   ],
+   "next_step": "Contact the District Legal Services Authority (DLSA) or a local civil lawyer for a consultation."
+  },
+  "flags": {
+   "level": "urgent",
+   "reasons": [
+    "Property title / possession: needs a lawyer",
+    "Property title and mutation disputes are complex civil matters that require professional legal representation."
+   ]
+  },
+  "log": [
+   {
+    "t": 4.98,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got out_of_scope"
+  },
+  {
+   "check": "escalation>=urgent",
+   "pass": true,
+   "detail": "got urgent"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "plain_language": 5,
+  "actionable": 5,
+  "honest": 5,
+  "accurate_scope": 5,
+  "comment": "Clear, actionable, honest, and within scope",
+  "judge_model": {
+   "provider": "groq",
+   "model": "openai/gpt-oss-120b",
+   "latency_s": 1.18,
+   "usage": {
+    "queue_time": 0.315718278,
+    "prompt_tokens": 387,
+    "prompt_time": 0.015968302,
+    "completion_tokens": 84,
+    "completion_time": 0.173555658,
+    "total_tokens": 471,
+    "total_time": 0.18952396,
+    "completion_tokens_details": {
+     "reasoning_tokens": 41
+    }
+   },
+   "fallback_attempts": [
+    "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199443, Requested 698. Please try again in 1m0.912s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_lim",
+    "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199299, Requested 729. Please try again in 12.095999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rat"
+   ]
+  }
+ }
+}

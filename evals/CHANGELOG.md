@@ -62,3 +62,8 @@ Feedback from testing the live app: replies read like a cautious chatbot and cit
 - Code guarantee: if a covered problem's reply cites no verified provision, code appends the core provisions for that category (`rules.CORE_CITATIONS`), all from the verified library.
 - Bug found while testing: the salary 'full & final due within 2 working days' date was treated as the *user's* missed deadline. It's the *employer's* deadline (passing it puts the employer in default). Fixed (`mine=False`). Deadline alerts are now in Hindi/Hinglish as well.
 **The eval suite must be re-run on this version** (see v5).
+
+## v5: `outputs/20261106-113937`: lawyer-style answers, 135/136 checks
+Pinned `gemini-3.1-flash-lite`. 0/22 unverified law shown; escalation 19/19; language 15/15. **In-scope replies citing at least one verified, citable provision: 1/17 in v4 → 17/17 in v5** (average 0.1 → 2.1 verified provisions per reply; the code fallback was needed once). The guard blocked an unverified 'Domestic Violence Act' reference (T15) and a repealed 'IPC' citation (T17).
+
+**Trade-off found on manual review:** the lawyer persona made the model over-confident (T04: 'You have a solid case', 'clear violation', Rule 6(3) stretched beyond defective goods). Fix: the guard now treats over-claims ('solid/strong/clear case', 'clear violation', 'definitely win', 'guarantee') as violations to rewrite, with unit tests. Re-run as v6.

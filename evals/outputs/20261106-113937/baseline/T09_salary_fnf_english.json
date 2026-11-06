@@ -1,0 +1,54 @@
+{
+ "id": "T09_salary_fnf_english",
+ "reply": "This is a frustrating situation, but it is a common issue in corporate employment. Since you are based in Mumbai and your employer is a private company, you have several legal avenues to recover your dues.\n\nAs a Marketing Manager, you are considered an \"employee\" under the **Maharashtra Shops and Establishments (Regulation of Employment and Conditions of Service) Act, 2017**.\n\nHere is a step-by-step guide on how to handle this legally:\n\n### 1. Send a Formal Legal Notice\nBefore rushing to court, you must create a paper trail. If you haven't already, send a formal **Legal Notice** through a lawyer.\n*   **Why:** This serves as a final warning and is a mandatory prerequisite for most legal proceedings. It shows the court that you attempted to resolve the matter amicably.\n*   **Content:** The notice should clearly state your LWD (14 August 2026), the amount due (Rs 1,35,000), the fact that HR has stopped responding, and a deadline (usually 15 days) for payment, failing which you will initiate legal action.\n*   **Delivery:** Send this via Registered Post A.D. or Speed Post to the company’s registered office address. Keep the tracking receipt and the copy of the notice.\n\n### 2. File a Complaint with the Labour Commissioner\nIf the company ignores the legal notice, you can approach the **Office of the Labour Commissioner** in Mumbai.\n*   **Relevant Law:** Under the *Maharashtra Shops and Establishments Act*, you can file a complaint regarding the non-payment of wages/dues.\n*   **Process:** You can visit the local Labour Office (Bandra/Worli area, depending on your company's registered office jurisdiction). They will issue a notice to the employer to appear for a conciliation meeting. Often, the mere threat of a government inquiry is enough to make companies release the payment.\n\n### 3. Civil Suit for Recovery of Money\nIf the Labour Commissioner route does not yield results, you can file a civil suit for the recovery of money.\n*   **Relevant Law:** Under the **Code of Civil Procedure (CPC), 1908**, you can file a \"Summary Suit\" (Order 37) if the claim is based on a written contract or salary slip, which is generally faster than a regular civil suit.\n*   **Limitation:** You have 3 years from the date the payment became due to file a suit. Since your LWD was August 2026, you are well within the limitation period.\n\n### 4. Important Considerations\n*   **Check your Appointment Letter:** Review your employment contract. Does it have an \"Arbitration Clause\"? If it does, you may be required to initiate arbitration instead of going to a civil court.\n*   **Evidence:** Gather all your documents now. You will need:\n    *   Appointment Letter/Offer Letter.\n    *   Resignation email/acceptance letter.\n    *   Relieving letter (if issued) or proof of LWD.\n    *   Emails/WhatsApp chats with HR regarding the F&F settlement.\n    *   Salary slips for the last 3–6 months.\n    *   Bank statements showing your salary credits.\n\n### Recommended Strategy\n1.  **Immediate Action:** Do not wait any longer. Send a formal Legal Notice immediately. Many companies pay up once they receive a notice on a lawyer's letterhead because they want to avoid the legal costs and reputation damage of a court case.\n2.  **Escalation:** If the notice is ignored, file a complaint with the Labour Commissioner.\n3.  **Last Resort:** If the amount is significant and the company is solvent, consult a civil lawyer to file a Summary Suit.\n\n**Disclaimer:** *I am an AI, not a practicing advocate. This information is for educational purposes and does not constitute formal legal advice. Given the amount involved (Rs 1.35 Lakhs), it is highly advisable to consult with a local advocate in Mumbai to draft the legal notice, as the specific wording can significantly impact the outcome.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 5.79,
+  "usage": {
+   "completion_tokens": 875,
+   "prompt_tokens": 92,
+   "total_tokens": 1108
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [
+   {
+    "type": "unknown_provision",
+    "text": "Order 37",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Service) Act, 2017",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Establishments Act",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "3 years",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "6 months",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

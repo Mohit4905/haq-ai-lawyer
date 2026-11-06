@@ -1,0 +1,33 @@
+{
+ "id": "T01_deposit_en_bengaluru",
+ "reply": "This is a common issue faced by tenants in Bengaluru. Since you have a **registered rent agreement**, you are in a strong legal position. Under Indian law, a security deposit is refundable, subject to reasonable deductions for damages beyond \"normal wear and tear.\"\n\nHere is a step-by-step guide on how to handle this situation legally.\n\n### 1. Understand the Legal Position\n*   **Normal Wear and Tear:** You are not liable to pay for painting or repairs that constitute \"normal wear and tear\" (e.g., minor scuffs, fading paint due to time). The landlord can only deduct for *actual* damages caused by negligence or misuse.\n*   **Burden of Proof:** The burden of proof lies with the landlord. If he claims damages, he must provide itemized bills or invoices to justify the deduction of Rs 25,000. He cannot simply deduct a lump sum arbitrarily.\n*   **Contract Law:** Your registered rent agreement is the governing document. Check the \"Security Deposit\" clause. It usually specifies the timeline for the refund (often 15–30 days) and the conditions for deductions.\n\n### 2. Immediate Steps to Take\n\n#### Step A: Send a Formal Legal Notice\nDo not rely on verbal conversations or WhatsApp messages anymore. You need to create a paper trail. Send a formal **Legal Notice** via Registered Post with Acknowledgment Due (RPAD).\n\n*   **What to include:**\n    *   Mention the date of vacating and handing over keys.\n    *   State that the property was handed over in good condition (normal wear and tear excepted).\n    *   Demand the refund of the balance deposit (Rs 60,000 minus any *proven* damages).\n    *   Explicitly state that if he fails to provide itemized bills for the Rs 25,000 deduction within 7–10 days, you will initiate legal proceedings.\n    *   *Note:* You can draft this yourself, but having a lawyer draft it adds significant weight.\n\n#### Step B: File a Police Complaint (If necessary)\nIf the landlord is unresponsive or threatening, you can file a complaint at the local police station under whose jurisdiction the property falls. While this is a civil matter, the police can often mediate and pressure the landlord to return the money to avoid a formal dispute.\n\n#### Step C: Consumer Forum or Civil Court\nIf the landlord still refuses to pay:\n1.  **Consumer Forum:** You can approach the District Consumer Disputes Redressal Commission. Since you are a \"consumer\" of the landlord's \"service\" (renting), and the withholding of the deposit is a \"deficiency in service,\" this is a viable route. It is generally faster and less expensive than a civil suit.\n2.  **Civil Suit (Recovery Suit):** You can file a suit for recovery of money in the Small Causes Court or Civil Court. Given the amount (Rs 60,000), this might be overkill, but it is an option if the Consumer Forum route is not preferred.\n\n### 3. Important Evidence to Gather\nBefore taking further action, ensure you have the following:\n*   **The Registered Rent Agreement:** This is your primary evidence.\n*   **Proof of Payment:** Bank statements showing the transfer of the Rs 60,000 deposit.\n*   **Communication:** Screenshots of WhatsApp chats or emails where you asked for the refund and he mentioned the deduction.\n*   **Photos/Videos:** If you took photos or videos of the flat when you moved out (showing it was in good condition), these are crucial.\n\n### Recommendation\n**Do not wait any longer.** Two months is an unreasonable delay.\n\n1.  **Draft a formal demand letter/notice** immediately. Send it via Registered Post. This often scares landlords into settling because they realize you are serious about legal action.\n2.  **Mention the \"Registered\" nature of the agreement.** Remind him that since the agreement is registered, it is a public record and can be used as evidence in court.\n3.  **Avoid physical confrontation.** Keep all communication in writing.\n\n*Disclaimer: I am an AI, not a practicing advocate. This information is for educational purposes. For a specific legal notice or to file a case, please consult with a local lawyer in Bengaluru who can review your specific rent agreement.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 8.15,
+  "usage": {
+   "completion_tokens": 923,
+   "prompt_tokens": 139,
+   "total_tokens": 1207
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [],
+  "warnings": [
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "10 days",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": true
+ },
+ "must_not_hits": []
+}

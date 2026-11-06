@@ -1,0 +1,43 @@
+{
+ "id": "T04_consumer_refund_ecommerce",
+ "reply": "It is frustrating when an e-commerce platform holds onto your money despite the product being returned. Since you have already raised multiple tickets without resolution, you need to escalate this formally.\n\nAs a consumer in India, you are protected by the **Consumer Protection Act, 2019**. Here is a step-by-step legal roadmap to recover your money.\n\n### 1. Send a Formal Legal Notice\nBefore approaching the court, you must send a formal **Legal Notice** to the company. This is a crucial step that often prompts companies to resolve the issue to avoid litigation.\n\n*   **What to include:** Mention the Order ID (OD12345), the date of pickup (10 Sept 2026), the amount (Rs 18,499), and the fact that you have raised 4 tickets without resolution.\n*   **The Demand:** Clearly state that if the refund is not processed within 7–15 days, you will initiate legal proceedings against them for \"Deficiency of Service\" and \"Unfair Trade Practice.\"\n*   **How to send:** Send this via **Registered Post with Acknowledgment Due (RPAD)** to the company’s registered office address (usually found on their website or invoice). Keep the receipt.\n\n### 2. File a Complaint on the National Consumer Helpline (NCH)\nBefore going to court, you should register a formal complaint with the government. This is often effective for e-commerce disputes.\n\n*   **How to file:**\n    *   **Call:** 1800-11-4000 or 1915.\n    *   **Online:** Visit [consumerhelpline.gov.in](https://consumerhelpline.gov.in/) or use the **\"NCH\" app**.\n    *   **UMANG App:** You can also file through the UMANG app.\n*   **Impact:** Once a complaint is registered, the company is legally obligated to respond to the government portal. This often triggers a faster resolution than standard customer support tickets.\n\n### 3. File a Complaint with the Consumer Commission (District Commission)\nIf the legal notice and the NCH complaint do not yield results, you can file a case in the **District Consumer Disputes Redressal Commission** in Jaipur.\n\n*   **Jurisdiction:** Under the Consumer Protection Act, 2019, you can file a complaint where the cause of action arose (where you placed the order or where the delivery happened).\n*   **E-Daakhil:** You do not necessarily need to visit the court physically. You can file your complaint online through the [e-Daakhil portal](https://edaakhil.nic.in/).\n*   **Compensation:** In your complaint, you can ask for:\n    *   The refund amount (Rs 18,499).\n    *   Interest on the amount (usually 9-12% per annum from the date of the return).\n    *   Compensation for mental agony and harassment.\n    *   Litigation costs.\n\n### Relevant Legal Provisions\n*   **Deficiency of Service:** Under Section 2(11) of the Consumer Protection Act, 2019, failure to refund money for a returned product constitutes a \"deficiency of service.\"\n*   **Unfair Trade Practice:** Under Section 2(47), withholding refunds or creating unnecessary hurdles in the return process can be classified as an unfair trade practice.\n\n### Important Tips for Your Case:\n1.  **Document Everything:** Keep screenshots of all 4 ticket numbers, the return pickup confirmation email/SMS, and the chat history with customer support.\n2.  **Proof of Pickup:** Ensure you have the courier receipt or the pickup confirmation message from the delivery partner. This is your \"smoking gun\" evidence that the company has received the product back.\n3.  **Do not delete emails:** Save all communication where they admitted the refund is \"under process.\" This is an admission of liability.\n\n**Recommendation:** Start by sending a formal Legal Notice via Registered Post immediately. If you do not receive a response within 15 days, proceed to file a complaint on the **e-Daakhil portal**. You do not strictly need a lawyer for the District Commission, but if the amount is significant to you, consulting a local advocate in Jaipur to draft the notice can ensure it is legally sound.\n\n***Disclaimer:** I am an AI, not your personal lawyer. This information is for educational purposes and does not constitute an attorney-client relationship. Please consult with a local advocate in Jaipur for specific legal representation.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 7.65,
+  "usage": {
+   "completion_tokens": 975,
+   "prompt_tokens": 111,
+   "total_tokens": 1227
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [
+   [
+    "Section 2(11)",
+    "Consumer Protection Act, 2019"
+   ]
+  ],
+  "violations": [],
+  "warnings": [
+   {
+    "type": "ambiguous_section",
+    "text": "Section 2(47)",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": true
+ },
+ "must_not_hits": []
+}

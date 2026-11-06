@@ -1,0 +1,60 @@
+{
+ "id": "T14_criminal_fir",
+ "reply": "This is a stressful situation, but it is important to remain calm and act systematically. As an Indian lawyer, I can guide you through the legal framework, but please note that **this information is for educational purposes and does not substitute for hiring a criminal defense lawyer to represent your brother in court.**\n\n### 1. Likely Sections of Law\nIn cases of business disputes involving allegations of cheating, the police typically invoke the **Indian Penal Code (IPC)** (or the **Bharatiya Nyaya Sanhita (BNS)**, which has replaced the IPC as of July 1, 2024).\n\n*   **Cheating (Section 420 IPC / Section 318 BNS):** This is the most common section used when there is an allegation of dishonest inducement to deliver property or money.\n*   **Criminal Breach of Trust (Section 406 IPC / Section 316 BNS):** If the business partner alleges that your brother was entrusted with money or property and he misappropriated it, this section is often added.\n*   **Criminal Conspiracy (Section 120B IPC / Section 61 BNS):** If the police allege that your brother conspired with others to commit the fraud.\n\n**Important Note:** These offenses are generally **cognizable** (police can arrest without a warrant) and **non-bailable** (bail is not a matter of right at the police station; it must be granted by a court).\n\n### 2. Immediate Steps to Take\nDo not panic. If the police visit again, be polite but firm. Ask for the **FIR number** and the **Police Station** where it is registered. You can check the status of the FIR on the official website of your state police.\n\n### 3. How to Secure Bail\nSince the offense is likely non-bailable, the police officer in charge (SHO) cannot grant bail at the police station. You must approach the court. There are two primary ways to handle this:\n\n#### A. Anticipatory Bail (Section 438 of CrPC / Section 482 of BNSS)\nIf your brother has not been arrested yet, **this is your most urgent priority.**\n*   **What it is:** This is \"pre-arrest bail.\" You apply to the Sessions Court or the High Court seeking an order that if the police arrest him, they must release him on bail immediately.\n*   **The Process:** Your lawyer will file an application arguing that the case is a civil dispute given the color of a criminal offense, that your brother is willing to cooperate with the investigation, and that there is no risk of him fleeing.\n*   **Why it’s crucial:** If granted, the police cannot take him into custody.\n\n#### B. Regular Bail (Section 437/439 of CrPC / Section 480/483 of BNSS)\nIf your brother has already been arrested, you must file for Regular Bail.\n*   **The Process:** This is filed after the arrest. The court will look at the evidence, the nature of the accusation, and whether your brother is a flight risk.\n*   **Strategy:** In business disputes, courts often look at whether the dispute is essentially a \"civil\" matter (e.g., a breach of contract) that has been turned into a \"criminal\" matter to pressure the accused. If your lawyer can prove this, the chances of getting bail increase significantly.\n\n### 4. Important Legal Precedents\nCourts in India have repeatedly held that business disputes should not be criminalized.\n*   **Case Law:** In *State of Haryana vs. Bhajan Lal (1992)*, the Supreme Court laid down guidelines for quashing FIRs where the criminal proceedings are manifestly attended with mala fide intentions or where the proceeding is maliciously instituted with an ulterior motive for wreaking vengeance.\n*   **Quashing the FIR:** If the FIR is completely baseless or purely a civil dispute, your lawyer can file a petition under **Section 482 of the CrPC (or Section 528 of the BNSS)** in the High Court to have the entire FIR quashed.\n\n### Action Plan for You:\n1.  **Hire a Criminal Defense Lawyer immediately:** Do not wait for the police to arrest him.\n2.  **Gather Documents:** Collect all business agreements, emails, bank statements, and communication between your brother and his partner. These will prove that this is a business disagreement, not a criminal act.\n3.  **Apply for Anticipatory Bail:** Instruct your lawyer to file this immediately to prevent arrest.\n4.  **Cooperate:** If the police summon your brother for questioning, he should go with his lawyer. Do not hide or flee, as this makes it harder to get bail.\n\n**Disclaimer:** *I am an AI, not your personal attorney. Laws vary by state and specific facts. Please consult with a local criminal defense lawyer immediately to file the necessary bail applications.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 4.79,
+  "usage": {
+   "completion_tokens": 1046,
+   "prompt_tokens": 71,
+   "total_tokens": 1235
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "CrPC",
+    "why": "Code of Criminal Procedure, 1973 was replaced by the Bharatiya Nagarik Suraksha Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "CrPC",
+    "why": "Code of Criminal Procedure, 1973 was replaced by the Bharatiya Nagarik Suraksha Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "CrPC",
+    "why": "Code of Criminal Procedure, 1973 was replaced by the Bharatiya Nagarik Suraksha Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS)"
+   },
+   {
+    "type": "case_law",
+    "text": "Haryana vs. Bh",
+    "why": "Case-law citations are not allowed: none are in the verified library."
+   }
+  ],
+  "warnings": [],
+  "ok": false
+ },
+ "must_not_hits": [
+  "(?i)(?:section|sec\\.?|s\\.)\\s*\\d+\\w?\\s*(?:of\\s+(?:the\\s+)?)?(?:IPC|Indian Penal Code)"
+ ]
+}

@@ -1,0 +1,360 @@
+{
+ "case": {
+  "id": "T20_builder_delay_big",
+  "group": "edge",
+  "turns": [
+   "I paid Rs 85 lakh to a builder in Gurugram for a flat in 2021, possession was promised by December 2024 and still nothing. Can I file a consumer complaint myself?"
+  ],
+  "expect": {
+   "category": "consumer",
+   "escalate_min": "recommended",
+   "derived_expect": {
+    "label": "Where to file",
+    "contains": "State"
+   }
+  }
+ },
+ "results": [
+  {
+   "reply": "Look, a builder delaying possession is a clear 'deficiency in service'. You are absolutely a consumer and you can file a complaint yourself; you do not need to be a lawyer to do so. Since your claim is for ₹85 lakh, you will have to file it with the State Consumer Disputes Redressal Commission. You still have plenty of time, but start gathering your paperwork now.\n\n**Your legal position:**\nA builder failing to deliver a flat by the promised date is considered 'deficiency in service' under the Consumer Protection Act. Your case looks strong because you will have proof of payment, but it is important to check the builder's agreement (Buyer-Seller Agreement) to see what terms they have written.\n\n**Law you can cite:**\n* **Section 2(11), Consumer Protection Act, 2019:** This states that if there is any deficiency in service, you can approach the consumer commission.\n* **Section 39, Consumer Protection Act, 2019:** Under this, you can demand a refund, interest, or compensation.\n* **Section 35, Consumer Protection Act, 2019:** This gives you the right to file a complaint yourself without a lawyer.\n\n**What to do now:**\n1. Send a formal email/letter to the builder (if you haven't already) demanding possession.\n2. Call the National Consumer Helpline (1915) to register your complaint.\n3. Visit the e-Jagriti portal to file a formal complaint with the State Commission (Fee: ₹2,000).\n\nI can draft a 'Formal Complaint Email' for you to send to the builder. Have you sent any written notice or email to the builder yet?",
+   "citations": [
+    {
+     "id": "CPA2019-S2-11",
+     "act": "Consumer Protection Act, 2019",
+     "section": "2(11)",
+     "title": "Meaning of 'deficiency' in service",
+     "plain": "A deficiency is any fault, shortcoming or inadequacy in the quality, nature or manner of a service that the law or a contract requires. It also covers negligence or acts or omissions that cause you loss, and deliberately withholding relevant information from you.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/CP%20Act%202019_1732700731.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPA2019-S39",
+     "act": "Consumer Protection Act, 2019",
+     "section": "39",
+     "title": "Reliefs the District Commission can order",
+     "plain": "If your complaint is proved, the Commission can order the seller or service provider to remove defects, replace the goods, refund the price or charges with interest, pay compensation for loss or injury (including punitive damages), stop the unfair practice, withdraw hazardous goods, issue corrective advertisements, and pay your costs.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/CP%20Act%202019_1732700731.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPA2019-S35",
+     "act": "Consumer Protection Act, 2019",
+     "section": "35",
+     "title": "Who can file a complaint, and electronic filing",
+     "plain": "A complaint can be filed with the District Commission by the consumer, by a registered consumer association, by one or more consumers on behalf of many with the same interest (with the Commission's permission), or by the Central/State Government or the Central Authority. The Act allows complaints to be filed electronically, and the prescribed fee can be paid electronically.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/CP%20Act%202019_1732700731.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPJURIS2021-R3-5",
+     "act": "Consumer Protection (Jurisdiction of the District Commission, the State Commission and the National Commission) Rules, 2021",
+     "section": "Rules 3-5",
+     "title": "Money limits of District, State and National Commissions",
+     "plain": "Where you file depends on how much you paid for the goods or service. Up to Rs 50 lakh: District Commission. Above Rs 50 lakh and up to Rs 2 crore: State Commission. Above Rs 2 crore: National Commission (NCDRC).",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/232278_1732705029.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "CPCDRC2020-R7",
+     "act": "Consumer Protection (Consumer Disputes Redressal Commissions) Rules, 2020",
+     "section": "Rule 7",
+     "title": "Complaint filing fee schedule (nil up to Rs 5 lakh)",
+     "plain": "There is no fee for a consumer complaint where the amount paid is up to Rs 5 lakh. The fee is Rs 200 for Rs 5-10 lakh, Rs 400 for Rs 10-20 lakh, Rs 1,000 for Rs 20-50 lakh, Rs 2,000 for Rs 50 lakh-1 crore and Rs 2,500 for Rs 1-2 crore. It rises to Rs 7,500 above Rs 10 crore.",
+     "source_url": "http://consumeraffairs.gov.in/public/upload/files/CDRC%20Amendment%20Rules%202023-1_1732707073.pdf",
+     "source_type": "primary"
+    },
+    {
+     "id": "FACT-EJAGRITI-PORTAL",
+     "act": "e-Jagriti consumer e-filing portal",
+     "section": "",
+     "title": "e-Jagriti: current portal for filing consumer complaints (replaced e-Daakhil)",
+     "plain": "Consumer complaints to the District, State and National Commissions are now filed online on e-Jagriti (https://e-jagriti.gov.in/). It launched on 1 January 2025 and merged the older e-Daakhil, OCMS, NCDRC CMS and CONFONET systems. You can file, pay fees, attend virtual hearings and track your case there.",
+     "source_url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/dec/doc20251223743001.pdf",
+     "source_type": "primary"
+    }
+   ],
+   "calculated": {
+    "deadlines": [
+     {
+      "label": "Last date to file a consumer complaint (2 years from when the problem arose)",
+      "date": "2026-12-01",
+      "days_left": 25,
+      "status": "ok",
+      "basis": "CPA2019-S69",
+      "note": "The commission can accept a late complaint only if you show sufficient cause for the delay.",
+      "user_deadline": true
+     }
+    ],
+    "derived": [
+     {
+      "label": "Where to file",
+      "value": "State Consumer Disputes Redressal Commission",
+      "basis": "CPJURIS2021-R3-5",
+      "note": "Based on the amount you paid (₹85,00,000), not the amount you claim."
+     },
+     {
+      "label": "Filing fee",
+      "value": "₹2,000",
+      "basis": "CPCDRC2020-R7",
+      "note": ""
+     }
+    ]
+   },
+   "completeness": {
+    "pct": 62,
+    "missing": [
+     {
+      "key": "other_party_name",
+      "question": "Which company / seller / platform?"
+     },
+     {
+      "key": "complained_to_company",
+      "question": "Have you complained to the company? When, and what did they say?"
+     },
+     {
+      "key": "proof",
+      "question": "What proof do you have (invoice, order ID, chats, emails, photos)?"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "type": "draft",
+     "doc": "company_complaint_email"
+    }
+   ],
+   "next_step": "Draft a formal complaint email to the builder",
+   "needs_lawyer": {
+    "level": "recommended",
+    "reasons": [
+     "Real estate matters involving large sums (85 lakhs) can be complex; while you can file yourself, a lawyer can help ensure the compensation claim is calculated correctly."
+    ]
+   },
+   "emergency_contacts": [],
+   "confidence": "high",
+   "unknowns": [
+    "Whether the user has already sent a formal notice to the builder"
+   ],
+   "guard": {
+    "initial": {
+     "verified": [
+      [
+       "Section 2(11)",
+       "Consumer Protection Act, 2019"
+      ],
+      [
+       "Section 39",
+       "Consumer Protection Act, 2019"
+      ],
+      [
+       "Section 35",
+       "Consumer Protection Act, 2019"
+      ]
+     ],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "bad_ids": [],
+    "repaired": false,
+    "stripped": false,
+    "final": {
+     "verified": [
+      [
+       "Section 2(11)",
+       "Consumer Protection Act, 2019"
+      ],
+      [
+       "Section 39",
+       "Consumer Protection Act, 2019"
+      ],
+      [
+       "Section 35",
+       "Consumer Protection Act, 2019"
+      ]
+     ],
+     "violations": [],
+     "warnings": [],
+     "ok": true
+    },
+    "language": {
+     "wanted": "Latin",
+     "got": "Hinglish",
+     "rewritten": true,
+     "got_after": "Latin"
+    },
+    "deadline_alerts_added": 0
+   },
+   "model": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "latency_s": 5.04,
+    "usage": {
+     "completion_tokens": 899,
+     "prompt_tokens": 4356,
+     "total_tokens": 5393
+    },
+    "fallback_attempts": []
+   },
+   "trace": {
+    "steps": [
+     {
+      "step": "red_flags",
+      "result": []
+     },
+     {
+      "step": "router",
+      "result": {
+       "category": "consumer",
+       "language": "English",
+       "script": "Latin",
+       "facts": {
+        "product_or_service": "flat",
+        "amount_paid": 8500000,
+        "purchase_date": "2021-01-01",
+        "problem_date": "2024-12-01",
+        "city_state": "Gurugram",
+        "summary": "Builder failed to provide possession of flat by promised date of December 2024."
+       },
+       "approximate_dates": [
+        "purchase_date",
+        "problem_date"
+       ],
+       "confidence": 1
+      },
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 2.82,
+       "usage": {
+        "completion_tokens": 171,
+        "prompt_tokens": 1027,
+        "total_tokens": 1357
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "counsel",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 5.04,
+       "usage": {
+        "completion_tokens": 899,
+        "prompt_tokens": 4356,
+        "total_tokens": 5393
+       },
+       "fallback_attempts": []
+      }
+     },
+     {
+      "step": "language_rewrite",
+      "llm": {
+       "provider": "gemini",
+       "model": "gemini-3.1-flash-lite",
+       "latency_s": 3.26,
+       "usage": {
+        "completion_tokens": 367,
+        "prompt_tokens": 454,
+        "total_tokens": 938
+       },
+       "fallback_attempts": []
+      }
+     }
+    ]
+   },
+   "latency_s": 11.15
+  }
+ ],
+ "final_state": {
+  "version": 1,
+  "messages": [
+   {
+    "role": "user",
+    "content": "I paid Rs 85 lakh to a builder in Gurugram for a flat in 2021, possession was promised by December 2024 and still nothing. Can I file a consumer complaint myself?"
+   },
+   {
+    "role": "assistant",
+    "content": "Look, a builder delaying possession is a clear 'deficiency in service'. You are absolutely a consumer and you can file a complaint yourself; you do not need to be a lawyer to do so. Since your claim is for ₹85 lakh, you will have to file it with the State Consumer Disputes Redressal Commission. You still have plenty of time, but start gathering your paperwork now.\n\n**Your legal position:**\nA builder failing to deliver a flat by the promised date is considered 'deficiency in service' under the Consumer Protection Act. Your case looks strong because you will have proof of payment, but it is important to check the builder's agreement (Buyer-Seller Agreement) to see what terms they have written.\n\n**Law you can cite:**\n* **Section 2(11), Consumer Protection Act, 2019:** This states that if there is any deficiency in service, you can approach the consumer commission.\n* **Section 39, Consumer Protection Act, 2019:** Under this, you can demand a refund, interest, or compensation.\n* **Section 35, Consumer Protection Act, 2019:** This gives you the right to file a complaint yourself without a lawyer.\n\n**What to do now:**\n1. Send a formal email/letter to the builder (if you haven't already) demanding possession.\n2. Call the National Consumer Helpline (1915) to register your complaint.\n3. Visit the e-Jagriti portal to file a formal complaint with the State Commission (Fee: ₹2,000).\n\nI can draft a 'Formal Complaint Email' for you to send to the builder. Have you sent any written notice or email to the builder yet?"
+   }
+  ],
+  "case": {
+   "category": "consumer",
+   "language": "English",
+   "script": "Latin",
+   "facts": {
+    "product_or_service": "flat",
+    "amount_paid": 8500000,
+    "purchase_date": "2021-01-01",
+    "problem_date": "2024-12-01",
+    "city_state": "Gurugram",
+    "summary": "Builder failed to provide possession of flat by promised date of December 2024."
+   },
+   "timeline": [
+    {
+     "date": "2021-01-01",
+     "event": "Payment made for flat"
+    },
+    {
+     "date": "2024-12-01",
+     "event": "Promised possession date missed"
+    }
+   ],
+   "evidence_have": [
+    "Payment receipts",
+    "Buyer-Seller Agreement"
+   ],
+   "evidence_missing": [
+    "Copy of Builder-Buyer Agreement",
+    "Any previous correspondence/emails with the builder"
+   ],
+   "next_step": "Draft a formal complaint email to the builder",
+   "approximate": [
+    "problem_date",
+    "purchase_date"
+   ]
+  },
+  "flags": {
+   "level": "recommended",
+   "reasons": [
+    "Real estate matters involving large sums (85 lakhs) can be complex; while you can file yourself, a lawyer can help ensure the compensation claim is calculated correctly."
+   ]
+  },
+  "log": [
+   {
+    "t": 11.15,
+    "model": "gemini-3.1-flash-lite",
+    "provider": "gemini",
+    "guard_ok": true,
+    "repaired": false
+   }
+  ]
+ },
+ "draft": null,
+ "checks": [
+  {
+   "check": "category",
+   "pass": true,
+   "detail": "got consumer"
+  },
+  {
+   "check": "escalation>=recommended",
+   "pass": true,
+   "detail": "got recommended"
+  },
+  {
+   "check": "derived:Where to file",
+   "pass": true,
+   "detail": "[{\"label\": \"Where to file\", \"value\": \"State Consumer Disputes Redressal Commission\", \"basis\": \"CPJURIS2021-R3-5\", \"note\": \"Based on the amount you paid (\\u20b985,00,000), not the amount you claim.\"}, {\"label\": \"Filing fee\", \"value\": \"\\u20b92,000\", \"basis\": \"CPCDRC2020-R7\", \"note\": \"\"}]"
+  },
+  {
+   "check": "no_unverified_law_shown",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "judge": {
+  "error": "All providers failed: groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199537, Requested 1005. Please try again in 3m54.144s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_l"
+ }
+}

@@ -1,0 +1,67 @@
+{
+ "id": "T15_domestic_violence",
+ "reply": "यह सुनकर बहुत दुख हुआ कि आप इस कठिन परिस्थिति से गुजर रही हैं। कानून आपकी सुरक्षा और अधिकारों के लिए पूरी तरह से आपके साथ है। भारत में घरेलू हिंसा और दहेज की मांग के खिलाफ बहुत सख्त कानून हैं।\n\nएक वकील के रूप में, मैं आपको सलाह दूंगा कि आप इन कानूनी विकल्पों पर विचार करें:\n\n### 1. घरेलू हिंसा से सुरक्षा (Protection from Domestic Violence)\nअगर आपके पति आपको मारते-पीटते हैं, तो आप **'घरेलू हिंसा से महिलाओं का संरक्षण अधिनियम, 2005' (Protection of Women from Domestic Violence Act, 2005)** के तहत शिकायत दर्ज करा सकती हैं।\n*   **क्या कर सकती हैं:** आप मजिस्ट्रेट के पास आवेदन कर सकती हैं ताकि आपको सुरक्षा आदेश (Protection Order), निवास का अधिकार (Right to Residence), और आर्थिक सहायता (Monetary Relief) मिल सके।\n*   **फायदा:** यह कानून आपको तुरंत सुरक्षा प्रदान करता है और पति को आपको परेशान करने से रोकता है।\n\n### 2. दहेज के लिए शिकायत (Dowry Prohibition Act & IPC 498A)\nदहेज मांगना और उसके लिए प्रताड़ित करना एक गंभीर अपराध है।\n*   **IPC की धारा 498A:** यह धारा 'पति या पति के रिश्तेदारों द्वारा क्रूरता' के खिलाफ है। इसमें 3 साल तक की जेल और जुर्माना हो सकता है।\n*   **दहेज निषेध अधिनियम (Dowry Prohibition Act, 1961):** दहेज लेना या देना दोनों ही अपराध हैं।\n*   **क्या करें:** आप अपने नजदीकी पुलिस स्टेशन में जाकर FIR दर्ज करा सकती हैं। यदि पुलिस FIR दर्ज करने से मना करे, तो आप सीधे पुलिस अधीक्षक (SP) को शिकायत भेज सकती हैं या मजिस्ट्रेट के पास धारा 156(3) CrPC के तहत शिकायत दर्ज करा सकती हैं।\n\n### 3. तलाक (Divorce)\nआप 'हिंदू विवाह अधिनियम, 1955' (Hindu Marriage Act, 1955) की **धारा 13(1)(ia)** के तहत 'क्रूरता' (Cruelty) के आधार पर तलाक की याचिका दायर कर सकती हैं।\n*   शारीरिक हिंसा और दहेज की मांग को अदालतों ने 'क्रूरता' माना है।\n*   तलाक की प्रक्रिया के दौरान आप 'स्थायी गुजारा भत्ता' (Permanent Alimony) की मांग भी कर सकती हैं।\n\n### आपको अभी क्या करना चाहिए? (Action Plan)\n\n1.  **सबूत इकट्ठा करें:** यदि आपके पास चोट के निशान हैं, तो तुरंत सरकारी अस्पताल में जाकर अपना मेडिकल चेकअप कराएं और 'मेडिको-लीगल केस' (MLC) रिपोर्ट बनवाएं। यह कोर्ट में बहुत मजबूत सबूत होता है। इसके अलावा, अगर कोई चैट, कॉल रिकॉर्डिंग या गवाह हैं, तो उन्हें सुरक्षित रखें।\n2.  **हेल्पलाइन नंबर:** आप **181 (महिला हेल्पलाइन)** पर कॉल करके तुरंत मदद मांग सकती हैं।\n3.  **वकील से मिलें:** अपने क्षेत्र के किसी अनुभवी वकील से मिलें जो पारिवारिक मामलों (Family Law) के विशेषज्ञ हों। वे आपकी स्थिति के अनुसार FIR और तलाक की याचिका तैयार करने में मदद करेंगे।\n4.  **सुरक्षा:** यदि आपको अपनी जान का खतरा महसूस हो रहा है, तो तुरंत अपने मायके या किसी सुरक्षित स्थान पर चली जाएं।\n\n**महत्वपूर्ण सलाह:**\nकानूनी लड़ाई लंबी हो सकती है, इसलिए अपना मानसिक और शारीरिक स्वास्थ्य सबसे पहले रखें। आप अकेली नहीं हैं, कानून आपकी सुरक्षा के लिए बना है।\n\n*अस्वीकरण: यह सलाह केवल सामान्य जानकारी के लिए है। कृपया अपने मामले के सटीक विवरण के साथ किसी स्थानीय वकील से व्यक्तिगत रूप से परामर्श लें।*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 4.84,
+  "usage": {
+   "completion_tokens": 773,
+   "prompt_tokens": 51,
+   "total_tokens": 971
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [],
+  "violations": [
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "IPC",
+    "why": "Indian Penal Code, 1860 was replaced by the Bharatiya Nyaya Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nyaya Sanhita, 2023 (BNS)"
+   },
+   {
+    "type": "outdated_law",
+    "text": "CrPC",
+    "why": "Code of Criminal Procedure, 1973 was replaced by the Bharatiya Nagarik Suraksha Sanhita, 2023 with effect from 1 July 2024",
+    "suggestion": "Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS)"
+   },
+   {
+    "type": "unknown_section",
+    "text": "धारा 13(1)(ia)",
+    "why": "Not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Domestic Violence Act, 2005",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Dowry Prohibition Act",
+    "why": "This law is not in the verified library."
+   },
+   {
+    "type": "unknown_act",
+    "text": "Hindu Marriage Act, 1955",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "unsupported_number",
+    "text": "3 साल",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}

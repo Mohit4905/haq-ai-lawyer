@@ -1,0 +1,98 @@
+{
+ "id": "T11_cheque_deadline_missed",
+ "reply": "Yes, you can still file a case, but **you must act immediately.**\n\nUnder the **Negotiable Instruments Act, 1881 (NI Act)**, there is a strict timeline you must follow to initiate legal proceedings under Section 138.\n\nHere is the breakdown of the timeline and the steps you need to take:\n\n### 1. The Statutory Timeline\nAccording to Section 138 of the NI Act, the process follows a specific sequence:\n\n*   **Step 1: Receipt of Cheque Return Memo:** You received the memo on **10 August 2026**.\n*   **Step 2: Sending the Legal Notice:** You are required to send a formal legal notice to the drawer of the cheque within **30 days** of receiving the information/memo from the bank regarding the dishonour.\n    *   *Calculation:* Since your memo is dated 10 August 2026, your deadline to send the legal notice is **9 September 2026**.\n\n### 2. Can you still file?\n**Yes, provided you send the legal notice before the 30-day window expires.**\n\nIf you send the notice on or before 9 September 2026, you are within the legal limit. If you miss this 30-day window, you lose the right to file a case under Section 138 of the NI Act.\n\n### 3. The Process After Sending the Notice\nOnce you send the notice:\n1.  **Wait for 15 Days:** The drawer of the cheque has **15 days** from the date of *receipt* of your legal notice to make the payment.\n2.  **File the Complaint:** If the drawer fails to pay the amount within those 15 days, the \"cause of action\" arises. You then have **30 days** from the expiry of that 15-day period to file a criminal complaint in the appropriate Magistrate’s Court.\n\n### Important Advice:\n*   **Do not delay:** Since you are already nearing the end of the 30-day window (from the date of the memo), you should consult a lawyer or draft and send a formal legal notice via Registered Post/Speed Post immediately.\n*   **Keep Proof:** Ensure you keep the original postal receipts and the tracking report showing the delivery of the notice. These are crucial pieces of evidence for your court case.\n*   **Check the Cheque Validity:** Ensure the cheque was presented within its validity period (usually 3 months from the date on the cheque).\n\n**Recommendation:**\nSince you are close to the deadline, **contact a lawyer today** to draft the legal notice. Do not wait until the last day, as postal delays or technical issues could cause you to miss the statutory deadline, which would make your case legally unsustainable under Section 138.\n\n***Disclaimer:** I am an AI, not a practicing lawyer. This information is for educational purposes and does not constitute formal legal advice. Laws and procedures can be subject to specific judicial interpretations. Please consult with a qualified advocate in your jurisdiction to handle the filing of your legal notice and subsequent complaint.*",
+ "model": {
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "latency_s": 3.89,
+  "usage": {
+   "completion_tokens": 667,
+   "prompt_tokens": 88,
+   "total_tokens": 902
+  },
+  "fallback_attempts": []
+ },
+ "guard_audit": {
+  "verified": [
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ],
+   [
+    "Section 138",
+    "Negotiable Instruments Act, 1881"
+   ]
+  ],
+  "violations": [
+   {
+    "type": "unknown_act",
+    "text": "NI Act",
+    "why": "This law is not in the verified library."
+   }
+  ],
+  "warnings": [
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "ambiguous_section",
+    "text": "Section 138",
+    "why": "Section mentioned without naming the Act."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30-day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30-day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 Days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30 days",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "15-day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "30-day",
+    "why": "Time period not found in the verified library or calculations."
+   },
+   {
+    "type": "unsupported_number",
+    "text": "3 months",
+    "why": "Time period not found in the verified library or calculations."
+   }
+  ],
+  "ok": false
+ },
+ "must_not_hits": []
+}
