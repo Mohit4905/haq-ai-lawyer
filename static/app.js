@@ -126,6 +126,8 @@ function guardChip(g) {
 
 function renderBotExtras(t) {
   const box = document.createElement("div");
+  if (t.court && typeof courtCard === "function") { box.appendChild(courtCard(t.court)); return box; }
+  if (t.order && typeof orderExtras === "function") return orderExtras(t);
   if (t.doc) {  // intro text (in the bubble) -> the document -> the questions for its blanks
     box.appendChild(docCard(t.doc));
     if (t.ask) { const a = document.createElement("div"); a.className = "doc-ask"; a.innerHTML = md(t.ask); box.appendChild(a); }
@@ -198,16 +200,20 @@ function renderAll() {
   let ti = 0;
   S.messages.forEach(m => {
     if (m.role === "user") addMsg("user", esc(m.content));
-    else { const t = VIEW.turns[ti++] || { reply: m.content }; addMsg("bot", md(t.doc && t.intro != null ? t.intro : m.content), renderBotExtras(t)); }
+    else { const t = VIEW.turns[ti++] || { reply: m.content }; addMsg("bot", md(t.intro != null ? t.intro : m.content), renderBotExtras(t)); }
   });
   renderCase(VIEW.turns[VIEW.turns.length - 1]);
   renderDocPanel([...VIEW.turns].reverse().find(t => t.doc)?.doc);
 }
 
 /* ---------------- send */
+// messages sent while the app is still loading wait for it (otherwise the startup render would wipe them)
+let markAppReady; const appReady = new Promise(r => (markAppReady = r));
 async function send(text) {
   text = (text || "").trim();
   if (!text || busy) return;
+  await appReady;
+  if (typeof tryCourtFromChat === "function" && await tryCourtFromChat(text)) { $("#input").value = ""; autosize(); return; }  // a pasted CNR -> live case status
   busy = true; $("#send").disabled = true;
   const langPref = langInfo()[2] || "English";  // reply in the interface language the user picked, whatever they type in
   addMsg("user", esc(text));
@@ -591,12 +597,16 @@ window.addEventListener("DOMContentLoaded", async function init() {
   let sl = store.get("haq_lang", "en"); sl = legacy[sl] || sl; if (!STR[sl]) sl = "en"; $("#lang").value = sl;
   setTheme(document.documentElement.dataset.theme === "dark" ? "dark" : "light");
   applyI18n();
-  try { CONFIG = await (await fetch("/api/config")).json(); } catch { CONFIG = { providers: [] }; }
-  try { window.KB = await (await fetch("/api/kb")).json(); } catch { window.KB = []; }
+  const [cfg, kbList] = await Promise.all([
+    fetch("/api/config").then(r => r.json()).catch(() => ({ providers: [] })),
+    fetch("/api/kb").then(r => r.json()).catch(() => []),
+  ]);
+  CONFIG = cfg; window.KB = kbList;
   const ps = $("#provider");
   ps.innerHTML = (CONFIG.providers || []).map(p => `<option value="${esc(p.name)}">${esc(p.name)} · ${esc(p.main_model.split("/").pop())}</option>`).join("") || `<option value="">no model configured</option>`;
   const sp = store.get("haq_provider", CONFIG.primary); if ([...ps.options].some(o => o.value === sp)) ps.value = sp;
   Cases.load(); renderHelp(); renderAll(); renderCaseList(); renderEvidence();
+  markAppReady();
   if (window.initAuth) window.initAuth(CONFIG.supabase);
   $("#pfClose") && ($("#pfClose").onclick = () => $("#profileDlg").close());
 });

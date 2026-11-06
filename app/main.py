@@ -65,7 +65,7 @@ def _google_enabled() -> bool:
         return False
     if time.time() - _GOOGLE["t"] > 300:
         try:
-            r = httpx.get(f"{url}/auth/v1/settings", headers={"apikey": anon}, timeout=5)
+            r = httpx.get(f"{url}/auth/v1/settings", headers={"apikey": anon}, timeout=2.5)
             _GOOGLE["on"] = bool(r.json().get("external", {}).get("google"))
         except Exception:
             pass
@@ -167,6 +167,92 @@ def chat(inp: ChatIn):
 @app.post("/api/draft")
 def draft(inp: DraftIn):
     return documents.draft(inp.state, inp.doc_type, inp.doc_language, provider=inp.provider)
+
+
+class CourtCaseIn(BaseModel):
+    cnr: str
+    fresh: bool = False
+
+
+class CourtSearchIn(BaseModel):
+    name: str
+    state: str | None = None
+
+
+class CourtOrderIn(BaseModel):
+    cnr: str
+    file: str
+    case: dict = {}
+    language: str = "English"
+    script: str = "Latin"
+    provider: str | None = None
+
+
+class JudgmentsIn(BaseModel):
+    q: str
+
+
+_COURT_HITS: dict[str, list[float]] = {}
+
+
+def _court_ok(request: Request, limit: int = int(os.getenv("COURT_LIMIT_PER_HOUR", "40"))) -> bool:
+    """eCourts lookups cost credits: cap them per client (IP) per hour."""
+    import time
+
+    ip = (request.headers.get("x-forwarded-for") or "").split(",")[0].strip() or (request.client.host if request.client else "?")
+    now = time.time()
+    hits = [t for t in _COURT_HITS.get(ip, []) if now - t < 3600]
+    ok = len(hits) < limit
+    if ok:
+        hits.append(now)
+    _COURT_HITS[ip] = hits
+    return ok
+
+
+@app.get("/api/court/status")
+def court_status():
+    from . import courts
+
+    return courts.status()
+
+
+@app.post("/api/court/case")
+def court_case(inp: CourtCaseIn, request: Request):
+    from . import courts
+
+    if not _court_ok(request):
+        return {"error": "too_many"}
+    return courts.case(inp.cnr, fresh=inp.fresh)
+
+
+@app.post("/api/court/search")
+def court_search(inp: CourtSearchIn, request: Request):
+    from . import courts
+
+    if not _court_ok(request):
+        return {"error": "too_many"}
+    return courts.search(inp.name, inp.state)
+
+
+@app.post("/api/court/order")
+def court_order(inp: CourtOrderIn, request: Request):
+    """Order text (eCourts) + a plain-language summary that restates only the order."""
+    from . import courts
+
+    if not _court_ok(request):
+        return {"error": "too_many"}
+    o = courts.order_text(inp.cnr, inp.file)
+    if "error" in o:
+        return o
+    s = courts.explain_order(o["markdown"], inp.case, inp.language, inp.script, inp.provider)
+    return {"markdown": o["markdown"], **s}
+
+
+@app.post("/api/court/judgments")
+def court_judgments(inp: JudgmentsIn):
+    from . import courts
+
+    return courts.judgments(inp.q)
 
 
 class FillIn(BaseModel):
