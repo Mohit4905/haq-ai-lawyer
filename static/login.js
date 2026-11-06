@@ -40,21 +40,23 @@
   $("#guestBtn").onclick = () => { store.set("haq_mode", "guest"); location.replace("/"); };
 
   let sb = null, cfg = {};
+  let markReady; const ready = new Promise(r => (markReady = r));
   (async () => {
     try { cfg = (await (await fetch("/api/config")).json()).supabase || {}; } catch { cfg = {}; }
     if (!cfg.url || !cfg.anon_key || !window.supabase) {
       document.querySelectorAll("#googleBtn, .or, #loginForm, #signupForm, .auth-tabs").forEach(el => el.classList.add("hidden"));
       msg(tr("accounts_off"), true);
-      return;
+      markReady(); return;
     }
     sb = window.supabase.createClient(cfg.url, cfg.anon_key, { auth: { persistSession: true, detectSessionInUrl: true } });
+    markReady();
     const { data } = await sb.auth.getSession();
     if (data.session) { goApp(); return; }
     sb.auth.onAuthStateChange((_e, s) => { if (s) goApp(); });
   })();
 
   $("#googleBtn").onclick = async () => {
-    if (!sb) return;
+    await ready; if (!sb) return;
     if (!cfg.google) { msg(tr("google_off"), true); return; }  // set SUPABASE_GOOGLE_LOGIN=1 once Google is enabled in Supabase
     msg("…", false);
     const { error } = await sb.auth.signInWithOAuth({ provider: "google", options: { redirectTo: location.origin + "/" } });
@@ -62,8 +64,9 @@
   };
 
   $("#loginForm").onsubmit = async e => {
-    e.preventDefault(); if (!sb) return;
+    e.preventDefault();
     const f = e.target; busy(f, true); msg("…", false);
+    await ready; if (!sb) { busy(f, false); msg(tr("accounts_off"), true); return; }
     const { error } = await sb.auth.signInWithPassword({ email: $("#liEmail").value.trim().toLowerCase(), password: $("#liPass").value });
     busy(f, false);
     if (error) { msg(/invalid/i.test(error.message) ? tr("bad_login") : "⚠️ " + error.message, true); return; }
@@ -71,7 +74,8 @@
   };
 
   $("#signupForm").onsubmit = async e => {
-    e.preventDefault(); if (!sb) return;
+    e.preventDefault();
+    await ready; if (!sb) { msg(tr("accounts_off"), true); return; }
     const f = e.target, email = $("#suEmail").value.trim().toLowerCase(), password = $("#suPass").value, first_name = $("#suName").value.trim();
     if (password.length < 8) { msg(tr("pw_rule"), true); return; }
     busy(f, true); msg(tr("creating"), false);
