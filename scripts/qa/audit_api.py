@@ -1,4 +1,4 @@
-"""API robustness + security audit against a local server (no paid calls: eCourts/kanoon go to the fake server)."""
+"""API robustness + security audit against a local server (no paid calls: eCourts calls go to the fake server)."""
 import io
 import json
 import sys
@@ -35,7 +35,6 @@ cases = [
     ("court order: '..' filename", "/api/court/order", {"cnr": "DLCT010012342025", "file": ".."}, {200}),
     ("court order: path traversal", "/api/court/order", {"cnr": "DLCT010012342025", "file": "../../case/DLCT010012342025"}, {200}),
     ("court search: 1-letter name", "/api/court/search", {"name": "a"}, {200}),
-    ("judgments: empty query", "/api/court/judgments", {"q": ""}, {200}),
 ]
 for name, path, body, okcodes in cases:
     r = P(path, json=body)
@@ -69,10 +68,6 @@ ok("explain: corrupt PDF -> 422 with a clear message (not 500)", r.status_code =
 r = P("/api/docx", json={"title": "जमा राशि वापसी नोटिस", "body_markdown": "# नोटिस\nनमस्ते"})
 ok("docx: Hindi title downloads (200, UTF-8 filename)", r.status_code == 200 and "filename*=UTF-8''" in r.headers.get("content-disposition", ""), r.headers.get("content-disposition", "")[:90])
 
-# --- third-party data: javascript: URL stripped server-side
-r = P("/api/court/judgments", json={"q": "evil test"}).json()
-u = (r.get("results") or [{}])[0].get("url")
-ok("judgments: javascript: URL from the third party is dropped", u is None, str(u))
 
 # --- notice deadline parsing (used to OverflowError -> 500 on every turn)
 sys.path.insert(0, sys.argv[2])

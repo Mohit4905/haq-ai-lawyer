@@ -26,7 +26,7 @@ _LIMITS = {
     "/api/explain": ("ai", int(os.getenv("AI_LIMIT_PER_HOUR", "60"))), "/api/evidence": ("ai", int(os.getenv("AI_LIMIT_PER_HOUR", "60"))),
     "/api/practice": ("ai", int(os.getenv("AI_LIMIT_PER_HOUR", "60"))), "/api/transcribe": ("ai", int(os.getenv("AI_LIMIT_PER_HOUR", "60"))),
     "/api/court/case": ("court", int(os.getenv("COURT_LIMIT_PER_HOUR", "40"))), "/api/court/search": ("court", int(os.getenv("COURT_LIMIT_PER_HOUR", "40"))),
-    "/api/court/order": ("court", int(os.getenv("COURT_LIMIT_PER_HOUR", "40"))), "/api/court/judgments": ("kanoon", 60),
+    "/api/court/order": ("court", int(os.getenv("COURT_LIMIT_PER_HOUR", "40"))),
     "/api/signup": ("signup", 10), "/api/docx": ("docx", 120),
 }
 _PAID = ("/api/court/case", "/api/court/search", "/api/court/order")
@@ -273,10 +273,6 @@ class CourtOrderIn(BaseModel):
     provider: str | None = None
 
 
-class JudgmentsIn(BaseModel):
-    q: str
-
-
 @app.get("/api/court/status")
 def court_status():
     from . import courts
@@ -308,13 +304,6 @@ def court_order(inp: CourtOrderIn):
         return o
     s = _soft(courts.explain_order(o["markdown"], inp.case, inp.language, inp.script, inp.provider))
     return {"markdown": o["markdown"], **s}
-
-
-@app.post("/api/court/judgments")
-def court_judgments(inp: JudgmentsIn):
-    from . import courts
-
-    return courts.judgments(inp.q)
 
 
 class FillIn(BaseModel):

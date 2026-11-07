@@ -204,11 +204,6 @@ with sync_playwright() as p:
     ok("track case", "malformed CNR is refused with a message", any("CNR" in m for _, m in dialogs), str(dialogs))
     pg.click(".court-more summary"); pg.fill("#partyInput", "ab"); pg.click("#partyForm button"); time.sleep(0.3)
     ok("track case", "party search with < 3 letters does nothing", pg.inner_text("#partyResults").strip() == "")
-    pg.fill("#judInput", "ab"); pg.click("#judForm button"); time.sleep(0.3)
-    ok("track case", "judgment search with < 3 letters does nothing", pg.inner_text("#judResults").strip() == "")
-    pg.fill("#judInput", "security deposit"); pg.click("#judForm button")
-    pg.wait_for_function("document.querySelector('#judResults').innerText.trim().length > 0 && !document.querySelector('#judResults .typing')", timeout=40_000)
-    ok("track case", "judgment search returns results or a clear 'unavailable' message", len(pg.inner_text("#judResults")) > 10, pg.inner_text("#judResults")[:90])
     pg.screenshot(path=OUT / "A2_trackcase.png")
 
     # Get help

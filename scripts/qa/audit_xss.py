@@ -1,4 +1,4 @@
-"""XSS: hostile HTML in chat text, model replies, case titles, court data and judgments must never execute."""
+"""XSS: hostile HTML in chat text, model replies, case titles, and court data must never execute."""
 import sys
 import time
 
@@ -33,8 +33,6 @@ with sync_playwright() as p:
     pg.click("#toolClose")
     pg.fill("#input", "XSSX 01 000001 2025"); pg.click("#send")
     pg.wait_for_selector(".court-card", timeout=30_000); time.sleep(0.5)
-    pg.click(".side-nav .tab[data-tab=court]"); pg.fill("#judInput", "evil query"); pg.click("#judForm button")
-    pg.wait_for_selector("#judResults .cr-item", timeout=30_000); time.sleep(0.5)
     xss = pg.evaluate("window.__xss")
     imgs = pg.evaluate("[...document.querySelectorAll('img')].filter(i => (i.getAttribute('src')||'') === 'x').length")
     scripts = pg.evaluate("[...document.querySelectorAll('#chat script, #toolBody script, #caseList script')].length")
@@ -42,7 +40,7 @@ with sync_playwright() as p:
     ok("no injected handler ran (window.__xss unset)", xss is None, str(xss))
     ok("no injected <img src=x> elements anywhere", imgs == 0, str(imgs))
     ok("no injected <script> elements", scripts == 0, str(scripts))
-    ok("no javascript: links (chat markdown, judgments)", jslinks == 0, str(jslinks))
+    ok("no javascript: links (chat markdown)", jslinks == 0, str(jslinks))
     ok("hostile text shown as text (escaped)", "onerror" in pg.inner_text("body"))
     ok("no JS errors", not errs, "; ".join(errs)[:200])
     b.close()

@@ -1,7 +1,7 @@
-/* Court case tracking (eCourtsIndia) and past judgments (kanoon.dev pilot).
+/* Court case tracking (eCourtsIndia).
    Case status, hearings and orders appear in the main chat as a court card; "Explain" on an
    order adds a plain-language summary of that order to the chat. */
-let COURT = { ecourts: false, kanoon: true };
+let COURT = { ecourts: false };
 const COURT_SCRIPT = { Hindi: "Devanagari", Marathi: "Devanagari", Bengali: "Bengali", Tamil: "Tamil", Telugu: "Telugu", Kannada: "Kannada", Malayalam: "Malayalam", Gujarati: "Gujarati", Punjabi: "Gurmukhi", Odia: "Odia", Urdu: "Arabic" };
 const CNR_FIND = /\b([A-Za-z]{4})[\s\-]?(\d{2})[\s\-]?(\d{6})[\s\-]?(\d{4})\b/;
 const ICON_COURT = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21v-9M9.5 21v-9M14.5 21v-9M19 21v-9M2.5 9.5L12 4l9.5 5.5z"/></svg>`;
@@ -126,7 +126,7 @@ function orderExtras(t) {
   return box;
 }
 
-/* ---------- panel: search by party name, past judgments */
+/* ---------- panel: search by party name */
 async function partySearch(name) {
   const box = $("#partyResults");
   box.innerHTML = `<div class="empty small">${esc(tr("court_searching"))} <span class="typing"><i></i><i></i><i></i></span></div>`;
@@ -137,17 +137,6 @@ async function partySearch(name) {
       <button class="ghost small" type="button" data-i="${i}">${esc(tr("court_track"))}</button></div>`).join("")
     : `<p class="small muted">${esc(tr("court_none"))}</p>`;
   box.querySelectorAll("button[data-i]").forEach(b => b.onclick = () => { const x = r.results[+b.dataset.i]; trackCase(x.cnr, tr("court_track_q").replace("{cnr}", x.cnr)); });
-}
-
-async function judgmentSearch(q) {
-  const box = $("#judResults");
-  box.innerHTML = `<div class="empty small">${esc(tr("court_searching"))} <span class="typing"><i></i><i></i><i></i></span></div>`;
-  const r = await api("/api/court/judgments", { q });
-  if (r.error) { box.innerHTML = `<p class="small bad-text">${esc(r.error === "unavailable" || r.error === "unreachable" ? tr("court_jud_down") : courtErr(r.error))}</p>`; return; }
-  box.innerHTML = r.results.length ? r.results.map(x => `<div class="cr-item">${x.url && /^https?:\/\//i.test(x.url) ? `<a href="${esc(x.url)}" target="_blank" rel="noopener"><b>${esc(x.title)}</b></a>` : `<b>${esc(x.title)}</b>`}
-      <span class="small muted">${esc([x.court, x.date ? courtDate(x.date) : ""].filter(Boolean).join(" · "))}</span>
-      ${x.snippet ? `<span class="small">${esc(x.snippet)}</span>` : ""}</div>`).join("") + `<p class="tiny muted">${esc(r.source || "")}</p>`
-    : `<p class="small muted">${esc(tr("court_jud_none"))}</p>`;
 }
 
 // a CNR typed into the chat is tracked directly
@@ -170,6 +159,4 @@ document.addEventListener("DOMContentLoaded", async () => {
     $("#cnrInput").value = "";
     trackCase(v, tr("court_track_q").replace("{cnr}", v));
   };
-  $("#partyForm").onsubmit = e => { e.preventDefault(); const v = $("#partyInput").value.trim(); if (v.length >= 3) partySearch(v); };
-  $("#judForm").onsubmit = e => { e.preventDefault(); const v = $("#judInput").value.trim(); if (v.length >= 3) judgmentSearch(v); };
-});
+  $("#partyForm").onsubmit = e => { e.preventDefault(); const v = $("#partyInput").value.trim(); if (v.length >= 3) partySearch(v); };});

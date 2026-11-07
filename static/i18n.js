@@ -494,18 +494,17 @@ Object.assign(window.HAQ_I18N["pa"], { settings: "ਸੈਟਿੰਗਾਂ", acc
 
 /* court case tracking (English; other languages fall back to these until translated) */
 Object.assign(window.HAQ_I18N["en"], {
-  t_court: "Track case", back_chat: "Back to chat", court_h1: "Track a court case", court_h2: "Past judgments",
+  t_court: "Track case", back_chat: "Back to chat", court_h1: "Track a court case",
   court_note: "Enter the 16-character CNR number from your case papers or the eCourts website. Status, next hearing, orders and judgments appear in the chat. You can also paste a CNR straight into the chat.",
   court_track: "Track", court_search: "Search", court_by_name: "Don't know the CNR? Search by party name", court_party_ph: "Name of a party, e.g. your full name",
   court_official: "Or find your CNR on the official eCourts website ↗", court_off: "Live case tracking isn't switched on yet.",
-  court_jud_note: "Search earlier court judgments on a topic (kanoon.dev pilot: a small sample, not a complete database).", court_jud_ph: "e.g. security deposit refund",
   court_intro: "Here is the latest from the court record for CNR {cnr}.", court_refreshed: "Refreshed the court record for CNR {cnr}.",
   court_track_q: "Track my court case: {cnr}", court_explain_q: "Explain the court's order: {label} ({date})",
   court_next: "Next hearing", court_decided: "Decided on", court_cal: "Add to calendar", court_court: "Court", court_no: "Court no.", court_judge: "Judge",
   court_case: "Case", court_filed: "Filed", court_filing_no: "Filing no.", court_pet: "Petitioner", court_res: "Respondent", court_adv: "Advocate", court_acts: "Acts / sections",
   court_last: "Last hearing", court_orders: "Orders and judgments", court_explain: "Explain", court_no_orders: "No orders uploaded yet.",
   court_hist: "Hearing history", court_source: "Source: eCourts record via eCourtsIndia", court_refresh: "Refresh",
-  court_reading: "Reading the order…", court_searching: "Searching…", court_none: "No cases found for this name.", court_jud_none: "No judgments found in the sample for this search.",
+  court_reading: "Reading the order…", court_searching: "Searching…", court_none: "No cases found for this name.",
   court_ai_note: "AI summary of the court's order. It only restates the order; read the original before acting on it.", court_full_order: "Read the full order",
   court_no_summary: "I couldn't summarise this order; the full text is below.",
   court_err_off: "Live court-case tracking isn't switched on yet (it needs an eCourtsIndia API key).", court_err_404: "No case found for this CNR. Check the number: 16 characters, e.g. DLHC010001232024.",
@@ -513,7 +512,6 @@ Object.assign(window.HAQ_I18N["en"], {
   court_err_credits: "The court-data credits have run out. Please try again later.", court_err_key: "The court-data service rejected our key. Please try again later.",
   court_err_busy: "The court-data service is busy. Please try again in a minute.", court_err_down: "The court-data service is not reachable right now. Please try again later.",
   court_err_notext: "The text of this order isn't available yet (the court may have uploaded only a scan).", court_err_limit: "Too many court lookups from this device. Please try again in an hour.",
-  court_jud_down: "The judgments service (kanoon.dev pilot) is temporarily unavailable. Please try again later.",
 });
 Object.assign(window.HAQ_I18N["hi"], { t_court: "केस ट्रैक करें", back_chat: "चैट पर वापस", court_h1: "कोर्ट केस ट्रैक करें", court_track: "ट्रैक करें", court_next: "अगली सुनवाई", court_decided: "फ़ैसले की तारीख़", court_explain: "समझाएँ", court_orders: "आदेश और फ़ैसले" });
 Object.assign(window.HAQ_I18N["hinglish"], { t_court: "Case track karein", back_chat: "Chat par wapas", court_h1: "Court case track karein", court_track: "Track karein", court_next: "Agli sunwai", court_decided: "Faisle ki tareekh", court_explain: "Samjhaiye", court_orders: "Orders aur faisle" });

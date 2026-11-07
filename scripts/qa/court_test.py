@@ -1,4 +1,4 @@
-"""Court tracking E2E against the fake eCourts server: CNR in chat -> card; panel track; order explain; party search; judgments; errors; reload."""
+"""Court tracking E2E against the fake eCourts server: CNR in chat -> card; panel track; order explain; party search; errors; reload."""
 import sys
 import time
 from pathlib import Path
@@ -50,12 +50,8 @@ with sync_playwright() as p:
     pg.click(".court-more summary"); pg.fill("#partyInput", "Priya Sharma"); pg.click("#partyForm button")
     pg.wait_for_selector("#partyResults .cr-item", timeout=30_000)
     ok("party-name search lists the case", "Priya Sharma vs Ramesh Gowda" in pg.inner_text("#partyResults"))
-    # 6. judgments search
-    pg.fill("#judInput", "security deposit refund"); pg.click("#judForm button")
-    pg.wait_for_selector("#judResults .cr-item", timeout=30_000)
-    ok("past judgments listed with source note", "A. Kumar vs B. Singh" in pg.inner_text("#judResults") and "pilot" in pg.inner_text("#judResults"))
     pg.screenshot(path=OUT / "c3_panel.png")
-    # 7. a normal message without CNR still goes to the chat model
+    # 6. a normal message without CNR still goes to the chat model
     ok("no JavaScript errors", not errs, "; ".join(errs)[:300])
     b.close()
 print(f"\n{sum(res)}/{len(res)} passed")

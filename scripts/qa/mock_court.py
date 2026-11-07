@@ -1,4 +1,4 @@
-"""Fake eCourtsIndia + kanoon.dev server returning the response shapes documented at
+"""Fake eCourtsIndia server returning the response shapes documented at
 ecourtsindia.com/api/docs (fields as listed there). For local tests only."""
 from fastapi import FastAPI, Header
 from fastapi.responses import JSONResponse
@@ -76,13 +76,3 @@ def search(litigants: str = ""):
     rows = [{"cnr": CNR, "caseType": "CS", "caseStatus": "PENDING", "filingDate": "2025-02-10", "nextHearingDate": "2026-12-03",
              "judges": [], "petitioners": ["Priya Sharma"], "respondents": ["Ramesh Gowda"], "courtCode": "DLCT01", "registrationNumber": "1234/2025"}] if "priya" in litigants.lower() else []
     return {"data": {"results": rows, "totalHits": len(rows), "page": 1, "pageSize": 10, "totalPages": 1, "hasNextPage": False, "facets": {}}, "meta": {"request_id": "r3"}}
-
-
-@app.get("/v1/search")
-def kanoon(q: str = "", limit: int = 5):
-    if "evil" in q:  # a compromised third party: javascript: link + HTML in fields
-        return {"results": [{"title": "<img src=x onerror=alert(1)>Evil", "court": "<b>X</b>", "date": "2020-01-01",
-                             "snippet": "<script>alert(1)</script>", "source_url": "javascript:alert(document.cookie)"}]}
-    return {"results": [{"id": "k1", "title": "A. Kumar vs B. Singh", "court": "KLHC01", "date": "2019-07-12",
-                         "snippet": "...the landlord cannot withhold the security deposit without proof of damage...", "source_url": "https://example.org/k1.pdf"}],
-            "next_offset": None}

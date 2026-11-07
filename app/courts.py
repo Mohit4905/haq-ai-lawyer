@@ -1,10 +1,8 @@
-"""Live court data: case status / hearings / orders (eCourtsIndia API) and related judgments
-(kanoon.dev pilot).
+"""Live court data: case status / hearings / orders (eCourtsIndia API).
 
 eCourtsIndia (https://ecourtsindia.com/api/docs) is a paid, credit-based API (free credits on
 signup; free for personal/academic use per its pricing FAQ). Set ECOURTS_API_KEY to enable it.
-Responses are cached in memory to save credits. kanoon.dev is a free pilot with a small
-historical sample of judgments; it needs no key.
+Responses are cached in memory to save credits.
 
 Nothing here is legal advice: the court's own record is shown as returned, and AI summaries of
 an order only restate what the order says.
@@ -34,12 +32,8 @@ def ecourts_key() -> str:
     return (os.getenv("ECOURTS_API_KEY") or "").strip()
 
 
-def kanoon_base() -> str:
-    return (os.getenv("KANOON_BASE") or "https://api.kanoon.dev").rstrip("/")
-
-
 def status() -> dict:
-    return {"ecourts": bool(ecourts_key()), "kanoon": True}
+    return {"ecourts": bool(ecourts_key())}
 
 
 def normalise_cnr(s: str) -> str:
@@ -211,61 +205,3 @@ def explain_order(order_md: str, case_info: dict, language: str = "English", scr
     except LLMError as e:
         return {"error": str(e)}
     return {"summary": res.text.strip(), "model": res.meta()}
-
-
-# ------------------------------------------------------------------ kanoon.dev (pilot)
-def _first(d: dict, *keys):
-    for k in keys:
-        v = d.get(k)
-        if v not in (None, "", []):
-            return v
-    return None
-
-
-def _safe_url(u) -> str | None:
-    """Only http(s) links from a third-party API reach an href (a javascript: URL would be XSS on click)."""
-    u = str(u or "").strip()
-    return u if re.match(r"^https?://[^\s\"'<>]+$", u, re.I) else None
-
-
-def judgments(q: str, limit: int = 5) -> dict:
-    """Related judgments from the kanoon.dev pilot (small historical sample, free, no key).
-    Field names are read defensively because the pilot's schema is not fully documented."""
-    q = re.sub(r"\s+", " ", q or "").strip()[:500]
-    if len(q) < 3:
-        return {"error": "bad_request"}
-    try:
-        r = httpx.get(kanoon_base() + "/v1/search", params={"q": q, "limit": max(1, min(limit, 10))}, timeout=20,
-                      headers={"User-Agent": "Haq legal-help (student project)", "Accept": "application/json"})
-    except httpx.HTTPError:
-        return {"error": "unreachable"}
-    if r.status_code == 429:
-        return {"error": "rate_limited"}
-    if r.status_code >= 500:
-        return {"error": "unavailable"}
-    if r.status_code >= 400:
-        return {"error": "bad_request"}
-    try:
-        body = r.json()
-    except ValueError:
-        return {"error": "unavailable"}
-    items = _first(body, "results", "items", "data", "documents") if isinstance(body, dict) else body
-    if isinstance(items, dict):
-        items = _first(items, "results", "items", "documents") or []
-    rows = []
-    for it in items or []:
-        if not isinstance(it, dict):
-            continue
-        doc = it.get("document") if isinstance(it.get("document"), dict) else {}
-        merged = {**doc, **it}
-        snippet = _first(merged, "snippet", "headline", "excerpt", "text", "matching_text", "highlight")
-        if isinstance(snippet, list):
-            snippet = " … ".join(str(s) for s in snippet[:2])
-        rows.append({
-            "title": _first(merged, "title", "case_title", "name") or "Untitled document",
-            "court": _first(merged, "court_name", "court", "court_code"),
-            "date": _first(merged, "date", "decision_date", "judgment_date", "decided_on"),
-            "snippet": re.sub(r"<[^>]+>", "", str(snippet or ""))[:400],
-            "url": _safe_url(_first(merged, "source_url", "matching_page_url", "document_url", "url")),
-        })
-    return {"results": rows, "source": "kanoon.dev pilot (small historical sample; not a complete database)"}

@@ -88,7 +88,7 @@ App: <a href="https://haq-46bx.onrender.com">haq-46bx.onrender.com</a> · Code: 
 <li><b>The guard checks citations, not reasoning.</b> A wrong procedural claim slipped through: "bail is applied for in the court that issued the FIR" (police register FIRs). Fluent but wrong advice without any citation is the main residual risk.</li>
 <li>The regex guard can miss oddly phrased references, and blocks real sections outside the library (over-strict by design).</li>
 <li><b>Uncited generalisations and rules stretched beyond their scope</b>, more often in the lawyer style: "the airline can't force a credit shell" (plausible, unverified), the e-commerce 48-hour rule applied to a possibly offline purchase, an invented repainting cost. Fix: claim-level grounding (each legal sentence tagged to a library id) and "applies when" conditions on entries.</li>
-<li>Small library; no case law yet; RERA and state rules not modelled; free-tier limits (about 40 full answers a day on the main model) push latency to 7–16s. The kanoon.dev judgments search is built but unverified (its pilot API was down).</li>
+<li>Small library; no case law yet; RERA and state rules not modelled; free-tier limits (about 40 full answers a day on the main model) push latency to 7–16s. A judgments search (kanoon.dev pilot) was removed because its API never responded.</li>
 </ul></div>
 
 <h2>6. Scale and cost</h2>
