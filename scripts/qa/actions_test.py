@@ -144,12 +144,23 @@ with sync_playwright() as p:
     ok("cancel -> prompt unchanged", users().nth(0).locator(".bubble").inner_text() == P[0] and pg.locator(".edit-box").count() == 0)
     users().nth(0).hover(); users().nth(0).locator(".act[aria-label='Edit message']").click(); time.sleep(0.2)
     pg.fill(".edit-box textarea", "My landlord kept my deposit of 50000"); pg.click(".edit-save")
+    time.sleep(0.1)  # the fake reply takes 0.4 s: the editor must already be closed
+    # (the editor closes synchronously in the click handler, before the request is even sent)
+    st = [pg.locator(".edit-box").count(), users().nth(0).locator(".bubble").inner_text()]
+    ok("send closes the editor at once and shows the edited text", st[0] == 0 and st[1] == "My landlord kept my deposit of 50000", str(st))
     pg.wait_for_function("!document.querySelector('#chat .msg.bot .typing') && !document.querySelector('.edit-box')", timeout=20_000); time.sleep(0.3)
     a2 = pg.evaluate("S.messages.map(m => [m.id, m.content])")
     ok("edited prompt sent", chat_calls[-1] == "My landlord kept my deposit of 50000")
     ok("prompt 1 + reply 1 updated in place; others untouched; same ids",
        a2[0][1] == "My landlord kept my deposit of 50000" and "50000" in a2[1][1] and a2[2:] == after[2:] and [x[0] for x in a2] == [x[0] for x in after])
     ok("edited exchange shows 2 versions", bots().nth(0).locator(".act-ver-n").inner_text() == "2/2")
+
+    # Enter key saves too; a failed request puts the original text back
+    users().nth(2).hover(); users().nth(2).locator(".act[aria-label='Edit message']").click(); time.sleep(0.2)
+    pg.fill(".edit-box textarea", "FAIL"); pg.press(".edit-box textarea", "Enter"); time.sleep(0.1)
+    ok("Enter closes the editor at once", pg.locator(".edit-box").count() == 0)
+    pg.wait_for_function("!document.querySelector('#chat .msg.bot .typing')", timeout=20_000); time.sleep(0.3)
+    ok("failed edit -> original prompt back, error shown", users().nth(2).locator(".bubble").inner_text() == P[2] and "Couldn't" in pg.inner_text("#toast"))
 
     # more menu
     bots().nth(2).locator(".act-more").click(); time.sleep(0.2)

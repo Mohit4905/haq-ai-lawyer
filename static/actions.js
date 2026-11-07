@@ -317,10 +317,13 @@ function startEdit(uid) {
   const save = async () => {
     const v = ta.value.trim();
     if (!v || v === u.content) { close(); return; }
-    box.querySelector(".edit-save").disabled = true;
-    const ok = await regenerate(r.id, v);
+    // close the editor at once and show the edited text; the reply loads below (user feedback 7 Nov:
+    // the box stayed open until the whole answer arrived)
+    const old = u.content;
     close();
-    if (!ok) refreshBar(uid);
+    bub.textContent = v;
+    const ok = await regenerate(r.id, v);
+    if (!ok) { bub.textContent = old; refreshBar(uid); }  // not sent: back to the original text
   };
   box.querySelector(".edit-save").onclick = save;
   ta.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); save(); } if (e.key === "Escape") close(); });
