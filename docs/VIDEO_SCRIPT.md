@@ -16,7 +16,7 @@ Rehearse once, then record in one take. Talk normally; don't read it word for wo
 "I picked Problem 2. Most people give up on small legal problems like a deposit, a refund or unpaid salary. The danger with an AI lawyer is that it makes up law with total confidence. So Haq answers like a lawyer, but it can only cite law I've checked against official sources, and code checks every reply before you see it."
 
 **0:20–0:55 A lawyer-style answer and a draft**
-- Paste the deposit message. Point at *My view, Law on your side, What they will say, What I would do*. Click a law chip: "every section links to its official source."
+- Paste the deposit message. Point at its view in the first lines, the next step with a deadline, and the question it asks about the agreement. Scroll to "Law you can cite" and click a law chip: "every section links to its official source."
 - Click **Draft: Deposit refund notice**. The notice appears in the chat with questions for the missing details. Paste the answers and the blanks fill in. Click **Word**.
 
 **0:55–1:20 Practice for court**
