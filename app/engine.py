@@ -186,8 +186,9 @@ def turn(state: dict | None, message: str, provider: str | None = None, today: d
         case.setdefault("approximate", [])
         case["approximate"] = sorted(set(case["approximate"]) | set(approx))
 
-    # 3. retrieve verified law + compute deadlines from known facts
-    entries = kb.retrieve(cat)
+    # 3. retrieve verified law (the category's set + the provisions for the topics in the question) + deadlines
+    prev_user = next((m["content"] for m in reversed(_convo(state)) if m.get("role") == "user"), "")
+    entries = kb.retrieve_for(cat, message + "\n" + prev_user[:500])
     allowed = {e["id"] for e in entries}
     calc = rules.compute(cat, case["facts"], today)
     comp = rules.completeness(cat, case["facts"])
@@ -359,6 +360,13 @@ def turn(state: dict | None, message: str, provider: str | None = None, today: d
         reply = intent.LEAK_REPLY.get(intent.lang_key(case.get("language"), case.get("script")) or "en")
         out["citations"], out["actions"] = [], []
         guard_log["leak_blocked"] = True
+
+    # 8d. every provision the guard verified in the text gets a clickable source chip, even if the model forgot to list it
+    named = []
+    for mention, act in ([] if guard_log.get("leak_blocked") else rep.verified):
+        key = kb.base_section(str(mention))
+        named += [e["id"] for e in entries if e["act"] == act and e.get("section") and kb.base_section(str(e["section"])) == key]
+    out["citations"] = list(dict.fromkeys([c for c in (out.get("citations") or []) if isinstance(c, str)] + named))
 
     # 9. assemble
     cited =[kb.public_entry(kb.by_id()[i]) for i in out.get("citations", []) if i in kb.by_id()]

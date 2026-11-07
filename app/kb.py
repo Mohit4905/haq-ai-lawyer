@@ -41,7 +41,8 @@ CATEGORY_IDS: dict[str, list[str]] = {
     "cheque_bounce": ["NIA1881-S138", "NIA1881-S142-1", "NIA1881-S142-2", "NIA1881-S143A", "NIA1881-S147", "FACT-RBI-CHEQUE-VALIDITY", "CPC1908-O37", *_AID],
     "notice": ["CPC1908-S80", "NIA1881-S138", "CPA2019-S69", "LIM1963-ART55", "COW2019-S45", "MTA2021-S11", "ICA1872-S73", *_AID],
     "cyber_fraud": ["FACT-CYBER-1930", "FACT-RBIOS2026-ELIGIBILITY", "FACT-RBIOS2026-COMPENSATION", "FACT-RBI-CMS-PORTAL", "BNSS2023-S173", "BNS2023-S318", *_AID],
-    "general_legal": [*_COI, *_CRIMINAL, "ICA1872-S73", "CPA2019-S2-7", "FACT-NCH-HELPLINE", "FACT-EJAGRITI-PORTAL", *_AID],
+    # topic retrieval (retrieve_for) adds the provisions for what was asked; this is the fallback set
+    "general_legal": ["COI-ART14", "COI-ART19", "COI-ART21", "COI-ART32", "COI-ART226", *_CRIMINAL, "ICA1872-S73", "CPA2019-S2-9", "FACT-NCH-HELPLINE", *_AID],
     "out_of_scope": [*_CRIMINAL, "COI-ART14", "COI-ART21", "COI-ART22", "COI-ART32", *_AID],
     "other": [*_AID],
 }
@@ -53,6 +54,49 @@ def retrieve(category: str | None, limit: int = 30) -> list[dict]:
     ids = CATEGORY_IDS.get(category or "other", CATEGORY_IDS["other"])
     idx = by_id()
     return [idx[i] for i in ids if i in idx][:limit]
+
+
+# Topic -> verified provisions. Matched against the user's question, so the law offered to the model
+# (and allowed past the guard) depends on what was asked, not only on the case's category.
+_FR = ["COI-ART12", "COI-ART14", "COI-ART15", "COI-ART16", "COI-ART17", "COI-ART18", "COI-ART19", "COI-ART19-2", "COI-ART20", "COI-ART21",
+       "COI-ART21A", "COI-ART22", "COI-ART23", "COI-ART24", "COI-ART25", "COI-ART26", "COI-ART29", "COI-ART30", "COI-ART32", "COI-ART226"]
+TOPICS: list[tuple[str, list[str]]] = [
+    (r"fundamental rights?|मौलिक अधिकार|maulik adhikar|part iii|constitution(?:al)? rights?", [*_FR, "COI-ART51A"]),
+    (r"fundamental dut|मौलिक कर्तव्य|51a", ["COI-ART51A"]),
+    (r"equal|discriminat|untouchab|caste|reservation|samanta|समानता|भेदभाव|abolition of titles|titles? from (?:a )?foreign",["COI-ART12", "COI-ART14", "COI-ART15", "COI-ART16", "COI-ART17", "COI-ART18"]),
+    (r"speech|expression|free(?:dom)? to|freedom of|protest|assembl|association|union|criticis|social media post|बोलने|अभिव्यक्ति", ["COI-ART19", "COI-ART19-2"]),
+    (r"life|liberty|privacy|jeevan|जीवन|स्वतंत्रता|article\s*21\b", ["COI-ART21"]),
+    (r"educat|school|shiksha|शिक्षा", ["COI-ART21A", "COI-ART29", "COI-ART30"]),
+    (r"arrest|warrant|custody|detain|detention|police station|giraftar|गिरफ्त|हिरासत|24 hours", ["BNSS2023-S35", "BNSS2023-S47", "BNSS2023-S48", "BNSS2023-S58", "COI-ART22", "COI-ART21", "BNSS2023-S173"]),
+    (r"self.?incriminat|double jeopardy|punished twice|retrospective|retroactive|witness against", ["COI-ART20"]),
+    (r"traffick|forced labour|bonded|begar|child labour|बाल श्रम", ["COI-ART23", "COI-ART24"]),
+    (r"religio|dharm|धर्म|worship|convert", ["COI-ART25", "COI-ART26"]),
+    (r"minorit|alpsankhyak|अल्पसंख्यक|language|culture", ["COI-ART29", "COI-ART30"]),
+    (r"writ|habeas|mandamus|certiorari|quo warranto|high court|supreme court|remed(?:y|ies) for (?:my )?rights", ["COI-ART32", "COI-ART226"]),
+    (r"theft|thief|stole|stolen|chori|chor\b|चोरी|चोर", ["BNS2023-S303", "BNSS2023-S173", "FACT-BNS-BNSS-COMMENCEMENT"]),
+    (r"\bfir\b|police complaint|एफआईआर|zero fir", ["BNSS2023-S173"]),
+    (r"cheat|fraud|scam|dhokha|धोखा|ठगी", ["BNS2023-S318", "FACT-CYBER-1930", "BNSS2023-S173"]),
+    (r"\bipc\b|\bcrpc\b|bns|bnss|new criminal law|evidence act|sakshya", ["FACT-BNS-BNSS-COMMENCEMENT", "BNS2023-S358", "BNSS2023-S531"]),
+    (r"consumer|refund|defect|warranty|deficien|e-?commerce|upbhokta|उपभोक्ता", ["CPA2019-S2-9", "CPA2019-S2-7", "CPA2019-S2-11", "CPA2019-S35", "CPA2019-S39", "CPA2019-S69", "FACT-NCH-HELPLINE", "FACT-EJAGRITI-PORTAL"]),
+    (r"divorce|talaq|talak|तलाक|judicial separation|living separately from (?:my )?(?:wife|husband|spouse)|mutual consent divorce|end (?:my|our|the) marriage",["HMA1955-S13", "HMA1955-S13B", "HMA1955-S14", "FACT-NALSA-HELPLINE"]),
+    (r"terminat|fired|sack|dismiss|retrench|lay ?off|notice period|naukri se nikal|नौकरी से निकाल", ["IRC2020-S70", "IRC2020-S2ZH", "IRC2020-S2ZR", "FACT-LABOUR-CODES-COMMENCEMENT", "ICA1872-S73"]),
+]
+
+
+def retrieve_for(category: str | None, text: str, limit: int = 34) -> list[dict]:
+    """The category's library plus the provisions for the topics named in the question.
+    Topic matches come first (they are what was asked about)."""
+    import re as _re
+
+    ids: list[str] = []
+    m = _re.findall(r"(?i)\barticle\s*(\d{1,3}[A-Z]?)", text or "")
+    ids += [f"COI-ART{n.upper()}" for n in m]  # "What does Article 21 say?"
+    for rx, lst in TOPICS:
+        if _re.search(rx, text or "", _re.I):
+            ids += lst
+    ids += CATEGORY_IDS.get(category or "other", CATEGORY_IDS["other"])
+    idx = by_id()
+    return [idx[i] for i in dict.fromkeys(ids) if i in idx][:limit]
 
 
 def render_for_prompt(entries: list[dict], max_plain: int = 330) -> str:
@@ -91,8 +135,10 @@ ACT_ALIASES: dict[str, list[str]] = {
     "Constitution of India": ["Constitution of India", "Indian Constitution", "Constitution", "भारत का संविधान", "संविधान"],
     "Commercial Courts Act, 2015": ["Commercial Courts Act"],
     "Industrial Relations Code, 2020": ["Industrial Relations Code", "IR Code"],
+    # "Industrial Relations Code" belongs to its own entries now (s.70 etc.), not to the commencement fact
     "Four Labour Codes (Code on Wages, 2019; Industrial Relations Code, 2020; Code on Social Security, 2020; Occupational Safety, Health and Working Conditions Code, 2020)": [
-        "Labour Codes", "Industrial Relations Code", "Code on Social Security", "Occupational Safety, Health and Working Conditions Code", "श्रम संहिता"],
+        "Labour Codes", "Code on Social Security", "Occupational Safety, Health and Working Conditions Code", "श्रम संहिता"],
+    "Hindu Marriage Act, 1955": ["Hindu Marriage Act", "HMA", "हिंदू विवाह अधिनियम", "हिन्दू विवाह अधिनियम"],
     "Four Labour Codes": ["Labour Codes"],
     "Bharatiya Nyaya Sanhita, 2023 / Bharatiya Nagarik Suraksha Sanhita, 2023": ["Bharatiya Nyaya Sanhita", "BNS", "Bharatiya Nagarik Suraksha Sanhita", "BNSS"],
     "Code on Wages (Central) Rules, 2026": ["Code on Wages (Central) Rules", "Central Rules"],

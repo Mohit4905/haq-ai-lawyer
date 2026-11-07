@@ -60,6 +60,11 @@ User messages: edit, share, copy. Replies: copy, like/dislike, read aloud, share
 Test: `scripts/qa/actions_test.py` (39 checks, chat API faked in the browser).
 Limits: edit/try again on an earlier exchange does not re-run the later exchanges (they were answered with the old text); drafts and court cards cannot be regenerated from their bar (use their own buttons).
 
+## Update 7 Nov 2026: Legal answers cite the governing provisions
+General legal answers now follow: In short → The law that applies (each provision named exactly, what it says, why it applies) → What it means for you → What you can do → Keep in mind. Retrieval adds the provisions for the topics in the question (`kb.TOPICS`), so citations depend on the question; every provision verified in the text gets an official-source chip. 21 verified entries added (`kb/research_topics_2026_11.json`), each read from an official PDF. The guard is unchanged in principle: a provision not in the library is still removed, and the answer says the exact provision could not be verified.
+Real-model test (`scripts/qa/citations_test.py`, the 10 questions from the request): see the latest `evals/outputs/*_citations/SUMMARY.md`. Found and fixed: the overclaim rule flagged "a right guaranteed by Article 14" (a repair call on every rights answer); fraud answers named no law (now BNSS s.173 and BNS s.318 are the citable core for fraud).
+Limits: the IT Act 2008 sections, the Special Marriage Act and property statutes are not in the library (no official text could be opened), so those answers stay general; court interpretations (e.g. the wider reading of Article 21) are described without naming judgments.
+
 ## Known limitations (not fixed)
 - **Accounts are created without proving email ownership** (server-side signup, done when Supabase's built-in email couldn't reach users). Now that Brevo email works, this could switch to email confirmation.
 - **Rate limits are in memory**, so they reset when the server restarts and are per instance. Fine for one free instance; production would use Redis.

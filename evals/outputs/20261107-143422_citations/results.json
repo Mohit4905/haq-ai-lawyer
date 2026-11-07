@@ -1,0 +1,1343 @@
+[
+ {
+  "question": "Explain the Right to Equality.",
+  "pass": true,
+  "checks": {
+   "no_error": true,
+   "legal": true,
+   "cites_required": true,
+   "cites_one_of": true,
+   "nothing_unrelated": true,
+   "guard_ok": true,
+   "explains": true,
+   "names_provisions_in_text": true
+  },
+  "cited": [
+   "COI-ART12",
+   "COI-ART14",
+   "COI-ART15",
+   "COI-ART16",
+   "COI-ART17",
+   "COI-ART18",
+   "COI-ART32",
+   "COI-ART226"
+  ],
+  "category": "general_legal",
+  "lawyer_level": "none",
+  "guard": {
+   "initial": {
+    "verified": [
+     [
+      "Article 14",
+      "Constitution of India"
+     ],
+     [
+      "Article 15",
+      "Constitution of India"
+     ],
+     [
+      "Article 16",
+      "Constitution of India"
+     ],
+     [
+      "Article 15",
+      "Constitution of India"
+     ],
+     [
+      "Article 17",
+      "Constitution of India"
+     ],
+     [
+      "Article 18",
+      "Constitution of India"
+     ],
+     [
+      "Article 226",
+      "Constitution of India"
+     ],
+     [
+      "Article 32",
+      "Constitution of India"
+     ],
+     [
+      "Article 12",
+      "Constitution of India"
+     ]
+    ],
+    "violations": [
+     {
+      "type": "overclaim",
+      "text": "guaranteed",
+      "why": "Don't promise or pre-judge the outcome; say what the facts suggest and what depends on evidence."
+     },
+     {
+      "type": "overclaim",
+      "text": "guarantees",
+      "why": "Don't promise or pre-judge the outcome; say what the facts suggest and what depends on evidence."
+     }
+    ],
+    "warnings": [
+     {
+      "type": "ambiguous_section",
+      "text": "Article 226",
+      "why": "Act not named; only Constitution of India has it."
+     },
+     {
+      "type": "ambiguous_section",
+      "text": "Article 12",
+      "why": "Act not named; only Constitution of India has it."
+     }
+    ],
+    "ok": false
+   },
+   "bad_ids": [],
+   "repaired": true,
+   "stripped": false,
+   "after_repair": {
+    "verified": [
+     [
+      "Article 14",
+      "Constitution of India"
+     ],
+     [
+      "Article 15",
+      "Constitution of India"
+     ],
+     [
+      "Article 16",
+      "Constitution of India"
+     ],
+     [
+      "Article 17",
+      "Constitution of India"
+     ],
+     [
+      "Article 18",
+      "Constitution of India"
+     ],
+     [
+      "Article 226",
+      "Constitution of India"
+     ],
+     [
+      "Article 32",
+      "Constitution of India"
+     ],
+     [
+      "Article 12",
+      "Constitution of India"
+     ]
+    ],
+    "violations": [],
+    "warnings": [
+     {
+      "type": "ambiguous_section",
+      "text": "Article 226",
+      "why": "Act not named; only Constitution of India has it."
+     },
+     {
+      "type": "ambiguous_section",
+      "text": "Article 12",
+      "why": "Act not named; only Constitution of India has it."
+     }
+    ],
+    "ok": true
+   },
+   "final": {
+    "verified": [
+     [
+      "Article 14",
+      "Constitution of India"
+     ],
+     [
+      "Article 15",
+      "Constitution of India"
+     ],
+     [
+      "Article 16",
+      "Constitution of India"
+     ],
+     [
+      "Article 17",
+      "Constitution of India"
+     ],
+     [
+      "Article 18",
+      "Constitution of India"
+     ],
+     [
+      "Article 226",
+      "Constitution of India"
+     ],
+     [
+      "Article 32",
+      "Constitution of India"
+     ],
+     [
+      "Article 12",
+      "Constitution of India"
+     ]
+    ],
+    "violations": [],
+    "warnings": [
+     {
+      "type": "ambiguous_section",
+      "text": "Article 226",
+      "why": "Act not named; only Constitution of India has it."
+     },
+     {
+      "type": "ambiguous_section",
+      "text": "Article 12",
+      "why": "Act not named; only Constitution of India has it."
+     }
+    ],
+    "ok": true
+   },
+   "language": {
+    "wanted": "Latin",
+    "got": "Latin",
+    "rewritten": false
+   },
+   "deadline_alerts_added": 0
+  },
+  "model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 4.07,
+   "usage": {
+    "completion_tokens": 649,
+    "prompt_tokens": 5358,
+    "total_tokens": 6116
+   },
+   "fallback_attempts": [
+    "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197456, Requested 5637. Please try again in 22m16.176s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_",
+    "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198125, Requested 5595. Please try again in 26m47.04s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_e",
+    "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199152, Requested 5344. Please try again in 32m22.272s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_li",
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_"
+   ]
+  },
+  "reply": "**In short:** The Right to Equality is a core principle in the Indian Constitution, setting out that every person is treated equally before the law and is protected from arbitrary discrimination by the State.\n\n**The law that applies:**\n* **Article 14, Constitution of India:** The State cannot deny any person equality before the law or the equal protection of the laws in India. It applies to every person, not only citizens.\n* **Article 15, Constitution of India:** The State cannot discriminate against a citizen only because of religion, race, caste, sex or place of birth. It also bars denying citizens access to shops, restaurants, hotels, places of entertainment, wells, roads and similar public places on these grounds.\n* **Article 16, Constitution of India:** All citizens get equal opportunity in jobs and appointments under the State. No citizen can be made ineligible or discriminated against for a government job only because of religion, race, caste, sex, descent, place of birth or residence.\n* **Article 17, Constitution of India:** Untouchability is abolished and practising it in any form is forbidden. Enforcing any disability arising out of untouchability is an offence punishable by law.\n* **Article 18, Constitution of India:** The State cannot confer titles, except military or academic distinctions, and Indian citizens cannot accept titles from a foreign State.\n\n**What it means for you:** In practice, this means the government cannot make laws or policies that unfairly target or favour specific groups without a reasonable, objective justification.\n\n**If your right is violated:** If the State violates these rights, you can approach the High Court under **Article 226** or the Supreme Court under **Article 32** of the Constitution to seek enforcement.\n\n**Keep in mind:** These rights are primarily enforceable against 'the State' as defined under **Article 12**. The State may still make special provisions for women and children, or for backward classes and SC/ST, which are exceptions to the general rule of equality. (I can't verify the exact scope of these exceptions beyond what is in the library; please check with free legal aid if you need specific advice on a case)."
+ },
+ {
+  "question": "What is the Right to Freedom of Speech?",
+  "pass": true,
+  "checks": {
+   "no_error": true,
+   "legal": true,
+   "cites_required": true,
+   "cites_one_of": true,
+   "nothing_unrelated": true,
+   "guard_ok": true,
+   "explains": true,
+   "names_provisions_in_text": true
+  },
+  "cited": [
+   "COI-ART19",
+   "COI-ART19-2",
+   "COI-ART226",
+   "COI-ART32",
+   "FACT-NALSA-HELPLINE"
+  ],
+  "category": "general_legal",
+  "lawyer_level": "none",
+  "guard": {
+   "initial": {
+    "verified": [
+     [
+      "Article 19",
+      "Constitution of India"
+     ],
+     [
+      "Article 19",
+      "Constitution of India"
+     ],
+     [
+      "Article 226",
+      "Constitution of India"
+     ],
+     [
+      "Article 32",
+      "Constitution of India"
+     ]
+    ],
+    "violations": [
+     {
+      "type": "overclaim",
+      "text": "guaranteed",
+      "why": "Don't promise or pre-judge the outcome; say what the facts suggest and what depends on evidence."
+     },
+     {
+      "type": "overclaim",
+      "text": "guarantees",
+      "why": "Don't promise or pre-judge the outcome; say what the facts suggest and what depends on evidence."
+     }
+    ],
+    "warnings": [
+     {
+      "type": "ambiguous_section",
+      "text": "Article 226",
+      "why": "Act not named; only Constitution of India has it."
+     }
+    ],
+    "ok": false
+   },
+   "bad_ids": [],
+   "repaired": true,
+   "stripped": false,
+   "after_repair": {
+    "verified": [
+     [
+      "Article 19",
+      "Constitution of India"
+     ],
+     [
+      "Article 19",
+      "Constitution of India"
+     ],
+     [
+      "Article 226",
+      "Constitution of India"
+     ],
+     [
+      "Article 32",
+      "Constitution of India"
+     ]
+    ],
+    "violations": [],
+    "warnings": [
+     {
+      "type": "ambiguous_section",
+      "text": "Article 226",
+      "why": "Act not named; only Constitution of India has it."
+     }
+    ],
+    "ok": true
+   },
+   "final": {
+    "verified": [
+     [
+      "Article 19",
+      "Constitution of India"
+     ],
+     [
+      "Article 19",
+      "Constitution of India"
+     ],
+     [
+      "Article 226",
+      "Constitution of India"
+     ],
+     [
+      "Article 32",
+      "Constitution of India"
+     ]
+    ],
+    "violations": [],
+    "warnings": [
+     {
+      "type": "ambiguous_section",
+      "text": "Article 226",
+      "why": "Act not named; only Constitution of India has it."
+     }
+    ],
+    "ok": true
+   },
+   "language": {
+    "wanted": "Latin",
+    "got": "Latin",
+    "rewritten": false
+   },
+   "deadline_alerts_added": 0
+  },
+  "model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 3.44,
+   "usage": {
+    "completion_tokens": 549,
+    "prompt_tokens": 5158,
+    "total_tokens": 5804
+   },
+   "fallback_attempts": [
+    "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197376, Requested 5384. Please try again in 19m52.32s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_l",
+    "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198045, Requested 5591. Please try again in 26m10.752s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_",
+    "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199072, Requested 5043. Please try again in 29m37.68s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_lim",
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_"
+   ]
+  },
+  "reply": "**In short:** The Right to Freedom of Speech and Expression is a right provided to citizens of India under the Constitution. It allows for the expression of opinions, beliefs, and ideas through speech, writing, or other mediums.\n\n**The law that applies:**\n* **Article 19, Constitution of India**: This provision states that citizens have the right to freedom of speech and expression. It allows for the practice of any profession or carrying on any occupation, trade, or business, and is a core part of the rights granted to citizens.\n* **Article 19(2), Constitution of India**: This provision clarifies that the freedom of speech and expression is not absolute. The State can make laws imposing reasonable restrictions on it in the interests of the sovereignty and integrity of India, the security of the State, friendly relations with foreign States, public order, decency or morality, or in relation to contempt of court, defamation or incitement to an offence.\n\n**What it means for you:** This means you have the legal standing to express your views, provided you do not violate the reasonable restrictions set by law. For example, your expression should not cross into defamation or threaten public order, as these are grounds where the State can legally restrict speech.\n\n**If your right is violated:** If you believe your fundamental rights have been violated by the State or an authority, you can approach the High Court under **Article 226** or the Supreme Court under **Article 32** of the Constitution. These courts can issue directions, orders, or writs to enforce these rights.\n\n**Keep in mind:** The scope of these rights and the definition of 'reasonable restrictions' are often interpreted by courts. If you are facing a specific situation where you believe your speech is being unfairly restricted, I recommend contacting the NALSA legal aid helpline at 15100 for guidance on your specific circumstances."
+ },
+ {
+  "question": "What are my Fundamental Rights?",
+  "pass": true,
+  "checks": {
+   "no_error": true,
+   "legal": true,
+   "cites_required": true,
+   "cites_one_of": true,
+   "nothing_unrelated": true,
+   "guard_ok": true,
+   "explains": true,
+   "names_provisions_in_text": true
+  },
+  "cited": [
+   "COI-ART12",
+   "COI-ART14",
+   "COI-ART19",
+   "COI-ART21",
+   "COI-ART22",
+   "COI-ART32",
+   "COI-ART226",
+   "COI-ART19-2"
+  ],
+  "category": "general_legal",
+  "lawyer_level": "none",
+  "guard": {
+   "initial": {
+    "verified": [
+     [
+      "Article 12",
+      "Constitution of India"
+     ],
+     [
+      "Article 14",
+      "Constitution of India"
+     ],
+     [
+      "Article 19",
+      "Constitution of India"
+     ],
+     [
+      "Article 21",
+      "Constitution of India"
+     ],
+     [
+      "Article 22",
+      "Constitution of India"
+     ],
+     [
+      "Article 32",
+      "Constitution of India"
+     ],
+     [
+      "Article 22",
+      "Constitution of India"
+     ],
+     [
+      "Article 226",
+      "Constitution of India"
+     ],
+     [
+      "Article 32",
+      "Constitution of India"
+     ],
+     [
+      "Article 19",
+      "Constitution of India"
+     ]
+    ],
+    "violations": [
+     {
+      "type": "overclaim",
+      "text": "guaranteed",
+      "why": "Don't promise or pre-judge the outcome; say what the facts suggest and what depends on evidence."
+     },
+     {
+      "type": "overclaim",
+      "text": "Guarantees",
+      "why": "Don't promise or pre-judge the outcome; say what the facts suggest and what depends on evidence."
+     }
+    ],
+    "warnings": [
+     {
+      "type": "ambiguous_section",
+      "text": "Article 22",
+      "why": "Act not named; only Constitution of India has it."
+     },
+     {
+      "type": "ambiguous_section",
+      "text": "Article 226",
+      "why": "Act not named; only Constitution of India has it."
+     },
+     {
+      "type": "ambiguous_section",
+      "text": "Article 32",
+      "why": "Act not named; only Constitution of India has it."
+     },
+     {
+      "type": "ambiguous_section",
+      "text": "Article 19",
+      "why": "Act not named; only Constitution of India has it."
+     }
+    ],
+    "ok": false
+   },
+   "bad_ids": [],
+   "repaired": true,
+   "stripped": false,
+   "after_repair": {
+    "verified": [
+     [
+      "Article 12",
+      "Constitution of India"
+     ],
+     [
+      "Article 14",
+      "Constitution of India"
+     ],
+     [
+      "Article 19",
+      "Constitution of India"
+     ],
+     [
+      "Article 21",
+      "Constitution of India"
+     ],
+     [
+      "Article 22",
+      "Constitution of India"
+     ],
+     [
+      "Article 32",
+      "Constitution of India"
+     ],
+     [
+      "Article 226",
+      "Constitution of India"
+     ],
+     [
+      "Article 22",
+      "Constitution of India"
+     ],
+     [
+      "Article 19",
+      "Constitution of India"
+     ]
+    ],
+    "violations": [],
+    "warnings": [
+     {
+      "type": "ambiguous_section",
+      "text": "Article 22",
+      "why": "Act not named; only Constitution of India has it."
+     },
+     {
+      "type": "ambiguous_section",
+      "text": "Article 19",
+      "why": "Act not named; only Constitution of India has it."
+     }
+    ],
+    "ok": true
+   },
+   "final": {
+    "verified": [
+     [
+      "Article 12",
+      "Constitution of India"
+     ],
+     [
+      "Article 14",
+      "Constitution of India"
+     ],
+     [
+      "Article 19",
+      "Constitution of India"
+     ],
+     [
+      "Article 21",
+      "Constitution of India"
+     ],
+     [
+      "Article 22",
+      "Constitution of India"
+     ],
+     [
+      "Article 32",
+      "Constitution of India"
+     ],
+     [
+      "Article 226",
+      "Constitution of India"
+     ],
+     [
+      "Article 22",
+      "Constitution of India"
+     ],
+     [
+      "Article 19",
+      "Constitution of India"
+     ]
+    ],
+    "violations": [],
+    "warnings": [
+     {
+      "type": "ambiguous_section",
+      "text": "Article 22",
+      "why": "Act not named; only Constitution of India has it."
+     },
+     {
+      "type": "ambiguous_section",
+      "text": "Article 19",
+      "why": "Act not named; only Constitution of India has it."
+     }
+    ],
+    "ok": true
+   },
+   "language": {
+    "wanted": "Latin",
+    "got": "Latin",
+    "rewritten": false
+   },
+   "deadline_alerts_added": 0
+  },
+  "model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 3.7,
+   "usage": {
+    "completion_tokens": 658,
+    "prompt_tokens": 5844,
+    "total_tokens": 6603
+   },
+   "fallback_attempts": [
+    "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197318, Requested 6095. Please try again in 24m34.416s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_",
+    "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199843, Requested 6086. Please try again in 42m41.328s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_",
+    "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199014, Requested 5705. Please try again in 33m58.608s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_li",
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_"
+   ]
+  },
+  "reply": "**In short:** Fundamental Rights are the core protections set out in Part III of the Constitution of India. They are enforceable against the State (government bodies and authorities) to ensure equality, liberty, and dignity.\n\n**The law that applies:**\n* **Article 12, Constitution of India**: Defines 'the State' against which these rights can be enforced, including the government, Parliament, and local authorities.\n* **Article 14, Constitution of India**: Provides for equality before the law and equal protection of the laws for everyone.\n* **Article 19, Constitution of India**: Sets out key freedoms like speech, assembly, forming associations, movement, residence, and practising any profession.\n* **Article 21, Constitution of India**: States that no person can be deprived of life or personal liberty except according to procedure established by law.\n* **Article 22, Constitution of India**: Provides protection against arrest and detention, including the right to be informed of grounds for arrest and to be produced before the nearest magistrate within 24 hours.\n* **Article 32, Constitution of India**: Provides the right to approach the Supreme Court to enforce these rights.\n* **Article 226, Constitution of India**: Provides the right to approach the High Court to enforce these rights.\n\n**What it means for you:** These rights act as a shield against arbitrary government action. For example, if the police arrest you, Article 22 provides that you must be produced before a magistrate within 24 hours. If your rights are violated by a government authority, you can approach the High Court or the Supreme Court for relief.\n\n**If your right is violated / What you can do:** You can file a writ petition in the High Court or Supreme Court. For violations involving police or government officials, you may also seek legal aid or consult a lawyer to determine the best course of action.\n\n**Keep in mind:** These rights are not absolute. For instance, Article 19(2) allows the State to impose 'reasonable restrictions' on your freedom of speech in the interest of public order, security, or morality."
+ },
+ {
+  "question": "Can the police arrest me without a warrant?",
+  "pass": true,
+  "checks": {
+   "no_error": true,
+   "legal": true,
+   "cites_required": true,
+   "cites_one_of": true,
+   "nothing_unrelated": true,
+   "guard_ok": true,
+   "explains": true,
+   "names_provisions_in_text": true
+  },
+  "cited": [
+   "BNSS2023-S35",
+   "COI-ART22",
+   "BNSS2023-S47",
+   "BNSS2023-S48",
+   "BNSS2023-S58",
+   "COI-ART226",
+   "COI-ART32"
+  ],
+  "category": "general_legal",
+  "lawyer_level": "none",
+  "guard": {
+   "initial": {
+    "verified": [
+     [
+      "Section 35",
+      "Bharatiya Nagarik Suraksha Sanhita, 2023"
+     ],
+     [
+      "Section 47",
+      "Bharatiya Nagarik Suraksha Sanhita, 2023"
+     ],
+     [
+      "Section 58",
+      "Bharatiya Nagarik Suraksha Sanhita, 2023"
+     ],
+     [
+      "Article 22",
+      "Constitution of India"
+     ],
+     [
+      "Article 22",
+      "Constitution of India"
+     ]
+    ],
+    "violations": [
+     {
+      "type": "overclaim",
+      "text": "guarantees",
+      "why": "Don't promise or pre-judge the outcome; say what the facts suggest and what depends on evidence."
+     }
+    ],
+    "warnings": [
+     {
+      "type": "ambiguous_section",
+      "text": "Article 22",
+      "why": "Act not named; only Constitution of India has it."
+     }
+    ],
+    "ok": false
+   },
+   "bad_ids": [],
+   "repaired": true,
+   "stripped": false,
+   "after_repair": {
+    "verified": [
+     [
+      "Section 35",
+      "Bharatiya Nagarik Suraksha Sanhita, 2023"
+     ],
+     [
+      "Section 47",
+      "Bharatiya Nagarik Suraksha Sanhita, 2023"
+     ],
+     [
+      "Section 48",
+      "Bharatiya Nagarik Suraksha Sanhita, 2023"
+     ],
+     [
+      "Section 58",
+      "Bharatiya Nagarik Suraksha Sanhita, 2023"
+     ],
+     [
+      "Article 22",
+      "Constitution of India"
+     ],
+     [
+      "Article 22",
+      "Constitution of India"
+     ],
+     [
+      "Article 226",
+      "Constitution of India"
+     ],
+     [
+      "Article 32",
+      "Constitution of India"
+     ]
+    ],
+    "violations": [],
+    "warnings": [
+     {
+      "type": "ambiguous_section",
+      "text": "Article 22",
+      "why": "Act not named; only Constitution of India has it."
+     }
+    ],
+    "ok": true
+   },
+   "final": {
+    "verified": [
+     [
+      "Section 35",
+      "Bharatiya Nagarik Suraksha Sanhita, 2023"
+     ],
+     [
+      "Section 47",
+      "Bharatiya Nagarik Suraksha Sanhita, 2023"
+     ],
+     [
+      "Section 48",
+      "Bharatiya Nagarik Suraksha Sanhita, 2023"
+     ],
+     [
+      "Section 58",
+      "Bharatiya Nagarik Suraksha Sanhita, 2023"
+     ],
+     [
+      "Article 22",
+      "Constitution of India"
+     ],
+     [
+      "Article 22",
+      "Constitution of India"
+     ],
+     [
+      "Article 226",
+      "Constitution of India"
+     ],
+     [
+      "Article 32",
+      "Constitution of India"
+     ]
+    ],
+    "violations": [],
+    "warnings": [
+     {
+      "type": "ambiguous_section",
+      "text": "Article 22",
+      "why": "Act not named; only Constitution of India has it."
+     }
+    ],
+    "ok": true
+   },
+   "language": {
+    "wanted": "Latin",
+    "got": "Latin",
+    "rewritten": false
+   },
+   "deadline_alerts_added": 0
+  },
+  "model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 8.53,
+   "usage": {
+    "completion_tokens": 601,
+    "prompt_tokens": 5498,
+    "total_tokens": 7059
+   },
+   "fallback_attempts": [
+    "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197229, Requested 5759. Please try again in 21m30.816s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_",
+    "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199754, Requested 5744. Please try again in 39m35.136s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_",
+    "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198925, Requested 5495. Please try again in 31m49.44s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_lim",
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_"
+   ]
+  },
+  "reply": "**In short:** Yes, the police can arrest you without a warrant, but only in specific situations defined by law, primarily for what are called \"cognizable offences\" (serious crimes where the police have the authority to act without a Magistrate's prior order).\n\n**The law that applies:**\n* **Section 35, Bharatiya Nagarik Suraksha Sanhita, 2023**: This provision allows police to arrest without a warrant if a cognizable offence is committed in their presence, or if there is a credible complaint or reasonable suspicion that you have committed such an offence.\n* **Article 22, Constitution of India**: This provision states that if you are arrested, you must be told the grounds for your arrest as soon as possible, you have the right to consult a lawyer of your choice, and you must be produced before the nearest Magistrate within 24 hours (excluding travel time).\n* **Section 47, Bharatiya Nagarik Suraksha Sanhita, 2023**: This section mandates that the police must inform you of the full particulars of the offence or other grounds for the arrest immediately.\n* **Section 48, Bharatiya Nagarik Suraksha Sanhita, 2023**: The police must inform a relative, friend, or other person you nominate about your arrest and where you are being held.\n* **Section 58, Bharatiya Nagarik Suraksha Sanhita, 2023**: The police cannot keep you in custody for more than 24 hours without a specific order from a Magistrate.\n\n**What it means for you:** If the police approach you, they must be able to justify the arrest under the law. You have the right to ask why you are being arrested and to contact a lawyer or a family member immediately. They cannot hold you indefinitely.\n\n**If your right is violated:** If you believe an arrest was illegal or your rights under Article 22 were ignored, you can approach the High Court under **Article 226, Constitution of India** or the Supreme Court under **Article 32, Constitution of India** to enforce your fundamental rights."
+ },
+ {
+  "question": "What is the punishment for theft in India?",
+  "pass": true,
+  "checks": {
+   "no_error": true,
+   "legal": true,
+   "cites_required": true,
+   "cites_one_of": true,
+   "nothing_unrelated": true,
+   "guard_ok": true,
+   "explains": true,
+   "names_provisions_in_text": true
+  },
+  "cited": [
+   "BNS2023-S303",
+   "FACT-BNS-BNSS-COMMENCEMENT"
+  ],
+  "category": "general_legal",
+  "lawyer_level": "none",
+  "guard": {
+   "initial": {
+    "verified": [
+     [
+      "Section 303",
+      "Bharatiya Nyaya Sanhita, 2023"
+     ]
+    ],
+    "violations": [],
+    "warnings": [],
+    "ok": true
+   },
+   "bad_ids": [],
+   "repaired": false,
+   "stripped": false,
+   "final": {
+    "verified": [
+     [
+      "Section 303",
+      "Bharatiya Nyaya Sanhita, 2023"
+     ]
+    ],
+    "violations": [],
+    "warnings": [],
+    "ok": true
+   },
+   "language": {
+    "wanted": "Latin",
+    "got": "Latin",
+    "rewritten": false
+   },
+   "deadline_alerts_added": 0
+  },
+  "model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 23.24,
+   "usage": {
+    "completion_tokens": 478,
+    "prompt_tokens": 4148,
+    "total_tokens": 5603
+   },
+   "fallback_attempts": [
+    "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197122, Requested 4433. Please try again in 11m11.76s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_l",
+    "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199647, Requested 4389. Please try again in 29m3.552s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_e",
+    "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198819, Requested 4096. Please try again in 20m59.28s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_lim",
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_"
+   ]
+  },
+  "reply": "**In short:** Theft is a criminal offence under the Bharatiya Nyaya Sanhita (BNS), 2023. It involves dishonestly taking someone else's movable property without their consent with the intention of keeping it.\n\n**The law that applies:**\n* **Section 303, Bharatiya Nyaya Sanhita, 2023**: This section defines theft and prescribes the punishment. Generally, it carries a penalty of imprisonment for up to 3 years, a fine, or both. If it is a second or subsequent conviction, the punishment increases to rigorous imprisonment of 1 to 5 years along with a fine.\n\n**What it means for you:**\nIf you are a victim of theft, the law provides a clear path for criminal prosecution. The severity of the punishment can vary based on the value of the property stolen and the offender's criminal history.\n\n**If your right is violated / What you can do:**\nYou should report the incident to the police immediately. Under the Bharatiya Nagarik Suraksha Sanhita (BNSS), 2023, you can file a complaint at any police station (a 'Zero FIR') if necessary, which will then be transferred to the appropriate jurisdiction.\n\n**Keep in mind:**\nThe law applies to \"movable property.\" Items like land or buildings cannot be \"stolen\" under this specific section. Also, note that the BNS replaced the old Indian Penal Code (IPC) on 1 July 2024; for any incident occurring on or after that date, you must refer to the BNS."
+ },
+ {
+  "question": "What are my rights as a consumer?",
+  "pass": true,
+  "checks": {
+   "no_error": true,
+   "legal": true,
+   "cites_required": true,
+   "cites_one_of": true,
+   "nothing_unrelated": true,
+   "guard_ok": true,
+   "explains": true,
+   "names_provisions_in_text": true
+  },
+  "cited": [
+   "CPA2019-S2-9",
+   "CPA2019-S2-7",
+   "CPA2019-S2-11",
+   "CPA2019-S39",
+   "CPA2019-S69",
+   "FACT-NCH-HELPLINE",
+   "FACT-EJAGRITI-PORTAL"
+  ],
+  "category": "consumer",
+  "lawyer_level": "none",
+  "guard": {
+   "initial": {
+    "verified": [
+     [
+      "Section 2(9)",
+      "Consumer Protection Act, 2019"
+     ],
+     [
+      "Section 2(7)",
+      "Consumer Protection Act, 2019"
+     ],
+     [
+      "Section 2(11)",
+      "Consumer Protection Act, 2019"
+     ],
+     [
+      "Section 39",
+      "Consumer Protection Act, 2019"
+     ],
+     [
+      "Section 69",
+      "Consumer Protection Act, 2019"
+     ]
+    ],
+    "violations": [],
+    "warnings": [],
+    "ok": true
+   },
+   "bad_ids": [],
+   "repaired": false,
+   "stripped": false,
+   "final": {
+    "verified": [
+     [
+      "Section 2(9)",
+      "Consumer Protection Act, 2019"
+     ],
+     [
+      "Section 2(7)",
+      "Consumer Protection Act, 2019"
+     ],
+     [
+      "Section 2(11)",
+      "Consumer Protection Act, 2019"
+     ],
+     [
+      "Section 39",
+      "Consumer Protection Act, 2019"
+     ],
+     [
+      "Section 69",
+      "Consumer Protection Act, 2019"
+     ]
+    ],
+    "violations": [],
+    "warnings": [],
+    "ok": true
+   },
+   "language": {
+    "wanted": "Latin",
+    "got": "Latin",
+    "rewritten": false
+   },
+   "deadline_alerts_added": 0
+  },
+  "model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 88.7,
+   "usage": {
+    "completion_tokens": 798,
+    "prompt_tokens": 5608,
+    "total_tokens": 6812
+   },
+   "fallback_attempts": [
+    "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 196750, Requested 5787. Please try again in 18m15.983999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":",
+    "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199275, Requested 5861. Please try again in 36m58.752s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_",
+    "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198446, Requested 5448. Please try again in 28m2.208s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_lim",
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_"
+   ]
+  },
+  "reply": "**In short:** As a consumer in India, you have a legal right to be protected against hazardous goods, to be informed about the quality and price of products, and to seek redressal for unfair trade practices or deficient services under the Consumer Protection Act, 2019.\n\n**The law that applies:**\n*   **Section 2(9), Consumer Protection Act, 2019:** Defines your six core rights, including the right to safety, the right to be informed, the right to choose, the right to be heard, the right to seek redressal, and the right to consumer awareness.\n*   **Section 2(7), Consumer Protection Act, 2019:** Confirms you are a 'consumer' if you have paid for or promised to pay for goods or services (including online purchases).\n*   **Section 2(11), Consumer Protection Act, 2019:** Defines 'deficiency' as any fault or inadequacy in the quality or nature of a service that you were promised or that the law requires.\n*   **Section 39, Consumer Protection Act, 2019:** Empowers the Consumer Commission to order refunds, replacements, or compensation for your losses if your complaint is proven.\n*   **Section 69, Consumer Protection Act, 2019:** Sets a two-year limitation period from the date the problem arose to file a formal complaint.\n\n**What it means for you:**\nIf you buy a product that is defective or pay for a service that is not delivered as promised, you are not helpless. You can demand a refund, a replacement, or compensation for the mental or financial stress caused. For example, if an e-commerce platform refuses to refund a damaged item, you have a clear legal path to challenge that.\n\n**If your right is violated / What you can do:**\n1.  **Mediation:** First, try the National Consumer Helpline (NCH) by calling 1915 or visiting consumerhelpline.gov.in. It is free and often resolves issues without needing a court case.\n2.  **Formal Complaint:** If mediation fails, you can file a formal complaint electronically on the e-Jagriti portal (e-jagriti.gov.in). You do not necessarily need a lawyer for this; you can represent yourself.\n\n**Keep in mind:**\nThis law does not cover purchases made for commercial purposes (like buying goods to resell for profit). Always keep your invoices, payment receipts, and any communication with the seller as evidence."
+ },
+ {
+  "question": "What can I do if someone commits online fraud?",
+  "pass": false,
+  "checks": {
+   "no_error": true,
+   "legal": true,
+   "cites_required": true,
+   "cites_one_of": true,
+   "nothing_unrelated": true,
+   "guard_ok": true,
+   "explains": true,
+   "names_provisions_in_text": false
+  },
+  "cited": [
+   "FACT-CYBER-1930",
+   "BNSS2023-S173",
+   "FACT-RBIOS2026-ELIGIBILITY"
+  ],
+  "category": "cyber_fraud",
+  "lawyer_level": "recommended",
+  "guard": {
+   "initial": {
+    "verified": [],
+    "violations": [],
+    "warnings": [],
+    "ok": true
+   },
+   "bad_ids": [],
+   "repaired": false,
+   "stripped": false,
+   "final": {
+    "verified": [],
+    "violations": [],
+    "warnings": [],
+    "ok": true
+   },
+   "language": {
+    "wanted": "Latin",
+    "got": "Latin",
+    "rewritten": false
+   },
+   "deadline_alerts_added": 0
+  },
+  "model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 21.96,
+   "usage": {
+    "completion_tokens": 592,
+    "prompt_tokens": 4487,
+    "total_tokens": 5181
+   },
+   "fallback_attempts": [
+    "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 196457, Requested 4744. Please try again in 8m38.832s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_l",
+    "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198982, Requested 4690. Please try again in 26m26.304s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_",
+    "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198153, Requested 4517. Please try again in 19m13.44s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_lim",
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_"
+   ]
+  },
+  "reply": "If you have lost money to online fraud, time is your biggest enemy. You must act immediately to increase the chances of freezing the transaction before the money moves out of the system.\n\n**My view:**\nThis is a financial crime. Your priority is not to 'sue' right now, but to stop the money. The government has a dedicated mechanism for this, and you should use it before doing anything else.\n\n**What I would do:**\n1. **Call 1930 immediately:** This is the national cybercrime helpline. Report the incident to them. They can often coordinate with banks to freeze the fraudulent transaction if reported quickly.\n2. **Report online:** Visit [cybercrime.gov.in](https://www.cybercrime.gov.in/) and file a formal complaint. Keep the acknowledgement number safe; you will need it for your bank.\n3. **Inform your bank:** Contact your bank's customer support or visit your branch immediately. Give them the details of the transaction and the cybercrime complaint number. Ask them to block the transaction or the account if possible.\n4. **Keep records:** Take screenshots of the transaction, the conversation with the fraudster, and any payment receipts. Do not delete anything.\n\nIf you have already lost a significant amount of money or if the bank is not cooperating, you may need to consult a lawyer to file a formal complaint with the local police station (a 'Zero FIR' can be filed anywhere) or approach the Banking Ombudsman if the bank was negligent."
+ },
+ {
+  "question": "What are the legal provisions related to divorce?",
+  "pass": true,
+  "checks": {
+   "no_error": true,
+   "legal": true,
+   "cites_required": true,
+   "cites_one_of": true,
+   "nothing_unrelated": true,
+   "guard_ok": true,
+   "explains": true,
+   "names_provisions_in_text": true
+  },
+  "cited": [
+   "HMA1955-S13",
+   "HMA1955-S13B",
+   "HMA1955-S14"
+  ],
+  "category": "general_legal",
+  "lawyer_level": "none",
+  "guard": {
+   "initial": {
+    "verified": [
+     [
+      "Section 13",
+      "Hindu Marriage Act, 1955"
+     ],
+     [
+      "Section 13B",
+      "Hindu Marriage Act, 1955"
+     ],
+     [
+      "Section 14",
+      "Hindu Marriage Act, 1955"
+     ]
+    ],
+    "violations": [],
+    "warnings": [],
+    "ok": true
+   },
+   "bad_ids": [],
+   "repaired": false,
+   "stripped": false,
+   "final": {
+    "verified": [
+     [
+      "Section 13",
+      "Hindu Marriage Act, 1955"
+     ],
+     [
+      "Section 13B",
+      "Hindu Marriage Act, 1955"
+     ],
+     [
+      "Section 14",
+      "Hindu Marriage Act, 1955"
+     ]
+    ],
+    "violations": [],
+    "warnings": [],
+    "ok": true
+   },
+   "language": {
+    "wanted": "Latin",
+    "got": "Latin",
+    "rewritten": false
+   },
+   "deadline_alerts_added": 0
+  },
+  "model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 14.39,
+   "usage": {
+    "completion_tokens": 527,
+    "prompt_tokens": 5308,
+    "total_tokens": 6604
+   },
+   "fallback_attempts": [
+    "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 196388, Requested 5476. Please try again in 13m25.248s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_",
+    "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198913, Requested 5521. Please try again in 31m55.487999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_",
+    "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199843, Requested 5332. Please try again in 37m15.6s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limi",
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_"
+   ]
+  },
+  "reply": "**In short:** Divorce in India is governed by personal laws. For Hindus, the Hindu Marriage Act, 1955, provides the framework for ending a marriage either through a court-contested process or by mutual consent.\n\n**The law that applies:**\n*   **Section 13, Hindu Marriage Act, 1955**: Lists specific grounds like cruelty, desertion for at least two continuous years, or adultery, which allow one spouse to file for divorce even if the other does not agree.\n*   **Section 13B, Hindu Marriage Act, 1955**: Allows for divorce by mutual consent if both spouses have lived separately for at least one year and agree that the marriage has broken down. They must file a second motion between six and eighteen months after the first.\n*   **Section 14, Hindu Marriage Act, 1955**: Generally prohibits filing for divorce within the first year of marriage, unless a court allows it earlier due to exceptional hardship to the petitioner or exceptional depravity of the other spouse.\n\n**What it means for you:** If both parties agree, mutual consent is usually the faster and less stressful route. If there is no agreement, one spouse must approach the District Court and prove specific legal grounds to obtain a decree of divorce.\n\n**Keep in mind:** These provisions apply specifically to Hindus. Other religions in India are governed by their own personal laws, which have different requirements and procedures. If you are considering this, it is best to consult a lawyer to understand which law applies to your specific situation."
+ },
+ {
+  "question": "Can my employer terminate me without notice?",
+  "pass": true,
+  "checks": {
+   "no_error": true,
+   "legal": true,
+   "cites_required": true,
+   "cites_one_of": true,
+   "nothing_unrelated": true,
+   "guard_ok": true,
+   "explains": true,
+   "names_provisions_in_text": true
+  },
+  "cited": [
+   "IRC2020-S70",
+   "IRC2020-S2ZH",
+   "IRC2020-S2ZR",
+   "FACT-LABOUR-CODES-COMMENCEMENT"
+  ],
+  "category": "general_legal",
+  "lawyer_level": "none",
+  "guard": {
+   "initial": {
+    "verified": [
+     [
+      "Section 70",
+      "Industrial Relations Code, 2020"
+     ],
+     [
+      "Section 2(zr)",
+      "Industrial Relations Code, 2020"
+     ],
+     [
+      "Section 2(zh)",
+      "Industrial Relations Code, 2020"
+     ]
+    ],
+    "violations": [],
+    "warnings": [
+     {
+      "type": "ambiguous_section",
+      "text": "Section 70",
+      "why": "Section mentioned without naming the Act."
+     }
+    ],
+    "ok": true
+   },
+   "bad_ids": [],
+   "repaired": false,
+   "stripped": false,
+   "final": {
+    "verified": [
+     [
+      "Section 70",
+      "Industrial Relations Code, 2020"
+     ],
+     [
+      "Section 2(zr)",
+      "Industrial Relations Code, 2020"
+     ],
+     [
+      "Section 2(zh)",
+      "Industrial Relations Code, 2020"
+     ]
+    ],
+    "violations": [],
+    "warnings": [
+     {
+      "type": "ambiguous_section",
+      "text": "Section 70",
+      "why": "Section mentioned without naming the Act."
+     }
+    ],
+    "ok": true
+   },
+   "language": {
+    "wanted": "Latin",
+    "got": "Latin",
+    "rewritten": false
+   },
+   "deadline_alerts_added": 0
+  },
+  "model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 9.52,
+   "usage": {
+    "completion_tokens": 671,
+    "prompt_tokens": 5493,
+    "total_tokens": 7384
+   },
+   "fallback_attempts": [
+    "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 196292, Requested 5688. Please try again in 14m15.36s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_l",
+    "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198817, Requested 5659. Please try again in 32m13.632s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_",
+    "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199747, Requested 5510. Please try again in 37m51.024s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_li",
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_"
+   ]
+  },
+  "reply": "**In short:** Generally, no. Under the current labour laws, an employer cannot simply terminate a worker without notice or compensation, unless the termination falls under specific exceptions like disciplinary action or the end of a fixed-term contract.\n\n**The law that applies:**\n* **Section 70, Industrial Relations Code, 2020**: This is the primary rule. It states that a worker with at least one year of continuous service cannot be retrenched without one month's written notice (or one month's wages in lieu of notice) and compensation of 15 days' average pay for every completed year of service.\n* **Section 2(zr), Industrial Relations Code, 2020**: This defines who is a 'worker'. It covers most employees but excludes those in managerial or administrative roles, or supervisors earning more than ₹18,000 per month.\n* **Section 2(zh), Industrial Relations Code, 2020**: This defines 'retrenchment'. It clarifies that ending a contract due to disciplinary punishment, voluntary retirement, or the natural end of a fixed-term contract is not considered 'retrenchment' and thus does not trigger the notice requirements of Section 70.\n\n**What it means for you:** If you are a 'worker' under the Code and your termination is not for disciplinary reasons or the end of a fixed-term contract, your employer is legally obligated to provide notice or pay in lieu of it.\n\n**If your right is violated:** You can raise a dispute with the local Labour Commissioner or the relevant labour authority in your area.\n\n**Keep in mind:** These rules apply to 'workers' as defined by the Code. If you are in a managerial or high-level supervisory role, your terms of employment are governed primarily by your employment contract rather than these specific statutory protections."
+ },
+ {
+  "question": "What does Article 21 of the Indian Constitution say?",
+  "pass": true,
+  "checks": {
+   "no_error": true,
+   "legal": true,
+   "cites_required": true,
+   "cites_one_of": true,
+   "nothing_unrelated": true,
+   "guard_ok": true,
+   "explains": true,
+   "names_provisions_in_text": true
+  },
+  "cited": [
+   "COI-ART21",
+   "COI-ART32",
+   "COI-ART226"
+  ],
+  "category": "general_legal",
+  "lawyer_level": "none",
+  "guard": {
+   "initial": {
+    "verified": [
+     [
+      "Article 21",
+      "Constitution of India"
+     ],
+     [
+      "Article 21",
+      "Constitution of India"
+     ],
+     [
+      "Article 21",
+      "Constitution of India"
+     ],
+     [
+      "Article 226",
+      "Constitution of India"
+     ],
+     [
+      "Article 32",
+      "Constitution of India"
+     ]
+    ],
+    "violations": [],
+    "warnings": [
+     {
+      "type": "ambiguous_section",
+      "text": "Article 21",
+      "why": "Act not named; only Constitution of India has it."
+     },
+     {
+      "type": "ambiguous_section",
+      "text": "Article 226",
+      "why": "Act not named; only Constitution of India has it."
+     }
+    ],
+    "ok": true
+   },
+   "bad_ids": [],
+   "repaired": false,
+   "stripped": false,
+   "final": {
+    "verified": [
+     [
+      "Article 21",
+      "Constitution of India"
+     ],
+     [
+      "Article 21",
+      "Constitution of India"
+     ],
+     [
+      "Article 21",
+      "Constitution of India"
+     ],
+     [
+      "Article 226",
+      "Constitution of India"
+     ],
+     [
+      "Article 32",
+      "Constitution of India"
+     ]
+    ],
+    "violations": [],
+    "warnings": [
+     {
+      "type": "ambiguous_section",
+      "text": "Article 21",
+      "why": "Act not named; only Constitution of India has it."
+     },
+     {
+      "type": "ambiguous_section",
+      "text": "Article 226",
+      "why": "Act not named; only Constitution of India has it."
+     }
+    ],
+    "ok": true
+   },
+   "language": {
+    "wanted": "Latin",
+    "got": "Latin",
+    "rewritten": false
+   },
+   "deadline_alerts_added": 0
+  },
+  "model": {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "latency_s": 16.88,
+   "usage": {
+    "completion_tokens": 453,
+    "prompt_tokens": 5086,
+    "total_tokens": 5655
+   },
+   "fallback_attempts": [
+    "groq/openai/gpt-oss-120b: groq/openai/gpt-oss-120b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 196247, Requested 5367. Please try again in 11m37.248s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_",
+    "groq/qwen/qwen3.8-27b: groq/qwen/qwen3.8-27b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198771, Requested 5265. Please try again in 29m3.552s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_e",
+    "groq/openai/gpt-oss-20b: groq/openai/gpt-oss-20b HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6pfgvntewtskt36n35b3v55` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199701, Requested 4991. Please try again in 33m46.944s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_li",
+    "gemini/gemini-3.5-flash: gemini/gemini-3.5-flash HTTP 429: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_"
+   ]
+  },
+  "reply": "**In short:** Article 21 is a cornerstone of our Constitution, guaranteeing that no person can be deprived of their life or personal liberty except according to a procedure established by law. It is a fundamental right that applies to every person in India, not just citizens.\n\n**The law that applies:**\n* **Article 21, Constitution of India:** This article states that \"No person shall be deprived of his life or personal liberty except according to procedure established by law.\" This means the State cannot take away your life or freedom arbitrarily; it must follow a fair, just, and reasonable legal process.\n\n**What it means for you:**\nIn practice, courts have interpreted \"life\" to mean much more than just physical existence—it includes the right to live with human dignity, which encompasses rights like the right to health, a clean environment, privacy, and a fair trial. If the government or any authority acts in a way that violates these basic dignities without a valid, fair law backing them, you can challenge that action.\n\n**If your right is violated:**\nIf you believe your fundamental rights under Article 21 are being violated by the State or a public authority, you have the right to approach the High Court under **Article 226** or the Supreme Court under **Article 32** of the Constitution to seek protection and enforcement of these rights."
+ }
+]

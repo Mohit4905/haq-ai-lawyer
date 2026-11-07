@@ -36,6 +36,20 @@ for i in set(re.findall(r'"((?:NIA|CPA|COW|LIM|MTA|CPECOM|FACT)[A-Z0-9\-()]*)"',
     if i not in ids:
         fails.append(f"rules.py basis id missing: {i}")
 
+for rx, lst in kb.TOPICS:
+    for i in lst:
+        if i not in ids:
+            fails.append(f"TOPICS[{rx[:30]}] -> missing {i}")
+
+# 1b. the guard accepts each Constitution article when cited the usual ways
+for e in kb.load_kb():
+    s = str(e.get("section") or "")
+    if e["act"] == "Constitution of India" and s.lower().startswith("article"):
+        for text in (f"{s} of the Constitution of India protects this.", f"Under {s}, this is protected."):
+            rep = guard.check(text)
+            if not rep.ok:
+                fails.append(f"guard rejects correct citation: {text} -> {rep.violations}")
+
 # 2. every verified entry has an http source
 for e in kb.load_kb():
     if not str(e.get("source_url", "")).startswith("http"):

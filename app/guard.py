@@ -173,6 +173,11 @@ def check(text: str, allowed_ids: set[str] | None = None, support_text: str = ""
         ctx = text[max(0, m.start() - 40) : m.start()].lower()
         if re.search(r"(?:no one|nobody|can't|cannot|can not|not|never|no)\b[^.]{0,25}$", ctx) or re.search(r"(नहीं|नही|nahi)\s*$", ctx):
             continue
+        # "a right guaranteed by Article 14" describes the law, not a promised outcome (QA 7 Nov: forced a repair on every rights answer)
+        if m.group(0).lower().startswith("guarantee"):
+            near = text[max(0, m.start() - 70) : m.end() + 70].lower()
+            if re.search(r"\b(?:article|constitution|fundamental|right|rights|part iii|law|act|section|sanhita|code)\b", near) and not re.search(r"\b(?:win|refund|money back|success|result|outcome|you will get)\b", near):
+                continue
         rep.violations.append({"type": "overclaim", "text": m.group(0), "why": "Don't promise or pre-judge the outcome; say what the facts suggest and what depends on evidence."})
 
     # 2. case law

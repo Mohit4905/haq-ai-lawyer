@@ -42,8 +42,8 @@ Tested with the real model by [scripts/qa/scope_test.py](scripts/qa/scope_test.p
 
 | Layer | What it does | AI or code? |
 |---|---|---|
-| Verified library ([kb/laws.json](kb/laws.json)) | 86 provisions (incl. 12 Constitution articles), rules, helplines and thresholds, each checked against an official source URL (India Code, Gazette, ministries, RBI, NALSA). Unverified entries are kept for transparency but never shown to the model. | Human-curated |
-| Scoped retrieval | Only the library entries for the user's problem type go into the prompt. | Code |
+| Verified library ([kb/laws.json](kb/laws.json)) | 107 provisions (incl. 21 Constitution articles, BNS/BNSS arrest and theft, Industrial Relations Code, Hindu Marriage Act divorce), rules, helplines and thresholds, each checked against an official source URL (India Code, Gazette, ministries, RBI, NALSA). Unverified entries are kept for transparency but never shown to the model. | Human-curated |
+| Scoped retrieval | The library entries for the user's problem type, plus the provisions for the topics named in the question (equality → Articles 14-18; arrest → BNSS ss.35/47/48/58 + Article 22; theft → BNS s.303; divorce → Hindu Marriage Act ss.13/13B/14…), go into the prompt ([app/kb.py](app/kb.py) `TOPICS`). Every provision the guard verifies in a reply gets a clickable official-source chip. | Code |
 | Prompt rules | The model may mention a law or number only if it appears in the library or in the code's calculations. No case law, ever. | AI |
 | **Guard** ([app/guard.py](app/guard.py)) | Scans every reply before the user sees it. It flags sections, Articles, Orders and Acts that aren't in the library (English and Hindi patterns), any case-law citation (`X v. Y`, AIR/SCC, "the Supreme Court held"), repealed laws (IPC, CrPC, CPA 1986…) with their replacement, money amounts and percentages that nothing supports, and time periods that nothing supports (warning only). | Code |
 | Repair, then strip | On a violation, the model rewrites once. If the problem remains, the offending sentence is removed and the user is told. | AI, then code |
