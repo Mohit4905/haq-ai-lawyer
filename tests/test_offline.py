@@ -230,6 +230,37 @@ def test_draft_fill_grounding():
     assert blanks("A [[FILL: your full name]] B [[FILL: Your full name]] C [[FILL]]") == ["your full name", "missing detail"]
 
 
+def test_practice_hearing_kept_out_of_legal_chat():
+    """Mock-hearing messages (practice: true) must not reach the lawyer prompt or the draft context."""
+    from app.engine import _convo
+    st = {"messages": [{"role": "user", "content": "deposit not returned"}, {"role": "assistant", "content": "My view: ..."},
+                       {"role": "user", "content": "practice", "practice": True}, {"role": "assistant", "content": "Judge: when did you vacate?", "practice": True},
+                       {"role": "user", "content": "what about interest?"}]}
+    assert [m["content"] for m in _convo(st)] == ["deposit not returned", "My view: ...", "what about interest?"]
+
+
+def test_practice_history_and_feedback_shapes():
+    """Untrusted client history is cleaned; malformed coach JSON can't crash the scorecard."""
+    import app.practice as p
+    assert p._clean([{"role": "user", "content": "hi"}, {"role": "judge", "content": "Q?"}, {"content": 5}, "x", {"role": "user"}]) == \
+        [{"role": "user", "content": "hi"}, {"role": "assistant", "content": "Q?"}]
+    assert p.practice_feedback({}, [{"role": "judge", "content": "Q?"}]) == {"error": "no_answers"}
+
+    class R:
+        def meta(self):
+            return {}
+    orig = p.chat_json
+    p.chat_json = lambda *a, **k: ({"scores": {"facts": "4", "proof": 9, "answers": None, "relief": "x"}, "went_well": "calm", "improve": None,
+                                    "better_lines": ["I vacated on 1 March.", "I gave notice on 15 August 2026.", "I gave notice on [date]."]}, R())
+    try:
+        out = p.practice_feedback({"category": "tenancy"}, [{"role": "judge", "content": "Q?"}, {"role": "user", "content": "On 1 March."}])
+    finally:
+        p.chat_json = orig
+    assert out["scores"] == {"facts": 4, "proof": 5}
+    assert out["went_well"] == ["calm"] and out["improve"] == [] and out["bring"] == [] and out["summary"] == ""
+    assert out["better_lines"] == ["I vacated on 1 March.", "I gave notice on [date]."]  # invented date dropped
+
+
 if __name__ == "__main__":
     setup()
     fails = 0

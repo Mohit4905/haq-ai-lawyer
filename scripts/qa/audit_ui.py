@@ -124,13 +124,10 @@ with sync_playwright() as p:
         pg.click("#mic"); time.sleep(0.5)
     ok("chat", "mic button doesn't throw without a microphone", len([e for e in errs[e0:] if "pageerror" in e or "Uncaught" in e]) == 0, "; ".join(errs[e0:])[:150])
 
-    # practice before any case exists
-    pg.click(".side-nav .tab[data-tab=practice]")
-    pg.fill("#practiceInput", "hello"); e0 = len(errs); pg.press("#practiceInput", "Enter"); time.sleep(1.0)
-    ok("tools", "Practice: sending before telling Haq the problem doesn't crash", len(errs) == e0, "; ".join(errs[e0:])[:200])
-    pg.click("#practiceStart"); time.sleep(0.5)
-    ok("tools", "Practice: 'Start' before a case explains what to do", "chat" in pg.inner_text("#practiceChat").lower(), pg.inner_text("#practiceChat")[:80])
-    pg.click("#toolClose")
+    # practice hearing (now in the chat) before any case exists
+    ok("tools", "Practice is no longer a sidebar tool", pg.locator(".side-nav .tab[data-tab=practice]").count() == 0)
+    e0 = len(errs); pg.fill("#input", "practice"); pg.press("#input", "Enter"); time.sleep(0.8)
+    ok("tools", "'practice' in the chat before a case asks for the problem first", "problem" in pg.locator(".msg.bot").last.inner_text().lower() and len(errs) == e0, pg.locator(".msg.bot").last.inner_text()[:80])
 
     # inject a case for case-dependent tools
     pg.evaluate(STATE); time.sleep(0.4)
@@ -223,7 +220,7 @@ with sync_playwright() as p:
     if pg.is_visible("#banner .bn-x"):
         pg.click("#banner .bn-x"); ok("chat", "lawyer note closes with ×", pg.is_hidden("#banner"))
     acts = pg.locator(".msg.bot .actions button")
-    ok("chat", "chat action buttons rendered (Draft / Practise / Free legal help)", acts.count() == 3, str(acts.all_inner_texts()))
+    ok("chat", "chat action buttons rendered (Draft / Start practice hearing / Free legal help)", acts.count() == 3 and "Start practice hearing" in acts.all_inner_texts(), str(acts.all_inner_texts()))
     pg.locator(".msg.bot .actions button", has_text="Free legal help").click(); time.sleep(0.2)
     ok("chat", "'Free legal help' opens Get help", pg.is_visible("#toolView #p-help")); pg.click("#toolClose")
 

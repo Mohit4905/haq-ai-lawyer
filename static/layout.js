@@ -6,7 +6,7 @@
   const body = document.body;
   const mobile = () => innerWidth <= 900;
   const side = () => $("#side");
-  const VIEW_KEYS = { cases: "my_cases", case: "t_case", deadlines: "t_dead", docs: "t_docs", evidence: "t_ev", practice: "t_prac", court: "t_court", help: "t_help" };
+  const VIEW_KEYS = { cases: "my_cases", case: "t_case", deadlines: "t_dead", docs: "t_docs", evidence: "t_ev", court: "t_court", help: "t_help" };
   const USER_SVG = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>';
 
   function setCollapsed(c) {
@@ -18,7 +18,7 @@
   function closeSide() { if (mobile()) side().classList.remove("open"); else setCollapsed(true); }
   window.openSide = openSide; window.closeSide = closeSide;
 
-  // Tools (Case file, Deadlines, Documents, Evidence, Practice, Track case, Get help) open in the
+  // Tools (Case file, Deadlines, Documents, Evidence, Track case, Get help) open in the
   // main area over the chat; the sidebar always shows the menu + My cases.
   let curTool = null;
   function openTool(name) {
@@ -31,7 +31,7 @@
     body.classList.add("tool-open");
     $("#toolBody").scrollTop = 0;
     $("#secCase") && ($("#secCase").open = true);
-    try { if (name === "practice") renderPractice(); if (name === "evidence") renderEvidence(); } catch (e) {}
+    try { if (name === "evidence") renderEvidence(); } catch (e) {}
     if (mobile()) side().classList.remove("open");
     try { sessionStorage.setItem("haq_tool", name); } catch (e) {}  // reopened after a reload in this tab
   }

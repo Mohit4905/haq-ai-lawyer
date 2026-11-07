@@ -141,12 +141,6 @@ button,select,input,textarea{font:inherit;color:inherit}
 .docbox .doc-head{padding:8px 12px;background:var(--bg);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
 .docbox textarea{width:100%;min-height:340px;border:0;padding:12px;background:var(--paper);font-family:Georgia,"Noto Sans Devanagari",serif;font-size:13.5px;resize:vertical;outline:none}
 .docbox .doc-foot{padding:8px 12px;font-size:12.5px;background:var(--warn-soft);color:var(--warn)}
-.practice-chat{max-height:340px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;margin-bottom:8px}
-.pmsg{padding:8px 10px;border-radius:12px;font-size:14px;max-width:90%}
-.pmsg.user{align-self:flex-end;background:var(--user);color:#fff}
-.pmsg.other{align-self:flex-start;background:var(--bg);border:1px solid var(--line)}
-.practice-form{display:flex;gap:6px}
-.practice-form input{flex:1;border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--bg)}
 .score{display:grid;grid-template-columns:90px 1fr 24px;gap:8px;align-items:center;font-size:13px;margin:4px 0}
 .score .bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
 .score .bar i{display:block;height:100%;background:var(--brand)}
@@ -480,7 +474,7 @@ body.side-collapsed #toggleSide{display:grid}
 /* phones: compact message box, no iOS zoom-on-focus (inputs >= 16px), tighter chat */
 @media (max-width:600px){
   .composer{margin:0 8px 4px;padding:4px 4px 4px 6px;border-radius:18px;gap:2px}
-  .composer textarea,.field,.side-search,#practiceInput,.add-step input{font-size:16px}
+  .composer textarea,.field,.side-search,.add-step input{font-size:16px}
   .composer textarea{padding:7px 4px;max-height:110px;line-height:1.35}
   .composer .icon,.composer .send{width:34px;height:34px;border-radius:10px;font-size:15px}
   .foot{font-size:10.5px;padding:0 10px 6px}
@@ -690,7 +684,6 @@ body.side-collapsed .rail-btn.active::before{display:none}
 :root[data-palette="ink"] .dropzone:hover,:root[data-palette="ink"] .dropzone.drag{border-color:var(--ink);transform:none}
 :root[data-palette="ink"] .dz-ico{color:var(--ink);font-size:0}
 :root[data-palette="ink"] .ev-item{border-radius:6px}
-:root[data-palette="ink"] .pmsg.user{background:var(--ink);color:var(--paper)}
 :root[data-palette="ink"] .score .bar i{background:var(--ink)}
 :root[data-palette="ink"] .kb-list{border-radius:6px}
 :root[data-palette="ink"] .kb-list a{color:var(--ink)}
@@ -920,3 +913,26 @@ body.tool-open #chat,body.tool-open #composer,body.tool-open .chat-col>.foot{dis
 /* login: forgot password */
 .forgot-row{display:flex;justify-content:flex-end;margin-top:-4px}
 .forgot-row .link-btn{font-size:13px}
+/* practice hearing in the chat (replaces the Practice tool): offer card, judge turns, status bar, scorecard */
+.prep-offer{margin-top:14px;display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-left:3px solid var(--ink);border-radius:10px;background:var(--paper);padding:12px 14px}
+.prep-ic{flex:none;width:32px;height:32px;border-radius:8px;display:grid;place-items:center;background:var(--ink);color:var(--paper)}
+.prep-offer-t{min-width:0;font-size:14px;line-height:1.5}
+.prep-offer-t>b{display:block;font-size:14.5px;margin-bottom:2px}
+.prep-offer-t button{margin-top:10px}
+.msg.bot .bubble:has(.prep-meta){border-left:3px solid var(--ink);padding-left:12px}
+.prep-meta{margin-top:6px}
+.chip.prep-chip{cursor:default;font-weight:600;letter-spacing:.02em;display:inline-flex;align-items:center;gap:5px}
+.chip.prep-chip i{width:6px;height:6px;border-radius:50%;background:currentColor}
+.prep-bar{display:flex;align-items:center;gap:10px;margin:0 max(16px,calc((100% - 780px)/2)) 8px;padding:8px 10px 8px 14px;border:1px solid var(--ink);border-radius:12px;background:var(--paper);font-size:13px}
+.prep-dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--ink);animation:livePulse 1.6s ease-in-out infinite}
+.prep-txt{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.35}
+.prep-txt small{color:var(--muted);font-size:12px}
+.prep-bar button{flex:none}
+.prep-fb{margin-top:12px;border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:12px 14px}
+.prep-fb-h{font-family:var(--serif);font-weight:600;font-size:15px;margin-bottom:6px}
+.prep-fb h4{margin:12px 0 4px}
+.prep-fb ul{margin:0;padding-left:20px}
+.prep-fb .scores{margin:8px 0 4px}
+.prep-fb .score{grid-template-columns:minmax(120px,190px) 1fr 34px}
+.prep-fb .score .bar i{background:var(--ink)}
+@media(max-width:600px){.prep-bar{margin:0 8px 6px}.prep-txt small{display:none}.prep-fb .score{grid-template-columns:110px 1fr 30px}}

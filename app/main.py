@@ -111,6 +111,7 @@ class PracticeIn(BaseModel):
     history: list = []
     provider: str | None = None
     feedback: bool = False
+    language: str | None = None  # interface language the hearing runs in
 
 
 class DocxIn(BaseModel):
@@ -344,10 +345,11 @@ def docx(inp: DocxIn):
 
 @app.post("/api/practice")
 def practice_ep(inp: PracticeIn):
-    history = [m for m in (inp.history or []) if isinstance(m, dict)][-30:]
+    history = [m for m in (inp.history or []) if isinstance(m, dict)][-40:]
+    lang = (inp.language or "")[:40] or None
     if inp.feedback:
-        return _soft(practice.practice_feedback(inp.case or {}, history, inp.provider))
-    return _soft(practice.practice_turn(inp.case or {}, history, inp.provider))
+        return _soft(practice.practice_feedback(inp.case or {}, history, inp.provider, lang))
+    return _soft(practice.practice_turn(inp.case or {}, history, inp.provider, lang))
 
 
 @app.post("/api/explain")

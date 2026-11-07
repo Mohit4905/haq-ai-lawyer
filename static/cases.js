@@ -41,7 +41,7 @@ const Cases = {
     const oldS = store.get("haq_state", null);
     if (oldS && oldS.messages?.length && !Object.keys(this.all).length) {
       const c = this.blank();
-      c.data = { state: oldS, view: store.get("haq_view", { turns: [] }), practice: store.get("haq_practice", []) };
+      c.data = { state: oldS, view: store.get("haq_view", { turns: [] }) };
       c.title = this.autoTitle(c);
       this.all[c.id] = c; this.currentId = c.id;
       ["haq_state", "haq_view", "haq_practice"].forEach(store.del);
@@ -57,12 +57,12 @@ const Cases = {
   blank() {
     const now = new Date().toISOString();
     return { id: uid(), title: "", status: "new", checks: {}, custom: [], remind: false, evidence: [], created: now, updated: now,
-             data: { state: null, view: { turns: [] }, practice: [] } };
+             data: { state: null, view: { turns: [] } } };
   },
   cur() { return this.all[this.currentId]; },
   sorted() { return Object.values(this.all).sort((a, b) => (b.updated || "").localeCompare(a.updated || "")); },
-  toGlobals() { const c = this.cur(); S = c.data.state; VIEW = c.data.view || { turns: [] }; practice = c.data.practice || []; },
-  fromGlobals() { const c = this.cur(); if (!c) return; c.data = { state: S, view: VIEW, practice }; },
+  toGlobals() { const c = this.cur(); S = c.data.state; VIEW = c.data.view || { turns: [] }; },
+  fromGlobals() { const c = this.cur(); if (!c) return; c.data = { state: S, view: VIEW }; },  // the practice hearing lives in S.messages (flagged) + VIEW.prep
   autoTitle(c) {
     const st = c.data?.state; const f = st?.case?.facts || {};
     if (f.summary && String(f.summary).length > 6) return String(f.summary).slice(0, 60);
@@ -108,7 +108,7 @@ const Cases = {
   rename(id, title) { const c = this.all[id]; if (!c) return; c.title = title.slice(0, 80); c.titleManual = true; c.updated = new Date().toISOString(); this.saveLocal(); renderCaseList(); if (window.HAQ_CLOUD?.user) window.HAQ_CLOUD.pushCase(c); },
 };
 function persist() { Cases.touch(); }
-function resetPanels() { $("#docOut").innerHTML = ""; $("#practiceFeedback").innerHTML = ""; renderTracker(); renderEvidence(); }
+function resetPanels() { $("#docOut").innerHTML = ""; renderTracker(); renderEvidence(); }
 function closeDrawers() { if (innerWidth <= 900) $("#side")?.classList.remove("open"); }
 
 /* ---------------- sidebar: My cases */

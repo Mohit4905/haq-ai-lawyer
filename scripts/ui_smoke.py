@@ -128,19 +128,21 @@ with sync_playwright() as p:
 
     step("draft document + Word download", draft)
 
-    def practice():
-        page.click(".tab[data-tab=practice]")
-        page.click("#practiceStart")
-        page.wait_for_selector(".pmsg.other", timeout=120_000)
-        page.fill("#practiceInput", "Uncle, maine 31 August ko keys di thi. 40000 deposit 15 din mein bank transfer kar dijiye, warna legal notice bhejna padega.")
-        page.press("#practiceInput", "Enter")
-        page.wait_for_function("document.querySelectorAll('.pmsg.other').length >= 2", timeout=120_000)
-        page.click("#practiceEnd")
-        page.wait_for_selector(".score", timeout=120_000)
+    def practice():  # practice hearing in the main chat: "practice" -> judge's questions -> "stop" -> scorecard
+        if not page.is_hidden("#toolView"):
+            page.click("#toolClose")
+        page.fill("#input", "practice"); page.press("#input", "Enter")
+        page.wait_for_selector(".prep-meta", timeout=120_000)
+        q1 = page.locator(".msg.bot").last.inner_text()
+        page.fill("#input", "Sir, I handed over the keys on 31 August. I paid the 40000 deposit by bank transfer and I have the statement. I want the full deposit back.")
+        page.press("#input", "Enter")
+        page.wait_for_function("document.querySelectorAll('.prep-meta').length >= 2", timeout=120_000)
+        page.fill("#input", "stop"); page.press("#input", "Enter")
+        page.wait_for_selector(".prep-fb .score", timeout=120_000)
         page.screenshot(path=SHOTS / "06_practice_feedback.png")
-        return f"{page.locator('.score').count()} scores shown"
+        return f"judge: {q1[:70]!r}; {page.locator('.prep-fb .score').count()} scores shown"
 
-    step("practice role-play + feedback", practice)
+    step("practice hearing in chat + feedback", practice)
 
     def help_tab():
         page.click(".tab[data-tab=help]")

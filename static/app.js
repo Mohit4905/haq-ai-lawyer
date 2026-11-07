@@ -10,7 +10,6 @@ const store = {
 let S = store.get("haq_state", null);          // engine state (messages + case)
 let VIEW = store.get("haq_view", { turns: [] }); // rendered extras per assistant turn
 let CONFIG = null;
-let practice = store.get("haq_practice", []);
 let busy = false;
 
 /* ---------------- i18n (page text; the AI replies in the chosen language separately) */
@@ -27,7 +26,7 @@ function applyI18n() {
   renderCards();
   const name = langInfo()[2];
   if (name && [...$("#docLang").options].some(o => o.value === name || o.textContent === name)) $("#docLang").value = name;
-  try { renderCase(VIEW.turns[VIEW.turns.length - 1]); } catch (e) {}
+  try { renderCase(lastCaseTurn()); renderPrepBar(); } catch (e) {}
 }
 function renderCards() {
   const box = $("#cards"); if (!box) return;
@@ -138,6 +137,11 @@ function guardChip(g) {
 
 function renderBotExtras(t) {
   const box = document.createElement("div");
+  if (t.prep) {  // practice-hearing turn: the judge's line, or the closing scorecard
+    if (t.prep === "feedback" && t.fb) box.appendChild(prepFeedbackEl(t.fb));
+    if (t.prep === "q") { box.className = "meta prep-meta"; box.innerHTML = `<span class="chip prep-chip"><i></i>${esc(tr("prep_on"))}</span>`; }
+    return box;
+  }
   if (t.court && typeof courtCard === "function") { box.appendChild(courtCard(t.court)); return box; }
   if (t.order && typeof orderExtras === "function") return orderExtras(t);
   if (t.doc) {  // intro text (in the bubble) -> the document -> the questions for its blanks
@@ -169,12 +173,13 @@ function renderBotExtras(t) {
     if (seen.has(key)) return; seen.add(key);
     const btn = document.createElement("button");
     if (a.type === "draft" && CONFIG?.doc_types?.[a.doc]) { btn.textContent = "Draft: " + shortDoc(a.doc); btn.onclick = () => draftDoc(a.doc); }
-    else if (a.type === "practice") { btn.textContent = "Practise the conversation"; btn.onclick = () => { openTab("practice"); startPractice(); }; }
+    else if (a.type === "practice") { if (t.prepOffer) return; btn.textContent = tr("prep_start"); btn.onclick = () => startPrep(); }
     else if (a.type === "get_help") { btn.textContent = "Free legal help"; btn.onclick = () => openTab("help"); }
     else return;
     acts.appendChild(btn);
   });
   if (acts.children.length) box.appendChild(acts);
+  if (t.prepOffer) box.appendChild(prepOfferEl());
   return box;
 }
 const DOC_SHORT = {
@@ -208,6 +213,7 @@ document.addEventListener("click", e => { if (!e.target.closest("#cite-pop")) $(
 
 function renderAll() {
   $("#chat").querySelectorAll(".msg").forEach(n => n.remove());
+  renderPrepBar();
   if (!S || !S.messages.length) { $("#welcome").classList.remove("hidden"); renderCase(null); renderDocPanel(null); return; }
   let ti = 0;
   S.messages.forEach(m => {
@@ -225,6 +231,10 @@ async function send(text) {
   text = (text || "").trim();
   if (!text || busy) return;
   await appReady;
+  if (prepOn() || wantsPrep(text)) {  // practice hearing: answers go to the judge, not the lawyer
+    $("#input").value = ""; autosize();
+    return prepOn() ? prepTurn(text) : startPrep(text);
+  }
   if (typeof tryCourtFromChat === "function" && await tryCourtFromChat(text)) { $("#input").value = ""; autosize(); return; }  // a pasted CNR -> live case status
   busy = true; $("#send").disabled = true;
   const langPref = langInfo()[2] || "English";  // reply in the interface language the user picked, whatever they type in
@@ -237,9 +247,11 @@ async function send(text) {
   busy = false; $("#send").disabled = false;
   if (res.error) { addMsg("bot", `<p>⚠️ ${esc(res.error)}</p><p class="small muted">Try again, or switch the model (⚙︎ at the top).</p>`); return; }
   S = res.state;
-  VIEW.turns.push({ reply: res.reply, citations: res.citations, guard: res.guard, actions: res.actions, model: res.model, latency_s: res.latency_s, calculated: res.calculated, completeness: res.completeness, needs_lawyer: res.needs_lawyer, emergency_contacts: res.emergency_contacts });
+  const turn = { reply: res.reply, citations: res.citations, guard: res.guard, actions: res.actions, model: res.model, latency_s: res.latency_s, calculated: res.calculated, completeness: res.completeness, needs_lawyer: res.needs_lawyer, emergency_contacts: res.emergency_contacts };
+  VIEW.turns.push(turn);
+  maybeOfferPrep(turn);
   persist();
-  addMsg("bot", md(res.reply), renderBotExtras(res));
+  addMsg("bot", md(res.reply), renderBotExtras(turn));
   renderCase(VIEW.turns[VIEW.turns.length - 1]);
   if ($("#autoSpeak")?.checked) speak(res.reply);
 }
@@ -441,40 +453,122 @@ async function tryFillDoc(text, tb) {
   return true;
 }
 
-/* ---------------- practice */
-function renderPractice() {
-  $("#practiceChat").innerHTML = practice.map(m => `<div class="pmsg ${m.role === "user" ? "user" : "other"}">${esc(m.content)}</div>`).join("") || `<div class="empty">Press "Start practice". Haq will play the ${esc(S?.case?.category === "tenancy" ? "landlord" : S?.case?.category === "salary" ? "employer" : "other side")}.</div>`;
-  $("#practiceChat").scrollTop = 1e9;
+/* ---------------- practice hearing, inside the chat
+   After a case reply Haq offers a mock hearing (once per case). The user replies "practice" (or taps
+   the button); Haq then plays the judge, one question per turn, putting the other side's arguments.
+   "stop" ends it with a scorecard. Hearing messages are stored in S.messages with practice:true,
+   which the server leaves out of the legal conversation (engine._convo). */
+const PREP_CATS = new Set(["tenancy", "consumer", "salary", "cheque_bounce", "notice", "other"]);
+const PREP_GO = /(practi[cs]e|prepar|\bprep\b|rehears|\bmock\b|\btest\b|abhyas|taiyari|तैयारी|अभ्यास|ਅਭਿਆਸ|ਤਿਆਰੀ)/i;
+const PREP_NOT = /(notice|draft|letter|complaint|document|email|reply|नोटिस|ड्राफ़्ट|ड्राफ्ट|शिकायत)/i;  // "prepare a notice" is a draft request
+const PREP_YES = /^(?:yes|yeah|yep|ok|okay|sure|start|haan|han|haa|ha|ji|ji haan|chalo|theek hai|हाँ|हां|जी|जी हाँ|ठीक है|ਹਾਂ|ਜੀ)(?:\s+(?:please|pls|ji|start|karo|karein|shuru karo|let'?s start|let'?s do it))?[\s.!]*$/i;
+const PREP_STOP = /^(?:stop|end|finish|done|quit|exit|feedback|bas|khatam|ruko|band karo|बस|ख़त्म|खत्म|रुको|बंद करो|ਬੱਸ|ਖ਼ਤਮ)(?:\s+(?:it|now|please|pls|karo|kar do|hearing|practice|the hearing|करो|कर दो))?[\s.!]*$/i;
+const nWords = s => s.trim().split(/\s+/).filter(Boolean).length;
+const prepOn = () => !!VIEW?.prep?.on;
+function wantsPrep(text) {
+  if (nWords(text) <= 5 && !/[?？]/.test(text) && PREP_GO.test(text) && !PREP_NOT.test(text)) return true;
+  // a bare "yes" counts only right after the offer, and only if that reply asked the user nothing else
+  const last = VIEW.turns.at(-1);
+  return !!(last?.prepOffer && !/[?？]/.test(last.reply || "") && PREP_YES.test(text.trim()));
 }
-async function startPractice() {
-  if (!S?.case?.category) { $("#practiceChat").innerHTML = `<div class="empty">First tell Haq about your problem in the chat.</div>`; return; }
-  practice = []; $("#practiceFeedback").innerHTML = ""; renderPractice();
-  const r = await api("/api/practice", { case: S.case, history: [], provider: provider() });
-  if (r.error) { $("#practiceChat").innerHTML = `<div class="empty">⚠️ ${esc(r.error)}</div>`; return; }
-  practice.push({ role: "other", content: r.reply }); persist(); renderPractice();
+function prepHistory() {
+  const start = VIEW.prep?.start ?? S.messages.length;
+  return S.messages.slice(start).filter(m => m.practice).map(m => ({ role: m.role === "user" ? "user" : "judge", content: m.content }));
 }
-$("#practiceForm").onsubmit = async e => {
-  e.preventDefault();
-  const v = $("#practiceInput").value.trim(); if (!v) return;
-  if (!practice.length) await startPractice();
-  if (!practice.length || !S?.case) return;  // no case yet: startPractice already said what to do (audit: S.case on null)
-  practice.push({ role: "user", content: v }); $("#practiceInput").value = ""; renderPractice();
-  const r = await api("/api/practice", { case: S.case, history: practice, provider: provider() });
-  practice.push({ role: "other", content: r.error ? "⚠️ " + r.error : r.reply }); persist(); renderPractice();
-};
-$("#practiceStart").onclick = startPractice;
-$("#practiceEnd").onclick = async () => {
-  if (practice.filter(m => m.role === "user").length < 1) return;
-  $("#practiceFeedback").innerHTML = `<div class="empty">Reviewing… <span class="typing"><i></i><i></i><i></i></span></div>`;
-  const r = await api("/api/practice", { case: S.case, history: practice, feedback: true, provider: provider() });
-  if (r.error) { $("#practiceFeedback").innerHTML = `<div class="empty">⚠️ ${esc(r.error)}</div>`; return; }
-  const sc = r.scores || {};
-  $("#practiceFeedback").innerHTML = `<h3>Your feedback</h3><p><b>${esc(r.summary || "")}</b></p>` +
-    Object.entries(sc).map(([k, v]) => `<div class="score"><span>${esc(k)}</span><span class="bar"><i style="width:${(+v || 0) * 20}%"></i></span><b>${esc(v)}</b></div>`).join("") +
-    `<h3>Went well</h3><ul class="small">${(r.went_well || []).map(x => `<li>${esc(x)}</li>`).join("")}</ul>` +
-    `<h3>Improve</h3><ul class="small">${(r.improve || []).map(x => `<li>${esc(x)}</li>`).join("")}</ul>` +
-    `<h3>Try saying</h3><ul class="small">${(r.better_lines || []).map(x => `<li>“${esc(x)}”</li>`).join("")}</ul>`;
-};
+// offer the hearing once per case, after a real case reply
+function maybeOfferPrep(t) {
+  if (VIEW.prep?.offered || !PREP_CATS.has(S?.case?.category) || S?.flags?.level === "emergency") return;
+  const replies = VIEW.turns.filter(x => x.calculated && !x.prep).length;
+  if (replies < 2 && (t.completeness?.pct || 0) < 40) return;
+  t.prepOffer = true;
+  VIEW.prep = Object.assign({}, VIEW.prep, { offered: true });
+}
+function prepOfferEl() {
+  const d = document.createElement("div");
+  d.className = "prep-offer";
+  d.innerHTML = `<span class="prep-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 13l-8.5 8.5a2.1 2.1 0 0 1-3-3L11 10"/><path d="M16 16l6-6M8 8l6-6M9 7l8 8M21 11l-8-8"/></svg></span>
+    <div class="prep-offer-t"><b>${esc(tr("prep_offer_t"))}</b><div>${inline(tr("prep_offer_b"))}</div></div>`;
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "primary small"; b.textContent = tr("prep_start");
+  b.onclick = () => startPrep();
+  d.querySelector(".prep-offer-t").appendChild(b);
+  return d;
+}
+function prepFeedbackEl(fb) {
+  const d = document.createElement("div");
+  d.className = "prep-fb";
+  const list = (k, arr, quote) => arr?.length ? `<h4>${esc(tr(k))}</h4><ul>${arr.map(x => `<li>${quote ? "“" + esc(x) + "”" : esc(x)}</li>`).join("")}</ul>` : "";
+  d.innerHTML = `<div class="prep-fb-h">${esc(tr("prep_fb_t"))}</div>${fb.summary ? `<p><b>${esc(fb.summary)}</b></p>` : ""}
+    <div class="scores">${Object.entries(fb.scores || {}).map(([k, v]) => { const n = Math.max(0, Math.min(5, +v || 0)); return `<div class="score"><span>${esc(tr("sc_" + k))}</span><span class="bar"><i style="width:${n * 20}%"></i></span><b>${n}/5</b></div>`; }).join("")}</div>
+    ${list("prep_went_well", fb.went_well)}${list("prep_improve", fb.improve)}${list("prep_try", fb.better_lines, true)}${list("prep_bring", fb.bring)}
+    <p class="small muted">${inline(tr("prep_again"))}</p>`;
+  return d;
+}
+function renderPrepBar() {
+  const on = prepOn();
+  $("#prepBar")?.classList.toggle("hidden", !on);
+  document.body.classList.toggle("prep-mode", on);
+  if (on && $("#prepHint")) $("#prepHint").innerHTML = inline(tr("prep_stop_hint"));
+  $("#input").placeholder = on ? tr("prep_ph") : tr(innerWidth <= 600 ? "ph_short" : "ph");
+}
+function pushPrepTurn(text, kind, extra) {
+  S.messages.push({ role: "assistant", content: text, practice: true });
+  const t = Object.assign({ reply: text, prep: kind }, extra || {});
+  VIEW.turns.push(t);
+  persist();
+  addMsg("bot", md(t.intro != null ? t.intro : text), renderBotExtras(t));
+  renderPrepBar();
+}
+const setBusy = v => { busy = v; $("#send").disabled = v; };
+
+async function startPrep(text) {
+  if (busy) return;
+  window.showChat && window.showChat();
+  if (innerWidth <= 900) $("#side")?.classList.remove("open");
+  if (text) addMsg("user", esc(text));
+  if (!S?.case?.category || !S.messages.some(m => m.role === "user" && !m.practice)) { addMsg("bot", md(tr("prep_no_case"))); return; }
+  setBusy(true);
+  const tb = typing();
+  const r = await api("/api/practice", { case: S.case, history: [], provider: provider(), language: langInfo()[2] || "English" });
+  tb.parentElement.remove(); setBusy(false);
+  if (r.error || !r.reply) { addMsg("bot", `<p>⚠️ ${esc(r.error || tr("err_server"))}</p>`); return; }
+  if (text) S.messages.push({ role: "user", content: text, practice: true });
+  VIEW.prep = { offered: true, on: true, start: S.messages.length };
+  pushPrepTurn(r.reply, "q");
+  $("#input").focus();
+}
+async function prepTurn(text) {
+  if (PREP_STOP.test(text.trim())) return endPrep(text);
+  addMsg("user", esc(text));
+  S.messages.push({ role: "user", content: text, practice: true });
+  setBusy(true);
+  const tb = typing();
+  const r = await api("/api/practice", { case: S.case, history: prepHistory(), provider: provider(), language: langInfo()[2] || "English" });
+  tb.parentElement.remove(); setBusy(false);
+  if (r.error || !r.reply) { S.messages.pop(); addMsg("bot", `<p>⚠️ ${esc(r.error || tr("err_server"))}</p>`); return; }
+  pushPrepTurn(r.reply, "q");
+}
+async function endPrep(text) {
+  if (busy || !prepOn()) return;
+  window.showChat && window.showChat();
+  if (text) { addMsg("user", esc(text)); S.messages.push({ role: "user", content: text, practice: true }); }
+  const hist = prepHistory().filter(m => !(m.role === "user" && PREP_STOP.test(m.content.trim())));
+  if (!hist.some(m => m.role === "user")) {  // nothing to review: just close the hearing
+    VIEW.prep.on = false;
+    pushPrepTurn(tr("prep_ended") + " " + tr("prep_again"), "end");
+    return;
+  }
+  setBusy(true);
+  const tb = typing();
+  tb.insertAdjacentHTML("beforeend", ` <span class="muted small">${esc(tr("prep_reviewing"))}</span>`);
+  const r = await api("/api/practice", { case: S.case, history: hist, feedback: true, provider: provider(), language: langInfo()[2] || "English" });
+  tb.parentElement.remove(); setBusy(false);
+  if (r.error) { addMsg("bot", `<p>⚠️ ${esc(r.error)}</p>`); persist(); return; }  // still in the hearing: "stop" again retries
+  VIEW.prep.on = false;
+  const fb = { scores: r.scores || {}, summary: r.summary || "", went_well: r.went_well || [], improve: r.improve || [], better_lines: r.better_lines || [], bring: r.bring || [] };
+  pushPrepTurn(`${tr("prep_ended")} ${fb.summary}`, "feedback", { intro: tr("prep_ended"), fb });
+}
+$("#prepEnd").onclick = () => endPrep();
 
 /* ---------------- notice explainer */
 $("#attach").onclick = () => $("#noticeDlg").showModal();
@@ -579,18 +673,17 @@ function openTab(name) {
   $$(".panel").forEach(p => p.classList.toggle("active", p.id === "p-" + name));
   $("#secCase") && ($("#secCase").open = true);
   window.openSide && window.openSide();
-  if (name === "practice") renderPractice();
   if (name === "evidence") renderEvidence();
 }
 $$(".tab").forEach(t => t.onclick = () => openTab(t.dataset.tab));
 
 $("#newCase") && ($("#newCase").onclick = () => Cases.create());
 $("#calAll").onclick = () => downloadIcs(userDeadlines());
-$("#lang").onchange = () => { store.set("haq_lang", $("#lang").value); applyI18n(); };
+$("#lang").onchange = () => { store.set("haq_lang", $("#lang").value); applyI18n(); if (!busy && S?.messages?.length) renderAll(); };  // chat cards/labels follow the new language
 $("#themeBtn").onclick = () => setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
 $("#provider").onchange = () => store.set("haq_provider", $("#provider").value);
 $("#exportCase").onclick = () => {
-  const c = S.case, calc = VIEW.turns.at(-1)?.calculated || { deadlines: [] };
+  const c = S.case, calc = lastCaseTurn()?.calculated || { deadlines: [] };
   const txt = `HAQ CASE SUMMARY (generated ${new Date().toLocaleString("en-IN")})\nType: ${CAT_LABEL[c.category] || c.category}\n\nFACTS\n` +
     Object.entries(c.facts).map(([k, v]) => `- ${FACT_LABELS[k] || k}: ${v}`).join("\n") +
     `\n\nTIMELINE\n` + c.timeline.map(e => `- ${e.date}: ${e.event}`).join("\n") +

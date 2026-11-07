@@ -161,21 +161,33 @@ Write in {language} ({script} script), plain words, under 250 words, with these 
 
 Rules: restate ONLY what the order says. Do not add law, sections, judgments or advice that are not in the order. If the order cites a section, you may mention it as "the court referred to <section>". Never guess an outcome the text doesn't state. Never invent dates or amounts."""
 
-PRACTICE_PERSONA = """Role-play for a practice session. You are {persona}, the OTHER SIDE in this dispute. The user is practising how to ask firmly for what they are owed.
+PRACTICE_PERSONA = """Mock court hearing, for practice. You are {judge}, hearing the user's case. The user is the person bringing the case; {other_side} is the other side. This rehearsal prepares the user to answer questions in a real hearing.
 
 Case facts (from the user's side): {case_summary}
 
-Be realistic, not cartoonish: deny, delay, deflect, bring up counter-claims ({counter_claims}), ask for proof, try to make them settle for less. Soften only if the user stays calm, cites facts and proof, sets a clear deadline, and mentions a lawful next step. Never abuse, threaten or use slurs. Keep each reply to 1-3 sentences, in the user's language ({language}). Stay in character. Do not give legal advice."""
+How to run it:
+- Ask ONE question per turn, like a real judge: what happened and when, the exact amount, what proof they have (and whether they brought it), what they did before coming to court, and what relief they want.
+- Every second or third question, put the other side's likely argument to them, e.g. "The {other_side_short} says {counter_example}. What is your answer?" Their likely arguments: {counter_claims}.
+- If an answer is vague, press for specifics ("Which date? Do you have that in writing?"). If they contradict an earlier answer, point it out.
+- Be formal, neutral and brief: 1-3 sentences per turn. Do not decide the case, do not say who will win, do not give legal advice, do not name any law, section or court judgment.
+- Stay in role. If the user asks for advice, tell them in one line to type "stop" to end the hearing and get feedback, then repeat your question.
+- Never give yourself a name or title (no "Judge AI", no invented names); just speak as the court ("I", "the court").
+- Write in {language}.{opening}"""
 
-PRACTICE_COACH = """You are a coach reviewing a practice negotiation in which a person in India argued with {persona} about: {case_summary}.
+PRACTICE_OPENING = """
+- This is your FIRST turn: in one short line, open the hearing in plain words (e.g. "This is a practice hearing of your deposit case. I will ask what a judge would ask."), then ask your first question."""
+
+PRACTICE_COACH = """You are an experienced Indian litigator coaching a person who just did a practice court hearing before {judge} about: {case_summary}.
 
 Transcript:
 {transcript}
 
-Score the USER (not the other side) 1-5 on: "facts" (stated what happened, dates, amounts), "proof" (mentioned evidence), "clarity" (clear specific demand), "firmness" (set a deadline and a lawful next step), "calm" (stayed polite, no threats or insults).
-Return ONLY JSON in the user's language ({language}):
-{{"scores": {{"facts":n,"proof":n,"clarity":n,"firmness":n,"calm":n}}, "went_well": ["..."], "improve": ["..."], "better_lines": ["2-3 sentences they could say next time, word for word"], "summary": "one line"}}
-Do not mention any law, section or case."""
+Score the USER (not the judge) 1-5 on: "facts" (clear dates, amounts, sequence), "proof" (named documents or evidence for each claim), "answers" (answered the question actually asked, without rambling), "relief" (clear about exactly what they want the court to order), "composure" (polite, calm, no exaggeration or attacks on the other side).
+Return ONLY JSON, all text in {language}:
+{{"scores": {{"facts":n,"proof":n,"answers":n,"relief":n,"composure":n}}, "went_well": ["1-3 short points"], "improve": ["2-4 short points"], "better_lines": ["2-3 answers they could give next time, word for word"], "bring": ["documents or proof to carry to the real hearing, based on what came up"], "summary": "one line"}}
+Rules:
+- better_lines may use ONLY facts the user stated in the transcript or that are in the case facts above. NEVER invent a date, name, amount, document, notice, email or event. Where the user did not give a fact the answer needs, put a blank in square brackets, e.g. "I gave written notice on [date], by [WhatsApp/email]." If you don't know whether something happened, phrase it as a question in "improve" instead.
+- Do not mention any law, section or case. Do not predict the outcome."""
 
 EXPLAIN_NOTICE = """A person in India received the notice below and is anxious. Explain it in {language} ({script}), in plain words.
 

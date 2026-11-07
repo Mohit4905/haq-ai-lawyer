@@ -20,7 +20,7 @@ Haq helps an ordinary person in India act on an everyday legal problem. You can 
 2. **Explains where you stand.** In plain language: your options from cheapest to most expensive, and one recommended next step.
 3. **Calculates deadlines in code, not with the AI.** Examples: the 30-day window to send a cheque-bounce notice, or the 2-year limit for consumer complaints. Each date links to the official source.
 4. **Drafts the document.** Legal notice, complaint email, consumer-commission complaint, labour-office complaint, or a reply to a notice. Downloadable as Word. Missing details are marked `[[FILL]]`, never invented.
-5. **Lets you practise.** The AI plays your landlord, HR manager or customer care, then scores how you did.
+5. **Prepares you for the hearing.** After a case reply, type "practice" in the chat: the AI plays the judge, asks what a judge would ask, puts the other side's arguments to you, and scores your answers when you type "stop".
 6. **Explains a notice you received.** Paste it or upload a photo or PDF.
 7. **Says when you need a real lawyer**, and points to free legal aid (NALSA 15100) and emergency help (112, Tele-MANAS 14416).
 

@@ -6,7 +6,7 @@ Kuku says: *"submit only work you understand… We'll talk through [decisions] i
 
 ## 1. The 60-second pitch
 
-> "Most people drop everyday legal problems (deposits, refunds, unpaid salary, bounced cheques) because a lawyer feels expensive and the process is confusing. I built Haq: you talk to it in your language, by text or voice. It builds your case file, explains where you stand, calculates your deadlines, drafts the notice or complaint, and lets you practise the conversation. The hard part of an AI lawyer isn't writing nice text. It's *not inventing law*. A plain LLM, given my test questions, made up three Supreme Court judgments and cited the IPC, which was repealed in 2024. So Haq can only cite from a law library I verified against official sources, a code-based guard checks every reply before the user sees it, and all deadlines are computed in code, not by the model."
+> "Most people drop everyday legal problems (deposits, refunds, unpaid salary, bounced cheques) because a lawyer feels expensive and the process is confusing. I built Haq: you talk to it in your language, by text or voice. It builds your case file, explains where you stand, calculates your deadlines, drafts the notice or complaint, and runs a practice court hearing in the chat. The hard part of an AI lawyer isn't writing nice text. It's *not inventing law*. A plain LLM, given my test questions, made up three Supreme Court judgments and cited the IPC, which was repealed in 2024. So Haq can only cite from a law library I verified against official sources, a code-based guard checks every reply before the user sees it, and all deadlines are computed in code, not by the model."
 
 ## 2. Architecture: what happens on one message
 
@@ -47,7 +47,7 @@ The **backend is stateless**: the browser sends the whole conversation each time
 1. Open https://haq-46bx.onrender.com a few minutes early (the free instance sleeps; the first load takes ~50s). Local backup: `cd haq`, then `.\.venv\Scripts\python.exe -m uvicorn app.main:app --port 8000`.
 2. Type their scenario. Point out: the case file filling up (right panel), deadlines with their source links, the 🛡️ chip (click a law chip to see the official source), escalation banners.
 3. Click **Draft** and show the `[[FILL]]` gaps, Word download, and "how to send".
-4. **Practice** tab: role-play, then feedback scores.
+4. **Practice hearing** in the chat: after a case reply, type "practice"; the AI plays the judge, then "stop" gives a scorecard.
 5. Swap the model live: the ⚙︎ dropdown (Groq ↔ Gemini), or set their key in `.env`:
    ```
    LLM_PROVIDER=custom

@@ -3,48 +3,95 @@ from __future__ import annotations
 
 import base64
 import json
+import re
 
 from . import guard, kb, prompts, rules
 from .llm import LLMError, chat, chat_json
 
-PERSONAS = {
-    "tenancy": ("the landlord", "unpaid electricity bill, 'damage' to walls, painting charges, 'you left without one month notice'"),
-    "consumer": ("a customer-care supervisor of the company", "'refund is under process', 'policy does not allow', 'it was customer misuse', 'contact the seller not us'"),
-    "salary": ("the employer / HR manager", "'company is in loss', 'you didn't serve notice period', 'performance issues', 'we will pay next month'"),
-    "cheque_bounce": ("the person who gave the bounced cheque", "'it was a security cheque', 'I already paid you in cash', 'give me more time', 'the debt was smaller'"),
-    "notice": ("the person/company who sent the notice", "insisting on their demand"),
+# Mock hearing in the chat: the AI plays the judge and puts the other side's arguments to the user.
+# category -> (judge, other side, short name, example argument, likely arguments)
+# Forums are kept generic where they differ by state (tenancy, salary).
+HEARINGS = {
+    "tenancy": ("the judge hearing a security-deposit dispute", "the landlord", "landlord", "the walls were damaged",
+                "unpaid electricity bill, damage to walls, painting charges, 'you left without one month's notice'"),
+    "consumer": ("the President of the District Consumer Commission", "the company (opposite party)", "company", "the product was misused",
+                 "'refund is under process', 'company policy does not allow it', 'it was customer misuse', 'contact the seller, not us', 'the warranty does not cover this'"),
+    "salary": ("the presiding officer hearing an unpaid-salary claim", "the employer", "employer", "you did not serve the notice period",
+               "'the company is in loss', 'you didn't serve the notice period', 'performance issues', 'you took company property', 'we will pay next month'"),
+    "cheque_bounce": ("the Magistrate hearing a cheque-dishonour complaint", "the accused (who gave the cheque)", "accused", "it was only a security cheque",
+                      "'it was a security cheque', 'I already paid in cash', 'the debt was smaller', 'I never received the notice'"),
+    "notice": ("the judge hearing the dispute behind the notice", "the party who sent the notice", "other side", "you agreed to pay",
+               "insisting their demand is valid, saying the user agreed to it, questioning the user's proof"),
 }
+DEFAULT_HEARING = ("the judge hearing this dispute", "the other party", "other side", "your version is not correct",
+                   "denying the user's version and questioning their proof")
 
 
 def _summary(case: dict) -> str:
-    f = case.get("facts", {})
-    s = f.get("summary") or ""
+    f = case.get("facts") if isinstance(case.get("facts"), dict) else {}
+    s = str(f.get("summary") or "")
     return (s + " Facts: " + json.dumps(f, ensure_ascii=False))[:1500]
 
 
-def practice_turn(case: dict, history: list, provider: str | None = None) -> dict:
-    persona, counter = PERSONAS.get(case.get("category") or "", ("the other party", "their own version"))
-    sys = prompts.PRACTICE_PERSONA.format(persona=persona, case_summary=_summary(case), counter_claims=counter, language=case.get("language") or "English")
-    msgs = [{"role": "system", "content": sys}]
-    if not history:
-        msgs.append({"role": "user", "content": "(The user walks up to you / calls you to raise the issue. Open with a short, slightly dismissive line.)"})
-    for m in history[-12:]:
-        msgs.append({"role": "user" if m["role"] == "user" else "assistant", "content": m["content"]})
-    try:
-        res = chat(msgs, tier="main", temperature=0.8, max_tokens=200, provider=provider)
-    except LLMError as e:
-        return {"error": str(e)}
-    return {"reply": res.text.strip().strip('"'), "persona": persona, "model": res.meta()}
+def _clean(history: list) -> list:
+    """Model-safe history: dicts with string content only (the client is untrusted)."""
+    out = []
+    for m in history:
+        if isinstance(m, dict) and isinstance(m.get("content"), str) and m["content"].strip():
+            out.append({"role": "user" if m.get("role") == "user" else "assistant", "content": m["content"][:1500]})
+    return out
 
 
-def practice_feedback(case: dict, history: list, provider: str | None = None) -> dict:
-    persona, _ = PERSONAS.get(case.get("category") or "", ("the other party", ""))
-    transcript = "\n".join(f"{'USER' if m['role']=='user' else persona.upper()}: {m['content']}" for m in history)
-    sys = prompts.PRACTICE_COACH.format(persona=persona, case_summary=_summary(case), transcript=transcript[:6000], language=case.get("language") or "English")
+def practice_turn(case: dict, history: list, provider: str | None = None, language: str | None = None) -> dict:
+    judge, other, short, example, counter = HEARINGS.get(case.get("category") or "", DEFAULT_HEARING)
+    hist = _clean(history)
+    sys = prompts.PRACTICE_PERSONA.format(
+        judge=judge, other_side=other, other_side_short=short, counter_example=example, counter_claims=counter,
+        case_summary=_summary(case), language=language or case.get("language") or "English",
+        opening="" if hist else prompts.PRACTICE_OPENING)
+    msgs = [{"role": "system", "content": sys}] + (hist[-14:] or [{"role": "user", "content": "(The hearing begins.)"}])
+    if msgs[-1]["role"] == "assistant":  # providers want the last turn from the user
+        msgs.append({"role": "user", "content": "(continue)"})
     try:
-        out, res = chat_json([{"role": "user", "content": sys}], tier="main", temperature=0.2, max_tokens=900, provider=provider)
+        res = chat(msgs, tier="main", temperature=0.6, max_tokens=260, provider=provider)
+        text = res.text.strip().strip('"')
+        rep = guard.check(text, set(), "")
+        if not rep.ok:  # the judge must not cite law or pre-judge; drop offending sentences
+            text = guard.strip_violations(text, rep).split("\n\n_⚠️")[0].strip() or text
     except LLMError as e:
         return {"error": str(e)}
+    return {"reply": text, "judge": judge, "model": res.meta()}
+
+
+def practice_feedback(case: dict, history: list, provider: str | None = None, language: str | None = None) -> dict:
+    judge, *_ = HEARINGS.get(case.get("category") or "", DEFAULT_HEARING)
+    hist = _clean(history)
+    if not any(m["role"] == "user" for m in hist):
+        return {"error": "no_answers"}
+    transcript = "\n".join(f"{'USER' if m['role'] == 'user' else 'JUDGE'}: {m['content']}" for m in hist)
+    sys = prompts.PRACTICE_COACH.format(judge=judge, case_summary=_summary(case), transcript=transcript[-6000:], language=language or case.get("language") or "English")
+    try:
+        out, res = chat_json([{"role": "user", "content": sys}], tier="main", temperature=0.2, max_tokens=1000, provider=provider)
+    except LLMError as e:
+        return {"error": str(e)}
+    # untrusted shapes (audit lesson): scores 1-5 ints, lists of strings
+    sc = out.get("scores") if isinstance(out.get("scores"), dict) else {}
+    clean = {}
+    for k in ("facts", "proof", "answers", "relief", "composure"):
+        try:
+            clean[k] = max(1, min(5, int(round(float(sc.get(k))))))
+        except (TypeError, ValueError):
+            pass
+    out["scores"] = clean
+    for k in ("went_well", "improve", "better_lines", "bring"):
+        v = out.get(k)
+        out[k] = [str(x) for x in v if str(x).strip()][:5] if isinstance(v, list) else ([v] if isinstance(v, str) and v.strip() else [])
+    # code check (the prompt alone was ignored once: it invented "notice on 15 August 2026"):
+    # a suggested line may not contain a number the user never gave
+    source = transcript + " " + _summary(case)
+    known = {n.replace(",", "") for n in re.findall(r"\d[\d,]*", source)}
+    out["better_lines"] = [s for s in out["better_lines"] if all(n.replace(",", "") in known for n in re.findall(r"\d[\d,]*", s))]
+    out["summary"] = str(out.get("summary") or "")
     out["model"] = res.meta()
     return out
 

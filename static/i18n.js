@@ -573,3 +573,41 @@ Object.assign(window.HAQ_I18N["pa"], {
   forgot_pw: "ਪਾਸਵਰਡ ਭੁੱਲ ਗਏ?", reset_sent: "ਜੇ ਇਸ ਈਮੇਲ ਨਾਲ ਖਾਤਾ ਹੈ, ਤਾਂ ਅਸੀਂ ਪਾਸਵਰਡ ਬਦਲਣ ਦਾ ਲਿੰਕ ਭੇਜ ਦਿੱਤਾ ਹੈ। ਇਨਬਾਕਸ ਅਤੇ ਸਪੈਮ ਵੇਖੋ।",
   reset_need_email: "ਪਹਿਲਾਂ ਉੱਪਰ ਆਪਣਾ ਈਮੇਲ ਲਿਖੋ, ਫਿਰ \"ਪਾਸਵਰਡ ਭੁੱਲ ਗਏ?\" ਦਬਾਓ।", new_pw_title: "ਨਵਾਂ ਪਾਸਵਰਡ ਬਣਾਓ", new_pw_btn: "ਨਵਾਂ ਪਾਸਵਰਡ ਸੇਵ ਕਰੋ", pw_updated: "ਪਾਸਵਰਡ ਬਦਲ ਗਿਆ। ਸਾਈਨ ਇਨ ਹੋ ਰਿਹਾ ਹੈ…",
 });
+
+/* mock court hearing in the chat (replaces the Practice tool) */
+Object.assign(window.HAQ_I18N["en"], {
+  prep_offer_t: "Want to prepare for court?", prep_ph: "Your answer to the judge…",
+  prep_offer_b: "I can run a practice hearing: I'll act as the judge, ask the questions a judge would ask and put the other side's arguments to you. At the end you get a score and better answers. Just reply **practice** to start.",
+  prep_start: "Start practice hearing", prep_on: "Practice hearing", prep_stop_hint: "Answer as you would in court · type **stop** to end and get feedback",
+  prep_end: "End & get feedback", prep_ended: "Practice hearing ended.", prep_need_answer: "Answer at least one question first, then type stop for feedback.",
+  prep_reviewing: "Reviewing your answers…", prep_fb_t: "Your hearing feedback", prep_went_well: "Went well", prep_improve: "Improve", prep_try: "Try saying",
+  prep_bring: "Bring to the real hearing", prep_again: "Reply **practice** to try again, or ask me anything about your case.",
+  prep_no_case: "First tell me about your problem, then I can run a practice hearing on it.",
+  sc_facts: "Facts", sc_proof: "Proof", sc_answers: "Answering the question", sc_relief: "What you're asking for", sc_composure: "Composure",
+});
+Object.assign(window.HAQ_I18N["hi"], {
+  prep_offer_t: "कोर्ट की तैयारी करनी है?", prep_ph: "जज को अपना जवाब लिखें…",
+  prep_offer_b: "मैं एक अभ्यास-सुनवाई करा सकता हूँ: मैं जज बनकर वही सवाल पूछूँगा जो जज पूछते हैं, और दूसरी तरफ़ की दलीलें आपके सामने रखूँगा। अंत में स्कोर और बेहतर जवाब मिलेंगे। शुरू करने के लिए बस **practice** या **अभ्यास** लिखें।",
+  prep_start: "अभ्यास-सुनवाई शुरू करें", prep_on: "अभ्यास-सुनवाई", prep_stop_hint: "वैसे जवाब दें जैसे कोर्ट में देंगे · ख़त्म करके फ़ीडबैक के लिए **stop** लिखें",
+  prep_end: "ख़त्म करें और फ़ीडबैक लें", prep_ended: "अभ्यास-सुनवाई ख़त्म।", prep_need_answer: "पहले कम से कम एक सवाल का जवाब दें, फिर फ़ीडबैक के लिए stop लिखें।",
+  prep_reviewing: "आपके जवाब देख रहा हूँ…", prep_fb_t: "आपकी सुनवाई का फ़ीडबैक", prep_went_well: "अच्छा रहा", prep_improve: "सुधारें", prep_try: "ऐसे कहें",
+  prep_bring: "असली सुनवाई में साथ ले जाएँ", prep_again: "दोबारा अभ्यास के लिए **practice** लिखें, या अपने केस के बारे में कुछ भी पूछें।",
+  prep_no_case: "पहले मुझे अपनी समस्या बताइए, फिर मैं उस पर अभ्यास-सुनवाई करा सकता हूँ।",
+  sc_facts: "तथ्य", sc_proof: "सबूत", sc_answers: "सवाल का सीधा जवाब", sc_relief: "आप क्या माँग रहे हैं", sc_composure: "संयम",
+});
+Object.assign(window.HAQ_I18N["hinglish"], {
+  prep_offer_t: "Court ki taiyari karni hai?", prep_ph: "Judge ko apna jawab likhiye…",
+  prep_offer_b: "Main ek practice hearing kara sakta hoon: main judge banke wahi sawaal poochhunga jo judge poochhte hain, aur doosri taraf ki daleelein aapke saamne rakhunga. End mein score aur behtar jawab milenge. Shuru karne ke liye bas **practice** likhiye.",
+  prep_start: "Practice hearing shuru karein", prep_on: "Practice hearing", prep_stop_hint: "Waise jawab dijiye jaise court mein denge · khatam karke feedback ke liye **stop** likhiye",
+  prep_end: "Khatam karein aur feedback lein", prep_ended: "Practice hearing khatam.", prep_need_answer: "Pehle kam se kam ek sawaal ka jawab dijiye, phir feedback ke liye stop likhiye.",
+  prep_reviewing: "Aapke jawab dekh raha hoon…", prep_fb_t: "Aapki hearing ka feedback", prep_went_well: "Achha raha", prep_improve: "Sudhaar", prep_try: "Aise kahiye",
+  prep_bring: "Asli hearing mein saath le jaayein", prep_again: "Dobara practice ke liye **practice** likhiye, ya apne case ke baare mein kuch bhi poochhiye.",
+  prep_no_case: "Pehle mujhe apni problem bataiye, phir main us par practice hearing kara sakta hoon.",
+  sc_facts: "Facts", sc_proof: "Saboot", sc_answers: "Sawaal ka seedha jawab", sc_relief: "Aap kya maang rahe hain", sc_composure: "Sanyam",
+});
+Object.assign(window.HAQ_I18N["pa"], {
+  prep_offer_t: "ਕੋਰਟ ਦੀ ਤਿਆਰੀ ਕਰਨੀ ਹੈ?", prep_ph: "ਜੱਜ ਨੂੰ ਆਪਣਾ ਜਵਾਬ ਲਿਖੋ…",
+  prep_offer_b: "ਮੈਂ ਇੱਕ ਅਭਿਆਸ-ਸੁਣਵਾਈ ਕਰਵਾ ਸਕਦਾ ਹਾਂ: ਮੈਂ ਜੱਜ ਬਣ ਕੇ ਉਹੀ ਸਵਾਲ ਪੁੱਛਾਂਗਾ ਜੋ ਜੱਜ ਪੁੱਛਦੇ ਹਨ, ਅਤੇ ਦੂਜੀ ਧਿਰ ਦੀਆਂ ਦਲੀਲਾਂ ਤੁਹਾਡੇ ਸਾਹਮਣੇ ਰੱਖਾਂਗਾ। ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਬੱਸ **practice** ਜਾਂ **ਅਭਿਆਸ** ਲਿਖੋ।",
+  prep_start: "ਅਭਿਆਸ-ਸੁਣਵਾਈ ਸ਼ੁਰੂ ਕਰੋ", prep_on: "ਅਭਿਆਸ-ਸੁਣਵਾਈ", prep_stop_hint: "ਜਿਵੇਂ ਕੋਰਟ ਵਿੱਚ ਦਿਓਗੇ ਉਵੇਂ ਜਵਾਬ ਦਿਓ · ਖ਼ਤਮ ਕਰਕੇ ਫ਼ੀਡਬੈਕ ਲਈ **stop** ਲਿਖੋ",
+  prep_end: "ਖ਼ਤਮ ਕਰੋ ਅਤੇ ਫ਼ੀਡਬੈਕ ਲਓ", prep_ended: "ਅਭਿਆਸ-ਸੁਣਵਾਈ ਖ਼ਤਮ।", prep_fb_t: "ਤੁਹਾਡੀ ਸੁਣਵਾਈ ਦਾ ਫ਼ੀਡਬੈਕ",
+});

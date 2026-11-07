@@ -56,11 +56,16 @@ def _calculated_text(calc: dict) -> str:
     return "\n".join(lines) or "(none yet: dates/amounts not known)"
 
 
+def _convo(state: dict) -> list:
+    """The legal conversation, without mock-hearing messages (those belong to the rehearsal, not the case)."""
+    return [m for m in state.get("messages", []) if isinstance(m, dict) and not m.get("practice")]
+
+
 def route(state: dict, message: str, provider: str | None = None, today: date | None = None) -> tuple[dict, dict]:
     """Intake step (fast model): category, language AND fact extraction, so code can
     compute deadlines before the main model writes anything."""
     prev = state["case"].get("category")
-    hist = "\n".join(f"{m['role']}: {m['content'][:300]}" for m in state["messages"][-4:])
+    hist = "\n".join(f"{m['role']}: {m['content'][:300]}" for m in _convo(state)[-4:])
     keys = {f"k_{c}": ", ".join(k for k, _ in rules.CHECKLISTS[c]) for c in rules.CHECKLISTS}
     sys = prompts.ROUTER.format(today=(today or date.today()).isoformat(), **keys)
     msgs = [
@@ -144,7 +149,7 @@ def turn(state: dict | None, message: str, provider: str | None = None, today: d
         doc_types=", ".join(DOC_TYPES.get(cat, [])) or "none",
     )
     msgs = [{"role": "system", "content": sys}] + [
-        {"role": m["role"], "content": m["content"]} for m in state["messages"][-MAX_HISTORY:]
+        {"role": m["role"], "content": m["content"]} for m in _convo(state)[-MAX_HISTORY:]
     ]
 
     # 4. grounded generation
@@ -158,7 +163,7 @@ def turn(state: dict | None, message: str, provider: str | None = None, today: d
     # 5. apply fact updates first so the guard can use freshly computed deadlines as support
     _merge_case(case, out)
     calc = rules.compute(case["category"], case["facts"], today)
-    support = library_text + "\n" + "\n".join(rules.PLAYBOOKS.get(case["category"], [])) + "\n" + _calculated_text(calc) + "\n" + " ".join(m["content"] for m in state["messages"] if m["role"] == "user")
+    support = library_text + "\n" + "\n".join(rules.PLAYBOOKS.get(case["category"], [])) + "\n" + _calculated_text(calc) + "\n" + " ".join(m["content"] for m in _convo(state) if m["role"] == "user")
 
     # 6. guard (+ one repair round)
     reply = strip_ids(str(out.get("reply") or "").strip())
