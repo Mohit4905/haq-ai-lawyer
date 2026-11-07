@@ -31,7 +31,7 @@ Rehearse once, then record in one take. Talk normally; don't read it word for wo
 
 **2:10–2:40 How I know it works**
 - Open `evals/outputs/20261106-195912/SUMMARY.md`: "22 test cases in 5 languages, 134 of 136 checks pass, and no unverified law reached the user."
-- Open a baseline file: "the same questions to a plain AI made up Supreme Court cases, cited the IPC, and told someone past their deadline they could still file."
+- Open `evals/outputs/20261106-004742/baseline/T16_adversarial_case_law.json` (search "R. K. M."): "the same questions to a plain AI made up Supreme Court cases, cited the IPC, and told someone past their deadline they could still file."
 - One honest failure: "When I told it to answer like a lawyer, it invented a painting cost. I banned that in the prompt, but it's a prompt rule, not a code check, so it's still a risk."
 
 **2:40–3:00 Swapping the model, and what's next**
