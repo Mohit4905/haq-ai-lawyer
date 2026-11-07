@@ -10,95 +10,104 @@ python_version: "3.12"
 pinned: false
 ---
 
-# Haq (हक़): AI legal help for everyday problems in India
+# Haq (हक़): an AI lawyer for everyday problems in India
 
-**Live app:** https://haq-46bx.onrender.com (free instance: the first load after idling takes ~50s)
+**Live app:** https://haq-46bx.onrender.com (it's on a free server, so the first load after a quiet spell can take about 50 seconds)
 
-Haq helps an ordinary person in India act on an everyday legal problem. You can type or speak in Hindi, English, Hinglish, Tamil, Bengali and other languages. Haq:
+Kuku AI Generalist assignment, Problem 2. Mohit Piplani, 23113101, Civil Engineering.
 
-1. **Builds the case.** It turns a messy story into a structured case file (facts, timeline, proof you have, proof you still need) and asks only for what's missing.
-2. **Explains where you stand.** In plain language: your options from cheapest to most expensive, and one recommended next step.
-3. **Calculates deadlines in code, not with the AI.** Examples: the 30-day window to send a cheque-bounce notice, or the 2-year limit for consumer complaints. Each date links to the official source.
-4. **Drafts the document.** Legal notice, complaint email, consumer-commission complaint, labour-office complaint, or a reply to a notice. Downloadable as Word. Missing details are marked `[[FILL]]`, never invented.
-5. **Prepares you for the hearing.** After a case reply, type "practice" in the chat: the AI plays the judge, asks what a judge would ask, puts the other side's arguments to you, and scores your answers when you type "stop".
-6. **Explains a notice you received.** Paste it or upload a photo or PDF.
-7. **Says when you need a real lawyer**, and points to free legal aid (NALSA 15100) and emergency help (112, Tele-MANAS 14416).
-8. **Message actions.** Under your messages: edit (re-asks and replaces that answer), share, copy. Under Haq's answers: copy, 👍/👎, read aloud, share, try again (earlier answers kept as ‹ 1/2 › versions), and ⋯ (copy with sources, report). Every message has a stable id, so an action only ever touches the message it belongs to ([static/actions.js](static/actions.js)).
+Most people in India never get help with small legal problems: a deposit the landlord keeps, a refund that never comes, salary that stops, a notice they can't make sense of. Haq is my attempt at a lawyer you can just talk to, in your own language, by text or voice.
 
-**Covered in depth:** security deposits, consumer refunds and defects (including e-commerce), unpaid salary and final settlement, bounced cheques, understanding legal notices.
-**Explained in general terms:** any other legal question: fundamental rights (Constitution articles are in the verified library), BNS vs IPC, how to file an FIR, starting a business, online fraud. For your own criminal, family, property-title or tax matter, Haq explains the general position and the usual steps, then recommends a lawyer or free legal aid.
-**Not answered:** non-legal requests (code, poems, recipes, shopping advice, workout plans…). Haq redirects to the legal angle if there is a genuine one (a laptop → consumer rights). Short general-knowledge questions ("capital of India?") and greetings get a one-line answer.
+## What it does
 
-### Staying a legal assistant (not a general chatbot)
-Each message is labelled by the router call that already runs on every turn: **legal**, **general_knowledge**, **greeting**, **off_topic** or **unsafe** ([app/intent.py](app/intent.py)). Only *legal* messages reach the full grounded answer. The rest get a short reply and never touch the case file or the legal context. This runs on the server, so calling the API directly gets the same behaviour. Code backstops:
-- plain greetings ("hi", "how are you", "नमस्ते") are answered by code, with no model call;
-- a red flag (self-harm, violence, arrest…) always gets the full answer;
-- a "general knowledge" label on a message with legal words is overridden to *legal*;
-- any reply containing text from the hidden instructions is replaced (prompt-leak check);
-- off-topic and unsafe replies go through the same guard as legal ones, so no invented law.
-Tested with the real model by [scripts/qa/scope_test.py](scripts/qa/scope_test.py) (outputs in `evals/outputs/*_scope/`).
+1. **Builds your case.** It turns a messy story into a case file: what happened, when, what proof you have and what you still need. It only asks for what's missing.
+2. **Tells you where you stand.** Like a first meeting with a lawyer: how strong your case looks and what it depends on, the law on your side, what the other side will say, and what I'd do next.
+3. **Works out your deadlines in code.** The 30-day window for a cheque-bounce notice, the 2-year limit for a consumer complaint and so on. The AI never calculates a date, and each one links to its source.
+4. **Drafts the paperwork in the chat.** Legal notice, complaint email, Consumer Commission or labour-office complaint, or a reply to a notice. It asks for the missing details right there and fills them in (Word or PDF). Anything it doesn't know stays as a `[[FILL]]` blank.
+5. **Lets you practise.** After a case reply, type "practice". The AI plays the judge, puts the other side's arguments to you, and scores your answers when you type "stop".
+6. **Explains a notice or court order.** Paste it or upload a photo/PDF. Paste a court case number (CNR) and it pulls the live eCourts record.
+7. **Explains other legal questions** (fundamental rights, arrest, theft, divorce, termination) and names the exact articles and sections that apply, as long as I could verify them.
+8. **Tells you when you need a real lawyer**, and points to free legal aid (NALSA 15100) or emergency help (112, Tele-MANAS 14416).
+9. **Message buttons, like in ChatGPT.** Edit, copy or share your messages; copy, rate, listen to, share or regenerate Haq's answers (old answers stay as ‹ 1/2 › versions), or report one.
 
-## How Haq avoids invented laws
+**What it covers well:** security deposits, consumer refunds and defects (including online shopping), unpaid salary and final settlement, bounced cheques, legal notices.
+**What it explains in general terms:** other legal topics. For your own criminal, family, property or tax matter it gives the general position and sends you to a lawyer or legal aid.
+**What it won't do:** anything that isn't legal (code, poems, recipes, shopping advice). It says so politely, and points out a legal angle if there really is one. Greetings and short general-knowledge questions get a one-line answer.
+
+## Making sure it doesn't invent law
+
+This was the main problem. A plain AI model, given my test questions, made up Supreme Court judgments and cited the IPC, which was replaced in 2024. So:
 
 | Layer | What it does | AI or code? |
 |---|---|---|
-| Verified library ([kb/laws.json](kb/laws.json)) | 107 provisions (incl. 21 Constitution articles, BNS/BNSS arrest and theft, Industrial Relations Code, Hindu Marriage Act divorce), rules, helplines and thresholds, each checked against an official source URL (India Code, Gazette, ministries, RBI, NALSA). Unverified entries are kept for transparency but never shown to the model. | Human-curated |
-| Scoped retrieval | The library entries for the user's problem type, plus the provisions for the topics named in the question (equality → Articles 14-18; arrest → BNSS ss.35/47/48/58 + Article 22; theft → BNS s.303; divorce → Hindu Marriage Act ss.13/13B/14…), go into the prompt ([app/kb.py](app/kb.py) `TOPICS`). Every provision the guard verifies in a reply gets a clickable official-source chip. | Code |
-| Prompt rules | The model may mention a law or number only if it appears in the library or in the code's calculations. No case law, ever. | AI |
-| **Guard** ([app/guard.py](app/guard.py)) | Scans every reply before the user sees it. It flags sections, Articles, Orders and Acts that aren't in the library (English and Hindi patterns), any case-law citation (`X v. Y`, AIR/SCC, "the Supreme Court held"), repealed laws (IPC, CrPC, CPA 1986…) with their replacement, money amounts and percentages that nothing supports, and time periods that nothing supports (warning only). | Code |
-| Repair, then strip | On a violation, the model rewrites once. If the problem remains, the offending sentence is removed and the user is told. | AI, then code |
-| Deadlines, forum, fees | Pure functions in [app/rules.py](app/rules.py), each tagged with its library id. | Code |
-| Red flags | Arrest, FIR, violence, self-harm, family or property matters trigger escalation by regex in English, Hindi and Hinglish. Safety text is added by code, not the model. | Code |
+| Verified library ([kb/laws.json](kb/laws.json)) | 107 entries: sections, Constitution articles, rules, helplines and limits. I read each one in an official source (India Code, e-Gazette, the Legislative Department's Constitution, ministries, RBI, NALSA) and it keeps that link. Entries I couldn't confirm are kept but never shown to the model. | Checked by me |
+| Picking the law | The entries for your kind of problem, plus the provisions for the topic you asked about (equality gives Articles 14-18; arrest gives BNSS sections 35, 47, 48, 58 and Article 22; theft gives BNS section 303). See `TOPICS` in [app/kb.py](app/kb.py). | Code |
+| Prompt rules | The model may only mention a law or number that's in the library or in the code's calculations. No case law. | AI |
+| **Guard** ([app/guard.py](app/guard.py)) | Checks every reply before you see it. Flags sections, articles and Acts that aren't in the library (English and Hindi), any case-law citation, repealed laws (IPC, CrPC, CPA 1986…) with their replacement, promised outcomes, and in answers any money amount or percentage nothing supports. | Code |
+| Rewrite, then remove | If the guard finds a problem, the model rewrites once. Whatever is still wrong gets removed, and you're told. | AI, then code |
+| Deadlines, forum, fees | Plain functions in [app/rules.py](app/rules.py), each tied to a library entry. | Code |
+| Red flags | Arrest, violence, self-harm, family or land matters trigger escalation, in English, Hindi and Hinglish. Safety text is added by code. | Code |
 
-The UI shows the result on every message. For example "🛡️ 2 legal references verified" (click a law chip to see its source), or "🛡️ 1 unverified reference caught & fixed".
+Every answer shows what happened, e.g. "🛡️ 2 legal references verified". Click a law chip to open the official source.
 
-## Architecture
+### Staying a legal assistant
+Every message gets a label from the step that already reads it: legal, general knowledge, greeting, off-topic or unsafe ([app/intent.py](app/intent.py)). Only legal messages get the full answer; the rest get a short reply and don't touch your case file. This happens on the server, so calling the API directly doesn't get around it. A few things are done in code so they don't depend on the model: greetings are answered without any AI call, a safety red flag always gets the full answer, a "general knowledge" label on a question with legal words is overruled, and a reply that quotes the hidden instructions is replaced.
+
+## How a message flows
 
 ```
-browser (vanilla JS; holds session state)
+browser (plain JavaScript, keeps the conversation)
    │  POST /api/chat {state, message}
    ▼
-FastAPI (stateless) ── red-flag rules (regex) ─────────────┐
-   │── greeting? → reply by code (no model call)            │
-   │── router: fast model → intent + category + language    │
-   │     not legal → short reply (fast model) → guard → done│
-   │── retrieve verified law for that category              │
-   │── calculators: deadlines / forum / fee (code)          │
-   │── counsel: main model → JSON {reply, facts, citations…}│
-   │── guard → repair → strip                               │
-   └── merge case file, escalation = max(rules, model, deadlines)
+FastAPI (keeps no state) ── red flags (regex) ─────────────┐
+   │── a greeting? reply from code, no AI call               │
+   │── router (small model): label, problem type, language,  │
+   │   facts                                                 │
+   │     not legal: short reply (small model), guard, done   │
+   │── pick verified law (problem type + topic of question)  │
+   │── deadlines / forum / fee (code)                        │
+   │── answer (main model): reply, facts, citations…         │
+   │── guard, rewrite once, remove what's left               │
+   └── update case file; lawyer warning = highest of rules,  │
+       model and deadlines                                   │
 ```
 
-**Swapping the model** takes environment variables only. Any OpenAI-compatible endpoint works: Groq, Gemini, OpenRouter, OpenAI, Anthropic, Ollama, or `custom` (point it at any `/v1` URL). Providers are tried in order and fall back on rate limits. You can also switch providers live from the ⚙︎ menu in the UI. Every output records which model produced it.
+**Swapping the model** only needs environment variables. Anything that speaks the OpenAI-compatible API works: Groq, Gemini, OpenRouter, OpenAI, Anthropic, Ollama, or `custom` (point it at any `/v1` URL). If one model hits a rate limit it falls back to the next, and you can switch providers live from the ⚙︎ menu. Every answer records which model wrote it.
 
-## Run it
+## Running it yourself
 
 ```bash
 python -m venv .venv && .venv/Scripts/activate   # Windows; on Mac/Linux: source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env        # add GROQ_API_KEY and/or GEMINI_API_KEY (free)
-python kb/build_kb.py       # merge + validate the law library
+cp .env.example .env        # add GROQ_API_KEY and/or GEMINI_API_KEY (both have free tiers)
+python kb/build_kb.py       # builds and checks the law library
 uvicorn app.main:app --port 8000
 # open http://localhost:8000
 ```
 
-Tests and evals:
+Tests:
 
 ```bash
-python -m tests.test_offline                      # deterministic parts, no API key needed
-python -m evals.run_evals --baseline --judge gemini
+python -m tests.test_offline                       # 43 unit tests, no API key needed
+python -m tests.test_kb_integrity                  # every library entry and the guard agree
+python -m evals.run_evals --baseline --judge gemini   # the 22 written cases + a plain-LLM baseline
+python scripts/qa/scope_test.py http://127.0.0.1:8000     # legal vs off-topic vs prompt injection (31 cases)
+python scripts/qa/citations_test.py http://127.0.0.1:8000 # "which law applies?" (10 questions)
 ```
 
-Raw outputs land in `evals/outputs/<run>/`: full JSON per case, readable transcripts, drafted documents, the baseline comparison, and `SUMMARY.md`.
+Browser tests of the real UI are in [scripts/qa/](scripts/qa/) (Playwright with Edge). The court tests use a local fake server, so they cost no credits.
 
-## Results (final controlled run, 22 test cases)
+## Results
 
-- **134/136 automatic checks passed**; **0/22 replies showed an unverified legal reference**; escalation level correct 19/19; reply language correct 15/15 (English, Hindi, Hinglish, Tamil, Bengali).
-- **Baseline:** the same model with a plain helpful Indian lawyer prompt put unverified legal references in 17/22 answers (7 cited case law, 7 cited repealed laws such as the IPC and the Payment of Wages Act), and in every run it told a user who had missed the cheque-bounce notice window Yes, you can still file a case.
-- All runs and every failure, read by hand: [evals/CHANGELOG.md](evals/CHANGELOG.md), [evals/MANUAL_REVIEW.md](evals/MANUAL_REVIEW.md). Raw outputs: [evals/outputs/](evals/outputs/).
+- **22 written test cases, 5 languages:** 134/136 automatic checks pass, and **0/22 answers showed an unverified legal reference**.
+- **The same 22 questions to the same model with a plain "helpful Indian lawyer" prompt:** 19/22 answers had a flagged reference, 7 cited case law, 12 cited repealed laws, and in every run it told someone who had missed the cheque-notice deadline that they could still file.
+- **Scope test** (legal, off-topic, unsafe, prompt injection, follow-ups): 31/31 on the third run.
+- **Citation test** (equality, free speech, arrest, theft, consumer, fraud, divorce, termination, Article 21): 10/10 on the third run.
 
-More docs: [where AI got it wrong](docs/AI_ERRORS_LOG.md) · [verified library](kb/README.md) · [deploy](docs/DEPLOY.md)
+Every raw output is in [evals/outputs/](evals/outputs/). What changed between runs, and every failure I read by hand: [evals/CHANGELOG.md](evals/CHANGELOG.md), [evals/MANUAL_REVIEW.md](evals/MANUAL_REVIEW.md), [docs/QA_AUDIT.md](docs/QA_AUDIT.md).
 
-## Limitations
+More: [where AI got it wrong](docs/AI_ERRORS_LOG.md) · [the law library](kb/README.md) · [deploying](docs/DEPLOY.md)
 
-See the solution document. In short: the library is small and hand-checked, state-specific rules (rent laws, Shops and Establishments Acts) are only flagged, not modelled, and deadline maths assumes the dates the user gives are right. Haq gives legal information, not legal advice.
+## Limits
+
+The library is small and hand-checked; it has no case law and no state rules (rent Acts, Shops and Establishments). The guard checks citations, not reasoning, so advice that's wrong without citing anything can still get through. Deadlines assume the dates you give are right. On free tiers you get about 40 full answers a day, and each takes 7 to 16 seconds. Haq gives legal information, not legal advice.

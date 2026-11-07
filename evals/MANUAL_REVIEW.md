@@ -1,5 +1,7 @@
 # Manual review of the final run (v4: `outputs/20261106-012337`)
 
+Later runs (v5-v7, and the 7 Nov scope and citation tests) are described in `CHANGELOG.md`. I read every reply in those too.
+
 I read every reply in the final run, not only the failed checks. The automatic checks only look at what was written in a reply. They can't tell whether the advice is *right*.
 
 **Setup:** all replies by `gemini-3.1-flash-lite` (pinned, no fallback); judge `gpt-oss-120b` (Groq). The judge finished only 6/22 cases before Groq's free daily token cap (200k tokens/day) ran out. Its scores are reported with n=6 and are not a headline number.

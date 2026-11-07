@@ -87,3 +87,18 @@ Pinned `gemini-3.1-flash-lite`, all 23 turns. 0/22 unverified law shown; languag
 
 ## v7b: `outputs/20261106-201246`: T17, T20 (+ T01 as a control) after the fixes: 21/21
 T17 now says "Main aapka advocate nahi hoon" ("I'm not your advocate"); T20 escalates (State Commission, over ₹50 lakh). The full suite was not re-run after these two narrow fixes (free-tier quota).
+## 7 Nov: two new real-model tests
+The 22-case suite tests answers to people's own problems. Two changes on 7 Nov needed tests of their own, so I wrote `scripts/qa/scope_test.py` and `scripts/qa/citations_test.py`. Both call the running app's API and save every reply.
+
+**Scope (31 cases: legal, general knowledge, greetings, off-topic, unsafe, prompt injection, follow-ups).**
+- `outputs/20261107-133115_scope`: 27/31. The short-reply model pasted a greeting into every reply, refused "how do I hack…" without explaining the law, and labelled a role-change request as unsafe. Reading the passing replies also found the guard letting through "Section 154 of the BNS", an urgent lawyer warning on "How do I file an FIR?", and GST thresholds from memory.
+- `outputs/20261107-134432_scope`: 27/31 after those fixes. New failures: "What are my fundamental rights?" labelled general knowledge and answered wrongly, and "capital of India" refused. This run partly used fallback models because Groq's daily quota ran out.
+- `outputs/20261107-140305_scope`: 31/31 after code backstops. One check failed live because my test matched "ram" inside "framework" (the laptop reply was fine). I fixed the check and re-scored the saved replies; the summary says so.
+- `outputs/20261107-145159_scope_injection`: 7/7 greeting and injection cases, re-run after changing the prompt-leak check.
+
+**"Which law applies?" (10 questions: equality, free speech, fundamental rights, arrest, theft, consumer rights, online fraud, divorce, termination, Article 21).**
+- `outputs/20261107-143422_citations`: 9/10. Online fraud named no law. Reading the replies showed the guard flagging "a right guaranteed by Article 14" as a promised outcome, which forced a rewrite on every rights answer.
+- `outputs/20261107-144433_citations`: 9/10. The divorce answer was wiped by my prompt-leak check because it said "verified library" once. I fixed the check to need real evidence.
+- `outputs/20261107-144910_citations`: 10/10. As scored live it was 9/10, because the check didn't count "s.173" as naming a section; the fraud answer did name it. I fixed the check and re-scored the saved replies.
+
+The 22-case suite was not re-run after these changes, because the free daily quota was used up. The changes don't touch the deadline maths, drafts or case-file code those cases test, and the unit tests and browser suites were all re-run (see `docs/QA_AUDIT.md`).

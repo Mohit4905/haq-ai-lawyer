@@ -1,41 +1,39 @@
-# Walkthrough video: 3 minutes (your own voice; Loom or OBS)
+# Walkthrough video: 3 minutes (my own voice; Loom or OBS)
 
-Rehearse once, then record in one take. Speak naturally; don't read word for word. Times are targets.
+Rehearse once, then record in one take. Talk normally; don't read it word for word. The times are targets.
 
-**Before you record**
-- Open https://haq-46bx.onrender.com in Chrome or Edge, signed in, and press Ctrl+Shift+R. Open it about 2 minutes early: the free server sleeps and the first load is slow.
+**Before recording**
+- Record on a day I haven't been testing, so the free AI quota is fresh (Groq allows a limited number of answers a day, and when it runs out answers come from the slower backup model).
+- Open https://haq-46bx.onrender.com in Chrome or Edge about 2 minutes early (the free server sleeps), sign in, and press Ctrl+Shift+R.
 - Click **New case** so the screen is clean. Keep these ready to paste:
   - Deposit message (Hinglish): `mera landlord 40000 deposit wapas nahi kar raha, 31 aug ko flat chhoda tha Pune mein, agreement hai, painting ke 15000 kaat raha hai bina bill ke`
   - Draft answers: `Mera naam Priya Sharma hai, pata Flat 3B, 12 MG Road, Pune 411001. Landlord ka pata 45 FC Road, Pune 411004.`
-  - Two answers for the practice hearing:
-    - `Sir, I left the flat on 31 August and returned the keys the same day. I paid 40,000 deposit and I have the rent agreement and the bank transfer.`
-    - `The landlord gave no bill for the painting. After normal use some painting is wear and tear, and I have photos from the day I left.`
-  - A real CNR whose case has a **final order**: on services.ecourts.gov.in → Court Orders → Final Orders, copy one CNR.
-- Don't click around a lot beforehand: the free AI quota is limited (about 40 full answers a day on the main model). The practice hearing alone uses about 4 AI calls, so don't rehearse it several times before recording.
+  - One practice answer: `Sir, I left the flat on 31 August and returned the keys the same day. I paid 40,000 deposit and I have the rent agreement and the bank transfer.`
+  - A real CNR whose case has a final order (services.ecourts.gov.in → Court Orders → Final Orders).
+- Don't rehearse the practice hearing several times; it uses about 4 AI calls each time.
 
-**0:00–0:20: The problem and my bet**
-"I picked Problem 2. Most people give up on everyday legal problems: a deposit, a refund, unpaid salary. The danger with an AI lawyer is that it confidently invents law. So Haq answers like a lawyer, but it can only cite law I've verified, and code checks every reply."
+**0:00–0:20 The problem and my bet**
+"I picked Problem 2. Most people give up on small legal problems like a deposit, a refund or unpaid salary. The danger with an AI lawyer is that it makes up law with total confidence. So Haq answers like a lawyer, but it can only cite law I've checked against official sources, and code checks every reply before you see it."
 
-**0:20–1:00: A lawyer-style answer + a draft**
-- Paste the deposit message. Point at: **My view → Law on your side → What they will say, and your answer → What I would do**. "It takes a position and anticipates the landlord's argument, but every section it names is checked against official sources." Click a **law chip** to show its official source.
-- Ask a follow-up: `agreement mein likha hai ki painting tenant karega, phir bhi 15000 kaat sakta hai?`. It answers directly ("It depends on one thing…"). Below this answer, Haq offers: **"Want to prepare for court? Just reply practice."** Leave it for now.
-- Click **Draft: Deposit refund notice**. The notice appears in the chat, with questions for what's missing. Paste the answers: the blanks fill in. Click **Word**.
+**0:20–0:55 A lawyer-style answer and a draft**
+- Paste the deposit message. Point at *My view, Law on your side, What they will say, What I would do*. Click a law chip: "every section links to its official source."
+- Click **Draft: Deposit refund notice**. The notice appears in the chat with questions for the missing details. Paste the answers and the blanks fill in. Click **Word**.
 
-**1:00–1:30: Practice for court, in the same chat**
-- Type `practice`. "Most people freeze in front of a judge, so Haq lets you rehearse. The AI plays the judge and puts the landlord's arguments to you, one question at a time." The bar above the message box shows the hearing is on.
-- Paste the two practice answers, one after each question from the judge.
-- Type `stop`. The scorecard appears: scores out of 5 for facts, proof, answering the question, what you're asking for, and composure, plus answers to try and documents to bring. "The suggested answers use only facts I gave. When a fact is missing it writes a blank like [date], and code drops any line with a number I never said."
-- (If the offer box didn't appear, typing `practice` still starts the hearing.)
+**0:55–1:20 Practice for court**
+- Type `practice`. "The AI plays the judge and puts the landlord's side to me." Paste the practice answer, then type `stop`. The scorecard appears. "Suggested answers only use facts I gave; if a fact is missing it leaves a blank."
 
-**1:30–2:00: Live court case**
-- Paste the CNR into the chat. The case card shows status, next hearing and orders, straight from the eCourts record. Click **Add to calendar** (just show it).
-- Click **Explain** on the final order. "A plain-language summary that only restates the order. The full text is below it."
+**1:20–1:45 A live court case**
+- Paste the CNR. The card shows status, next hearing and orders from the eCourts record. Click **Explain** on the final order: "a plain summary that only restates the order."
 
-**2:00–2:35: How I know it works**
-- Open `evals/outputs/<latest run>/SUMMARY.md`: "22 test cases in 5 languages, <checks> automatic checks pass, and zero unverified legal references reached the user."
-- Open a baseline file: "The same questions to a plain LLM: it invented Supreme Court judgments, cited the IPC (replaced in 2024), and told a user whose deadline had passed that they could still file."
-- Name one honest failure: "When I told it to answer like a lawyer, it invented a painting cost. I banned unsourced figures, but that's a prompt rule, not a code check, so it's a residual risk."
+**1:45–2:10 It stays a legal assistant, and names the law**
+- Click **New case** (so the question isn't read as part of the deposit case), then ask `What is the right to equality?`. Point at the chips for Articles 14 to 18: "it names the exact articles, and only ones I've verified."
+- Type `write me a poem about rain`. "It politely says no and offers legal help instead. That check happens on the server, not just in the app."
 
-**2:35–3:00: Swap and scale**
-- ⚙︎ → switch the AI model from Groq to Gemini live: "Any OpenAI-compatible model plugs in."
-- "Next: a lawyer reviews and grows the library, real case law via Indian Kanoon, a WhatsApp channel, and a hand-off to free legal aid with the case file attached."
+**2:10–2:40 How I know it works**
+- Open `evals/outputs/20261106-195912/SUMMARY.md`: "22 test cases in 5 languages, 134 of 136 checks pass, and no unverified law reached the user."
+- Open a baseline file: "the same questions to a plain AI made up Supreme Court cases, cited the IPC, and told someone past their deadline they could still file."
+- One honest failure: "When I told it to answer like a lawyer, it invented a painting cost. I banned that in the prompt, but it's a prompt rule, not a code check, so it's still a risk."
+
+**2:40–3:00 Swapping the model, and what's next**
+- ⚙︎ → switch from Groq to Gemini live: "any OpenAI-compatible model plugs in."
+- "Next I'd have a lawyer review and grow the library, add verified case law, put it on WhatsApp, and hand cases to free legal aid with the file attached."

@@ -1,46 +1,36 @@
-# Deploying Haq (free)
+# Deploying Haq
 
-## A. GitHub (the code + raw outputs link)
+The live app runs on Render's free plan: https://haq-46bx.onrender.com. The code is on GitHub: https://github.com/Mohit4905/haq-ai-lawyer. Every push to `main` redeploys the app automatically.
 
-1. Go to https://github.com/new. Name: `haq-ai-lawyer`. Visibility: **Public**. Don't add a README (we have one). Click **Create repository**.
-2. In VS Code's terminal, in the `haq` folder:
-   ```
-   git remote add origin https://github.com/<your-username>/haq-ai-lawyer.git
-   git push -u origin main
-   ```
-   A browser window asks you to sign in to GitHub the first time. Approve it.
-3. Open the repo page in a private/incognito window to confirm anyone can see it.
+## Render (how the live app is set up)
+1. On https://render.com, sign in with GitHub, choose **New → Blueprint** and pick `haq-ai-lawyer`. It reads `render.yaml`.
+2. Under **Environment**, add the keys. Only the first two are needed for the chat; the rest switch on extra features.
 
-## B. Hugging Face Spaces (the live app link)
+| Variable | What it's for |
+|---|---|
+| `GROQ_API_KEY` | Main AI models and voice input (free tier) |
+| `GEMINI_API_KEY` | Backup AI model (free tier) |
+| `LLM_PROVIDER` | Which provider to try first (`groq`) |
+| `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` | Accounts and saving cases (optional; without them everyone uses guest mode) |
+| `SUPABASE_GOOGLE_LOGIN` | Shows "Continue with Google" (optional) |
+| `BREVO_API_KEY`, `REMINDER_FROM_EMAIL`, `PUBLIC_APP_URL`, `CRON_SECRET` | Deadline reminder emails (optional) |
+| `ECOURTS_API_KEY` | Live court records by CNR (optional, paid credits) |
 
-1. Create a free account at https://huggingface.co/join.
-2. Go to https://huggingface.co/new-space:
-   - Space name: `haq`
-   - SDK: **Gradio** → template **Blank** (Docker Spaces are paid now; the Gradio Space runs `space_app.py`, which starts the same FastAPI app)
-   - Hardware: **CPU basic (free)**
-   - Visibility: **Public**
-   - Click **Create Space**
-3. In the Space, open **Settings → Variables and secrets**:
-   - **New secret** `GROQ_API_KEY` = your Groq key
-   - **New secret** `GEMINI_API_KEY` = your Gemini key
-   - **New variable** `LLM_PROVIDER` = `groq`
-4. Create an access token: https://huggingface.co/settings/tokens → **Create new token** → type **Write** → copy it.
-5. In the VS Code terminal (in `haq`):
-   ```
-   git remote add space https://huggingface.co/spaces/<your-hf-username>/haq
-   git push space main
-   ```
-   When asked for a username, enter your HF username. For the password, paste the **token** (not your password).
-6. The Space builds for 2–4 minutes (watch the **Logs** tab). When it shows **Running**, open `https://<your-hf-username>-haq.hf.space`.
+3. Click **Apply**. The free plan sleeps when nobody uses it, so the first request after a while takes about 50 seconds. Open the app a few minutes before a demo.
 
-## Backup: Render.com (if Spaces don't work)
-1. https://render.com → sign in with GitHub → **New → Blueprint** → pick `haq-ai-lawyer` (it reads `render.yaml`).
-2. Enter `GROQ_API_KEY` and `GEMINI_API_KEY` when asked → **Apply**. The URL looks like `https://haq-xxxx.onrender.com`. The free plan sleeps when idle, and the first request takes ~50s.
+Never put keys in the code or in chat. They live only in Render's Environment page and in your local `.env`, which is in `.gitignore`.
 
-## Updating later
-After any change: `git add -A`, `git commit -m "..."`, `git push origin main`, `git push space main`.
+## Running it locally
+See "Running it yourself" in the README. Copy `.env.example` to `.env` and add at least `GROQ_API_KEY` or `GEMINI_API_KEY`.
 
-## Notes
-- The free Space sleeps after ~48h of inactivity and wakes on the next visit (about 30s). Open it before your interview.
-- Voice input uses Groq Whisper on the server (needs `GROQ_API_KEY`). In Chrome/Edge it falls back to the browser's speech recognition.
-- Never commit `.env`. It's in `.gitignore`.
+## Using a different model
+Set these in `.env` or on Render, then restart. No code changes needed:
+```
+LLM_PROVIDER=custom
+CUSTOM_BASE_URL=<endpoint>/v1
+CUSTOM_API_KEY=<key>
+CUSTOM_MODEL=<model name>
+```
+
+## Hugging Face Spaces (alternative)
+`space_app.py` starts the same app inside a Gradio Space, if you'd rather host it there: create a Gradio Space on the free CPU, add `GROQ_API_KEY` and `GEMINI_API_KEY` as secrets, and push the repo to the Space's git remote.

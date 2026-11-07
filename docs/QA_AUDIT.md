@@ -1,73 +1,66 @@
-# End-to-end QA audit (6 Nov 2026)
+# Testing and QA
 
-How it was done: a cold-read static review of every Python/JS/HTML file (by a separate reviewer that hadn't written the code), then the app was **run** and driven by browser scripts (Edge, Playwright) on desktop and phone sizes, plus API attack tests and new legal questions to the AI. Every bug below was reproduced, fixed, and re-tested. Scripts: `scripts/qa/` (the eCourts calls go to a local fake server, `mock_court.py`, so the tests spend no credits).
+Last updated 7 Nov 2026.
 
-## Inventory
-- **Pages:** `/login` (log in, create account, forgot/reset password, Google, guest), `/` (app), `/privacy`, `/terms`.
-- **App:** chat (text, voice, attach notice), welcome cards, sidebar (New case, Track case, Case file, Deadlines, Documents, Evidence, Get help, My cases with search and ⋯ rename/delete, collapse, Ctrl+B), tools open in the main area, settings (language, theme, AI model), account box, profile dialog, lawyer note, drafts in chat (fill blanks by replying), practice hearing in chat ("practice" / "stop", status bar, scorecard), court card (Explain, Refresh, Add to calendar), downloads (.docx, .ics, case summary).
-- **API (FastAPI):** chat, draft, draft/fill, docx, explain, evidence, practice, transcribe, court/{status, case, search, order}, signup, account/delete, cron/reminders, config, kb, health.
-- **Integrations:** Groq + Gemini (LLMs, with fallback), Supabase (auth, database, storage), Brevo (email), eCourtsIndia (paid).
-- **No placeholder, mock or TODO code** in the app.
+How I tested: first a cold read of every Python, JS and HTML file by a separate AI reviewer that hadn't written the code, to find likely bugs. Then I ran the app and drove it with browser scripts (Playwright with Edge) at desktop and phone sizes, sent hostile requests straight to the API, and asked the AI new legal questions. I reproduced, fixed and re-tested every bug below. The scripts are in `scripts/qa/`. Court lookups go to a small fake server (`mock_court.py`) so the tests don't spend paid eCourts credits.
 
-## Results (final run)
+## What's in the app
+- **Pages:** `/login` (log in, sign up, forgot / reset password, Google, guest), `/` (the app), `/privacy`, `/terms`.
+- **In the app:** chat (text, voice, attach a notice), welcome cards, the sidebar (New case, Track case, Case file, Deadlines, Documents, Evidence, Get help, My cases with search, rename and delete), settings (language, theme, AI model), account and profile, the lawyer note, drafts in the chat, the practice hearing, court cards (Explain, Refresh, Add to calendar), downloads (.docx, .ics, case summary), and buttons under every message (edit, copy, share, rate, read aloud, try again, report).
+- **API:** chat, draft, draft/fill, docx, explain, evidence, practice, transcribe, feedback, court (status, case, search, order), signup, account/delete, cron/reminders, config, kb, health.
+- **Services:** Groq and Gemini (AI, with fallback), Supabase (accounts, database, storage), Brevo (email), eCourtsIndia (court records, paid).
+
+## Latest results
+
 | Suite | Result |
 |---|---|
-| UI audit: every button, field, menu, tool, download, phone layout (`audit_ui.py`) | **79/79** (Practice tab and judgments search removed) |
-| API robustness + security (`audit_api.py`) | **25/25** |
-| XSS: hostile HTML in chat, replies, titles, court data (`audit_xss.py`) | **6/6** |
-| Smoke test with real AI answers (`scripts/ui_smoke.py`) | **19/19** |
-| Drafts in chat / court tracking / lawyer note / New case | 11/11 · 12/12 · 12/12 · 14/14 |
-| Practice hearing in the chat (`prep_test.py`, AI mocked) + one real-AI run | 25/25 · transcript checked |
-| Unit tests · law-library integrity | 30/30 · OK |
-| Eval suite v7 (22 cases, 5 languages) | 134/136 (both failures read and fixed; see `evals/CHANGELOG.md`) |
+| Unit tests (`tests/test_offline.py`) · library integrity | 43/43 · OK |
+| UI: every button, field, menu, tool, download, phone layout (`audit_ui.py`) | 79/79 |
+| Message buttons (`actions_test.py`, chat faked in the browser) | 42/42, also on the live site |
+| Practice hearing in the chat (`prep_test.py`) | 25/25 |
+| Drafts in chat · court tracking · lawyer note · New case | 11/11 · 12/12 · 12/12 · 14/14 |
+| API robustness and security (`audit_api.py`) · XSS (`audit_xss.py`) | 25/25 · 6/6 |
+| Smoke test with real AI answers (`scripts/ui_smoke.py`, last run 6 Nov) | 19/19 |
+| 22 written legal cases, 5 languages (eval v7) | 134/136; 0/22 showed unverified law |
+| Scope test with the real model: legal, off-topic, unsafe, prompt injection (`scope_test.py`) | 31/31 (third run) |
+| "Which law applies?" test with the real model (`citations_test.py`) | 10/10 (third run) |
+
+Two notes on the last two rows. The first two scope runs scored 27/31 and the first two citation runs 9/10; the failures and fixes are in `AI_ERRORS_LOG.md` (entries 10 and 11). In the final runs one check each was my test's fault: it matched "ram" inside "framework", and it didn't count "s.173" as naming a section. I fixed the checks and re-scored the saved replies; the replies themselves weren't touched, and the summary files say so.
 
 ## Bugs found and fixed
-| Sev. | Bug | Fix |
+
+| How bad | Bug | Fix |
 |---|---|---|
-| High | Switching case while Haq was answering wrote that reply (and the whole conversation) into the other case | Switching, New case and Delete wait until the answer arrives |
-| High | A network failure froze the composer for good (busy flag never reset) | `api()` never throws; returns a friendly error |
-| High | Paid eCourts limit could be bypassed with a fake `X-Forwarded-For`; AI endpoints had no limits; no size caps | One request guard: per-client hourly limits (IP from Cloudflare/proxy headers, never the client-set first hop), a daily eCourts cap, 800 KB JSON / 10 MB upload caps |
-| High | Deadlines and email reminders vanished after a court error or a notice explanation | Deadlines are read from the last turn that has them |
-| Med | Word download crashed (500) for Hindi titles, and the client saved the error page as a .docx | RFC 5987 filename; the client checks the response |
-| Med | "15 days, by 20.03.2026" in a notice became 152,032,026 days, so every later chat turn returned 500 | First 1–3 digit number only, capped at 365 |
-| Med | `javascript:` links from the third-party judgments API could reach the page | http(s) only, on server and client (feature later removed) |
-| Med | "Delete all my data" said it succeeded even when it hadn't, and left data on the device | Each step is checked; the device copy is cleared only after success |
-| Med | Calendar events were zero-length in India (timezone) | End date built from local date parts |
-| Med | Malformed AI JSON caused 500s or a permanently broken evidence locker | Shapes are validated on server and client |
-| Med | Corrupt PDF → 500; any file type accepted by "Explain notice" and the evidence locker (including .exe) | Clear 4xx messages; photos/PDF/text only |
-| Med | Drafting with a malformed case → 500 | Clear message instead |
-| Med | Signup: a weak password was reported as "account exists" | Errors mapped by Supabase error code |
-| Low | Empty "Explain notice" still sent a request; Practice crashed before a case existed; light/dark toggle closed the settings box; login page had no privacy/terms links | Fixed |
-| Low | Raw provider errors (model names, HTTP bodies) shown in chat | Logged on the server; users see a short message |
-| Low | Path tricks (`..`) in an order filename; no `.dockerignore` (`.env` could enter a Docker image); a Supabase call awaited inside the auth callback (deadlock risk); dead code | Fixed |
-| AI | A prompt injection made it say "as a senior advocate…"; ₹85 lakh case not referred to a lawyer; the rewritten answer said "You are right, I made a mistake"; "this case is absolutely clear" (EN/Hinglish/Hindi); a Hinglish reply to an English-interface user | Guard violations + code floor (≥ ₹10 lakh → lawyer) + prompt fixes, each re-tested |
+| High | Switching case while Haq was answering wrote the reply into the other case | Switching, New case and Delete wait for the answer |
+| High | A network failure froze the message box for good | `api()` never throws; you get a short error instead |
+| High | The paid eCourts limit could be bypassed with a fake `X-Forwarded-For`; AI endpoints had no limits or size caps | Per-client hourly limits (real client IP only), a daily eCourts cap, 800 KB / 10 MB size caps |
+| High | Deadlines and email reminders vanished after a court error, a notice explanation or (later) a greeting | The case panel reads the last answer that carries case data |
+| Med | Word download failed (500) for Hindi titles, and the browser saved the error page as a .docx | Proper UTF-8 filename; the browser checks the response |
+| Med | "15 days, by 20.03.2026" in a notice became 152,032,026 days and broke every later message | Only a 1–3 digit number, capped at 365 |
+| Med | "Delete all my data" said it worked even when it hadn't | Each step is checked; the device copy is cleared only after success |
+| Med | Calendar events were zero-length in India (time zone) | End date built from local date parts |
+| Med | Malformed AI JSON caused errors or a broken evidence locker | Shapes are checked on server and browser |
+| Med | Corrupt PDF gave a 500; any file type (even .exe) was accepted | Clear messages; photos, PDF and text only |
+| Med | Sign-up reported a weak password as "account exists" | Errors mapped by Supabase error code |
+| Med | The edit box stayed open until the new answer arrived | It closes on Send / Enter; the original text comes back if the request fails |
+| Low | Empty "Explain notice" still sent a request; the theme toggle closed settings; raw provider errors shown in chat; `..` tricks in an order filename; no `.dockerignore` | Fixed |
+| AI | Prompt injection made it say "as a senior advocate"; an ₹85 lakh case wasn't sent to a lawyer; "this case is absolutely clear"; invented section shielded by an old-law name; "a right guaranteed by Article 14" flagged as a promise | Guard rules and code floors, each with a test (see `AI_ERRORS_LOG.md`) |
 
-## Update 7 Nov 2026: Practice moved into the chat
-The Practice tool was removed from the sidebar. After a case reply Haq offers a practice hearing (once per case); the user replies "practice" (or taps the button) and Haq plays the judge in the main chat, one question at a time, putting the other side's arguments. "stop" (or the bar above the composer) ends it with a 5-part scorecard. Hearing messages are stored with `practice: true` and filtered out of the lawyer's context and draft context on the server (`engine._convo`).
-Found while testing with the real AI and fixed: the judge called itself "Judge AI" (prompt); the coach's suggested answers invented a fact ("I gave written notice on 15 August 2026"), so the prompt now requires blanks like [date], and code drops any suggested line containing a number the user never gave; New case kept the hearing bar; the offer card did not re-translate on a language switch.
-Still possible: a suggested answer can mention a document the user never named (seen once: "move-out checklist"). The number check can't catch that.
+## Changes on 7 Nov and how each was tested
 
-## Update 7 Nov 2026: Past judgments search removed
-The "Past judgments" search in Track case used the kanoon.dev pilot API, which returned HTTP 503 every time it was tried, so it never worked for users. The panel, the `/api/court/judgments` endpoint, its fake-server route and its tests were removed. Haq still cites no case law (the guard blocks it); verified judgments remain future work.
+**Practice hearing moved into the chat.** Haq offers a mock hearing once per case; reply "practice" and it plays the judge, "stop" gives a scorecard. Hearing messages are kept out of the legal answers and drafts. The coach once invented a date, so code now drops any suggested line with a number the user never gave. Still possible: a suggestion can name a document the user never mentioned.
 
-## Update 7 Nov 2026: Legal assistant only
-Every message is labelled legal / general_knowledge / greeting / off_topic / unsafe by the router call that already runs on every turn (no extra call). Only legal messages get the full grounded answer. Greetings are answered by code. The other types get a short reply from the fast model (unsafe ones from the main model) that passes the same guard and a prompt-leak check, and never touch the case file. Other legal topics (Constitution, BNS vs IPC, FIR, business registration) are now explained in general terms (new category `general_legal`) instead of only being referred to a lawyer. 12 Constitution articles were added to the library. The user's own criminal, family or property matter now gets general guidance plus a lawyer recommendation ("recommended" instead of "urgent", unless a red flag applies).
-Real-model scope test (`scripts/qa/scope_test.py`, 31 cases: legal, general knowledge, greetings, off-topic, unsafe, legal-connection, prompt injection, follow-up context): see the latest `evals/outputs/*_scope/SUMMARY.md`. Errors found during it and fixed: AI_ERRORS_LOG 6e.
-Still possible: the router is a small model, so an unusual phrasing can be mislabelled. Code backstops cover the dangerous direction (legal words → legal; red flags → legal; router failure → legal), so a mislabel at worst sends an off-topic question to the legal path. General legal answers outside the library are prompt-guided: wrong procedural details (e.g. which office handles a complaint) can still slip through, because the guard checks citations and figures, not reasoning.
+**Past judgments search removed.** It used the kanoon.dev pilot API, which returned an error (HTTP 503) every time. Rather than ship something that never worked, I took out the panel, the endpoint and its tests. Haq still cites no case law.
 
-## Update 7 Nov 2026: Message action buttons
-User messages: edit, share, copy. Replies: copy, like/dislike, read aloud, share, try again, more (copy with sources; report incorrect / inappropriate). Every message carries a stable id (`m.id`, assigned by the server for chat turns and by `pushMsg` for drafts, court, practice and notice turns); a reply stores its prompt's id (`reply_to`) and its extras store the reply's id (`mid`). Old saved cases are migrated once on load. Try again and edit work **in place**: only that exchange changes, the earlier answer is kept as a version (‹ 1/2 ›), and the case file is updated only when the edited or regenerated exchange is the latest one (earlier facts are restored from a snapshot taken before that prompt). Feedback is stored per reply id with the case (synced for signed-in users) and sent to `/api/feedback` (server log; reply text only with a report). Read aloud strips markdown and symbols, speaks in short chunks, and stops the previous reply when another is started. Practice-hearing, draft, court and notice replies get copy/feedback/read/share only (no try again).
-Test: `scripts/qa/actions_test.py` (39 checks, chat API faked in the browser).
-Limits: edit/try again on an earlier exchange does not re-run the later exchanges (they were answered with the old text); drafts and court cards cannot be regenerated from their bar (use their own buttons).
+**Legal assistant only.** Every message is labelled legal, general knowledge, greeting, off-topic or unsafe by the step that already reads it, so there's no extra AI call. Only legal messages get the full answer; greetings are answered by code; the rest get a short reply that goes through the same guard and never touches the case file. The user's own criminal, family or property matter now gets general guidance plus a lawyer recommendation instead of only a referral. Risk left: the router is a small model and can mislabel odd phrasing. The code backstops push mistakes towards the legal path, which is the safer direction.
 
-## Update 7 Nov 2026: Legal answers cite the governing provisions
-General legal answers now follow: In short → The law that applies (each provision named exactly, what it says, why it applies) → What it means for you → What you can do → Keep in mind. Retrieval adds the provisions for the topics in the question (`kb.TOPICS`), so citations depend on the question; every provision verified in the text gets an official-source chip. 21 verified entries added (`kb/research_topics_2026_11.json`), each read from an official PDF. The guard is unchanged in principle: a provision not in the library is still removed, and the answer says the exact provision could not be verified.
-Real-model test (`scripts/qa/citations_test.py`, the 10 questions from the request): see the latest `evals/outputs/*_citations/SUMMARY.md`. Found and fixed: the overclaim rule flagged "a right guaranteed by Article 14" (a repair call on every rights answer); fraud answers named no law (now BNSS s.173 and BNS s.318 are the citable core for fraud).
-Limits: the IT Act 2008 sections, the Special Marriage Act and property statutes are not in the library (no official text could be opened), so those answers stay general; court interpretations (e.g. the wider reading of Article 21) are described without naming judgments.
+**Buttons under every message.** Every message has its own permanent ID (from the server for chat, from the browser for drafts, court cards, practice and notices), so a button only ever acts on its own message. Edit and try again change only that exchange and keep the old answer as a version (‹ 1/2 ›). The case file only updates if it's the latest exchange. Ratings are saved with the case and logged on the server; a report also sends that answer's text. Limit: editing an earlier message doesn't re-answer the later ones.
 
-## Known limitations (not fixed)
-- **Accounts are created without proving email ownership** (server-side signup, done when Supabase's built-in email couldn't reach users). Now that Brevo email works, this could switch to email confirmation.
-- **Rate limits are in memory**, so they reset when the server restarts and are per instance. Fine for one free instance; production would use Redis.
-- **Prompt-only rules can be ignored by a small model.** In the probe, `gemini-3.1-flash-lite` still called a car's engine failure "deficiency in service" (a goods problem is a "defect"). Uncited legal generalisations remain the main residual risk.
-- **Criminal law is explained only in general terms.** The library holds a few BNS/BNSS provisions (commencement, cheating, FIR); other sections (e.g. the punishment for a specific offence) are not cited, because they are not verified.
-- **The reply language follows the interface language** (the user asked for this). A Hindi typist who leaves the interface in English gets English replies.
+**Answers name the laws that apply.** 21 more provisions in the library, each read from an official PDF. The law offered to the model now depends on the question asked, and every provision named in an answer gets a link to its official text. Not in the library because I couldn't open an official copy: the IT Act's 2008 sections, the Special Marriage Act and property statutes. Answers on those explain the rule in words without a section number.
+
+## Known limitations
+- **Sign-up doesn't confirm the email address.** I set it up this way when Supabase's own email couldn't reach users. Now that Brevo email works, this could switch to email confirmation.
+- **Rate limits live in memory**, so they reset on restart and are per server. Fine for one free server; a real deployment would use Redis.
+- **Prompt-only rules can be ignored.** In one probe the model still called a car's engine failure a "deficiency in service" (for goods it should be "defect"). Advice that's wrong without citing anything is the main risk left.
+- **Criminal law is covered only partly.** The library has the BNS / BNSS commencement, cheating, theft, FIR and arrest provisions; other offences are explained without section numbers.
+- **The reply language follows the app's language setting.** Someone who types in Hindi but leaves the app in English gets English replies.
