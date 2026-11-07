@@ -936,3 +936,30 @@ body.tool-open #chat,body.tool-open #composer,body.tool-open .chat-col>.foot{dis
 .prep-fb .score{grid-template-columns:minmax(120px,190px) 1fr 34px}
 .prep-fb .score .bar i{background:var(--ink)}
 @media(max-width:600px){.prep-bar{margin:0 8px 6px}.prep-txt small{display:none}.prep-fb .score{grid-template-columns:110px 1fr 30px}}
+/* message actions (copy / edit / share; like, dislike, read aloud, try again, more) */
+.msg.user{flex-wrap:wrap}
+.msg-actions{display:flex;align-items:center;gap:2px;margin-top:6px;color:var(--muted)}
+.msg.user>.msg-actions{flex-basis:100%;justify-content:flex-end;margin-top:4px;opacity:0;transition:opacity .15s}
+.msg.user:hover>.msg-actions,.msg.user:focus-within>.msg-actions{opacity:1}
+@media (hover:none){.msg.user>.msg-actions{opacity:1}}
+.msg.bot .bubble>.msg-actions{position:relative;margin-left:-6px}
+.act{display:inline-grid;place-items:center;width:30px;height:30px;border:0;border-radius:8px;background:transparent;color:var(--muted);cursor:pointer;padding:0}
+.act:hover:not(:disabled){background:var(--chip,var(--line));color:var(--ink)}
+.act:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.act:disabled{opacity:.35;cursor:default}
+.act.on,.act.done{color:var(--ink)}
+.act-ver{display:inline-flex;align-items:center;margin-right:4px;font-size:12.5px;color:var(--muted)}
+.act-ver .act{width:24px}
+.act-ver-n{min-width:26px;text-align:center;font-variant-numeric:tabular-nums}
+.act-menu{position:absolute;left:0;top:34px;z-index:20;min-width:220px;max-width:min(280px,90vw);background:var(--paper);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:4px}
+.act-menu button{display:flex;align-items:center;gap:10px;width:100%;border:0;background:transparent;color:var(--ink);text-align:left;padding:8px 10px;border-radius:7px;cursor:pointer;font-size:13.5px}
+.act-menu button:hover,.act-menu button:focus-visible{background:var(--chip,var(--line));outline:none}
+.act-menu svg{flex:none;color:var(--muted)}
+.act-menu-note{margin:4px 10px 6px;font-size:11.5px;color:var(--muted);line-height:1.4}
+.msg.user.editing{flex-direction:column;align-items:flex-end}
+.edit-box{width:min(620px,100%);background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:10px}
+.edit-box textarea{width:100%;box-sizing:border-box;resize:none;border:0;outline:none;background:transparent;color:var(--ink);font:inherit;line-height:1.5}
+.edit-btns{display:flex;justify-content:flex-end;gap:8px;margin-top:6px}
+#toast{position:fixed;left:50%;bottom:96px;transform:translate(-50%,8px);background:var(--ink);color:var(--paper);font-size:13px;padding:7px 14px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;z-index:60;max-width:calc(100vw - 32px);text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+@media (max-width:600px){.act{width:34px;height:34px}.act-menu{left:auto;right:0}}

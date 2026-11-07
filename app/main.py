@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import io
+import json
 import os
 
 from fastapi import FastAPI, File, Form, Request, UploadFile
@@ -27,7 +28,7 @@ _LIMITS = {
     "/api/practice": ("ai", int(os.getenv("AI_LIMIT_PER_HOUR", "60"))), "/api/transcribe": ("ai", int(os.getenv("AI_LIMIT_PER_HOUR", "60"))),
     "/api/court/case": ("court", int(os.getenv("COURT_LIMIT_PER_HOUR", "40"))), "/api/court/search": ("court", int(os.getenv("COURT_LIMIT_PER_HOUR", "40"))),
     "/api/court/order": ("court", int(os.getenv("COURT_LIMIT_PER_HOUR", "40"))),
-    "/api/signup": ("signup", 10), "/api/docx": ("docx", 120),
+    "/api/signup": ("signup", 10), "/api/docx": ("docx", 120), "/api/feedback": ("feedback", 120),
 }
 _PAID = ("/api/court/case", "/api/court/search", "/api/court/order")
 _UPLOADS = ("/api/evidence", "/api/explain", "/api/transcribe")
@@ -97,6 +98,15 @@ class ChatIn(BaseModel):
     message: str
     provider: str | None = None
     lang_pref: str | None = None
+
+
+class FeedbackIn(BaseModel):
+    message_id: str
+    rating: str | None = None  # "up" | "down" | None (cleared)
+    report: str | None = None  # "incorrect" | "inappropriate"
+    model: str | None = None
+    category: str | None = None
+    reply: str | None = None  # the reply text, sent only with a report
 
 
 class DraftIn(BaseModel):
@@ -247,6 +257,22 @@ def chat(inp: ChatIn):
     if len(msg) > 6000:
         msg = msg[:6000]
     return _soft(engine.turn(inp.state, msg, provider=inp.provider, lang_pref=inp.lang_pref))
+
+
+@app.post("/api/feedback")
+def feedback(inp: FeedbackIn):
+    """Like / dislike / report on one reply, keyed by its message id. Written to the server log
+    (Render logs) for review; the reply text is included only when the user reports it."""
+    import logging
+
+    if inp.rating not in (None, "up", "down") or inp.report not in (None, "incorrect", "inappropriate"):
+        return JSONResponse({"error": "bad_request"}, status_code=400)
+    rec = {"message_id": inp.message_id[:64], "rating": inp.rating, "report": inp.report,
+           "model": (inp.model or "")[:80], "category": (inp.category or "")[:40]}
+    if inp.report:
+        rec["reply"] = (inp.reply or "")[:2000]
+    logging.getLogger("haq.feedback").warning("feedback %s", json.dumps(rec, ensure_ascii=False))
+    return {"ok": True}
 
 
 @app.post("/api/draft")

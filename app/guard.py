@@ -109,15 +109,20 @@ def _nearby_act(text: str, start: int, end: int, acts: dict[str, str]) -> tuple[
     An act merely mentioned somewhere nearby is NOT attached (avoids misattribution)."""
     after = text[end : min(len(text), end + 60)]
     before = text[max(0, start - 60) : start]
+    # the CLOSEST act wins: "Section 154 of the BNS (which continues the old CrPC provision)" is a BNS
+    # reference (QA 7 Nov: an early return on any nearby old-law name let this invented section through)
+    old_alias, old_d = None, 10**9
     for old, info in OUTDATED_LAWS.items():
         for alias in info["aliases"]:
             rx = rf"(?<![A-Za-z]){re.escape(alias)}(?![A-Za-z])"
             m1 = re.search(rx, after)
+            if m1 and m1.start() <= 45 and m1.start() < old_d:
+                old_alias, old_d = alias, m1.start()
             m2 = None
             for m2 in re.finditer(rx, before):
                 pass
-            if (m1 and m1.start() <= 45) or (m2 and len(before) - m2.end() <= 35):
-                return None, alias
+            if m2 and len(before) - m2.end() <= 35 and len(before) - m2.end() < old_d:
+                old_alias, old_d = alias, len(before) - m2.end()
     best, best_d = None, 10**9
     for rx, act in _alias_regex(acts):
         m = rx.search(after)
@@ -130,6 +135,8 @@ def _nearby_act(text: str, start: int, end: int, acts: dict[str, str]) -> tuple[
             d = len(before) - last.end()
             if d <= 35 and d < best_d:
                 best, best_d = act, d
+    if old_alias and old_d <= best_d:
+        return None, old_alias
     raw = None
     m = ACT_RE.search(after[:50]) or HINDI_ACT_RE.search(before[-40:] + after[:50])
     if m:
@@ -137,9 +144,17 @@ def _nearby_act(text: str, start: int, end: int, acts: dict[str, str]) -> tuple[
     return best, raw
 
 
-def check(text: str, allowed_ids: set[str] | None = None, support_text: str = "") -> GuardReport:
+_REPLACED_WORDS = ("replaced", "repealed", "earlier", "old ", "no longer", "जगह", "पुराना", "पहले")
+MONEY_RE = re.compile(r"(?i)(?:₹|\brs\.?|\binr)\s*(\d[\d,]*(?:\.\d+)?)(?:\s*(lakhs?|crores?|lac|cr)\b)?|\b(\d[\d,]*(?:\.\d+)?)\s*(lakhs?|crores?)\b")
+PCT_RE = re.compile(r"(\d+(?:\.\d+)?)\s*(?:%|per\s*cent|percent|प्रतिशत)", re.I)
+
+
+def check(text: str, allowed_ids: set[str] | None = None, support_text: str = "", history_ok: bool = False, figures: bool = False) -> GuardReport:
+    """history_ok: the user asked about an old law, so it may be discussed as history if the reply says it was
+    replaced. figures: also flag money amounts and percentages that aren't in the support text."""
     rep = GuardReport()
     acts = known_acts()
+    replaced_said = history_ok and any(w in text.lower() for w in _REPLACED_WORDS)
 
     # 3. outdated laws (checked first; replacement suggestions are useful to the user)
     for old, info in OUTDATED_LAWS.items():
@@ -147,7 +162,7 @@ def check(text: str, allowed_ids: set[str] | None = None, support_text: str = ""
             for m in re.finditer(rf"(?<![A-Za-z]){re.escape(alias)}(?![A-Za-z])", text):
                 # allow mentions that explicitly say it was replaced
                 ctx = text[max(0, m.start() - 80) : m.end() + 80].lower()
-                if any(w in ctx for w in ("replaced", "repealed", "earlier", "old ", "no longer", "जगह", "पुराना", "पहले")):
+                if replaced_said or any(w in ctx for w in _REPLACED_WORDS):
                     continue
                 rep.violations.append(
                     {"type": "outdated_law", "text": m.group(0), "why": f"{old} {info['status']}", "suggestion": info["replacement"]}
@@ -190,6 +205,13 @@ def check(text: str, allowed_ids: set[str] | None = None, support_text: str = ""
             act, _ = _nearby_act(text, m.start(), m.end(), acts)
             key = base_section(f"{'article' if kind == 'art' else 'order'} {m.group(1)}")
             ok = act is not None and key in sections_for_act(act)
+            if not ok and act is None:
+                # "Article 21" with no act named: fine if exactly one act in the allowed library has it
+                owners = {e["act"] for e in load_kb() if (allowed_ids is None or e["id"] in allowed_ids)
+                          and e.get("section") and base_section(str(e["section"])) == key}
+                if len(owners) == 1:
+                    act, ok = owners.pop(), True
+                    rep.warnings.append({"type": "ambiguous_section", "text": m.group(0).strip(), "why": f"Act not named; only {act} has it."})
             if ok:
                 rep.verified.append([m.group(0).strip(), act])
             else:
@@ -223,7 +245,17 @@ def check(text: str, allowed_ids: set[str] | None = None, support_text: str = ""
             continue
         rep.warnings.append({"type": "unsupported_number", "text": m.group(0), "why": "Time period not found in the verified library or calculations."})
 
-    # declared citation ids
+    # 5. money amounts and percentages must come from the library, the calculations or the user
+    #    (prompt rule since 6 Nov; QA 7 Nov: "GST above Rs 40 lakh", "6% per annum" still appeared)
+    if figures:
+        sup_digits = re.sub(r"(?<=\d),(?=\d)", "", support_text)
+        for m in list(MONEY_RE.finditer(text)) + list(PCT_RE.finditer(text)):
+            n = (m.group(1) or m.group(3) or "").replace(",", "")
+            n = n[:-2] if n.endswith(".0") else n
+            if not n or re.search(rf"(?<![\d.]){re.escape(n)}(?![\d])", sup_digits):
+                continue
+            rep.violations.append({"type": "unsupported_figure", "text": m.group(0).strip(),
+                                   "why": "Amount or percentage not in the verified library, the calculations or the user's messages. Remove it, or tell the user where to find the official figure."})
     return rep
 
 

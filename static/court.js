@@ -28,13 +28,13 @@ function replyLang() { const l = langInfo()[2] || "English"; return [l, COURT_SC
 
 function pushCourtTurn(userText, t) {
   ensureS();
-  if (userText) { S.messages.push({ role: "user", content: userText }); }
+  if (userText) pushMsg({ role: "user", content: userText });
   const last = VIEW.turns[VIEW.turns.length - 1] || {};
-  t = Object.assign({ calculated: last.calculated, completeness: last.completeness, needs_lawyer: last.needs_lawyer }, t);
-  S.messages.push({ role: "assistant", content: t.reply });
+  const m = pushMsg({ role: "assistant", content: t.reply });
+  t = Object.assign({ calculated: last.calculated, completeness: last.completeness, needs_lawyer: last.needs_lawyer }, t, { mid: m.id });
   VIEW.turns.push(t);
   persist();
-  addMsg("bot", md(t.intro), renderBotExtras(t));
+  addMsg("bot", md(t.intro), renderBotExtras(t), m);
 }
 
 // text the chat model sees about the case (keeps follow-up questions grounded)
@@ -54,10 +54,10 @@ async function trackCase(cnr, userText, fresh = false) {
   const c = await api("/api/court/case", { cnr, fresh });
   tb.parentElement.remove(); busy = false; $("#send").disabled = false;
   if (c.error) {
-    ensureS(); if (userText) S.messages.push({ role: "user", content: userText });
+    ensureS(); if (userText) pushMsg({ role: "user", content: userText });
     const msg = courtErr(c.error), prev = lastCaseTurn() || {};
-    S.messages.push({ role: "assistant", content: msg }); VIEW.turns.push({ reply: msg, calculated: prev.calculated, completeness: prev.completeness }); persist();
-    addMsg("bot", `<p>${esc(msg)}</p>`); return;
+    const m = pushMsg({ role: "assistant", content: msg }); VIEW.turns.push({ mid: m.id, reply: msg, calculated: prev.calculated, completeness: prev.completeness }); persist();
+    addMsg("bot", `<p>${esc(msg)}</p>`, null, m); return;
   }
   const intro = tr(fresh ? "court_refreshed" : "court_intro").replace("{cnr}", c.cnr);
   pushCourtTurn(userText, { court: c, intro, reply: intro + "\n\n" + courtSummaryText(c) });
@@ -110,10 +110,10 @@ async function explainOrder(c, o) {
   const r = await api("/api/court/order", { cnr: c.cnr, file: o.file, case: { title: c.title, court: c.court }, language, script, provider: provider() });
   tb.parentElement.remove(); busy = false; $("#send").disabled = false;
   if (r.error && !r.markdown) {
-    ensureS(); S.messages.push({ role: "user", content: userText });
+    ensureS(); pushMsg({ role: "user", content: userText });
     const msg = /^[a-z_]+$/.test(r.error) ? courtErr(r.error) : "⚠️ " + r.error;
     const prev = lastCaseTurn() || {};
-    S.messages.push({ role: "assistant", content: msg }); VIEW.turns.push({ reply: msg, calculated: prev.calculated, completeness: prev.completeness }); persist(); addMsg("bot", `<p>${esc(msg)}</p>`); return;
+    const m = pushMsg({ role: "assistant", content: msg }); VIEW.turns.push({ mid: m.id, reply: msg, calculated: prev.calculated, completeness: prev.completeness }); persist(); addMsg("bot", `<p>${esc(msg)}</p>`, null, m); return;
   }
   const summary = r.summary || tr("court_no_summary");
   pushCourtTurn(userText, { order: { cnr: c.cnr, label: o.label, date: o.date, text: r.markdown || "" }, intro: summary, reply: `Summary of the court order (${o.label}, ${courtDate(o.date)}) in CNR ${c.cnr}:\n${summary}`, model: r.model });

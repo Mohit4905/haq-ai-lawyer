@@ -23,19 +23,29 @@ Haq helps an ordinary person in India act on an everyday legal problem. You can 
 5. **Prepares you for the hearing.** After a case reply, type "practice" in the chat: the AI plays the judge, asks what a judge would ask, puts the other side's arguments to you, and scores your answers when you type "stop".
 6. **Explains a notice you received.** Paste it or upload a photo or PDF.
 7. **Says when you need a real lawyer**, and points to free legal aid (NALSA 15100) and emergency help (112, Tele-MANAS 14416).
+8. **Message actions.** Under your messages: edit (re-asks and replaces that answer), share, copy. Under Haq's answers: copy, 👍/👎, read aloud, share, try again (earlier answers kept as ‹ 1/2 › versions), and ⋯ (copy with sources, report). Every message has a stable id, so an action only ever touches the message it belongs to ([static/actions.js](static/actions.js)).
 
 **Covered in depth:** security deposits, consumer refunds and defects (including e-commerce), unpaid salary and final settlement, bounced cheques, understanding legal notices.
-**Pointers only:** online and UPI fraud.
-**Not covered (sent to a lawyer):** criminal cases against you, family matters, property title, tax, immigration.
+**Explained in general terms:** any other legal question: fundamental rights (Constitution articles are in the verified library), BNS vs IPC, how to file an FIR, starting a business, online fraud. For your own criminal, family, property-title or tax matter, Haq explains the general position and the usual steps, then recommends a lawyer or free legal aid.
+**Not answered:** non-legal requests (code, poems, recipes, shopping advice, workout plans…). Haq redirects to the legal angle if there is a genuine one (a laptop → consumer rights). Short general-knowledge questions ("capital of India?") and greetings get a one-line answer.
+
+### Staying a legal assistant (not a general chatbot)
+Each message is labelled by the router call that already runs on every turn: **legal**, **general_knowledge**, **greeting**, **off_topic** or **unsafe** ([app/intent.py](app/intent.py)). Only *legal* messages reach the full grounded answer. The rest get a short reply and never touch the case file or the legal context. This runs on the server, so calling the API directly gets the same behaviour. Code backstops:
+- plain greetings ("hi", "how are you", "नमस्ते") are answered by code, with no model call;
+- a red flag (self-harm, violence, arrest…) always gets the full answer;
+- a "general knowledge" label on a message with legal words is overridden to *legal*;
+- any reply containing text from the hidden instructions is replaced (prompt-leak check);
+- off-topic and unsafe replies go through the same guard as legal ones, so no invented law.
+Tested with the real model by [scripts/qa/scope_test.py](scripts/qa/scope_test.py) (outputs in `evals/outputs/*_scope/`).
 
 ## How Haq avoids invented laws
 
 | Layer | What it does | AI or code? |
 |---|---|---|
-| Verified library ([kb/laws.json](kb/laws.json)) | 74 provisions, rules, helplines and thresholds, each checked against an official source URL (India Code, Gazette, ministries, RBI, NALSA). Unverified entries are kept for transparency but never shown to the model. | Human-curated |
+| Verified library ([kb/laws.json](kb/laws.json)) | 86 provisions (incl. 12 Constitution articles), rules, helplines and thresholds, each checked against an official source URL (India Code, Gazette, ministries, RBI, NALSA). Unverified entries are kept for transparency but never shown to the model. | Human-curated |
 | Scoped retrieval | Only the library entries for the user's problem type go into the prompt. | Code |
 | Prompt rules | The model may mention a law or number only if it appears in the library or in the code's calculations. No case law, ever. | AI |
-| **Guard** ([app/guard.py](app/guard.py)) | Scans every reply before the user sees it. It flags sections, Articles, Orders and Acts that aren't in the library (English and Hindi patterns), any case-law citation (`X v. Y`, AIR/SCC, "the Supreme Court held"), repealed laws (IPC, CrPC, CPA 1986…) with their replacement, and time periods that nothing supports. | Code |
+| **Guard** ([app/guard.py](app/guard.py)) | Scans every reply before the user sees it. It flags sections, Articles, Orders and Acts that aren't in the library (English and Hindi patterns), any case-law citation (`X v. Y`, AIR/SCC, "the Supreme Court held"), repealed laws (IPC, CrPC, CPA 1986…) with their replacement, money amounts and percentages that nothing supports, and time periods that nothing supports (warning only). | Code |
 | Repair, then strip | On a violation, the model rewrites once. If the problem remains, the offending sentence is removed and the user is told. | AI, then code |
 | Deadlines, forum, fees | Pure functions in [app/rules.py](app/rules.py), each tagged with its library id. | Code |
 | Red flags | Arrest, FIR, violence, self-harm, family or property matters trigger escalation by regex in English, Hindi and Hinglish. Safety text is added by code, not the model. | Code |
@@ -49,7 +59,9 @@ browser (vanilla JS; holds session state)
    │  POST /api/chat {state, message}
    ▼
 FastAPI (stateless) ── red-flag rules (regex) ─────────────┐
-   │── router: fast model → category + language            │
+   │── greeting? → reply by code (no model call)            │
+   │── router: fast model → intent + category + language    │
+   │     not legal → short reply (fast model) → guard → done│
    │── retrieve verified law for that category              │
    │── calculators: deadlines / forum / fee (code)          │
    │── counsel: main model → JSON {reply, facts, citations…}│

@@ -16,9 +16,12 @@ CATEGORIES = {
     "cheque_bounce": "Cheque bounced (someone owes you money)",
     "notice": "I received a legal notice and don't understand it",
     "cyber_fraud": "Online / UPI fraud (pointer only: police + bank)",
-    "out_of_scope": "Criminal, family, property title, etc. (refer to lawyer / legal aid)",
+    "general_legal": "A question about the law (rights, laws, procedures)",
+    "out_of_scope": "Other legal matter: criminal, family, property title, etc. (general guidance + lawyer / legal aid)",
     "other": "Not yet clear",
 }
+# What a message is, before any legal routing (decided by the router; greetings also by code).
+INTENTS = {"legal", "general_knowledge", "greeting", "off_topic", "unsafe"}
 
 IN_DEPTH = {"tenancy", "consumer", "salary", "cheque_bounce", "notice"}
 
@@ -87,6 +90,7 @@ PLAYBOOKS: dict[str, list[str]] = {
         "Civil suit for recovery of the deposit within 3 years [LIM1963-ART55]; a summary suit may be possible if there is a written agreement [CPC1908-O37]. A lawyer helps here.",
         "Model Tenancy Act deposit rules apply ONLY in states that adopted it (AP, TN, UP, Assam as of July 2022) [MTA2021-S11, FACT-MTA-STATE-ADOPTION].",
         "Do NOT suggest the Consumer Commission for landlord-tenant deposit disputes, and do not call any court a 'small claims court'.",
+        "Eviction questions: the answer depends on the rent agreement and the state's rent law. Give the general position first (the landlord must give the notice the agreement or law requires; if the tenant does not leave, the landlord has to go through the rent authority or court, not use force), then ask the state and what the agreement says; a lawyer or legal aid should check the state rules.",
     ],
     "consumer": [
         "Written complaint to the company / platform grievance officer (must acknowledge in 48h, resolve in 1 month for e-commerce) [CPECOM2020-R4-5].",
@@ -119,6 +123,16 @@ PLAYBOOKS: dict[str, list[str]] = {
         "Call 1930 immediately and report on cybercrime.gov.in; quick reporting improves chances of freezing the money [FACT-CYBER-1930].",
         "Inform your bank in writing at once; if unresolved after 30 days, RBI Ombudsman (within 90 days) at cms.rbi.org.in [FACT-RBIOS2026-ELIGIBILITY, FACT-RBI-CMS-PORTAL].",
         "File a police complaint (an FIR can be filed at any police station: zero FIR) [BNSS2023-S173].",
+    ],
+    "general_legal": [
+        "Explain the law, right or procedure asked about, directly and in plain words; cite the VERIFIED LIBRARY where it covers the point (e.g. Constitution articles, FIR, BNS/BNSS commencement).",
+        "If the user then describes a dispute of their own, move on to their facts and a plan.",
+    ],
+    "out_of_scope": [
+        "Give any urgent protective step first where it applies (danger: 112; a crime: police complaint / FIR at any police station [BNSS2023-S173]; keep evidence).",
+        "Explain the general legal position and the usual procedure in plain words; name a provision only if it is in the VERIFIED LIBRARY.",
+        "Do not name specific offences, authorities, government offices or court remedies unless the VERIFIED LIBRARY supports them; when unsure, keep to safe universal steps: preserve evidence, use the platform's or institution's own complaint route, police / cybercrime complaint (1930, cybercrime.gov.in) [FACT-CYBER-1930], and a lawyer or legal aid.",
+        "Recommend a lawyer or free legal aid to handle it (NALSA 15100) [FACT-NALSA-HELPLINE]; do not draft court papers.",
     ],
 }
 

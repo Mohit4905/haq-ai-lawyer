@@ -66,7 +66,7 @@ const Cases = {
   autoTitle(c) {
     const st = c.data?.state; const f = st?.case?.facts || {};
     if (f.summary && String(f.summary).length > 6) return String(f.summary).slice(0, 60);
-    const firstUser = st?.messages?.find(m => m.role === "user")?.content || "";
+    const firstUser = (st?.messages?.find(m => m.role === "user" && !m.aside && !m.practice) || st?.messages?.find(m => m.role === "user"))?.content || "";
     return firstUser ? firstUser.slice(0, 48) + (firstUser.length > 48 ? "…" : "") : "";
   },
   touch(meta = true) {

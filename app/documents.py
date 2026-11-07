@@ -82,7 +82,7 @@ def draft(state: dict, doc_type: str, doc_language: str = "English", provider: s
         case_file=_case_file_text(case),
         user_language=case.get("language") or "English",
     )
-    convo = "\n".join(f"{m['role']}: {m['content']}" for m in [x for x in state.get("messages", []) if isinstance(x, dict) and not x.get("practice")][-12:] if m.get("role") == "user")
+    convo = "\n".join(f"{m['role']}: {m['content']}" for m in [x for x in state.get("messages", []) if isinstance(x, dict) and not x.get("practice") and not x.get("aside")][-12:] if m.get("role") == "user")
     msgs = [{"role": "system", "content": sys}, {"role": "user", "content": "What the user told us, in their words:\n" + convo[:4000]}]
     try:
         out, res = chat_json(msgs, tier="main", temperature=0.2, max_tokens=2600, provider=provider)

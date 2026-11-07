@@ -609,3 +609,29 @@ Object.assign(window.HAQ_I18N["pa"], {
   prep_start: "ਅਭਿਆਸ-ਸੁਣਵਾਈ ਸ਼ੁਰੂ ਕਰੋ", prep_on: "ਅਭਿਆਸ-ਸੁਣਵਾਈ", prep_stop_hint: "ਜਿਵੇਂ ਕੋਰਟ ਵਿੱਚ ਦਿਓਗੇ ਉਵੇਂ ਜਵਾਬ ਦਿਓ · ਖ਼ਤਮ ਕਰਕੇ ਫ਼ੀਡਬੈਕ ਲਈ **stop** ਲਿਖੋ",
   prep_end: "ਖ਼ਤਮ ਕਰੋ ਅਤੇ ਫ਼ੀਡਬੈਕ ਲਓ", prep_ended: "ਅਭਿਆਸ-ਸੁਣਵਾਈ ਖ਼ਤਮ।", prep_fb_t: "ਤੁਹਾਡੀ ਸੁਣਵਾਈ ਦਾ ਫ਼ੀਡਬੈਕ",
 });
+
+/* message action buttons */
+Object.assign(window.HAQ_I18N["en"], {
+  act_copy: "Copy", act_edit: "Edit message", act_share: "Share", act_good: "Good response", act_bad: "Bad response", act_read: "Read aloud", act_stop: "Stop reading",
+  act_regen: "Try again", act_more: "More", act_prev: "Previous version", act_next: "Next version", act_copied: "Copied!", act_copy_fail: "Couldn't copy. Select the text and copy it manually.",
+  act_share_fallback: "Sharing isn't available here, so it was copied instead.", act_cancel: "Cancel", act_send: "Send", act_busy: "Please wait for the current answer.",
+  act_copy_src: "Copy with sources", act_sources: "Sources", act_report_wrong: "Report: incorrect", act_report_bad: "Report: inappropriate",
+  act_report_note: "A report sends this reply's text to the developer for review.", act_reported: "Thanks. Reported for review.", act_thanks: "Thanks for the feedback.",
+  act_no_tts: "Read aloud isn't supported in this browser.", act_regen_fail: "Couldn't get a new answer.",
+});
+Object.assign(window.HAQ_I18N["hi"], {
+  act_copy: "कॉपी करें", act_edit: "संदेश बदलें", act_share: "शेयर करें", act_good: "अच्छा जवाब", act_bad: "ख़राब जवाब", act_read: "पढ़कर सुनाएँ", act_stop: "रोकें",
+  act_regen: "फिर से जवाब दें", act_more: "और", act_prev: "पिछला वर्शन", act_next: "अगला वर्शन", act_copied: "कॉपी हो गया!", act_copy_fail: "कॉपी नहीं हो सका। टेक्स्ट चुनकर ख़ुद कॉपी करें।",
+  act_share_fallback: "यहाँ शेयर उपलब्ध नहीं है, इसलिए कॉपी कर दिया गया।", act_cancel: "रद्द करें", act_send: "भेजें", act_busy: "कृपया मौजूदा जवाब का इंतज़ार करें।",
+  act_copy_src: "स्रोतों के साथ कॉपी करें", act_sources: "स्रोत", act_report_wrong: "रिपोर्ट: ग़लत जवाब", act_report_bad: "रिपोर्ट: अनुचित जवाब",
+  act_report_note: "रिपोर्ट करने पर इस जवाब का टेक्स्ट जाँच के लिए डेवलपर को भेजा जाता है।", act_reported: "धन्यवाद। जाँच के लिए रिपोर्ट हो गया।", act_thanks: "फ़ीडबैक के लिए धन्यवाद।",
+  act_no_tts: "इस ब्राउज़र में पढ़कर सुनाना उपलब्ध नहीं है।", act_regen_fail: "नया जवाब नहीं मिल सका।",
+});
+Object.assign(window.HAQ_I18N["hinglish"], {
+  act_copy: "Copy karein", act_edit: "Message badlein", act_share: "Share karein", act_good: "Achha jawab", act_bad: "Kharab jawab", act_read: "Padhkar sunaiye", act_stop: "Rokein",
+  act_regen: "Phir se jawab dein", act_more: "Aur", act_prev: "Pichhla version", act_next: "Agla version", act_copied: "Copy ho gaya!", act_copy_fail: "Copy nahi ho saka. Text select karke khud copy karein.",
+  act_share_fallback: "Yahan share available nahi hai, isliye copy kar diya.", act_cancel: "Cancel", act_send: "Bhejein", act_busy: "Kripya abhi wale jawab ka intezaar karein.",
+  act_copy_src: "Sources ke saath copy karein", act_sources: "Sources", act_report_wrong: "Report: galat jawab", act_report_bad: "Report: anuchit jawab",
+  act_report_note: "Report karne par is jawab ka text jaanch ke liye developer ko bheja jata hai.", act_reported: "Shukriya. Jaanch ke liye report ho gaya.", act_thanks: "Feedback ke liye shukriya.",
+  act_no_tts: "Is browser mein padhkar sunana available nahi hai.", act_regen_fail: "Naya jawab nahi mil saka.",
+});

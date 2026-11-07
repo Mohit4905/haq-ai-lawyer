@@ -29,6 +29,8 @@ def by_id() -> dict[str, dict]:
 # Hand-picked library per problem type. Deterministic retrieval beats embeddings at this
 # size: predictable, auditable, testable, free, and it keeps prompts inside free-tier limits.
 _AID = ["FACT-NALSA-HELPLINE", "LSA1987-S12", "FACT-LOKADALAT-PRELITIGATION", "FACT-TELE-LAW", "FACT-ERSS-112", "FACT-TELEMANAS"]
+_COI = ["COI-ART12", "COI-ART14", "COI-ART15", "COI-ART17", "COI-ART19", "COI-ART21", "COI-ART21A", "COI-ART22", "COI-ART23", "COI-ART25", "COI-ART32", "COI-ART51A"]
+_CRIMINAL = ["FACT-BNS-BNSS-COMMENCEMENT", "BNS2023-S358", "BNSS2023-S531", "BNSS2023-S173", "BNS2023-S318", "BNS2023-S316", "FACT-CYBER-1930"]
 CATEGORY_IDS: dict[str, list[str]] = {
     "tenancy": ["ICA1872-S73", "MTA2021-S11", "FACT-MTA-STATUS", "FACT-MTA-STATE-ADOPTION", "LIM1963-ART55", "CPC1908-O37", "MED2023-S1", *_AID],
     "consumer": ["CPA2019-S2-7", "CPA2019-S2-11", "CPA2019-S2-47", "CPA2019-S35", "CPA2019-S39", "CPA2019-S69", "CPA2019-S37",
@@ -39,9 +41,12 @@ CATEGORY_IDS: dict[str, list[str]] = {
     "cheque_bounce": ["NIA1881-S138", "NIA1881-S142-1", "NIA1881-S142-2", "NIA1881-S143A", "NIA1881-S147", "FACT-RBI-CHEQUE-VALIDITY", "CPC1908-O37", *_AID],
     "notice": ["CPC1908-S80", "NIA1881-S138", "CPA2019-S69", "LIM1963-ART55", "COW2019-S45", "MTA2021-S11", "ICA1872-S73", *_AID],
     "cyber_fraud": ["FACT-CYBER-1930", "FACT-RBIOS2026-ELIGIBILITY", "FACT-RBIOS2026-COMPENSATION", "FACT-RBI-CMS-PORTAL", "BNSS2023-S173", "BNS2023-S318", *_AID],
-    "out_of_scope": ["FACT-BNS-BNSS-COMMENCEMENT", "BNSS2023-S173", *_AID],
+    "general_legal": [*_COI, *_CRIMINAL, "ICA1872-S73", "CPA2019-S2-7", "FACT-NCH-HELPLINE", "FACT-EJAGRITI-PORTAL", *_AID],
+    "out_of_scope": [*_CRIMINAL, "COI-ART14", "COI-ART21", "COI-ART22", "COI-ART32", *_AID],
     "other": [*_AID],
 }
+# library for the short replies to off-topic / unsafe messages (only what a redirect might name)
+ASIDE_IDS = ["FACT-CYBER-1930", "FACT-NCH-HELPLINE", "FACT-NALSA-HELPLINE", "FACT-ERSS-112"]
 
 
 def retrieve(category: str | None, limit: int = 30) -> list[dict]:
@@ -83,6 +88,7 @@ ACT_ALIASES: dict[str, list[str]] = {
     "Bharatiya Nyaya Sanhita, 2023": ["Bharatiya Nyaya Sanhita", "BNS", "भारतीय न्याय संहिता"],
     "Bharatiya Nagarik Suraksha Sanhita, 2023": ["Bharatiya Nagarik Suraksha Sanhita", "BNSS", "भारतीय नागरिक सुरक्षा संहिता"],
     "Mediation Act, 2023": ["Mediation Act"],
+    "Constitution of India": ["Constitution of India", "Indian Constitution", "Constitution", "भारत का संविधान", "संविधान"],
     "Commercial Courts Act, 2015": ["Commercial Courts Act"],
     "Industrial Relations Code, 2020": ["Industrial Relations Code", "IR Code"],
     "Four Labour Codes (Code on Wages, 2019; Industrial Relations Code, 2020; Code on Social Security, 2020; Occupational Safety, Health and Working Conditions Code, 2020)": [

@@ -100,7 +100,8 @@ function lastCaseTurn() { return [...(VIEW?.turns || [])].reverse().find(t => t 
 function provider() { return $("#provider").value || null; }
 
 /* ---------------- chat rendering */
-function addMsg(role, html, extras) {
+// m: the saved message this bubble shows (its id drives the action buttons); omitted for typing / error bubbles
+function addMsg(role, html, extras, m) {
   $("#welcome")?.classList.add("hidden");
   const wrap = document.createElement("div");
   wrap.className = `msg ${role}`;
@@ -111,6 +112,7 @@ function addMsg(role, html, extras) {
   if (extras) b.appendChild(extras);
   wrap.appendChild(b);
   $("#chat").appendChild(wrap);
+  if (m && typeof bindMsg === "function") bindMsg(b, m);
   $("#chat").scrollTop = $("#chat").scrollHeight;
   return b;
 }
@@ -159,10 +161,6 @@ function renderBotExtras(t) {
     meta.appendChild(s);
   });
   const g = guardChip(t.guard); if (g) meta.appendChild(g);
-  const sp = document.createElement("span");
-  sp.className = "chip"; sp.textContent = "🔊"; sp.title = "Read aloud";
-  sp.onclick = () => speak(t.reply);
-  meta.appendChild(sp);
   if (t.model) { const m = document.createElement("span"); m.className = "chip model"; m.textContent = `${t.model.provider}/${t.model.model.split("/").pop()} · ${t.latency_s}s`; meta.appendChild(m); }
   box.appendChild(meta);
   const acts = document.createElement("div");
@@ -215,10 +213,10 @@ function renderAll() {
   $("#chat").querySelectorAll(".msg").forEach(n => n.remove());
   renderPrepBar();
   if (!S || !S.messages.length) { $("#welcome").classList.remove("hidden"); renderCase(null); renderDocPanel(null); return; }
-  let ti = 0;
+  if (typeof ensureIds === "function") ensureIds();  // every message has an id; extras are linked by id
   S.messages.forEach(m => {
-    if (m.role === "user") addMsg("user", esc(m.content));
-    else { const t = VIEW.turns[ti++] || { reply: m.content }; addMsg("bot", md(t.intro != null ? t.intro : m.content), renderBotExtras(t)); }
+    if (m.role === "user") addMsg("user", esc(m.content), null, m);
+    else { const t = turnOf(m.id) || { reply: m.content }; addMsg("bot", md(t.intro != null ? t.intro : m.content), renderBotExtras(t), m); }
   });
   renderCase(lastCaseTurn());
   renderDocPanel([...VIEW.turns].reverse().find(t => t.doc)?.doc);
@@ -238,21 +236,27 @@ async function send(text) {
   if (typeof tryCourtFromChat === "function" && await tryCourtFromChat(text)) { $("#input").value = ""; autosize(); return; }  // a pasted CNR -> live case status
   busy = true; $("#send").disabled = true;
   const langPref = langInfo()[2] || "English";  // reply in the interface language the user picked, whatever they type in
-  addMsg("user", esc(text));
+  const ub = addMsg("user", esc(text));
   $("#input").value = ""; autosize();
   const tb = typing();
   if (await tryFillDoc(text, tb)) { busy = false; $("#send").disabled = false; return; }
+  // the case file before this prompt: an edit or "try again" on this exchange starts from here
+  const snap = { case: S ? JSON.parse(JSON.stringify(S.case || null)) : null, flags: S ? JSON.parse(JSON.stringify(S.flags || null)) : null };
   const res = await api("/api/chat", { state: S, message: text, provider: provider(), lang_pref: langPref });
   tb.parentElement.remove();
   busy = false; $("#send").disabled = false;
   if (res.error) { addMsg("bot", `<p>⚠️ ${esc(res.error)}</p><p class="small muted">Try again, or switch the model (⚙︎ at the top).</p>`); return; }
   S = res.state;
-  const turn = { reply: res.reply, citations: res.citations, guard: res.guard, actions: res.actions, model: res.model, latency_s: res.latency_s, calculated: res.calculated, completeness: res.completeness, needs_lawyer: res.needs_lawyer, emergency_contacts: res.emergency_contacts };
+  ensureIds();
+  const um = msgById(res.user_message_id), rm = msgById(res.message_id);
+  if (um) { VIEW.snaps = VIEW.snaps || {}; VIEW.snaps[um.id] = snap; bindMsg(ub, um); }
+  const turn = turnFromRes(res, rm?.id);
   VIEW.turns.push(turn);
   maybeOfferPrep(turn);
   persist();
-  addMsg("bot", md(res.reply), renderBotExtras(turn));
-  renderCase(VIEW.turns[VIEW.turns.length - 1]);
+  addMsg("bot", md(res.reply), renderBotExtras(turn), rm);
+  if (um) refreshBar(um.id);  // the edit button appears now that the reply exists
+  renderCase(lastCaseTurn());  // a greeting / off-topic reply carries no case data: keep the case's deadlines
   if ($("#autoSpeak")?.checked) speak(res.reply);
 }
 
@@ -266,7 +270,7 @@ const FACT_LABELS = {
   memo_received_date: "Return memo received", notice_sent_date: "Notice sent", notice_from: "Notice from", notice_date: "Notice dated", received_date: "Received on",
   notice_demands: "They demand", notice_deadline_days: "Deadline in notice", summary: "Summary", user_name: "Your name", last_working_day: "Last working day",
 };
-const CAT_LABEL = { tenancy: "🏠 Security deposit / tenancy", consumer: "📦 Consumer complaint", salary: "💼 Unpaid salary", cheque_bounce: "🧾 Cheque bounce", notice: "✉️ Legal notice", cyber_fraud: "🚨 Online fraud", out_of_scope: "⚖️ Needs a lawyer", other: "🤔 Understanding your problem" };
+const CAT_LABEL = { tenancy: "🏠 Security deposit / tenancy", consumer: "📦 Consumer complaint", salary: "💼 Unpaid salary", cheque_bounce: "🧾 Cheque bounce", notice: "✉️ Legal notice", cyber_fraud: "🚨 Online fraud", general_legal: "📘 Legal question", out_of_scope: "⚖️ Other legal matter", other: "🤔 Understanding your problem" };
 
 function renderCase(t) {
   const c = S?.case;
@@ -401,10 +405,11 @@ function pushDocTurn(doc, [intro, ask]) {
   const last = VIEW.turns[VIEW.turns.length - 1] || {};
   const text = intro + (ask ? "\n\n" + ask : "");  // the model sees both in the history
   const t = { reply: text, intro, ask, doc, calculated: last.calculated, completeness: last.completeness, needs_lawyer: last.needs_lawyer };
-  S.messages.push({ role: "assistant", content: text });
+  const m = pushMsg({ role: "assistant", content: text });
+  t.mid = m.id;
   VIEW.turns.push(t);
   persist();
-  addMsg("bot", md(intro), renderBotExtras(t));
+  addMsg("bot", md(intro), renderBotExtras(t), m);
   renderDocPanel(doc);
 }
 // -> [text above the document, questions below it]
@@ -447,10 +452,10 @@ async function tryFillDoc(text, tb) {
   const f = await api("/api/draft/fill", { body_markdown: pd.body, answer: text, provider: provider() });
   if (f.error || !f.filled || !Object.keys(f.filled).length) return false;
   tb.parentElement.remove();
-  S.messages.push({ role: "user", content: text });
+  const um = pushMsg({ role: "user", content: text });
   const doc = Object.assign({}, pd, { body: f.body_markdown });
   pushDocTurn(doc, docMessage(doc, true));
-  return true;
+  return um;
 }
 
 /* ---------------- practice hearing, inside the chat
@@ -512,11 +517,11 @@ function renderPrepBar() {
   $("#input").placeholder = on ? tr("prep_ph") : tr(innerWidth <= 600 ? "ph_short" : "ph");
 }
 function pushPrepTurn(text, kind, extra) {
-  S.messages.push({ role: "assistant", content: text, practice: true });
-  const t = Object.assign({ reply: text, prep: kind }, extra || {});
+  const m = pushMsg({ role: "assistant", content: text, practice: true });
+  const t = Object.assign({ reply: text, prep: kind, mid: m.id }, extra || {});
   VIEW.turns.push(t);
   persist();
-  addMsg("bot", md(t.intro != null ? t.intro : text), renderBotExtras(t));
+  addMsg("bot", md(t.intro != null ? t.intro : text), renderBotExtras(t), m);
   renderPrepBar();
 }
 const setBusy = v => { busy = v; $("#send").disabled = v; };
@@ -532,26 +537,29 @@ async function startPrep(text) {
   const r = await api("/api/practice", { case: S.case, history: [], provider: provider(), language: langInfo()[2] || "English" });
   tb.parentElement.remove(); setBusy(false);
   if (r.error || !r.reply) { addMsg("bot", `<p>⚠️ ${esc(r.error || tr("err_server"))}</p>`); return; }
-  if (text) S.messages.push({ role: "user", content: text, practice: true });
+  if (text) pushMsg({ role: "user", content: text, practice: true });
   VIEW.prep = { offered: true, on: true, start: S.messages.length };
   pushPrepTurn(r.reply, "q");
   $("#input").focus();
 }
 async function prepTurn(text) {
   if (PREP_STOP.test(text.trim())) return endPrep(text);
-  addMsg("user", esc(text));
-  S.messages.push({ role: "user", content: text, practice: true });
+  const ub = addMsg("user", esc(text));
+  const um = pushMsg({ role: "user", content: text, practice: true });
   setBusy(true);
   const tb = typing();
   const r = await api("/api/practice", { case: S.case, history: prepHistory(), provider: provider(), language: langInfo()[2] || "English" });
   tb.parentElement.remove(); setBusy(false);
-  if (r.error || !r.reply) { S.messages.pop(); addMsg("bot", `<p>⚠️ ${esc(r.error || tr("err_server"))}</p>`); return; }
+  if (r.error || !r.reply) {  // not saved: drop the message and its buttons
+    S.messages.splice(S.messages.indexOf(um), 1); delete ub.parentElement.dataset.mid; ub.parentElement.querySelector(".msg-actions")?.remove();
+    addMsg("bot", `<p>⚠️ ${esc(r.error || tr("err_server"))}</p>`); return;
+  }
   pushPrepTurn(r.reply, "q");
 }
 async function endPrep(text) {
   if (busy || !prepOn()) return;
   window.showChat && window.showChat();
-  if (text) { addMsg("user", esc(text)); S.messages.push({ role: "user", content: text, practice: true }); }
+  if (text) { addMsg("user", esc(text)); pushMsg({ role: "user", content: text, practice: true }); }
   const hist = prepHistory().filter(m => !(m.role === "user" && PREP_STOP.test(m.content.trim())));
   if (!hist.some(m => m.role === "user")) {  // nothing to review: just close the hearing
     VIEW.prep.on = false;
@@ -585,7 +593,7 @@ $("#noticeGo").onclick = async e => {
   if ($("#noticeFile").files[0]) fd.append("file", $("#noticeFile").files[0]);
   $("#noticeDlg").close();
   window.showChat && window.showChat();
-  addMsg("user", esc($("#noticeText").value ? "📄 " + $("#noticeText").value.slice(0, 300) + ($("#noticeText").value.length > 300 ? "…" : "") : "📄 (uploaded notice)"));
+  const nub = addMsg("user", esc($("#noticeText").value ? "📄 " + $("#noticeText").value.slice(0, 300) + ($("#noticeText").value.length > 300 ? "…" : "") : "📄 (uploaded notice)"));
   const tb = typing();
   busy = true; $("#send").disabled = true;
   const r = await api("/api/explain", fd, true);
@@ -601,15 +609,16 @@ $("#noticeGo").onclick = async e => {
     ${(r.laws_mentioned_in_notice || []).length ? `<p class="small muted">Laws the notice mentions (as written, not verified by Haq): ${r.laws_mentioned_in_notice.map(esc).join("; ")}</p>` : ""}
     ${r.needs_lawyer?.level && r.needs_lawyer.level !== "none" ? `<p><b>⚖️ Lawyer: ${esc(r.needs_lawyer.level)}</b>: ${esc(r.needs_lawyer.reason)}</p>` : ""}
     <p class="small">Want me to help you reply? Tell me your side of the story in the chat.</p>`;
-  addMsg("bot", html);
+  const nbb = addMsg("bot", html);
   // seed the conversation so the chat continues with context
   S = S || { version: 1, messages: [], case: { category: null, facts: {}, timeline: [], evidence_have: [], evidence_missing: [] }, flags: { level: "none", reasons: [] }, log: [] };
   if (!S.case.category || S.case.category === "other") S.case.category = "notice";  // don't overwrite an existing case's type
   Object.assign(S.case.facts, { notice_from: r.who_sent, notice_demands: r.what_they_want, notice_deadline_days: r.deadline_in_notice || "", summary: r.plain_summary });
-  S.messages.push({ role: "user", content: "I received this notice:\n" + ($("#noticeText").value || r.extracted_text || "").slice(0, 3000) });
-  S.messages.push({ role: "assistant", content: `Explanation: ${r.plain_summary} They want: ${r.what_they_want}. Risk: ${r.risk_level}.` });
+  const num = pushMsg({ role: "user", content: "I received this notice:\n" + ($("#noticeText").value || r.extracted_text || "").slice(0, 3000) });
+  const nrm = pushMsg({ role: "assistant", content: `Explanation: ${r.plain_summary} They want: ${r.what_they_want}. Risk: ${r.risk_level}.` });
+  bindMsg(nub, num); bindMsg(nbb, nrm);
   const prev = lastCaseTurn() || {};  // keep the case's deadlines (audit: they vanished after a notice)
-  VIEW.turns.push({ reply: r.plain_summary, citations: [], guard: { initial: r.guard, final: r.guard }, actions: [{ type: "draft", doc: "reply_to_notice" }], model: r.model, latency_s: r.model?.latency_s,
+  VIEW.turns.push({ mid: nrm.id, src: "notice", reply: r.plain_summary, citations: [], guard: { initial: r.guard, final: r.guard }, actions: [{ type: "draft", doc: "reply_to_notice" }], model: r.model, latency_s: r.model?.latency_s,
                     calculated: prev.calculated, completeness: prev.completeness });
   if (r.needs_lawyer?.level === "urgent") S.flags = { level: "urgent", reasons: [r.needs_lawyer.reason] };
   persist();
