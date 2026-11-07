@@ -104,9 +104,9 @@ Browser tests of the real UI are in [scripts/qa/](scripts/qa/) (Playwright with 
 - **Scope test** (legal, off-topic, unsafe, prompt injection, follow-ups): 31/31 on the third run.
 - **Citation test** (equality, free speech, arrest, theft, consumer, fraud, divorce, termination, Article 21): 10/10 on the third run.
 
-Every raw output is in [evals/outputs/](evals/outputs/). What changed between runs, and every failure I read by hand: [evals/CHANGELOG.md](evals/CHANGELOG.md), [evals/MANUAL_REVIEW.md](evals/MANUAL_REVIEW.md), [docs/QA_AUDIT.md](docs/QA_AUDIT.md).
+Every raw output is in [evals/outputs/](evals/outputs/). What changed between runs, and every failure I read by hand: [evals/CHANGELOG.md](evals/CHANGELOG.md), [evals/MANUAL_REVIEW.md](evals/MANUAL_REVIEW.md), [evals/QA_AUDIT.md](evals/QA_AUDIT.md).
 
-More: [where AI got it wrong](docs/AI_ERRORS_LOG.md) · [the law library](kb/README.md) · [deploying](docs/DEPLOY.md)
+More: [where AI got it wrong](evals/AI_ERRORS_LOG.md) · [the law library](kb/README.md)
 
 ## Limits
 

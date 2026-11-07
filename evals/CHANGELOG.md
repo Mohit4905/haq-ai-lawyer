@@ -101,4 +101,4 @@ The 22-case suite tests answers to people's own problems. Two changes on 7 Nov n
 - `outputs/20261107-144433_citations`: 9/10. The divorce answer was wiped by my prompt-leak check because it said "verified library" once. I fixed the check to need real evidence.
 - `outputs/20261107-144910_citations`: 10/10. As scored live it was 9/10, because the check didn't count "s.173" as naming a section; the fraud answer did name it. I fixed the check and re-scored the saved replies.
 
-The 22-case suite was not re-run after these changes, because the free daily quota was used up. The changes don't touch the deadline maths, drafts or case-file code those cases test, and the unit tests and browser suites were all re-run (see `docs/QA_AUDIT.md`).
+The 22-case suite was not re-run after these changes, because the free daily quota was used up. The changes don't touch the deadline maths, drafts or case-file code those cases test, and the unit tests and browser suites were all re-run (see `evals/QA_AUDIT.md`).
